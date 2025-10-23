@@ -32,7 +32,7 @@ module Spotted
         #
         # Replace the image used to represent a specific playlist.
         #
-        # @overload update(playlist_id, body: nil, request_options: {})
+        # @overload update(playlist_id, body:, request_options: {})
         #
         # @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
         #
@@ -43,7 +43,7 @@ module Spotted
         # @return [nil]
         #
         # @see Spotted::Models::Playlists::ImageUpdateParams
-        def update(playlist_id, params = {})
+        def update(playlist_id, params)
           parsed, options = Spotted::Playlists::ImageUpdateParams.dump_request(params)
           @client.request(
             method: :put,

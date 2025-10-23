@@ -34,7 +34,7 @@ module Spotted
           # playlist.
           playlist_id,
           # Base64 encoded JPEG image data, maximum payload size is 256 KB.
-          body: nil,
+          body:,
           request_options: {}
         )
         end

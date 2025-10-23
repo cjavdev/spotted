@@ -16,11 +16,8 @@ module Spotted
           end
 
         # Base64 encoded JPEG image data, maximum payload size is 256 KB.
-        sig { returns(T.nilable(String)) }
-        attr_reader :body
-
-        sig { params(body: String).void }
-        attr_writer :body
+        sig { returns(String) }
+        attr_accessor :body
 
         sig do
           params(
@@ -30,7 +27,7 @@ module Spotted
         end
         def self.new(
           # Base64 encoded JPEG image data, maximum payload size is 256 KB.
-          body: nil,
+          body:,
           request_options: {}
         )
         end
