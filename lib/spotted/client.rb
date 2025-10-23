@@ -15,10 +15,51 @@ module Spotted
     # Default max retry delay in seconds.
     DEFAULT_MAX_RETRY_DELAY = 8.0
 
+    # @return [String]
+    attr_reader :client_id
+
+    # @return [String]
+    attr_reader :client_secret
+
     # @return [Spotted::Resources::Albums]
     attr_reader :albums
 
+    # @api private
+    # @return [Spotted::Internal::OAuth2ClientCredentials]
+    attr_reader :o_auth2_state
+
+    # @api private
+    #
+    # @return [Hash{String=>String}]
+    private def auth_headers
+      return @o_auth2_state.auth_headers if @o_auth2_state
+
+      return {} unless @client_id && @client_secret
+
+      path = Spotted::Internal::Util.interpolate_path("https://accounts.spotify.com/api/token?grant_type=client_credentials")
+      token_url = Spotted::Internal::Util.join_parsed_uri(
+        @base_url_components,
+        {
+          path: path,
+          query: {grant_type: "client_credentials"}
+        }
+      )
+
+      @o_auth2_state = Spotted::Internal::OAuth2ClientCredentials.new(
+        token_url: token_url.to_s,
+        client_id: @client_id,
+        client_secret: @client_secret,
+        timeout: @timeout,
+        client: self
+      )
+      @o_auth2_state.auth_headers
+    end
+
     # Creates and returns a new client for interacting with the API.
+    #
+    # @param client_id [String, nil] Defaults to `ENV["SPOTIFY_CLIENT_ID"]`
+    #
+    # @param client_secret [String, nil] Defaults to `ENV["SPOTIFY_CLIENT_SECRET"]`
     #
     # @param base_url [String, nil] Override the default base URL for the API, e.g.,
     # `"https://api.example.com/v2/"`. Defaults to `ENV["SPOTTED_BASE_URL"]`
@@ -31,6 +72,8 @@ module Spotted
     #
     # @param max_retry_delay [Float]
     def initialize(
+      client_id: ENV["SPOTIFY_CLIENT_ID"],
+      client_secret: ENV["SPOTIFY_CLIENT_SECRET"],
       base_url: ENV["SPOTTED_BASE_URL"],
       max_retries: self.class::DEFAULT_MAX_RETRIES,
       timeout: self.class::DEFAULT_TIMEOUT_IN_SECONDS,
@@ -38,6 +81,16 @@ module Spotted
       max_retry_delay: self.class::DEFAULT_MAX_RETRY_DELAY
     )
       base_url ||= "https://api.spotify.com/v1"
+
+      if client_id.nil?
+        raise ArgumentError.new("client_id is required, and can be set via environ: \"SPOTIFY_CLIENT_ID\"")
+      end
+      if client_secret.nil?
+        raise ArgumentError.new("client_secret is required, and can be set via environ: \"SPOTIFY_CLIENT_SECRET\"")
+      end
+
+      @client_id = client_id.to_s
+      @client_secret = client_secret.to_s
 
       super(
         base_url: base_url,
