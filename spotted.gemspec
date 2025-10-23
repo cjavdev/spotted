@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version = Spotted::VERSION
   s.summary = "Ruby library to access the Spotted API"
   s.authors = ["Spotted"]
-  s.email = ""
+  s.email = "wave@cjav.dev"
   s.homepage = "https://gemdocs.org/gems/spotted"
   s.metadata["homepage_uri"] = s.homepage
   s.metadata["source_code_uri"] = "https://github.com/stainless-sdks/spotted-ruby"
