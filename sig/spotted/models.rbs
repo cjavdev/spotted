@@ -1,4 +1,6 @@
 module Spotted
+  class AlbumListParams = Spotted::Models::AlbumListParams
+
   class AlbumRestrictionObject = Spotted::Models::AlbumRestrictionObject
 
   class AlbumRetrieveParams = Spotted::Models::AlbumRetrieveParams

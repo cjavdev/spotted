@@ -7,6 +7,12 @@ module Spotted
         ?request_options: Spotted::request_opts
       ) -> Spotted::Models::AlbumRetrieveResponse
 
+      def list: (
+        ids: String,
+        ?market: String,
+        ?request_options: Spotted::request_opts
+      ) -> Spotted::Models::AlbumListResponse
+
       def initialize: (client: Spotted::Client) -> void
     end
   end

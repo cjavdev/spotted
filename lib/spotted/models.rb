@@ -39,6 +39,8 @@ module Spotted
     mod.define_sorbet_constant!(const) { T.type_alias { mod.to_sorbet_type } }
   end
 
+  AlbumListParams = Spotted::Models::AlbumListParams
+
   AlbumRestrictionObject = Spotted::Models::AlbumRestrictionObject
 
   AlbumRetrieveParams = Spotted::Models::AlbumRetrieveParams

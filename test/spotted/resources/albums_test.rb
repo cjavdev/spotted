@@ -37,4 +37,21 @@ class Spotted::Test::Resources::AlbumsTest < Spotted::Test::ResourceTest
       }
     end
   end
+
+  def test_list_required_params
+    skip("Prism tests are disabled")
+
+    response =
+      @spotted.albums.list(ids: "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc")
+
+    assert_pattern do
+      response => Spotted::Models::AlbumListResponse
+    end
+
+    assert_pattern do
+      response => {
+        albums: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AlbumListResponse::Album])
+      }
+    end
+  end
 end
