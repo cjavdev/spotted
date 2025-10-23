@@ -15,7 +15,7 @@ class Spotted::Test::Resources::Playlists::TracksTest < Spotted::Test::ResourceT
     assert_pattern do
       response => {
         href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackRetrieveResponse::Item]),
+        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::PlaylistTrackObject]),
         limit: Integer,
         next_: String | nil,
         offset: Integer,

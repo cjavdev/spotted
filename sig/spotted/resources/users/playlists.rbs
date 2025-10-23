@@ -16,7 +16,7 @@ module Spotted
           ?limit: Integer,
           ?offset: Integer,
           ?request_options: Spotted::request_opts
-        ) -> Spotted::Models::Users::PlaylistListResponse
+        ) -> Spotted::PagingPlaylistObject
 
         def initialize: (client: Spotted::Client) -> void
       end

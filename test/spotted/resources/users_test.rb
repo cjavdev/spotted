@@ -16,10 +16,10 @@ class Spotted::Test::Resources::UsersTest < Spotted::Test::ResourceTest
       response => {
         id: String | nil,
         display_name: String | nil,
-        external_urls: Spotted::Models::UserRetrieveProfileResponse::ExternalURLs | nil,
-        followers: Spotted::Models::UserRetrieveProfileResponse::Followers | nil,
+        external_urls: Spotted::ExternalURLObject | nil,
+        followers: Spotted::FollowersObject | nil,
         href: String | nil,
-        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::UserRetrieveProfileResponse::Image]) | nil,
+        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
         type: Spotted::Models::UserRetrieveProfileResponse::Type | nil,
         uri: String | nil
       }

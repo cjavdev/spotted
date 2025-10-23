@@ -103,11 +103,7 @@ module Spotted
           attr_accessor :id
 
           # The author(s) for the audiobook.
-          sig do
-            returns(
-              T::Array[Spotted::Models::Me::AudiobookListResponse::Item::Author]
-            )
-          end
+          sig { returns(T::Array[Spotted::AuthorObject]) }
           attr_accessor :authors
 
           # A list of the countries in which the audiobook can be played, identified by
@@ -117,13 +113,7 @@ module Spotted
           attr_accessor :available_markets
 
           # The copyright statements of the audiobook.
-          sig do
-            returns(
-              T::Array[
-                Spotted::Models::Me::AudiobookListResponse::Item::Copyright
-              ]
-            )
-          end
+          sig { returns(T::Array[Spotted::CopyrightObject]) }
           attr_accessor :copyrights
 
           # A description of the audiobook. HTML tags are stripped away from this field, use
@@ -137,19 +127,10 @@ module Spotted
           attr_accessor :explicit
 
           # External URLs for this audiobook.
-          sig do
-            returns(
-              Spotted::Models::Me::AudiobookListResponse::Item::ExternalURLs
-            )
-          end
+          sig { returns(Spotted::ExternalURLObject) }
           attr_reader :external_urls
 
-          sig do
-            params(
-              external_urls:
-                Spotted::Models::Me::AudiobookListResponse::Item::ExternalURLs::OrHash
-            ).void
-          end
+          sig { params(external_urls: Spotted::ExternalURLObject::OrHash).void }
           attr_writer :external_urls
 
           # A link to the Web API endpoint providing full details of the audiobook.
@@ -161,11 +142,7 @@ module Spotted
           attr_accessor :html_description
 
           # The cover art for the audiobook in various sizes, widest first.
-          sig do
-            returns(
-              T::Array[Spotted::Models::Me::AudiobookListResponse::Item::Image]
-            )
-          end
+          sig { returns(T::Array[Spotted::ImageObject]) }
           attr_accessor :images
 
           # A list of the languages used in the audiobook, identified by their
@@ -182,13 +159,7 @@ module Spotted
           attr_accessor :name
 
           # The narrator(s) for the audiobook.
-          sig do
-            returns(
-              T::Array[
-                Spotted::Models::Me::AudiobookListResponse::Item::Narrator
-              ]
-            )
-          end
+          sig { returns(T::Array[Spotted::NarratorObject]) }
           attr_accessor :narrators
 
           # The publisher of the audiobook.
@@ -222,32 +193,19 @@ module Spotted
           sig do
             params(
               id: String,
-              authors:
-                T::Array[
-                  Spotted::Models::Me::AudiobookListResponse::Item::Author::OrHash
-                ],
+              authors: T::Array[Spotted::AuthorObject::OrHash],
               available_markets: T::Array[String],
-              copyrights:
-                T::Array[
-                  Spotted::Models::Me::AudiobookListResponse::Item::Copyright::OrHash
-                ],
+              copyrights: T::Array[Spotted::CopyrightObject::OrHash],
               description: String,
               explicit: T::Boolean,
-              external_urls:
-                Spotted::Models::Me::AudiobookListResponse::Item::ExternalURLs::OrHash,
+              external_urls: Spotted::ExternalURLObject::OrHash,
               href: String,
               html_description: String,
-              images:
-                T::Array[
-                  Spotted::Models::Me::AudiobookListResponse::Item::Image::OrHash
-                ],
+              images: T::Array[Spotted::ImageObject::OrHash],
               languages: T::Array[String],
               media_type: String,
               name: String,
-              narrators:
-                T::Array[
-                  Spotted::Models::Me::AudiobookListResponse::Item::Narrator::OrHash
-                ],
+              narrators: T::Array[Spotted::NarratorObject::OrHash],
               publisher: String,
               total_chapters: Integer,
               type:
@@ -309,32 +267,19 @@ module Spotted
             override.returns(
               {
                 id: String,
-                authors:
-                  T::Array[
-                    Spotted::Models::Me::AudiobookListResponse::Item::Author
-                  ],
+                authors: T::Array[Spotted::AuthorObject],
                 available_markets: T::Array[String],
-                copyrights:
-                  T::Array[
-                    Spotted::Models::Me::AudiobookListResponse::Item::Copyright
-                  ],
+                copyrights: T::Array[Spotted::CopyrightObject],
                 description: String,
                 explicit: T::Boolean,
-                external_urls:
-                  Spotted::Models::Me::AudiobookListResponse::Item::ExternalURLs,
+                external_urls: Spotted::ExternalURLObject,
                 href: String,
                 html_description: String,
-                images:
-                  T::Array[
-                    Spotted::Models::Me::AudiobookListResponse::Item::Image
-                  ],
+                images: T::Array[Spotted::ImageObject],
                 languages: T::Array[String],
                 media_type: String,
                 name: String,
-                narrators:
-                  T::Array[
-                    Spotted::Models::Me::AudiobookListResponse::Item::Narrator
-                  ],
+                narrators: T::Array[Spotted::NarratorObject],
                 publisher: String,
                 total_chapters: Integer,
                 type:
@@ -345,183 +290,6 @@ module Spotted
             )
           end
           def to_hash
-          end
-
-          class Author < Spotted::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Spotted::Models::Me::AudiobookListResponse::Item::Author,
-                  Spotted::Internal::AnyHash
-                )
-              end
-
-            # The name of the author.
-            sig { returns(T.nilable(String)) }
-            attr_reader :name
-
-            sig { params(name: String).void }
-            attr_writer :name
-
-            sig { params(name: String).returns(T.attached_class) }
-            def self.new(
-              # The name of the author.
-              name: nil
-            )
-            end
-
-            sig { override.returns({ name: String }) }
-            def to_hash
-            end
-          end
-
-          class Copyright < Spotted::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Spotted::Models::Me::AudiobookListResponse::Item::Copyright,
-                  Spotted::Internal::AnyHash
-                )
-              end
-
-            # The copyright text for this content.
-            sig { returns(T.nilable(String)) }
-            attr_reader :text
-
-            sig { params(text: String).void }
-            attr_writer :text
-
-            # The type of copyright: `C` = the copyright, `P` = the sound recording
-            # (performance) copyright.
-            sig { returns(T.nilable(String)) }
-            attr_reader :type
-
-            sig { params(type: String).void }
-            attr_writer :type
-
-            sig { params(text: String, type: String).returns(T.attached_class) }
-            def self.new(
-              # The copyright text for this content.
-              text: nil,
-              # The type of copyright: `C` = the copyright, `P` = the sound recording
-              # (performance) copyright.
-              type: nil
-            )
-            end
-
-            sig { override.returns({ text: String, type: String }) }
-            def to_hash
-            end
-          end
-
-          class ExternalURLs < Spotted::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Spotted::Models::Me::AudiobookListResponse::Item::ExternalURLs,
-                  Spotted::Internal::AnyHash
-                )
-              end
-
-            # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-            # object.
-            sig { returns(T.nilable(String)) }
-            attr_reader :spotify
-
-            sig { params(spotify: String).void }
-            attr_writer :spotify
-
-            # External URLs for this audiobook.
-            sig { params(spotify: String).returns(T.attached_class) }
-            def self.new(
-              # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-              # object.
-              spotify: nil
-            )
-            end
-
-            sig { override.returns({ spotify: String }) }
-            def to_hash
-            end
-          end
-
-          class Image < Spotted::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Spotted::Models::Me::AudiobookListResponse::Item::Image,
-                  Spotted::Internal::AnyHash
-                )
-              end
-
-            # The image height in pixels.
-            sig { returns(T.nilable(Integer)) }
-            attr_accessor :height
-
-            # The source URL of the image.
-            sig { returns(String) }
-            attr_accessor :url
-
-            # The image width in pixels.
-            sig { returns(T.nilable(Integer)) }
-            attr_accessor :width
-
-            sig do
-              params(
-                height: T.nilable(Integer),
-                url: String,
-                width: T.nilable(Integer)
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # The image height in pixels.
-              height:,
-              # The source URL of the image.
-              url:,
-              # The image width in pixels.
-              width:
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  height: T.nilable(Integer),
-                  url: String,
-                  width: T.nilable(Integer)
-                }
-              )
-            end
-            def to_hash
-            end
-          end
-
-          class Narrator < Spotted::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Spotted::Models::Me::AudiobookListResponse::Item::Narrator,
-                  Spotted::Internal::AnyHash
-                )
-              end
-
-            # The name of the Narrator.
-            sig { returns(T.nilable(String)) }
-            attr_reader :name
-
-            sig { params(name: String).void }
-            attr_writer :name
-
-            sig { params(name: String).returns(T.attached_class) }
-            def self.new(
-              # The name of the Narrator.
-              name: nil
-            )
-            end
-
-            sig { override.returns({ name: String }) }
-            def to_hash
-            end
           end
 
           # The object type.

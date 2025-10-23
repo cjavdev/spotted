@@ -1,0 +1,23 @@
+module Spotted
+  module Models
+    type resume_point_object =
+      { fully_played: bool, resume_position_ms: Integer }
+
+    class ResumePointObject < Spotted::Internal::Type::BaseModel
+      attr_reader fully_played: bool?
+
+      def fully_played=: (bool) -> bool
+
+      attr_reader resume_position_ms: Integer?
+
+      def resume_position_ms=: (Integer) -> Integer
+
+      def initialize: (
+        ?fully_played: bool,
+        ?resume_position_ms: Integer
+      ) -> void
+
+      def to_hash: -> { fully_played: bool, resume_position_ms: Integer }
+    end
+  end
+end

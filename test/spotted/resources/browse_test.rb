@@ -15,7 +15,7 @@ class Spotted::Test::Resources::BrowseTest < Spotted::Test::ResourceTest
     assert_pattern do
       response => {
         message: String | nil,
-        playlists: Spotted::Models::BrowseGetFeaturedPlaylistsResponse::Playlists | nil
+        playlists: Spotted::PagingPlaylistObject | nil
       }
     end
   end

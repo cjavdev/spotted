@@ -15,14 +15,14 @@ module Spotted
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Array<Spotted::Models::Playlists::ImageRetrieveResponseItem>]
+        # @return [Array<Spotted::Models::ImageObject>]
         #
         # @see Spotted::Models::Playlists::ImageRetrieveParams
         def retrieve(playlist_id, params = {})
           @client.request(
             method: :get,
             path: ["playlists/%1$s/images", playlist_id],
-            model: Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::ImageRetrieveResponseItem],
+            model: Spotted::Internal::Type::ArrayOf[Spotted::ImageObject],
             options: params[:request_options]
           )
         end

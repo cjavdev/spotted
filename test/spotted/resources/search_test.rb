@@ -18,7 +18,7 @@ class Spotted::Test::Resources::SearchTest < Spotted::Test::ResourceTest
         artists: Spotted::Models::SearchRetrieveResponse::Artists | nil,
         audiobooks: Spotted::Models::SearchRetrieveResponse::Audiobooks | nil,
         episodes: Spotted::Models::SearchRetrieveResponse::Episodes | nil,
-        playlists: Spotted::Models::SearchRetrieveResponse::Playlists | nil,
+        playlists: Spotted::PagingPlaylistObject | nil,
         shows: Spotted::Models::SearchRetrieveResponse::Shows | nil,
         tracks: Spotted::Models::SearchRetrieveResponse::Tracks | nil
       }

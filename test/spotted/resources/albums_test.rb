@@ -17,22 +17,22 @@ class Spotted::Test::Resources::AlbumsTest < Spotted::Test::ResourceTest
         id: String,
         album_type: Spotted::Models::AlbumRetrieveResponse::AlbumType,
         available_markets: ^(Spotted::Internal::Type::ArrayOf[String]),
-        external_urls: Spotted::Models::AlbumRetrieveResponse::ExternalURLs,
+        external_urls: Spotted::ExternalURLObject,
         href: String,
-        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AlbumRetrieveResponse::Image]),
+        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]),
         name: String,
         release_date: String,
         release_date_precision: Spotted::Models::AlbumRetrieveResponse::ReleaseDatePrecision,
         total_tracks: Integer,
         type: Spotted::Models::AlbumRetrieveResponse::Type,
         uri: String,
-        artists: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AlbumRetrieveResponse::Artist]) | nil,
-        copyrights: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AlbumRetrieveResponse::Copyright]) | nil,
-        external_ids: Spotted::Models::AlbumRetrieveResponse::ExternalIDs | nil,
+        artists: ^(Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedArtistObject]) | nil,
+        copyrights: ^(Spotted::Internal::Type::ArrayOf[Spotted::CopyrightObject]) | nil,
+        external_ids: Spotted::ExternalIDObject | nil,
         genres: ^(Spotted::Internal::Type::ArrayOf[String]) | nil,
         label: String | nil,
         popularity: Integer | nil,
-        restrictions: Spotted::Models::AlbumRetrieveResponse::Restrictions | nil,
+        restrictions: Spotted::AlbumRestrictionObject | nil,
         tracks: Spotted::Models::AlbumRetrieveResponse::Tracks | nil
       }
     end
@@ -67,7 +67,7 @@ class Spotted::Test::Resources::AlbumsTest < Spotted::Test::ResourceTest
     assert_pattern do
       response => {
         href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AlbumGetTracksResponse::Item]),
+        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedTrackObject]),
         limit: Integer,
         next_: String | nil,
         offset: Integer,

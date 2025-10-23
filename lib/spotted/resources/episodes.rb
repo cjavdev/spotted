@@ -17,7 +17,7 @@ module Spotted
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::EpisodeRetrieveResponse]
+      # @return [Spotted::Models::EpisodeObject]
       #
       # @see Spotted::Models::EpisodeRetrieveParams
       def retrieve(id, params = {})
@@ -26,7 +26,7 @@ module Spotted
           method: :get,
           path: ["episodes/%1$s", id],
           query: parsed,
-          model: Spotted::Models::EpisodeRetrieveResponse,
+          model: Spotted::EpisodeObject,
           options: options
         )
       end

@@ -1,0 +1,15 @@
+module Spotted
+  module Models
+    type track_restriction_object = { reason: String }
+
+    class TrackRestrictionObject < Spotted::Internal::Type::BaseModel
+      attr_reader reason: String?
+
+      def reason=: (String) -> String
+
+      def initialize: (?reason: String) -> void
+
+      def to_hash: -> { reason: String }
+    end
+  end
+end

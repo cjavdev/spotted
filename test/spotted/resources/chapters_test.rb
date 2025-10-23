@@ -21,10 +21,10 @@ class Spotted::Test::Resources::ChaptersTest < Spotted::Test::ResourceTest
         description: String,
         duration_ms: Integer,
         explicit: Spotted::Internal::Type::Boolean,
-        external_urls: Spotted::Models::ChapterRetrieveResponse::ExternalURLs,
+        external_urls: Spotted::ExternalURLObject,
         href: String,
         html_description: String,
-        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::ChapterRetrieveResponse::Image]),
+        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]),
         is_playable: Spotted::Internal::Type::Boolean,
         languages: ^(Spotted::Internal::Type::ArrayOf[String]),
         name: String,
@@ -33,8 +33,8 @@ class Spotted::Test::Resources::ChaptersTest < Spotted::Test::ResourceTest
         type: Spotted::Models::ChapterRetrieveResponse::Type,
         uri: String,
         available_markets: ^(Spotted::Internal::Type::ArrayOf[String]) | nil,
-        restrictions: Spotted::Models::ChapterRetrieveResponse::Restrictions | nil,
-        resume_point: Spotted::Models::ChapterRetrieveResponse::ResumePoint | nil
+        restrictions: Spotted::ChapterRestrictionObject | nil,
+        resume_point: Spotted::ResumePointObject | nil
       }
     end
   end

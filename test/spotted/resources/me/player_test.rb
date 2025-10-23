@@ -15,9 +15,9 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
     assert_pattern do
       response => {
         actions: Spotted::Models::Me::PlayerGetCurrentlyPlayingResponse::Actions | nil,
-        context: Spotted::Models::Me::PlayerGetCurrentlyPlayingResponse::Context | nil,
+        context: Spotted::Me::ContextObject | nil,
         currently_playing_type: String | nil,
-        device: Spotted::Models::Me::PlayerGetCurrentlyPlayingResponse::Device | nil,
+        device: Spotted::Me::DeviceObject | nil,
         is_playing: Spotted::Internal::Type::Boolean | nil,
         item: Spotted::Models::Me::PlayerGetCurrentlyPlayingResponse::Item | nil,
         progress_ms: Integer | nil,
@@ -39,7 +39,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
 
     assert_pattern do
       response => {
-        devices: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::Me::PlayerGetDevicesResponse::Device])
+        devices: ^(Spotted::Internal::Type::ArrayOf[Spotted::Me::DeviceObject])
       }
     end
   end
@@ -77,9 +77,9 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
     assert_pattern do
       response => {
         actions: Spotted::Models::Me::PlayerGetStateResponse::Actions | nil,
-        context: Spotted::Models::Me::PlayerGetStateResponse::Context | nil,
+        context: Spotted::Me::ContextObject | nil,
         currently_playing_type: String | nil,
-        device: Spotted::Models::Me::PlayerGetStateResponse::Device | nil,
+        device: Spotted::Me::DeviceObject | nil,
         is_playing: Spotted::Internal::Type::Boolean | nil,
         item: Spotted::Models::Me::PlayerGetStateResponse::Item | nil,
         progress_ms: Integer | nil,

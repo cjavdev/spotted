@@ -92,9 +92,8 @@ module Spotted
           #   The artists of the album. Each artist object includes a link in `href` to more
           #   detailed information about the artist.
           #
-          #   @return [Array<Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist>]
-          required :artists,
-                   -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist] }
+          #   @return [Array<Spotted::Models::SimplifiedArtistObject>]
+          required :artists, -> { Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedArtistObject] }
 
           # @!attribute available_markets
           #   The markets in which the album is available:
@@ -108,8 +107,8 @@ module Spotted
           # @!attribute external_urls
           #   Known external URLs for this album.
           #
-          #   @return [Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::ExternalURLs]
-          required :external_urls, -> { Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::ExternalURLs }
+          #   @return [Spotted::Models::ExternalURLObject]
+          required :external_urls, -> { Spotted::ExternalURLObject }
 
           # @!attribute href
           #   A link to the Web API endpoint providing full details of the album.
@@ -120,9 +119,8 @@ module Spotted
           # @!attribute images
           #   The cover art for the album in various sizes, widest first.
           #
-          #   @return [Array<Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Image>]
-          required :images,
-                   -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Image] }
+          #   @return [Array<Spotted::Models::ImageObject>]
+          required :images, -> { Spotted::Internal::Type::ArrayOf[Spotted::ImageObject] }
 
           # @!attribute name
           #   The name of the album. In case of an album takedown, the value may be an empty
@@ -166,8 +164,8 @@ module Spotted
           # @!attribute restrictions
           #   Included in the response when a content restriction is applied.
           #
-          #   @return [Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions, nil]
-          optional :restrictions, -> { Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions }
+          #   @return [Spotted::Models::AlbumRestrictionObject, nil]
+          optional :restrictions, -> { Spotted::AlbumRestrictionObject }
 
           # @!method initialize(id:, album_type:, artists:, available_markets:, external_urls:, href:, images:, name:, release_date:, release_date_precision:, total_tracks:, type:, uri:, restrictions: nil)
           #   Some parameter documentations has been truncated, see
@@ -177,15 +175,15 @@ module Spotted
           #
           #   @param album_type [Symbol, Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::AlbumType] The type of the album.
           #
-          #   @param artists [Array<Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist>] The artists of the album. Each artist object includes a link in `href` to more d
+          #   @param artists [Array<Spotted::Models::SimplifiedArtistObject>] The artists of the album. Each artist object includes a link in `href` to more d
           #
           #   @param available_markets [Array<String>] The markets in which the album is available: [ISO 3166-1 alpha-2 country codes](
           #
-          #   @param external_urls [Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::ExternalURLs] Known external URLs for this album.
+          #   @param external_urls [Spotted::Models::ExternalURLObject] Known external URLs for this album.
           #
           #   @param href [String] A link to the Web API endpoint providing full details of the album.
           #
-          #   @param images [Array<Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Image>] The cover art for the album in various sizes, widest first.
+          #   @param images [Array<Spotted::Models::ImageObject>] The cover art for the album in various sizes, widest first.
           #
           #   @param name [String] The name of the album. In case of an album takedown, the value may be an empty s
           #
@@ -199,7 +197,7 @@ module Spotted
           #
           #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the albu
           #
-          #   @param restrictions [Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions] Included in the response when a content restriction is applied.
+          #   @param restrictions [Spotted::Models::AlbumRestrictionObject] Included in the response when a content restriction is applied.
 
           # The type of the album.
           #
@@ -213,145 +211,6 @@ module Spotted
 
             # @!method self.values
             #   @return [Array<Symbol>]
-          end
-
-          class Artist < Spotted::Internal::Type::BaseModel
-            # @!attribute id
-            #   The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
-            #   artist.
-            #
-            #   @return [String, nil]
-            optional :id, String
-
-            # @!attribute external_urls
-            #   Known external URLs for this artist.
-            #
-            #   @return [Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::ExternalURLs, nil]
-            optional :external_urls,
-                     -> { Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::ExternalURLs }
-
-            # @!attribute href
-            #   A link to the Web API endpoint providing full details of the artist.
-            #
-            #   @return [String, nil]
-            optional :href, String
-
-            # @!attribute name
-            #   The name of the artist.
-            #
-            #   @return [String, nil]
-            optional :name, String
-
-            # @!attribute type
-            #   The object type.
-            #
-            #   @return [Symbol, Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::Type, nil]
-            optional :type, enum: -> { Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::Type }
-
-            # @!attribute uri
-            #   The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
-            #   artist.
-            #
-            #   @return [String, nil]
-            optional :uri, String
-
-            # @!method initialize(id: nil, external_urls: nil, href: nil, name: nil, type: nil, uri: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist} for more
-            #   details.
-            #
-            #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artis
-            #
-            #   @param external_urls [Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::ExternalURLs] Known external URLs for this artist.
-            #
-            #   @param href [String] A link to the Web API endpoint providing full details of the artist.
-            #
-            #   @param name [String] The name of the artist.
-            #
-            #   @param type [Symbol, Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::Type] The object type.
-            #
-            #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the arti
-
-            # @see Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist#external_urls
-            class ExternalURLs < Spotted::Internal::Type::BaseModel
-              # @!attribute spotify
-              #   The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-              #   object.
-              #
-              #   @return [String, nil]
-              optional :spotify, String
-
-              # @!method initialize(spotify: nil)
-              #   Some parameter documentations has been truncated, see
-              #   {Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::ExternalURLs}
-              #   for more details.
-              #
-              #   Known external URLs for this artist.
-              #
-              #   @param spotify [String] The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the obje
-            end
-
-            # The object type.
-            #
-            # @see Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist#type
-            module Type
-              extend Spotted::Internal::Type::Enum
-
-              ARTIST = :artist
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
-
-          # @see Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item#external_urls
-          class ExternalURLs < Spotted::Internal::Type::BaseModel
-            # @!attribute spotify
-            #   The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-            #   object.
-            #
-            #   @return [String, nil]
-            optional :spotify, String
-
-            # @!method initialize(spotify: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::ExternalURLs} for
-            #   more details.
-            #
-            #   Known external URLs for this album.
-            #
-            #   @param spotify [String] The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the obje
-          end
-
-          class Image < Spotted::Internal::Type::BaseModel
-            # @!attribute height
-            #   The image height in pixels.
-            #
-            #   @return [Integer, nil]
-            required :height, Integer, nil?: true
-
-            # @!attribute url
-            #   The source URL of the image.
-            #
-            #   @return [String]
-            required :url, String
-
-            # @!attribute width
-            #   The image width in pixels.
-            #
-            #   @return [Integer, nil]
-            required :width, Integer, nil?: true
-
-            # @!method initialize(height:, url:, width:)
-            #   Some parameter documentations has been truncated, see
-            #   {Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Image} for more
-            #   details.
-            #
-            #   @param height [Integer, nil] The image height in pixels.
-            #
-            #   @param url [String] The source URL of the image.
-            #
-            #   @param width [Integer, nil] The image width in pixels.
           end
 
           # The precision with which `release_date` value is known.
@@ -378,45 +237,6 @@ module Spotted
 
             # @!method self.values
             #   @return [Array<Symbol>]
-          end
-
-          # @see Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item#restrictions
-          class Restrictions < Spotted::Internal::Type::BaseModel
-            # @!attribute reason
-            #   The reason for the restriction. Albums may be restricted if the content is not
-            #   available in a given market, to the user's subscription type, or when the user's
-            #   account is set to not play explicit content. Additional reasons may be added in
-            #   the future.
-            #
-            #   @return [Symbol, Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions::Reason, nil]
-            optional :reason,
-                     enum: -> { Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions::Reason }
-
-            # @!method initialize(reason: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions} for
-            #   more details.
-            #
-            #   Included in the response when a content restriction is applied.
-            #
-            #   @param reason [Symbol, Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions::Reason] The reason for the restriction. Albums may be restricted if the content is not a
-
-            # The reason for the restriction. Albums may be restricted if the content is not
-            # available in a given market, to the user's subscription type, or when the user's
-            # account is set to not play explicit content. Additional reasons may be added in
-            # the future.
-            #
-            # @see Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions#reason
-            module Reason
-              extend Spotted::Internal::Type::Enum
-
-              MARKET = :market
-              PRODUCT = :product
-              EXPLICIT = :explicit
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
           end
         end
       end

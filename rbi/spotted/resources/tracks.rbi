@@ -10,7 +10,7 @@ module Spotted
           id: String,
           market: String,
           request_options: Spotted::RequestOptions::OrHash
-        ).returns(Spotted::Models::TrackRetrieveResponse)
+        ).returns(Spotted::TrackObject)
       end
       def retrieve(
         # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the

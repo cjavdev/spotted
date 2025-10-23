@@ -3,6 +3,8 @@ module Spotted
 
   class AlbumListParams = Spotted::Models::AlbumListParams
 
+  class AlbumRestrictionObject = Spotted::Models::AlbumRestrictionObject
+
   class AlbumRetrieveParams = Spotted::Models::AlbumRetrieveParams
 
   class ArtistListAlbumsParams = Spotted::Models::ArtistListAlbumsParams
@@ -12,6 +14,8 @@ module Spotted
   class ArtistListRelatedArtistsParams = Spotted::Models::ArtistListRelatedArtistsParams
 
   class ArtistListTopTracksParams = Spotted::Models::ArtistListTopTracksParams
+
+  class ArtistObject = Spotted::Models::ArtistObject
 
   class ArtistRetrieveParams = Spotted::Models::ArtistRetrieveParams
 
@@ -27,6 +31,8 @@ module Spotted
 
   class AudioFeatureRetrieveParams = Spotted::Models::AudioFeatureRetrieveParams
 
+  class AuthorObject = Spotted::Models::AuthorObject
+
   module Browse = Spotted::Models::Browse
 
   class BrowseGetFeaturedPlaylistsParams = Spotted::Models::BrowseGetFeaturedPlaylistsParams
@@ -35,11 +41,29 @@ module Spotted
 
   class ChapterListParams = Spotted::Models::ChapterListParams
 
+  class ChapterRestrictionObject = Spotted::Models::ChapterRestrictionObject
+
   class ChapterRetrieveParams = Spotted::Models::ChapterRetrieveParams
+
+  class CopyrightObject = Spotted::Models::CopyrightObject
 
   class EpisodeListParams = Spotted::Models::EpisodeListParams
 
+  class EpisodeObject = Spotted::Models::EpisodeObject
+
+  class EpisodeRestrictionObject = Spotted::Models::EpisodeRestrictionObject
+
   class EpisodeRetrieveParams = Spotted::Models::EpisodeRetrieveParams
+
+  class ExternalIDObject = Spotted::Models::ExternalIDObject
+
+  class ExternalURLObject = Spotted::Models::ExternalURLObject
+
+  class FollowersObject = Spotted::Models::FollowersObject
+
+  class ImageObject = Spotted::Models::ImageObject
+
+  class LinkedTrackObject = Spotted::Models::LinkedTrackObject
 
   class MarketListParams = Spotted::Models::MarketListParams
 
@@ -47,15 +71,27 @@ module Spotted
 
   class MeRetrieveParams = Spotted::Models::MeRetrieveParams
 
+  class NarratorObject = Spotted::Models::NarratorObject
+
+  class PagingPlaylistObject = Spotted::Models::PagingPlaylistObject
+
   class PlaylistRetrieveParams = Spotted::Models::PlaylistRetrieveParams
 
   module Playlists = Spotted::Models::Playlists
 
+  class PlaylistTrackObject = Spotted::Models::PlaylistTrackObject
+
+  class PlaylistTracksRefObject = Spotted::Models::PlaylistTracksRefObject
+
   class PlaylistUpdateParams = Spotted::Models::PlaylistUpdateParams
+
+  class PlaylistUserObject = Spotted::Models::PlaylistUserObject
 
   class RecommendationGetAvailableGenreSeedsParams = Spotted::Models::RecommendationGetAvailableGenreSeedsParams
 
   class RecommendationGetParams = Spotted::Models::RecommendationGetParams
+
+  class ResumePointObject = Spotted::Models::ResumePointObject
 
   class SearchRetrieveParams = Spotted::Models::SearchRetrieveParams
 
@@ -65,7 +101,23 @@ module Spotted
 
   class ShowRetrieveParams = Spotted::Models::ShowRetrieveParams
 
+  class SimplifiedArtistObject = Spotted::Models::SimplifiedArtistObject
+
+  class SimplifiedChapterObject = Spotted::Models::SimplifiedChapterObject
+
+  class SimplifiedEpisodeObject = Spotted::Models::SimplifiedEpisodeObject
+
+  class SimplifiedPlaylistObject = Spotted::Models::SimplifiedPlaylistObject
+
+  class SimplifiedTrackObject = Spotted::Models::SimplifiedTrackObject
+
+  class TimeIntervalObject = Spotted::Models::TimeIntervalObject
+
   class TrackListParams = Spotted::Models::TrackListParams
+
+  class TrackObject = Spotted::Models::TrackObject
+
+  class TrackRestrictionObject = Spotted::Models::TrackRestrictionObject
 
   class TrackRetrieveParams = Spotted::Models::TrackRetrieveParams
 

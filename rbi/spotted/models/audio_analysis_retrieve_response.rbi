@@ -13,45 +13,19 @@ module Spotted
 
       # The time intervals of the bars throughout the track. A bar (or measure) is a
       # segment of time defined as a given number of beats.
-      sig do
-        returns(
-          T.nilable(
-            T::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Bar]
-          )
-        )
-      end
+      sig { returns(T.nilable(T::Array[Spotted::TimeIntervalObject])) }
       attr_reader :bars
 
-      sig do
-        params(
-          bars:
-            T::Array[
-              Spotted::Models::AudioAnalysisRetrieveResponse::Bar::OrHash
-            ]
-        ).void
-      end
+      sig { params(bars: T::Array[Spotted::TimeIntervalObject::OrHash]).void }
       attr_writer :bars
 
       # The time intervals of beats throughout the track. A beat is the basic time unit
       # of a piece of music; for example, each tick of a metronome. Beats are typically
       # multiples of tatums.
-      sig do
-        returns(
-          T.nilable(
-            T::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Beat]
-          )
-        )
-      end
+      sig { returns(T.nilable(T::Array[Spotted::TimeIntervalObject])) }
       attr_reader :beats
 
-      sig do
-        params(
-          beats:
-            T::Array[
-              Spotted::Models::AudioAnalysisRetrieveResponse::Beat::OrHash
-            ]
-        ).void
-      end
+      sig { params(beats: T::Array[Spotted::TimeIntervalObject::OrHash]).void }
       attr_writer :beats
 
       sig do
@@ -110,23 +84,10 @@ module Spotted
 
       # A tatum represents the lowest regular pulse train that a listener intuitively
       # infers from the timing of perceived musical events (segments).
-      sig do
-        returns(
-          T.nilable(
-            T::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Tatum]
-          )
-        )
-      end
+      sig { returns(T.nilable(T::Array[Spotted::TimeIntervalObject])) }
       attr_reader :tatums
 
-      sig do
-        params(
-          tatums:
-            T::Array[
-              Spotted::Models::AudioAnalysisRetrieveResponse::Tatum::OrHash
-            ]
-        ).void
-      end
+      sig { params(tatums: T::Array[Spotted::TimeIntervalObject::OrHash]).void }
       attr_writer :tatums
 
       sig do
@@ -145,14 +106,8 @@ module Spotted
 
       sig do
         params(
-          bars:
-            T::Array[
-              Spotted::Models::AudioAnalysisRetrieveResponse::Bar::OrHash
-            ],
-          beats:
-            T::Array[
-              Spotted::Models::AudioAnalysisRetrieveResponse::Beat::OrHash
-            ],
+          bars: T::Array[Spotted::TimeIntervalObject::OrHash],
+          beats: T::Array[Spotted::TimeIntervalObject::OrHash],
           meta: Spotted::Models::AudioAnalysisRetrieveResponse::Meta::OrHash,
           sections:
             T::Array[
@@ -162,10 +117,7 @@ module Spotted
             T::Array[
               Spotted::Models::AudioAnalysisRetrieveResponse::Segment::OrHash
             ],
-          tatums:
-            T::Array[
-              Spotted::Models::AudioAnalysisRetrieveResponse::Tatum::OrHash
-            ],
+          tatums: T::Array[Spotted::TimeIntervalObject::OrHash],
           track: Spotted::Models::AudioAnalysisRetrieveResponse::Track::OrHash
         ).returns(T.attached_class)
       end
@@ -194,125 +146,19 @@ module Spotted
       sig do
         override.returns(
           {
-            bars: T::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Bar],
-            beats:
-              T::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Beat],
+            bars: T::Array[Spotted::TimeIntervalObject],
+            beats: T::Array[Spotted::TimeIntervalObject],
             meta: Spotted::Models::AudioAnalysisRetrieveResponse::Meta,
             sections:
               T::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Section],
             segments:
               T::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Segment],
-            tatums:
-              T::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Tatum],
+            tatums: T::Array[Spotted::TimeIntervalObject],
             track: Spotted::Models::AudioAnalysisRetrieveResponse::Track
           }
         )
       end
       def to_hash
-      end
-
-      class Bar < Spotted::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Spotted::Models::AudioAnalysisRetrieveResponse::Bar,
-              Spotted::Internal::AnyHash
-            )
-          end
-
-        # The confidence, from 0.0 to 1.0, of the reliability of the interval.
-        sig { returns(T.nilable(Float)) }
-        attr_reader :confidence
-
-        sig { params(confidence: Float).void }
-        attr_writer :confidence
-
-        # The duration (in seconds) of the time interval.
-        sig { returns(T.nilable(Float)) }
-        attr_reader :duration
-
-        sig { params(duration: Float).void }
-        attr_writer :duration
-
-        # The starting point (in seconds) of the time interval.
-        sig { returns(T.nilable(Float)) }
-        attr_reader :start
-
-        sig { params(start: Float).void }
-        attr_writer :start
-
-        sig do
-          params(confidence: Float, duration: Float, start: Float).returns(
-            T.attached_class
-          )
-        end
-        def self.new(
-          # The confidence, from 0.0 to 1.0, of the reliability of the interval.
-          confidence: nil,
-          # The duration (in seconds) of the time interval.
-          duration: nil,
-          # The starting point (in seconds) of the time interval.
-          start: nil
-        )
-        end
-
-        sig do
-          override.returns({ confidence: Float, duration: Float, start: Float })
-        end
-        def to_hash
-        end
-      end
-
-      class Beat < Spotted::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Spotted::Models::AudioAnalysisRetrieveResponse::Beat,
-              Spotted::Internal::AnyHash
-            )
-          end
-
-        # The confidence, from 0.0 to 1.0, of the reliability of the interval.
-        sig { returns(T.nilable(Float)) }
-        attr_reader :confidence
-
-        sig { params(confidence: Float).void }
-        attr_writer :confidence
-
-        # The duration (in seconds) of the time interval.
-        sig { returns(T.nilable(Float)) }
-        attr_reader :duration
-
-        sig { params(duration: Float).void }
-        attr_writer :duration
-
-        # The starting point (in seconds) of the time interval.
-        sig { returns(T.nilable(Float)) }
-        attr_reader :start
-
-        sig { params(start: Float).void }
-        attr_writer :start
-
-        sig do
-          params(confidence: Float, duration: Float, start: Float).returns(
-            T.attached_class
-          )
-        end
-        def self.new(
-          # The confidence, from 0.0 to 1.0, of the reliability of the interval.
-          confidence: nil,
-          # The duration (in seconds) of the time interval.
-          duration: nil,
-          # The starting point (in seconds) of the time interval.
-          start: nil
-        )
-        end
-
-        sig do
-          override.returns({ confidence: Float, duration: Float, start: Float })
-        end
-        def to_hash
-        end
       end
 
       class Meta < Spotted::Internal::Type::BaseModel
@@ -866,58 +712,6 @@ module Spotted
               timbre: T::Array[Float]
             }
           )
-        end
-        def to_hash
-        end
-      end
-
-      class Tatum < Spotted::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Spotted::Models::AudioAnalysisRetrieveResponse::Tatum,
-              Spotted::Internal::AnyHash
-            )
-          end
-
-        # The confidence, from 0.0 to 1.0, of the reliability of the interval.
-        sig { returns(T.nilable(Float)) }
-        attr_reader :confidence
-
-        sig { params(confidence: Float).void }
-        attr_writer :confidence
-
-        # The duration (in seconds) of the time interval.
-        sig { returns(T.nilable(Float)) }
-        attr_reader :duration
-
-        sig { params(duration: Float).void }
-        attr_writer :duration
-
-        # The starting point (in seconds) of the time interval.
-        sig { returns(T.nilable(Float)) }
-        attr_reader :start
-
-        sig { params(start: Float).void }
-        attr_writer :start
-
-        sig do
-          params(confidence: Float, duration: Float, start: Float).returns(
-            T.attached_class
-          )
-        end
-        def self.new(
-          # The confidence, from 0.0 to 1.0, of the reliability of the interval.
-          confidence: nil,
-          # The duration (in seconds) of the time interval.
-          duration: nil,
-          # The starting point (in seconds) of the time interval.
-          start: nil
-        )
-        end
-
-        sig do
-          override.returns({ confidence: Float, duration: Float, start: Float })
         end
         def to_hash
         end

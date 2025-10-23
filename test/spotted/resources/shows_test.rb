@@ -16,14 +16,14 @@ class Spotted::Test::Resources::ShowsTest < Spotted::Test::ResourceTest
       response => {
         id: String,
         available_markets: ^(Spotted::Internal::Type::ArrayOf[String]),
-        copyrights: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::ShowRetrieveResponse::Copyright]),
+        copyrights: ^(Spotted::Internal::Type::ArrayOf[Spotted::CopyrightObject]),
         description: String,
         episodes: Spotted::Models::ShowRetrieveResponse::Episodes,
         explicit: Spotted::Internal::Type::Boolean,
-        external_urls: Spotted::Models::ShowRetrieveResponse::ExternalURLs,
+        external_urls: Spotted::ExternalURLObject,
         href: String,
         html_description: String,
-        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::ShowRetrieveResponse::Image]),
+        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]),
         is_externally_hosted: Spotted::Internal::Type::Boolean,
         languages: ^(Spotted::Internal::Type::ArrayOf[String]),
         media_type: String,
@@ -64,7 +64,7 @@ class Spotted::Test::Resources::ShowsTest < Spotted::Test::ResourceTest
     assert_pattern do
       response => {
         href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::ShowGetEpisodesResponse::Item]),
+        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedEpisodeObject]),
         limit: Integer,
         next_: String | nil,
         offset: Integer,

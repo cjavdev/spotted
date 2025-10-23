@@ -2,27 +2,27 @@ module Spotted
   module Models
     type audio_analysis_retrieve_response =
       {
-        bars: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Bar],
-        beats: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Beat],
+        bars: ::Array[Spotted::TimeIntervalObject],
+        beats: ::Array[Spotted::TimeIntervalObject],
         meta: Spotted::Models::AudioAnalysisRetrieveResponse::Meta,
         sections: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Section],
         segments: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Segment],
-        tatums: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Tatum],
+        tatums: ::Array[Spotted::TimeIntervalObject],
         track: Spotted::Models::AudioAnalysisRetrieveResponse::Track
       }
 
     class AudioAnalysisRetrieveResponse < Spotted::Internal::Type::BaseModel
-      attr_reader bars: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Bar]?
+      attr_reader bars: ::Array[Spotted::TimeIntervalObject]?
 
       def bars=: (
-        ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Bar]
-      ) -> ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Bar]
+        ::Array[Spotted::TimeIntervalObject]
+      ) -> ::Array[Spotted::TimeIntervalObject]
 
-      attr_reader beats: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Beat]?
+      attr_reader beats: ::Array[Spotted::TimeIntervalObject]?
 
       def beats=: (
-        ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Beat]
-      ) -> ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Beat]
+        ::Array[Spotted::TimeIntervalObject]
+      ) -> ::Array[Spotted::TimeIntervalObject]
 
       attr_reader meta: Spotted::Models::AudioAnalysisRetrieveResponse::Meta?
 
@@ -42,11 +42,11 @@ module Spotted
         ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Segment]
       ) -> ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Segment]
 
-      attr_reader tatums: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Tatum]?
+      attr_reader tatums: ::Array[Spotted::TimeIntervalObject]?
 
       def tatums=: (
-        ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Tatum]
-      ) -> ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Tatum]
+        ::Array[Spotted::TimeIntervalObject]
+      ) -> ::Array[Spotted::TimeIntervalObject]
 
       attr_reader track: Spotted::Models::AudioAnalysisRetrieveResponse::Track?
 
@@ -55,72 +55,24 @@ module Spotted
       ) -> Spotted::Models::AudioAnalysisRetrieveResponse::Track
 
       def initialize: (
-        ?bars: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Bar],
-        ?beats: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Beat],
+        ?bars: ::Array[Spotted::TimeIntervalObject],
+        ?beats: ::Array[Spotted::TimeIntervalObject],
         ?meta: Spotted::Models::AudioAnalysisRetrieveResponse::Meta,
         ?sections: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Section],
         ?segments: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Segment],
-        ?tatums: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Tatum],
+        ?tatums: ::Array[Spotted::TimeIntervalObject],
         ?track: Spotted::Models::AudioAnalysisRetrieveResponse::Track
       ) -> void
 
       def to_hash: -> {
-        bars: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Bar],
-        beats: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Beat],
+        bars: ::Array[Spotted::TimeIntervalObject],
+        beats: ::Array[Spotted::TimeIntervalObject],
         meta: Spotted::Models::AudioAnalysisRetrieveResponse::Meta,
         sections: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Section],
         segments: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Segment],
-        tatums: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Tatum],
+        tatums: ::Array[Spotted::TimeIntervalObject],
         track: Spotted::Models::AudioAnalysisRetrieveResponse::Track
       }
-
-      type bar = { confidence: Float, duration: Float, start: Float }
-
-      class Bar < Spotted::Internal::Type::BaseModel
-        attr_reader confidence: Float?
-
-        def confidence=: (Float) -> Float
-
-        attr_reader duration: Float?
-
-        def duration=: (Float) -> Float
-
-        attr_reader start: Float?
-
-        def start=: (Float) -> Float
-
-        def initialize: (
-          ?confidence: Float,
-          ?duration: Float,
-          ?start: Float
-        ) -> void
-
-        def to_hash: -> { confidence: Float, duration: Float, start: Float }
-      end
-
-      type beat = { confidence: Float, duration: Float, start: Float }
-
-      class Beat < Spotted::Internal::Type::BaseModel
-        attr_reader confidence: Float?
-
-        def confidence=: (Float) -> Float
-
-        attr_reader duration: Float?
-
-        def duration=: (Float) -> Float
-
-        attr_reader start: Float?
-
-        def start=: (Float) -> Float
-
-        def initialize: (
-          ?confidence: Float,
-          ?duration: Float,
-          ?start: Float
-        ) -> void
-
-        def to_hash: -> { confidence: Float, duration: Float, start: Float }
-      end
 
       type meta =
         {
@@ -366,30 +318,6 @@ module Spotted
           start: Float,
           timbre: ::Array[Float]
         }
-      end
-
-      type tatum = { confidence: Float, duration: Float, start: Float }
-
-      class Tatum < Spotted::Internal::Type::BaseModel
-        attr_reader confidence: Float?
-
-        def confidence=: (Float) -> Float
-
-        attr_reader duration: Float?
-
-        def duration=: (Float) -> Float
-
-        attr_reader start: Float?
-
-        def start=: (Float) -> Float
-
-        def initialize: (
-          ?confidence: Float,
-          ?duration: Float,
-          ?start: Float
-        ) -> void
-
-        def to_hash: -> { confidence: Float, duration: Float, start: Float }
       end
 
       type track =

@@ -9,20 +9,20 @@ class Spotted::Test::Resources::TracksTest < Spotted::Test::ResourceTest
     response = @spotted.tracks.retrieve("11dFghVXANMlKmJXsNCbNl")
 
     assert_pattern do
-      response => Spotted::Models::TrackRetrieveResponse
+      response => Spotted::TrackObject
     end
 
     assert_pattern do
       response => {
         id: String | nil,
-        album: Spotted::Models::TrackRetrieveResponse::Album | nil,
-        artists: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::TrackRetrieveResponse::Artist]) | nil,
+        album: Spotted::TrackObject::Album | nil,
+        artists: ^(Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedArtistObject]) | nil,
         available_markets: ^(Spotted::Internal::Type::ArrayOf[String]) | nil,
         disc_number: Integer | nil,
         duration_ms: Integer | nil,
         explicit: Spotted::Internal::Type::Boolean | nil,
-        external_ids: Spotted::Models::TrackRetrieveResponse::ExternalIDs | nil,
-        external_urls: Spotted::Models::TrackRetrieveResponse::ExternalURLs | nil,
+        external_ids: Spotted::ExternalIDObject | nil,
+        external_urls: Spotted::ExternalURLObject | nil,
         href: String | nil,
         is_local: Spotted::Internal::Type::Boolean | nil,
         is_playable: Spotted::Internal::Type::Boolean | nil,
@@ -30,9 +30,9 @@ class Spotted::Test::Resources::TracksTest < Spotted::Test::ResourceTest
         name: String | nil,
         popularity: Integer | nil,
         preview_url: String | nil,
-        restrictions: Spotted::Models::TrackRetrieveResponse::Restrictions | nil,
+        restrictions: Spotted::TrackRestrictionObject | nil,
         track_number: Integer | nil,
-        type: Spotted::Models::TrackRetrieveResponse::Type | nil,
+        type: Spotted::TrackObject::Type | nil,
         uri: String | nil
       }
     end
@@ -50,7 +50,7 @@ class Spotted::Test::Resources::TracksTest < Spotted::Test::ResourceTest
 
     assert_pattern do
       response => {
-        tracks: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::TrackListResponse::Track])
+        tracks: ^(Spotted::Internal::Type::ArrayOf[Spotted::TrackObject])
       }
     end
   end

@@ -1,0 +1,17 @@
+module Spotted
+  module Models
+    type image_object = { height: Integer?, url: String, width: Integer? }
+
+    class ImageObject < Spotted::Internal::Type::BaseModel
+      attr_accessor height: Integer?
+
+      attr_accessor url: String
+
+      attr_accessor width: Integer?
+
+      def initialize: (height: Integer?, url: String, width: Integer?) -> void
+
+      def to_hash: -> { height: Integer?, url: String, width: Integer? }
+    end
+  end
+end

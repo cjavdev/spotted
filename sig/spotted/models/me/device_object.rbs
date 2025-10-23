@@ -1,0 +1,69 @@
+module Spotted
+  module Models
+    module Me
+      type device_object =
+        {
+          id: String?,
+          is_active: bool,
+          is_private_session: bool,
+          is_restricted: bool,
+          name: String,
+          supports_volume: bool,
+          type: String,
+          volume_percent: Integer?
+        }
+
+      class DeviceObject < Spotted::Internal::Type::BaseModel
+        attr_accessor id: String?
+
+        attr_reader is_active: bool?
+
+        def is_active=: (bool) -> bool
+
+        attr_reader is_private_session: bool?
+
+        def is_private_session=: (bool) -> bool
+
+        attr_reader is_restricted: bool?
+
+        def is_restricted=: (bool) -> bool
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader supports_volume: bool?
+
+        def supports_volume=: (bool) -> bool
+
+        attr_reader type: String?
+
+        def type=: (String) -> String
+
+        attr_accessor volume_percent: Integer?
+
+        def initialize: (
+          ?id: String?,
+          ?is_active: bool,
+          ?is_private_session: bool,
+          ?is_restricted: bool,
+          ?name: String,
+          ?supports_volume: bool,
+          ?type: String,
+          ?volume_percent: Integer?
+        ) -> void
+
+        def to_hash: -> {
+          id: String?,
+          is_active: bool,
+          is_private_session: bool,
+          is_restricted: bool,
+          name: String,
+          supports_volume: bool,
+          type: String,
+          volume_percent: Integer?
+        }
+      end
+    end
+  end
+end

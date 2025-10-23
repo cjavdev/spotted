@@ -55,7 +55,7 @@ module Spotted
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Spotted::Models::Users::PlaylistListResponse]
+        # @return [Spotted::Models::PagingPlaylistObject]
         #
         # @see Spotted::Models::Users::PlaylistListParams
         def list(user_id, params = {})
@@ -64,7 +64,7 @@ module Spotted
             method: :get,
             path: ["users/%1$s/playlists", user_id],
             query: parsed,
-            model: Spotted::Models::Users::PlaylistListResponse,
+            model: Spotted::PagingPlaylistObject,
             options: options
           )
         end

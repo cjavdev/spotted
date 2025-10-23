@@ -19,10 +19,10 @@ class Spotted::Test::Resources::MeTest < Spotted::Test::ResourceTest
         display_name: String | nil,
         email: String | nil,
         explicit_content: Spotted::Models::MeRetrieveResponse::ExplicitContent | nil,
-        external_urls: Spotted::Models::MeRetrieveResponse::ExternalURLs | nil,
-        followers: Spotted::Models::MeRetrieveResponse::Followers | nil,
+        external_urls: Spotted::ExternalURLObject | nil,
+        followers: Spotted::FollowersObject | nil,
         href: String | nil,
-        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::MeRetrieveResponse::Image]) | nil,
+        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
         product: String | nil,
         type: String | nil,
         uri: String | nil

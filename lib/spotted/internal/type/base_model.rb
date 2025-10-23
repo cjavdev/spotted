@@ -438,11 +438,9 @@ module Spotted
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `album_retrieve_response` is a `Spotted::Models::AlbumRetrieveResponse`
-        #   album_retrieve_response => {
-        #     id: id,
-        #     album_type: album_type,
-        #     available_markets: available_markets
+        #   # `album_restriction_object` is a `Spotted::AlbumRestrictionObject`
+        #   album_restriction_object => {
+        #     reason: reason
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)

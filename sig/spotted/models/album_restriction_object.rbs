@@ -1,0 +1,34 @@
+module Spotted
+  module Models
+    type album_restriction_object =
+      { reason: Spotted::Models::AlbumRestrictionObject::reason }
+
+    class AlbumRestrictionObject < Spotted::Internal::Type::BaseModel
+      attr_reader reason: Spotted::Models::AlbumRestrictionObject::reason?
+
+      def reason=: (
+        Spotted::Models::AlbumRestrictionObject::reason
+      ) -> Spotted::Models::AlbumRestrictionObject::reason
+
+      def initialize: (
+        ?reason: Spotted::Models::AlbumRestrictionObject::reason
+      ) -> void
+
+      def to_hash: -> {
+        reason: Spotted::Models::AlbumRestrictionObject::reason
+      }
+
+      type reason = :market | :product | :explicit
+
+      module Reason
+        extend Spotted::Internal::Type::Enum
+
+        MARKET: :market
+        PRODUCT: :product
+        EXPLICIT: :explicit
+
+        def self?.values: -> ::Array[Spotted::Models::AlbumRestrictionObject::reason]
+      end
+    end
+  end
+end

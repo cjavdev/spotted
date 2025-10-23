@@ -1,0 +1,52 @@
+module Spotted
+  module Models
+    type linked_track_object =
+      {
+        id: String,
+        external_urls: Spotted::ExternalURLObject,
+        href: String,
+        type: String,
+        uri: String
+      }
+
+    class LinkedTrackObject < Spotted::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader external_urls: Spotted::ExternalURLObject?
+
+      def external_urls=: (
+        Spotted::ExternalURLObject
+      ) -> Spotted::ExternalURLObject
+
+      attr_reader href: String?
+
+      def href=: (String) -> String
+
+      attr_reader type: String?
+
+      def type=: (String) -> String
+
+      attr_reader uri: String?
+
+      def uri=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?external_urls: Spotted::ExternalURLObject,
+        ?href: String,
+        ?type: String,
+        ?uri: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        external_urls: Spotted::ExternalURLObject,
+        href: String,
+        type: String,
+        uri: String
+      }
+    end
+  end
+end

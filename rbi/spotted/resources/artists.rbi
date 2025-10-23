@@ -9,7 +9,7 @@ module Spotted
         params(
           id: String,
           request_options: Spotted::RequestOptions::OrHash
-        ).returns(Spotted::Models::ArtistRetrieveResponse)
+        ).returns(Spotted::ArtistObject)
       end
       def retrieve(
         # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the

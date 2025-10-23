@@ -9,7 +9,7 @@ class Spotted::Test::Resources::Playlists::ImagesTest < Spotted::Test::ResourceT
     response = @spotted.playlists.images.retrieve("3cEYpjA9oz9GiPac4AsH4n")
 
     assert_pattern do
-      response => ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::ImageRetrieveResponseItem])
+      response => ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject])
     end
   end
 

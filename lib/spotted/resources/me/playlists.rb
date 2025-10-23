@@ -17,7 +17,7 @@ module Spotted
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Spotted::Models::Me::PlaylistRetrieveResponse]
+        # @return [Spotted::Models::PagingPlaylistObject]
         #
         # @see Spotted::Models::Me::PlaylistRetrieveParams
         def retrieve(params = {})
@@ -26,7 +26,7 @@ module Spotted
             method: :get,
             path: "me/playlists",
             query: parsed,
-            model: Spotted::Models::Me::PlaylistRetrieveResponse,
+            model: Spotted::PagingPlaylistObject,
             options: options
           )
         end

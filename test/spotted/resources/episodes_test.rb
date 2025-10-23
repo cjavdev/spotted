@@ -9,7 +9,7 @@ class Spotted::Test::Resources::EpisodesTest < Spotted::Test::ResourceTest
     response = @spotted.episodes.retrieve("512ojhOuo1ktJprKbVcKyQ")
 
     assert_pattern do
-      response => Spotted::Models::EpisodeRetrieveResponse
+      response => Spotted::EpisodeObject
     end
 
     assert_pattern do
@@ -19,22 +19,22 @@ class Spotted::Test::Resources::EpisodesTest < Spotted::Test::ResourceTest
         description: String,
         duration_ms: Integer,
         explicit: Spotted::Internal::Type::Boolean,
-        external_urls: Spotted::Models::EpisodeRetrieveResponse::ExternalURLs,
+        external_urls: Spotted::ExternalURLObject,
         href: String,
         html_description: String,
-        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::EpisodeRetrieveResponse::Image]),
+        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]),
         is_externally_hosted: Spotted::Internal::Type::Boolean,
         is_playable: Spotted::Internal::Type::Boolean,
         languages: ^(Spotted::Internal::Type::ArrayOf[String]),
         name: String,
         release_date: String,
-        release_date_precision: Spotted::Models::EpisodeRetrieveResponse::ReleaseDatePrecision,
-        show: Spotted::Models::EpisodeRetrieveResponse::Show,
-        type: Spotted::Models::EpisodeRetrieveResponse::Type,
+        release_date_precision: Spotted::EpisodeObject::ReleaseDatePrecision,
+        show: Spotted::EpisodeObject::Show,
+        type: Spotted::EpisodeObject::Type,
         uri: String,
         language: String | nil,
-        restrictions: Spotted::Models::EpisodeRetrieveResponse::Restrictions | nil,
-        resume_point: Spotted::Models::EpisodeRetrieveResponse::ResumePoint | nil
+        restrictions: Spotted::EpisodeRestrictionObject | nil,
+        resume_point: Spotted::ResumePointObject | nil
       }
     end
   end
@@ -50,7 +50,7 @@ class Spotted::Test::Resources::EpisodesTest < Spotted::Test::ResourceTest
 
     assert_pattern do
       response => {
-        episodes: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::EpisodeListResponse::Episode])
+        episodes: ^(Spotted::Internal::Type::ArrayOf[Spotted::EpisodeObject])
       }
     end
   end

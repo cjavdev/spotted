@@ -50,14 +50,14 @@ module Spotted
       # @!attribute external_urls
       #   Known external URLs for this user.
       #
-      #   @return [Spotted::Models::MeRetrieveResponse::ExternalURLs, nil]
-      optional :external_urls, -> { Spotted::Models::MeRetrieveResponse::ExternalURLs }
+      #   @return [Spotted::Models::ExternalURLObject, nil]
+      optional :external_urls, -> { Spotted::ExternalURLObject }
 
       # @!attribute followers
       #   Information about the followers of the user.
       #
-      #   @return [Spotted::Models::MeRetrieveResponse::Followers, nil]
-      optional :followers, -> { Spotted::Models::MeRetrieveResponse::Followers }
+      #   @return [Spotted::Models::FollowersObject, nil]
+      optional :followers, -> { Spotted::FollowersObject }
 
       # @!attribute href
       #   A link to the Web API endpoint for this user.
@@ -68,8 +68,8 @@ module Spotted
       # @!attribute images
       #   The user's profile image.
       #
-      #   @return [Array<Spotted::Models::MeRetrieveResponse::Image>, nil]
-      optional :images, -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::MeRetrieveResponse::Image] }
+      #   @return [Array<Spotted::Models::ImageObject>, nil]
+      optional :images, -> { Spotted::Internal::Type::ArrayOf[Spotted::ImageObject] }
 
       # @!attribute product
       #   The user's Spotify subscription level: "premium", "free", etc. (The subscription
@@ -110,13 +110,13 @@ module Spotted
       #   @param explicit_content [Spotted::Models::MeRetrieveResponse::ExplicitContent] The user's explicit content settings. \_This field is only available when the
       #   cur
       #
-      #   @param external_urls [Spotted::Models::MeRetrieveResponse::ExternalURLs] Known external URLs for this user.
+      #   @param external_urls [Spotted::Models::ExternalURLObject] Known external URLs for this user.
       #
-      #   @param followers [Spotted::Models::MeRetrieveResponse::Followers] Information about the followers of the user.
+      #   @param followers [Spotted::Models::FollowersObject] Information about the followers of the user.
       #
       #   @param href [String] A link to the Web API endpoint for this user.
       #
-      #   @param images [Array<Spotted::Models::MeRetrieveResponse::Image>] The user's profile image.
+      #   @param images [Array<Spotted::Models::ImageObject>] The user's profile image.
       #
       #   @param product [String] The user's Spotify subscription level: "premium", "free", etc. (The subscription
       #
@@ -151,80 +151,6 @@ module Spotted
         #   @param filter_enabled [Boolean] When `true`, indicates that explicit content should not be played.
         #
         #   @param filter_locked [Boolean] When `true`, indicates that the explicit content setting is locked and can't be
-      end
-
-      # @see Spotted::Models::MeRetrieveResponse#external_urls
-      class ExternalURLs < Spotted::Internal::Type::BaseModel
-        # @!attribute spotify
-        #   The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-        #   object.
-        #
-        #   @return [String, nil]
-        optional :spotify, String
-
-        # @!method initialize(spotify: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::MeRetrieveResponse::ExternalURLs} for more details.
-        #
-        #   Known external URLs for this user.
-        #
-        #   @param spotify [String] The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the obje
-      end
-
-      # @see Spotted::Models::MeRetrieveResponse#followers
-      class Followers < Spotted::Internal::Type::BaseModel
-        # @!attribute href
-        #   This will always be set to null, as the Web API does not support it at the
-        #   moment.
-        #
-        #   @return [String, nil]
-        optional :href, String, nil?: true
-
-        # @!attribute total
-        #   The total number of followers.
-        #
-        #   @return [Integer, nil]
-        optional :total, Integer
-
-        # @!method initialize(href: nil, total: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::MeRetrieveResponse::Followers} for more details.
-        #
-        #   Information about the followers of the user.
-        #
-        #   @param href [String, nil] This will always be set to null, as the Web API does not support it at the momen
-        #
-        #   @param total [Integer] The total number of followers.
-      end
-
-      class Image < Spotted::Internal::Type::BaseModel
-        # @!attribute height
-        #   The image height in pixels.
-        #
-        #   @return [Integer, nil]
-        required :height, Integer, nil?: true
-
-        # @!attribute url
-        #   The source URL of the image.
-        #
-        #   @return [String]
-        required :url, String
-
-        # @!attribute width
-        #   The image width in pixels.
-        #
-        #   @return [Integer, nil]
-        required :width, Integer, nil?: true
-
-        # @!method initialize(height:, url:, width:)
-        #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::MeRetrieveResponse::Image} for more details.
-        #
-        #   @param height [Integer, nil] The image height in pixels.
-        #
-        #   @param url [String] The source URL of the image.
-        #
-        #   @param width [Integer, nil] The image width in pixels.
       end
     end
   end

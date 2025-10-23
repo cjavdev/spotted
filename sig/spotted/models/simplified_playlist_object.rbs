@@ -1,0 +1,126 @@
+module Spotted
+  module Models
+    type simplified_playlist_object =
+      {
+        id: String,
+        collaborative: bool,
+        description: String,
+        external_urls: Spotted::ExternalURLObject,
+        href: String,
+        images: ::Array[Spotted::ImageObject],
+        name: String,
+        owner: Spotted::SimplifiedPlaylistObject::Owner,
+        public: bool,
+        snapshot_id: String,
+        tracks: Spotted::PlaylistTracksRefObject,
+        type: String,
+        uri: String
+      }
+
+    class SimplifiedPlaylistObject < Spotted::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader collaborative: bool?
+
+      def collaborative=: (bool) -> bool
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      attr_reader external_urls: Spotted::ExternalURLObject?
+
+      def external_urls=: (
+        Spotted::ExternalURLObject
+      ) -> Spotted::ExternalURLObject
+
+      attr_reader href: String?
+
+      def href=: (String) -> String
+
+      attr_reader images: ::Array[Spotted::ImageObject]?
+
+      def images=: (
+        ::Array[Spotted::ImageObject]
+      ) -> ::Array[Spotted::ImageObject]
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader owner: Spotted::SimplifiedPlaylistObject::Owner?
+
+      def owner=: (
+        Spotted::SimplifiedPlaylistObject::Owner
+      ) -> Spotted::SimplifiedPlaylistObject::Owner
+
+      attr_reader public: bool?
+
+      def public=: (bool) -> bool
+
+      attr_reader snapshot_id: String?
+
+      def snapshot_id=: (String) -> String
+
+      attr_reader tracks: Spotted::PlaylistTracksRefObject?
+
+      def tracks=: (
+        Spotted::PlaylistTracksRefObject
+      ) -> Spotted::PlaylistTracksRefObject
+
+      attr_reader type: String?
+
+      def type=: (String) -> String
+
+      attr_reader uri: String?
+
+      def uri=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?collaborative: bool,
+        ?description: String,
+        ?external_urls: Spotted::ExternalURLObject,
+        ?href: String,
+        ?images: ::Array[Spotted::ImageObject],
+        ?name: String,
+        ?owner: Spotted::SimplifiedPlaylistObject::Owner,
+        ?public: bool,
+        ?snapshot_id: String,
+        ?tracks: Spotted::PlaylistTracksRefObject,
+        ?type: String,
+        ?uri: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        collaborative: bool,
+        description: String,
+        external_urls: Spotted::ExternalURLObject,
+        href: String,
+        images: ::Array[Spotted::ImageObject],
+        name: String,
+        owner: Spotted::SimplifiedPlaylistObject::Owner,
+        public: bool,
+        snapshot_id: String,
+        tracks: Spotted::PlaylistTracksRefObject,
+        type: String,
+        uri: String
+      }
+
+      type owner = { display_name: String? }
+
+      class Owner < Spotted::Models::PlaylistUserObject
+        def display_name: -> String?
+
+        def display_name=: (String? _) -> String?
+
+        def initialize: (?display_name: String?) -> void
+
+        def to_hash: -> { display_name: String? }
+      end
+    end
+  end
+end

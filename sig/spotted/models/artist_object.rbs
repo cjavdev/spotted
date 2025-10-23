@@ -1,0 +1,101 @@
+module Spotted
+  module Models
+    type artist_object =
+      {
+        id: String,
+        external_urls: Spotted::ExternalURLObject,
+        followers: Spotted::FollowersObject,
+        genres: ::Array[String],
+        href: String,
+        images: ::Array[Spotted::ImageObject],
+        name: String,
+        popularity: Integer,
+        type: Spotted::Models::ArtistObject::type_,
+        uri: String
+      }
+
+    class ArtistObject < Spotted::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader external_urls: Spotted::ExternalURLObject?
+
+      def external_urls=: (
+        Spotted::ExternalURLObject
+      ) -> Spotted::ExternalURLObject
+
+      attr_reader followers: Spotted::FollowersObject?
+
+      def followers=: (Spotted::FollowersObject) -> Spotted::FollowersObject
+
+      attr_reader genres: ::Array[String]?
+
+      def genres=: (::Array[String]) -> ::Array[String]
+
+      attr_reader href: String?
+
+      def href=: (String) -> String
+
+      attr_reader images: ::Array[Spotted::ImageObject]?
+
+      def images=: (
+        ::Array[Spotted::ImageObject]
+      ) -> ::Array[Spotted::ImageObject]
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader popularity: Integer?
+
+      def popularity=: (Integer) -> Integer
+
+      attr_reader type: Spotted::Models::ArtistObject::type_?
+
+      def type=: (
+        Spotted::Models::ArtistObject::type_
+      ) -> Spotted::Models::ArtistObject::type_
+
+      attr_reader uri: String?
+
+      def uri=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?external_urls: Spotted::ExternalURLObject,
+        ?followers: Spotted::FollowersObject,
+        ?genres: ::Array[String],
+        ?href: String,
+        ?images: ::Array[Spotted::ImageObject],
+        ?name: String,
+        ?popularity: Integer,
+        ?type: Spotted::Models::ArtistObject::type_,
+        ?uri: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        external_urls: Spotted::ExternalURLObject,
+        followers: Spotted::FollowersObject,
+        genres: ::Array[String],
+        href: String,
+        images: ::Array[Spotted::ImageObject],
+        name: String,
+        popularity: Integer,
+        type: Spotted::Models::ArtistObject::type_,
+        uri: String
+      }
+
+      type type_ = :artist
+
+      module Type
+        extend Spotted::Internal::Type::Enum
+
+        ARTIST: :artist
+
+        def self?.values: -> ::Array[Spotted::Models::ArtistObject::type_]
+      end
+    end
+  end
+end

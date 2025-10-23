@@ -9,20 +9,20 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
     response = @spotted.artists.retrieve("0TnOYISbd1XYRBk9myaseg")
 
     assert_pattern do
-      response => Spotted::Models::ArtistRetrieveResponse
+      response => Spotted::ArtistObject
     end
 
     assert_pattern do
       response => {
         id: String | nil,
-        external_urls: Spotted::Models::ArtistRetrieveResponse::ExternalURLs | nil,
-        followers: Spotted::Models::ArtistRetrieveResponse::Followers | nil,
+        external_urls: Spotted::ExternalURLObject | nil,
+        followers: Spotted::FollowersObject | nil,
         genres: ^(Spotted::Internal::Type::ArrayOf[String]) | nil,
         href: String | nil,
-        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::ArtistRetrieveResponse::Image]) | nil,
+        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
         name: String | nil,
         popularity: Integer | nil,
-        type: Spotted::Models::ArtistRetrieveResponse::Type | nil,
+        type: Spotted::ArtistObject::Type | nil,
         uri: String | nil
       }
     end
@@ -40,7 +40,7 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
 
     assert_pattern do
       response => {
-        artists: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::ArtistListResponse::Artist])
+        artists: ^(Spotted::Internal::Type::ArrayOf[Spotted::ArtistObject])
       }
     end
   end
@@ -78,7 +78,7 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
 
     assert_pattern do
       response => {
-        artists: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::ArtistListRelatedArtistsResponse::Artist])
+        artists: ^(Spotted::Internal::Type::ArrayOf[Spotted::ArtistObject])
       }
     end
   end
@@ -94,7 +94,7 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
 
     assert_pattern do
       response => {
-        tracks: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::ArtistListTopTracksResponse::Track])
+        tracks: ^(Spotted::Internal::Type::ArrayOf[Spotted::TrackObject])
       }
     end
   end

@@ -9,9 +9,7 @@ module Spotted
           params(
             playlist_id: String,
             request_options: Spotted::RequestOptions::OrHash
-          ).returns(
-            T::Array[Spotted::Models::Playlists::ImageRetrieveResponseItem]
-          )
+          ).returns(T::Array[Spotted::ImageObject])
         end
         def retrieve(
           # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the

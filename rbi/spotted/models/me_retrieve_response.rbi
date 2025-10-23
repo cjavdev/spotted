@@ -64,28 +64,17 @@ module Spotted
       attr_writer :explicit_content
 
       # Known external URLs for this user.
-      sig do
-        returns(T.nilable(Spotted::Models::MeRetrieveResponse::ExternalURLs))
-      end
+      sig { returns(T.nilable(Spotted::ExternalURLObject)) }
       attr_reader :external_urls
 
-      sig do
-        params(
-          external_urls:
-            Spotted::Models::MeRetrieveResponse::ExternalURLs::OrHash
-        ).void
-      end
+      sig { params(external_urls: Spotted::ExternalURLObject::OrHash).void }
       attr_writer :external_urls
 
       # Information about the followers of the user.
-      sig { returns(T.nilable(Spotted::Models::MeRetrieveResponse::Followers)) }
+      sig { returns(T.nilable(Spotted::FollowersObject)) }
       attr_reader :followers
 
-      sig do
-        params(
-          followers: Spotted::Models::MeRetrieveResponse::Followers::OrHash
-        ).void
-      end
+      sig { params(followers: Spotted::FollowersObject::OrHash).void }
       attr_writer :followers
 
       # A link to the Web API endpoint for this user.
@@ -96,16 +85,10 @@ module Spotted
       attr_writer :href
 
       # The user's profile image.
-      sig do
-        returns(T.nilable(T::Array[Spotted::Models::MeRetrieveResponse::Image]))
-      end
+      sig { returns(T.nilable(T::Array[Spotted::ImageObject])) }
       attr_reader :images
 
-      sig do
-        params(
-          images: T::Array[Spotted::Models::MeRetrieveResponse::Image::OrHash]
-        ).void
-      end
+      sig { params(images: T::Array[Spotted::ImageObject::OrHash]).void }
       attr_writer :images
 
       # The user's Spotify subscription level: "premium", "free", etc. (The subscription
@@ -142,11 +125,10 @@ module Spotted
           email: String,
           explicit_content:
             Spotted::Models::MeRetrieveResponse::ExplicitContent::OrHash,
-          external_urls:
-            Spotted::Models::MeRetrieveResponse::ExternalURLs::OrHash,
-          followers: Spotted::Models::MeRetrieveResponse::Followers::OrHash,
+          external_urls: Spotted::ExternalURLObject::OrHash,
+          followers: Spotted::FollowersObject::OrHash,
           href: String,
-          images: T::Array[Spotted::Models::MeRetrieveResponse::Image::OrHash],
+          images: T::Array[Spotted::ImageObject::OrHash],
           product: String,
           type: String,
           uri: String
@@ -207,10 +189,10 @@ module Spotted
             email: String,
             explicit_content:
               Spotted::Models::MeRetrieveResponse::ExplicitContent,
-            external_urls: Spotted::Models::MeRetrieveResponse::ExternalURLs,
-            followers: Spotted::Models::MeRetrieveResponse::Followers,
+            external_urls: Spotted::ExternalURLObject,
+            followers: Spotted::FollowersObject,
             href: String,
-            images: T::Array[Spotted::Models::MeRetrieveResponse::Image],
+            images: T::Array[Spotted::ImageObject],
             product: String,
             type: String,
             uri: String
@@ -265,129 +247,6 @@ module Spotted
         sig do
           override.returns(
             { filter_enabled: T::Boolean, filter_locked: T::Boolean }
-          )
-        end
-        def to_hash
-        end
-      end
-
-      class ExternalURLs < Spotted::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Spotted::Models::MeRetrieveResponse::ExternalURLs,
-              Spotted::Internal::AnyHash
-            )
-          end
-
-        # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-        # object.
-        sig { returns(T.nilable(String)) }
-        attr_reader :spotify
-
-        sig { params(spotify: String).void }
-        attr_writer :spotify
-
-        # Known external URLs for this user.
-        sig { params(spotify: String).returns(T.attached_class) }
-        def self.new(
-          # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-          # object.
-          spotify: nil
-        )
-        end
-
-        sig { override.returns({ spotify: String }) }
-        def to_hash
-        end
-      end
-
-      class Followers < Spotted::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Spotted::Models::MeRetrieveResponse::Followers,
-              Spotted::Internal::AnyHash
-            )
-          end
-
-        # This will always be set to null, as the Web API does not support it at the
-        # moment.
-        sig { returns(T.nilable(String)) }
-        attr_accessor :href
-
-        # The total number of followers.
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :total
-
-        sig { params(total: Integer).void }
-        attr_writer :total
-
-        # Information about the followers of the user.
-        sig do
-          params(href: T.nilable(String), total: Integer).returns(
-            T.attached_class
-          )
-        end
-        def self.new(
-          # This will always be set to null, as the Web API does not support it at the
-          # moment.
-          href: nil,
-          # The total number of followers.
-          total: nil
-        )
-        end
-
-        sig { override.returns({ href: T.nilable(String), total: Integer }) }
-        def to_hash
-        end
-      end
-
-      class Image < Spotted::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Spotted::Models::MeRetrieveResponse::Image,
-              Spotted::Internal::AnyHash
-            )
-          end
-
-        # The image height in pixels.
-        sig { returns(T.nilable(Integer)) }
-        attr_accessor :height
-
-        # The source URL of the image.
-        sig { returns(String) }
-        attr_accessor :url
-
-        # The image width in pixels.
-        sig { returns(T.nilable(Integer)) }
-        attr_accessor :width
-
-        sig do
-          params(
-            height: T.nilable(Integer),
-            url: String,
-            width: T.nilable(Integer)
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # The image height in pixels.
-          height:,
-          # The source URL of the image.
-          url:,
-          # The image width in pixels.
-          width:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              height: T.nilable(Integer),
-              url: String,
-              width: T.nilable(Integer)
-            }
           )
         end
         def to_hash
