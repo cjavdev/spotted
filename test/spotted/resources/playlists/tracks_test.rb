@@ -3,28 +3,6 @@
 require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Playlists::TracksTest < Spotted::Test::ResourceTest
-  def test_retrieve
-    skip("Prism tests are disabled")
-
-    response = @spotted.playlists.tracks.retrieve("3cEYpjA9oz9GiPac4AsH4n")
-
-    assert_pattern do
-      response => Spotted::Models::Playlists::TrackRetrieveResponse
-    end
-
-    assert_pattern do
-      response => {
-        href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::PlaylistTrackObject]),
-        limit: Integer,
-        next_: String | nil,
-        offset: Integer,
-        previous: String | nil,
-        total: Integer
-      }
-    end
-  end
-
   def test_update
     skip("Prism tests are disabled")
 
@@ -37,6 +15,32 @@ class Spotted::Test::Resources::Playlists::TracksTest < Spotted::Test::ResourceT
     assert_pattern do
       response => {
         snapshot_id: String | nil
+      }
+    end
+  end
+
+  def test_list
+    skip("Prism tests are disabled")
+
+    response = @spotted.playlists.tracks.list("3cEYpjA9oz9GiPac4AsH4n")
+
+    assert_pattern do
+      response => Spotted::Internal::CursorURLPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Spotted::PlaylistTrackObject
+    end
+
+    assert_pattern do
+      row => {
+        added_at: Time | nil,
+        added_by: Spotted::PlaylistUserObject | nil,
+        is_local: Spotted::Internal::Type::Boolean | nil,
+        track: Spotted::PlaylistTrackObject::Track | nil
       }
     end
   end

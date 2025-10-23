@@ -69,9 +69,11 @@ module Spotted
           market: String,
           offset: Integer,
           request_options: Spotted::RequestOptions::OrHash
-        ).returns(Spotted::Models::AudiobookGetChaptersResponse)
+        ).returns(
+          Spotted::Internal::CursorURLPage[Spotted::SimplifiedChapterObject]
+        )
       end
-      def get_chapters(
+      def list_chapters(
         # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
         # audiobook.
         id,

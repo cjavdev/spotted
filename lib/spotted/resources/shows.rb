@@ -59,12 +59,12 @@ module Spotted
       end
 
       # Some parameter documentations has been truncated, see
-      # {Spotted::Models::ShowGetEpisodesParams} for more details.
+      # {Spotted::Models::ShowListEpisodesParams} for more details.
       #
       # Get Spotify catalog information about an show’s episodes. Optional parameters
       # can be used to limit the number of episodes returned.
       #
-      # @overload get_episodes(id, limit: nil, market: nil, offset: nil, request_options: {})
+      # @overload list_episodes(id, limit: nil, market: nil, offset: nil, request_options: {})
       #
       # @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
       #
@@ -76,16 +76,17 @@ module Spotted
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::ShowGetEpisodesResponse]
+      # @return [Spotted::Internal::CursorURLPage<Spotted::Models::SimplifiedEpisodeObject>]
       #
-      # @see Spotted::Models::ShowGetEpisodesParams
-      def get_episodes(id, params = {})
-        parsed, options = Spotted::ShowGetEpisodesParams.dump_request(params)
+      # @see Spotted::Models::ShowListEpisodesParams
+      def list_episodes(id, params = {})
+        parsed, options = Spotted::ShowListEpisodesParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["shows/%1$s/episodes", id],
           query: parsed,
-          model: Spotted::Models::ShowGetEpisodesResponse,
+          page: Spotted::Internal::CursorURLPage,
+          model: Spotted::SimplifiedEpisodeObject,
           options: options
         )
       end

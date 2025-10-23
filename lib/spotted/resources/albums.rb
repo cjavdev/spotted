@@ -59,12 +59,12 @@ module Spotted
       end
 
       # Some parameter documentations has been truncated, see
-      # {Spotted::Models::AlbumGetTracksParams} for more details.
+      # {Spotted::Models::AlbumListTracksParams} for more details.
       #
       # Get Spotify catalog information about an album’s tracks. Optional parameters can
       # be used to limit the number of tracks returned.
       #
-      # @overload get_tracks(id, limit: nil, market: nil, offset: nil, request_options: {})
+      # @overload list_tracks(id, limit: nil, market: nil, offset: nil, request_options: {})
       #
       # @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the album.
       #
@@ -76,16 +76,17 @@ module Spotted
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::AlbumGetTracksResponse]
+      # @return [Spotted::Internal::CursorURLPage<Spotted::Models::SimplifiedTrackObject>]
       #
-      # @see Spotted::Models::AlbumGetTracksParams
-      def get_tracks(id, params = {})
-        parsed, options = Spotted::AlbumGetTracksParams.dump_request(params)
+      # @see Spotted::Models::AlbumListTracksParams
+      def list_tracks(id, params = {})
+        parsed, options = Spotted::AlbumListTracksParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["albums/%1$s/tracks", id],
           query: parsed,
-          model: Spotted::Models::AlbumGetTracksResponse,
+          page: Spotted::Internal::CursorURLPage,
+          model: Spotted::SimplifiedTrackObject,
           options: options
         )
       end

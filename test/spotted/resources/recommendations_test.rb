@@ -25,13 +25,13 @@ class Spotted::Test::Resources::RecommendationsTest < Spotted::Test::ResourceTes
     end
   end
 
-  def test_get_available_genre_seeds
+  def test_list_available_genre_seeds
     skip("Prism tests are disabled")
 
-    response = @spotted.recommendations.get_available_genre_seeds
+    response = @spotted.recommendations.list_available_genre_seeds
 
     assert_pattern do
-      response => Spotted::Models::RecommendationGetAvailableGenreSeedsResponse
+      response => Spotted::Models::RecommendationListAvailableGenreSeedsResponse
     end
 
     assert_pattern do

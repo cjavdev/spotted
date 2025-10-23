@@ -44,7 +44,11 @@ module Spotted
           market: String,
           offset: Integer,
           request_options: Spotted::RequestOptions::OrHash
-        ).returns(Spotted::Models::ArtistListAlbumsResponse)
+        ).returns(
+          Spotted::Internal::CursorURLPage[
+            Spotted::Models::ArtistListAlbumsResponse
+          ]
+        )
       end
       def list_albums(
         # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the

@@ -52,9 +52,9 @@ module Spotted
         ?request_options: Spotted::request_opts
       ) -> Spotted::Models::RecommendationGetResponse
 
-      def get_available_genre_seeds: (
+      def list_available_genre_seeds: (
         ?request_options: Spotted::request_opts
-      ) -> Spotted::Models::RecommendationGetAvailableGenreSeedsResponse
+      ) -> Spotted::Models::RecommendationListAvailableGenreSeedsResponse
 
       def initialize: (client: Spotted::Client) -> void
     end

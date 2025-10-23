@@ -9,18 +9,20 @@ class Spotted::Test::Resources::Me::AlbumsTest < Spotted::Test::ResourceTest
     response = @spotted.me.albums.list
 
     assert_pattern do
-      response => Spotted::Models::Me::AlbumListResponse
+      response => Spotted::Internal::CursorURLPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Spotted::Models::Me::AlbumListResponse
     end
 
     assert_pattern do
-      response => {
-        href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::Me::AlbumListResponse::Item]),
-        limit: Integer,
-        next_: String | nil,
-        offset: Integer,
-        previous: String | nil,
-        total: Integer
+      row => {
+        added_at: Time | nil,
+        album: Spotted::Models::Me::AlbumListResponse::Album | nil
       }
     end
   end

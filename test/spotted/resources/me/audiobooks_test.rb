@@ -9,18 +9,37 @@ class Spotted::Test::Resources::Me::AudiobooksTest < Spotted::Test::ResourceTest
     response = @spotted.me.audiobooks.list
 
     assert_pattern do
-      response => Spotted::Models::Me::AudiobookListResponse
+      response => Spotted::Internal::CursorURLPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Spotted::Models::Me::AudiobookListResponse
     end
 
     assert_pattern do
-      response => {
+      row => {
+        id: String,
+        authors: ^(Spotted::Internal::Type::ArrayOf[Spotted::AuthorObject]),
+        available_markets: ^(Spotted::Internal::Type::ArrayOf[String]),
+        copyrights: ^(Spotted::Internal::Type::ArrayOf[Spotted::CopyrightObject]),
+        description: String,
+        explicit: Spotted::Internal::Type::Boolean,
+        external_urls: Spotted::ExternalURLObject,
         href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::Me::AudiobookListResponse::Item]),
-        limit: Integer,
-        next_: String | nil,
-        offset: Integer,
-        previous: String | nil,
-        total: Integer
+        html_description: String,
+        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]),
+        languages: ^(Spotted::Internal::Type::ArrayOf[String]),
+        media_type: String,
+        name: String,
+        narrators: ^(Spotted::Internal::Type::ArrayOf[Spotted::NarratorObject]),
+        publisher: String,
+        total_chapters: Integer,
+        type: Spotted::Models::Me::AudiobookListResponse::Type,
+        uri: String,
+        edition: String | nil
       }
     end
   end

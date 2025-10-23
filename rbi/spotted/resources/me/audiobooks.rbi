@@ -11,7 +11,11 @@ module Spotted
             limit: Integer,
             offset: Integer,
             request_options: Spotted::RequestOptions::OrHash
-          ).returns(Spotted::Models::Me::AudiobookListResponse)
+          ).returns(
+            Spotted::Internal::CursorURLPage[
+              Spotted::Models::Me::AudiobookListResponse
+            ]
+          )
         end
         def list(
           # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.

@@ -1,0 +1,9 @@
+module Spotted
+  module Models
+    module Playlists
+      type image_list_response = ::Array[Spotted::ImageObject]
+
+      ImageListResponse: Spotted::Internal::Type::Converter
+    end
+  end
+end

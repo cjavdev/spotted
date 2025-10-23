@@ -18,7 +18,7 @@ module Spotted
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Spotted::Models::Me::AudiobookListResponse]
+        # @return [Spotted::Internal::CursorURLPage<Spotted::Models::Me::AudiobookListResponse>]
         #
         # @see Spotted::Models::Me::AudiobookListParams
         def list(params = {})
@@ -27,6 +27,7 @@ module Spotted
             method: :get,
             path: "me/audiobooks",
             query: parsed,
+            page: Spotted::Internal::CursorURLPage,
             model: Spotted::Models::Me::AudiobookListResponse,
             options: options
           )

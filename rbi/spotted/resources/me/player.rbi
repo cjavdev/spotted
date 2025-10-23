@@ -47,29 +47,6 @@ module Spotted
         def get_devices(request_options: {})
         end
 
-        # Get tracks from the current user's recently played tracks. _**Note**: Currently
-        # doesn't support podcast episodes._
-        sig do
-          params(
-            after: Integer,
-            before: Integer,
-            limit: Integer,
-            request_options: Spotted::RequestOptions::OrHash
-          ).returns(Spotted::Models::Me::PlayerGetRecentlyPlayedResponse)
-        end
-        def get_recently_played(
-          # A Unix timestamp in milliseconds. Returns all items after (but not including)
-          # this cursor position. If `after` is specified, `before` must not be specified.
-          after: nil,
-          # A Unix timestamp in milliseconds. Returns all items before (but not including)
-          # this cursor position. If `before` is specified, `after` must not be specified.
-          before: nil,
-          # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-          limit: nil,
-          request_options: {}
-        )
-        end
-
         # Get information about the user’s current playback state, including track or
         # episode, progress, and active device.
         sig do
@@ -97,6 +74,33 @@ module Spotted
           # country that is associated with their account in the
           # [account settings](https://www.spotify.com/account/overview/).
           market: nil,
+          request_options: {}
+        )
+        end
+
+        # Get tracks from the current user's recently played tracks. _**Note**: Currently
+        # doesn't support podcast episodes._
+        sig do
+          params(
+            after: Integer,
+            before: Integer,
+            limit: Integer,
+            request_options: Spotted::RequestOptions::OrHash
+          ).returns(
+            Spotted::Internal::CursorURLPage[
+              Spotted::Models::Me::PlayerListRecentlyPlayedResponse
+            ]
+          )
+        end
+        def list_recently_played(
+          # A Unix timestamp in milliseconds. Returns all items after (but not including)
+          # this cursor position. If `after` is specified, `before` must not be specified.
+          after: nil,
+          # A Unix timestamp in milliseconds. Returns all items before (but not including)
+          # this cursor position. If `before` is specified, `after` must not be specified.
+          before: nil,
+          # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+          limit: nil,
           request_options: {}
         )
         end

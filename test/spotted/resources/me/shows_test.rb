@@ -9,18 +9,20 @@ class Spotted::Test::Resources::Me::ShowsTest < Spotted::Test::ResourceTest
     response = @spotted.me.shows.list
 
     assert_pattern do
-      response => Spotted::Models::Me::ShowListResponse
+      response => Spotted::Internal::CursorURLPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Spotted::Models::Me::ShowListResponse
     end
 
     assert_pattern do
-      response => {
-        href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::Me::ShowListResponse::Item]),
-        limit: Integer,
-        next_: String | nil,
-        offset: Integer,
-        previous: String | nil,
-        total: Integer
+      row => {
+        added_at: Time | nil,
+        show: Spotted::Models::Me::ShowListResponse::Show | nil
       }
     end
   end

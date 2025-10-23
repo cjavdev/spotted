@@ -65,9 +65,11 @@ module Spotted
           market: String,
           offset: Integer,
           request_options: Spotted::RequestOptions::OrHash
-        ).returns(Spotted::Models::AlbumGetTracksResponse)
+        ).returns(
+          Spotted::Internal::CursorURLPage[Spotted::SimplifiedTrackObject]
+        )
       end
-      def get_tracks(
+      def list_tracks(
         # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the album.
         id,
         # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.

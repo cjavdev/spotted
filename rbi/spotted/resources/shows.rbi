@@ -65,9 +65,11 @@ module Spotted
           market: String,
           offset: Integer,
           request_options: Spotted::RequestOptions::OrHash
-        ).returns(Spotted::Models::ShowGetEpisodesResponse)
+        ).returns(
+          Spotted::Internal::CursorURLPage[Spotted::SimplifiedEpisodeObject]
+        )
       end
-      def get_episodes(
+      def list_episodes(
         # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.
         id,
         # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.

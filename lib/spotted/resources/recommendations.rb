@@ -133,18 +133,18 @@ module Spotted
       # Retrieve a list of available genres seed parameter values for
       # [recommendations](/documentation/web-api/reference/get-recommendations).
       #
-      # @overload get_available_genre_seeds(request_options: {})
+      # @overload list_available_genre_seeds(request_options: {})
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::RecommendationGetAvailableGenreSeedsResponse]
+      # @return [Spotted::Models::RecommendationListAvailableGenreSeedsResponse]
       #
-      # @see Spotted::Models::RecommendationGetAvailableGenreSeedsParams
-      def get_available_genre_seeds(params = {})
+      # @see Spotted::Models::RecommendationListAvailableGenreSeedsParams
+      def list_available_genre_seeds(params = {})
         @client.request(
           method: :get,
           path: "recommendations/available-genre-seeds",
-          model: Spotted::Models::RecommendationGetAvailableGenreSeedsResponse,
+          model: Spotted::Models::RecommendationListAvailableGenreSeedsResponse,
           options: params[:request_options]
         )
       end

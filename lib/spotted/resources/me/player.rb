@@ -54,36 +54,6 @@ module Spotted
         end
 
         # Some parameter documentations has been truncated, see
-        # {Spotted::Models::Me::PlayerGetRecentlyPlayedParams} for more details.
-        #
-        # Get tracks from the current user's recently played tracks. _**Note**: Currently
-        # doesn't support podcast episodes._
-        #
-        # @overload get_recently_played(after: nil, before: nil, limit: nil, request_options: {})
-        #
-        # @param after [Integer] A Unix timestamp in milliseconds. Returns all items
-        #
-        # @param before [Integer] A Unix timestamp in milliseconds. Returns all items
-        #
-        # @param limit [Integer] The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-        #
-        # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
-        #
-        # @return [Spotted::Models::Me::PlayerGetRecentlyPlayedResponse]
-        #
-        # @see Spotted::Models::Me::PlayerGetRecentlyPlayedParams
-        def get_recently_played(params = {})
-          parsed, options = Spotted::Me::PlayerGetRecentlyPlayedParams.dump_request(params)
-          @client.request(
-            method: :get,
-            path: "me/player/recently-played",
-            query: parsed,
-            model: Spotted::Models::Me::PlayerGetRecentlyPlayedResponse,
-            options: options
-          )
-        end
-
-        # Some parameter documentations has been truncated, see
         # {Spotted::Models::Me::PlayerGetStateParams} for more details.
         #
         # Get information about the user’s current playback state, including track or
@@ -107,6 +77,37 @@ module Spotted
             path: "me/player",
             query: parsed,
             model: Spotted::Models::Me::PlayerGetStateResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
+        # {Spotted::Models::Me::PlayerListRecentlyPlayedParams} for more details.
+        #
+        # Get tracks from the current user's recently played tracks. _**Note**: Currently
+        # doesn't support podcast episodes._
+        #
+        # @overload list_recently_played(after: nil, before: nil, limit: nil, request_options: {})
+        #
+        # @param after [Integer] A Unix timestamp in milliseconds. Returns all items
+        #
+        # @param before [Integer] A Unix timestamp in milliseconds. Returns all items
+        #
+        # @param limit [Integer] The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+        #
+        # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Spotted::Internal::CursorURLPage<Spotted::Models::Me::PlayerListRecentlyPlayedResponse>]
+        #
+        # @see Spotted::Models::Me::PlayerListRecentlyPlayedParams
+        def list_recently_played(params = {})
+          parsed, options = Spotted::Me::PlayerListRecentlyPlayedParams.dump_request(params)
+          @client.request(
+            method: :get,
+            path: "me/player/recently-played",
+            query: parsed,
+            page: Spotted::Internal::CursorURLPage,
+            model: Spotted::Models::Me::PlayerListRecentlyPlayedResponse,
             options: options
           )
         end

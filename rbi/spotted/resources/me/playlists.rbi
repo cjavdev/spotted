@@ -10,9 +10,11 @@ module Spotted
             limit: Integer,
             offset: Integer,
             request_options: Spotted::RequestOptions::OrHash
-          ).returns(Spotted::PagingPlaylistObject)
+          ).returns(
+            Spotted::Internal::CursorURLPage[Spotted::SimplifiedPlaylistObject]
+          )
         end
-        def retrieve(
+        def list(
           # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
           limit: nil,
           # 'The index of the first playlist to return. Default: 0 (the first object).

@@ -1,70 +1,20 @@
 module Spotted
   module Models
     module Me
-      type track_list_response =
-        {
-          href: String,
-          items: ::Array[Spotted::Models::Me::TrackListResponse::Item],
-          limit: Integer,
-          next_: String?,
-          offset: Integer,
-          previous: String?,
-          total: Integer
-        }
+      type track_list_response = { added_at: Time, track: Spotted::TrackObject }
 
       class TrackListResponse < Spotted::Internal::Type::BaseModel
-        attr_accessor href: String
+        attr_reader added_at: Time?
 
-        attr_accessor items: ::Array[Spotted::Models::Me::TrackListResponse::Item]
+        def added_at=: (Time) -> Time
 
-        attr_accessor limit: Integer
+        attr_reader track: Spotted::TrackObject?
 
-        attr_accessor next_: String?
+        def track=: (Spotted::TrackObject) -> Spotted::TrackObject
 
-        attr_accessor offset: Integer
+        def initialize: (?added_at: Time, ?track: Spotted::TrackObject) -> void
 
-        attr_accessor previous: String?
-
-        attr_accessor total: Integer
-
-        def initialize: (
-          href: String,
-          items: ::Array[Spotted::Models::Me::TrackListResponse::Item],
-          limit: Integer,
-          next_: String?,
-          offset: Integer,
-          previous: String?,
-          total: Integer
-        ) -> void
-
-        def to_hash: -> {
-          href: String,
-          items: ::Array[Spotted::Models::Me::TrackListResponse::Item],
-          limit: Integer,
-          next_: String?,
-          offset: Integer,
-          previous: String?,
-          total: Integer
-        }
-
-        type item = { added_at: Time, track: Spotted::TrackObject }
-
-        class Item < Spotted::Internal::Type::BaseModel
-          attr_reader added_at: Time?
-
-          def added_at=: (Time) -> Time
-
-          attr_reader track: Spotted::TrackObject?
-
-          def track=: (Spotted::TrackObject) -> Spotted::TrackObject
-
-          def initialize: (
-            ?added_at: Time,
-            ?track: Spotted::TrackObject
-          ) -> void
-
-          def to_hash: -> { added_at: Time, track: Spotted::TrackObject }
-        end
+        def to_hash: -> { added_at: Time, track: Spotted::TrackObject }
       end
     end
   end
