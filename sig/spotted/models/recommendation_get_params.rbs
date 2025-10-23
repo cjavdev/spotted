@@ -1,0 +1,344 @@
+module Spotted
+  module Models
+    type recommendation_get_params =
+      {
+        seed_artists: String,
+        seed_genres: String,
+        seed_tracks: String,
+        limit: Integer,
+        market: String,
+        max_acousticness: Float,
+        max_danceability: Float,
+        max_duration_ms: Integer,
+        max_energy: Float,
+        max_instrumentalness: Float,
+        max_key: Integer,
+        max_liveness: Float,
+        max_loudness: Float,
+        max_mode: Integer,
+        max_popularity: Integer,
+        max_speechiness: Float,
+        max_tempo: Float,
+        max_time_signature: Integer,
+        max_valence: Float,
+        min_acousticness: Float,
+        min_danceability: Float,
+        min_duration_ms: Integer,
+        min_energy: Float,
+        min_instrumentalness: Float,
+        min_key: Integer,
+        min_liveness: Float,
+        min_loudness: Float,
+        min_mode: Integer,
+        min_popularity: Integer,
+        min_speechiness: Float,
+        min_tempo: Float,
+        min_time_signature: Integer,
+        min_valence: Float,
+        target_acousticness: Float,
+        target_danceability: Float,
+        target_duration_ms: Integer,
+        target_energy: Float,
+        target_instrumentalness: Float,
+        target_key: Integer,
+        target_liveness: Float,
+        target_loudness: Float,
+        target_mode: Integer,
+        target_popularity: Integer,
+        target_speechiness: Float,
+        target_tempo: Float,
+        target_time_signature: Integer,
+        target_valence: Float
+      }
+      & Spotted::Internal::Type::request_parameters
+
+    class RecommendationGetParams < Spotted::Internal::Type::BaseModel
+      extend Spotted::Internal::Type::RequestParameters::Converter
+      include Spotted::Internal::Type::RequestParameters
+
+      attr_accessor seed_artists: String
+
+      attr_accessor seed_genres: String
+
+      attr_accessor seed_tracks: String
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> Integer
+
+      attr_reader market: String?
+
+      def market=: (String) -> String
+
+      attr_reader max_acousticness: Float?
+
+      def max_acousticness=: (Float) -> Float
+
+      attr_reader max_danceability: Float?
+
+      def max_danceability=: (Float) -> Float
+
+      attr_reader max_duration_ms: Integer?
+
+      def max_duration_ms=: (Integer) -> Integer
+
+      attr_reader max_energy: Float?
+
+      def max_energy=: (Float) -> Float
+
+      attr_reader max_instrumentalness: Float?
+
+      def max_instrumentalness=: (Float) -> Float
+
+      attr_reader max_key: Integer?
+
+      def max_key=: (Integer) -> Integer
+
+      attr_reader max_liveness: Float?
+
+      def max_liveness=: (Float) -> Float
+
+      attr_reader max_loudness: Float?
+
+      def max_loudness=: (Float) -> Float
+
+      attr_reader max_mode: Integer?
+
+      def max_mode=: (Integer) -> Integer
+
+      attr_reader max_popularity: Integer?
+
+      def max_popularity=: (Integer) -> Integer
+
+      attr_reader max_speechiness: Float?
+
+      def max_speechiness=: (Float) -> Float
+
+      attr_reader max_tempo: Float?
+
+      def max_tempo=: (Float) -> Float
+
+      attr_reader max_time_signature: Integer?
+
+      def max_time_signature=: (Integer) -> Integer
+
+      attr_reader max_valence: Float?
+
+      def max_valence=: (Float) -> Float
+
+      attr_reader min_acousticness: Float?
+
+      def min_acousticness=: (Float) -> Float
+
+      attr_reader min_danceability: Float?
+
+      def min_danceability=: (Float) -> Float
+
+      attr_reader min_duration_ms: Integer?
+
+      def min_duration_ms=: (Integer) -> Integer
+
+      attr_reader min_energy: Float?
+
+      def min_energy=: (Float) -> Float
+
+      attr_reader min_instrumentalness: Float?
+
+      def min_instrumentalness=: (Float) -> Float
+
+      attr_reader min_key: Integer?
+
+      def min_key=: (Integer) -> Integer
+
+      attr_reader min_liveness: Float?
+
+      def min_liveness=: (Float) -> Float
+
+      attr_reader min_loudness: Float?
+
+      def min_loudness=: (Float) -> Float
+
+      attr_reader min_mode: Integer?
+
+      def min_mode=: (Integer) -> Integer
+
+      attr_reader min_popularity: Integer?
+
+      def min_popularity=: (Integer) -> Integer
+
+      attr_reader min_speechiness: Float?
+
+      def min_speechiness=: (Float) -> Float
+
+      attr_reader min_tempo: Float?
+
+      def min_tempo=: (Float) -> Float
+
+      attr_reader min_time_signature: Integer?
+
+      def min_time_signature=: (Integer) -> Integer
+
+      attr_reader min_valence: Float?
+
+      def min_valence=: (Float) -> Float
+
+      attr_reader target_acousticness: Float?
+
+      def target_acousticness=: (Float) -> Float
+
+      attr_reader target_danceability: Float?
+
+      def target_danceability=: (Float) -> Float
+
+      attr_reader target_duration_ms: Integer?
+
+      def target_duration_ms=: (Integer) -> Integer
+
+      attr_reader target_energy: Float?
+
+      def target_energy=: (Float) -> Float
+
+      attr_reader target_instrumentalness: Float?
+
+      def target_instrumentalness=: (Float) -> Float
+
+      attr_reader target_key: Integer?
+
+      def target_key=: (Integer) -> Integer
+
+      attr_reader target_liveness: Float?
+
+      def target_liveness=: (Float) -> Float
+
+      attr_reader target_loudness: Float?
+
+      def target_loudness=: (Float) -> Float
+
+      attr_reader target_mode: Integer?
+
+      def target_mode=: (Integer) -> Integer
+
+      attr_reader target_popularity: Integer?
+
+      def target_popularity=: (Integer) -> Integer
+
+      attr_reader target_speechiness: Float?
+
+      def target_speechiness=: (Float) -> Float
+
+      attr_reader target_tempo: Float?
+
+      def target_tempo=: (Float) -> Float
+
+      attr_reader target_time_signature: Integer?
+
+      def target_time_signature=: (Integer) -> Integer
+
+      attr_reader target_valence: Float?
+
+      def target_valence=: (Float) -> Float
+
+      def initialize: (
+        seed_artists: String,
+        seed_genres: String,
+        seed_tracks: String,
+        ?limit: Integer,
+        ?market: String,
+        ?max_acousticness: Float,
+        ?max_danceability: Float,
+        ?max_duration_ms: Integer,
+        ?max_energy: Float,
+        ?max_instrumentalness: Float,
+        ?max_key: Integer,
+        ?max_liveness: Float,
+        ?max_loudness: Float,
+        ?max_mode: Integer,
+        ?max_popularity: Integer,
+        ?max_speechiness: Float,
+        ?max_tempo: Float,
+        ?max_time_signature: Integer,
+        ?max_valence: Float,
+        ?min_acousticness: Float,
+        ?min_danceability: Float,
+        ?min_duration_ms: Integer,
+        ?min_energy: Float,
+        ?min_instrumentalness: Float,
+        ?min_key: Integer,
+        ?min_liveness: Float,
+        ?min_loudness: Float,
+        ?min_mode: Integer,
+        ?min_popularity: Integer,
+        ?min_speechiness: Float,
+        ?min_tempo: Float,
+        ?min_time_signature: Integer,
+        ?min_valence: Float,
+        ?target_acousticness: Float,
+        ?target_danceability: Float,
+        ?target_duration_ms: Integer,
+        ?target_energy: Float,
+        ?target_instrumentalness: Float,
+        ?target_key: Integer,
+        ?target_liveness: Float,
+        ?target_loudness: Float,
+        ?target_mode: Integer,
+        ?target_popularity: Integer,
+        ?target_speechiness: Float,
+        ?target_tempo: Float,
+        ?target_time_signature: Integer,
+        ?target_valence: Float,
+        ?request_options: Spotted::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        seed_artists: String,
+        seed_genres: String,
+        seed_tracks: String,
+        limit: Integer,
+        market: String,
+        max_acousticness: Float,
+        max_danceability: Float,
+        max_duration_ms: Integer,
+        max_energy: Float,
+        max_instrumentalness: Float,
+        max_key: Integer,
+        max_liveness: Float,
+        max_loudness: Float,
+        max_mode: Integer,
+        max_popularity: Integer,
+        max_speechiness: Float,
+        max_tempo: Float,
+        max_time_signature: Integer,
+        max_valence: Float,
+        min_acousticness: Float,
+        min_danceability: Float,
+        min_duration_ms: Integer,
+        min_energy: Float,
+        min_instrumentalness: Float,
+        min_key: Integer,
+        min_liveness: Float,
+        min_loudness: Float,
+        min_mode: Integer,
+        min_popularity: Integer,
+        min_speechiness: Float,
+        min_tempo: Float,
+        min_time_signature: Integer,
+        min_valence: Float,
+        target_acousticness: Float,
+        target_danceability: Float,
+        target_duration_ms: Integer,
+        target_energy: Float,
+        target_instrumentalness: Float,
+        target_key: Integer,
+        target_liveness: Float,
+        target_loudness: Float,
+        target_mode: Integer,
+        target_popularity: Integer,
+        target_speechiness: Float,
+        target_tempo: Float,
+        target_time_signature: Integer,
+        target_valence: Float,
+        request_options: Spotted::RequestOptions
+      }
+    end
+  end
+end

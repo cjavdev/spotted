@@ -1,0 +1,238 @@
+module Spotted
+  module Models
+    module Me
+      type following_list_response =
+        { artists: Spotted::Models::Me::FollowingListResponse::Artists }
+
+      class FollowingListResponse < Spotted::Internal::Type::BaseModel
+        attr_accessor artists: Spotted::Models::Me::FollowingListResponse::Artists
+
+        def initialize: (
+          artists: Spotted::Models::Me::FollowingListResponse::Artists
+        ) -> void
+
+        def to_hash: -> {
+          artists: Spotted::Models::Me::FollowingListResponse::Artists
+        }
+
+        type artists =
+          {
+            cursors: Spotted::Models::Me::FollowingListResponse::Artists::Cursors,
+            href: String,
+            items: ::Array[Spotted::Models::Me::FollowingListResponse::Artists::Item],
+            limit: Integer,
+            next_: String,
+            total: Integer
+          }
+
+        class Artists < Spotted::Internal::Type::BaseModel
+          attr_reader cursors: Spotted::Models::Me::FollowingListResponse::Artists::Cursors?
+
+          def cursors=: (
+            Spotted::Models::Me::FollowingListResponse::Artists::Cursors
+          ) -> Spotted::Models::Me::FollowingListResponse::Artists::Cursors
+
+          attr_reader href: String?
+
+          def href=: (String) -> String
+
+          attr_reader items: ::Array[Spotted::Models::Me::FollowingListResponse::Artists::Item]?
+
+          def items=: (
+            ::Array[Spotted::Models::Me::FollowingListResponse::Artists::Item]
+          ) -> ::Array[Spotted::Models::Me::FollowingListResponse::Artists::Item]
+
+          attr_reader limit: Integer?
+
+          def limit=: (Integer) -> Integer
+
+          attr_reader next_: String?
+
+          def next_=: (String) -> String
+
+          attr_reader total: Integer?
+
+          def total=: (Integer) -> Integer
+
+          def initialize: (
+            ?cursors: Spotted::Models::Me::FollowingListResponse::Artists::Cursors,
+            ?href: String,
+            ?items: ::Array[Spotted::Models::Me::FollowingListResponse::Artists::Item],
+            ?limit: Integer,
+            ?next_: String,
+            ?total: Integer
+          ) -> void
+
+          def to_hash: -> {
+            cursors: Spotted::Models::Me::FollowingListResponse::Artists::Cursors,
+            href: String,
+            items: ::Array[Spotted::Models::Me::FollowingListResponse::Artists::Item],
+            limit: Integer,
+            next_: String,
+            total: Integer
+          }
+
+          type cursors = { after: String, before: String }
+
+          class Cursors < Spotted::Internal::Type::BaseModel
+            attr_reader after: String?
+
+            def after=: (String) -> String
+
+            attr_reader before: String?
+
+            def before=: (String) -> String
+
+            def initialize: (?after: String, ?before: String) -> void
+
+            def to_hash: -> { after: String, before: String }
+          end
+
+          type item =
+            {
+              id: String,
+              external_urls: Spotted::Models::Me::FollowingListResponse::Artists::Item::ExternalURLs,
+              followers: Spotted::Models::Me::FollowingListResponse::Artists::Item::Followers,
+              genres: ::Array[String],
+              href: String,
+              images: ::Array[Spotted::Models::Me::FollowingListResponse::Artists::Item::Image],
+              name: String,
+              popularity: Integer,
+              type: Spotted::Models::Me::FollowingListResponse::Artists::Item::type_,
+              uri: String
+            }
+
+          class Item < Spotted::Internal::Type::BaseModel
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader external_urls: Spotted::Models::Me::FollowingListResponse::Artists::Item::ExternalURLs?
+
+            def external_urls=: (
+              Spotted::Models::Me::FollowingListResponse::Artists::Item::ExternalURLs
+            ) -> Spotted::Models::Me::FollowingListResponse::Artists::Item::ExternalURLs
+
+            attr_reader followers: Spotted::Models::Me::FollowingListResponse::Artists::Item::Followers?
+
+            def followers=: (
+              Spotted::Models::Me::FollowingListResponse::Artists::Item::Followers
+            ) -> Spotted::Models::Me::FollowingListResponse::Artists::Item::Followers
+
+            attr_reader genres: ::Array[String]?
+
+            def genres=: (::Array[String]) -> ::Array[String]
+
+            attr_reader href: String?
+
+            def href=: (String) -> String
+
+            attr_reader images: ::Array[Spotted::Models::Me::FollowingListResponse::Artists::Item::Image]?
+
+            def images=: (
+              ::Array[Spotted::Models::Me::FollowingListResponse::Artists::Item::Image]
+            ) -> ::Array[Spotted::Models::Me::FollowingListResponse::Artists::Item::Image]
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader popularity: Integer?
+
+            def popularity=: (Integer) -> Integer
+
+            attr_reader type: Spotted::Models::Me::FollowingListResponse::Artists::Item::type_?
+
+            def type=: (
+              Spotted::Models::Me::FollowingListResponse::Artists::Item::type_
+            ) -> Spotted::Models::Me::FollowingListResponse::Artists::Item::type_
+
+            attr_reader uri: String?
+
+            def uri=: (String) -> String
+
+            def initialize: (
+              ?id: String,
+              ?external_urls: Spotted::Models::Me::FollowingListResponse::Artists::Item::ExternalURLs,
+              ?followers: Spotted::Models::Me::FollowingListResponse::Artists::Item::Followers,
+              ?genres: ::Array[String],
+              ?href: String,
+              ?images: ::Array[Spotted::Models::Me::FollowingListResponse::Artists::Item::Image],
+              ?name: String,
+              ?popularity: Integer,
+              ?type: Spotted::Models::Me::FollowingListResponse::Artists::Item::type_,
+              ?uri: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              external_urls: Spotted::Models::Me::FollowingListResponse::Artists::Item::ExternalURLs,
+              followers: Spotted::Models::Me::FollowingListResponse::Artists::Item::Followers,
+              genres: ::Array[String],
+              href: String,
+              images: ::Array[Spotted::Models::Me::FollowingListResponse::Artists::Item::Image],
+              name: String,
+              popularity: Integer,
+              type: Spotted::Models::Me::FollowingListResponse::Artists::Item::type_,
+              uri: String
+            }
+
+            type external_urls = { spotify: String }
+
+            class ExternalURLs < Spotted::Internal::Type::BaseModel
+              attr_reader spotify: String?
+
+              def spotify=: (String) -> String
+
+              def initialize: (?spotify: String) -> void
+
+              def to_hash: -> { spotify: String }
+            end
+
+            type followers = { href: String?, total: Integer }
+
+            class Followers < Spotted::Internal::Type::BaseModel
+              attr_accessor href: String?
+
+              attr_reader total: Integer?
+
+              def total=: (Integer) -> Integer
+
+              def initialize: (?href: String?, ?total: Integer) -> void
+
+              def to_hash: -> { href: String?, total: Integer }
+            end
+
+            type image = { height: Integer?, url: String, width: Integer? }
+
+            class Image < Spotted::Internal::Type::BaseModel
+              attr_accessor height: Integer?
+
+              attr_accessor url: String
+
+              attr_accessor width: Integer?
+
+              def initialize: (
+                height: Integer?,
+                url: String,
+                width: Integer?
+              ) -> void
+
+              def to_hash: -> { height: Integer?, url: String, width: Integer? }
+            end
+
+            type type_ = :artist
+
+            module Type
+              extend Spotted::Internal::Type::Enum
+
+              ARTIST: :artist
+
+              def self?.values: -> ::Array[Spotted::Models::Me::FollowingListResponse::Artists::Item::type_]
+            end
+          end
+        end
+      end
+    end
+  end
+end

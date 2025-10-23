@@ -1,0 +1,255 @@
+module Spotted
+  module Models
+    type show_get_episodes_response =
+      {
+        href: String,
+        items: ::Array[Spotted::Models::ShowGetEpisodesResponse::Item],
+        limit: Integer,
+        next_: String?,
+        offset: Integer,
+        previous: String?,
+        total: Integer
+      }
+
+    class ShowGetEpisodesResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor href: String
+
+      attr_accessor items: ::Array[Spotted::Models::ShowGetEpisodesResponse::Item]
+
+      attr_accessor limit: Integer
+
+      attr_accessor next_: String?
+
+      attr_accessor offset: Integer
+
+      attr_accessor previous: String?
+
+      attr_accessor total: Integer
+
+      def initialize: (
+        href: String,
+        items: ::Array[Spotted::Models::ShowGetEpisodesResponse::Item],
+        limit: Integer,
+        next_: String?,
+        offset: Integer,
+        previous: String?,
+        total: Integer
+      ) -> void
+
+      def to_hash: -> {
+        href: String,
+        items: ::Array[Spotted::Models::ShowGetEpisodesResponse::Item],
+        limit: Integer,
+        next_: String?,
+        offset: Integer,
+        previous: String?,
+        total: Integer
+      }
+
+      type item =
+        {
+          id: String,
+          audio_preview_url: String?,
+          description: String,
+          duration_ms: Integer,
+          explicit: bool,
+          external_urls: Spotted::Models::ShowGetEpisodesResponse::Item::ExternalURLs,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::Models::ShowGetEpisodesResponse::Item::Image],
+          is_externally_hosted: bool,
+          is_playable: bool,
+          languages: ::Array[String],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::ShowGetEpisodesResponse::Item::release_date_precision,
+          type: Spotted::Models::ShowGetEpisodesResponse::Item::type_,
+          uri: String,
+          language: String,
+          restrictions: Spotted::Models::ShowGetEpisodesResponse::Item::Restrictions,
+          resume_point: Spotted::Models::ShowGetEpisodesResponse::Item::ResumePoint
+        }
+
+      class Item < Spotted::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor audio_preview_url: String?
+
+        attr_accessor description: String
+
+        attr_accessor duration_ms: Integer
+
+        attr_accessor explicit: bool
+
+        attr_accessor external_urls: Spotted::Models::ShowGetEpisodesResponse::Item::ExternalURLs
+
+        attr_accessor href: String
+
+        attr_accessor html_description: String
+
+        attr_accessor images: ::Array[Spotted::Models::ShowGetEpisodesResponse::Item::Image]
+
+        attr_accessor is_externally_hosted: bool
+
+        attr_accessor is_playable: bool
+
+        attr_accessor languages: ::Array[String]
+
+        attr_accessor name: String
+
+        attr_accessor release_date: String
+
+        attr_accessor release_date_precision: Spotted::Models::ShowGetEpisodesResponse::Item::release_date_precision
+
+        attr_accessor type: Spotted::Models::ShowGetEpisodesResponse::Item::type_
+
+        attr_accessor uri: String
+
+        attr_reader language: String?
+
+        def language=: (String) -> String
+
+        attr_reader restrictions: Spotted::Models::ShowGetEpisodesResponse::Item::Restrictions?
+
+        def restrictions=: (
+          Spotted::Models::ShowGetEpisodesResponse::Item::Restrictions
+        ) -> Spotted::Models::ShowGetEpisodesResponse::Item::Restrictions
+
+        attr_reader resume_point: Spotted::Models::ShowGetEpisodesResponse::Item::ResumePoint?
+
+        def resume_point=: (
+          Spotted::Models::ShowGetEpisodesResponse::Item::ResumePoint
+        ) -> Spotted::Models::ShowGetEpisodesResponse::Item::ResumePoint
+
+        def initialize: (
+          id: String,
+          audio_preview_url: String?,
+          description: String,
+          duration_ms: Integer,
+          explicit: bool,
+          external_urls: Spotted::Models::ShowGetEpisodesResponse::Item::ExternalURLs,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::Models::ShowGetEpisodesResponse::Item::Image],
+          is_externally_hosted: bool,
+          is_playable: bool,
+          languages: ::Array[String],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::ShowGetEpisodesResponse::Item::release_date_precision,
+          type: Spotted::Models::ShowGetEpisodesResponse::Item::type_,
+          uri: String,
+          ?language: String,
+          ?restrictions: Spotted::Models::ShowGetEpisodesResponse::Item::Restrictions,
+          ?resume_point: Spotted::Models::ShowGetEpisodesResponse::Item::ResumePoint
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          audio_preview_url: String?,
+          description: String,
+          duration_ms: Integer,
+          explicit: bool,
+          external_urls: Spotted::Models::ShowGetEpisodesResponse::Item::ExternalURLs,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::Models::ShowGetEpisodesResponse::Item::Image],
+          is_externally_hosted: bool,
+          is_playable: bool,
+          languages: ::Array[String],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::ShowGetEpisodesResponse::Item::release_date_precision,
+          type: Spotted::Models::ShowGetEpisodesResponse::Item::type_,
+          uri: String,
+          language: String,
+          restrictions: Spotted::Models::ShowGetEpisodesResponse::Item::Restrictions,
+          resume_point: Spotted::Models::ShowGetEpisodesResponse::Item::ResumePoint
+        }
+
+        type external_urls = { spotify: String }
+
+        class ExternalURLs < Spotted::Internal::Type::BaseModel
+          attr_reader spotify: String?
+
+          def spotify=: (String) -> String
+
+          def initialize: (?spotify: String) -> void
+
+          def to_hash: -> { spotify: String }
+        end
+
+        type image = { height: Integer?, url: String, width: Integer? }
+
+        class Image < Spotted::Internal::Type::BaseModel
+          attr_accessor height: Integer?
+
+          attr_accessor url: String
+
+          attr_accessor width: Integer?
+
+          def initialize: (
+            height: Integer?,
+            url: String,
+            width: Integer?
+          ) -> void
+
+          def to_hash: -> { height: Integer?, url: String, width: Integer? }
+        end
+
+        type release_date_precision = :year | :month | :day
+
+        module ReleaseDatePrecision
+          extend Spotted::Internal::Type::Enum
+
+          YEAR: :year
+          MONTH: :month
+          DAY: :day
+
+          def self?.values: -> ::Array[Spotted::Models::ShowGetEpisodesResponse::Item::release_date_precision]
+        end
+
+        type type_ = :episode
+
+        module Type
+          extend Spotted::Internal::Type::Enum
+
+          EPISODE: :episode
+
+          def self?.values: -> ::Array[Spotted::Models::ShowGetEpisodesResponse::Item::type_]
+        end
+
+        type restrictions = { reason: String }
+
+        class Restrictions < Spotted::Internal::Type::BaseModel
+          attr_reader reason: String?
+
+          def reason=: (String) -> String
+
+          def initialize: (?reason: String) -> void
+
+          def to_hash: -> { reason: String }
+        end
+
+        type resume_point = { fully_played: bool, resume_position_ms: Integer }
+
+        class ResumePoint < Spotted::Internal::Type::BaseModel
+          attr_reader fully_played: bool?
+
+          def fully_played=: (bool) -> bool
+
+          attr_reader resume_position_ms: Integer?
+
+          def resume_position_ms=: (Integer) -> Integer
+
+          def initialize: (
+            ?fully_played: bool,
+            ?resume_position_ms: Integer
+          ) -> void
+
+          def to_hash: -> { fully_played: bool, resume_position_ms: Integer }
+        end
+      end
+    end
+  end
+end

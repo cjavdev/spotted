@@ -1,0 +1,315 @@
+module Spotted
+  module Models
+    module Browse
+      type category_get_playlists_response =
+        {
+          message: String,
+          playlists: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists
+        }
+
+      class CategoryGetPlaylistsResponse < Spotted::Internal::Type::BaseModel
+        attr_reader message: String?
+
+        def message=: (String) -> String
+
+        attr_reader playlists: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists?
+
+        def playlists=: (
+          Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists
+        ) -> Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists
+
+        def initialize: (
+          ?message: String,
+          ?playlists: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists
+        ) -> void
+
+        def to_hash: -> {
+          message: String,
+          playlists: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists
+        }
+
+        type playlists =
+          {
+            href: String,
+            items: ::Array[Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item],
+            limit: Integer,
+            next_: String?,
+            offset: Integer,
+            previous: String?,
+            total: Integer
+          }
+
+        class Playlists < Spotted::Internal::Type::BaseModel
+          attr_accessor href: String
+
+          attr_accessor items: ::Array[Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item]
+
+          attr_accessor limit: Integer
+
+          attr_accessor next_: String?
+
+          attr_accessor offset: Integer
+
+          attr_accessor previous: String?
+
+          attr_accessor total: Integer
+
+          def initialize: (
+            href: String,
+            items: ::Array[Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item],
+            limit: Integer,
+            next_: String?,
+            offset: Integer,
+            previous: String?,
+            total: Integer
+          ) -> void
+
+          def to_hash: -> {
+            href: String,
+            items: ::Array[Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item],
+            limit: Integer,
+            next_: String?,
+            offset: Integer,
+            previous: String?,
+            total: Integer
+          }
+
+          type item =
+            {
+              id: String,
+              collaborative: bool,
+              description: String,
+              external_urls: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::ExternalURLs,
+              href: String,
+              images: ::Array[Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Image],
+              name: String,
+              owner: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner,
+              public: bool,
+              snapshot_id: String,
+              tracks: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Tracks,
+              type: String,
+              uri: String
+            }
+
+          class Item < Spotted::Internal::Type::BaseModel
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader collaborative: bool?
+
+            def collaborative=: (bool) -> bool
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader external_urls: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::ExternalURLs?
+
+            def external_urls=: (
+              Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::ExternalURLs
+            ) -> Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::ExternalURLs
+
+            attr_reader href: String?
+
+            def href=: (String) -> String
+
+            attr_reader images: ::Array[Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Image]?
+
+            def images=: (
+              ::Array[Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Image]
+            ) -> ::Array[Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Image]
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader owner: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner?
+
+            def owner=: (
+              Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner
+            ) -> Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner
+
+            attr_reader public: bool?
+
+            def public=: (bool) -> bool
+
+            attr_reader snapshot_id: String?
+
+            def snapshot_id=: (String) -> String
+
+            attr_reader tracks: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Tracks?
+
+            def tracks=: (
+              Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Tracks
+            ) -> Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Tracks
+
+            attr_reader type: String?
+
+            def type=: (String) -> String
+
+            attr_reader uri: String?
+
+            def uri=: (String) -> String
+
+            def initialize: (
+              ?id: String,
+              ?collaborative: bool,
+              ?description: String,
+              ?external_urls: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::ExternalURLs,
+              ?href: String,
+              ?images: ::Array[Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Image],
+              ?name: String,
+              ?owner: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner,
+              ?public: bool,
+              ?snapshot_id: String,
+              ?tracks: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Tracks,
+              ?type: String,
+              ?uri: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              collaborative: bool,
+              description: String,
+              external_urls: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::ExternalURLs,
+              href: String,
+              images: ::Array[Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Image],
+              name: String,
+              owner: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner,
+              public: bool,
+              snapshot_id: String,
+              tracks: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Tracks,
+              type: String,
+              uri: String
+            }
+
+            type external_urls = { spotify: String }
+
+            class ExternalURLs < Spotted::Internal::Type::BaseModel
+              attr_reader spotify: String?
+
+              def spotify=: (String) -> String
+
+              def initialize: (?spotify: String) -> void
+
+              def to_hash: -> { spotify: String }
+            end
+
+            type image = { height: Integer?, url: String, width: Integer? }
+
+            class Image < Spotted::Internal::Type::BaseModel
+              attr_accessor height: Integer?
+
+              attr_accessor url: String
+
+              attr_accessor width: Integer?
+
+              def initialize: (
+                height: Integer?,
+                url: String,
+                width: Integer?
+              ) -> void
+
+              def to_hash: -> { height: Integer?, url: String, width: Integer? }
+            end
+
+            type owner =
+              {
+                id: String,
+                display_name: String?,
+                external_urls: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner::ExternalURLs,
+                href: String,
+                type: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner::type_,
+                uri: String
+              }
+
+            class Owner < Spotted::Internal::Type::BaseModel
+              attr_reader id: String?
+
+              def id=: (String) -> String
+
+              attr_accessor display_name: String?
+
+              attr_reader external_urls: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner::ExternalURLs?
+
+              def external_urls=: (
+                Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner::ExternalURLs
+              ) -> Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner::ExternalURLs
+
+              attr_reader href: String?
+
+              def href=: (String) -> String
+
+              attr_reader type: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner::type_?
+
+              def type=: (
+                Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner::type_
+              ) -> Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner::type_
+
+              attr_reader uri: String?
+
+              def uri=: (String) -> String
+
+              def initialize: (
+                ?id: String,
+                ?display_name: String?,
+                ?external_urls: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner::ExternalURLs,
+                ?href: String,
+                ?type: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner::type_,
+                ?uri: String
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                display_name: String?,
+                external_urls: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner::ExternalURLs,
+                href: String,
+                type: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner::type_,
+                uri: String
+              }
+
+              type external_urls = { spotify: String }
+
+              class ExternalURLs < Spotted::Internal::Type::BaseModel
+                attr_reader spotify: String?
+
+                def spotify=: (String) -> String
+
+                def initialize: (?spotify: String) -> void
+
+                def to_hash: -> { spotify: String }
+              end
+
+              type type_ = :user
+
+              module Type
+                extend Spotted::Internal::Type::Enum
+
+                USER: :user
+
+                def self?.values: -> ::Array[Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists::Item::Owner::type_]
+              end
+            end
+
+            type tracks = { href: String, total: Integer }
+
+            class Tracks < Spotted::Internal::Type::BaseModel
+              attr_reader href: String?
+
+              def href=: (String) -> String
+
+              attr_reader total: Integer?
+
+              def total=: (Integer) -> Integer
+
+              def initialize: (?href: String, ?total: Integer) -> void
+
+              def to_hash: -> { href: String, total: Integer }
+            end
+          end
+        end
+      end
+    end
+  end
+end

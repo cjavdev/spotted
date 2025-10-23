@@ -1,0 +1,9 @@
+module Spotted
+  module Models
+    module Me
+      type audiobook_check_response = ::Array[bool]
+
+      AudiobookCheckResponse: Spotted::Internal::Type::Converter
+    end
+  end
+end

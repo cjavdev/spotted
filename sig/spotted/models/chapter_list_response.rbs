@@ -1,0 +1,417 @@
+module Spotted
+  module Models
+    type chapter_list_response =
+      { chapters: ::Array[Spotted::Models::ChapterListResponse::Chapter] }
+
+    class ChapterListResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor chapters: ::Array[Spotted::Models::ChapterListResponse::Chapter]
+
+      def initialize: (
+        chapters: ::Array[Spotted::Models::ChapterListResponse::Chapter]
+      ) -> void
+
+      def to_hash: -> {
+        chapters: ::Array[Spotted::Models::ChapterListResponse::Chapter]
+      }
+
+      type chapter =
+        {
+          id: String,
+          audio_preview_url: String?,
+          audiobook: Spotted::Models::ChapterListResponse::Chapter::Audiobook,
+          chapter_number: Integer,
+          description: String,
+          duration_ms: Integer,
+          explicit: bool,
+          external_urls: Spotted::Models::ChapterListResponse::Chapter::ExternalURLs,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::Models::ChapterListResponse::Chapter::Image],
+          is_playable: bool,
+          languages: ::Array[String],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::ChapterListResponse::Chapter::release_date_precision,
+          type: Spotted::Models::ChapterListResponse::Chapter::type_,
+          uri: String,
+          available_markets: ::Array[String],
+          restrictions: Spotted::Models::ChapterListResponse::Chapter::Restrictions,
+          resume_point: Spotted::Models::ChapterListResponse::Chapter::ResumePoint
+        }
+
+      class Chapter < Spotted::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor audio_preview_url: String?
+
+        attr_accessor audiobook: Spotted::Models::ChapterListResponse::Chapter::Audiobook
+
+        attr_accessor chapter_number: Integer
+
+        attr_accessor description: String
+
+        attr_accessor duration_ms: Integer
+
+        attr_accessor explicit: bool
+
+        attr_accessor external_urls: Spotted::Models::ChapterListResponse::Chapter::ExternalURLs
+
+        attr_accessor href: String
+
+        attr_accessor html_description: String
+
+        attr_accessor images: ::Array[Spotted::Models::ChapterListResponse::Chapter::Image]
+
+        attr_accessor is_playable: bool
+
+        attr_accessor languages: ::Array[String]
+
+        attr_accessor name: String
+
+        attr_accessor release_date: String
+
+        attr_accessor release_date_precision: Spotted::Models::ChapterListResponse::Chapter::release_date_precision
+
+        attr_accessor type: Spotted::Models::ChapterListResponse::Chapter::type_
+
+        attr_accessor uri: String
+
+        attr_reader available_markets: ::Array[String]?
+
+        def available_markets=: (::Array[String]) -> ::Array[String]
+
+        attr_reader restrictions: Spotted::Models::ChapterListResponse::Chapter::Restrictions?
+
+        def restrictions=: (
+          Spotted::Models::ChapterListResponse::Chapter::Restrictions
+        ) -> Spotted::Models::ChapterListResponse::Chapter::Restrictions
+
+        attr_reader resume_point: Spotted::Models::ChapterListResponse::Chapter::ResumePoint?
+
+        def resume_point=: (
+          Spotted::Models::ChapterListResponse::Chapter::ResumePoint
+        ) -> Spotted::Models::ChapterListResponse::Chapter::ResumePoint
+
+        def initialize: (
+          id: String,
+          audio_preview_url: String?,
+          audiobook: Spotted::Models::ChapterListResponse::Chapter::Audiobook,
+          chapter_number: Integer,
+          description: String,
+          duration_ms: Integer,
+          explicit: bool,
+          external_urls: Spotted::Models::ChapterListResponse::Chapter::ExternalURLs,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::Models::ChapterListResponse::Chapter::Image],
+          is_playable: bool,
+          languages: ::Array[String],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::ChapterListResponse::Chapter::release_date_precision,
+          type: Spotted::Models::ChapterListResponse::Chapter::type_,
+          uri: String,
+          ?available_markets: ::Array[String],
+          ?restrictions: Spotted::Models::ChapterListResponse::Chapter::Restrictions,
+          ?resume_point: Spotted::Models::ChapterListResponse::Chapter::ResumePoint
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          audio_preview_url: String?,
+          audiobook: Spotted::Models::ChapterListResponse::Chapter::Audiobook,
+          chapter_number: Integer,
+          description: String,
+          duration_ms: Integer,
+          explicit: bool,
+          external_urls: Spotted::Models::ChapterListResponse::Chapter::ExternalURLs,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::Models::ChapterListResponse::Chapter::Image],
+          is_playable: bool,
+          languages: ::Array[String],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::ChapterListResponse::Chapter::release_date_precision,
+          type: Spotted::Models::ChapterListResponse::Chapter::type_,
+          uri: String,
+          available_markets: ::Array[String],
+          restrictions: Spotted::Models::ChapterListResponse::Chapter::Restrictions,
+          resume_point: Spotted::Models::ChapterListResponse::Chapter::ResumePoint
+        }
+
+        type audiobook =
+          {
+            id: String,
+            authors: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Author],
+            available_markets: ::Array[String],
+            copyrights: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Copyright],
+            description: String,
+            explicit: bool,
+            external_urls: Spotted::Models::ChapterListResponse::Chapter::Audiobook::ExternalURLs,
+            href: String,
+            html_description: String,
+            images: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Image],
+            languages: ::Array[String],
+            media_type: String,
+            name: String,
+            narrators: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Narrator],
+            publisher: String,
+            total_chapters: Integer,
+            type: Spotted::Models::ChapterListResponse::Chapter::Audiobook::type_,
+            uri: String,
+            edition: String
+          }
+
+        class Audiobook < Spotted::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor authors: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Author]
+
+          attr_accessor available_markets: ::Array[String]
+
+          attr_accessor copyrights: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Copyright]
+
+          attr_accessor description: String
+
+          attr_accessor explicit: bool
+
+          attr_accessor external_urls: Spotted::Models::ChapterListResponse::Chapter::Audiobook::ExternalURLs
+
+          attr_accessor href: String
+
+          attr_accessor html_description: String
+
+          attr_accessor images: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Image]
+
+          attr_accessor languages: ::Array[String]
+
+          attr_accessor media_type: String
+
+          attr_accessor name: String
+
+          attr_accessor narrators: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Narrator]
+
+          attr_accessor publisher: String
+
+          attr_accessor total_chapters: Integer
+
+          attr_accessor type: Spotted::Models::ChapterListResponse::Chapter::Audiobook::type_
+
+          attr_accessor uri: String
+
+          attr_reader edition: String?
+
+          def edition=: (String) -> String
+
+          def initialize: (
+            id: String,
+            authors: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Author],
+            available_markets: ::Array[String],
+            copyrights: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Copyright],
+            description: String,
+            explicit: bool,
+            external_urls: Spotted::Models::ChapterListResponse::Chapter::Audiobook::ExternalURLs,
+            href: String,
+            html_description: String,
+            images: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Image],
+            languages: ::Array[String],
+            media_type: String,
+            name: String,
+            narrators: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Narrator],
+            publisher: String,
+            total_chapters: Integer,
+            type: Spotted::Models::ChapterListResponse::Chapter::Audiobook::type_,
+            uri: String,
+            ?edition: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            authors: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Author],
+            available_markets: ::Array[String],
+            copyrights: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Copyright],
+            description: String,
+            explicit: bool,
+            external_urls: Spotted::Models::ChapterListResponse::Chapter::Audiobook::ExternalURLs,
+            href: String,
+            html_description: String,
+            images: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Image],
+            languages: ::Array[String],
+            media_type: String,
+            name: String,
+            narrators: ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::Narrator],
+            publisher: String,
+            total_chapters: Integer,
+            type: Spotted::Models::ChapterListResponse::Chapter::Audiobook::type_,
+            uri: String,
+            edition: String
+          }
+
+          type author = { name: String }
+
+          class Author < Spotted::Internal::Type::BaseModel
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            def initialize: (?name: String) -> void
+
+            def to_hash: -> { name: String }
+          end
+
+          type copyright = { text: String, type: String }
+
+          class Copyright < Spotted::Internal::Type::BaseModel
+            attr_reader text: String?
+
+            def text=: (String) -> String
+
+            attr_reader type: String?
+
+            def type=: (String) -> String
+
+            def initialize: (?text: String, ?type: String) -> void
+
+            def to_hash: -> { text: String, type: String }
+          end
+
+          type external_urls = { spotify: String }
+
+          class ExternalURLs < Spotted::Internal::Type::BaseModel
+            attr_reader spotify: String?
+
+            def spotify=: (String) -> String
+
+            def initialize: (?spotify: String) -> void
+
+            def to_hash: -> { spotify: String }
+          end
+
+          type image = { height: Integer?, url: String, width: Integer? }
+
+          class Image < Spotted::Internal::Type::BaseModel
+            attr_accessor height: Integer?
+
+            attr_accessor url: String
+
+            attr_accessor width: Integer?
+
+            def initialize: (
+              height: Integer?,
+              url: String,
+              width: Integer?
+            ) -> void
+
+            def to_hash: -> { height: Integer?, url: String, width: Integer? }
+          end
+
+          type narrator = { name: String }
+
+          class Narrator < Spotted::Internal::Type::BaseModel
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            def initialize: (?name: String) -> void
+
+            def to_hash: -> { name: String }
+          end
+
+          type type_ = :audiobook
+
+          module Type
+            extend Spotted::Internal::Type::Enum
+
+            AUDIOBOOK: :audiobook
+
+            def self?.values: -> ::Array[Spotted::Models::ChapterListResponse::Chapter::Audiobook::type_]
+          end
+        end
+
+        type external_urls = { spotify: String }
+
+        class ExternalURLs < Spotted::Internal::Type::BaseModel
+          attr_reader spotify: String?
+
+          def spotify=: (String) -> String
+
+          def initialize: (?spotify: String) -> void
+
+          def to_hash: -> { spotify: String }
+        end
+
+        type image = { height: Integer?, url: String, width: Integer? }
+
+        class Image < Spotted::Internal::Type::BaseModel
+          attr_accessor height: Integer?
+
+          attr_accessor url: String
+
+          attr_accessor width: Integer?
+
+          def initialize: (
+            height: Integer?,
+            url: String,
+            width: Integer?
+          ) -> void
+
+          def to_hash: -> { height: Integer?, url: String, width: Integer? }
+        end
+
+        type release_date_precision = :year | :month | :day
+
+        module ReleaseDatePrecision
+          extend Spotted::Internal::Type::Enum
+
+          YEAR: :year
+          MONTH: :month
+          DAY: :day
+
+          def self?.values: -> ::Array[Spotted::Models::ChapterListResponse::Chapter::release_date_precision]
+        end
+
+        type type_ = :episode
+
+        module Type
+          extend Spotted::Internal::Type::Enum
+
+          EPISODE: :episode
+
+          def self?.values: -> ::Array[Spotted::Models::ChapterListResponse::Chapter::type_]
+        end
+
+        type restrictions = { reason: String }
+
+        class Restrictions < Spotted::Internal::Type::BaseModel
+          attr_reader reason: String?
+
+          def reason=: (String) -> String
+
+          def initialize: (?reason: String) -> void
+
+          def to_hash: -> { reason: String }
+        end
+
+        type resume_point = { fully_played: bool, resume_position_ms: Integer }
+
+        class ResumePoint < Spotted::Internal::Type::BaseModel
+          attr_reader fully_played: bool?
+
+          def fully_played=: (bool) -> bool
+
+          attr_reader resume_position_ms: Integer?
+
+          def resume_position_ms=: (Integer) -> Integer
+
+          def initialize: (
+            ?fully_played: bool,
+            ?resume_position_ms: Integer
+          ) -> void
+
+          def to_hash: -> { fully_played: bool, resume_position_ms: Integer }
+        end
+      end
+    end
+  end
+end

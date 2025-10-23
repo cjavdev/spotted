@@ -1,0 +1,17 @@
+module Spotted
+  module Internal
+    module Type
+      type request_parameters = { request_options: Spotted::request_opts }
+
+      module RequestParameters
+        attr_reader request_options: Spotted::request_opts
+
+        def request_options=: (Spotted::request_opts) -> Spotted::request_opts
+
+        module Converter
+          def dump_request: (top params) -> [top, ::Hash[Symbol, top]]
+        end
+      end
+    end
+  end
+end

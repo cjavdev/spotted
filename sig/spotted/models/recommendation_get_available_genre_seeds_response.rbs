@@ -1,0 +1,14 @@
+module Spotted
+  module Models
+    type recommendation_get_available_genre_seeds_response =
+      { genres: ::Array[String] }
+
+    class RecommendationGetAvailableGenreSeedsResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor genres: ::Array[String]
+
+      def initialize: (genres: ::Array[String]) -> void
+
+      def to_hash: -> { genres: ::Array[String] }
+    end
+  end
+end

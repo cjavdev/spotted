@@ -1,0 +1,27 @@
+module Spotted
+  module Resources
+    class Albums
+      def retrieve: (
+        String id,
+        ?market: String,
+        ?request_options: Spotted::request_opts
+      ) -> Spotted::Models::AlbumRetrieveResponse
+
+      def list: (
+        ids: String,
+        ?market: String,
+        ?request_options: Spotted::request_opts
+      ) -> Spotted::Models::AlbumListResponse
+
+      def get_tracks: (
+        String id,
+        ?limit: Integer,
+        ?market: String,
+        ?offset: Integer,
+        ?request_options: Spotted::request_opts
+      ) -> Spotted::Models::AlbumGetTracksResponse
+
+      def initialize: (client: Spotted::Client) -> void
+    end
+  end
+end
