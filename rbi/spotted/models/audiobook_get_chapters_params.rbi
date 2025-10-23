@@ -2,16 +2,13 @@
 
 module Spotted
   module Models
-    class AudiobookRetrieveChaptersParams < Spotted::Internal::Type::BaseModel
+    class AudiobookGetChaptersParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
       OrHash =
         T.type_alias do
-          T.any(
-            Spotted::AudiobookRetrieveChaptersParams,
-            Spotted::Internal::AnyHash
-          )
+          T.any(Spotted::AudiobookGetChaptersParams, Spotted::Internal::AnyHash)
         end
 
       # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.

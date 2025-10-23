@@ -2,8 +2,8 @@
 
 module Spotted
   module Models
-    # @see Spotted::Resources::Audiobooks#retrieve_chapters
-    class AudiobookRetrieveChaptersParams < Spotted::Internal::Type::BaseModel
+    # @see Spotted::Resources::Audiobooks#get_chapters
+    class AudiobookGetChaptersParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
@@ -36,7 +36,7 @@ module Spotted
 
       # @!method initialize(limit: nil, market: nil, offset: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
-      #   {Spotted::Models::AudiobookRetrieveChaptersParams} for more details.
+      #   {Spotted::Models::AudiobookGetChaptersParams} for more details.
       #
       #   @param limit [Integer] The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
       #

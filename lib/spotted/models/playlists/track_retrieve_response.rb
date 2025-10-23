@@ -3,8 +3,8 @@
 module Spotted
   module Models
     module Playlists
-      # @see Spotted::Resources::Playlists::Tracks#list
-      class TrackListResponse < Spotted::Internal::Type::BaseModel
+      # @see Spotted::Resources::Playlists::Tracks#retrieve
+      class TrackRetrieveResponse < Spotted::Internal::Type::BaseModel
         # @!attribute href
         #   A link to the Web API endpoint returning the full result of the request
         #
@@ -13,9 +13,9 @@ module Spotted
 
         # @!attribute items
         #
-        #   @return [Array<Spotted::Models::Playlists::TrackListResponse::Item>]
+        #   @return [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item>]
         required :items,
-                 -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackListResponse::Item] }
+                 -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackRetrieveResponse::Item] }
 
         # @!attribute limit
         #   The maximum number of items in the response (as set in the query or by default).
@@ -49,11 +49,11 @@ module Spotted
 
         # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
         #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::Playlists::TrackListResponse} for more details.
+        #   {Spotted::Models::Playlists::TrackRetrieveResponse} for more details.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
         #
-        #   @param items [Array<Spotted::Models::Playlists::TrackListResponse::Item>]
+        #   @param items [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item>]
         #
         #   @param limit [Integer] The maximum number of items in the response (as set in the query or by default).
         #
@@ -77,8 +77,8 @@ module Spotted
           #   The Spotify user who added the track or episode. _**Note**: some very old
           #   playlists may return `null` in this field._
           #
-          #   @return [Spotted::Models::Playlists::TrackListResponse::Item::AddedBy, nil]
-          optional :added_by, -> { Spotted::Models::Playlists::TrackListResponse::Item::AddedBy }
+          #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy, nil]
+          optional :added_by, -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy }
 
           # @!attribute is_local
           #   Whether this track or episode is a
@@ -90,24 +90,24 @@ module Spotted
           # @!attribute track
           #   Information about the track or episode.
           #
-          #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track, Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode, nil]
-          optional :track, union: -> { Spotted::Models::Playlists::TrackListResponse::Item::Track }
+          #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode, nil]
+          optional :track, union: -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track }
 
           # @!method initialize(added_at: nil, added_by: nil, is_local: nil, track: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Spotted::Models::Playlists::TrackListResponse::Item} for more details.
+          #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item} for more details.
           #
           #   @param added_at [Time] The date and time the track or episode was added. \_**Note**: some very old
           #   playl
           #
-          #   @param added_by [Spotted::Models::Playlists::TrackListResponse::Item::AddedBy] The Spotify user who added the track or episode. \_**Note**: some very old
+          #   @param added_by [Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy] The Spotify user who added the track or episode. \_**Note**: some very old
           #   playli
           #
           #   @param is_local [Boolean] Whether this track or episode is a [local file](/documentation/web-api/concepts/
           #
-          #   @param track [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track, Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode] Information about the track or episode.
+          #   @param track [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode] Information about the track or episode.
 
-          # @see Spotted::Models::Playlists::TrackListResponse::Item#added_by
+          # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item#added_by
           class AddedBy < Spotted::Internal::Type::BaseModel
             # @!attribute id
             #   The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this
@@ -119,8 +119,9 @@ module Spotted
             # @!attribute external_urls
             #   Known public external URLs for this user.
             #
-            #   @return [Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs, nil]
-            optional :external_urls, -> { Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs }
+            #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs, nil]
+            optional :external_urls,
+                     -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs }
 
             # @!attribute href
             #   A link to the Web API endpoint for this user.
@@ -131,8 +132,8 @@ module Spotted
             # @!attribute type
             #   The object type.
             #
-            #   @return [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::Type, nil]
-            optional :type, enum: -> { Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::Type }
+            #   @return [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::Type, nil]
+            optional :type, enum: -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::Type }
 
             # @!attribute uri
             #   The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for this
@@ -143,22 +144,23 @@ module Spotted
 
             # @!method initialize(id: nil, external_urls: nil, href: nil, type: nil, uri: nil)
             #   Some parameter documentations has been truncated, see
-            #   {Spotted::Models::Playlists::TrackListResponse::Item::AddedBy} for more details.
+            #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy} for more
+            #   details.
             #
             #   The Spotify user who added the track or episode. _**Note**: some very old
             #   playlists may return `null` in this field._
             #
             #   @param id [String] The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this
             #
-            #   @param external_urls [Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs] Known public external URLs for this user.
+            #   @param external_urls [Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs] Known public external URLs for this user.
             #
             #   @param href [String] A link to the Web API endpoint for this user.
             #
-            #   @param type [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::Type] The object type.
+            #   @param type [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::Type] The object type.
             #
             #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for this use
 
-            # @see Spotted::Models::Playlists::TrackListResponse::Item::AddedBy#external_urls
+            # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy#external_urls
             class ExternalURLs < Spotted::Internal::Type::BaseModel
               # @!attribute spotify
               #   The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -169,8 +171,8 @@ module Spotted
 
               # @!method initialize(spotify: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs} for
-              #   more details.
+              #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs}
+              #   for more details.
               #
               #   Known public external URLs for this user.
               #
@@ -179,7 +181,7 @@ module Spotted
 
             # The object type.
             #
-            # @see Spotted::Models::Playlists::TrackListResponse::Item::AddedBy#type
+            # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy#type
             module Type
               extend Spotted::Internal::Type::Enum
 
@@ -192,15 +194,15 @@ module Spotted
 
           # Information about the track or episode.
           #
-          # @see Spotted::Models::Playlists::TrackListResponse::Item#track
+          # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item#track
           module Track
             extend Spotted::Internal::Type::Union
 
             discriminator :type
 
-            variant :track, -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track }
+            variant :track, -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track }
 
-            variant :episode, -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode }
+            variant :episode, -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode }
 
             class Track < Spotted::Internal::Type::BaseModel
               # @!attribute id
@@ -214,16 +216,16 @@ module Spotted
               #   The album on which the track appears. The album object includes a link in `href`
               #   to full information about the album.
               #
-              #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album, nil]
-              optional :album, -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album }
+              #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album, nil]
+              optional :album, -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album }
 
               # @!attribute artists
               #   The artists who performed the track. Each artist object includes a link in
               #   `href` to more detailed information about the artist.
               #
-              #   @return [Array<Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist>, nil]
+              #   @return [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist>, nil]
               optional :artists,
-                       -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist] }
+                       -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist] }
 
               # @!attribute available_markets
               #   A list of the countries in which the track can be played, identified by their
@@ -254,16 +256,16 @@ module Spotted
               # @!attribute external_ids
               #   Known external IDs for the track.
               #
-              #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs, nil]
+              #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs, nil]
               optional :external_ids,
-                       -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs }
+                       -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs }
 
               # @!attribute external_urls
               #   Known external URLs for this track.
               #
-              #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs, nil]
+              #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs, nil]
               optional :external_urls,
-                       -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs }
+                       -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs }
 
               # @!attribute href
               #   A link to the Web API endpoint providing full details of the track.
@@ -326,9 +328,9 @@ module Spotted
               # @!attribute restrictions
               #   Included in the response when a content restriction is applied.
               #
-              #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions, nil]
+              #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions, nil]
               optional :restrictions,
-                       -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions }
+                       -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions }
 
               # @!attribute track_number
               #   The number of the track. If an album has several discs, the track number is the
@@ -340,8 +342,8 @@ module Spotted
               # @!attribute type
               #   The object type: "track".
               #
-              #   @return [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Type, nil]
-              optional :type, enum: -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Type }
+              #   @return [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Type, nil]
+              optional :type, enum: -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Type }
 
               # @!attribute uri
               #   The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -352,14 +354,14 @@ module Spotted
 
               # @!method initialize(id: nil, album: nil, artists: nil, available_markets: nil, disc_number: nil, duration_ms: nil, explicit: nil, external_ids: nil, external_urls: nil, href: nil, is_local: nil, is_playable: nil, linked_from: nil, name: nil, popularity: nil, preview_url: nil, restrictions: nil, track_number: nil, type: nil, uri: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Track} for more
+              #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track} for more
               #   details.
               #
               #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track
               #
-              #   @param album [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album] The album on which the track appears. The album object includes a link in `href`
+              #   @param album [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album] The album on which the track appears. The album object includes a link in `href`
               #
-              #   @param artists [Array<Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist>] The artists who performed the track. Each artist object includes a link in `href
+              #   @param artists [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist>] The artists who performed the track. Each artist object includes a link in `href
               #
               #   @param available_markets [Array<String>] A list of the countries in which the track can be played, identified by their [I
               #
@@ -369,9 +371,9 @@ module Spotted
               #
               #   @param explicit [Boolean] Whether or not the track has explicit lyrics ( `true` = yes it does; `false` = n
               #
-              #   @param external_ids [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs] Known external IDs for the track.
+              #   @param external_ids [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs] Known external IDs for the track.
               #
-              #   @param external_urls [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs] Known external URLs for this track.
+              #   @param external_urls [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs] Known external URLs for this track.
               #
               #   @param href [String] A link to the Web API endpoint providing full details of the track.
               #
@@ -387,15 +389,15 @@ module Spotted
               #
               #   @param preview_url [String, nil] A link to a 30 second preview (MP3 format) of the track. Can be `null`
               #
-              #   @param restrictions [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions] Included in the response when a content restriction is applied.
+              #   @param restrictions [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions] Included in the response when a content restriction is applied.
               #
               #   @param track_number [Integer] The number of the track. If an album has several discs, the track number is the
               #
-              #   @param type [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Type] The object type: "track".
+              #   @param type [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Type] The object type: "track".
               #
               #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the trac
 
-              # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track#album
+              # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track#album
               class Album < Spotted::Internal::Type::BaseModel
                 # @!attribute id
                 #   The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -407,17 +409,17 @@ module Spotted
                 # @!attribute album_type
                 #   The type of the album.
                 #
-                #   @return [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::AlbumType]
+                #   @return [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::AlbumType]
                 required :album_type,
-                         enum: -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::AlbumType }
+                         enum: -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::AlbumType }
 
                 # @!attribute artists
                 #   The artists of the album. Each artist object includes a link in `href` to more
                 #   detailed information about the artist.
                 #
-                #   @return [Array<Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist>]
+                #   @return [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist>]
                 required :artists,
-                         -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist] }
+                         -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist] }
 
                 # @!attribute available_markets
                 #   The markets in which the album is available:
@@ -431,9 +433,9 @@ module Spotted
                 # @!attribute external_urls
                 #   Known external URLs for this album.
                 #
-                #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ExternalURLs]
+                #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ExternalURLs]
                 required :external_urls,
-                         -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ExternalURLs }
+                         -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ExternalURLs }
 
                 # @!attribute href
                 #   A link to the Web API endpoint providing full details of the album.
@@ -444,9 +446,9 @@ module Spotted
                 # @!attribute images
                 #   The cover art for the album in various sizes, widest first.
                 #
-                #   @return [Array<Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Image>]
+                #   @return [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Image>]
                 required :images,
-                         -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Image] }
+                         -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Image] }
 
                 # @!attribute name
                 #   The name of the album. In case of an album takedown, the value may be an empty
@@ -464,9 +466,9 @@ module Spotted
                 # @!attribute release_date_precision
                 #   The precision with which `release_date` value is known.
                 #
-                #   @return [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ReleaseDatePrecision]
+                #   @return [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ReleaseDatePrecision]
                 required :release_date_precision,
-                         enum: -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ReleaseDatePrecision }
+                         enum: -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ReleaseDatePrecision }
 
                 # @!attribute total_tracks
                 #   The number of tracks in the album.
@@ -477,9 +479,9 @@ module Spotted
                 # @!attribute type
                 #   The object type.
                 #
-                #   @return [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Type]
+                #   @return [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Type]
                 required :type,
-                         enum: -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Type }
+                         enum: -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Type }
 
                 # @!attribute uri
                 #   The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -491,49 +493,49 @@ module Spotted
                 # @!attribute restrictions
                 #   Included in the response when a content restriction is applied.
                 #
-                #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions, nil]
+                #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions, nil]
                 optional :restrictions,
-                         -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions }
+                         -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions }
 
                 # @!method initialize(id:, album_type:, artists:, available_markets:, external_urls:, href:, images:, name:, release_date:, release_date_precision:, total_tracks:, type:, uri:, restrictions: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album} for
-                #   more details.
+                #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album}
+                #   for more details.
                 #
                 #   The album on which the track appears. The album object includes a link in `href`
                 #   to full information about the album.
                 #
                 #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the album
                 #
-                #   @param album_type [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::AlbumType] The type of the album.
+                #   @param album_type [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::AlbumType] The type of the album.
                 #
-                #   @param artists [Array<Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist>] The artists of the album. Each artist object includes a link in `href` to more d
+                #   @param artists [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist>] The artists of the album. Each artist object includes a link in `href` to more d
                 #
                 #   @param available_markets [Array<String>] The markets in which the album is available: [ISO 3166-1 alpha-2 country codes](
                 #
-                #   @param external_urls [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ExternalURLs] Known external URLs for this album.
+                #   @param external_urls [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ExternalURLs] Known external URLs for this album.
                 #
                 #   @param href [String] A link to the Web API endpoint providing full details of the album.
                 #
-                #   @param images [Array<Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Image>] The cover art for the album in various sizes, widest first.
+                #   @param images [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Image>] The cover art for the album in various sizes, widest first.
                 #
                 #   @param name [String] The name of the album. In case of an album takedown, the value may be an empty s
                 #
                 #   @param release_date [String] The date the album was first released.
                 #
-                #   @param release_date_precision [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ReleaseDatePrecision] The precision with which `release_date` value is known.
+                #   @param release_date_precision [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ReleaseDatePrecision] The precision with which `release_date` value is known.
                 #
                 #   @param total_tracks [Integer] The number of tracks in the album.
                 #
-                #   @param type [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Type] The object type.
+                #   @param type [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Type] The object type.
                 #
                 #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the albu
                 #
-                #   @param restrictions [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions] Included in the response when a content restriction is applied.
+                #   @param restrictions [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions] Included in the response when a content restriction is applied.
 
                 # The type of the album.
                 #
-                # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album#album_type
+                # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album#album_type
                 module AlbumType
                   extend Spotted::Internal::Type::Enum
 
@@ -556,9 +558,9 @@ module Spotted
                   # @!attribute external_urls
                   #   Known external URLs for this artist.
                   #
-                  #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs, nil]
+                  #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs, nil]
                   optional :external_urls,
-                           -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs }
+                           -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs }
 
                   # @!attribute href
                   #   A link to the Web API endpoint providing full details of the artist.
@@ -575,9 +577,9 @@ module Spotted
                   # @!attribute type
                   #   The object type.
                   #
-                  #   @return [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::Type, nil]
+                  #   @return [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::Type, nil]
                   optional :type,
-                           enum: -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::Type }
+                           enum: -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::Type }
 
                   # @!attribute uri
                   #   The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -588,22 +590,22 @@ module Spotted
 
                   # @!method initialize(id: nil, external_urls: nil, href: nil, name: nil, type: nil, uri: nil)
                   #   Some parameter documentations has been truncated, see
-                  #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist}
+                  #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist}
                   #   for more details.
                   #
                   #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artis
                   #
-                  #   @param external_urls [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs] Known external URLs for this artist.
+                  #   @param external_urls [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs] Known external URLs for this artist.
                   #
                   #   @param href [String] A link to the Web API endpoint providing full details of the artist.
                   #
                   #   @param name [String] The name of the artist.
                   #
-                  #   @param type [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::Type] The object type.
+                  #   @param type [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::Type] The object type.
                   #
                   #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the arti
 
-                  # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist#external_urls
+                  # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist#external_urls
                   class ExternalURLs < Spotted::Internal::Type::BaseModel
                     # @!attribute spotify
                     #   The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -614,7 +616,7 @@ module Spotted
 
                     # @!method initialize(spotify: nil)
                     #   Some parameter documentations has been truncated, see
-                    #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs}
+                    #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs}
                     #   for more details.
                     #
                     #   Known external URLs for this artist.
@@ -624,7 +626,7 @@ module Spotted
 
                   # The object type.
                   #
-                  # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist#type
+                  # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist#type
                   module Type
                     extend Spotted::Internal::Type::Enum
 
@@ -635,7 +637,7 @@ module Spotted
                   end
                 end
 
-                # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album#external_urls
+                # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album#external_urls
                 class ExternalURLs < Spotted::Internal::Type::BaseModel
                   # @!attribute spotify
                   #   The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -646,7 +648,7 @@ module Spotted
 
                   # @!method initialize(spotify: nil)
                   #   Some parameter documentations has been truncated, see
-                  #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ExternalURLs}
+                  #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ExternalURLs}
                   #   for more details.
                   #
                   #   Known external URLs for this album.
@@ -675,7 +677,7 @@ module Spotted
 
                   # @!method initialize(height:, url:, width:)
                   #   Some parameter documentations has been truncated, see
-                  #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Image}
+                  #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Image}
                   #   for more details.
                   #
                   #   @param height [Integer, nil] The image height in pixels.
@@ -687,7 +689,7 @@ module Spotted
 
                 # The precision with which `release_date` value is known.
                 #
-                # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album#release_date_precision
+                # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album#release_date_precision
                 module ReleaseDatePrecision
                   extend Spotted::Internal::Type::Enum
 
@@ -701,7 +703,7 @@ module Spotted
 
                 # The object type.
                 #
-                # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album#type
+                # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album#type
                 module Type
                   extend Spotted::Internal::Type::Enum
 
@@ -711,7 +713,7 @@ module Spotted
                   #   @return [Array<Symbol>]
                 end
 
-                # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album#restrictions
+                # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album#restrictions
                 class Restrictions < Spotted::Internal::Type::BaseModel
                   # @!attribute reason
                   #   The reason for the restriction. Albums may be restricted if the content is not
@@ -719,25 +721,25 @@ module Spotted
                   #   account is set to not play explicit content. Additional reasons may be added in
                   #   the future.
                   #
-                  #   @return [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::Reason, nil]
+                  #   @return [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::Reason, nil]
                   optional :reason,
-                           enum: -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::Reason }
+                           enum: -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::Reason }
 
                   # @!method initialize(reason: nil)
                   #   Some parameter documentations has been truncated, see
-                  #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions}
+                  #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions}
                   #   for more details.
                   #
                   #   Included in the response when a content restriction is applied.
                   #
-                  #   @param reason [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::Reason] The reason for the restriction. Albums may be restricted if the content is not a
+                  #   @param reason [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::Reason] The reason for the restriction. Albums may be restricted if the content is not a
 
                   # The reason for the restriction. Albums may be restricted if the content is not
                   # available in a given market, to the user's subscription type, or when the user's
                   # account is set to not play explicit content. Additional reasons may be added in
                   # the future.
                   #
-                  # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions#reason
+                  # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions#reason
                   module Reason
                     extend Spotted::Internal::Type::Enum
 
@@ -762,9 +764,9 @@ module Spotted
                 # @!attribute external_urls
                 #   Known external URLs for this artist.
                 #
-                #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs, nil]
+                #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs, nil]
                 optional :external_urls,
-                         -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs }
+                         -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs }
 
                 # @!attribute href
                 #   A link to the Web API endpoint providing full details of the artist.
@@ -781,9 +783,9 @@ module Spotted
                 # @!attribute type
                 #   The object type.
                 #
-                #   @return [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::Type, nil]
+                #   @return [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::Type, nil]
                 optional :type,
-                         enum: -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::Type }
+                         enum: -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::Type }
 
                 # @!attribute uri
                 #   The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -794,22 +796,22 @@ module Spotted
 
                 # @!method initialize(id: nil, external_urls: nil, href: nil, name: nil, type: nil, uri: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist} for
-                #   more details.
+                #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist}
+                #   for more details.
                 #
                 #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artis
                 #
-                #   @param external_urls [Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs] Known external URLs for this artist.
+                #   @param external_urls [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs] Known external URLs for this artist.
                 #
                 #   @param href [String] A link to the Web API endpoint providing full details of the artist.
                 #
                 #   @param name [String] The name of the artist.
                 #
-                #   @param type [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::Type] The object type.
+                #   @param type [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::Type] The object type.
                 #
                 #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the arti
 
-                # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist#external_urls
+                # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist#external_urls
                 class ExternalURLs < Spotted::Internal::Type::BaseModel
                   # @!attribute spotify
                   #   The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -820,7 +822,7 @@ module Spotted
 
                   # @!method initialize(spotify: nil)
                   #   Some parameter documentations has been truncated, see
-                  #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs}
+                  #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs}
                   #   for more details.
                   #
                   #   Known external URLs for this artist.
@@ -830,7 +832,7 @@ module Spotted
 
                 # The object type.
                 #
-                # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist#type
+                # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist#type
                 module Type
                   extend Spotted::Internal::Type::Enum
 
@@ -841,7 +843,7 @@ module Spotted
                 end
               end
 
-              # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track#external_ids
+              # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track#external_ids
               class ExternalIDs < Spotted::Internal::Type::BaseModel
                 # @!attribute ean
                 #   [International Article Number](http://en.wikipedia.org/wiki/International_Article_Number_%28EAN%29)
@@ -863,7 +865,7 @@ module Spotted
 
                 # @!method initialize(ean: nil, isrc: nil, upc: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs}
+                #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs}
                 #   for more details.
                 #
                 #   Known external IDs for the track.
@@ -875,7 +877,7 @@ module Spotted
                 #   @param upc [String] [Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code)
               end
 
-              # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track#external_urls
+              # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track#external_urls
               class ExternalURLs < Spotted::Internal::Type::BaseModel
                 # @!attribute spotify
                 #   The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -886,7 +888,7 @@ module Spotted
 
                 # @!method initialize(spotify: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs}
+                #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs}
                 #   for more details.
                 #
                 #   Known external URLs for this track.
@@ -894,7 +896,7 @@ module Spotted
                 #   @param spotify [String] The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the obje
               end
 
-              # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track#restrictions
+              # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track#restrictions
               class Restrictions < Spotted::Internal::Type::BaseModel
                 # @!attribute reason
                 #   The reason for the restriction. Supported values:
@@ -913,7 +915,7 @@ module Spotted
 
                 # @!method initialize(reason: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions}
+                #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions}
                 #   for more details.
                 #
                 #   Included in the response when a content restriction is applied.
@@ -923,7 +925,7 @@ module Spotted
 
               # The object type: "track".
               #
-              # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Track#type
+              # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track#type
               module Type
                 extend Spotted::Internal::Type::Enum
 
@@ -974,9 +976,9 @@ module Spotted
               # @!attribute external_urls
               #   External URLs for this episode.
               #
-              #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ExternalURLs]
+              #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ExternalURLs]
               required :external_urls,
-                       -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ExternalURLs }
+                       -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ExternalURLs }
 
               # @!attribute href
               #   A link to the Web API endpoint providing full details of the episode.
@@ -993,9 +995,9 @@ module Spotted
               # @!attribute images
               #   The cover art for the episode in various sizes, widest first.
               #
-              #   @return [Array<Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Image>]
+              #   @return [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Image>]
               required :images,
-                       -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Image] }
+                       -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Image] }
 
               # @!attribute is_externally_hosted
               #   True if the episode is hosted outside of Spotify's CDN.
@@ -1032,15 +1034,15 @@ module Spotted
               # @!attribute release_date_precision
               #   The precision with which `release_date` value is known.
               #
-              #   @return [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ReleaseDatePrecision]
+              #   @return [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ReleaseDatePrecision]
               required :release_date_precision,
-                       enum: -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ReleaseDatePrecision }
+                       enum: -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ReleaseDatePrecision }
 
               # @!attribute show
               #   The show on which the episode belongs.
               #
-              #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show]
-              required :show, -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show }
+              #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show]
+              required :show, -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show }
 
               # @!attribute type
               #   The object type.
@@ -1068,22 +1070,22 @@ module Spotted
               # @!attribute restrictions
               #   Included in the response when a content restriction is applied.
               #
-              #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions, nil]
+              #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions, nil]
               optional :restrictions,
-                       -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions }
+                       -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions }
 
               # @!attribute resume_point
               #   The user's most recent position in the episode. Set if the supplied access token
               #   is a user token and has the scope 'user-read-playback-position'.
               #
-              #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint, nil]
+              #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint, nil]
               optional :resume_point,
-                       -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint }
+                       -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint }
 
               # @!method initialize(id:, audio_preview_url:, description:, duration_ms:, explicit:, external_urls:, href:, html_description:, images:, is_externally_hosted:, is_playable:, languages:, name:, release_date:, release_date_precision:, show:, uri:, language: nil, restrictions: nil, resume_point: nil, type: :episode)
               #   Some parameter documentations has been truncated, see
-              #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode} for more
-              #   details.
+              #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode} for
+              #   more details.
               #
               #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the episo
               #
@@ -1095,13 +1097,13 @@ module Spotted
               #
               #   @param explicit [Boolean] Whether or not the episode has explicit content (true = yes it does; false = no
               #
-              #   @param external_urls [Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ExternalURLs] External URLs for this episode.
+              #   @param external_urls [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ExternalURLs] External URLs for this episode.
               #
               #   @param href [String] A link to the Web API endpoint providing full details of the episode.
               #
               #   @param html_description [String] A description of the episode. This field may contain HTML tags.
               #
-              #   @param images [Array<Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Image>] The cover art for the episode in various sizes, widest first.
+              #   @param images [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Image>] The cover art for the episode in various sizes, widest first.
               #
               #   @param is_externally_hosted [Boolean] True if the episode is hosted outside of Spotify's CDN.
               #
@@ -1113,21 +1115,21 @@ module Spotted
               #
               #   @param release_date [String] The date the episode was first released, for example `"1981-12-15"`. Depending o
               #
-              #   @param release_date_precision [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ReleaseDatePrecision] The precision with which `release_date` value is known.
+              #   @param release_date_precision [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ReleaseDatePrecision] The precision with which `release_date` value is known.
               #
-              #   @param show [Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show] The show on which the episode belongs.
+              #   @param show [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show] The show on which the episode belongs.
               #
               #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the epis
               #
               #   @param language [String] The language used in the episode, identified by a [ISO 639](https://en.wikipedia
               #
-              #   @param restrictions [Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions] Included in the response when a content restriction is applied.
+              #   @param restrictions [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions] Included in the response when a content restriction is applied.
               #
-              #   @param resume_point [Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint] The user's most recent position in the episode. Set if the supplied access token
+              #   @param resume_point [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint] The user's most recent position in the episode. Set if the supplied access token
               #
               #   @param type [Symbol, :episode] The object type.
 
-              # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode#external_urls
+              # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode#external_urls
               class ExternalURLs < Spotted::Internal::Type::BaseModel
                 # @!attribute spotify
                 #   The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -1138,7 +1140,7 @@ module Spotted
 
                 # @!method initialize(spotify: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ExternalURLs}
+                #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ExternalURLs}
                 #   for more details.
                 #
                 #   External URLs for this episode.
@@ -1167,8 +1169,8 @@ module Spotted
 
                 # @!method initialize(height:, url:, width:)
                 #   Some parameter documentations has been truncated, see
-                #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Image} for
-                #   more details.
+                #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Image}
+                #   for more details.
                 #
                 #   @param height [Integer, nil] The image height in pixels.
                 #
@@ -1179,7 +1181,7 @@ module Spotted
 
               # The precision with which `release_date` value is known.
               #
-              # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode#release_date_precision
+              # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode#release_date_precision
               module ReleaseDatePrecision
                 extend Spotted::Internal::Type::Enum
 
@@ -1191,7 +1193,7 @@ module Spotted
                 #   @return [Array<Symbol>]
               end
 
-              # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode#show
+              # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode#show
               class Show < Spotted::Internal::Type::BaseModel
                 # @!attribute id
                 #   The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.
@@ -1209,9 +1211,9 @@ module Spotted
                 # @!attribute copyrights
                 #   The copyright statements of the show.
                 #
-                #   @return [Array<Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Copyright>]
+                #   @return [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Copyright>]
                 required :copyrights,
-                         -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Copyright] }
+                         -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Copyright] }
 
                 # @!attribute description
                 #   A description of the show. HTML tags are stripped away from this field, use
@@ -1230,9 +1232,9 @@ module Spotted
                 # @!attribute external_urls
                 #   External URLs for this show.
                 #
-                #   @return [Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::ExternalURLs]
+                #   @return [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::ExternalURLs]
                 required :external_urls,
-                         -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::ExternalURLs }
+                         -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::ExternalURLs }
 
                 # @!attribute href
                 #   A link to the Web API endpoint providing full details of the show.
@@ -1249,9 +1251,9 @@ module Spotted
                 # @!attribute images
                 #   The cover art for the show in various sizes, widest first.
                 #
-                #   @return [Array<Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Image>]
+                #   @return [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Image>]
                 required :images,
-                         -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Image] }
+                         -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Image] }
 
                 # @!attribute is_externally_hosted
                 #   True if all of the shows episodes are hosted outside of Spotify's CDN. This
@@ -1294,9 +1296,9 @@ module Spotted
                 # @!attribute type
                 #   The object type.
                 #
-                #   @return [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Type]
+                #   @return [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Type]
                 required :type,
-                         enum: -> { Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Type }
+                         enum: -> { Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Type }
 
                 # @!attribute uri
                 #   The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -1307,8 +1309,8 @@ module Spotted
 
                 # @!method initialize(id:, available_markets:, copyrights:, description:, explicit:, external_urls:, href:, html_description:, images:, is_externally_hosted:, languages:, media_type:, name:, publisher:, total_episodes:, type:, uri:)
                 #   Some parameter documentations has been truncated, see
-                #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show} for
-                #   more details.
+                #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show}
+                #   for more details.
                 #
                 #   The show on which the episode belongs.
                 #
@@ -1316,19 +1318,19 @@ module Spotted
                 #
                 #   @param available_markets [Array<String>] A list of the countries in which the show can be played, identified by their [IS
                 #
-                #   @param copyrights [Array<Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Copyright>] The copyright statements of the show.
+                #   @param copyrights [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Copyright>] The copyright statements of the show.
                 #
                 #   @param description [String] A description of the show. HTML tags are stripped away from this field, use `htm
                 #
                 #   @param explicit [Boolean] Whether or not the show has explicit content (true = yes it does; false = no it
                 #
-                #   @param external_urls [Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::ExternalURLs] External URLs for this show.
+                #   @param external_urls [Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::ExternalURLs] External URLs for this show.
                 #
                 #   @param href [String] A link to the Web API endpoint providing full details of the show.
                 #
                 #   @param html_description [String] A description of the show. This field may contain HTML tags.
                 #
-                #   @param images [Array<Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Image>] The cover art for the show in various sizes, widest first.
+                #   @param images [Array<Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Image>] The cover art for the show in various sizes, widest first.
                 #
                 #   @param is_externally_hosted [Boolean] True if all of the shows episodes are hosted outside of Spotify's CDN. This fiel
                 #
@@ -1342,7 +1344,7 @@ module Spotted
                 #
                 #   @param total_episodes [Integer] The total number of episodes in the show.
                 #
-                #   @param type [Symbol, Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Type] The object type.
+                #   @param type [Symbol, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Type] The object type.
                 #
                 #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the show
 
@@ -1362,7 +1364,7 @@ module Spotted
 
                   # @!method initialize(text: nil, type: nil)
                   #   Some parameter documentations has been truncated, see
-                  #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Copyright}
+                  #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Copyright}
                   #   for more details.
                   #
                   #   @param text [String] The copyright text for this content.
@@ -1370,7 +1372,7 @@ module Spotted
                   #   @param type [String] The type of copyright: `C` = the copyright, `P` = the sound recording (performan
                 end
 
-                # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show#external_urls
+                # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show#external_urls
                 class ExternalURLs < Spotted::Internal::Type::BaseModel
                   # @!attribute spotify
                   #   The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -1381,7 +1383,7 @@ module Spotted
 
                   # @!method initialize(spotify: nil)
                   #   Some parameter documentations has been truncated, see
-                  #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::ExternalURLs}
+                  #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::ExternalURLs}
                   #   for more details.
                   #
                   #   External URLs for this show.
@@ -1410,7 +1412,7 @@ module Spotted
 
                   # @!method initialize(height:, url:, width:)
                   #   Some parameter documentations has been truncated, see
-                  #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Image}
+                  #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Image}
                   #   for more details.
                   #
                   #   @param height [Integer, nil] The image height in pixels.
@@ -1422,7 +1424,7 @@ module Spotted
 
                 # The object type.
                 #
-                # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show#type
+                # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show#type
                 module Type
                   extend Spotted::Internal::Type::Enum
 
@@ -1433,7 +1435,7 @@ module Spotted
                 end
               end
 
-              # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode#restrictions
+              # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode#restrictions
               class Restrictions < Spotted::Internal::Type::BaseModel
                 # @!attribute reason
                 #   The reason for the restriction. Supported values:
@@ -1452,7 +1454,7 @@ module Spotted
 
                 # @!method initialize(reason: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions}
+                #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions}
                 #   for more details.
                 #
                 #   Included in the response when a content restriction is applied.
@@ -1460,7 +1462,7 @@ module Spotted
                 #   @param reason [String] The reason for the restriction. Supported values:
               end
 
-              # @see Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode#resume_point
+              # @see Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode#resume_point
               class ResumePoint < Spotted::Internal::Type::BaseModel
                 # @!attribute fully_played
                 #   Whether or not the episode has been fully played by the user.
@@ -1476,7 +1478,7 @@ module Spotted
 
                 # @!method initialize(fully_played: nil, resume_position_ms: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint}
+                #   {Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint}
                 #   for more details.
                 #
                 #   The user's most recent position in the episode. Set if the supplied access token
@@ -1489,7 +1491,7 @@ module Spotted
             end
 
             # @!method self.variants
-            #   @return [Array(Spotted::Models::Playlists::TrackListResponse::Item::Track::Track, Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode)]
+            #   @return [Array(Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track, Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode)]
           end
         end
       end

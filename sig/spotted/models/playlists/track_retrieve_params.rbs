@@ -1,7 +1,7 @@
 module Spotted
   module Models
     module Playlists
-      type track_list_params =
+      type track_retrieve_params =
         {
           additional_types: String,
           fields: String,
@@ -11,7 +11,7 @@ module Spotted
         }
         & Spotted::Internal::Type::request_parameters
 
-      class TrackListParams < Spotted::Internal::Type::BaseModel
+      class TrackRetrieveParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 

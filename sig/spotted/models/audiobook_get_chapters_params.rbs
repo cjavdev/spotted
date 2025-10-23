@@ -1,10 +1,10 @@
 module Spotted
   module Models
-    type audiobook_retrieve_chapters_params =
+    type audiobook_get_chapters_params =
       { limit: Integer, market: String, offset: Integer }
       & Spotted::Internal::Type::request_parameters
 
-    class AudiobookRetrieveChaptersParams < Spotted::Internal::Type::BaseModel
+    class AudiobookGetChaptersParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 

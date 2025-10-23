@@ -2,13 +2,13 @@
 
 module Spotted
   module Models
-    class SearchQueryParams < Spotted::Internal::Type::BaseModel
+    class SearchRetrieveParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
       OrHash =
         T.type_alias do
-          T.any(Spotted::SearchQueryParams, Spotted::Internal::AnyHash)
+          T.any(Spotted::SearchRetrieveParams, Spotted::Internal::AnyHash)
         end
 
       # Your search query.
@@ -31,7 +31,7 @@ module Spotted
       # A comma-separated list of item types to search across. Search results include
       # hits from all the specified item types. For example: `q=abacab&type=album,track`
       # returns both albums and tracks matching "abacab".
-      sig { returns(T::Array[Spotted::SearchQueryParams::Type::OrSymbol]) }
+      sig { returns(T::Array[Spotted::SearchRetrieveParams::Type::OrSymbol]) }
       attr_accessor :type
 
       # If `include_external=audio` is specified it signals that the client can play
@@ -40,7 +40,7 @@ module Spotted
       # the response.
       sig do
         returns(
-          T.nilable(Spotted::SearchQueryParams::IncludeExternal::OrSymbol)
+          T.nilable(Spotted::SearchRetrieveParams::IncludeExternal::OrSymbol)
         )
       end
       attr_reader :include_external
@@ -48,7 +48,7 @@ module Spotted
       sig do
         params(
           include_external:
-            Spotted::SearchQueryParams::IncludeExternal::OrSymbol
+            Spotted::SearchRetrieveParams::IncludeExternal::OrSymbol
         ).void
       end
       attr_writer :include_external
@@ -86,9 +86,9 @@ module Spotted
       sig do
         params(
           q: String,
-          type: T::Array[Spotted::SearchQueryParams::Type::OrSymbol],
+          type: T::Array[Spotted::SearchRetrieveParams::Type::OrSymbol],
           include_external:
-            Spotted::SearchQueryParams::IncludeExternal::OrSymbol,
+            Spotted::SearchRetrieveParams::IncludeExternal::OrSymbol,
           limit: Integer,
           market: String,
           offset: Integer,
@@ -143,9 +143,9 @@ module Spotted
         override.returns(
           {
             q: String,
-            type: T::Array[Spotted::SearchQueryParams::Type::OrSymbol],
+            type: T::Array[Spotted::SearchRetrieveParams::Type::OrSymbol],
             include_external:
-              Spotted::SearchQueryParams::IncludeExternal::OrSymbol,
+              Spotted::SearchRetrieveParams::IncludeExternal::OrSymbol,
             limit: Integer,
             market: String,
             offset: Integer,
@@ -160,23 +160,24 @@ module Spotted
         extend Spotted::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Spotted::SearchQueryParams::Type) }
+          T.type_alias { T.all(Symbol, Spotted::SearchRetrieveParams::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ALBUM = T.let(:album, Spotted::SearchQueryParams::Type::TaggedSymbol)
-        ARTIST = T.let(:artist, Spotted::SearchQueryParams::Type::TaggedSymbol)
+        ALBUM = T.let(:album, Spotted::SearchRetrieveParams::Type::TaggedSymbol)
+        ARTIST =
+          T.let(:artist, Spotted::SearchRetrieveParams::Type::TaggedSymbol)
         PLAYLIST =
-          T.let(:playlist, Spotted::SearchQueryParams::Type::TaggedSymbol)
-        TRACK = T.let(:track, Spotted::SearchQueryParams::Type::TaggedSymbol)
-        SHOW = T.let(:show, Spotted::SearchQueryParams::Type::TaggedSymbol)
+          T.let(:playlist, Spotted::SearchRetrieveParams::Type::TaggedSymbol)
+        TRACK = T.let(:track, Spotted::SearchRetrieveParams::Type::TaggedSymbol)
+        SHOW = T.let(:show, Spotted::SearchRetrieveParams::Type::TaggedSymbol)
         EPISODE =
-          T.let(:episode, Spotted::SearchQueryParams::Type::TaggedSymbol)
+          T.let(:episode, Spotted::SearchRetrieveParams::Type::TaggedSymbol)
         AUDIOBOOK =
-          T.let(:audiobook, Spotted::SearchQueryParams::Type::TaggedSymbol)
+          T.let(:audiobook, Spotted::SearchRetrieveParams::Type::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[Spotted::SearchQueryParams::Type::TaggedSymbol]
+            T::Array[Spotted::SearchRetrieveParams::Type::TaggedSymbol]
           )
         end
         def self.values
@@ -192,19 +193,21 @@ module Spotted
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Spotted::SearchQueryParams::IncludeExternal)
+            T.all(Symbol, Spotted::SearchRetrieveParams::IncludeExternal)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AUDIO =
           T.let(
             :audio,
-            Spotted::SearchQueryParams::IncludeExternal::TaggedSymbol
+            Spotted::SearchRetrieveParams::IncludeExternal::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Spotted::SearchQueryParams::IncludeExternal::TaggedSymbol]
+            T::Array[
+              Spotted::SearchRetrieveParams::IncludeExternal::TaggedSymbol
+            ]
           )
         end
         def self.values

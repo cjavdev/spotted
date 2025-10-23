@@ -61,13 +61,13 @@ module Spotted
       end
 
       # Some parameter documentations has been truncated, see
-      # {Spotted::Models::AudiobookRetrieveChaptersParams} for more details.
+      # {Spotted::Models::AudiobookGetChaptersParams} for more details.
       #
       # Get Spotify catalog information about an audiobook's chapters. Audiobooks are
       # only available within the US, UK, Canada, Ireland, New Zealand and Australia
       # markets.
       #
-      # @overload retrieve_chapters(id, limit: nil, market: nil, offset: nil, request_options: {})
+      # @overload get_chapters(id, limit: nil, market: nil, offset: nil, request_options: {})
       #
       # @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
       #
@@ -79,16 +79,16 @@ module Spotted
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::AudiobookRetrieveChaptersResponse]
+      # @return [Spotted::Models::AudiobookGetChaptersResponse]
       #
-      # @see Spotted::Models::AudiobookRetrieveChaptersParams
-      def retrieve_chapters(id, params = {})
-        parsed, options = Spotted::AudiobookRetrieveChaptersParams.dump_request(params)
+      # @see Spotted::Models::AudiobookGetChaptersParams
+      def get_chapters(id, params = {})
+        parsed, options = Spotted::AudiobookGetChaptersParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["audiobooks/%1$s/chapters", id],
           query: parsed,
-          model: Spotted::Models::AudiobookRetrieveChaptersResponse,
+          model: Spotted::Models::AudiobookGetChaptersResponse,
           options: options
         )
       end

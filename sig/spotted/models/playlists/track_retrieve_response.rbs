@@ -1,10 +1,10 @@
 module Spotted
   module Models
     module Playlists
-      type track_list_response =
+      type track_retrieve_response =
         {
           href: String,
-          items: ::Array[Spotted::Models::Playlists::TrackListResponse::Item],
+          items: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -12,10 +12,10 @@ module Spotted
           total: Integer
         }
 
-      class TrackListResponse < Spotted::Internal::Type::BaseModel
+      class TrackRetrieveResponse < Spotted::Internal::Type::BaseModel
         attr_accessor href: String
 
-        attr_accessor items: ::Array[Spotted::Models::Playlists::TrackListResponse::Item]
+        attr_accessor items: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item]
 
         attr_accessor limit: Integer
 
@@ -29,7 +29,7 @@ module Spotted
 
         def initialize: (
           href: String,
-          items: ::Array[Spotted::Models::Playlists::TrackListResponse::Item],
+          items: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -39,7 +39,7 @@ module Spotted
 
         def to_hash: -> {
           href: String,
-          items: ::Array[Spotted::Models::Playlists::TrackListResponse::Item],
+          items: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -50,9 +50,9 @@ module Spotted
         type item =
           {
             added_at: Time,
-            added_by: Spotted::Models::Playlists::TrackListResponse::Item::AddedBy,
+            added_by: Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy,
             is_local: bool,
-            track: Spotted::Models::Playlists::TrackListResponse::Item::track
+            track: Spotted::Models::Playlists::TrackRetrieveResponse::Item::track
           }
 
         class Item < Spotted::Internal::Type::BaseModel
@@ -60,42 +60,42 @@ module Spotted
 
           def added_at=: (Time) -> Time
 
-          attr_reader added_by: Spotted::Models::Playlists::TrackListResponse::Item::AddedBy?
+          attr_reader added_by: Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy?
 
           def added_by=: (
-            Spotted::Models::Playlists::TrackListResponse::Item::AddedBy
-          ) -> Spotted::Models::Playlists::TrackListResponse::Item::AddedBy
+            Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy
+          ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy
 
           attr_reader is_local: bool?
 
           def is_local=: (bool) -> bool
 
-          attr_reader track: Spotted::Models::Playlists::TrackListResponse::Item::track?
+          attr_reader track: Spotted::Models::Playlists::TrackRetrieveResponse::Item::track?
 
           def track=: (
-            Spotted::Models::Playlists::TrackListResponse::Item::track
-          ) -> Spotted::Models::Playlists::TrackListResponse::Item::track
+            Spotted::Models::Playlists::TrackRetrieveResponse::Item::track
+          ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::track
 
           def initialize: (
             ?added_at: Time,
-            ?added_by: Spotted::Models::Playlists::TrackListResponse::Item::AddedBy,
+            ?added_by: Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy,
             ?is_local: bool,
-            ?track: Spotted::Models::Playlists::TrackListResponse::Item::track
+            ?track: Spotted::Models::Playlists::TrackRetrieveResponse::Item::track
           ) -> void
 
           def to_hash: -> {
             added_at: Time,
-            added_by: Spotted::Models::Playlists::TrackListResponse::Item::AddedBy,
+            added_by: Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy,
             is_local: bool,
-            track: Spotted::Models::Playlists::TrackListResponse::Item::track
+            track: Spotted::Models::Playlists::TrackRetrieveResponse::Item::track
           }
 
           type added_by =
             {
               id: String,
-              external_urls: Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs,
+              external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs,
               href: String,
-              type: Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::type_,
+              type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::type_,
               uri: String
             }
 
@@ -104,21 +104,21 @@ module Spotted
 
             def id=: (String) -> String
 
-            attr_reader external_urls: Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs?
+            attr_reader external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs?
 
             def external_urls=: (
-              Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs
-            ) -> Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs
+              Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs
+            ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs
 
             attr_reader href: String?
 
             def href=: (String) -> String
 
-            attr_reader type: Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::type_?
+            attr_reader type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::type_?
 
             def type=: (
-              Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::type_
-            ) -> Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::type_
+              Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::type_
+            ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::type_
 
             attr_reader uri: String?
 
@@ -126,17 +126,17 @@ module Spotted
 
             def initialize: (
               ?id: String,
-              ?external_urls: Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs,
+              ?external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs,
               ?href: String,
-              ?type: Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::type_,
+              ?type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::type_,
               ?uri: String
             ) -> void
 
             def to_hash: -> {
               id: String,
-              external_urls: Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs,
+              external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs,
               href: String,
-              type: Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::type_,
+              type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::type_,
               uri: String
             }
 
@@ -159,13 +159,13 @@ module Spotted
 
               USER: :user
 
-              def self?.values: -> ::Array[Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::type_]
+              def self?.values: -> ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::type_]
             end
           end
 
           type track =
-            Spotted::Models::Playlists::TrackListResponse::Item::Track::Track
-            | Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode
+            Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track
+            | Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode
 
           module Track
             extend Spotted::Internal::Type::Union
@@ -173,14 +173,14 @@ module Spotted
             type track =
               {
                 id: String,
-                album: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album,
-                artists: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist],
+                album: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album,
+                artists: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist],
                 available_markets: ::Array[String],
                 disc_number: Integer,
                 duration_ms: Integer,
                 explicit: bool,
-                external_ids: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs,
-                external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs,
+                external_ids: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs,
+                external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs,
                 href: String,
                 is_local: bool,
                 is_playable: bool,
@@ -188,9 +188,9 @@ module Spotted
                 name: String,
                 popularity: Integer,
                 preview_url: String?,
-                restrictions: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions,
+                restrictions: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions,
                 track_number: Integer,
-                type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::type_,
+                type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::type_,
                 uri: String
               }
 
@@ -199,17 +199,17 @@ module Spotted
 
               def id=: (String) -> String
 
-              attr_reader album: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album?
+              attr_reader album: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album?
 
               def album=: (
-                Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album
-              ) -> Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album
+                Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album
+              ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album
 
-              attr_reader artists: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist]?
+              attr_reader artists: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist]?
 
               def artists=: (
-                ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist]
-              ) -> ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist]
+                ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist]
+              ) -> ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist]
 
               attr_reader available_markets: ::Array[String]?
 
@@ -227,17 +227,17 @@ module Spotted
 
               def explicit=: (bool) -> bool
 
-              attr_reader external_ids: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs?
+              attr_reader external_ids: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs?
 
               def external_ids=: (
-                Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs
-              ) -> Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs
+                Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs
+              ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs
 
-              attr_reader external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs?
+              attr_reader external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs?
 
               def external_urls=: (
-                Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs
-              ) -> Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs
+                Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs
+              ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs
 
               attr_reader href: String?
 
@@ -265,21 +265,21 @@ module Spotted
 
               attr_accessor preview_url: String?
 
-              attr_reader restrictions: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions?
+              attr_reader restrictions: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions?
 
               def restrictions=: (
-                Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions
-              ) -> Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions
+                Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions
+              ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions
 
               attr_reader track_number: Integer?
 
               def track_number=: (Integer) -> Integer
 
-              attr_reader type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::type_?
+              attr_reader type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::type_?
 
               def type=: (
-                Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::type_
-              ) -> Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::type_
+                Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::type_
+              ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::type_
 
               attr_reader uri: String?
 
@@ -287,14 +287,14 @@ module Spotted
 
               def initialize: (
                 ?id: String,
-                ?album: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album,
-                ?artists: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist],
+                ?album: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album,
+                ?artists: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist],
                 ?available_markets: ::Array[String],
                 ?disc_number: Integer,
                 ?duration_ms: Integer,
                 ?explicit: bool,
-                ?external_ids: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs,
-                ?external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs,
+                ?external_ids: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs,
+                ?external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs,
                 ?href: String,
                 ?is_local: bool,
                 ?is_playable: bool,
@@ -302,22 +302,22 @@ module Spotted
                 ?name: String,
                 ?popularity: Integer,
                 ?preview_url: String?,
-                ?restrictions: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions,
+                ?restrictions: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions,
                 ?track_number: Integer,
-                ?type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::type_,
+                ?type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::type_,
                 ?uri: String
               ) -> void
 
               def to_hash: -> {
                 id: String,
-                album: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album,
-                artists: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist],
+                album: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album,
+                artists: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist],
                 available_markets: ::Array[String],
                 disc_number: Integer,
                 duration_ms: Integer,
                 explicit: bool,
-                external_ids: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs,
-                external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs,
+                external_ids: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs,
+                external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs,
                 href: String,
                 is_local: bool,
                 is_playable: bool,
@@ -325,95 +325,95 @@ module Spotted
                 name: String,
                 popularity: Integer,
                 preview_url: String?,
-                restrictions: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions,
+                restrictions: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions,
                 track_number: Integer,
-                type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::type_,
+                type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::type_,
                 uri: String
               }
 
               type album =
                 {
                   id: String,
-                  album_type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::album_type,
-                  artists: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist],
+                  album_type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::album_type,
+                  artists: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist],
                   available_markets: ::Array[String],
-                  external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ExternalURLs,
+                  external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ExternalURLs,
                   href: String,
-                  images: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Image],
+                  images: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Image],
                   name: String,
                   release_date: String,
-                  release_date_precision: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::release_date_precision,
+                  release_date_precision: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::release_date_precision,
                   total_tracks: Integer,
-                  type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::type_,
+                  type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::type_,
                   uri: String,
-                  restrictions: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions
+                  restrictions: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions
                 }
 
               class Album < Spotted::Internal::Type::BaseModel
                 attr_accessor id: String
 
-                attr_accessor album_type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::album_type
+                attr_accessor album_type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::album_type
 
-                attr_accessor artists: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist]
+                attr_accessor artists: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist]
 
                 attr_accessor available_markets: ::Array[String]
 
-                attr_accessor external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ExternalURLs
+                attr_accessor external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ExternalURLs
 
                 attr_accessor href: String
 
-                attr_accessor images: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Image]
+                attr_accessor images: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Image]
 
                 attr_accessor name: String
 
                 attr_accessor release_date: String
 
-                attr_accessor release_date_precision: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::release_date_precision
+                attr_accessor release_date_precision: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::release_date_precision
 
                 attr_accessor total_tracks: Integer
 
-                attr_accessor type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::type_
+                attr_accessor type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::type_
 
                 attr_accessor uri: String
 
-                attr_reader restrictions: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions?
+                attr_reader restrictions: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions?
 
                 def restrictions=: (
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions
-                ) -> Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions
+                ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions
 
                 def initialize: (
                   id: String,
-                  album_type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::album_type,
-                  artists: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist],
+                  album_type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::album_type,
+                  artists: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist],
                   available_markets: ::Array[String],
-                  external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ExternalURLs,
+                  external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ExternalURLs,
                   href: String,
-                  images: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Image],
+                  images: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Image],
                   name: String,
                   release_date: String,
-                  release_date_precision: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::release_date_precision,
+                  release_date_precision: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::release_date_precision,
                   total_tracks: Integer,
-                  type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::type_,
+                  type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::type_,
                   uri: String,
-                  ?restrictions: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions
+                  ?restrictions: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions
                 ) -> void
 
                 def to_hash: -> {
                   id: String,
-                  album_type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::album_type,
-                  artists: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist],
+                  album_type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::album_type,
+                  artists: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist],
                   available_markets: ::Array[String],
-                  external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ExternalURLs,
+                  external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ExternalURLs,
                   href: String,
-                  images: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Image],
+                  images: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Image],
                   name: String,
                   release_date: String,
-                  release_date_precision: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::release_date_precision,
+                  release_date_precision: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::release_date_precision,
                   total_tracks: Integer,
-                  type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::type_,
+                  type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::type_,
                   uri: String,
-                  restrictions: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions
+                  restrictions: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions
                 }
 
                 type album_type = :album | :single | :compilation
@@ -425,16 +425,16 @@ module Spotted
                   SINGLE: :single
                   COMPILATION: :compilation
 
-                  def self?.values: -> ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::album_type]
+                  def self?.values: -> ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::album_type]
                 end
 
                 type artist =
                   {
                     id: String,
-                    external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs,
+                    external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs,
                     href: String,
                     name: String,
-                    type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::type_,
+                    type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::type_,
                     uri: String
                   }
 
@@ -443,11 +443,11 @@ module Spotted
 
                   def id=: (String) -> String
 
-                  attr_reader external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs?
+                  attr_reader external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs?
 
                   def external_urls=: (
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs
-                  ) -> Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs
+                  ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs
 
                   attr_reader href: String?
 
@@ -457,11 +457,11 @@ module Spotted
 
                   def name=: (String) -> String
 
-                  attr_reader type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::type_?
+                  attr_reader type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::type_?
 
                   def type=: (
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::type_
-                  ) -> Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::type_
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::type_
+                  ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::type_
 
                   attr_reader uri: String?
 
@@ -469,19 +469,19 @@ module Spotted
 
                   def initialize: (
                     ?id: String,
-                    ?external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs,
+                    ?external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs,
                     ?href: String,
                     ?name: String,
-                    ?type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::type_,
+                    ?type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::type_,
                     ?uri: String
                   ) -> void
 
                   def to_hash: -> {
                     id: String,
-                    external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs,
+                    external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs,
                     href: String,
                     name: String,
-                    type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::type_,
+                    type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::type_,
                     uri: String
                   }
 
@@ -504,7 +504,7 @@ module Spotted
 
                     ARTIST: :artist
 
-                    def self?.values: -> ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::type_]
+                    def self?.values: -> ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::type_]
                   end
                 end
 
@@ -551,7 +551,7 @@ module Spotted
                   MONTH: :month
                   DAY: :day
 
-                  def self?.values: -> ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::release_date_precision]
+                  def self?.values: -> ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::release_date_precision]
                 end
 
                 type type_ = :album
@@ -561,27 +561,27 @@ module Spotted
 
                   ALBUM: :album
 
-                  def self?.values: -> ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::type_]
+                  def self?.values: -> ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::type_]
                 end
 
                 type restrictions =
                   {
-                    reason: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::reason
+                    reason: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::reason
                   }
 
                 class Restrictions < Spotted::Internal::Type::BaseModel
-                  attr_reader reason: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::reason?
+                  attr_reader reason: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::reason?
 
                   def reason=: (
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::reason
-                  ) -> Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::reason
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::reason
+                  ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::reason
 
                   def initialize: (
-                    ?reason: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::reason
+                    ?reason: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::reason
                   ) -> void
 
                   def to_hash: -> {
-                    reason: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::reason
+                    reason: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::reason
                   }
 
                   type reason = :market | :product | :explicit
@@ -593,7 +593,7 @@ module Spotted
                     PRODUCT: :product
                     EXPLICIT: :explicit
 
-                    def self?.values: -> ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::reason]
+                    def self?.values: -> ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::reason]
                   end
                 end
               end
@@ -601,10 +601,10 @@ module Spotted
               type artist =
                 {
                   id: String,
-                  external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs,
+                  external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs,
                   href: String,
                   name: String,
-                  type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::type_,
+                  type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::type_,
                   uri: String
                 }
 
@@ -613,11 +613,11 @@ module Spotted
 
                 def id=: (String) -> String
 
-                attr_reader external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs?
+                attr_reader external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs?
 
                 def external_urls=: (
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs
-                ) -> Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs
+                ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs
 
                 attr_reader href: String?
 
@@ -627,11 +627,11 @@ module Spotted
 
                 def name=: (String) -> String
 
-                attr_reader type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::type_?
+                attr_reader type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::type_?
 
                 def type=: (
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::type_
-                ) -> Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::type_
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::type_
+                ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::type_
 
                 attr_reader uri: String?
 
@@ -639,19 +639,19 @@ module Spotted
 
                 def initialize: (
                   ?id: String,
-                  ?external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs,
+                  ?external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs,
                   ?href: String,
                   ?name: String,
-                  ?type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::type_,
+                  ?type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::type_,
                   ?uri: String
                 ) -> void
 
                 def to_hash: -> {
                   id: String,
-                  external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs,
+                  external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs,
                   href: String,
                   name: String,
-                  type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::type_,
+                  type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::type_,
                   uri: String
                 }
 
@@ -674,7 +674,7 @@ module Spotted
 
                   ARTIST: :artist
 
-                  def self?.values: -> ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::type_]
+                  def self?.values: -> ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::type_]
                 end
               end
 
@@ -733,7 +733,7 @@ module Spotted
 
                 TRACK: :track
 
-                def self?.values: -> ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::type_]
+                def self?.values: -> ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::type_]
               end
             end
 
@@ -744,22 +744,22 @@ module Spotted
                 description: String,
                 duration_ms: Integer,
                 explicit: bool,
-                external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ExternalURLs,
+                external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ExternalURLs,
                 href: String,
                 html_description: String,
-                images: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Image],
+                images: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Image],
                 is_externally_hosted: bool,
                 is_playable: bool,
                 languages: ::Array[String],
                 name: String,
                 release_date: String,
-                release_date_precision: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::release_date_precision,
-                show: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show,
+                release_date_precision: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::release_date_precision,
+                show: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show,
                 type: :episode,
                 uri: String,
                 language: String,
-                restrictions: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions,
-                resume_point: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint
+                restrictions: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions,
+                resume_point: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint
               }
 
             class Episode < Spotted::Internal::Type::BaseModel
@@ -773,13 +773,13 @@ module Spotted
 
               attr_accessor explicit: bool
 
-              attr_accessor external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ExternalURLs
+              attr_accessor external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ExternalURLs
 
               attr_accessor href: String
 
               attr_accessor html_description: String
 
-              attr_accessor images: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Image]
+              attr_accessor images: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Image]
 
               attr_accessor is_externally_hosted: bool
 
@@ -791,9 +791,9 @@ module Spotted
 
               attr_accessor release_date: String
 
-              attr_accessor release_date_precision: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::release_date_precision
+              attr_accessor release_date_precision: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::release_date_precision
 
-              attr_accessor show: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show
+              attr_accessor show: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show
 
               attr_accessor type: :episode
 
@@ -803,17 +803,17 @@ module Spotted
 
               def language=: (String) -> String
 
-              attr_reader restrictions: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions?
+              attr_reader restrictions: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions?
 
               def restrictions=: (
-                Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions
-              ) -> Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions
+                Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions
+              ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions
 
-              attr_reader resume_point: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint?
+              attr_reader resume_point: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint?
 
               def resume_point=: (
-                Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint
-              ) -> Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint
+                Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint
+              ) -> Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint
 
               def initialize: (
                 id: String,
@@ -821,21 +821,21 @@ module Spotted
                 description: String,
                 duration_ms: Integer,
                 explicit: bool,
-                external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ExternalURLs,
+                external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ExternalURLs,
                 href: String,
                 html_description: String,
-                images: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Image],
+                images: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Image],
                 is_externally_hosted: bool,
                 is_playable: bool,
                 languages: ::Array[String],
                 name: String,
                 release_date: String,
-                release_date_precision: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::release_date_precision,
-                show: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show,
+                release_date_precision: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::release_date_precision,
+                show: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show,
                 uri: String,
                 ?language: String,
-                ?restrictions: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions,
-                ?resume_point: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint,
+                ?restrictions: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions,
+                ?resume_point: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint,
                 ?type: :episode
               ) -> void
 
@@ -845,22 +845,22 @@ module Spotted
                 description: String,
                 duration_ms: Integer,
                 explicit: bool,
-                external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ExternalURLs,
+                external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ExternalURLs,
                 href: String,
                 html_description: String,
-                images: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Image],
+                images: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Image],
                 is_externally_hosted: bool,
                 is_playable: bool,
                 languages: ::Array[String],
                 name: String,
                 release_date: String,
-                release_date_precision: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::release_date_precision,
-                show: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show,
+                release_date_precision: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::release_date_precision,
+                show: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show,
                 type: :episode,
                 uri: String,
                 language: String,
-                restrictions: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions,
-                resume_point: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint
+                restrictions: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions,
+                resume_point: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint
               }
 
               type external_urls = { spotify: String }
@@ -906,27 +906,27 @@ module Spotted
                 MONTH: :month
                 DAY: :day
 
-                def self?.values: -> ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::release_date_precision]
+                def self?.values: -> ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::release_date_precision]
               end
 
               type show =
                 {
                   id: String,
                   available_markets: ::Array[String],
-                  copyrights: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Copyright],
+                  copyrights: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Copyright],
                   description: String,
                   explicit: bool,
-                  external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::ExternalURLs,
+                  external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::ExternalURLs,
                   href: String,
                   html_description: String,
-                  images: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Image],
+                  images: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Image],
                   is_externally_hosted: bool,
                   languages: ::Array[String],
                   media_type: String,
                   name: String,
                   publisher: String,
                   total_episodes: Integer,
-                  type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::type_,
+                  type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::type_,
                   uri: String
                 }
 
@@ -935,19 +935,19 @@ module Spotted
 
                 attr_accessor available_markets: ::Array[String]
 
-                attr_accessor copyrights: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Copyright]
+                attr_accessor copyrights: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Copyright]
 
                 attr_accessor description: String
 
                 attr_accessor explicit: bool
 
-                attr_accessor external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::ExternalURLs
+                attr_accessor external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::ExternalURLs
 
                 attr_accessor href: String
 
                 attr_accessor html_description: String
 
-                attr_accessor images: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Image]
+                attr_accessor images: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Image]
 
                 attr_accessor is_externally_hosted: bool
 
@@ -961,47 +961,47 @@ module Spotted
 
                 attr_accessor total_episodes: Integer
 
-                attr_accessor type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::type_
+                attr_accessor type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::type_
 
                 attr_accessor uri: String
 
                 def initialize: (
                   id: String,
                   available_markets: ::Array[String],
-                  copyrights: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Copyright],
+                  copyrights: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Copyright],
                   description: String,
                   explicit: bool,
-                  external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::ExternalURLs,
+                  external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::ExternalURLs,
                   href: String,
                   html_description: String,
-                  images: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Image],
+                  images: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Image],
                   is_externally_hosted: bool,
                   languages: ::Array[String],
                   media_type: String,
                   name: String,
                   publisher: String,
                   total_episodes: Integer,
-                  type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::type_,
+                  type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::type_,
                   uri: String
                 ) -> void
 
                 def to_hash: -> {
                   id: String,
                   available_markets: ::Array[String],
-                  copyrights: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Copyright],
+                  copyrights: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Copyright],
                   description: String,
                   explicit: bool,
-                  external_urls: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::ExternalURLs,
+                  external_urls: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::ExternalURLs,
                   href: String,
                   html_description: String,
-                  images: ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Image],
+                  images: ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Image],
                   is_externally_hosted: bool,
                   languages: ::Array[String],
                   media_type: String,
                   name: String,
                   publisher: String,
                   total_episodes: Integer,
-                  type: Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::type_,
+                  type: Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::type_,
                   uri: String
                 }
 
@@ -1062,7 +1062,7 @@ module Spotted
 
                   SHOW: :show
 
-                  def self?.values: -> ::Array[Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::type_]
+                  def self?.values: -> ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::type_]
                 end
               end
 
@@ -1102,7 +1102,7 @@ module Spotted
               end
             end
 
-            def self?.variants: -> ::Array[Spotted::Models::Playlists::TrackListResponse::Item::track]
+            def self?.variants: -> ::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item::track]
           end
         end
       end

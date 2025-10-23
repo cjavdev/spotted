@@ -3,11 +3,11 @@
 module Spotted
   module Models
     module Playlists
-      class TrackListResponse < Spotted::Internal::Type::BaseModel
+      class TrackRetrieveResponse < Spotted::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Spotted::Models::Playlists::TrackListResponse,
+              Spotted::Models::Playlists::TrackRetrieveResponse,
               Spotted::Internal::AnyHash
             )
           end
@@ -17,7 +17,9 @@ module Spotted
         attr_accessor :href
 
         sig do
-          returns(T::Array[Spotted::Models::Playlists::TrackListResponse::Item])
+          returns(
+            T::Array[Spotted::Models::Playlists::TrackRetrieveResponse::Item]
+          )
         end
         attr_accessor :items
 
@@ -46,7 +48,7 @@ module Spotted
             href: String,
             items:
               T::Array[
-                Spotted::Models::Playlists::TrackListResponse::Item::OrHash
+                Spotted::Models::Playlists::TrackRetrieveResponse::Item::OrHash
               ],
             limit: Integer,
             next_: T.nilable(String),
@@ -77,7 +79,9 @@ module Spotted
             {
               href: String,
               items:
-                T::Array[Spotted::Models::Playlists::TrackListResponse::Item],
+                T::Array[
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item
+                ],
               limit: Integer,
               next_: T.nilable(String),
               offset: Integer,
@@ -93,7 +97,7 @@ module Spotted
           OrHash =
             T.type_alias do
               T.any(
-                Spotted::Models::Playlists::TrackListResponse::Item,
+                Spotted::Models::Playlists::TrackRetrieveResponse::Item,
                 Spotted::Internal::AnyHash
               )
             end
@@ -111,7 +115,7 @@ module Spotted
           sig do
             returns(
               T.nilable(
-                Spotted::Models::Playlists::TrackListResponse::Item::AddedBy
+                Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy
               )
             )
           end
@@ -120,7 +124,7 @@ module Spotted
           sig do
             params(
               added_by:
-                Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::OrHash
+                Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::OrHash
             ).void
           end
           attr_writer :added_by
@@ -137,7 +141,7 @@ module Spotted
           sig do
             returns(
               T.nilable(
-                Spotted::Models::Playlists::TrackListResponse::Item::Track::Variants
+                Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Variants
               )
             )
           end
@@ -147,8 +151,8 @@ module Spotted
             params(
               track:
                 T.any(
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::OrHash,
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::OrHash
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::OrHash,
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::OrHash
                 )
             ).void
           end
@@ -158,12 +162,12 @@ module Spotted
             params(
               added_at: Time,
               added_by:
-                Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::OrHash,
+                Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::OrHash,
               is_local: T::Boolean,
               track:
                 T.any(
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::OrHash,
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::OrHash
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::OrHash,
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::OrHash
                 )
             ).returns(T.attached_class)
           end
@@ -187,10 +191,10 @@ module Spotted
               {
                 added_at: Time,
                 added_by:
-                  Spotted::Models::Playlists::TrackListResponse::Item::AddedBy,
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy,
                 is_local: T::Boolean,
                 track:
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Variants
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Variants
               }
             )
           end
@@ -201,7 +205,7 @@ module Spotted
             OrHash =
               T.type_alias do
                 T.any(
-                  Spotted::Models::Playlists::TrackListResponse::Item::AddedBy,
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy,
                   Spotted::Internal::AnyHash
                 )
               end
@@ -218,7 +222,7 @@ module Spotted
             sig do
               returns(
                 T.nilable(
-                  Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs
                 )
               )
             end
@@ -227,7 +231,7 @@ module Spotted
             sig do
               params(
                 external_urls:
-                  Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs::OrHash
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs::OrHash
               ).void
             end
             attr_writer :external_urls
@@ -243,7 +247,7 @@ module Spotted
             sig do
               returns(
                 T.nilable(
-                  Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::Type::TaggedSymbol
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::Type::TaggedSymbol
                 )
               )
             end
@@ -252,7 +256,7 @@ module Spotted
             sig do
               params(
                 type:
-                  Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::Type::OrSymbol
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::Type::OrSymbol
               ).void
             end
             attr_writer :type
@@ -271,10 +275,10 @@ module Spotted
               params(
                 id: String,
                 external_urls:
-                  Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs::OrHash,
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs::OrHash,
                 href: String,
                 type:
-                  Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::Type::OrSymbol,
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::Type::OrSymbol,
                 uri: String
               ).returns(T.attached_class)
             end
@@ -299,10 +303,10 @@ module Spotted
                 {
                   id: String,
                   external_urls:
-                    Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs,
                   href: String,
                   type:
-                    Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::Type::TaggedSymbol,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::Type::TaggedSymbol,
                   uri: String
                 }
               )
@@ -314,7 +318,7 @@ module Spotted
               OrHash =
                 T.type_alias do
                   T.any(
-                    Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::ExternalURLs,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::ExternalURLs,
                     Spotted::Internal::AnyHash
                   )
                 end
@@ -349,7 +353,7 @@ module Spotted
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::Type
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::Type
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -357,13 +361,13 @@ module Spotted
               USER =
                 T.let(
                   :user,
-                  Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::Type::TaggedSymbol
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::Type::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Spotted::Models::Playlists::TrackListResponse::Item::AddedBy::Type::TaggedSymbol
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::AddedBy::Type::TaggedSymbol
                   ]
                 )
               end
@@ -379,8 +383,8 @@ module Spotted
             Variants =
               T.type_alias do
                 T.any(
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Track,
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track,
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode
                 )
               end
 
@@ -388,7 +392,7 @@ module Spotted
               OrHash =
                 T.type_alias do
                   T.any(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track,
                     Spotted::Internal::AnyHash
                   )
                 end
@@ -406,7 +410,7 @@ module Spotted
               sig do
                 returns(
                   T.nilable(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album
                   )
                 )
               end
@@ -415,7 +419,7 @@ module Spotted
               sig do
                 params(
                   album:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::OrHash
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::OrHash
                 ).void
               end
               attr_writer :album
@@ -426,7 +430,7 @@ module Spotted
                 returns(
                   T.nilable(
                     T::Array[
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist
                     ]
                   )
                 )
@@ -437,7 +441,7 @@ module Spotted
                 params(
                   artists:
                     T::Array[
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::OrHash
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::OrHash
                     ]
                 ).void
               end
@@ -477,7 +481,7 @@ module Spotted
               sig do
                 returns(
                   T.nilable(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs
                   )
                 )
               end
@@ -486,7 +490,7 @@ module Spotted
               sig do
                 params(
                   external_ids:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs::OrHash
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs::OrHash
                 ).void
               end
               attr_writer :external_ids
@@ -495,7 +499,7 @@ module Spotted
               sig do
                 returns(
                   T.nilable(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs
                   )
                 )
               end
@@ -504,7 +508,7 @@ module Spotted
               sig do
                 params(
                   external_urls:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs::OrHash
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs::OrHash
                 ).void
               end
               attr_writer :external_urls
@@ -573,7 +577,7 @@ module Spotted
               sig do
                 returns(
                   T.nilable(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions
                   )
                 )
               end
@@ -582,7 +586,7 @@ module Spotted
               sig do
                 params(
                   restrictions:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions::OrHash
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions::OrHash
                 ).void
               end
               attr_writer :restrictions
@@ -599,7 +603,7 @@ module Spotted
               sig do
                 returns(
                   T.nilable(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Type::TaggedSymbol
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Type::TaggedSymbol
                   )
                 )
               end
@@ -608,7 +612,7 @@ module Spotted
               sig do
                 params(
                   type:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Type::OrSymbol
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Type::OrSymbol
                 ).void
               end
               attr_writer :type
@@ -625,19 +629,19 @@ module Spotted
                 params(
                   id: String,
                   album:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::OrHash,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::OrHash,
                   artists:
                     T::Array[
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::OrHash
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::OrHash
                     ],
                   available_markets: T::Array[String],
                   disc_number: Integer,
                   duration_ms: Integer,
                   explicit: T::Boolean,
                   external_ids:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs::OrHash,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs::OrHash,
                   external_urls:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs::OrHash,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs::OrHash,
                   href: String,
                   is_local: T::Boolean,
                   is_playable: T::Boolean,
@@ -646,10 +650,10 @@ module Spotted
                   popularity: Integer,
                   preview_url: T.nilable(String),
                   restrictions:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions::OrHash,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions::OrHash,
                   track_number: Integer,
                   type:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Type::OrSymbol,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Type::OrSymbol,
                   uri: String
                 ).returns(T.attached_class)
               end
@@ -723,19 +727,19 @@ module Spotted
                   {
                     id: String,
                     album:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album,
                     artists:
                       T::Array[
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist
                       ],
                     available_markets: T::Array[String],
                     disc_number: Integer,
                     duration_ms: Integer,
                     explicit: T::Boolean,
                     external_ids:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs,
                     external_urls:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs,
                     href: String,
                     is_local: T::Boolean,
                     is_playable: T::Boolean,
@@ -744,10 +748,10 @@ module Spotted
                     popularity: Integer,
                     preview_url: T.nilable(String),
                     restrictions:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions,
                     track_number: Integer,
                     type:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Type::TaggedSymbol,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Type::TaggedSymbol,
                     uri: String
                   }
                 )
@@ -759,7 +763,7 @@ module Spotted
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album,
                       Spotted::Internal::AnyHash
                     )
                   end
@@ -772,7 +776,7 @@ module Spotted
                 # The type of the album.
                 sig do
                   returns(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::AlbumType::TaggedSymbol
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::AlbumType::TaggedSymbol
                   )
                 end
                 attr_accessor :album_type
@@ -782,7 +786,7 @@ module Spotted
                 sig do
                   returns(
                     T::Array[
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist
                     ]
                   )
                 end
@@ -798,7 +802,7 @@ module Spotted
                 # Known external URLs for this album.
                 sig do
                   returns(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ExternalURLs
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ExternalURLs
                   )
                 end
                 attr_reader :external_urls
@@ -806,7 +810,7 @@ module Spotted
                 sig do
                   params(
                     external_urls:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ExternalURLs::OrHash
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ExternalURLs::OrHash
                   ).void
                 end
                 attr_writer :external_urls
@@ -819,7 +823,7 @@ module Spotted
                 sig do
                   returns(
                     T::Array[
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Image
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Image
                     ]
                   )
                 end
@@ -837,7 +841,7 @@ module Spotted
                 # The precision with which `release_date` value is known.
                 sig do
                   returns(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ReleaseDatePrecision::TaggedSymbol
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ReleaseDatePrecision::TaggedSymbol
                   )
                 end
                 attr_accessor :release_date_precision
@@ -849,7 +853,7 @@ module Spotted
                 # The object type.
                 sig do
                   returns(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Type::TaggedSymbol
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -863,7 +867,7 @@ module Spotted
                 sig do
                   returns(
                     T.nilable(
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions
                     )
                   )
                 end
@@ -872,7 +876,7 @@ module Spotted
                 sig do
                   params(
                     restrictions:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::OrHash
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::OrHash
                   ).void
                 end
                 attr_writer :restrictions
@@ -883,29 +887,29 @@ module Spotted
                   params(
                     id: String,
                     album_type:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::AlbumType::OrSymbol,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::AlbumType::OrSymbol,
                     artists:
                       T::Array[
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::OrHash
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::OrHash
                       ],
                     available_markets: T::Array[String],
                     external_urls:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ExternalURLs::OrHash,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ExternalURLs::OrHash,
                     href: String,
                     images:
                       T::Array[
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Image::OrHash
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Image::OrHash
                       ],
                     name: String,
                     release_date: String,
                     release_date_precision:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ReleaseDatePrecision::OrSymbol,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ReleaseDatePrecision::OrSymbol,
                     total_tracks: Integer,
                     type:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Type::OrSymbol,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Type::OrSymbol,
                     uri: String,
                     restrictions:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::OrHash
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::OrHash
                   ).returns(T.attached_class)
                 end
                 def self.new(
@@ -952,29 +956,29 @@ module Spotted
                     {
                       id: String,
                       album_type:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::AlbumType::TaggedSymbol,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::AlbumType::TaggedSymbol,
                       artists:
                         T::Array[
-                          Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist
+                          Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist
                         ],
                       available_markets: T::Array[String],
                       external_urls:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ExternalURLs,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ExternalURLs,
                       href: String,
                       images:
                         T::Array[
-                          Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Image
+                          Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Image
                         ],
                       name: String,
                       release_date: String,
                       release_date_precision:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ReleaseDatePrecision::TaggedSymbol,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ReleaseDatePrecision::TaggedSymbol,
                       total_tracks: Integer,
                       type:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Type::TaggedSymbol,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Type::TaggedSymbol,
                       uri: String,
                       restrictions:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions
                     }
                   )
                 end
@@ -989,7 +993,7 @@ module Spotted
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::AlbumType
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::AlbumType
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -997,23 +1001,23 @@ module Spotted
                   ALBUM =
                     T.let(
                       :album,
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::AlbumType::TaggedSymbol
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::AlbumType::TaggedSymbol
                     )
                   SINGLE =
                     T.let(
                       :single,
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::AlbumType::TaggedSymbol
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::AlbumType::TaggedSymbol
                     )
                   COMPILATION =
                     T.let(
                       :compilation,
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::AlbumType::TaggedSymbol
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::AlbumType::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::AlbumType::TaggedSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::AlbumType::TaggedSymbol
                       ]
                     )
                   end
@@ -1025,7 +1029,7 @@ module Spotted
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist,
                         Spotted::Internal::AnyHash
                       )
                     end
@@ -1042,7 +1046,7 @@ module Spotted
                   sig do
                     returns(
                       T.nilable(
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs
                       )
                     )
                   end
@@ -1051,7 +1055,7 @@ module Spotted
                   sig do
                     params(
                       external_urls:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs::OrHash
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs::OrHash
                     ).void
                   end
                   attr_writer :external_urls
@@ -1074,7 +1078,7 @@ module Spotted
                   sig do
                     returns(
                       T.nilable(
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::Type::TaggedSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::Type::TaggedSymbol
                       )
                     )
                   end
@@ -1083,7 +1087,7 @@ module Spotted
                   sig do
                     params(
                       type:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::Type::OrSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::Type::OrSymbol
                     ).void
                   end
                   attr_writer :type
@@ -1100,11 +1104,11 @@ module Spotted
                     params(
                       id: String,
                       external_urls:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs::OrHash,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs::OrHash,
                       href: String,
                       name: String,
                       type:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::Type::OrSymbol,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::Type::OrSymbol,
                       uri: String
                     ).returns(T.attached_class)
                   end
@@ -1131,11 +1135,11 @@ module Spotted
                       {
                         id: String,
                         external_urls:
-                          Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs,
+                          Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs,
                         href: String,
                         name: String,
                         type:
-                          Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::Type::TaggedSymbol,
+                          Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::Type::TaggedSymbol,
                         uri: String
                       }
                     )
@@ -1147,7 +1151,7 @@ module Spotted
                     OrHash =
                       T.type_alias do
                         T.any(
-                          Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::ExternalURLs,
+                          Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::ExternalURLs,
                           Spotted::Internal::AnyHash
                         )
                       end
@@ -1182,7 +1186,7 @@ module Spotted
                       T.type_alias do
                         T.all(
                           Symbol,
-                          Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::Type
+                          Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::Type
                         )
                       end
                     OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1190,13 +1194,13 @@ module Spotted
                     ARTIST =
                       T.let(
                         :artist,
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::Type::TaggedSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::Type::TaggedSymbol
                       )
 
                     sig do
                       override.returns(
                         T::Array[
-                          Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Artist::Type::TaggedSymbol
+                          Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Artist::Type::TaggedSymbol
                         ]
                       )
                     end
@@ -1209,7 +1213,7 @@ module Spotted
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ExternalURLs,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ExternalURLs,
                         Spotted::Internal::AnyHash
                       )
                     end
@@ -1240,7 +1244,7 @@ module Spotted
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Image,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Image,
                         Spotted::Internal::AnyHash
                       )
                     end
@@ -1295,7 +1299,7 @@ module Spotted
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ReleaseDatePrecision
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ReleaseDatePrecision
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1303,23 +1307,23 @@ module Spotted
                   YEAR =
                     T.let(
                       :year,
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ReleaseDatePrecision::TaggedSymbol
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ReleaseDatePrecision::TaggedSymbol
                     )
                   MONTH =
                     T.let(
                       :month,
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ReleaseDatePrecision::TaggedSymbol
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ReleaseDatePrecision::TaggedSymbol
                     )
                   DAY =
                     T.let(
                       :day,
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ReleaseDatePrecision::TaggedSymbol
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ReleaseDatePrecision::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::ReleaseDatePrecision::TaggedSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::ReleaseDatePrecision::TaggedSymbol
                       ]
                     )
                   end
@@ -1335,7 +1339,7 @@ module Spotted
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Type
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1343,13 +1347,13 @@ module Spotted
                   ALBUM =
                     T.let(
                       :album,
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Type::TaggedSymbol
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Type::TaggedSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -1361,7 +1365,7 @@ module Spotted
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions,
                         Spotted::Internal::AnyHash
                       )
                     end
@@ -1373,7 +1377,7 @@ module Spotted
                   sig do
                     returns(
                       T.nilable(
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::Reason::TaggedSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::Reason::TaggedSymbol
                       )
                     )
                   end
@@ -1382,7 +1386,7 @@ module Spotted
                   sig do
                     params(
                       reason:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::Reason::OrSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::Reason::OrSymbol
                     ).void
                   end
                   attr_writer :reason
@@ -1391,7 +1395,7 @@ module Spotted
                   sig do
                     params(
                       reason:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::Reason::OrSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::Reason::OrSymbol
                     ).returns(T.attached_class)
                   end
                   def self.new(
@@ -1407,7 +1411,7 @@ module Spotted
                     override.returns(
                       {
                         reason:
-                          Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::Reason::TaggedSymbol
+                          Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::Reason::TaggedSymbol
                       }
                     )
                   end
@@ -1425,7 +1429,7 @@ module Spotted
                       T.type_alias do
                         T.all(
                           Symbol,
-                          Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::Reason
+                          Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::Reason
                         )
                       end
                     OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1433,23 +1437,23 @@ module Spotted
                     MARKET =
                       T.let(
                         :market,
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::Reason::TaggedSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::Reason::TaggedSymbol
                       )
                     PRODUCT =
                       T.let(
                         :product,
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::Reason::TaggedSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::Reason::TaggedSymbol
                       )
                     EXPLICIT =
                       T.let(
                         :explicit,
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::Reason::TaggedSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::Reason::TaggedSymbol
                       )
 
                     sig do
                       override.returns(
                         T::Array[
-                          Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Album::Restrictions::Reason::TaggedSymbol
+                          Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Album::Restrictions::Reason::TaggedSymbol
                         ]
                       )
                     end
@@ -1463,7 +1467,7 @@ module Spotted
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist,
                       Spotted::Internal::AnyHash
                     )
                   end
@@ -1480,7 +1484,7 @@ module Spotted
                 sig do
                   returns(
                     T.nilable(
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs
                     )
                   )
                 end
@@ -1489,7 +1493,7 @@ module Spotted
                 sig do
                   params(
                     external_urls:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs::OrHash
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs::OrHash
                   ).void
                 end
                 attr_writer :external_urls
@@ -1512,7 +1516,7 @@ module Spotted
                 sig do
                   returns(
                     T.nilable(
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::Type::TaggedSymbol
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::Type::TaggedSymbol
                     )
                   )
                 end
@@ -1521,7 +1525,7 @@ module Spotted
                 sig do
                   params(
                     type:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::Type::OrSymbol
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::Type::OrSymbol
                   ).void
                 end
                 attr_writer :type
@@ -1538,11 +1542,11 @@ module Spotted
                   params(
                     id: String,
                     external_urls:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs::OrHash,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs::OrHash,
                     href: String,
                     name: String,
                     type:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::Type::OrSymbol,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::Type::OrSymbol,
                     uri: String
                   ).returns(T.attached_class)
                 end
@@ -1569,11 +1573,11 @@ module Spotted
                     {
                       id: String,
                       external_urls:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs,
                       href: String,
                       name: String,
                       type:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::Type::TaggedSymbol,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::Type::TaggedSymbol,
                       uri: String
                     }
                   )
@@ -1585,7 +1589,7 @@ module Spotted
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::ExternalURLs,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::ExternalURLs,
                         Spotted::Internal::AnyHash
                       )
                     end
@@ -1620,7 +1624,7 @@ module Spotted
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::Type
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1628,13 +1632,13 @@ module Spotted
                   ARTIST =
                     T.let(
                       :artist,
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::Type::TaggedSymbol
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Artist::Type::TaggedSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Artist::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -1647,7 +1651,7 @@ module Spotted
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalIDs,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalIDs,
                       Spotted::Internal::AnyHash
                     )
                   end
@@ -1700,7 +1704,7 @@ module Spotted
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::ExternalURLs,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::ExternalURLs,
                       Spotted::Internal::AnyHash
                     )
                   end
@@ -1731,7 +1735,7 @@ module Spotted
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Restrictions,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Restrictions,
                       Spotted::Internal::AnyHash
                     )
                   end
@@ -1782,7 +1786,7 @@ module Spotted
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Type
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Type
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1790,13 +1794,13 @@ module Spotted
                 TRACK =
                   T.let(
                     :track,
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Type::TaggedSymbol
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Type::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Track::Type::TaggedSymbol
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Track::Type::TaggedSymbol
                     ]
                   )
                 end
@@ -1809,7 +1813,7 @@ module Spotted
               OrHash =
                 T.type_alias do
                   T.any(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode,
                     Spotted::Internal::AnyHash
                   )
                 end
@@ -1841,7 +1845,7 @@ module Spotted
               # External URLs for this episode.
               sig do
                 returns(
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ExternalURLs
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ExternalURLs
                 )
               end
               attr_reader :external_urls
@@ -1849,7 +1853,7 @@ module Spotted
               sig do
                 params(
                   external_urls:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ExternalURLs::OrHash
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ExternalURLs::OrHash
                 ).void
               end
               attr_writer :external_urls
@@ -1866,7 +1870,7 @@ module Spotted
               sig do
                 returns(
                   T::Array[
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Image
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Image
                   ]
                 )
               end
@@ -1897,7 +1901,7 @@ module Spotted
               # The precision with which `release_date` value is known.
               sig do
                 returns(
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ReleaseDatePrecision::TaggedSymbol
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ReleaseDatePrecision::TaggedSymbol
                 )
               end
               attr_accessor :release_date_precision
@@ -1905,7 +1909,7 @@ module Spotted
               # The show on which the episode belongs.
               sig do
                 returns(
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show
                 )
               end
               attr_reader :show
@@ -1913,7 +1917,7 @@ module Spotted
               sig do
                 params(
                   show:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::OrHash
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::OrHash
                 ).void
               end
               attr_writer :show
@@ -1940,7 +1944,7 @@ module Spotted
               sig do
                 returns(
                   T.nilable(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions
                   )
                 )
               end
@@ -1949,7 +1953,7 @@ module Spotted
               sig do
                 params(
                   restrictions:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions::OrHash
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions::OrHash
                 ).void
               end
               attr_writer :restrictions
@@ -1959,7 +1963,7 @@ module Spotted
               sig do
                 returns(
                   T.nilable(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint
                   )
                 )
               end
@@ -1968,7 +1972,7 @@ module Spotted
               sig do
                 params(
                   resume_point:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint::OrHash
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint::OrHash
                 ).void
               end
               attr_writer :resume_point
@@ -1981,12 +1985,12 @@ module Spotted
                   duration_ms: Integer,
                   explicit: T::Boolean,
                   external_urls:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ExternalURLs::OrHash,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ExternalURLs::OrHash,
                   href: String,
                   html_description: String,
                   images:
                     T::Array[
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Image::OrHash
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Image::OrHash
                     ],
                   is_externally_hosted: T::Boolean,
                   is_playable: T::Boolean,
@@ -1994,15 +1998,15 @@ module Spotted
                   name: String,
                   release_date: String,
                   release_date_precision:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ReleaseDatePrecision::OrSymbol,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ReleaseDatePrecision::OrSymbol,
                   show:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::OrHash,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::OrHash,
                   uri: String,
                   language: String,
                   restrictions:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions::OrHash,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions::OrHash,
                   resume_point:
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint::OrHash,
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint::OrHash,
                   type: Symbol
                 ).returns(T.attached_class)
               end
@@ -2071,12 +2075,12 @@ module Spotted
                     duration_ms: Integer,
                     explicit: T::Boolean,
                     external_urls:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ExternalURLs,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ExternalURLs,
                     href: String,
                     html_description: String,
                     images:
                       T::Array[
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Image
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Image
                       ],
                     is_externally_hosted: T::Boolean,
                     is_playable: T::Boolean,
@@ -2084,16 +2088,16 @@ module Spotted
                     name: String,
                     release_date: String,
                     release_date_precision:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ReleaseDatePrecision::TaggedSymbol,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ReleaseDatePrecision::TaggedSymbol,
                     show:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show,
                     type: Symbol,
                     uri: String,
                     language: String,
                     restrictions:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions,
                     resume_point:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint
                   }
                 )
               end
@@ -2104,7 +2108,7 @@ module Spotted
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ExternalURLs,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ExternalURLs,
                       Spotted::Internal::AnyHash
                     )
                   end
@@ -2135,7 +2139,7 @@ module Spotted
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Image,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Image,
                       Spotted::Internal::AnyHash
                     )
                   end
@@ -2190,7 +2194,7 @@ module Spotted
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ReleaseDatePrecision
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ReleaseDatePrecision
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2198,23 +2202,23 @@ module Spotted
                 YEAR =
                   T.let(
                     :year,
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ReleaseDatePrecision::TaggedSymbol
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ReleaseDatePrecision::TaggedSymbol
                   )
                 MONTH =
                   T.let(
                     :month,
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ReleaseDatePrecision::TaggedSymbol
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ReleaseDatePrecision::TaggedSymbol
                   )
                 DAY =
                   T.let(
                     :day,
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ReleaseDatePrecision::TaggedSymbol
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ReleaseDatePrecision::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ReleaseDatePrecision::TaggedSymbol
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ReleaseDatePrecision::TaggedSymbol
                     ]
                   )
                 end
@@ -2226,7 +2230,7 @@ module Spotted
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show,
                       Spotted::Internal::AnyHash
                     )
                   end
@@ -2244,7 +2248,7 @@ module Spotted
                 sig do
                   returns(
                     T::Array[
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Copyright
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Copyright
                     ]
                   )
                 end
@@ -2263,7 +2267,7 @@ module Spotted
                 # External URLs for this show.
                 sig do
                   returns(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::ExternalURLs
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::ExternalURLs
                   )
                 end
                 attr_reader :external_urls
@@ -2271,7 +2275,7 @@ module Spotted
                 sig do
                   params(
                     external_urls:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::ExternalURLs::OrHash
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::ExternalURLs::OrHash
                   ).void
                 end
                 attr_writer :external_urls
@@ -2288,7 +2292,7 @@ module Spotted
                 sig do
                   returns(
                     T::Array[
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Image
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Image
                     ]
                   )
                 end
@@ -2323,7 +2327,7 @@ module Spotted
                 # The object type.
                 sig do
                   returns(
-                    Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Type::TaggedSymbol
+                    Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Type::TaggedSymbol
                   )
                 end
                 attr_accessor :type
@@ -2340,17 +2344,17 @@ module Spotted
                     available_markets: T::Array[String],
                     copyrights:
                       T::Array[
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Copyright::OrHash
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Copyright::OrHash
                       ],
                     description: String,
                     explicit: T::Boolean,
                     external_urls:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::ExternalURLs::OrHash,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::ExternalURLs::OrHash,
                     href: String,
                     html_description: String,
                     images:
                       T::Array[
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Image::OrHash
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Image::OrHash
                       ],
                     is_externally_hosted: T::Boolean,
                     languages: T::Array[String],
@@ -2359,7 +2363,7 @@ module Spotted
                     publisher: String,
                     total_episodes: Integer,
                     type:
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Type::OrSymbol,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Type::OrSymbol,
                     uri: String
                   ).returns(T.attached_class)
                 end
@@ -2414,17 +2418,17 @@ module Spotted
                       available_markets: T::Array[String],
                       copyrights:
                         T::Array[
-                          Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Copyright
+                          Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Copyright
                         ],
                       description: String,
                       explicit: T::Boolean,
                       external_urls:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::ExternalURLs,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::ExternalURLs,
                       href: String,
                       html_description: String,
                       images:
                         T::Array[
-                          Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Image
+                          Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Image
                         ],
                       is_externally_hosted: T::Boolean,
                       languages: T::Array[String],
@@ -2433,7 +2437,7 @@ module Spotted
                       publisher: String,
                       total_episodes: Integer,
                       type:
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Type::TaggedSymbol,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Type::TaggedSymbol,
                       uri: String
                     }
                   )
@@ -2445,7 +2449,7 @@ module Spotted
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Copyright,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Copyright,
                         Spotted::Internal::AnyHash
                       )
                     end
@@ -2486,7 +2490,7 @@ module Spotted
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::ExternalURLs,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::ExternalURLs,
                         Spotted::Internal::AnyHash
                       )
                     end
@@ -2517,7 +2521,7 @@ module Spotted
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Image,
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Image,
                         Spotted::Internal::AnyHash
                       )
                     end
@@ -2572,7 +2576,7 @@ module Spotted
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Type
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2580,13 +2584,13 @@ module Spotted
                   SHOW =
                     T.let(
                       :show,
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Type::TaggedSymbol
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Show::Type::TaggedSymbol
+                        Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Show::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -2599,7 +2603,7 @@ module Spotted
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::Restrictions,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::Restrictions,
                       Spotted::Internal::AnyHash
                     )
                   end
@@ -2646,7 +2650,7 @@ module Spotted
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Spotted::Models::Playlists::TrackListResponse::Item::Track::Episode::ResumePoint,
+                      Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Episode::ResumePoint,
                       Spotted::Internal::AnyHash
                     )
                   end
@@ -2694,7 +2698,7 @@ module Spotted
             sig do
               override.returns(
                 T::Array[
-                  Spotted::Models::Playlists::TrackListResponse::Item::Track::Variants
+                  Spotted::Models::Playlists::TrackRetrieveResponse::Item::Track::Variants
                 ]
               )
             end

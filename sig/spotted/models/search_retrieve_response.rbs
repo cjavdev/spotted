@@ -1,83 +1,83 @@
 module Spotted
   module Models
-    type search_query_response =
+    type search_retrieve_response =
       {
-        albums: Spotted::Models::SearchQueryResponse::Albums,
-        artists: Spotted::Models::SearchQueryResponse::Artists,
-        audiobooks: Spotted::Models::SearchQueryResponse::Audiobooks,
-        episodes: Spotted::Models::SearchQueryResponse::Episodes,
-        playlists: Spotted::Models::SearchQueryResponse::Playlists,
-        shows: Spotted::Models::SearchQueryResponse::Shows,
-        tracks: Spotted::Models::SearchQueryResponse::Tracks
+        albums: Spotted::Models::SearchRetrieveResponse::Albums,
+        artists: Spotted::Models::SearchRetrieveResponse::Artists,
+        audiobooks: Spotted::Models::SearchRetrieveResponse::Audiobooks,
+        episodes: Spotted::Models::SearchRetrieveResponse::Episodes,
+        playlists: Spotted::Models::SearchRetrieveResponse::Playlists,
+        shows: Spotted::Models::SearchRetrieveResponse::Shows,
+        tracks: Spotted::Models::SearchRetrieveResponse::Tracks
       }
 
-    class SearchQueryResponse < Spotted::Internal::Type::BaseModel
-      attr_reader albums: Spotted::Models::SearchQueryResponse::Albums?
+    class SearchRetrieveResponse < Spotted::Internal::Type::BaseModel
+      attr_reader albums: Spotted::Models::SearchRetrieveResponse::Albums?
 
       def albums=: (
-        Spotted::Models::SearchQueryResponse::Albums
-      ) -> Spotted::Models::SearchQueryResponse::Albums
+        Spotted::Models::SearchRetrieveResponse::Albums
+      ) -> Spotted::Models::SearchRetrieveResponse::Albums
 
-      attr_reader artists: Spotted::Models::SearchQueryResponse::Artists?
+      attr_reader artists: Spotted::Models::SearchRetrieveResponse::Artists?
 
       def artists=: (
-        Spotted::Models::SearchQueryResponse::Artists
-      ) -> Spotted::Models::SearchQueryResponse::Artists
+        Spotted::Models::SearchRetrieveResponse::Artists
+      ) -> Spotted::Models::SearchRetrieveResponse::Artists
 
-      attr_reader audiobooks: Spotted::Models::SearchQueryResponse::Audiobooks?
+      attr_reader audiobooks: Spotted::Models::SearchRetrieveResponse::Audiobooks?
 
       def audiobooks=: (
-        Spotted::Models::SearchQueryResponse::Audiobooks
-      ) -> Spotted::Models::SearchQueryResponse::Audiobooks
+        Spotted::Models::SearchRetrieveResponse::Audiobooks
+      ) -> Spotted::Models::SearchRetrieveResponse::Audiobooks
 
-      attr_reader episodes: Spotted::Models::SearchQueryResponse::Episodes?
+      attr_reader episodes: Spotted::Models::SearchRetrieveResponse::Episodes?
 
       def episodes=: (
-        Spotted::Models::SearchQueryResponse::Episodes
-      ) -> Spotted::Models::SearchQueryResponse::Episodes
+        Spotted::Models::SearchRetrieveResponse::Episodes
+      ) -> Spotted::Models::SearchRetrieveResponse::Episodes
 
-      attr_reader playlists: Spotted::Models::SearchQueryResponse::Playlists?
+      attr_reader playlists: Spotted::Models::SearchRetrieveResponse::Playlists?
 
       def playlists=: (
-        Spotted::Models::SearchQueryResponse::Playlists
-      ) -> Spotted::Models::SearchQueryResponse::Playlists
+        Spotted::Models::SearchRetrieveResponse::Playlists
+      ) -> Spotted::Models::SearchRetrieveResponse::Playlists
 
-      attr_reader shows: Spotted::Models::SearchQueryResponse::Shows?
+      attr_reader shows: Spotted::Models::SearchRetrieveResponse::Shows?
 
       def shows=: (
-        Spotted::Models::SearchQueryResponse::Shows
-      ) -> Spotted::Models::SearchQueryResponse::Shows
+        Spotted::Models::SearchRetrieveResponse::Shows
+      ) -> Spotted::Models::SearchRetrieveResponse::Shows
 
-      attr_reader tracks: Spotted::Models::SearchQueryResponse::Tracks?
+      attr_reader tracks: Spotted::Models::SearchRetrieveResponse::Tracks?
 
       def tracks=: (
-        Spotted::Models::SearchQueryResponse::Tracks
-      ) -> Spotted::Models::SearchQueryResponse::Tracks
+        Spotted::Models::SearchRetrieveResponse::Tracks
+      ) -> Spotted::Models::SearchRetrieveResponse::Tracks
 
       def initialize: (
-        ?albums: Spotted::Models::SearchQueryResponse::Albums,
-        ?artists: Spotted::Models::SearchQueryResponse::Artists,
-        ?audiobooks: Spotted::Models::SearchQueryResponse::Audiobooks,
-        ?episodes: Spotted::Models::SearchQueryResponse::Episodes,
-        ?playlists: Spotted::Models::SearchQueryResponse::Playlists,
-        ?shows: Spotted::Models::SearchQueryResponse::Shows,
-        ?tracks: Spotted::Models::SearchQueryResponse::Tracks
+        ?albums: Spotted::Models::SearchRetrieveResponse::Albums,
+        ?artists: Spotted::Models::SearchRetrieveResponse::Artists,
+        ?audiobooks: Spotted::Models::SearchRetrieveResponse::Audiobooks,
+        ?episodes: Spotted::Models::SearchRetrieveResponse::Episodes,
+        ?playlists: Spotted::Models::SearchRetrieveResponse::Playlists,
+        ?shows: Spotted::Models::SearchRetrieveResponse::Shows,
+        ?tracks: Spotted::Models::SearchRetrieveResponse::Tracks
       ) -> void
 
       def to_hash: -> {
-        albums: Spotted::Models::SearchQueryResponse::Albums,
-        artists: Spotted::Models::SearchQueryResponse::Artists,
-        audiobooks: Spotted::Models::SearchQueryResponse::Audiobooks,
-        episodes: Spotted::Models::SearchQueryResponse::Episodes,
-        playlists: Spotted::Models::SearchQueryResponse::Playlists,
-        shows: Spotted::Models::SearchQueryResponse::Shows,
-        tracks: Spotted::Models::SearchQueryResponse::Tracks
+        albums: Spotted::Models::SearchRetrieveResponse::Albums,
+        artists: Spotted::Models::SearchRetrieveResponse::Artists,
+        audiobooks: Spotted::Models::SearchRetrieveResponse::Audiobooks,
+        episodes: Spotted::Models::SearchRetrieveResponse::Episodes,
+        playlists: Spotted::Models::SearchRetrieveResponse::Playlists,
+        shows: Spotted::Models::SearchRetrieveResponse::Shows,
+        tracks: Spotted::Models::SearchRetrieveResponse::Tracks
       }
 
       type albums =
         {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Albums::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -88,7 +88,7 @@ module Spotted
       class Albums < Spotted::Internal::Type::BaseModel
         attr_accessor href: String
 
-        attr_accessor items: ::Array[Spotted::Models::SearchQueryResponse::Albums::Item]
+        attr_accessor items: ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item]
 
         attr_accessor limit: Integer
 
@@ -102,7 +102,7 @@ module Spotted
 
         def initialize: (
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Albums::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -112,7 +112,7 @@ module Spotted
 
         def to_hash: -> {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Albums::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -123,86 +123,86 @@ module Spotted
         type item =
           {
             id: String,
-            album_type: Spotted::Models::SearchQueryResponse::Albums::Item::album_type,
-            artists: ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::Artist],
+            album_type: Spotted::Models::SearchRetrieveResponse::Albums::Item::album_type,
+            artists: ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist],
             available_markets: ::Array[String],
-            external_urls: Spotted::Models::SearchQueryResponse::Albums::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Albums::Item::ExternalURLs,
             href: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item::Image],
             name: String,
             release_date: String,
-            release_date_precision: Spotted::Models::SearchQueryResponse::Albums::Item::release_date_precision,
+            release_date_precision: Spotted::Models::SearchRetrieveResponse::Albums::Item::release_date_precision,
             total_tracks: Integer,
-            type: Spotted::Models::SearchQueryResponse::Albums::Item::type_,
+            type: Spotted::Models::SearchRetrieveResponse::Albums::Item::type_,
             uri: String,
-            restrictions: Spotted::Models::SearchQueryResponse::Albums::Item::Restrictions
+            restrictions: Spotted::Models::SearchRetrieveResponse::Albums::Item::Restrictions
           }
 
         class Item < Spotted::Internal::Type::BaseModel
           attr_accessor id: String
 
-          attr_accessor album_type: Spotted::Models::SearchQueryResponse::Albums::Item::album_type
+          attr_accessor album_type: Spotted::Models::SearchRetrieveResponse::Albums::Item::album_type
 
-          attr_accessor artists: ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::Artist]
+          attr_accessor artists: ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist]
 
           attr_accessor available_markets: ::Array[String]
 
-          attr_accessor external_urls: Spotted::Models::SearchQueryResponse::Albums::Item::ExternalURLs
+          attr_accessor external_urls: Spotted::Models::SearchRetrieveResponse::Albums::Item::ExternalURLs
 
           attr_accessor href: String
 
-          attr_accessor images: ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::Image]
+          attr_accessor images: ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item::Image]
 
           attr_accessor name: String
 
           attr_accessor release_date: String
 
-          attr_accessor release_date_precision: Spotted::Models::SearchQueryResponse::Albums::Item::release_date_precision
+          attr_accessor release_date_precision: Spotted::Models::SearchRetrieveResponse::Albums::Item::release_date_precision
 
           attr_accessor total_tracks: Integer
 
-          attr_accessor type: Spotted::Models::SearchQueryResponse::Albums::Item::type_
+          attr_accessor type: Spotted::Models::SearchRetrieveResponse::Albums::Item::type_
 
           attr_accessor uri: String
 
-          attr_reader restrictions: Spotted::Models::SearchQueryResponse::Albums::Item::Restrictions?
+          attr_reader restrictions: Spotted::Models::SearchRetrieveResponse::Albums::Item::Restrictions?
 
           def restrictions=: (
-            Spotted::Models::SearchQueryResponse::Albums::Item::Restrictions
-          ) -> Spotted::Models::SearchQueryResponse::Albums::Item::Restrictions
+            Spotted::Models::SearchRetrieveResponse::Albums::Item::Restrictions
+          ) -> Spotted::Models::SearchRetrieveResponse::Albums::Item::Restrictions
 
           def initialize: (
             id: String,
-            album_type: Spotted::Models::SearchQueryResponse::Albums::Item::album_type,
-            artists: ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::Artist],
+            album_type: Spotted::Models::SearchRetrieveResponse::Albums::Item::album_type,
+            artists: ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist],
             available_markets: ::Array[String],
-            external_urls: Spotted::Models::SearchQueryResponse::Albums::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Albums::Item::ExternalURLs,
             href: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item::Image],
             name: String,
             release_date: String,
-            release_date_precision: Spotted::Models::SearchQueryResponse::Albums::Item::release_date_precision,
+            release_date_precision: Spotted::Models::SearchRetrieveResponse::Albums::Item::release_date_precision,
             total_tracks: Integer,
-            type: Spotted::Models::SearchQueryResponse::Albums::Item::type_,
+            type: Spotted::Models::SearchRetrieveResponse::Albums::Item::type_,
             uri: String,
-            ?restrictions: Spotted::Models::SearchQueryResponse::Albums::Item::Restrictions
+            ?restrictions: Spotted::Models::SearchRetrieveResponse::Albums::Item::Restrictions
           ) -> void
 
           def to_hash: -> {
             id: String,
-            album_type: Spotted::Models::SearchQueryResponse::Albums::Item::album_type,
-            artists: ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::Artist],
+            album_type: Spotted::Models::SearchRetrieveResponse::Albums::Item::album_type,
+            artists: ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist],
             available_markets: ::Array[String],
-            external_urls: Spotted::Models::SearchQueryResponse::Albums::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Albums::Item::ExternalURLs,
             href: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item::Image],
             name: String,
             release_date: String,
-            release_date_precision: Spotted::Models::SearchQueryResponse::Albums::Item::release_date_precision,
+            release_date_precision: Spotted::Models::SearchRetrieveResponse::Albums::Item::release_date_precision,
             total_tracks: Integer,
-            type: Spotted::Models::SearchQueryResponse::Albums::Item::type_,
+            type: Spotted::Models::SearchRetrieveResponse::Albums::Item::type_,
             uri: String,
-            restrictions: Spotted::Models::SearchQueryResponse::Albums::Item::Restrictions
+            restrictions: Spotted::Models::SearchRetrieveResponse::Albums::Item::Restrictions
           }
 
           type album_type = :album | :single | :compilation
@@ -214,16 +214,16 @@ module Spotted
             SINGLE: :single
             COMPILATION: :compilation
 
-            def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::album_type]
+            def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item::album_type]
           end
 
           type artist =
             {
               id: String,
-              external_urls: Spotted::Models::SearchQueryResponse::Albums::Item::Artist::ExternalURLs,
+              external_urls: Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist::ExternalURLs,
               href: String,
               name: String,
-              type: Spotted::Models::SearchQueryResponse::Albums::Item::Artist::type_,
+              type: Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist::type_,
               uri: String
             }
 
@@ -232,11 +232,11 @@ module Spotted
 
             def id=: (String) -> String
 
-            attr_reader external_urls: Spotted::Models::SearchQueryResponse::Albums::Item::Artist::ExternalURLs?
+            attr_reader external_urls: Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist::ExternalURLs?
 
             def external_urls=: (
-              Spotted::Models::SearchQueryResponse::Albums::Item::Artist::ExternalURLs
-            ) -> Spotted::Models::SearchQueryResponse::Albums::Item::Artist::ExternalURLs
+              Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist::ExternalURLs
+            ) -> Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist::ExternalURLs
 
             attr_reader href: String?
 
@@ -246,11 +246,11 @@ module Spotted
 
             def name=: (String) -> String
 
-            attr_reader type: Spotted::Models::SearchQueryResponse::Albums::Item::Artist::type_?
+            attr_reader type: Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist::type_?
 
             def type=: (
-              Spotted::Models::SearchQueryResponse::Albums::Item::Artist::type_
-            ) -> Spotted::Models::SearchQueryResponse::Albums::Item::Artist::type_
+              Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist::type_
+            ) -> Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist::type_
 
             attr_reader uri: String?
 
@@ -258,19 +258,19 @@ module Spotted
 
             def initialize: (
               ?id: String,
-              ?external_urls: Spotted::Models::SearchQueryResponse::Albums::Item::Artist::ExternalURLs,
+              ?external_urls: Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist::ExternalURLs,
               ?href: String,
               ?name: String,
-              ?type: Spotted::Models::SearchQueryResponse::Albums::Item::Artist::type_,
+              ?type: Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist::type_,
               ?uri: String
             ) -> void
 
             def to_hash: -> {
               id: String,
-              external_urls: Spotted::Models::SearchQueryResponse::Albums::Item::Artist::ExternalURLs,
+              external_urls: Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist::ExternalURLs,
               href: String,
               name: String,
-              type: Spotted::Models::SearchQueryResponse::Albums::Item::Artist::type_,
+              type: Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist::type_,
               uri: String
             }
 
@@ -293,7 +293,7 @@ module Spotted
 
               ARTIST: :artist
 
-              def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::Artist::type_]
+              def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item::Artist::type_]
             end
           end
 
@@ -336,7 +336,7 @@ module Spotted
             MONTH: :month
             DAY: :day
 
-            def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::release_date_precision]
+            def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item::release_date_precision]
           end
 
           type type_ = :album
@@ -346,27 +346,27 @@ module Spotted
 
             ALBUM: :album
 
-            def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::type_]
+            def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item::type_]
           end
 
           type restrictions =
             {
-              reason: Spotted::Models::SearchQueryResponse::Albums::Item::Restrictions::reason
+              reason: Spotted::Models::SearchRetrieveResponse::Albums::Item::Restrictions::reason
             }
 
           class Restrictions < Spotted::Internal::Type::BaseModel
-            attr_reader reason: Spotted::Models::SearchQueryResponse::Albums::Item::Restrictions::reason?
+            attr_reader reason: Spotted::Models::SearchRetrieveResponse::Albums::Item::Restrictions::reason?
 
             def reason=: (
-              Spotted::Models::SearchQueryResponse::Albums::Item::Restrictions::reason
-            ) -> Spotted::Models::SearchQueryResponse::Albums::Item::Restrictions::reason
+              Spotted::Models::SearchRetrieveResponse::Albums::Item::Restrictions::reason
+            ) -> Spotted::Models::SearchRetrieveResponse::Albums::Item::Restrictions::reason
 
             def initialize: (
-              ?reason: Spotted::Models::SearchQueryResponse::Albums::Item::Restrictions::reason
+              ?reason: Spotted::Models::SearchRetrieveResponse::Albums::Item::Restrictions::reason
             ) -> void
 
             def to_hash: -> {
-              reason: Spotted::Models::SearchQueryResponse::Albums::Item::Restrictions::reason
+              reason: Spotted::Models::SearchRetrieveResponse::Albums::Item::Restrictions::reason
             }
 
             type reason = :market | :product | :explicit
@@ -378,7 +378,7 @@ module Spotted
               PRODUCT: :product
               EXPLICIT: :explicit
 
-              def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::Restrictions::reason]
+              def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Albums::Item::Restrictions::reason]
             end
           end
         end
@@ -387,7 +387,7 @@ module Spotted
       type artists =
         {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Artists::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Artists::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -398,7 +398,7 @@ module Spotted
       class Artists < Spotted::Internal::Type::BaseModel
         attr_accessor href: String
 
-        attr_accessor items: ::Array[Spotted::Models::SearchQueryResponse::Artists::Item]
+        attr_accessor items: ::Array[Spotted::Models::SearchRetrieveResponse::Artists::Item]
 
         attr_accessor limit: Integer
 
@@ -412,7 +412,7 @@ module Spotted
 
         def initialize: (
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Artists::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Artists::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -422,7 +422,7 @@ module Spotted
 
         def to_hash: -> {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Artists::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Artists::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -433,14 +433,14 @@ module Spotted
         type item =
           {
             id: String,
-            external_urls: Spotted::Models::SearchQueryResponse::Artists::Item::ExternalURLs,
-            followers: Spotted::Models::SearchQueryResponse::Artists::Item::Followers,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Artists::Item::ExternalURLs,
+            followers: Spotted::Models::SearchRetrieveResponse::Artists::Item::Followers,
             genres: ::Array[String],
             href: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Artists::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Artists::Item::Image],
             name: String,
             popularity: Integer,
-            type: Spotted::Models::SearchQueryResponse::Artists::Item::type_,
+            type: Spotted::Models::SearchRetrieveResponse::Artists::Item::type_,
             uri: String
           }
 
@@ -449,17 +449,17 @@ module Spotted
 
           def id=: (String) -> String
 
-          attr_reader external_urls: Spotted::Models::SearchQueryResponse::Artists::Item::ExternalURLs?
+          attr_reader external_urls: Spotted::Models::SearchRetrieveResponse::Artists::Item::ExternalURLs?
 
           def external_urls=: (
-            Spotted::Models::SearchQueryResponse::Artists::Item::ExternalURLs
-          ) -> Spotted::Models::SearchQueryResponse::Artists::Item::ExternalURLs
+            Spotted::Models::SearchRetrieveResponse::Artists::Item::ExternalURLs
+          ) -> Spotted::Models::SearchRetrieveResponse::Artists::Item::ExternalURLs
 
-          attr_reader followers: Spotted::Models::SearchQueryResponse::Artists::Item::Followers?
+          attr_reader followers: Spotted::Models::SearchRetrieveResponse::Artists::Item::Followers?
 
           def followers=: (
-            Spotted::Models::SearchQueryResponse::Artists::Item::Followers
-          ) -> Spotted::Models::SearchQueryResponse::Artists::Item::Followers
+            Spotted::Models::SearchRetrieveResponse::Artists::Item::Followers
+          ) -> Spotted::Models::SearchRetrieveResponse::Artists::Item::Followers
 
           attr_reader genres: ::Array[String]?
 
@@ -469,11 +469,11 @@ module Spotted
 
           def href=: (String) -> String
 
-          attr_reader images: ::Array[Spotted::Models::SearchQueryResponse::Artists::Item::Image]?
+          attr_reader images: ::Array[Spotted::Models::SearchRetrieveResponse::Artists::Item::Image]?
 
           def images=: (
-            ::Array[Spotted::Models::SearchQueryResponse::Artists::Item::Image]
-          ) -> ::Array[Spotted::Models::SearchQueryResponse::Artists::Item::Image]
+            ::Array[Spotted::Models::SearchRetrieveResponse::Artists::Item::Image]
+          ) -> ::Array[Spotted::Models::SearchRetrieveResponse::Artists::Item::Image]
 
           attr_reader name: String?
 
@@ -483,11 +483,11 @@ module Spotted
 
           def popularity=: (Integer) -> Integer
 
-          attr_reader type: Spotted::Models::SearchQueryResponse::Artists::Item::type_?
+          attr_reader type: Spotted::Models::SearchRetrieveResponse::Artists::Item::type_?
 
           def type=: (
-            Spotted::Models::SearchQueryResponse::Artists::Item::type_
-          ) -> Spotted::Models::SearchQueryResponse::Artists::Item::type_
+            Spotted::Models::SearchRetrieveResponse::Artists::Item::type_
+          ) -> Spotted::Models::SearchRetrieveResponse::Artists::Item::type_
 
           attr_reader uri: String?
 
@@ -495,27 +495,27 @@ module Spotted
 
           def initialize: (
             ?id: String,
-            ?external_urls: Spotted::Models::SearchQueryResponse::Artists::Item::ExternalURLs,
-            ?followers: Spotted::Models::SearchQueryResponse::Artists::Item::Followers,
+            ?external_urls: Spotted::Models::SearchRetrieveResponse::Artists::Item::ExternalURLs,
+            ?followers: Spotted::Models::SearchRetrieveResponse::Artists::Item::Followers,
             ?genres: ::Array[String],
             ?href: String,
-            ?images: ::Array[Spotted::Models::SearchQueryResponse::Artists::Item::Image],
+            ?images: ::Array[Spotted::Models::SearchRetrieveResponse::Artists::Item::Image],
             ?name: String,
             ?popularity: Integer,
-            ?type: Spotted::Models::SearchQueryResponse::Artists::Item::type_,
+            ?type: Spotted::Models::SearchRetrieveResponse::Artists::Item::type_,
             ?uri: String
           ) -> void
 
           def to_hash: -> {
             id: String,
-            external_urls: Spotted::Models::SearchQueryResponse::Artists::Item::ExternalURLs,
-            followers: Spotted::Models::SearchQueryResponse::Artists::Item::Followers,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Artists::Item::ExternalURLs,
+            followers: Spotted::Models::SearchRetrieveResponse::Artists::Item::Followers,
             genres: ::Array[String],
             href: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Artists::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Artists::Item::Image],
             name: String,
             popularity: Integer,
-            type: Spotted::Models::SearchQueryResponse::Artists::Item::type_,
+            type: Spotted::Models::SearchRetrieveResponse::Artists::Item::type_,
             uri: String
           }
 
@@ -570,7 +570,7 @@ module Spotted
 
             ARTIST: :artist
 
-            def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Artists::Item::type_]
+            def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Artists::Item::type_]
           end
         end
       end
@@ -578,7 +578,7 @@ module Spotted
       type audiobooks =
         {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -589,7 +589,7 @@ module Spotted
       class Audiobooks < Spotted::Internal::Type::BaseModel
         attr_accessor href: String
 
-        attr_accessor items: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item]
+        attr_accessor items: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item]
 
         attr_accessor limit: Integer
 
@@ -603,7 +603,7 @@ module Spotted
 
         def initialize: (
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -613,7 +613,7 @@ module Spotted
 
         def to_hash: -> {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -624,22 +624,22 @@ module Spotted
         type item =
           {
             id: String,
-            authors: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Author],
+            authors: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Author],
             available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Copyright],
+            copyrights: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Copyright],
             description: String,
             explicit: bool,
-            external_urls: Spotted::Models::SearchQueryResponse::Audiobooks::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::ExternalURLs,
             href: String,
             html_description: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Image],
             languages: ::Array[String],
             media_type: String,
             name: String,
-            narrators: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Narrator],
+            narrators: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Narrator],
             publisher: String,
             total_chapters: Integer,
-            type: Spotted::Models::SearchQueryResponse::Audiobooks::Item::type_,
+            type: Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::type_,
             uri: String,
             edition: String
           }
@@ -647,23 +647,23 @@ module Spotted
         class Item < Spotted::Internal::Type::BaseModel
           attr_accessor id: String
 
-          attr_accessor authors: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Author]
+          attr_accessor authors: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Author]
 
           attr_accessor available_markets: ::Array[String]
 
-          attr_accessor copyrights: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Copyright]
+          attr_accessor copyrights: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Copyright]
 
           attr_accessor description: String
 
           attr_accessor explicit: bool
 
-          attr_accessor external_urls: Spotted::Models::SearchQueryResponse::Audiobooks::Item::ExternalURLs
+          attr_accessor external_urls: Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::ExternalURLs
 
           attr_accessor href: String
 
           attr_accessor html_description: String
 
-          attr_accessor images: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Image]
+          attr_accessor images: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Image]
 
           attr_accessor languages: ::Array[String]
 
@@ -671,13 +671,13 @@ module Spotted
 
           attr_accessor name: String
 
-          attr_accessor narrators: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Narrator]
+          attr_accessor narrators: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Narrator]
 
           attr_accessor publisher: String
 
           attr_accessor total_chapters: Integer
 
-          attr_accessor type: Spotted::Models::SearchQueryResponse::Audiobooks::Item::type_
+          attr_accessor type: Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::type_
 
           attr_accessor uri: String
 
@@ -687,44 +687,44 @@ module Spotted
 
           def initialize: (
             id: String,
-            authors: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Author],
+            authors: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Author],
             available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Copyright],
+            copyrights: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Copyright],
             description: String,
             explicit: bool,
-            external_urls: Spotted::Models::SearchQueryResponse::Audiobooks::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::ExternalURLs,
             href: String,
             html_description: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Image],
             languages: ::Array[String],
             media_type: String,
             name: String,
-            narrators: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Narrator],
+            narrators: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Narrator],
             publisher: String,
             total_chapters: Integer,
-            type: Spotted::Models::SearchQueryResponse::Audiobooks::Item::type_,
+            type: Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::type_,
             uri: String,
             ?edition: String
           ) -> void
 
           def to_hash: -> {
             id: String,
-            authors: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Author],
+            authors: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Author],
             available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Copyright],
+            copyrights: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Copyright],
             description: String,
             explicit: bool,
-            external_urls: Spotted::Models::SearchQueryResponse::Audiobooks::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::ExternalURLs,
             href: String,
             html_description: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Image],
             languages: ::Array[String],
             media_type: String,
             name: String,
-            narrators: ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::Narrator],
+            narrators: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::Narrator],
             publisher: String,
             total_chapters: Integer,
-            type: Spotted::Models::SearchQueryResponse::Audiobooks::Item::type_,
+            type: Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::type_,
             uri: String,
             edition: String
           }
@@ -806,7 +806,7 @@ module Spotted
 
             AUDIOBOOK: :audiobook
 
-            def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Audiobooks::Item::type_]
+            def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::type_]
           end
         end
       end
@@ -814,7 +814,7 @@ module Spotted
       type episodes =
         {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Episodes::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Episodes::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -825,7 +825,7 @@ module Spotted
       class Episodes < Spotted::Internal::Type::BaseModel
         attr_accessor href: String
 
-        attr_accessor items: ::Array[Spotted::Models::SearchQueryResponse::Episodes::Item]
+        attr_accessor items: ::Array[Spotted::Models::SearchRetrieveResponse::Episodes::Item]
 
         attr_accessor limit: Integer
 
@@ -839,7 +839,7 @@ module Spotted
 
         def initialize: (
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Episodes::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Episodes::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -849,7 +849,7 @@ module Spotted
 
         def to_hash: -> {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Episodes::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Episodes::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -864,21 +864,21 @@ module Spotted
             description: String,
             duration_ms: Integer,
             explicit: bool,
-            external_urls: Spotted::Models::SearchQueryResponse::Episodes::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Episodes::Item::ExternalURLs,
             href: String,
             html_description: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Episodes::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Episodes::Item::Image],
             is_externally_hosted: bool,
             is_playable: bool,
             languages: ::Array[String],
             name: String,
             release_date: String,
-            release_date_precision: Spotted::Models::SearchQueryResponse::Episodes::Item::release_date_precision,
-            type: Spotted::Models::SearchQueryResponse::Episodes::Item::type_,
+            release_date_precision: Spotted::Models::SearchRetrieveResponse::Episodes::Item::release_date_precision,
+            type: Spotted::Models::SearchRetrieveResponse::Episodes::Item::type_,
             uri: String,
             language: String,
-            restrictions: Spotted::Models::SearchQueryResponse::Episodes::Item::Restrictions,
-            resume_point: Spotted::Models::SearchQueryResponse::Episodes::Item::ResumePoint
+            restrictions: Spotted::Models::SearchRetrieveResponse::Episodes::Item::Restrictions,
+            resume_point: Spotted::Models::SearchRetrieveResponse::Episodes::Item::ResumePoint
           }
 
         class Item < Spotted::Internal::Type::BaseModel
@@ -892,13 +892,13 @@ module Spotted
 
           attr_accessor explicit: bool
 
-          attr_accessor external_urls: Spotted::Models::SearchQueryResponse::Episodes::Item::ExternalURLs
+          attr_accessor external_urls: Spotted::Models::SearchRetrieveResponse::Episodes::Item::ExternalURLs
 
           attr_accessor href: String
 
           attr_accessor html_description: String
 
-          attr_accessor images: ::Array[Spotted::Models::SearchQueryResponse::Episodes::Item::Image]
+          attr_accessor images: ::Array[Spotted::Models::SearchRetrieveResponse::Episodes::Item::Image]
 
           attr_accessor is_externally_hosted: bool
 
@@ -910,9 +910,9 @@ module Spotted
 
           attr_accessor release_date: String
 
-          attr_accessor release_date_precision: Spotted::Models::SearchQueryResponse::Episodes::Item::release_date_precision
+          attr_accessor release_date_precision: Spotted::Models::SearchRetrieveResponse::Episodes::Item::release_date_precision
 
-          attr_accessor type: Spotted::Models::SearchQueryResponse::Episodes::Item::type_
+          attr_accessor type: Spotted::Models::SearchRetrieveResponse::Episodes::Item::type_
 
           attr_accessor uri: String
 
@@ -920,17 +920,17 @@ module Spotted
 
           def language=: (String) -> String
 
-          attr_reader restrictions: Spotted::Models::SearchQueryResponse::Episodes::Item::Restrictions?
+          attr_reader restrictions: Spotted::Models::SearchRetrieveResponse::Episodes::Item::Restrictions?
 
           def restrictions=: (
-            Spotted::Models::SearchQueryResponse::Episodes::Item::Restrictions
-          ) -> Spotted::Models::SearchQueryResponse::Episodes::Item::Restrictions
+            Spotted::Models::SearchRetrieveResponse::Episodes::Item::Restrictions
+          ) -> Spotted::Models::SearchRetrieveResponse::Episodes::Item::Restrictions
 
-          attr_reader resume_point: Spotted::Models::SearchQueryResponse::Episodes::Item::ResumePoint?
+          attr_reader resume_point: Spotted::Models::SearchRetrieveResponse::Episodes::Item::ResumePoint?
 
           def resume_point=: (
-            Spotted::Models::SearchQueryResponse::Episodes::Item::ResumePoint
-          ) -> Spotted::Models::SearchQueryResponse::Episodes::Item::ResumePoint
+            Spotted::Models::SearchRetrieveResponse::Episodes::Item::ResumePoint
+          ) -> Spotted::Models::SearchRetrieveResponse::Episodes::Item::ResumePoint
 
           def initialize: (
             id: String,
@@ -938,21 +938,21 @@ module Spotted
             description: String,
             duration_ms: Integer,
             explicit: bool,
-            external_urls: Spotted::Models::SearchQueryResponse::Episodes::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Episodes::Item::ExternalURLs,
             href: String,
             html_description: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Episodes::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Episodes::Item::Image],
             is_externally_hosted: bool,
             is_playable: bool,
             languages: ::Array[String],
             name: String,
             release_date: String,
-            release_date_precision: Spotted::Models::SearchQueryResponse::Episodes::Item::release_date_precision,
-            type: Spotted::Models::SearchQueryResponse::Episodes::Item::type_,
+            release_date_precision: Spotted::Models::SearchRetrieveResponse::Episodes::Item::release_date_precision,
+            type: Spotted::Models::SearchRetrieveResponse::Episodes::Item::type_,
             uri: String,
             ?language: String,
-            ?restrictions: Spotted::Models::SearchQueryResponse::Episodes::Item::Restrictions,
-            ?resume_point: Spotted::Models::SearchQueryResponse::Episodes::Item::ResumePoint
+            ?restrictions: Spotted::Models::SearchRetrieveResponse::Episodes::Item::Restrictions,
+            ?resume_point: Spotted::Models::SearchRetrieveResponse::Episodes::Item::ResumePoint
           ) -> void
 
           def to_hash: -> {
@@ -961,21 +961,21 @@ module Spotted
             description: String,
             duration_ms: Integer,
             explicit: bool,
-            external_urls: Spotted::Models::SearchQueryResponse::Episodes::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Episodes::Item::ExternalURLs,
             href: String,
             html_description: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Episodes::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Episodes::Item::Image],
             is_externally_hosted: bool,
             is_playable: bool,
             languages: ::Array[String],
             name: String,
             release_date: String,
-            release_date_precision: Spotted::Models::SearchQueryResponse::Episodes::Item::release_date_precision,
-            type: Spotted::Models::SearchQueryResponse::Episodes::Item::type_,
+            release_date_precision: Spotted::Models::SearchRetrieveResponse::Episodes::Item::release_date_precision,
+            type: Spotted::Models::SearchRetrieveResponse::Episodes::Item::type_,
             uri: String,
             language: String,
-            restrictions: Spotted::Models::SearchQueryResponse::Episodes::Item::Restrictions,
-            resume_point: Spotted::Models::SearchQueryResponse::Episodes::Item::ResumePoint
+            restrictions: Spotted::Models::SearchRetrieveResponse::Episodes::Item::Restrictions,
+            resume_point: Spotted::Models::SearchRetrieveResponse::Episodes::Item::ResumePoint
           }
 
           type external_urls = { spotify: String }
@@ -1017,7 +1017,7 @@ module Spotted
             MONTH: :month
             DAY: :day
 
-            def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Episodes::Item::release_date_precision]
+            def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Episodes::Item::release_date_precision]
           end
 
           type type_ = :episode
@@ -1027,7 +1027,7 @@ module Spotted
 
             EPISODE: :episode
 
-            def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Episodes::Item::type_]
+            def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Episodes::Item::type_]
           end
 
           type restrictions = { reason: String }
@@ -1067,7 +1067,7 @@ module Spotted
       type playlists =
         {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Playlists::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Playlists::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -1078,7 +1078,7 @@ module Spotted
       class Playlists < Spotted::Internal::Type::BaseModel
         attr_accessor href: String
 
-        attr_accessor items: ::Array[Spotted::Models::SearchQueryResponse::Playlists::Item]
+        attr_accessor items: ::Array[Spotted::Models::SearchRetrieveResponse::Playlists::Item]
 
         attr_accessor limit: Integer
 
@@ -1092,7 +1092,7 @@ module Spotted
 
         def initialize: (
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Playlists::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Playlists::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -1102,7 +1102,7 @@ module Spotted
 
         def to_hash: -> {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Playlists::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Playlists::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -1115,14 +1115,14 @@ module Spotted
             id: String,
             collaborative: bool,
             description: String,
-            external_urls: Spotted::Models::SearchQueryResponse::Playlists::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Playlists::Item::ExternalURLs,
             href: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Playlists::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Playlists::Item::Image],
             name: String,
-            owner: Spotted::Models::SearchQueryResponse::Playlists::Item::Owner,
+            owner: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner,
             public: bool,
             snapshot_id: String,
-            tracks: Spotted::Models::SearchQueryResponse::Playlists::Item::Tracks,
+            tracks: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Tracks,
             type: String,
             uri: String
           }
@@ -1140,31 +1140,31 @@ module Spotted
 
           def description=: (String) -> String
 
-          attr_reader external_urls: Spotted::Models::SearchQueryResponse::Playlists::Item::ExternalURLs?
+          attr_reader external_urls: Spotted::Models::SearchRetrieveResponse::Playlists::Item::ExternalURLs?
 
           def external_urls=: (
-            Spotted::Models::SearchQueryResponse::Playlists::Item::ExternalURLs
-          ) -> Spotted::Models::SearchQueryResponse::Playlists::Item::ExternalURLs
+            Spotted::Models::SearchRetrieveResponse::Playlists::Item::ExternalURLs
+          ) -> Spotted::Models::SearchRetrieveResponse::Playlists::Item::ExternalURLs
 
           attr_reader href: String?
 
           def href=: (String) -> String
 
-          attr_reader images: ::Array[Spotted::Models::SearchQueryResponse::Playlists::Item::Image]?
+          attr_reader images: ::Array[Spotted::Models::SearchRetrieveResponse::Playlists::Item::Image]?
 
           def images=: (
-            ::Array[Spotted::Models::SearchQueryResponse::Playlists::Item::Image]
-          ) -> ::Array[Spotted::Models::SearchQueryResponse::Playlists::Item::Image]
+            ::Array[Spotted::Models::SearchRetrieveResponse::Playlists::Item::Image]
+          ) -> ::Array[Spotted::Models::SearchRetrieveResponse::Playlists::Item::Image]
 
           attr_reader name: String?
 
           def name=: (String) -> String
 
-          attr_reader owner: Spotted::Models::SearchQueryResponse::Playlists::Item::Owner?
+          attr_reader owner: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner?
 
           def owner=: (
-            Spotted::Models::SearchQueryResponse::Playlists::Item::Owner
-          ) -> Spotted::Models::SearchQueryResponse::Playlists::Item::Owner
+            Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner
+          ) -> Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner
 
           attr_reader public: bool?
 
@@ -1174,11 +1174,11 @@ module Spotted
 
           def snapshot_id=: (String) -> String
 
-          attr_reader tracks: Spotted::Models::SearchQueryResponse::Playlists::Item::Tracks?
+          attr_reader tracks: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Tracks?
 
           def tracks=: (
-            Spotted::Models::SearchQueryResponse::Playlists::Item::Tracks
-          ) -> Spotted::Models::SearchQueryResponse::Playlists::Item::Tracks
+            Spotted::Models::SearchRetrieveResponse::Playlists::Item::Tracks
+          ) -> Spotted::Models::SearchRetrieveResponse::Playlists::Item::Tracks
 
           attr_reader type: String?
 
@@ -1192,14 +1192,14 @@ module Spotted
             ?id: String,
             ?collaborative: bool,
             ?description: String,
-            ?external_urls: Spotted::Models::SearchQueryResponse::Playlists::Item::ExternalURLs,
+            ?external_urls: Spotted::Models::SearchRetrieveResponse::Playlists::Item::ExternalURLs,
             ?href: String,
-            ?images: ::Array[Spotted::Models::SearchQueryResponse::Playlists::Item::Image],
+            ?images: ::Array[Spotted::Models::SearchRetrieveResponse::Playlists::Item::Image],
             ?name: String,
-            ?owner: Spotted::Models::SearchQueryResponse::Playlists::Item::Owner,
+            ?owner: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner,
             ?public: bool,
             ?snapshot_id: String,
-            ?tracks: Spotted::Models::SearchQueryResponse::Playlists::Item::Tracks,
+            ?tracks: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Tracks,
             ?type: String,
             ?uri: String
           ) -> void
@@ -1208,14 +1208,14 @@ module Spotted
             id: String,
             collaborative: bool,
             description: String,
-            external_urls: Spotted::Models::SearchQueryResponse::Playlists::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Playlists::Item::ExternalURLs,
             href: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Playlists::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Playlists::Item::Image],
             name: String,
-            owner: Spotted::Models::SearchQueryResponse::Playlists::Item::Owner,
+            owner: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner,
             public: bool,
             snapshot_id: String,
-            tracks: Spotted::Models::SearchQueryResponse::Playlists::Item::Tracks,
+            tracks: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Tracks,
             type: String,
             uri: String
           }
@@ -1254,9 +1254,9 @@ module Spotted
             {
               id: String,
               display_name: String?,
-              external_urls: Spotted::Models::SearchQueryResponse::Playlists::Item::Owner::ExternalURLs,
+              external_urls: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner::ExternalURLs,
               href: String,
-              type: Spotted::Models::SearchQueryResponse::Playlists::Item::Owner::type_,
+              type: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner::type_,
               uri: String
             }
 
@@ -1267,21 +1267,21 @@ module Spotted
 
             attr_accessor display_name: String?
 
-            attr_reader external_urls: Spotted::Models::SearchQueryResponse::Playlists::Item::Owner::ExternalURLs?
+            attr_reader external_urls: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner::ExternalURLs?
 
             def external_urls=: (
-              Spotted::Models::SearchQueryResponse::Playlists::Item::Owner::ExternalURLs
-            ) -> Spotted::Models::SearchQueryResponse::Playlists::Item::Owner::ExternalURLs
+              Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner::ExternalURLs
+            ) -> Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner::ExternalURLs
 
             attr_reader href: String?
 
             def href=: (String) -> String
 
-            attr_reader type: Spotted::Models::SearchQueryResponse::Playlists::Item::Owner::type_?
+            attr_reader type: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner::type_?
 
             def type=: (
-              Spotted::Models::SearchQueryResponse::Playlists::Item::Owner::type_
-            ) -> Spotted::Models::SearchQueryResponse::Playlists::Item::Owner::type_
+              Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner::type_
+            ) -> Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner::type_
 
             attr_reader uri: String?
 
@@ -1290,18 +1290,18 @@ module Spotted
             def initialize: (
               ?id: String,
               ?display_name: String?,
-              ?external_urls: Spotted::Models::SearchQueryResponse::Playlists::Item::Owner::ExternalURLs,
+              ?external_urls: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner::ExternalURLs,
               ?href: String,
-              ?type: Spotted::Models::SearchQueryResponse::Playlists::Item::Owner::type_,
+              ?type: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner::type_,
               ?uri: String
             ) -> void
 
             def to_hash: -> {
               id: String,
               display_name: String?,
-              external_urls: Spotted::Models::SearchQueryResponse::Playlists::Item::Owner::ExternalURLs,
+              external_urls: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner::ExternalURLs,
               href: String,
-              type: Spotted::Models::SearchQueryResponse::Playlists::Item::Owner::type_,
+              type: Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner::type_,
               uri: String
             }
 
@@ -1324,7 +1324,7 @@ module Spotted
 
               USER: :user
 
-              def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Playlists::Item::Owner::type_]
+              def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Playlists::Item::Owner::type_]
             end
           end
 
@@ -1349,7 +1349,7 @@ module Spotted
       type shows =
         {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Shows::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -1360,7 +1360,7 @@ module Spotted
       class Shows < Spotted::Internal::Type::BaseModel
         attr_accessor href: String
 
-        attr_accessor items: ::Array[Spotted::Models::SearchQueryResponse::Shows::Item]
+        attr_accessor items: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item]
 
         attr_accessor limit: Integer
 
@@ -1374,7 +1374,7 @@ module Spotted
 
         def initialize: (
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Shows::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -1384,7 +1384,7 @@ module Spotted
 
         def to_hash: -> {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Shows::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -1396,20 +1396,20 @@ module Spotted
           {
             id: String,
             available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::Models::SearchQueryResponse::Shows::Item::Copyright],
+            copyrights: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item::Copyright],
             description: String,
             explicit: bool,
-            external_urls: Spotted::Models::SearchQueryResponse::Shows::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Shows::Item::ExternalURLs,
             href: String,
             html_description: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Shows::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item::Image],
             is_externally_hosted: bool,
             languages: ::Array[String],
             media_type: String,
             name: String,
             publisher: String,
             total_episodes: Integer,
-            type: Spotted::Models::SearchQueryResponse::Shows::Item::type_,
+            type: Spotted::Models::SearchRetrieveResponse::Shows::Item::type_,
             uri: String
           }
 
@@ -1418,19 +1418,19 @@ module Spotted
 
           attr_accessor available_markets: ::Array[String]
 
-          attr_accessor copyrights: ::Array[Spotted::Models::SearchQueryResponse::Shows::Item::Copyright]
+          attr_accessor copyrights: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item::Copyright]
 
           attr_accessor description: String
 
           attr_accessor explicit: bool
 
-          attr_accessor external_urls: Spotted::Models::SearchQueryResponse::Shows::Item::ExternalURLs
+          attr_accessor external_urls: Spotted::Models::SearchRetrieveResponse::Shows::Item::ExternalURLs
 
           attr_accessor href: String
 
           attr_accessor html_description: String
 
-          attr_accessor images: ::Array[Spotted::Models::SearchQueryResponse::Shows::Item::Image]
+          attr_accessor images: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item::Image]
 
           attr_accessor is_externally_hosted: bool
 
@@ -1444,47 +1444,47 @@ module Spotted
 
           attr_accessor total_episodes: Integer
 
-          attr_accessor type: Spotted::Models::SearchQueryResponse::Shows::Item::type_
+          attr_accessor type: Spotted::Models::SearchRetrieveResponse::Shows::Item::type_
 
           attr_accessor uri: String
 
           def initialize: (
             id: String,
             available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::Models::SearchQueryResponse::Shows::Item::Copyright],
+            copyrights: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item::Copyright],
             description: String,
             explicit: bool,
-            external_urls: Spotted::Models::SearchQueryResponse::Shows::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Shows::Item::ExternalURLs,
             href: String,
             html_description: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Shows::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item::Image],
             is_externally_hosted: bool,
             languages: ::Array[String],
             media_type: String,
             name: String,
             publisher: String,
             total_episodes: Integer,
-            type: Spotted::Models::SearchQueryResponse::Shows::Item::type_,
+            type: Spotted::Models::SearchRetrieveResponse::Shows::Item::type_,
             uri: String
           ) -> void
 
           def to_hash: -> {
             id: String,
             available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::Models::SearchQueryResponse::Shows::Item::Copyright],
+            copyrights: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item::Copyright],
             description: String,
             explicit: bool,
-            external_urls: Spotted::Models::SearchQueryResponse::Shows::Item::ExternalURLs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Shows::Item::ExternalURLs,
             href: String,
             html_description: String,
-            images: ::Array[Spotted::Models::SearchQueryResponse::Shows::Item::Image],
+            images: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item::Image],
             is_externally_hosted: bool,
             languages: ::Array[String],
             media_type: String,
             name: String,
             publisher: String,
             total_episodes: Integer,
-            type: Spotted::Models::SearchQueryResponse::Shows::Item::type_,
+            type: Spotted::Models::SearchRetrieveResponse::Shows::Item::type_,
             uri: String
           }
 
@@ -1541,7 +1541,7 @@ module Spotted
 
             SHOW: :show
 
-            def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Shows::Item::type_]
+            def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item::type_]
           end
         end
       end
@@ -1549,7 +1549,7 @@ module Spotted
       type tracks =
         {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -1560,7 +1560,7 @@ module Spotted
       class Tracks < Spotted::Internal::Type::BaseModel
         attr_accessor href: String
 
-        attr_accessor items: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item]
+        attr_accessor items: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item]
 
         attr_accessor limit: Integer
 
@@ -1574,7 +1574,7 @@ module Spotted
 
         def initialize: (
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -1584,7 +1584,7 @@ module Spotted
 
         def to_hash: -> {
           href: String,
-          items: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item],
+          items: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -1595,14 +1595,14 @@ module Spotted
         type item =
           {
             id: String,
-            album: Spotted::Models::SearchQueryResponse::Tracks::Item::Album,
-            artists: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Artist],
+            album: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album,
+            artists: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist],
             available_markets: ::Array[String],
             disc_number: Integer,
             duration_ms: Integer,
             explicit: bool,
-            external_ids: Spotted::Models::SearchQueryResponse::Tracks::Item::ExternalIDs,
-            external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::ExternalURLs,
+            external_ids: Spotted::Models::SearchRetrieveResponse::Tracks::Item::ExternalIDs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::ExternalURLs,
             href: String,
             is_local: bool,
             is_playable: bool,
@@ -1610,9 +1610,9 @@ module Spotted
             name: String,
             popularity: Integer,
             preview_url: String?,
-            restrictions: Spotted::Models::SearchQueryResponse::Tracks::Item::Restrictions,
+            restrictions: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Restrictions,
             track_number: Integer,
-            type: Spotted::Models::SearchQueryResponse::Tracks::Item::type_,
+            type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::type_,
             uri: String
           }
 
@@ -1621,17 +1621,17 @@ module Spotted
 
           def id=: (String) -> String
 
-          attr_reader album: Spotted::Models::SearchQueryResponse::Tracks::Item::Album?
+          attr_reader album: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album?
 
           def album=: (
-            Spotted::Models::SearchQueryResponse::Tracks::Item::Album
-          ) -> Spotted::Models::SearchQueryResponse::Tracks::Item::Album
+            Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album
+          ) -> Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album
 
-          attr_reader artists: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Artist]?
+          attr_reader artists: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist]?
 
           def artists=: (
-            ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Artist]
-          ) -> ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Artist]
+            ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist]
+          ) -> ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist]
 
           attr_reader available_markets: ::Array[String]?
 
@@ -1649,17 +1649,17 @@ module Spotted
 
           def explicit=: (bool) -> bool
 
-          attr_reader external_ids: Spotted::Models::SearchQueryResponse::Tracks::Item::ExternalIDs?
+          attr_reader external_ids: Spotted::Models::SearchRetrieveResponse::Tracks::Item::ExternalIDs?
 
           def external_ids=: (
-            Spotted::Models::SearchQueryResponse::Tracks::Item::ExternalIDs
-          ) -> Spotted::Models::SearchQueryResponse::Tracks::Item::ExternalIDs
+            Spotted::Models::SearchRetrieveResponse::Tracks::Item::ExternalIDs
+          ) -> Spotted::Models::SearchRetrieveResponse::Tracks::Item::ExternalIDs
 
-          attr_reader external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::ExternalURLs?
+          attr_reader external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::ExternalURLs?
 
           def external_urls=: (
-            Spotted::Models::SearchQueryResponse::Tracks::Item::ExternalURLs
-          ) -> Spotted::Models::SearchQueryResponse::Tracks::Item::ExternalURLs
+            Spotted::Models::SearchRetrieveResponse::Tracks::Item::ExternalURLs
+          ) -> Spotted::Models::SearchRetrieveResponse::Tracks::Item::ExternalURLs
 
           attr_reader href: String?
 
@@ -1687,21 +1687,21 @@ module Spotted
 
           attr_accessor preview_url: String?
 
-          attr_reader restrictions: Spotted::Models::SearchQueryResponse::Tracks::Item::Restrictions?
+          attr_reader restrictions: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Restrictions?
 
           def restrictions=: (
-            Spotted::Models::SearchQueryResponse::Tracks::Item::Restrictions
-          ) -> Spotted::Models::SearchQueryResponse::Tracks::Item::Restrictions
+            Spotted::Models::SearchRetrieveResponse::Tracks::Item::Restrictions
+          ) -> Spotted::Models::SearchRetrieveResponse::Tracks::Item::Restrictions
 
           attr_reader track_number: Integer?
 
           def track_number=: (Integer) -> Integer
 
-          attr_reader type: Spotted::Models::SearchQueryResponse::Tracks::Item::type_?
+          attr_reader type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::type_?
 
           def type=: (
-            Spotted::Models::SearchQueryResponse::Tracks::Item::type_
-          ) -> Spotted::Models::SearchQueryResponse::Tracks::Item::type_
+            Spotted::Models::SearchRetrieveResponse::Tracks::Item::type_
+          ) -> Spotted::Models::SearchRetrieveResponse::Tracks::Item::type_
 
           attr_reader uri: String?
 
@@ -1709,14 +1709,14 @@ module Spotted
 
           def initialize: (
             ?id: String,
-            ?album: Spotted::Models::SearchQueryResponse::Tracks::Item::Album,
-            ?artists: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Artist],
+            ?album: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album,
+            ?artists: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist],
             ?available_markets: ::Array[String],
             ?disc_number: Integer,
             ?duration_ms: Integer,
             ?explicit: bool,
-            ?external_ids: Spotted::Models::SearchQueryResponse::Tracks::Item::ExternalIDs,
-            ?external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::ExternalURLs,
+            ?external_ids: Spotted::Models::SearchRetrieveResponse::Tracks::Item::ExternalIDs,
+            ?external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::ExternalURLs,
             ?href: String,
             ?is_local: bool,
             ?is_playable: bool,
@@ -1724,22 +1724,22 @@ module Spotted
             ?name: String,
             ?popularity: Integer,
             ?preview_url: String?,
-            ?restrictions: Spotted::Models::SearchQueryResponse::Tracks::Item::Restrictions,
+            ?restrictions: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Restrictions,
             ?track_number: Integer,
-            ?type: Spotted::Models::SearchQueryResponse::Tracks::Item::type_,
+            ?type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::type_,
             ?uri: String
           ) -> void
 
           def to_hash: -> {
             id: String,
-            album: Spotted::Models::SearchQueryResponse::Tracks::Item::Album,
-            artists: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Artist],
+            album: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album,
+            artists: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist],
             available_markets: ::Array[String],
             disc_number: Integer,
             duration_ms: Integer,
             explicit: bool,
-            external_ids: Spotted::Models::SearchQueryResponse::Tracks::Item::ExternalIDs,
-            external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::ExternalURLs,
+            external_ids: Spotted::Models::SearchRetrieveResponse::Tracks::Item::ExternalIDs,
+            external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::ExternalURLs,
             href: String,
             is_local: bool,
             is_playable: bool,
@@ -1747,95 +1747,95 @@ module Spotted
             name: String,
             popularity: Integer,
             preview_url: String?,
-            restrictions: Spotted::Models::SearchQueryResponse::Tracks::Item::Restrictions,
+            restrictions: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Restrictions,
             track_number: Integer,
-            type: Spotted::Models::SearchQueryResponse::Tracks::Item::type_,
+            type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::type_,
             uri: String
           }
 
           type album =
             {
               id: String,
-              album_type: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::album_type,
-              artists: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist],
+              album_type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::album_type,
+              artists: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist],
               available_markets: ::Array[String],
-              external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::ExternalURLs,
+              external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::ExternalURLs,
               href: String,
-              images: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Image],
+              images: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Image],
               name: String,
               release_date: String,
-              release_date_precision: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::release_date_precision,
+              release_date_precision: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::release_date_precision,
               total_tracks: Integer,
-              type: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::type_,
+              type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::type_,
               uri: String,
-              restrictions: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Restrictions
+              restrictions: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Restrictions
             }
 
           class Album < Spotted::Internal::Type::BaseModel
             attr_accessor id: String
 
-            attr_accessor album_type: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::album_type
+            attr_accessor album_type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::album_type
 
-            attr_accessor artists: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist]
+            attr_accessor artists: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist]
 
             attr_accessor available_markets: ::Array[String]
 
-            attr_accessor external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::ExternalURLs
+            attr_accessor external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::ExternalURLs
 
             attr_accessor href: String
 
-            attr_accessor images: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Image]
+            attr_accessor images: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Image]
 
             attr_accessor name: String
 
             attr_accessor release_date: String
 
-            attr_accessor release_date_precision: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::release_date_precision
+            attr_accessor release_date_precision: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::release_date_precision
 
             attr_accessor total_tracks: Integer
 
-            attr_accessor type: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::type_
+            attr_accessor type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::type_
 
             attr_accessor uri: String
 
-            attr_reader restrictions: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Restrictions?
+            attr_reader restrictions: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Restrictions?
 
             def restrictions=: (
-              Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Restrictions
-            ) -> Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Restrictions
+              Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Restrictions
+            ) -> Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Restrictions
 
             def initialize: (
               id: String,
-              album_type: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::album_type,
-              artists: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist],
+              album_type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::album_type,
+              artists: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist],
               available_markets: ::Array[String],
-              external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::ExternalURLs,
+              external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::ExternalURLs,
               href: String,
-              images: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Image],
+              images: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Image],
               name: String,
               release_date: String,
-              release_date_precision: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::release_date_precision,
+              release_date_precision: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::release_date_precision,
               total_tracks: Integer,
-              type: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::type_,
+              type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::type_,
               uri: String,
-              ?restrictions: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Restrictions
+              ?restrictions: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Restrictions
             ) -> void
 
             def to_hash: -> {
               id: String,
-              album_type: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::album_type,
-              artists: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist],
+              album_type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::album_type,
+              artists: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist],
               available_markets: ::Array[String],
-              external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::ExternalURLs,
+              external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::ExternalURLs,
               href: String,
-              images: ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Image],
+              images: ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Image],
               name: String,
               release_date: String,
-              release_date_precision: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::release_date_precision,
+              release_date_precision: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::release_date_precision,
               total_tracks: Integer,
-              type: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::type_,
+              type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::type_,
               uri: String,
-              restrictions: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Restrictions
+              restrictions: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Restrictions
             }
 
             type album_type = :album | :single | :compilation
@@ -1847,16 +1847,16 @@ module Spotted
               SINGLE: :single
               COMPILATION: :compilation
 
-              def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Album::album_type]
+              def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::album_type]
             end
 
             type artist =
               {
                 id: String,
-                external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist::ExternalURLs,
+                external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist::ExternalURLs,
                 href: String,
                 name: String,
-                type: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist::type_,
+                type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist::type_,
                 uri: String
               }
 
@@ -1865,11 +1865,11 @@ module Spotted
 
               def id=: (String) -> String
 
-              attr_reader external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist::ExternalURLs?
+              attr_reader external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist::ExternalURLs?
 
               def external_urls=: (
-                Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist::ExternalURLs
-              ) -> Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist::ExternalURLs
+                Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist::ExternalURLs
+              ) -> Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist::ExternalURLs
 
               attr_reader href: String?
 
@@ -1879,11 +1879,11 @@ module Spotted
 
               def name=: (String) -> String
 
-              attr_reader type: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist::type_?
+              attr_reader type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist::type_?
 
               def type=: (
-                Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist::type_
-              ) -> Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist::type_
+                Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist::type_
+              ) -> Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist::type_
 
               attr_reader uri: String?
 
@@ -1891,19 +1891,19 @@ module Spotted
 
               def initialize: (
                 ?id: String,
-                ?external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist::ExternalURLs,
+                ?external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist::ExternalURLs,
                 ?href: String,
                 ?name: String,
-                ?type: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist::type_,
+                ?type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist::type_,
                 ?uri: String
               ) -> void
 
               def to_hash: -> {
                 id: String,
-                external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist::ExternalURLs,
+                external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist::ExternalURLs,
                 href: String,
                 name: String,
-                type: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist::type_,
+                type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist::type_,
                 uri: String
               }
 
@@ -1926,7 +1926,7 @@ module Spotted
 
                 ARTIST: :artist
 
-                def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Artist::type_]
+                def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Artist::type_]
               end
             end
 
@@ -1969,7 +1969,7 @@ module Spotted
               MONTH: :month
               DAY: :day
 
-              def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Album::release_date_precision]
+              def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::release_date_precision]
             end
 
             type type_ = :album
@@ -1979,27 +1979,27 @@ module Spotted
 
               ALBUM: :album
 
-              def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Album::type_]
+              def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::type_]
             end
 
             type restrictions =
               {
-                reason: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Restrictions::reason
+                reason: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Restrictions::reason
               }
 
             class Restrictions < Spotted::Internal::Type::BaseModel
-              attr_reader reason: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Restrictions::reason?
+              attr_reader reason: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Restrictions::reason?
 
               def reason=: (
-                Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Restrictions::reason
-              ) -> Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Restrictions::reason
+                Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Restrictions::reason
+              ) -> Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Restrictions::reason
 
               def initialize: (
-                ?reason: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Restrictions::reason
+                ?reason: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Restrictions::reason
               ) -> void
 
               def to_hash: -> {
-                reason: Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Restrictions::reason
+                reason: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Restrictions::reason
               }
 
               type reason = :market | :product | :explicit
@@ -2011,7 +2011,7 @@ module Spotted
                 PRODUCT: :product
                 EXPLICIT: :explicit
 
-                def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Album::Restrictions::reason]
+                def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Album::Restrictions::reason]
               end
             end
           end
@@ -2019,10 +2019,10 @@ module Spotted
           type artist =
             {
               id: String,
-              external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::Artist::ExternalURLs,
+              external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist::ExternalURLs,
               href: String,
               name: String,
-              type: Spotted::Models::SearchQueryResponse::Tracks::Item::Artist::type_,
+              type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist::type_,
               uri: String
             }
 
@@ -2031,11 +2031,11 @@ module Spotted
 
             def id=: (String) -> String
 
-            attr_reader external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::Artist::ExternalURLs?
+            attr_reader external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist::ExternalURLs?
 
             def external_urls=: (
-              Spotted::Models::SearchQueryResponse::Tracks::Item::Artist::ExternalURLs
-            ) -> Spotted::Models::SearchQueryResponse::Tracks::Item::Artist::ExternalURLs
+              Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist::ExternalURLs
+            ) -> Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist::ExternalURLs
 
             attr_reader href: String?
 
@@ -2045,11 +2045,11 @@ module Spotted
 
             def name=: (String) -> String
 
-            attr_reader type: Spotted::Models::SearchQueryResponse::Tracks::Item::Artist::type_?
+            attr_reader type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist::type_?
 
             def type=: (
-              Spotted::Models::SearchQueryResponse::Tracks::Item::Artist::type_
-            ) -> Spotted::Models::SearchQueryResponse::Tracks::Item::Artist::type_
+              Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist::type_
+            ) -> Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist::type_
 
             attr_reader uri: String?
 
@@ -2057,19 +2057,19 @@ module Spotted
 
             def initialize: (
               ?id: String,
-              ?external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::Artist::ExternalURLs,
+              ?external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist::ExternalURLs,
               ?href: String,
               ?name: String,
-              ?type: Spotted::Models::SearchQueryResponse::Tracks::Item::Artist::type_,
+              ?type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist::type_,
               ?uri: String
             ) -> void
 
             def to_hash: -> {
               id: String,
-              external_urls: Spotted::Models::SearchQueryResponse::Tracks::Item::Artist::ExternalURLs,
+              external_urls: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist::ExternalURLs,
               href: String,
               name: String,
-              type: Spotted::Models::SearchQueryResponse::Tracks::Item::Artist::type_,
+              type: Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist::type_,
               uri: String
             }
 
@@ -2092,7 +2092,7 @@ module Spotted
 
               ARTIST: :artist
 
-              def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::Artist::type_]
+              def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::Artist::type_]
             end
           end
 
@@ -2147,7 +2147,7 @@ module Spotted
 
             TRACK: :track
 
-            def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Tracks::Item::type_]
+            def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Tracks::Item::type_]
           end
         end
       end
