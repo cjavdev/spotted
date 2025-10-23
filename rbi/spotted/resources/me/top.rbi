@@ -7,14 +7,18 @@ module Spotted
         # Get the current user's top artists or tracks based on calculated affinity.
         sig do
           params(
-            type: Spotted::Me::TopRetrieveParams::Type::OrSymbol,
+            type: Spotted::Me::TopListParams::Type::OrSymbol,
             limit: Integer,
             offset: Integer,
             time_range: String,
             request_options: Spotted::RequestOptions::OrHash
-          ).returns(Spotted::Models::Me::TopRetrieveResponse)
+          ).returns(
+            Spotted::Internal::CursorURLPage[
+              Spotted::Models::Me::TopListResponse::Variants
+            ]
+          )
         end
-        def retrieve(
+        def list(
           # The type of entity to return. Valid values: `artists` or `tracks`
           type,
           # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.

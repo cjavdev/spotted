@@ -321,10 +321,10 @@ module Spotted
       # [recommendations](/documentation/web-api/reference/get-recommendations).
       sig do
         params(request_options: Spotted::RequestOptions::OrHash).returns(
-          Spotted::Models::RecommendationGetAvailableGenreSeedsResponse
+          Spotted::Models::RecommendationListAvailableGenreSeedsResponse
         )
       end
-      def get_available_genre_seeds(request_options: {})
+      def list_available_genre_seeds(request_options: {})
       end
 
       # @api private

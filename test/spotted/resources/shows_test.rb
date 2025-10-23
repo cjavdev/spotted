@@ -52,24 +52,44 @@ class Spotted::Test::Resources::ShowsTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_get_episodes
+  def test_list_episodes
     skip("Prism tests are disabled")
 
-    response = @spotted.shows.get_episodes("38bS44xjbVVZ3No3ByF1dJ")
+    response = @spotted.shows.list_episodes("38bS44xjbVVZ3No3ByF1dJ")
 
     assert_pattern do
-      response => Spotted::Models::ShowGetEpisodesResponse
+      response => Spotted::Internal::CursorURLPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Spotted::SimplifiedEpisodeObject
     end
 
     assert_pattern do
-      response => {
+      row => {
+        id: String,
+        audio_preview_url: String | nil,
+        description: String,
+        duration_ms: Integer,
+        explicit: Spotted::Internal::Type::Boolean,
+        external_urls: Spotted::ExternalURLObject,
         href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedEpisodeObject]),
-        limit: Integer,
-        next_: String | nil,
-        offset: Integer,
-        previous: String | nil,
-        total: Integer
+        html_description: String,
+        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]),
+        is_externally_hosted: Spotted::Internal::Type::Boolean,
+        is_playable: Spotted::Internal::Type::Boolean,
+        languages: ^(Spotted::Internal::Type::ArrayOf[String]),
+        name: String,
+        release_date: String,
+        release_date_precision: Spotted::SimplifiedEpisodeObject::ReleaseDatePrecision,
+        type: Spotted::SimplifiedEpisodeObject::Type,
+        uri: String,
+        language: String | nil,
+        restrictions: Spotted::EpisodeRestrictionObject | nil,
+        resume_point: Spotted::ResumePointObject | nil
       }
     end
   end

@@ -13,13 +13,13 @@ module Spotted
         ?request_options: Spotted::request_opts
       ) -> Spotted::Models::AudiobookListResponse
 
-      def get_chapters: (
+      def list_chapters: (
         String id,
         ?limit: Integer,
         ?market: String,
         ?offset: Integer,
         ?request_options: Spotted::request_opts
-      ) -> Spotted::Models::AudiobookGetChaptersResponse
+      ) -> Spotted::Internal::CursorURLPage[Spotted::SimplifiedChapterObject]
 
       def initialize: (client: Spotted::Client) -> void
     end

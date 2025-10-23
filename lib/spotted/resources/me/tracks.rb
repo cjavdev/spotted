@@ -20,7 +20,7 @@ module Spotted
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Spotted::Models::Me::TrackListResponse]
+        # @return [Spotted::Internal::CursorURLPage<Spotted::Models::Me::TrackListResponse>]
         #
         # @see Spotted::Models::Me::TrackListParams
         def list(params = {})
@@ -29,6 +29,7 @@ module Spotted
             method: :get,
             path: "me/tracks",
             query: parsed,
+            page: Spotted::Internal::CursorURLPage,
             model: Spotted::Models::Me::TrackListResponse,
             options: options
           )

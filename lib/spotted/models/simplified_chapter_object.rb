@@ -2,6 +2,7 @@
 
 module Spotted
   module Models
+    # @see Spotted::Resources::Audiobooks#list_chapters
     class SimplifiedChapterObject < Spotted::Internal::Type::BaseModel
       # @!attribute id
       #   The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the

@@ -5,41 +5,6 @@ module Spotted
     class Playlists
       class Tracks
         # Some parameter documentations has been truncated, see
-        # {Spotted::Models::Playlists::TrackRetrieveParams} for more details.
-        #
-        # Get full details of the items of a playlist owned by a Spotify user.
-        #
-        # @overload retrieve(playlist_id, additional_types: nil, fields: nil, limit: nil, market: nil, offset: nil, request_options: {})
-        #
-        # @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
-        #
-        # @param additional_types [String] A comma-separated list of item types that your client supports besides the defau
-        #
-        # @param fields [String] Filters for the query: a comma-separated list of the
-        #
-        # @param limit [Integer] The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-        #
-        # @param market [String] An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_al
-        #
-        # @param offset [Integer] The index of the first item to return. Default: 0 (the first item). Use with lim
-        #
-        # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
-        #
-        # @return [Spotted::Models::Playlists::TrackRetrieveResponse]
-        #
-        # @see Spotted::Models::Playlists::TrackRetrieveParams
-        def retrieve(playlist_id, params = {})
-          parsed, options = Spotted::Playlists::TrackRetrieveParams.dump_request(params)
-          @client.request(
-            method: :get,
-            path: ["playlists/%1$s/tracks", playlist_id],
-            query: parsed,
-            model: Spotted::Models::Playlists::TrackRetrieveResponse,
-            options: options
-          )
-        end
-
-        # Some parameter documentations has been truncated, see
         # {Spotted::Models::Playlists::TrackUpdateParams} for more details.
         #
         # Either reorder or replace items in a playlist depending on the request's
@@ -80,6 +45,42 @@ module Spotted
             query: parsed.slice(*query_params).transform_keys(query_uris: "uris"),
             body: parsed.except(*query_params),
             model: Spotted::Models::Playlists::TrackUpdateResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
+        # {Spotted::Models::Playlists::TrackListParams} for more details.
+        #
+        # Get full details of the items of a playlist owned by a Spotify user.
+        #
+        # @overload list(playlist_id, additional_types: nil, fields: nil, limit: nil, market: nil, offset: nil, request_options: {})
+        #
+        # @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
+        #
+        # @param additional_types [String] A comma-separated list of item types that your client supports besides the defau
+        #
+        # @param fields [String] Filters for the query: a comma-separated list of the
+        #
+        # @param limit [Integer] The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+        #
+        # @param market [String] An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_al
+        #
+        # @param offset [Integer] The index of the first item to return. Default: 0 (the first item). Use with lim
+        #
+        # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Spotted::Internal::CursorURLPage<Spotted::Models::PlaylistTrackObject>]
+        #
+        # @see Spotted::Models::Playlists::TrackListParams
+        def list(playlist_id, params = {})
+          parsed, options = Spotted::Playlists::TrackListParams.dump_request(params)
+          @client.request(
+            method: :get,
+            path: ["playlists/%1$s/tracks", playlist_id],
+            query: parsed,
+            page: Spotted::Internal::CursorURLPage,
+            model: Spotted::PlaylistTrackObject,
             options: options
           )
         end

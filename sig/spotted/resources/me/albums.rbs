@@ -7,7 +7,7 @@ module Spotted
           ?market: String,
           ?offset: Integer,
           ?request_options: Spotted::request_opts
-        ) -> Spotted::Models::Me::AlbumListResponse
+        ) -> Spotted::Internal::CursorURLPage[Spotted::Models::Me::AlbumListResponse]
 
         def check: (
           ids: String,

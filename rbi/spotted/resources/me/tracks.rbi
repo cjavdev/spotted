@@ -12,7 +12,11 @@ module Spotted
             market: String,
             offset: Integer,
             request_options: Spotted::RequestOptions::OrHash
-          ).returns(Spotted::Models::Me::TrackListResponse)
+          ).returns(
+            Spotted::Internal::CursorURLPage[
+              Spotted::Models::Me::TrackListResponse
+            ]
+          )
         end
         def list(
           # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.

@@ -13,13 +13,13 @@ module Spotted
         ?request_options: Spotted::request_opts
       ) -> Spotted::Models::ShowListResponse
 
-      def get_episodes: (
+      def list_episodes: (
         String id,
         ?limit: Integer,
         ?market: String,
         ?offset: Integer,
         ?request_options: Spotted::request_opts
-      ) -> Spotted::Models::ShowGetEpisodesResponse
+      ) -> Spotted::Internal::CursorURLPage[Spotted::SimplifiedEpisodeObject]
 
       def initialize: (client: Spotted::Client) -> void
     end

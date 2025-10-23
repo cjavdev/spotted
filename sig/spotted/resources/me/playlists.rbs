@@ -2,11 +2,11 @@ module Spotted
   module Resources
     class Me
       class Playlists
-        def retrieve: (
+        def list: (
           ?limit: Integer,
           ?offset: Integer,
           ?request_options: Spotted::request_opts
-        ) -> Spotted::PagingPlaylistObject
+        ) -> Spotted::Internal::CursorURLPage[Spotted::SimplifiedPlaylistObject]
 
         def initialize: (client: Spotted::Client) -> void
       end

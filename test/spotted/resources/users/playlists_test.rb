@@ -37,18 +37,31 @@ class Spotted::Test::Resources::Users::PlaylistsTest < Spotted::Test::ResourceTe
     response = @spotted.users.playlists.list("smedjan")
 
     assert_pattern do
-      response => Spotted::PagingPlaylistObject
+      response => Spotted::Internal::CursorURLPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Spotted::SimplifiedPlaylistObject
     end
 
     assert_pattern do
-      response => {
-        href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedPlaylistObject]),
-        limit: Integer,
-        next_: String | nil,
-        offset: Integer,
-        previous: String | nil,
-        total: Integer
+      row => {
+        id: String | nil,
+        collaborative: Spotted::Internal::Type::Boolean | nil,
+        description: String | nil,
+        external_urls: Spotted::ExternalURLObject | nil,
+        href: String | nil,
+        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
+        name: String | nil,
+        owner: Spotted::SimplifiedPlaylistObject::Owner | nil,
+        public: Spotted::Internal::Type::Boolean | nil,
+        snapshot_id: String | nil,
+        tracks: Spotted::PlaylistTracksRefObject | nil,
+        type: String | nil,
+        uri: String | nil
       }
     end
   end

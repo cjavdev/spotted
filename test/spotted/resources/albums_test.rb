@@ -55,24 +55,41 @@ class Spotted::Test::Resources::AlbumsTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_get_tracks
+  def test_list_tracks
     skip("Prism tests are disabled")
 
-    response = @spotted.albums.get_tracks("4aawyAB9vmqN3uQ7FjRGTy")
+    response = @spotted.albums.list_tracks("4aawyAB9vmqN3uQ7FjRGTy")
 
     assert_pattern do
-      response => Spotted::Models::AlbumGetTracksResponse
+      response => Spotted::Internal::CursorURLPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Spotted::SimplifiedTrackObject
     end
 
     assert_pattern do
-      response => {
-        href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedTrackObject]),
-        limit: Integer,
-        next_: String | nil,
-        offset: Integer,
-        previous: String | nil,
-        total: Integer
+      row => {
+        id: String | nil,
+        artists: ^(Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedArtistObject]) | nil,
+        available_markets: ^(Spotted::Internal::Type::ArrayOf[String]) | nil,
+        disc_number: Integer | nil,
+        duration_ms: Integer | nil,
+        explicit: Spotted::Internal::Type::Boolean | nil,
+        external_urls: Spotted::ExternalURLObject | nil,
+        href: String | nil,
+        is_local: Spotted::Internal::Type::Boolean | nil,
+        is_playable: Spotted::Internal::Type::Boolean | nil,
+        linked_from: Spotted::LinkedTrackObject | nil,
+        name: String | nil,
+        preview_url: String | nil,
+        restrictions: Spotted::TrackRestrictionObject | nil,
+        track_number: Integer | nil,
+        type: String | nil,
+        uri: String | nil
       }
     end
   end

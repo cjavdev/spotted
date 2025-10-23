@@ -2,13 +2,13 @@ module Spotted
   module Resources
     class Me
       class Top
-        def retrieve: (
-          Spotted::Models::Me::TopRetrieveParams::type_ `type`,
+        def list: (
+          Spotted::Models::Me::TopListParams::type_ `type`,
           ?limit: Integer,
           ?offset: Integer,
           ?time_range: String,
           ?request_options: Spotted::request_opts
-        ) -> Spotted::Models::Me::TopRetrieveResponse
+        ) -> Spotted::Internal::CursorURLPage[Spotted::Models::Me::top_list_response]
 
         def initialize: (client: Spotted::Client) -> void
       end

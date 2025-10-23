@@ -6,7 +6,7 @@ module Spotted
           ?limit: Integer,
           ?offset: Integer,
           ?request_options: Spotted::request_opts
-        ) -> Spotted::Models::Me::AudiobookListResponse
+        ) -> Spotted::Internal::CursorURLPage[Spotted::Models::Me::AudiobookListResponse]
 
         def check: (
           ids: String,

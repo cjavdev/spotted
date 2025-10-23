@@ -55,24 +55,44 @@ class Spotted::Test::Resources::AudiobooksTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_get_chapters
+  def test_list_chapters
     skip("Prism tests are disabled")
 
-    response = @spotted.audiobooks.get_chapters("7iHfbu1YPACw6oZPAFJtqe")
+    response = @spotted.audiobooks.list_chapters("7iHfbu1YPACw6oZPAFJtqe")
 
     assert_pattern do
-      response => Spotted::Models::AudiobookGetChaptersResponse
+      response => Spotted::Internal::CursorURLPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Spotted::SimplifiedChapterObject
     end
 
     assert_pattern do
-      response => {
+      row => {
+        id: String,
+        audio_preview_url: String | nil,
+        chapter_number: Integer,
+        description: String,
+        duration_ms: Integer,
+        explicit: Spotted::Internal::Type::Boolean,
+        external_urls: Spotted::ExternalURLObject,
         href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedChapterObject]),
-        limit: Integer,
-        next_: String | nil,
-        offset: Integer,
-        previous: String | nil,
-        total: Integer
+        html_description: String,
+        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]),
+        is_playable: Spotted::Internal::Type::Boolean,
+        languages: ^(Spotted::Internal::Type::ArrayOf[String]),
+        name: String,
+        release_date: String,
+        release_date_precision: Spotted::SimplifiedChapterObject::ReleaseDatePrecision,
+        type: Spotted::SimplifiedChapterObject::Type,
+        uri: String,
+        available_markets: ^(Spotted::Internal::Type::ArrayOf[String]) | nil,
+        restrictions: Spotted::ChapterRestrictionObject | nil,
+        resume_point: Spotted::ResumePointObject | nil
       }
     end
   end

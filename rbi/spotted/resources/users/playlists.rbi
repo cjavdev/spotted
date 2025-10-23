@@ -52,7 +52,9 @@ module Spotted
             limit: Integer,
             offset: Integer,
             request_options: Spotted::RequestOptions::OrHash
-          ).returns(Spotted::PagingPlaylistObject)
+          ).returns(
+            Spotted::Internal::CursorURLPage[Spotted::SimplifiedPlaylistObject]
+          )
         end
         def list(
           # The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).

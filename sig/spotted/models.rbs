@@ -1,7 +1,7 @@
 module Spotted
-  class AlbumGetTracksParams = Spotted::Models::AlbumGetTracksParams
-
   class AlbumListParams = Spotted::Models::AlbumListParams
+
+  class AlbumListTracksParams = Spotted::Models::AlbumListTracksParams
 
   class AlbumRestrictionObject = Spotted::Models::AlbumRestrictionObject
 
@@ -21,7 +21,7 @@ module Spotted
 
   class AudioAnalysisRetrieveParams = Spotted::Models::AudioAnalysisRetrieveParams
 
-  class AudiobookGetChaptersParams = Spotted::Models::AudiobookGetChaptersParams
+  class AudiobookListChaptersParams = Spotted::Models::AudiobookListChaptersParams
 
   class AudiobookListParams = Spotted::Models::AudiobookListParams
 
@@ -87,15 +87,15 @@ module Spotted
 
   class PlaylistUserObject = Spotted::Models::PlaylistUserObject
 
-  class RecommendationGetAvailableGenreSeedsParams = Spotted::Models::RecommendationGetAvailableGenreSeedsParams
-
   class RecommendationGetParams = Spotted::Models::RecommendationGetParams
+
+  class RecommendationListAvailableGenreSeedsParams = Spotted::Models::RecommendationListAvailableGenreSeedsParams
 
   class ResumePointObject = Spotted::Models::ResumePointObject
 
   class SearchRetrieveParams = Spotted::Models::SearchRetrieveParams
 
-  class ShowGetEpisodesParams = Spotted::Models::ShowGetEpisodesParams
+  class ShowListEpisodesParams = Spotted::Models::ShowListEpisodesParams
 
   class ShowListParams = Spotted::Models::ShowListParams
 

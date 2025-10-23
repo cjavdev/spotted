@@ -51,18 +51,33 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
     response = @spotted.artists.list_albums("0TnOYISbd1XYRBk9myaseg")
 
     assert_pattern do
-      response => Spotted::Models::ArtistListAlbumsResponse
+      response => Spotted::Internal::CursorURLPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Spotted::Models::ArtistListAlbumsResponse
     end
 
     assert_pattern do
-      response => {
+      row => {
+        id: String,
+        album_group: Spotted::Models::ArtistListAlbumsResponse::AlbumGroup,
+        album_type: Spotted::Models::ArtistListAlbumsResponse::AlbumType,
+        artists: ^(Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedArtistObject]),
+        available_markets: ^(Spotted::Internal::Type::ArrayOf[String]),
+        external_urls: Spotted::ExternalURLObject,
         href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::ArtistListAlbumsResponse::Item]),
-        limit: Integer,
-        next_: String | nil,
-        offset: Integer,
-        previous: String | nil,
-        total: Integer
+        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]),
+        name: String,
+        release_date: String,
+        release_date_precision: Spotted::Models::ArtistListAlbumsResponse::ReleaseDatePrecision,
+        total_tracks: Integer,
+        type: Spotted::Models::ArtistListAlbumsResponse::Type,
+        uri: String,
+        restrictions: Spotted::AlbumRestrictionObject | nil
       }
     end
   end

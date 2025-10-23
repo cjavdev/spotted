@@ -44,27 +44,6 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_get_recently_played
-    skip("Prism tests are disabled")
-
-    response = @spotted.me.player.get_recently_played
-
-    assert_pattern do
-      response => Spotted::Models::Me::PlayerGetRecentlyPlayedResponse
-    end
-
-    assert_pattern do
-      response => {
-        cursors: Spotted::Models::Me::PlayerGetRecentlyPlayedResponse::Cursors | nil,
-        href: String | nil,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::Me::PlayerGetRecentlyPlayedResponse::Item]) | nil,
-        limit: Integer | nil,
-        next_: String | nil,
-        total: Integer | nil
-      }
-    end
-  end
-
   def test_get_state
     skip("Prism tests are disabled")
 
@@ -86,6 +65,31 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
         repeat_state: String | nil,
         shuffle_state: Spotted::Internal::Type::Boolean | nil,
         timestamp: Integer | nil
+      }
+    end
+  end
+
+  def test_list_recently_played
+    skip("Prism tests are disabled")
+
+    response = @spotted.me.player.list_recently_played
+
+    assert_pattern do
+      response => Spotted::Internal::CursorURLPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Spotted::Models::Me::PlayerListRecentlyPlayedResponse
+    end
+
+    assert_pattern do
+      row => {
+        context: Spotted::Me::ContextObject | nil,
+        played_at: Time | nil,
+        track: Spotted::TrackObject | nil
       }
     end
   end

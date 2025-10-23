@@ -2,69 +2,23 @@ module Spotted
   module Models
     module Me
       type episode_list_response =
-        {
-          href: String,
-          items: ::Array[Spotted::Models::Me::EpisodeListResponse::Item],
-          limit: Integer,
-          next_: String?,
-          offset: Integer,
-          previous: String?,
-          total: Integer
-        }
+        { added_at: Time, episode: Spotted::EpisodeObject }
 
       class EpisodeListResponse < Spotted::Internal::Type::BaseModel
-        attr_accessor href: String
+        attr_reader added_at: Time?
 
-        attr_accessor items: ::Array[Spotted::Models::Me::EpisodeListResponse::Item]
+        def added_at=: (Time) -> Time
 
-        attr_accessor limit: Integer
+        attr_reader episode: Spotted::EpisodeObject?
 
-        attr_accessor next_: String?
-
-        attr_accessor offset: Integer
-
-        attr_accessor previous: String?
-
-        attr_accessor total: Integer
+        def episode=: (Spotted::EpisodeObject) -> Spotted::EpisodeObject
 
         def initialize: (
-          href: String,
-          items: ::Array[Spotted::Models::Me::EpisodeListResponse::Item],
-          limit: Integer,
-          next_: String?,
-          offset: Integer,
-          previous: String?,
-          total: Integer
+          ?added_at: Time,
+          ?episode: Spotted::EpisodeObject
         ) -> void
 
-        def to_hash: -> {
-          href: String,
-          items: ::Array[Spotted::Models::Me::EpisodeListResponse::Item],
-          limit: Integer,
-          next_: String?,
-          offset: Integer,
-          previous: String?,
-          total: Integer
-        }
-
-        type item = { added_at: Time, episode: Spotted::EpisodeObject }
-
-        class Item < Spotted::Internal::Type::BaseModel
-          attr_reader added_at: Time?
-
-          def added_at=: (Time) -> Time
-
-          attr_reader episode: Spotted::EpisodeObject?
-
-          def episode=: (Spotted::EpisodeObject) -> Spotted::EpisodeObject
-
-          def initialize: (
-            ?added_at: Time,
-            ?episode: Spotted::EpisodeObject
-          ) -> void
-
-          def to_hash: -> { added_at: Time, episode: Spotted::EpisodeObject }
-        end
+        def to_hash: -> { added_at: Time, episode: Spotted::EpisodeObject }
       end
     end
   end

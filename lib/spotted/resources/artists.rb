@@ -71,7 +71,7 @@ module Spotted
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::ArtistListAlbumsResponse]
+      # @return [Spotted::Internal::CursorURLPage<Spotted::Models::ArtistListAlbumsResponse>]
       #
       # @see Spotted::Models::ArtistListAlbumsParams
       def list_albums(id, params = {})
@@ -80,6 +80,7 @@ module Spotted
           method: :get,
           path: ["artists/%1$s/albums", id],
           query: parsed,
+          page: Spotted::Internal::CursorURLPage,
           model: Spotted::Models::ArtistListAlbumsResponse,
           options: options
         )

@@ -4,21 +4,6 @@ module Spotted
   module Resources
     class Playlists
       class Images
-        # Get the current image associated with a specific playlist.
-        sig do
-          params(
-            playlist_id: String,
-            request_options: Spotted::RequestOptions::OrHash
-          ).returns(T::Array[Spotted::ImageObject])
-        end
-        def retrieve(
-          # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
-          # playlist.
-          playlist_id,
-          request_options: {}
-        )
-        end
-
         # Replace the image used to represent a specific playlist.
         sig do
           params(
@@ -33,6 +18,21 @@ module Spotted
           playlist_id,
           # Base64 encoded JPEG image data, maximum payload size is 256 KB.
           body:,
+          request_options: {}
+        )
+        end
+
+        # Get the current image associated with a specific playlist.
+        sig do
+          params(
+            playlist_id: String,
+            request_options: Spotted::RequestOptions::OrHash
+          ).returns(T::Array[Spotted::ImageObject])
+        end
+        def list(
+          # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+          # playlist.
+          playlist_id,
           request_options: {}
         )
         end

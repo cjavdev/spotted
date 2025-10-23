@@ -192,23 +192,23 @@ Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::E
 
 ```ruby
 # :artists
-puts(Spotted::Me::TopRetrieveParams::Type::ARTISTS)
+puts(Spotted::Me::TopListParams::Type::ARTISTS)
 
-# Revealed type: `T.all(Spotted::Me::TopRetrieveParams::Type, Symbol)`
-T.reveal_type(Spotted::Me::TopRetrieveParams::Type::ARTISTS)
+# Revealed type: `T.all(Spotted::Me::TopListParams::Type, Symbol)`
+T.reveal_type(Spotted::Me::TopListParams::Type::ARTISTS)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
 
 ```ruby
 # Using the enum constants preserves the tagged type information:
-spotted.me.top.retrieve(
-  type: Spotted::Me::TopRetrieveParams::Type::ARTISTS,
+spotted.me.top.list(
+  type: Spotted::Me::TopListParams::Type::ARTISTS,
   # …
 )
 
 # Literal values are also permissible:
-spotted.me.top.retrieve(
+spotted.me.top.list(
   type: :artists,
   # …
 )
