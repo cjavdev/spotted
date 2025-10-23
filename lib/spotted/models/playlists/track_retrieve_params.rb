@@ -3,8 +3,8 @@
 module Spotted
   module Models
     module Playlists
-      # @see Spotted::Resources::Playlists::Tracks#list
-      class TrackListParams < Spotted::Internal::Type::BaseModel
+      # @see Spotted::Resources::Playlists::Tracks#retrieve
+      class TrackRetrieveParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
@@ -63,7 +63,7 @@ module Spotted
 
         # @!method initialize(additional_types: nil, fields: nil, limit: nil, market: nil, offset: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::Playlists::TrackListParams} for more details.
+        #   {Spotted::Models::Playlists::TrackRetrieveParams} for more details.
         #
         #   @param additional_types [String] A comma-separated list of item types that your client supports besides the defau
         #

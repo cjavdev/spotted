@@ -3,14 +3,14 @@
 module Spotted
   module Models
     module Playlists
-      class TrackListParams < Spotted::Internal::Type::BaseModel
+      class TrackRetrieveParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
         OrHash =
           T.type_alias do
             T.any(
-              Spotted::Playlists::TrackListParams,
+              Spotted::Playlists::TrackRetrieveParams,
               Spotted::Internal::AnyHash
             )
           end

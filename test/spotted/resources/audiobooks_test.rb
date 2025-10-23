@@ -55,19 +55,19 @@ class Spotted::Test::Resources::AudiobooksTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_retrieve_chapters
+  def test_get_chapters
     skip("Prism tests are disabled")
 
-    response = @spotted.audiobooks.retrieve_chapters("7iHfbu1YPACw6oZPAFJtqe")
+    response = @spotted.audiobooks.get_chapters("7iHfbu1YPACw6oZPAFJtqe")
 
     assert_pattern do
-      response => Spotted::Models::AudiobookRetrieveChaptersResponse
+      response => Spotted::Models::AudiobookGetChaptersResponse
     end
 
     assert_pattern do
       response => {
         href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AudiobookRetrieveChaptersResponse::Item]),
+        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AudiobookGetChaptersResponse::Item]),
         limit: Integer,
         next_: String | nil,
         offset: Integer,

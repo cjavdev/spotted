@@ -17,9 +17,9 @@ module Spotted
 
   class AudioAnalysisRetrieveParams = Spotted::Models::AudioAnalysisRetrieveParams
 
-  class AudiobookListParams = Spotted::Models::AudiobookListParams
+  class AudiobookGetChaptersParams = Spotted::Models::AudiobookGetChaptersParams
 
-  class AudiobookRetrieveChaptersParams = Spotted::Models::AudiobookRetrieveChaptersParams
+  class AudiobookListParams = Spotted::Models::AudiobookListParams
 
   class AudiobookRetrieveParams = Spotted::Models::AudiobookRetrieveParams
 
@@ -57,7 +57,7 @@ module Spotted
 
   class RecommendationGetParams = Spotted::Models::RecommendationGetParams
 
-  class SearchQueryParams = Spotted::Models::SearchQueryParams
+  class SearchRetrieveParams = Spotted::Models::SearchRetrieveParams
 
   class ShowGetEpisodesParams = Spotted::Models::ShowGetEpisodesParams
 

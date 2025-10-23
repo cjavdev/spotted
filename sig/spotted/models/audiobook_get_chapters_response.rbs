@@ -1,9 +1,9 @@
 module Spotted
   module Models
-    type audiobook_retrieve_chapters_response =
+    type audiobook_get_chapters_response =
       {
         href: String,
-        items: ::Array[Spotted::Models::AudiobookRetrieveChaptersResponse::Item],
+        items: ::Array[Spotted::Models::AudiobookGetChaptersResponse::Item],
         limit: Integer,
         next_: String?,
         offset: Integer,
@@ -11,10 +11,10 @@ module Spotted
         total: Integer
       }
 
-    class AudiobookRetrieveChaptersResponse < Spotted::Internal::Type::BaseModel
+    class AudiobookGetChaptersResponse < Spotted::Internal::Type::BaseModel
       attr_accessor href: String
 
-      attr_accessor items: ::Array[Spotted::Models::AudiobookRetrieveChaptersResponse::Item]
+      attr_accessor items: ::Array[Spotted::Models::AudiobookGetChaptersResponse::Item]
 
       attr_accessor limit: Integer
 
@@ -28,7 +28,7 @@ module Spotted
 
       def initialize: (
         href: String,
-        items: ::Array[Spotted::Models::AudiobookRetrieveChaptersResponse::Item],
+        items: ::Array[Spotted::Models::AudiobookGetChaptersResponse::Item],
         limit: Integer,
         next_: String?,
         offset: Integer,
@@ -38,7 +38,7 @@ module Spotted
 
       def to_hash: -> {
         href: String,
-        items: ::Array[Spotted::Models::AudiobookRetrieveChaptersResponse::Item],
+        items: ::Array[Spotted::Models::AudiobookGetChaptersResponse::Item],
         limit: Integer,
         next_: String?,
         offset: Integer,
@@ -54,20 +54,20 @@ module Spotted
           description: String,
           duration_ms: Integer,
           explicit: bool,
-          external_urls: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ExternalURLs,
+          external_urls: Spotted::Models::AudiobookGetChaptersResponse::Item::ExternalURLs,
           href: String,
           html_description: String,
-          images: ::Array[Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Image],
+          images: ::Array[Spotted::Models::AudiobookGetChaptersResponse::Item::Image],
           is_playable: bool,
           languages: ::Array[String],
           name: String,
           release_date: String,
-          release_date_precision: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::release_date_precision,
-          type: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::type_,
+          release_date_precision: Spotted::Models::AudiobookGetChaptersResponse::Item::release_date_precision,
+          type: Spotted::Models::AudiobookGetChaptersResponse::Item::type_,
           uri: String,
           available_markets: ::Array[String],
-          restrictions: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Restrictions,
-          resume_point: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ResumePoint
+          restrictions: Spotted::Models::AudiobookGetChaptersResponse::Item::Restrictions,
+          resume_point: Spotted::Models::AudiobookGetChaptersResponse::Item::ResumePoint
         }
 
       class Item < Spotted::Internal::Type::BaseModel
@@ -83,13 +83,13 @@ module Spotted
 
         attr_accessor explicit: bool
 
-        attr_accessor external_urls: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ExternalURLs
+        attr_accessor external_urls: Spotted::Models::AudiobookGetChaptersResponse::Item::ExternalURLs
 
         attr_accessor href: String
 
         attr_accessor html_description: String
 
-        attr_accessor images: ::Array[Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Image]
+        attr_accessor images: ::Array[Spotted::Models::AudiobookGetChaptersResponse::Item::Image]
 
         attr_accessor is_playable: bool
 
@@ -99,9 +99,9 @@ module Spotted
 
         attr_accessor release_date: String
 
-        attr_accessor release_date_precision: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::release_date_precision
+        attr_accessor release_date_precision: Spotted::Models::AudiobookGetChaptersResponse::Item::release_date_precision
 
-        attr_accessor type: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::type_
+        attr_accessor type: Spotted::Models::AudiobookGetChaptersResponse::Item::type_
 
         attr_accessor uri: String
 
@@ -109,17 +109,17 @@ module Spotted
 
         def available_markets=: (::Array[String]) -> ::Array[String]
 
-        attr_reader restrictions: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Restrictions?
+        attr_reader restrictions: Spotted::Models::AudiobookGetChaptersResponse::Item::Restrictions?
 
         def restrictions=: (
-          Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Restrictions
-        ) -> Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Restrictions
+          Spotted::Models::AudiobookGetChaptersResponse::Item::Restrictions
+        ) -> Spotted::Models::AudiobookGetChaptersResponse::Item::Restrictions
 
-        attr_reader resume_point: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ResumePoint?
+        attr_reader resume_point: Spotted::Models::AudiobookGetChaptersResponse::Item::ResumePoint?
 
         def resume_point=: (
-          Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ResumePoint
-        ) -> Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ResumePoint
+          Spotted::Models::AudiobookGetChaptersResponse::Item::ResumePoint
+        ) -> Spotted::Models::AudiobookGetChaptersResponse::Item::ResumePoint
 
         def initialize: (
           id: String,
@@ -128,20 +128,20 @@ module Spotted
           description: String,
           duration_ms: Integer,
           explicit: bool,
-          external_urls: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ExternalURLs,
+          external_urls: Spotted::Models::AudiobookGetChaptersResponse::Item::ExternalURLs,
           href: String,
           html_description: String,
-          images: ::Array[Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Image],
+          images: ::Array[Spotted::Models::AudiobookGetChaptersResponse::Item::Image],
           is_playable: bool,
           languages: ::Array[String],
           name: String,
           release_date: String,
-          release_date_precision: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::release_date_precision,
-          type: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::type_,
+          release_date_precision: Spotted::Models::AudiobookGetChaptersResponse::Item::release_date_precision,
+          type: Spotted::Models::AudiobookGetChaptersResponse::Item::type_,
           uri: String,
           ?available_markets: ::Array[String],
-          ?restrictions: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Restrictions,
-          ?resume_point: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ResumePoint
+          ?restrictions: Spotted::Models::AudiobookGetChaptersResponse::Item::Restrictions,
+          ?resume_point: Spotted::Models::AudiobookGetChaptersResponse::Item::ResumePoint
         ) -> void
 
         def to_hash: -> {
@@ -151,20 +151,20 @@ module Spotted
           description: String,
           duration_ms: Integer,
           explicit: bool,
-          external_urls: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ExternalURLs,
+          external_urls: Spotted::Models::AudiobookGetChaptersResponse::Item::ExternalURLs,
           href: String,
           html_description: String,
-          images: ::Array[Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Image],
+          images: ::Array[Spotted::Models::AudiobookGetChaptersResponse::Item::Image],
           is_playable: bool,
           languages: ::Array[String],
           name: String,
           release_date: String,
-          release_date_precision: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::release_date_precision,
-          type: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::type_,
+          release_date_precision: Spotted::Models::AudiobookGetChaptersResponse::Item::release_date_precision,
+          type: Spotted::Models::AudiobookGetChaptersResponse::Item::type_,
           uri: String,
           available_markets: ::Array[String],
-          restrictions: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Restrictions,
-          resume_point: Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ResumePoint
+          restrictions: Spotted::Models::AudiobookGetChaptersResponse::Item::Restrictions,
+          resume_point: Spotted::Models::AudiobookGetChaptersResponse::Item::ResumePoint
         }
 
         type external_urls = { spotify: String }
@@ -206,7 +206,7 @@ module Spotted
           MONTH: :month
           DAY: :day
 
-          def self?.values: -> ::Array[Spotted::Models::AudiobookRetrieveChaptersResponse::Item::release_date_precision]
+          def self?.values: -> ::Array[Spotted::Models::AudiobookGetChaptersResponse::Item::release_date_precision]
         end
 
         type type_ = :episode
@@ -216,7 +216,7 @@ module Spotted
 
           EPISODE: :episode
 
-          def self?.values: -> ::Array[Spotted::Models::AudiobookRetrieveChaptersResponse::Item::type_]
+          def self?.values: -> ::Array[Spotted::Models::AudiobookGetChaptersResponse::Item::type_]
         end
 
         type restrictions = { reason: String }

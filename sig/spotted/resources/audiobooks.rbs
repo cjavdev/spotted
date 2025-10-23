@@ -13,13 +13,13 @@ module Spotted
         ?request_options: Spotted::request_opts
       ) -> Spotted::Models::AudiobookListResponse
 
-      def retrieve_chapters: (
+      def get_chapters: (
         String id,
         ?limit: Integer,
         ?market: String,
         ?offset: Integer,
         ?request_options: Spotted::request_opts
-      ) -> Spotted::Models::AudiobookRetrieveChaptersResponse
+      ) -> Spotted::Models::AudiobookGetChaptersResponse
 
       def initialize: (client: Spotted::Client) -> void
     end

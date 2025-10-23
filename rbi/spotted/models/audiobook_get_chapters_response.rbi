@@ -2,11 +2,11 @@
 
 module Spotted
   module Models
-    class AudiobookRetrieveChaptersResponse < Spotted::Internal::Type::BaseModel
+    class AudiobookGetChaptersResponse < Spotted::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
           T.any(
-            Spotted::Models::AudiobookRetrieveChaptersResponse,
+            Spotted::Models::AudiobookGetChaptersResponse,
             Spotted::Internal::AnyHash
           )
         end
@@ -16,9 +16,7 @@ module Spotted
       attr_accessor :href
 
       sig do
-        returns(
-          T::Array[Spotted::Models::AudiobookRetrieveChaptersResponse::Item]
-        )
+        returns(T::Array[Spotted::Models::AudiobookGetChaptersResponse::Item])
       end
       attr_accessor :items
 
@@ -47,7 +45,7 @@ module Spotted
           href: String,
           items:
             T::Array[
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::OrHash
+              Spotted::Models::AudiobookGetChaptersResponse::Item::OrHash
             ],
           limit: Integer,
           next_: T.nilable(String),
@@ -78,9 +76,7 @@ module Spotted
           {
             href: String,
             items:
-              T::Array[
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item
-              ],
+              T::Array[Spotted::Models::AudiobookGetChaptersResponse::Item],
             limit: Integer,
             next_: T.nilable(String),
             offset: Integer,
@@ -96,7 +92,7 @@ module Spotted
         OrHash =
           T.type_alias do
             T.any(
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item,
+              Spotted::Models::AudiobookGetChaptersResponse::Item,
               Spotted::Internal::AnyHash
             )
           end
@@ -132,7 +128,7 @@ module Spotted
         # External URLs for this chapter.
         sig do
           returns(
-            Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ExternalURLs
+            Spotted::Models::AudiobookGetChaptersResponse::Item::ExternalURLs
           )
         end
         attr_reader :external_urls
@@ -140,7 +136,7 @@ module Spotted
         sig do
           params(
             external_urls:
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ExternalURLs::OrHash
+              Spotted::Models::AudiobookGetChaptersResponse::Item::ExternalURLs::OrHash
           ).void
         end
         attr_writer :external_urls
@@ -156,9 +152,7 @@ module Spotted
         # The cover art for the chapter in various sizes, widest first.
         sig do
           returns(
-            T::Array[
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Image
-            ]
+            T::Array[Spotted::Models::AudiobookGetChaptersResponse::Item::Image]
           )
         end
         attr_accessor :images
@@ -184,7 +178,7 @@ module Spotted
         # The precision with which `release_date` value is known.
         sig do
           returns(
-            Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ReleaseDatePrecision::TaggedSymbol
+            Spotted::Models::AudiobookGetChaptersResponse::Item::ReleaseDatePrecision::TaggedSymbol
           )
         end
         attr_accessor :release_date_precision
@@ -192,7 +186,7 @@ module Spotted
         # The object type.
         sig do
           returns(
-            Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Type::TaggedSymbol
+            Spotted::Models::AudiobookGetChaptersResponse::Item::Type::TaggedSymbol
           )
         end
         attr_accessor :type
@@ -214,7 +208,7 @@ module Spotted
         sig do
           returns(
             T.nilable(
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Restrictions
+              Spotted::Models::AudiobookGetChaptersResponse::Item::Restrictions
             )
           )
         end
@@ -223,7 +217,7 @@ module Spotted
         sig do
           params(
             restrictions:
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Restrictions::OrHash
+              Spotted::Models::AudiobookGetChaptersResponse::Item::Restrictions::OrHash
           ).void
         end
         attr_writer :restrictions
@@ -233,7 +227,7 @@ module Spotted
         sig do
           returns(
             T.nilable(
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ResumePoint
+              Spotted::Models::AudiobookGetChaptersResponse::Item::ResumePoint
             )
           )
         end
@@ -242,7 +236,7 @@ module Spotted
         sig do
           params(
             resume_point:
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ResumePoint::OrHash
+              Spotted::Models::AudiobookGetChaptersResponse::Item::ResumePoint::OrHash
           ).void
         end
         attr_writer :resume_point
@@ -256,27 +250,27 @@ module Spotted
             duration_ms: Integer,
             explicit: T::Boolean,
             external_urls:
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ExternalURLs::OrHash,
+              Spotted::Models::AudiobookGetChaptersResponse::Item::ExternalURLs::OrHash,
             href: String,
             html_description: String,
             images:
               T::Array[
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Image::OrHash
+                Spotted::Models::AudiobookGetChaptersResponse::Item::Image::OrHash
               ],
             is_playable: T::Boolean,
             languages: T::Array[String],
             name: String,
             release_date: String,
             release_date_precision:
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ReleaseDatePrecision::OrSymbol,
+              Spotted::Models::AudiobookGetChaptersResponse::Item::ReleaseDatePrecision::OrSymbol,
             type:
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Type::OrSymbol,
+              Spotted::Models::AudiobookGetChaptersResponse::Item::Type::OrSymbol,
             uri: String,
             available_markets: T::Array[String],
             restrictions:
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Restrictions::OrHash,
+              Spotted::Models::AudiobookGetChaptersResponse::Item::Restrictions::OrHash,
             resume_point:
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ResumePoint::OrHash
+              Spotted::Models::AudiobookGetChaptersResponse::Item::ResumePoint::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -342,27 +336,27 @@ module Spotted
               duration_ms: Integer,
               explicit: T::Boolean,
               external_urls:
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ExternalURLs,
+                Spotted::Models::AudiobookGetChaptersResponse::Item::ExternalURLs,
               href: String,
               html_description: String,
               images:
                 T::Array[
-                  Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Image
+                  Spotted::Models::AudiobookGetChaptersResponse::Item::Image
                 ],
               is_playable: T::Boolean,
               languages: T::Array[String],
               name: String,
               release_date: String,
               release_date_precision:
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ReleaseDatePrecision::TaggedSymbol,
+                Spotted::Models::AudiobookGetChaptersResponse::Item::ReleaseDatePrecision::TaggedSymbol,
               type:
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Type::TaggedSymbol,
+                Spotted::Models::AudiobookGetChaptersResponse::Item::Type::TaggedSymbol,
               uri: String,
               available_markets: T::Array[String],
               restrictions:
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Restrictions,
+                Spotted::Models::AudiobookGetChaptersResponse::Item::Restrictions,
               resume_point:
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ResumePoint
+                Spotted::Models::AudiobookGetChaptersResponse::Item::ResumePoint
             }
           )
         end
@@ -373,7 +367,7 @@ module Spotted
           OrHash =
             T.type_alias do
               T.any(
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ExternalURLs,
+                Spotted::Models::AudiobookGetChaptersResponse::Item::ExternalURLs,
                 Spotted::Internal::AnyHash
               )
             end
@@ -404,7 +398,7 @@ module Spotted
           OrHash =
             T.type_alias do
               T.any(
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Image,
+                Spotted::Models::AudiobookGetChaptersResponse::Item::Image,
                 Spotted::Internal::AnyHash
               )
             end
@@ -459,7 +453,7 @@ module Spotted
             T.type_alias do
               T.all(
                 Symbol,
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ReleaseDatePrecision
+                Spotted::Models::AudiobookGetChaptersResponse::Item::ReleaseDatePrecision
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -467,23 +461,23 @@ module Spotted
           YEAR =
             T.let(
               :year,
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ReleaseDatePrecision::TaggedSymbol
+              Spotted::Models::AudiobookGetChaptersResponse::Item::ReleaseDatePrecision::TaggedSymbol
             )
           MONTH =
             T.let(
               :month,
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ReleaseDatePrecision::TaggedSymbol
+              Spotted::Models::AudiobookGetChaptersResponse::Item::ReleaseDatePrecision::TaggedSymbol
             )
           DAY =
             T.let(
               :day,
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ReleaseDatePrecision::TaggedSymbol
+              Spotted::Models::AudiobookGetChaptersResponse::Item::ReleaseDatePrecision::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ReleaseDatePrecision::TaggedSymbol
+                Spotted::Models::AudiobookGetChaptersResponse::Item::ReleaseDatePrecision::TaggedSymbol
               ]
             )
           end
@@ -499,7 +493,7 @@ module Spotted
             T.type_alias do
               T.all(
                 Symbol,
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Type
+                Spotted::Models::AudiobookGetChaptersResponse::Item::Type
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -507,13 +501,13 @@ module Spotted
           EPISODE =
             T.let(
               :episode,
-              Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Type::TaggedSymbol
+              Spotted::Models::AudiobookGetChaptersResponse::Item::Type::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Type::TaggedSymbol
+                Spotted::Models::AudiobookGetChaptersResponse::Item::Type::TaggedSymbol
               ]
             )
           end
@@ -525,7 +519,7 @@ module Spotted
           OrHash =
             T.type_alias do
               T.any(
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::Restrictions,
+                Spotted::Models::AudiobookGetChaptersResponse::Item::Restrictions,
                 Spotted::Internal::AnyHash
               )
             end
@@ -574,7 +568,7 @@ module Spotted
           OrHash =
             T.type_alias do
               T.any(
-                Spotted::Models::AudiobookRetrieveChaptersResponse::Item::ResumePoint,
+                Spotted::Models::AudiobookGetChaptersResponse::Item::ResumePoint,
                 Spotted::Internal::AnyHash
               )
             end
