@@ -1,0 +1,55 @@
+module Spotted
+  module Models
+    type playlist_track_object =
+      {
+        added_at: Time,
+        added_by: Spotted::PlaylistUserObject,
+        is_local: bool,
+        track: Spotted::Models::PlaylistTrackObject::track
+      }
+
+    class PlaylistTrackObject < Spotted::Internal::Type::BaseModel
+      attr_reader added_at: Time?
+
+      def added_at=: (Time) -> Time
+
+      attr_reader added_by: Spotted::PlaylistUserObject?
+
+      def added_by=: (
+        Spotted::PlaylistUserObject
+      ) -> Spotted::PlaylistUserObject
+
+      attr_reader is_local: bool?
+
+      def is_local=: (bool) -> bool
+
+      attr_reader track: Spotted::Models::PlaylistTrackObject::track?
+
+      def track=: (
+        Spotted::Models::PlaylistTrackObject::track
+      ) -> Spotted::Models::PlaylistTrackObject::track
+
+      def initialize: (
+        ?added_at: Time,
+        ?added_by: Spotted::PlaylistUserObject,
+        ?is_local: bool,
+        ?track: Spotted::Models::PlaylistTrackObject::track
+      ) -> void
+
+      def to_hash: -> {
+        added_at: Time,
+        added_by: Spotted::PlaylistUserObject,
+        is_local: bool,
+        track: Spotted::Models::PlaylistTrackObject::track
+      }
+
+      type track = Spotted::TrackObject | Spotted::EpisodeObject
+
+      module Track
+        extend Spotted::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Spotted::Models::PlaylistTrackObject::track]
+      end
+    end
+  end
+end

@@ -67,7 +67,7 @@ module Spotted
             {
               id: String,
               href: String,
-              icons: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item::Icon],
+              icons: ::Array[Spotted::ImageObject],
               name: String
             }
 
@@ -76,41 +76,23 @@ module Spotted
 
             attr_accessor href: String
 
-            attr_accessor icons: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item::Icon]
+            attr_accessor icons: ::Array[Spotted::ImageObject]
 
             attr_accessor name: String
 
             def initialize: (
               id: String,
               href: String,
-              icons: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item::Icon],
+              icons: ::Array[Spotted::ImageObject],
               name: String
             ) -> void
 
             def to_hash: -> {
               id: String,
               href: String,
-              icons: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item::Icon],
+              icons: ::Array[Spotted::ImageObject],
               name: String
             }
-
-            type icon = { height: Integer?, url: String, width: Integer? }
-
-            class Icon < Spotted::Internal::Type::BaseModel
-              attr_accessor height: Integer?
-
-              attr_accessor url: String
-
-              attr_accessor width: Integer?
-
-              def initialize: (
-                height: Integer?,
-                url: String,
-                width: Integer?
-              ) -> void
-
-              def to_hash: -> { height: Integer?, url: String, width: Integer? }
-            end
           end
         end
       end

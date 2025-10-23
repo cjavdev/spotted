@@ -17,9 +17,9 @@ class Spotted::Test::Resources::Users::PlaylistsTest < Spotted::Test::ResourceTe
         id: String | nil,
         collaborative: Spotted::Internal::Type::Boolean | nil,
         description: String | nil,
-        external_urls: Spotted::Models::Users::PlaylistCreateResponse::ExternalURLs | nil,
+        external_urls: Spotted::ExternalURLObject | nil,
         href: String | nil,
-        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::Users::PlaylistCreateResponse::Image]) | nil,
+        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
         name: String | nil,
         owner: Spotted::Models::Users::PlaylistCreateResponse::Owner | nil,
         public: Spotted::Internal::Type::Boolean | nil,
@@ -37,13 +37,13 @@ class Spotted::Test::Resources::Users::PlaylistsTest < Spotted::Test::ResourceTe
     response = @spotted.users.playlists.list("smedjan")
 
     assert_pattern do
-      response => Spotted::Models::Users::PlaylistListResponse
+      response => Spotted::PagingPlaylistObject
     end
 
     assert_pattern do
       response => {
         href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::Users::PlaylistListResponse::Item]),
+        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedPlaylistObject]),
         limit: Integer,
         next_: String | nil,
         offset: Integer,

@@ -1,23 +1,7 @@
 module Spotted
   module Models
     module Playlists
-      type image_retrieve_response_item =
-        { height: Integer?, url: String, width: Integer? }
-
-      class ImageRetrieveResponseItem < Spotted::Internal::Type::BaseModel
-        attr_accessor height: Integer?
-
-        attr_accessor url: String
-
-        attr_accessor width: Integer?
-
-        def initialize: (height: Integer?, url: String, width: Integer?) -> void
-
-        def to_hash: -> { height: Integer?, url: String, width: Integer? }
-      end
-
-      type image_retrieve_response =
-        ::Array[Spotted::Models::Playlists::ImageRetrieveResponseItem]
+      type image_retrieve_response = ::Array[Spotted::ImageObject]
 
       ImageRetrieveResponse: Spotted::Internal::Type::Converter
     end

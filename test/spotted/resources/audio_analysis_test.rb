@@ -14,12 +14,12 @@ class Spotted::Test::Resources::AudioAnalysisTest < Spotted::Test::ResourceTest
 
     assert_pattern do
       response => {
-        bars: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AudioAnalysisRetrieveResponse::Bar]) | nil,
-        beats: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AudioAnalysisRetrieveResponse::Beat]) | nil,
+        bars: ^(Spotted::Internal::Type::ArrayOf[Spotted::TimeIntervalObject]) | nil,
+        beats: ^(Spotted::Internal::Type::ArrayOf[Spotted::TimeIntervalObject]) | nil,
         meta: Spotted::Models::AudioAnalysisRetrieveResponse::Meta | nil,
         sections: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AudioAnalysisRetrieveResponse::Section]) | nil,
         segments: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AudioAnalysisRetrieveResponse::Segment]) | nil,
-        tatums: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AudioAnalysisRetrieveResponse::Tatum]) | nil,
+        tatums: ^(Spotted::Internal::Type::ArrayOf[Spotted::TimeIntervalObject]) | nil,
         track: Spotted::Models::AudioAnalysisRetrieveResponse::Track | nil
       }
     end

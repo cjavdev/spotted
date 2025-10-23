@@ -1,0 +1,64 @@
+module Spotted
+  module Models
+    type playlist_user_object =
+      {
+        id: String,
+        external_urls: Spotted::ExternalURLObject,
+        href: String,
+        type: Spotted::Models::PlaylistUserObject::type_,
+        uri: String
+      }
+
+    class PlaylistUserObject < Spotted::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader external_urls: Spotted::ExternalURLObject?
+
+      def external_urls=: (
+        Spotted::ExternalURLObject
+      ) -> Spotted::ExternalURLObject
+
+      attr_reader href: String?
+
+      def href=: (String) -> String
+
+      attr_reader type: Spotted::Models::PlaylistUserObject::type_?
+
+      def type=: (
+        Spotted::Models::PlaylistUserObject::type_
+      ) -> Spotted::Models::PlaylistUserObject::type_
+
+      attr_reader uri: String?
+
+      def uri=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?external_urls: Spotted::ExternalURLObject,
+        ?href: String,
+        ?type: Spotted::Models::PlaylistUserObject::type_,
+        ?uri: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        external_urls: Spotted::ExternalURLObject,
+        href: String,
+        type: Spotted::Models::PlaylistUserObject::type_,
+        uri: String
+      }
+
+      type type_ = :user
+
+      module Type
+        extend Spotted::Internal::Type::Enum
+
+        USER: :user
+
+        def self?.values: -> ::Array[Spotted::Models::PlaylistUserObject::type_]
+      end
+    end
+  end
+end

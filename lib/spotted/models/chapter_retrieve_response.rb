@@ -55,8 +55,8 @@ module Spotted
       # @!attribute external_urls
       #   External URLs for this chapter.
       #
-      #   @return [Spotted::Models::ChapterRetrieveResponse::ExternalURLs]
-      required :external_urls, -> { Spotted::Models::ChapterRetrieveResponse::ExternalURLs }
+      #   @return [Spotted::Models::ExternalURLObject]
+      required :external_urls, -> { Spotted::ExternalURLObject }
 
       # @!attribute href
       #   A link to the Web API endpoint providing full details of the chapter.
@@ -73,8 +73,8 @@ module Spotted
       # @!attribute images
       #   The cover art for the chapter in various sizes, widest first.
       #
-      #   @return [Array<Spotted::Models::ChapterRetrieveResponse::Image>]
-      required :images, -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::ChapterRetrieveResponse::Image] }
+      #   @return [Array<Spotted::Models::ImageObject>]
+      required :images, -> { Spotted::Internal::Type::ArrayOf[Spotted::ImageObject] }
 
       # @!attribute is_playable
       #   True if the chapter is playable in the given market. Otherwise false.
@@ -132,15 +132,15 @@ module Spotted
       # @!attribute restrictions
       #   Included in the response when a content restriction is applied.
       #
-      #   @return [Spotted::Models::ChapterRetrieveResponse::Restrictions, nil]
-      optional :restrictions, -> { Spotted::Models::ChapterRetrieveResponse::Restrictions }
+      #   @return [Spotted::Models::ChapterRestrictionObject, nil]
+      optional :restrictions, -> { Spotted::ChapterRestrictionObject }
 
       # @!attribute resume_point
       #   The user's most recent position in the chapter. Set if the supplied access token
       #   is a user token and has the scope 'user-read-playback-position'.
       #
-      #   @return [Spotted::Models::ChapterRetrieveResponse::ResumePoint, nil]
-      optional :resume_point, -> { Spotted::Models::ChapterRetrieveResponse::ResumePoint }
+      #   @return [Spotted::Models::ResumePointObject, nil]
+      optional :resume_point, -> { Spotted::ResumePointObject }
 
       # @!method initialize(id:, audio_preview_url:, audiobook:, chapter_number:, description:, duration_ms:, explicit:, external_urls:, href:, html_description:, images:, is_playable:, languages:, name:, release_date:, release_date_precision:, type:, uri:, available_markets: nil, restrictions: nil, resume_point: nil)
       #   Some parameter documentations has been truncated, see
@@ -160,13 +160,13 @@ module Spotted
       #
       #   @param explicit [Boolean] Whether or not the chapter has explicit content (true = yes it does; false = no
       #
-      #   @param external_urls [Spotted::Models::ChapterRetrieveResponse::ExternalURLs] External URLs for this chapter.
+      #   @param external_urls [Spotted::Models::ExternalURLObject] External URLs for this chapter.
       #
       #   @param href [String] A link to the Web API endpoint providing full details of the chapter.
       #
       #   @param html_description [String] A description of the chapter. This field may contain HTML tags.
       #
-      #   @param images [Array<Spotted::Models::ChapterRetrieveResponse::Image>] The cover art for the chapter in various sizes, widest first.
+      #   @param images [Array<Spotted::Models::ImageObject>] The cover art for the chapter in various sizes, widest first.
       #
       #   @param is_playable [Boolean] True if the chapter is playable in the given market. Otherwise false.
       #
@@ -184,9 +184,9 @@ module Spotted
       #
       #   @param available_markets [Array<String>] A list of the countries in which the chapter can be played, identified by their
       #
-      #   @param restrictions [Spotted::Models::ChapterRetrieveResponse::Restrictions] Included in the response when a content restriction is applied.
+      #   @param restrictions [Spotted::Models::ChapterRestrictionObject] Included in the response when a content restriction is applied.
       #
-      #   @param resume_point [Spotted::Models::ChapterRetrieveResponse::ResumePoint] The user's most recent position in the chapter. Set if the supplied access token
+      #   @param resume_point [Spotted::Models::ResumePointObject] The user's most recent position in the chapter. Set if the supplied access token
 
       # @see Spotted::Models::ChapterRetrieveResponse#audiobook
       class Audiobook < Spotted::Internal::Type::BaseModel
@@ -200,9 +200,8 @@ module Spotted
         # @!attribute authors
         #   The author(s) for the audiobook.
         #
-        #   @return [Array<Spotted::Models::ChapterRetrieveResponse::Audiobook::Author>]
-        required :authors,
-                 -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::ChapterRetrieveResponse::Audiobook::Author] }
+        #   @return [Array<Spotted::Models::AuthorObject>]
+        required :authors, -> { Spotted::Internal::Type::ArrayOf[Spotted::AuthorObject] }
 
         # @!attribute available_markets
         #   A list of the countries in which the audiobook can be played, identified by
@@ -215,9 +214,8 @@ module Spotted
         # @!attribute copyrights
         #   The copyright statements of the audiobook.
         #
-        #   @return [Array<Spotted::Models::ChapterRetrieveResponse::Audiobook::Copyright>]
-        required :copyrights,
-                 -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::ChapterRetrieveResponse::Audiobook::Copyright] }
+        #   @return [Array<Spotted::Models::CopyrightObject>]
+        required :copyrights, -> { Spotted::Internal::Type::ArrayOf[Spotted::CopyrightObject] }
 
         # @!attribute description
         #   A description of the audiobook. HTML tags are stripped away from this field, use
@@ -236,8 +234,8 @@ module Spotted
         # @!attribute external_urls
         #   External URLs for this audiobook.
         #
-        #   @return [Spotted::Models::ChapterRetrieveResponse::Audiobook::ExternalURLs]
-        required :external_urls, -> { Spotted::Models::ChapterRetrieveResponse::Audiobook::ExternalURLs }
+        #   @return [Spotted::Models::ExternalURLObject]
+        required :external_urls, -> { Spotted::ExternalURLObject }
 
         # @!attribute href
         #   A link to the Web API endpoint providing full details of the audiobook.
@@ -254,9 +252,8 @@ module Spotted
         # @!attribute images
         #   The cover art for the audiobook in various sizes, widest first.
         #
-        #   @return [Array<Spotted::Models::ChapterRetrieveResponse::Audiobook::Image>]
-        required :images,
-                 -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::ChapterRetrieveResponse::Audiobook::Image] }
+        #   @return [Array<Spotted::Models::ImageObject>]
+        required :images, -> { Spotted::Internal::Type::ArrayOf[Spotted::ImageObject] }
 
         # @!attribute languages
         #   A list of the languages used in the audiobook, identified by their
@@ -280,9 +277,8 @@ module Spotted
         # @!attribute narrators
         #   The narrator(s) for the audiobook.
         #
-        #   @return [Array<Spotted::Models::ChapterRetrieveResponse::Audiobook::Narrator>]
-        required :narrators,
-                 -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::ChapterRetrieveResponse::Audiobook::Narrator] }
+        #   @return [Array<Spotted::Models::NarratorObject>]
+        required :narrators, -> { Spotted::Internal::Type::ArrayOf[Spotted::NarratorObject] }
 
         # @!attribute publisher
         #   The publisher of the audiobook.
@@ -323,23 +319,23 @@ module Spotted
         #
         #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the audio
         #
-        #   @param authors [Array<Spotted::Models::ChapterRetrieveResponse::Audiobook::Author>] The author(s) for the audiobook.
+        #   @param authors [Array<Spotted::Models::AuthorObject>] The author(s) for the audiobook.
         #
         #   @param available_markets [Array<String>] A list of the countries in which the audiobook can be played, identified by thei
         #
-        #   @param copyrights [Array<Spotted::Models::ChapterRetrieveResponse::Audiobook::Copyright>] The copyright statements of the audiobook.
+        #   @param copyrights [Array<Spotted::Models::CopyrightObject>] The copyright statements of the audiobook.
         #
         #   @param description [String] A description of the audiobook. HTML tags are stripped away from this field, use
         #
         #   @param explicit [Boolean] Whether or not the audiobook has explicit content (true = yes it does; false = n
         #
-        #   @param external_urls [Spotted::Models::ChapterRetrieveResponse::Audiobook::ExternalURLs] External URLs for this audiobook.
+        #   @param external_urls [Spotted::Models::ExternalURLObject] External URLs for this audiobook.
         #
         #   @param href [String] A link to the Web API endpoint providing full details of the audiobook.
         #
         #   @param html_description [String] A description of the audiobook. This field may contain HTML tags.
         #
-        #   @param images [Array<Spotted::Models::ChapterRetrieveResponse::Audiobook::Image>] The cover art for the audiobook in various sizes, widest first.
+        #   @param images [Array<Spotted::Models::ImageObject>] The cover art for the audiobook in various sizes, widest first.
         #
         #   @param languages [Array<String>] A list of the languages used in the audiobook, identified by their [ISO 639](htt
         #
@@ -347,7 +343,7 @@ module Spotted
         #
         #   @param name [String] The name of the audiobook.
         #
-        #   @param narrators [Array<Spotted::Models::ChapterRetrieveResponse::Audiobook::Narrator>] The narrator(s) for the audiobook.
+        #   @param narrators [Array<Spotted::Models::NarratorObject>] The narrator(s) for the audiobook.
         #
         #   @param publisher [String] The publisher of the audiobook.
         #
@@ -358,108 +354,6 @@ module Spotted
         #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audi
         #
         #   @param edition [String] The edition of the audiobook.
-
-        class Author < Spotted::Internal::Type::BaseModel
-          # @!attribute name
-          #   The name of the author.
-          #
-          #   @return [String, nil]
-          optional :name, String
-
-          # @!method initialize(name: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Spotted::Models::ChapterRetrieveResponse::Audiobook::Author} for more details.
-          #
-          #   @param name [String] The name of the author.
-        end
-
-        class Copyright < Spotted::Internal::Type::BaseModel
-          # @!attribute text
-          #   The copyright text for this content.
-          #
-          #   @return [String, nil]
-          optional :text, String
-
-          # @!attribute type
-          #   The type of copyright: `C` = the copyright, `P` = the sound recording
-          #   (performance) copyright.
-          #
-          #   @return [String, nil]
-          optional :type, String
-
-          # @!method initialize(text: nil, type: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Spotted::Models::ChapterRetrieveResponse::Audiobook::Copyright} for more
-          #   details.
-          #
-          #   @param text [String] The copyright text for this content.
-          #
-          #   @param type [String] The type of copyright: `C` = the copyright, `P` = the sound recording (performan
-        end
-
-        # @see Spotted::Models::ChapterRetrieveResponse::Audiobook#external_urls
-        class ExternalURLs < Spotted::Internal::Type::BaseModel
-          # @!attribute spotify
-          #   The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-          #   object.
-          #
-          #   @return [String, nil]
-          optional :spotify, String
-
-          # @!method initialize(spotify: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Spotted::Models::ChapterRetrieveResponse::Audiobook::ExternalURLs} for more
-          #   details.
-          #
-          #   External URLs for this audiobook.
-          #
-          #   @param spotify [String] The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the obje
-        end
-
-        class Image < Spotted::Internal::Type::BaseModel
-          # @!attribute height
-          #   The image height in pixels.
-          #
-          #   @return [Integer, nil]
-          required :height, Integer, nil?: true
-
-          # @!attribute url
-          #   The source URL of the image.
-          #
-          #   @return [String]
-          required :url, String
-
-          # @!attribute width
-          #   The image width in pixels.
-          #
-          #   @return [Integer, nil]
-          required :width, Integer, nil?: true
-
-          # @!method initialize(height:, url:, width:)
-          #   Some parameter documentations has been truncated, see
-          #   {Spotted::Models::ChapterRetrieveResponse::Audiobook::Image} for more details.
-          #
-          #   @param height [Integer, nil] The image height in pixels.
-          #
-          #   @param url [String] The source URL of the image.
-          #
-          #   @param width [Integer, nil] The image width in pixels.
-        end
-
-        class Narrator < Spotted::Internal::Type::BaseModel
-          # @!attribute name
-          #   The name of the Narrator.
-          #
-          #   @return [String, nil]
-          optional :name, String
-
-          # @!method initialize(name: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Spotted::Models::ChapterRetrieveResponse::Audiobook::Narrator} for more
-          #   details.
-          #
-          #   @param name [String] The name of the Narrator.
-        end
 
         # The object type.
         #
@@ -472,54 +366,6 @@ module Spotted
           # @!method self.values
           #   @return [Array<Symbol>]
         end
-      end
-
-      # @see Spotted::Models::ChapterRetrieveResponse#external_urls
-      class ExternalURLs < Spotted::Internal::Type::BaseModel
-        # @!attribute spotify
-        #   The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-        #   object.
-        #
-        #   @return [String, nil]
-        optional :spotify, String
-
-        # @!method initialize(spotify: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::ChapterRetrieveResponse::ExternalURLs} for more details.
-        #
-        #   External URLs for this chapter.
-        #
-        #   @param spotify [String] The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the obje
-      end
-
-      class Image < Spotted::Internal::Type::BaseModel
-        # @!attribute height
-        #   The image height in pixels.
-        #
-        #   @return [Integer, nil]
-        required :height, Integer, nil?: true
-
-        # @!attribute url
-        #   The source URL of the image.
-        #
-        #   @return [String]
-        required :url, String
-
-        # @!attribute width
-        #   The image width in pixels.
-        #
-        #   @return [Integer, nil]
-        required :width, Integer, nil?: true
-
-        # @!method initialize(height:, url:, width:)
-        #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::ChapterRetrieveResponse::Image} for more details.
-        #
-        #   @param height [Integer, nil] The image height in pixels.
-        #
-        #   @param url [String] The source URL of the image.
-        #
-        #   @param width [Integer, nil] The image width in pixels.
       end
 
       # The precision with which `release_date` value is known.
@@ -546,59 +392,6 @@ module Spotted
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      # @see Spotted::Models::ChapterRetrieveResponse#restrictions
-      class Restrictions < Spotted::Internal::Type::BaseModel
-        # @!attribute reason
-        #   The reason for the restriction. Supported values:
-        #
-        #   - `market` - The content item is not available in the given market.
-        #   - `product` - The content item is not available for the user's subscription
-        #     type.
-        #   - `explicit` - The content item is explicit and the user's account is set to not
-        #     play explicit content.
-        #   - `payment_required` - Payment is required to play the content item.
-        #
-        #   Additional reasons may be added in the future. **Note**: If you use this field,
-        #   make sure that your application safely handles unknown values.
-        #
-        #   @return [String, nil]
-        optional :reason, String
-
-        # @!method initialize(reason: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::ChapterRetrieveResponse::Restrictions} for more details.
-        #
-        #   Included in the response when a content restriction is applied.
-        #
-        #   @param reason [String] The reason for the restriction. Supported values:
-      end
-
-      # @see Spotted::Models::ChapterRetrieveResponse#resume_point
-      class ResumePoint < Spotted::Internal::Type::BaseModel
-        # @!attribute fully_played
-        #   Whether or not the episode has been fully played by the user.
-        #
-        #   @return [Boolean, nil]
-        optional :fully_played, Spotted::Internal::Type::Boolean
-
-        # @!attribute resume_position_ms
-        #   The user's most recent position in the episode in milliseconds.
-        #
-        #   @return [Integer, nil]
-        optional :resume_position_ms, Integer
-
-        # @!method initialize(fully_played: nil, resume_position_ms: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::ChapterRetrieveResponse::ResumePoint} for more details.
-        #
-        #   The user's most recent position in the chapter. Set if the supplied access token
-        #   is a user token and has the scope 'user-read-playback-position'.
-        #
-        #   @param fully_played [Boolean] Whether or not the episode has been fully played by the user.
-        #
-        #   @param resume_position_ms [Integer] The user's most recent position in the episode in milliseconds.
       end
     end
   end

@@ -16,7 +16,7 @@ class Spotted::Test::Resources::Browse::CategoriesTest < Spotted::Test::Resource
       response => {
         id: String,
         href: String,
-        icons: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::Browse::CategoryRetrieveResponse::Icon]),
+        icons: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]),
         name: String
       }
     end
@@ -50,7 +50,7 @@ class Spotted::Test::Resources::Browse::CategoriesTest < Spotted::Test::Resource
     assert_pattern do
       response => {
         message: String | nil,
-        playlists: Spotted::Models::Browse::CategoryGetPlaylistsResponse::Playlists | nil
+        playlists: Spotted::PagingPlaylistObject | nil
       }
     end
   end

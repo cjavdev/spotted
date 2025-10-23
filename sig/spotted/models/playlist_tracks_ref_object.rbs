@@ -1,0 +1,19 @@
+module Spotted
+  module Models
+    type playlist_tracks_ref_object = { href: String, total: Integer }
+
+    class PlaylistTracksRefObject < Spotted::Internal::Type::BaseModel
+      attr_reader href: String?
+
+      def href=: (String) -> String
+
+      attr_reader total: Integer?
+
+      def total=: (Integer) -> Integer
+
+      def initialize: (?href: String, ?total: Integer) -> void
+
+      def to_hash: -> { href: String, total: Integer }
+    end
+  end
+end

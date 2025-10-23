@@ -4,10 +4,10 @@ module Spotted
       {
         id: String,
         display_name: String?,
-        external_urls: Spotted::Models::UserRetrieveProfileResponse::ExternalURLs,
-        followers: Spotted::Models::UserRetrieveProfileResponse::Followers,
+        external_urls: Spotted::ExternalURLObject,
+        followers: Spotted::FollowersObject,
         href: String,
-        images: ::Array[Spotted::Models::UserRetrieveProfileResponse::Image],
+        images: ::Array[Spotted::ImageObject],
         type: Spotted::Models::UserRetrieveProfileResponse::type_,
         uri: String
       }
@@ -19,27 +19,25 @@ module Spotted
 
       attr_accessor display_name: String?
 
-      attr_reader external_urls: Spotted::Models::UserRetrieveProfileResponse::ExternalURLs?
+      attr_reader external_urls: Spotted::ExternalURLObject?
 
       def external_urls=: (
-        Spotted::Models::UserRetrieveProfileResponse::ExternalURLs
-      ) -> Spotted::Models::UserRetrieveProfileResponse::ExternalURLs
+        Spotted::ExternalURLObject
+      ) -> Spotted::ExternalURLObject
 
-      attr_reader followers: Spotted::Models::UserRetrieveProfileResponse::Followers?
+      attr_reader followers: Spotted::FollowersObject?
 
-      def followers=: (
-        Spotted::Models::UserRetrieveProfileResponse::Followers
-      ) -> Spotted::Models::UserRetrieveProfileResponse::Followers
+      def followers=: (Spotted::FollowersObject) -> Spotted::FollowersObject
 
       attr_reader href: String?
 
       def href=: (String) -> String
 
-      attr_reader images: ::Array[Spotted::Models::UserRetrieveProfileResponse::Image]?
+      attr_reader images: ::Array[Spotted::ImageObject]?
 
       def images=: (
-        ::Array[Spotted::Models::UserRetrieveProfileResponse::Image]
-      ) -> ::Array[Spotted::Models::UserRetrieveProfileResponse::Image]
+        ::Array[Spotted::ImageObject]
+      ) -> ::Array[Spotted::ImageObject]
 
       attr_reader type: Spotted::Models::UserRetrieveProfileResponse::type_?
 
@@ -54,10 +52,10 @@ module Spotted
       def initialize: (
         ?id: String,
         ?display_name: String?,
-        ?external_urls: Spotted::Models::UserRetrieveProfileResponse::ExternalURLs,
-        ?followers: Spotted::Models::UserRetrieveProfileResponse::Followers,
+        ?external_urls: Spotted::ExternalURLObject,
+        ?followers: Spotted::FollowersObject,
         ?href: String,
-        ?images: ::Array[Spotted::Models::UserRetrieveProfileResponse::Image],
+        ?images: ::Array[Spotted::ImageObject],
         ?type: Spotted::Models::UserRetrieveProfileResponse::type_,
         ?uri: String
       ) -> void
@@ -65,53 +63,13 @@ module Spotted
       def to_hash: -> {
         id: String,
         display_name: String?,
-        external_urls: Spotted::Models::UserRetrieveProfileResponse::ExternalURLs,
-        followers: Spotted::Models::UserRetrieveProfileResponse::Followers,
+        external_urls: Spotted::ExternalURLObject,
+        followers: Spotted::FollowersObject,
         href: String,
-        images: ::Array[Spotted::Models::UserRetrieveProfileResponse::Image],
+        images: ::Array[Spotted::ImageObject],
         type: Spotted::Models::UserRetrieveProfileResponse::type_,
         uri: String
       }
-
-      type external_urls = { spotify: String }
-
-      class ExternalURLs < Spotted::Internal::Type::BaseModel
-        attr_reader spotify: String?
-
-        def spotify=: (String) -> String
-
-        def initialize: (?spotify: String) -> void
-
-        def to_hash: -> { spotify: String }
-      end
-
-      type followers = { href: String?, total: Integer }
-
-      class Followers < Spotted::Internal::Type::BaseModel
-        attr_accessor href: String?
-
-        attr_reader total: Integer?
-
-        def total=: (Integer) -> Integer
-
-        def initialize: (?href: String?, ?total: Integer) -> void
-
-        def to_hash: -> { href: String?, total: Integer }
-      end
-
-      type image = { height: Integer?, url: String, width: Integer? }
-
-      class Image < Spotted::Internal::Type::BaseModel
-        attr_accessor height: Integer?
-
-        attr_accessor url: String
-
-        attr_accessor width: Integer?
-
-        def initialize: (height: Integer?, url: String, width: Integer?) -> void
-
-        def to_hash: -> { height: Integer?, url: String, width: Integer? }
-      end
 
       type type_ = :user
 

@@ -4,7 +4,7 @@ module Spotted
       def retrieve: (
         String id,
         ?request_options: Spotted::request_opts
-      ) -> Spotted::Models::ArtistRetrieveResponse
+      ) -> Spotted::ArtistObject
 
       def list: (
         ids: String,

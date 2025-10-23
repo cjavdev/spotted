@@ -167,13 +167,7 @@ module Spotted
             attr_accessor :available_markets
 
             # The copyright statements of the show.
-            sig do
-              returns(
-                T::Array[
-                  Spotted::Models::Me::ShowListResponse::Item::Show::Copyright
-                ]
-              )
-            end
+            sig { returns(T::Array[Spotted::CopyrightObject]) }
             attr_accessor :copyrights
 
             # A description of the show. HTML tags are stripped away from this field, use
@@ -187,18 +181,11 @@ module Spotted
             attr_accessor :explicit
 
             # External URLs for this show.
-            sig do
-              returns(
-                Spotted::Models::Me::ShowListResponse::Item::Show::ExternalURLs
-              )
-            end
+            sig { returns(Spotted::ExternalURLObject) }
             attr_reader :external_urls
 
             sig do
-              params(
-                external_urls:
-                  Spotted::Models::Me::ShowListResponse::Item::Show::ExternalURLs::OrHash
-              ).void
+              params(external_urls: Spotted::ExternalURLObject::OrHash).void
             end
             attr_writer :external_urls
 
@@ -211,13 +198,7 @@ module Spotted
             attr_accessor :html_description
 
             # The cover art for the show in various sizes, widest first.
-            sig do
-              returns(
-                T::Array[
-                  Spotted::Models::Me::ShowListResponse::Item::Show::Image
-                ]
-              )
-            end
+            sig { returns(T::Array[Spotted::ImageObject]) }
             attr_accessor :images
 
             # True if all of the shows episodes are hosted outside of Spotify's CDN. This
@@ -264,20 +245,13 @@ module Spotted
               params(
                 id: String,
                 available_markets: T::Array[String],
-                copyrights:
-                  T::Array[
-                    Spotted::Models::Me::ShowListResponse::Item::Show::Copyright::OrHash
-                  ],
+                copyrights: T::Array[Spotted::CopyrightObject::OrHash],
                 description: String,
                 explicit: T::Boolean,
-                external_urls:
-                  Spotted::Models::Me::ShowListResponse::Item::Show::ExternalURLs::OrHash,
+                external_urls: Spotted::ExternalURLObject::OrHash,
                 href: String,
                 html_description: String,
-                images:
-                  T::Array[
-                    Spotted::Models::Me::ShowListResponse::Item::Show::Image::OrHash
-                  ],
+                images: T::Array[Spotted::ImageObject::OrHash],
                 is_externally_hosted: T::Boolean,
                 languages: T::Array[String],
                 media_type: String,
@@ -338,20 +312,13 @@ module Spotted
                 {
                   id: String,
                   available_markets: T::Array[String],
-                  copyrights:
-                    T::Array[
-                      Spotted::Models::Me::ShowListResponse::Item::Show::Copyright
-                    ],
+                  copyrights: T::Array[Spotted::CopyrightObject],
                   description: String,
                   explicit: T::Boolean,
-                  external_urls:
-                    Spotted::Models::Me::ShowListResponse::Item::Show::ExternalURLs,
+                  external_urls: Spotted::ExternalURLObject,
                   href: String,
                   html_description: String,
-                  images:
-                    T::Array[
-                      Spotted::Models::Me::ShowListResponse::Item::Show::Image
-                    ],
+                  images: T::Array[Spotted::ImageObject],
                   is_externally_hosted: T::Boolean,
                   languages: T::Array[String],
                   media_type: String,
@@ -365,129 +332,6 @@ module Spotted
               )
             end
             def to_hash
-            end
-
-            class Copyright < Spotted::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    Spotted::Models::Me::ShowListResponse::Item::Show::Copyright,
-                    Spotted::Internal::AnyHash
-                  )
-                end
-
-              # The copyright text for this content.
-              sig { returns(T.nilable(String)) }
-              attr_reader :text
-
-              sig { params(text: String).void }
-              attr_writer :text
-
-              # The type of copyright: `C` = the copyright, `P` = the sound recording
-              # (performance) copyright.
-              sig { returns(T.nilable(String)) }
-              attr_reader :type
-
-              sig { params(type: String).void }
-              attr_writer :type
-
-              sig do
-                params(text: String, type: String).returns(T.attached_class)
-              end
-              def self.new(
-                # The copyright text for this content.
-                text: nil,
-                # The type of copyright: `C` = the copyright, `P` = the sound recording
-                # (performance) copyright.
-                type: nil
-              )
-              end
-
-              sig { override.returns({ text: String, type: String }) }
-              def to_hash
-              end
-            end
-
-            class ExternalURLs < Spotted::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    Spotted::Models::Me::ShowListResponse::Item::Show::ExternalURLs,
-                    Spotted::Internal::AnyHash
-                  )
-                end
-
-              # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-              # object.
-              sig { returns(T.nilable(String)) }
-              attr_reader :spotify
-
-              sig { params(spotify: String).void }
-              attr_writer :spotify
-
-              # External URLs for this show.
-              sig { params(spotify: String).returns(T.attached_class) }
-              def self.new(
-                # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-                # object.
-                spotify: nil
-              )
-              end
-
-              sig { override.returns({ spotify: String }) }
-              def to_hash
-              end
-            end
-
-            class Image < Spotted::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    Spotted::Models::Me::ShowListResponse::Item::Show::Image,
-                    Spotted::Internal::AnyHash
-                  )
-                end
-
-              # The image height in pixels.
-              sig { returns(T.nilable(Integer)) }
-              attr_accessor :height
-
-              # The source URL of the image.
-              sig { returns(String) }
-              attr_accessor :url
-
-              # The image width in pixels.
-              sig { returns(T.nilable(Integer)) }
-              attr_accessor :width
-
-              sig do
-                params(
-                  height: T.nilable(Integer),
-                  url: String,
-                  width: T.nilable(Integer)
-                ).returns(T.attached_class)
-              end
-              def self.new(
-                # The image height in pixels.
-                height:,
-                # The source URL of the image.
-                url:,
-                # The image width in pixels.
-                width:
-              )
-              end
-
-              sig do
-                override.returns(
-                  {
-                    height: T.nilable(Integer),
-                    url: String,
-                    width: T.nilable(Integer)
-                  }
-                )
-              end
-              def to_hash
-              end
             end
 
             # The object type.

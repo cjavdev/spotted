@@ -18,13 +18,13 @@ module Spotted
         {
           id: String,
           available_markets: ::Array[String],
-          copyrights: ::Array[Spotted::Models::ShowListResponse::Show::Copyright],
+          copyrights: ::Array[Spotted::CopyrightObject],
           description: String,
           explicit: bool,
-          external_urls: Spotted::Models::ShowListResponse::Show::ExternalURLs,
+          external_urls: Spotted::ExternalURLObject,
           href: String,
           html_description: String,
-          images: ::Array[Spotted::Models::ShowListResponse::Show::Image],
+          images: ::Array[Spotted::ImageObject],
           is_externally_hosted: bool,
           languages: ::Array[String],
           media_type: String,
@@ -40,19 +40,19 @@ module Spotted
 
         attr_accessor available_markets: ::Array[String]
 
-        attr_accessor copyrights: ::Array[Spotted::Models::ShowListResponse::Show::Copyright]
+        attr_accessor copyrights: ::Array[Spotted::CopyrightObject]
 
         attr_accessor description: String
 
         attr_accessor explicit: bool
 
-        attr_accessor external_urls: Spotted::Models::ShowListResponse::Show::ExternalURLs
+        attr_accessor external_urls: Spotted::ExternalURLObject
 
         attr_accessor href: String
 
         attr_accessor html_description: String
 
-        attr_accessor images: ::Array[Spotted::Models::ShowListResponse::Show::Image]
+        attr_accessor images: ::Array[Spotted::ImageObject]
 
         attr_accessor is_externally_hosted: bool
 
@@ -73,13 +73,13 @@ module Spotted
         def initialize: (
           id: String,
           available_markets: ::Array[String],
-          copyrights: ::Array[Spotted::Models::ShowListResponse::Show::Copyright],
+          copyrights: ::Array[Spotted::CopyrightObject],
           description: String,
           explicit: bool,
-          external_urls: Spotted::Models::ShowListResponse::Show::ExternalURLs,
+          external_urls: Spotted::ExternalURLObject,
           href: String,
           html_description: String,
-          images: ::Array[Spotted::Models::ShowListResponse::Show::Image],
+          images: ::Array[Spotted::ImageObject],
           is_externally_hosted: bool,
           languages: ::Array[String],
           media_type: String,
@@ -93,13 +93,13 @@ module Spotted
         def to_hash: -> {
           id: String,
           available_markets: ::Array[String],
-          copyrights: ::Array[Spotted::Models::ShowListResponse::Show::Copyright],
+          copyrights: ::Array[Spotted::CopyrightObject],
           description: String,
           explicit: bool,
-          external_urls: Spotted::Models::ShowListResponse::Show::ExternalURLs,
+          external_urls: Spotted::ExternalURLObject,
           href: String,
           html_description: String,
-          images: ::Array[Spotted::Models::ShowListResponse::Show::Image],
+          images: ::Array[Spotted::ImageObject],
           is_externally_hosted: bool,
           languages: ::Array[String],
           media_type: String,
@@ -109,52 +109,6 @@ module Spotted
           type: Spotted::Models::ShowListResponse::Show::type_,
           uri: String
         }
-
-        type copyright = { text: String, type: String }
-
-        class Copyright < Spotted::Internal::Type::BaseModel
-          attr_reader text: String?
-
-          def text=: (String) -> String
-
-          attr_reader type: String?
-
-          def type=: (String) -> String
-
-          def initialize: (?text: String, ?type: String) -> void
-
-          def to_hash: -> { text: String, type: String }
-        end
-
-        type external_urls = { spotify: String }
-
-        class ExternalURLs < Spotted::Internal::Type::BaseModel
-          attr_reader spotify: String?
-
-          def spotify=: (String) -> String
-
-          def initialize: (?spotify: String) -> void
-
-          def to_hash: -> { spotify: String }
-        end
-
-        type image = { height: Integer?, url: String, width: Integer? }
-
-        class Image < Spotted::Internal::Type::BaseModel
-          attr_accessor height: Integer?
-
-          attr_accessor url: String
-
-          attr_accessor width: Integer?
-
-          def initialize: (
-            height: Integer?,
-            url: String,
-            width: Integer?
-          ) -> void
-
-          def to_hash: -> { height: Integer?, url: String, width: Integer? }
-        end
 
         type type_ = :show
 

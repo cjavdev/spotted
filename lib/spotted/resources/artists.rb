@@ -15,14 +15,14 @@ module Spotted
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::ArtistRetrieveResponse]
+      # @return [Spotted::Models::ArtistObject]
       #
       # @see Spotted::Models::ArtistRetrieveParams
       def retrieve(id, params = {})
         @client.request(
           method: :get,
           path: ["artists/%1$s", id],
-          model: Spotted::Models::ArtistRetrieveResponse,
+          model: Spotted::ArtistObject,
           options: params[:request_options]
         )
       end

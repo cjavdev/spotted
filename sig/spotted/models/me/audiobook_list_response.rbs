@@ -50,19 +50,19 @@ module Spotted
         type item =
           {
             id: String,
-            authors: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Author],
+            authors: ::Array[Spotted::AuthorObject],
             available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Copyright],
+            copyrights: ::Array[Spotted::CopyrightObject],
             description: String,
             explicit: bool,
-            external_urls: Spotted::Models::Me::AudiobookListResponse::Item::ExternalURLs,
+            external_urls: Spotted::ExternalURLObject,
             href: String,
             html_description: String,
-            images: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Image],
+            images: ::Array[Spotted::ImageObject],
             languages: ::Array[String],
             media_type: String,
             name: String,
-            narrators: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Narrator],
+            narrators: ::Array[Spotted::NarratorObject],
             publisher: String,
             total_chapters: Integer,
             type: Spotted::Models::Me::AudiobookListResponse::Item::type_,
@@ -73,23 +73,23 @@ module Spotted
         class Item < Spotted::Internal::Type::BaseModel
           attr_accessor id: String
 
-          attr_accessor authors: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Author]
+          attr_accessor authors: ::Array[Spotted::AuthorObject]
 
           attr_accessor available_markets: ::Array[String]
 
-          attr_accessor copyrights: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Copyright]
+          attr_accessor copyrights: ::Array[Spotted::CopyrightObject]
 
           attr_accessor description: String
 
           attr_accessor explicit: bool
 
-          attr_accessor external_urls: Spotted::Models::Me::AudiobookListResponse::Item::ExternalURLs
+          attr_accessor external_urls: Spotted::ExternalURLObject
 
           attr_accessor href: String
 
           attr_accessor html_description: String
 
-          attr_accessor images: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Image]
+          attr_accessor images: ::Array[Spotted::ImageObject]
 
           attr_accessor languages: ::Array[String]
 
@@ -97,7 +97,7 @@ module Spotted
 
           attr_accessor name: String
 
-          attr_accessor narrators: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Narrator]
+          attr_accessor narrators: ::Array[Spotted::NarratorObject]
 
           attr_accessor publisher: String
 
@@ -113,19 +113,19 @@ module Spotted
 
           def initialize: (
             id: String,
-            authors: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Author],
+            authors: ::Array[Spotted::AuthorObject],
             available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Copyright],
+            copyrights: ::Array[Spotted::CopyrightObject],
             description: String,
             explicit: bool,
-            external_urls: Spotted::Models::Me::AudiobookListResponse::Item::ExternalURLs,
+            external_urls: Spotted::ExternalURLObject,
             href: String,
             html_description: String,
-            images: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Image],
+            images: ::Array[Spotted::ImageObject],
             languages: ::Array[String],
             media_type: String,
             name: String,
-            narrators: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Narrator],
+            narrators: ::Array[Spotted::NarratorObject],
             publisher: String,
             total_chapters: Integer,
             type: Spotted::Models::Me::AudiobookListResponse::Item::type_,
@@ -135,95 +135,25 @@ module Spotted
 
           def to_hash: -> {
             id: String,
-            authors: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Author],
+            authors: ::Array[Spotted::AuthorObject],
             available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Copyright],
+            copyrights: ::Array[Spotted::CopyrightObject],
             description: String,
             explicit: bool,
-            external_urls: Spotted::Models::Me::AudiobookListResponse::Item::ExternalURLs,
+            external_urls: Spotted::ExternalURLObject,
             href: String,
             html_description: String,
-            images: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Image],
+            images: ::Array[Spotted::ImageObject],
             languages: ::Array[String],
             media_type: String,
             name: String,
-            narrators: ::Array[Spotted::Models::Me::AudiobookListResponse::Item::Narrator],
+            narrators: ::Array[Spotted::NarratorObject],
             publisher: String,
             total_chapters: Integer,
             type: Spotted::Models::Me::AudiobookListResponse::Item::type_,
             uri: String,
             edition: String
           }
-
-          type author = { name: String }
-
-          class Author < Spotted::Internal::Type::BaseModel
-            attr_reader name: String?
-
-            def name=: (String) -> String
-
-            def initialize: (?name: String) -> void
-
-            def to_hash: -> { name: String }
-          end
-
-          type copyright = { text: String, type: String }
-
-          class Copyright < Spotted::Internal::Type::BaseModel
-            attr_reader text: String?
-
-            def text=: (String) -> String
-
-            attr_reader type: String?
-
-            def type=: (String) -> String
-
-            def initialize: (?text: String, ?type: String) -> void
-
-            def to_hash: -> { text: String, type: String }
-          end
-
-          type external_urls = { spotify: String }
-
-          class ExternalURLs < Spotted::Internal::Type::BaseModel
-            attr_reader spotify: String?
-
-            def spotify=: (String) -> String
-
-            def initialize: (?spotify: String) -> void
-
-            def to_hash: -> { spotify: String }
-          end
-
-          type image = { height: Integer?, url: String, width: Integer? }
-
-          class Image < Spotted::Internal::Type::BaseModel
-            attr_accessor height: Integer?
-
-            attr_accessor url: String
-
-            attr_accessor width: Integer?
-
-            def initialize: (
-              height: Integer?,
-              url: String,
-              width: Integer?
-            ) -> void
-
-            def to_hash: -> { height: Integer?, url: String, width: Integer? }
-          end
-
-          type narrator = { name: String }
-
-          class Narrator < Spotted::Internal::Type::BaseModel
-            attr_reader name: String?
-
-            def name=: (String) -> String
-
-            def initialize: (?name: String) -> void
-
-            def to_hash: -> { name: String }
-          end
 
           type type_ = :audiobook
 

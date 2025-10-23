@@ -8,18 +8,16 @@ module Spotted
       #   The time intervals of the bars throughout the track. A bar (or measure) is a
       #   segment of time defined as a given number of beats.
       #
-      #   @return [Array<Spotted::Models::AudioAnalysisRetrieveResponse::Bar>, nil]
-      optional :bars,
-               -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::AudioAnalysisRetrieveResponse::Bar] }
+      #   @return [Array<Spotted::Models::TimeIntervalObject>, nil]
+      optional :bars, -> { Spotted::Internal::Type::ArrayOf[Spotted::TimeIntervalObject] }
 
       # @!attribute beats
       #   The time intervals of beats throughout the track. A beat is the basic time unit
       #   of a piece of music; for example, each tick of a metronome. Beats are typically
       #   multiples of tatums.
       #
-      #   @return [Array<Spotted::Models::AudioAnalysisRetrieveResponse::Beat>, nil]
-      optional :beats,
-               -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::AudioAnalysisRetrieveResponse::Beat] }
+      #   @return [Array<Spotted::Models::TimeIntervalObject>, nil]
+      optional :beats, -> { Spotted::Internal::Type::ArrayOf[Spotted::TimeIntervalObject] }
 
       # @!attribute meta
       #
@@ -46,9 +44,8 @@ module Spotted
       #   A tatum represents the lowest regular pulse train that a listener intuitively
       #   infers from the timing of perceived musical events (segments).
       #
-      #   @return [Array<Spotted::Models::AudioAnalysisRetrieveResponse::Tatum>, nil]
-      optional :tatums,
-               -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::AudioAnalysisRetrieveResponse::Tatum] }
+      #   @return [Array<Spotted::Models::TimeIntervalObject>, nil]
+      optional :tatums, -> { Spotted::Internal::Type::ArrayOf[Spotted::TimeIntervalObject] }
 
       # @!attribute track
       #
@@ -59,9 +56,9 @@ module Spotted
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::AudioAnalysisRetrieveResponse} for more details.
       #
-      #   @param bars [Array<Spotted::Models::AudioAnalysisRetrieveResponse::Bar>] The time intervals of the bars throughout the track. A bar (or measure) is a seg
+      #   @param bars [Array<Spotted::Models::TimeIntervalObject>] The time intervals of the bars throughout the track. A bar (or measure) is a seg
       #
-      #   @param beats [Array<Spotted::Models::AudioAnalysisRetrieveResponse::Beat>] The time intervals of beats throughout the track. A beat is the basic time unit
+      #   @param beats [Array<Spotted::Models::TimeIntervalObject>] The time intervals of beats throughout the track. A beat is the basic time unit
       #
       #   @param meta [Spotted::Models::AudioAnalysisRetrieveResponse::Meta]
       #
@@ -69,63 +66,9 @@ module Spotted
       #
       #   @param segments [Array<Spotted::Models::AudioAnalysisRetrieveResponse::Segment>] Each segment contains a roughly conisistent sound throughout its duration.
       #
-      #   @param tatums [Array<Spotted::Models::AudioAnalysisRetrieveResponse::Tatum>] A tatum represents the lowest regular pulse train that a listener intuitively in
+      #   @param tatums [Array<Spotted::Models::TimeIntervalObject>] A tatum represents the lowest regular pulse train that a listener intuitively in
       #
       #   @param track [Spotted::Models::AudioAnalysisRetrieveResponse::Track]
-
-      class Bar < Spotted::Internal::Type::BaseModel
-        # @!attribute confidence
-        #   The confidence, from 0.0 to 1.0, of the reliability of the interval.
-        #
-        #   @return [Float, nil]
-        optional :confidence, Float
-
-        # @!attribute duration
-        #   The duration (in seconds) of the time interval.
-        #
-        #   @return [Float, nil]
-        optional :duration, Float
-
-        # @!attribute start
-        #   The starting point (in seconds) of the time interval.
-        #
-        #   @return [Float, nil]
-        optional :start, Float
-
-        # @!method initialize(confidence: nil, duration: nil, start: nil)
-        #   @param confidence [Float] The confidence, from 0.0 to 1.0, of the reliability of the interval.
-        #
-        #   @param duration [Float] The duration (in seconds) of the time interval.
-        #
-        #   @param start [Float] The starting point (in seconds) of the time interval.
-      end
-
-      class Beat < Spotted::Internal::Type::BaseModel
-        # @!attribute confidence
-        #   The confidence, from 0.0 to 1.0, of the reliability of the interval.
-        #
-        #   @return [Float, nil]
-        optional :confidence, Float
-
-        # @!attribute duration
-        #   The duration (in seconds) of the time interval.
-        #
-        #   @return [Float, nil]
-        optional :duration, Float
-
-        # @!attribute start
-        #   The starting point (in seconds) of the time interval.
-        #
-        #   @return [Float, nil]
-        optional :start, Float
-
-        # @!method initialize(confidence: nil, duration: nil, start: nil)
-        #   @param confidence [Float] The confidence, from 0.0 to 1.0, of the reliability of the interval.
-        #
-        #   @param duration [Float] The duration (in seconds) of the time interval.
-        #
-        #   @param start [Float] The starting point (in seconds) of the time interval.
-      end
 
       # @see Spotted::Models::AudioAnalysisRetrieveResponse#meta
       class Meta < Spotted::Internal::Type::BaseModel
@@ -441,33 +384,6 @@ module Spotted
         #   @param start [Float] The starting point (in seconds) of the segment.
         #
         #   @param timbre [Array<Float>] Timbre is the quality of a musical note or sound that distinguishes different ty
-      end
-
-      class Tatum < Spotted::Internal::Type::BaseModel
-        # @!attribute confidence
-        #   The confidence, from 0.0 to 1.0, of the reliability of the interval.
-        #
-        #   @return [Float, nil]
-        optional :confidence, Float
-
-        # @!attribute duration
-        #   The duration (in seconds) of the time interval.
-        #
-        #   @return [Float, nil]
-        optional :duration, Float
-
-        # @!attribute start
-        #   The starting point (in seconds) of the time interval.
-        #
-        #   @return [Float, nil]
-        optional :start, Float
-
-        # @!method initialize(confidence: nil, duration: nil, start: nil)
-        #   @param confidence [Float] The confidence, from 0.0 to 1.0, of the reliability of the interval.
-        #
-        #   @param duration [Float] The duration (in seconds) of the time interval.
-        #
-        #   @param start [Float] The starting point (in seconds) of the time interval.
       end
 
       # @see Spotted::Models::AudioAnalysisRetrieveResponse#track

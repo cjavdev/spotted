@@ -115,11 +115,7 @@ module Spotted
 
         # The artists of the album. Each artist object includes a link in `href` to more
         # detailed information about the artist.
-        sig do
-          returns(
-            T::Array[Spotted::Models::ArtistListAlbumsResponse::Item::Artist]
-          )
-        end
+        sig { returns(T::Array[Spotted::SimplifiedArtistObject]) }
         attr_accessor :artists
 
         # The markets in which the album is available:
@@ -130,17 +126,10 @@ module Spotted
         attr_accessor :available_markets
 
         # Known external URLs for this album.
-        sig do
-          returns(Spotted::Models::ArtistListAlbumsResponse::Item::ExternalURLs)
-        end
+        sig { returns(Spotted::ExternalURLObject) }
         attr_reader :external_urls
 
-        sig do
-          params(
-            external_urls:
-              Spotted::Models::ArtistListAlbumsResponse::Item::ExternalURLs::OrHash
-          ).void
-        end
+        sig { params(external_urls: Spotted::ExternalURLObject::OrHash).void }
         attr_writer :external_urls
 
         # A link to the Web API endpoint providing full details of the album.
@@ -148,11 +137,7 @@ module Spotted
         attr_accessor :href
 
         # The cover art for the album in various sizes, widest first.
-        sig do
-          returns(
-            T::Array[Spotted::Models::ArtistListAlbumsResponse::Item::Image]
-          )
-        end
+        sig { returns(T::Array[Spotted::ImageObject]) }
         attr_accessor :images
 
         # The name of the album. In case of an album takedown, the value may be an empty
@@ -190,20 +175,11 @@ module Spotted
         attr_accessor :uri
 
         # Included in the response when a content restriction is applied.
-        sig do
-          returns(
-            T.nilable(
-              Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions
-            )
-          )
-        end
+        sig { returns(T.nilable(Spotted::AlbumRestrictionObject)) }
         attr_reader :restrictions
 
         sig do
-          params(
-            restrictions:
-              Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::OrHash
-          ).void
+          params(restrictions: Spotted::AlbumRestrictionObject::OrHash).void
         end
         attr_writer :restrictions
 
@@ -214,18 +190,11 @@ module Spotted
               Spotted::Models::ArtistListAlbumsResponse::Item::AlbumGroup::OrSymbol,
             album_type:
               Spotted::Models::ArtistListAlbumsResponse::Item::AlbumType::OrSymbol,
-            artists:
-              T::Array[
-                Spotted::Models::ArtistListAlbumsResponse::Item::Artist::OrHash
-              ],
+            artists: T::Array[Spotted::SimplifiedArtistObject::OrHash],
             available_markets: T::Array[String],
-            external_urls:
-              Spotted::Models::ArtistListAlbumsResponse::Item::ExternalURLs::OrHash,
+            external_urls: Spotted::ExternalURLObject::OrHash,
             href: String,
-            images:
-              T::Array[
-                Spotted::Models::ArtistListAlbumsResponse::Item::Image::OrHash
-              ],
+            images: T::Array[Spotted::ImageObject::OrHash],
             name: String,
             release_date: String,
             release_date_precision:
@@ -234,8 +203,7 @@ module Spotted
             type:
               Spotted::Models::ArtistListAlbumsResponse::Item::Type::OrSymbol,
             uri: String,
-            restrictions:
-              Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::OrHash
+            restrictions: Spotted::AlbumRestrictionObject::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -287,18 +255,11 @@ module Spotted
                 Spotted::Models::ArtistListAlbumsResponse::Item::AlbumGroup::TaggedSymbol,
               album_type:
                 Spotted::Models::ArtistListAlbumsResponse::Item::AlbumType::TaggedSymbol,
-              artists:
-                T::Array[
-                  Spotted::Models::ArtistListAlbumsResponse::Item::Artist
-                ],
+              artists: T::Array[Spotted::SimplifiedArtistObject],
               available_markets: T::Array[String],
-              external_urls:
-                Spotted::Models::ArtistListAlbumsResponse::Item::ExternalURLs,
+              external_urls: Spotted::ExternalURLObject,
               href: String,
-              images:
-                T::Array[
-                  Spotted::Models::ArtistListAlbumsResponse::Item::Image
-                ],
+              images: T::Array[Spotted::ImageObject],
               name: String,
               release_date: String,
               release_date_precision:
@@ -307,8 +268,7 @@ module Spotted
               type:
                 Spotted::Models::ArtistListAlbumsResponse::Item::Type::TaggedSymbol,
               uri: String,
-              restrictions:
-                Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions
+              restrictions: Spotted::AlbumRestrictionObject
             }
           )
         end
@@ -400,272 +360,6 @@ module Spotted
           end
         end
 
-        class Artist < Spotted::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Spotted::Models::ArtistListAlbumsResponse::Item::Artist,
-                Spotted::Internal::AnyHash
-              )
-            end
-
-          # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
-          # artist.
-          sig { returns(T.nilable(String)) }
-          attr_reader :id
-
-          sig { params(id: String).void }
-          attr_writer :id
-
-          # Known external URLs for this artist.
-          sig do
-            returns(
-              T.nilable(
-                Spotted::Models::ArtistListAlbumsResponse::Item::Artist::ExternalURLs
-              )
-            )
-          end
-          attr_reader :external_urls
-
-          sig do
-            params(
-              external_urls:
-                Spotted::Models::ArtistListAlbumsResponse::Item::Artist::ExternalURLs::OrHash
-            ).void
-          end
-          attr_writer :external_urls
-
-          # A link to the Web API endpoint providing full details of the artist.
-          sig { returns(T.nilable(String)) }
-          attr_reader :href
-
-          sig { params(href: String).void }
-          attr_writer :href
-
-          # The name of the artist.
-          sig { returns(T.nilable(String)) }
-          attr_reader :name
-
-          sig { params(name: String).void }
-          attr_writer :name
-
-          # The object type.
-          sig do
-            returns(
-              T.nilable(
-                Spotted::Models::ArtistListAlbumsResponse::Item::Artist::Type::TaggedSymbol
-              )
-            )
-          end
-          attr_reader :type
-
-          sig do
-            params(
-              type:
-                Spotted::Models::ArtistListAlbumsResponse::Item::Artist::Type::OrSymbol
-            ).void
-          end
-          attr_writer :type
-
-          # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
-          # artist.
-          sig { returns(T.nilable(String)) }
-          attr_reader :uri
-
-          sig { params(uri: String).void }
-          attr_writer :uri
-
-          sig do
-            params(
-              id: String,
-              external_urls:
-                Spotted::Models::ArtistListAlbumsResponse::Item::Artist::ExternalURLs::OrHash,
-              href: String,
-              name: String,
-              type:
-                Spotted::Models::ArtistListAlbumsResponse::Item::Artist::Type::OrSymbol,
-              uri: String
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
-            # artist.
-            id: nil,
-            # Known external URLs for this artist.
-            external_urls: nil,
-            # A link to the Web API endpoint providing full details of the artist.
-            href: nil,
-            # The name of the artist.
-            name: nil,
-            # The object type.
-            type: nil,
-            # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
-            # artist.
-            uri: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                id: String,
-                external_urls:
-                  Spotted::Models::ArtistListAlbumsResponse::Item::Artist::ExternalURLs,
-                href: String,
-                name: String,
-                type:
-                  Spotted::Models::ArtistListAlbumsResponse::Item::Artist::Type::TaggedSymbol,
-                uri: String
-              }
-            )
-          end
-          def to_hash
-          end
-
-          class ExternalURLs < Spotted::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Spotted::Models::ArtistListAlbumsResponse::Item::Artist::ExternalURLs,
-                  Spotted::Internal::AnyHash
-                )
-              end
-
-            # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-            # object.
-            sig { returns(T.nilable(String)) }
-            attr_reader :spotify
-
-            sig { params(spotify: String).void }
-            attr_writer :spotify
-
-            # Known external URLs for this artist.
-            sig { params(spotify: String).returns(T.attached_class) }
-            def self.new(
-              # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-              # object.
-              spotify: nil
-            )
-            end
-
-            sig { override.returns({ spotify: String }) }
-            def to_hash
-            end
-          end
-
-          # The object type.
-          module Type
-            extend Spotted::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Spotted::Models::ArtistListAlbumsResponse::Item::Artist::Type
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            ARTIST =
-              T.let(
-                :artist,
-                Spotted::Models::ArtistListAlbumsResponse::Item::Artist::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Spotted::Models::ArtistListAlbumsResponse::Item::Artist::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
-        end
-
-        class ExternalURLs < Spotted::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Spotted::Models::ArtistListAlbumsResponse::Item::ExternalURLs,
-                Spotted::Internal::AnyHash
-              )
-            end
-
-          # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-          # object.
-          sig { returns(T.nilable(String)) }
-          attr_reader :spotify
-
-          sig { params(spotify: String).void }
-          attr_writer :spotify
-
-          # Known external URLs for this album.
-          sig { params(spotify: String).returns(T.attached_class) }
-          def self.new(
-            # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-            # object.
-            spotify: nil
-          )
-          end
-
-          sig { override.returns({ spotify: String }) }
-          def to_hash
-          end
-        end
-
-        class Image < Spotted::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Spotted::Models::ArtistListAlbumsResponse::Item::Image,
-                Spotted::Internal::AnyHash
-              )
-            end
-
-          # The image height in pixels.
-          sig { returns(T.nilable(Integer)) }
-          attr_accessor :height
-
-          # The source URL of the image.
-          sig { returns(String) }
-          attr_accessor :url
-
-          # The image width in pixels.
-          sig { returns(T.nilable(Integer)) }
-          attr_accessor :width
-
-          sig do
-            params(
-              height: T.nilable(Integer),
-              url: String,
-              width: T.nilable(Integer)
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The image height in pixels.
-            height:,
-            # The source URL of the image.
-            url:,
-            # The image width in pixels.
-            width:
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                height: T.nilable(Integer),
-                url: String,
-                width: T.nilable(Integer)
-              }
-            )
-          end
-          def to_hash
-          end
-        end
-
         # The precision with which `release_date` value is known.
         module ReleaseDatePrecision
           extend Spotted::Internal::Type::Enum
@@ -733,107 +427,6 @@ module Spotted
             )
           end
           def self.values
-          end
-        end
-
-        class Restrictions < Spotted::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions,
-                Spotted::Internal::AnyHash
-              )
-            end
-
-          # The reason for the restriction. Albums may be restricted if the content is not
-          # available in a given market, to the user's subscription type, or when the user's
-          # account is set to not play explicit content. Additional reasons may be added in
-          # the future.
-          sig do
-            returns(
-              T.nilable(
-                Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::Reason::TaggedSymbol
-              )
-            )
-          end
-          attr_reader :reason
-
-          sig do
-            params(
-              reason:
-                Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::Reason::OrSymbol
-            ).void
-          end
-          attr_writer :reason
-
-          # Included in the response when a content restriction is applied.
-          sig do
-            params(
-              reason:
-                Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::Reason::OrSymbol
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The reason for the restriction. Albums may be restricted if the content is not
-            # available in a given market, to the user's subscription type, or when the user's
-            # account is set to not play explicit content. Additional reasons may be added in
-            # the future.
-            reason: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                reason:
-                  Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::Reason::TaggedSymbol
-              }
-            )
-          end
-          def to_hash
-          end
-
-          # The reason for the restriction. Albums may be restricted if the content is not
-          # available in a given market, to the user's subscription type, or when the user's
-          # account is set to not play explicit content. Additional reasons may be added in
-          # the future.
-          module Reason
-            extend Spotted::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::Reason
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            MARKET =
-              T.let(
-                :market,
-                Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::Reason::TaggedSymbol
-              )
-            PRODUCT =
-              T.let(
-                :product,
-                Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::Reason::TaggedSymbol
-              )
-            EXPLICIT =
-              T.let(
-                :explicit,
-                Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::Reason::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::Reason::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
       end

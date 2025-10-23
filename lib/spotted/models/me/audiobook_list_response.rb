@@ -75,9 +75,8 @@ module Spotted
           # @!attribute authors
           #   The author(s) for the audiobook.
           #
-          #   @return [Array<Spotted::Models::Me::AudiobookListResponse::Item::Author>]
-          required :authors,
-                   -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Me::AudiobookListResponse::Item::Author] }
+          #   @return [Array<Spotted::Models::AuthorObject>]
+          required :authors, -> { Spotted::Internal::Type::ArrayOf[Spotted::AuthorObject] }
 
           # @!attribute available_markets
           #   A list of the countries in which the audiobook can be played, identified by
@@ -90,9 +89,8 @@ module Spotted
           # @!attribute copyrights
           #   The copyright statements of the audiobook.
           #
-          #   @return [Array<Spotted::Models::Me::AudiobookListResponse::Item::Copyright>]
-          required :copyrights,
-                   -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Me::AudiobookListResponse::Item::Copyright] }
+          #   @return [Array<Spotted::Models::CopyrightObject>]
+          required :copyrights, -> { Spotted::Internal::Type::ArrayOf[Spotted::CopyrightObject] }
 
           # @!attribute description
           #   A description of the audiobook. HTML tags are stripped away from this field, use
@@ -111,8 +109,8 @@ module Spotted
           # @!attribute external_urls
           #   External URLs for this audiobook.
           #
-          #   @return [Spotted::Models::Me::AudiobookListResponse::Item::ExternalURLs]
-          required :external_urls, -> { Spotted::Models::Me::AudiobookListResponse::Item::ExternalURLs }
+          #   @return [Spotted::Models::ExternalURLObject]
+          required :external_urls, -> { Spotted::ExternalURLObject }
 
           # @!attribute href
           #   A link to the Web API endpoint providing full details of the audiobook.
@@ -129,9 +127,8 @@ module Spotted
           # @!attribute images
           #   The cover art for the audiobook in various sizes, widest first.
           #
-          #   @return [Array<Spotted::Models::Me::AudiobookListResponse::Item::Image>]
-          required :images,
-                   -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Me::AudiobookListResponse::Item::Image] }
+          #   @return [Array<Spotted::Models::ImageObject>]
+          required :images, -> { Spotted::Internal::Type::ArrayOf[Spotted::ImageObject] }
 
           # @!attribute languages
           #   A list of the languages used in the audiobook, identified by their
@@ -155,9 +152,8 @@ module Spotted
           # @!attribute narrators
           #   The narrator(s) for the audiobook.
           #
-          #   @return [Array<Spotted::Models::Me::AudiobookListResponse::Item::Narrator>]
-          required :narrators,
-                   -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Me::AudiobookListResponse::Item::Narrator] }
+          #   @return [Array<Spotted::Models::NarratorObject>]
+          required :narrators, -> { Spotted::Internal::Type::ArrayOf[Spotted::NarratorObject] }
 
           # @!attribute publisher
           #   The publisher of the audiobook.
@@ -196,23 +192,23 @@ module Spotted
           #
           #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the audio
           #
-          #   @param authors [Array<Spotted::Models::Me::AudiobookListResponse::Item::Author>] The author(s) for the audiobook.
+          #   @param authors [Array<Spotted::Models::AuthorObject>] The author(s) for the audiobook.
           #
           #   @param available_markets [Array<String>] A list of the countries in which the audiobook can be played, identified by thei
           #
-          #   @param copyrights [Array<Spotted::Models::Me::AudiobookListResponse::Item::Copyright>] The copyright statements of the audiobook.
+          #   @param copyrights [Array<Spotted::Models::CopyrightObject>] The copyright statements of the audiobook.
           #
           #   @param description [String] A description of the audiobook. HTML tags are stripped away from this field, use
           #
           #   @param explicit [Boolean] Whether or not the audiobook has explicit content (true = yes it does; false = n
           #
-          #   @param external_urls [Spotted::Models::Me::AudiobookListResponse::Item::ExternalURLs] External URLs for this audiobook.
+          #   @param external_urls [Spotted::Models::ExternalURLObject] External URLs for this audiobook.
           #
           #   @param href [String] A link to the Web API endpoint providing full details of the audiobook.
           #
           #   @param html_description [String] A description of the audiobook. This field may contain HTML tags.
           #
-          #   @param images [Array<Spotted::Models::Me::AudiobookListResponse::Item::Image>] The cover art for the audiobook in various sizes, widest first.
+          #   @param images [Array<Spotted::Models::ImageObject>] The cover art for the audiobook in various sizes, widest first.
           #
           #   @param languages [Array<String>] A list of the languages used in the audiobook, identified by their [ISO 639](htt
           #
@@ -220,7 +216,7 @@ module Spotted
           #
           #   @param name [String] The name of the audiobook.
           #
-          #   @param narrators [Array<Spotted::Models::Me::AudiobookListResponse::Item::Narrator>] The narrator(s) for the audiobook.
+          #   @param narrators [Array<Spotted::Models::NarratorObject>] The narrator(s) for the audiobook.
           #
           #   @param publisher [String] The publisher of the audiobook.
           #
@@ -231,106 +227,6 @@ module Spotted
           #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audi
           #
           #   @param edition [String] The edition of the audiobook.
-
-          class Author < Spotted::Internal::Type::BaseModel
-            # @!attribute name
-            #   The name of the author.
-            #
-            #   @return [String, nil]
-            optional :name, String
-
-            # @!method initialize(name: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Spotted::Models::Me::AudiobookListResponse::Item::Author} for more details.
-            #
-            #   @param name [String] The name of the author.
-          end
-
-          class Copyright < Spotted::Internal::Type::BaseModel
-            # @!attribute text
-            #   The copyright text for this content.
-            #
-            #   @return [String, nil]
-            optional :text, String
-
-            # @!attribute type
-            #   The type of copyright: `C` = the copyright, `P` = the sound recording
-            #   (performance) copyright.
-            #
-            #   @return [String, nil]
-            optional :type, String
-
-            # @!method initialize(text: nil, type: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Spotted::Models::Me::AudiobookListResponse::Item::Copyright} for more details.
-            #
-            #   @param text [String] The copyright text for this content.
-            #
-            #   @param type [String] The type of copyright: `C` = the copyright, `P` = the sound recording (performan
-          end
-
-          # @see Spotted::Models::Me::AudiobookListResponse::Item#external_urls
-          class ExternalURLs < Spotted::Internal::Type::BaseModel
-            # @!attribute spotify
-            #   The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-            #   object.
-            #
-            #   @return [String, nil]
-            optional :spotify, String
-
-            # @!method initialize(spotify: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Spotted::Models::Me::AudiobookListResponse::Item::ExternalURLs} for more
-            #   details.
-            #
-            #   External URLs for this audiobook.
-            #
-            #   @param spotify [String] The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the obje
-          end
-
-          class Image < Spotted::Internal::Type::BaseModel
-            # @!attribute height
-            #   The image height in pixels.
-            #
-            #   @return [Integer, nil]
-            required :height, Integer, nil?: true
-
-            # @!attribute url
-            #   The source URL of the image.
-            #
-            #   @return [String]
-            required :url, String
-
-            # @!attribute width
-            #   The image width in pixels.
-            #
-            #   @return [Integer, nil]
-            required :width, Integer, nil?: true
-
-            # @!method initialize(height:, url:, width:)
-            #   Some parameter documentations has been truncated, see
-            #   {Spotted::Models::Me::AudiobookListResponse::Item::Image} for more details.
-            #
-            #   @param height [Integer, nil] The image height in pixels.
-            #
-            #   @param url [String] The source URL of the image.
-            #
-            #   @param width [Integer, nil] The image width in pixels.
-          end
-
-          class Narrator < Spotted::Internal::Type::BaseModel
-            # @!attribute name
-            #   The name of the Narrator.
-            #
-            #   @return [String, nil]
-            optional :name, String
-
-            # @!method initialize(name: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Spotted::Models::Me::AudiobookListResponse::Item::Narrator} for more details.
-            #
-            #   @param name [String] The name of the Narrator.
-          end
 
           # The object type.
           #

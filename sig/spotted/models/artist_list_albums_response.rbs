@@ -51,18 +51,18 @@ module Spotted
           id: String,
           album_group: Spotted::Models::ArtistListAlbumsResponse::Item::album_group,
           album_type: Spotted::Models::ArtistListAlbumsResponse::Item::album_type,
-          artists: ::Array[Spotted::Models::ArtistListAlbumsResponse::Item::Artist],
+          artists: ::Array[Spotted::SimplifiedArtistObject],
           available_markets: ::Array[String],
-          external_urls: Spotted::Models::ArtistListAlbumsResponse::Item::ExternalURLs,
+          external_urls: Spotted::ExternalURLObject,
           href: String,
-          images: ::Array[Spotted::Models::ArtistListAlbumsResponse::Item::Image],
+          images: ::Array[Spotted::ImageObject],
           name: String,
           release_date: String,
           release_date_precision: Spotted::Models::ArtistListAlbumsResponse::Item::release_date_precision,
           total_tracks: Integer,
           type: Spotted::Models::ArtistListAlbumsResponse::Item::type_,
           uri: String,
-          restrictions: Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions
+          restrictions: Spotted::AlbumRestrictionObject
         }
 
       class Item < Spotted::Internal::Type::BaseModel
@@ -72,15 +72,15 @@ module Spotted
 
         attr_accessor album_type: Spotted::Models::ArtistListAlbumsResponse::Item::album_type
 
-        attr_accessor artists: ::Array[Spotted::Models::ArtistListAlbumsResponse::Item::Artist]
+        attr_accessor artists: ::Array[Spotted::SimplifiedArtistObject]
 
         attr_accessor available_markets: ::Array[String]
 
-        attr_accessor external_urls: Spotted::Models::ArtistListAlbumsResponse::Item::ExternalURLs
+        attr_accessor external_urls: Spotted::ExternalURLObject
 
         attr_accessor href: String
 
-        attr_accessor images: ::Array[Spotted::Models::ArtistListAlbumsResponse::Item::Image]
+        attr_accessor images: ::Array[Spotted::ImageObject]
 
         attr_accessor name: String
 
@@ -94,46 +94,46 @@ module Spotted
 
         attr_accessor uri: String
 
-        attr_reader restrictions: Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions?
+        attr_reader restrictions: Spotted::AlbumRestrictionObject?
 
         def restrictions=: (
-          Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions
-        ) -> Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions
+          Spotted::AlbumRestrictionObject
+        ) -> Spotted::AlbumRestrictionObject
 
         def initialize: (
           id: String,
           album_group: Spotted::Models::ArtistListAlbumsResponse::Item::album_group,
           album_type: Spotted::Models::ArtistListAlbumsResponse::Item::album_type,
-          artists: ::Array[Spotted::Models::ArtistListAlbumsResponse::Item::Artist],
+          artists: ::Array[Spotted::SimplifiedArtistObject],
           available_markets: ::Array[String],
-          external_urls: Spotted::Models::ArtistListAlbumsResponse::Item::ExternalURLs,
+          external_urls: Spotted::ExternalURLObject,
           href: String,
-          images: ::Array[Spotted::Models::ArtistListAlbumsResponse::Item::Image],
+          images: ::Array[Spotted::ImageObject],
           name: String,
           release_date: String,
           release_date_precision: Spotted::Models::ArtistListAlbumsResponse::Item::release_date_precision,
           total_tracks: Integer,
           type: Spotted::Models::ArtistListAlbumsResponse::Item::type_,
           uri: String,
-          ?restrictions: Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions
+          ?restrictions: Spotted::AlbumRestrictionObject
         ) -> void
 
         def to_hash: -> {
           id: String,
           album_group: Spotted::Models::ArtistListAlbumsResponse::Item::album_group,
           album_type: Spotted::Models::ArtistListAlbumsResponse::Item::album_type,
-          artists: ::Array[Spotted::Models::ArtistListAlbumsResponse::Item::Artist],
+          artists: ::Array[Spotted::SimplifiedArtistObject],
           available_markets: ::Array[String],
-          external_urls: Spotted::Models::ArtistListAlbumsResponse::Item::ExternalURLs,
+          external_urls: Spotted::ExternalURLObject,
           href: String,
-          images: ::Array[Spotted::Models::ArtistListAlbumsResponse::Item::Image],
+          images: ::Array[Spotted::ImageObject],
           name: String,
           release_date: String,
           release_date_precision: Spotted::Models::ArtistListAlbumsResponse::Item::release_date_precision,
           total_tracks: Integer,
           type: Spotted::Models::ArtistListAlbumsResponse::Item::type_,
           uri: String,
-          restrictions: Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions
+          restrictions: Spotted::AlbumRestrictionObject
         }
 
         type album_group = :album | :single | :compilation | :appears_on
@@ -161,116 +161,6 @@ module Spotted
           def self?.values: -> ::Array[Spotted::Models::ArtistListAlbumsResponse::Item::album_type]
         end
 
-        type artist =
-          {
-            id: String,
-            external_urls: Spotted::Models::ArtistListAlbumsResponse::Item::Artist::ExternalURLs,
-            href: String,
-            name: String,
-            type: Spotted::Models::ArtistListAlbumsResponse::Item::Artist::type_,
-            uri: String
-          }
-
-        class Artist < Spotted::Internal::Type::BaseModel
-          attr_reader id: String?
-
-          def id=: (String) -> String
-
-          attr_reader external_urls: Spotted::Models::ArtistListAlbumsResponse::Item::Artist::ExternalURLs?
-
-          def external_urls=: (
-            Spotted::Models::ArtistListAlbumsResponse::Item::Artist::ExternalURLs
-          ) -> Spotted::Models::ArtistListAlbumsResponse::Item::Artist::ExternalURLs
-
-          attr_reader href: String?
-
-          def href=: (String) -> String
-
-          attr_reader name: String?
-
-          def name=: (String) -> String
-
-          attr_reader type: Spotted::Models::ArtistListAlbumsResponse::Item::Artist::type_?
-
-          def type=: (
-            Spotted::Models::ArtistListAlbumsResponse::Item::Artist::type_
-          ) -> Spotted::Models::ArtistListAlbumsResponse::Item::Artist::type_
-
-          attr_reader uri: String?
-
-          def uri=: (String) -> String
-
-          def initialize: (
-            ?id: String,
-            ?external_urls: Spotted::Models::ArtistListAlbumsResponse::Item::Artist::ExternalURLs,
-            ?href: String,
-            ?name: String,
-            ?type: Spotted::Models::ArtistListAlbumsResponse::Item::Artist::type_,
-            ?uri: String
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            external_urls: Spotted::Models::ArtistListAlbumsResponse::Item::Artist::ExternalURLs,
-            href: String,
-            name: String,
-            type: Spotted::Models::ArtistListAlbumsResponse::Item::Artist::type_,
-            uri: String
-          }
-
-          type external_urls = { spotify: String }
-
-          class ExternalURLs < Spotted::Internal::Type::BaseModel
-            attr_reader spotify: String?
-
-            def spotify=: (String) -> String
-
-            def initialize: (?spotify: String) -> void
-
-            def to_hash: -> { spotify: String }
-          end
-
-          type type_ = :artist
-
-          module Type
-            extend Spotted::Internal::Type::Enum
-
-            ARTIST: :artist
-
-            def self?.values: -> ::Array[Spotted::Models::ArtistListAlbumsResponse::Item::Artist::type_]
-          end
-        end
-
-        type external_urls = { spotify: String }
-
-        class ExternalURLs < Spotted::Internal::Type::BaseModel
-          attr_reader spotify: String?
-
-          def spotify=: (String) -> String
-
-          def initialize: (?spotify: String) -> void
-
-          def to_hash: -> { spotify: String }
-        end
-
-        type image = { height: Integer?, url: String, width: Integer? }
-
-        class Image < Spotted::Internal::Type::BaseModel
-          attr_accessor height: Integer?
-
-          attr_accessor url: String
-
-          attr_accessor width: Integer?
-
-          def initialize: (
-            height: Integer?,
-            url: String,
-            width: Integer?
-          ) -> void
-
-          def to_hash: -> { height: Integer?, url: String, width: Integer? }
-        end
-
         type release_date_precision = :year | :month | :day
 
         module ReleaseDatePrecision
@@ -291,39 +181,6 @@ module Spotted
           ALBUM: :album
 
           def self?.values: -> ::Array[Spotted::Models::ArtistListAlbumsResponse::Item::type_]
-        end
-
-        type restrictions =
-          {
-            reason: Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::reason
-          }
-
-        class Restrictions < Spotted::Internal::Type::BaseModel
-          attr_reader reason: Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::reason?
-
-          def reason=: (
-            Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::reason
-          ) -> Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::reason
-
-          def initialize: (
-            ?reason: Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::reason
-          ) -> void
-
-          def to_hash: -> {
-            reason: Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::reason
-          }
-
-          type reason = :market | :product | :explicit
-
-          module Reason
-            extend Spotted::Internal::Type::Enum
-
-            MARKET: :market
-            PRODUCT: :product
-            EXPLICIT: :explicit
-
-            def self?.values: -> ::Array[Spotted::Models::ArtistListAlbumsResponse::Item::Restrictions::reason]
-          end
         end
       end
     end

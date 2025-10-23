@@ -51,15 +51,10 @@ module Spotted
       attr_accessor :explicit
 
       # External URLs for this chapter.
-      sig { returns(Spotted::Models::ChapterRetrieveResponse::ExternalURLs) }
+      sig { returns(Spotted::ExternalURLObject) }
       attr_reader :external_urls
 
-      sig do
-        params(
-          external_urls:
-            Spotted::Models::ChapterRetrieveResponse::ExternalURLs::OrHash
-        ).void
-      end
+      sig { params(external_urls: Spotted::ExternalURLObject::OrHash).void }
       attr_writer :external_urls
 
       # A link to the Web API endpoint providing full details of the chapter.
@@ -71,7 +66,7 @@ module Spotted
       attr_accessor :html_description
 
       # The cover art for the chapter in various sizes, widest first.
-      sig { returns(T::Array[Spotted::Models::ChapterRetrieveResponse::Image]) }
+      sig { returns(T::Array[Spotted::ImageObject]) }
       attr_accessor :images
 
       # True if the chapter is playable in the given market. Otherwise false.
@@ -120,36 +115,20 @@ module Spotted
       attr_writer :available_markets
 
       # Included in the response when a content restriction is applied.
-      sig do
-        returns(
-          T.nilable(Spotted::Models::ChapterRetrieveResponse::Restrictions)
-        )
-      end
+      sig { returns(T.nilable(Spotted::ChapterRestrictionObject)) }
       attr_reader :restrictions
 
       sig do
-        params(
-          restrictions:
-            Spotted::Models::ChapterRetrieveResponse::Restrictions::OrHash
-        ).void
+        params(restrictions: Spotted::ChapterRestrictionObject::OrHash).void
       end
       attr_writer :restrictions
 
       # The user's most recent position in the chapter. Set if the supplied access token
       # is a user token and has the scope 'user-read-playback-position'.
-      sig do
-        returns(
-          T.nilable(Spotted::Models::ChapterRetrieveResponse::ResumePoint)
-        )
-      end
+      sig { returns(T.nilable(Spotted::ResumePointObject)) }
       attr_reader :resume_point
 
-      sig do
-        params(
-          resume_point:
-            Spotted::Models::ChapterRetrieveResponse::ResumePoint::OrHash
-        ).void
-      end
+      sig { params(resume_point: Spotted::ResumePointObject::OrHash).void }
       attr_writer :resume_point
 
       sig do
@@ -162,12 +141,10 @@ module Spotted
           description: String,
           duration_ms: Integer,
           explicit: T::Boolean,
-          external_urls:
-            Spotted::Models::ChapterRetrieveResponse::ExternalURLs::OrHash,
+          external_urls: Spotted::ExternalURLObject::OrHash,
           href: String,
           html_description: String,
-          images:
-            T::Array[Spotted::Models::ChapterRetrieveResponse::Image::OrHash],
+          images: T::Array[Spotted::ImageObject::OrHash],
           is_playable: T::Boolean,
           languages: T::Array[String],
           name: String,
@@ -177,10 +154,8 @@ module Spotted
           type: Spotted::Models::ChapterRetrieveResponse::Type::OrSymbol,
           uri: String,
           available_markets: T::Array[String],
-          restrictions:
-            Spotted::Models::ChapterRetrieveResponse::Restrictions::OrHash,
-          resume_point:
-            Spotted::Models::ChapterRetrieveResponse::ResumePoint::OrHash
+          restrictions: Spotted::ChapterRestrictionObject::OrHash,
+          resume_point: Spotted::ResumePointObject::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
@@ -248,11 +223,10 @@ module Spotted
             description: String,
             duration_ms: Integer,
             explicit: T::Boolean,
-            external_urls:
-              Spotted::Models::ChapterRetrieveResponse::ExternalURLs,
+            external_urls: Spotted::ExternalURLObject,
             href: String,
             html_description: String,
-            images: T::Array[Spotted::Models::ChapterRetrieveResponse::Image],
+            images: T::Array[Spotted::ImageObject],
             is_playable: T::Boolean,
             languages: T::Array[String],
             name: String,
@@ -262,9 +236,8 @@ module Spotted
             type: Spotted::Models::ChapterRetrieveResponse::Type::TaggedSymbol,
             uri: String,
             available_markets: T::Array[String],
-            restrictions:
-              Spotted::Models::ChapterRetrieveResponse::Restrictions,
-            resume_point: Spotted::Models::ChapterRetrieveResponse::ResumePoint
+            restrictions: Spotted::ChapterRestrictionObject,
+            resume_point: Spotted::ResumePointObject
           }
         )
       end
@@ -286,13 +259,7 @@ module Spotted
         attr_accessor :id
 
         # The author(s) for the audiobook.
-        sig do
-          returns(
-            T::Array[
-              Spotted::Models::ChapterRetrieveResponse::Audiobook::Author
-            ]
-          )
-        end
+        sig { returns(T::Array[Spotted::AuthorObject]) }
         attr_accessor :authors
 
         # A list of the countries in which the audiobook can be played, identified by
@@ -302,13 +269,7 @@ module Spotted
         attr_accessor :available_markets
 
         # The copyright statements of the audiobook.
-        sig do
-          returns(
-            T::Array[
-              Spotted::Models::ChapterRetrieveResponse::Audiobook::Copyright
-            ]
-          )
-        end
+        sig { returns(T::Array[Spotted::CopyrightObject]) }
         attr_accessor :copyrights
 
         # A description of the audiobook. HTML tags are stripped away from this field, use
@@ -322,19 +283,10 @@ module Spotted
         attr_accessor :explicit
 
         # External URLs for this audiobook.
-        sig do
-          returns(
-            Spotted::Models::ChapterRetrieveResponse::Audiobook::ExternalURLs
-          )
-        end
+        sig { returns(Spotted::ExternalURLObject) }
         attr_reader :external_urls
 
-        sig do
-          params(
-            external_urls:
-              Spotted::Models::ChapterRetrieveResponse::Audiobook::ExternalURLs::OrHash
-          ).void
-        end
+        sig { params(external_urls: Spotted::ExternalURLObject::OrHash).void }
         attr_writer :external_urls
 
         # A link to the Web API endpoint providing full details of the audiobook.
@@ -346,11 +298,7 @@ module Spotted
         attr_accessor :html_description
 
         # The cover art for the audiobook in various sizes, widest first.
-        sig do
-          returns(
-            T::Array[Spotted::Models::ChapterRetrieveResponse::Audiobook::Image]
-          )
-        end
+        sig { returns(T::Array[Spotted::ImageObject]) }
         attr_accessor :images
 
         # A list of the languages used in the audiobook, identified by their
@@ -367,13 +315,7 @@ module Spotted
         attr_accessor :name
 
         # The narrator(s) for the audiobook.
-        sig do
-          returns(
-            T::Array[
-              Spotted::Models::ChapterRetrieveResponse::Audiobook::Narrator
-            ]
-          )
-        end
+        sig { returns(T::Array[Spotted::NarratorObject]) }
         attr_accessor :narrators
 
         # The publisher of the audiobook.
@@ -408,32 +350,19 @@ module Spotted
         sig do
           params(
             id: String,
-            authors:
-              T::Array[
-                Spotted::Models::ChapterRetrieveResponse::Audiobook::Author::OrHash
-              ],
+            authors: T::Array[Spotted::AuthorObject::OrHash],
             available_markets: T::Array[String],
-            copyrights:
-              T::Array[
-                Spotted::Models::ChapterRetrieveResponse::Audiobook::Copyright::OrHash
-              ],
+            copyrights: T::Array[Spotted::CopyrightObject::OrHash],
             description: String,
             explicit: T::Boolean,
-            external_urls:
-              Spotted::Models::ChapterRetrieveResponse::Audiobook::ExternalURLs::OrHash,
+            external_urls: Spotted::ExternalURLObject::OrHash,
             href: String,
             html_description: String,
-            images:
-              T::Array[
-                Spotted::Models::ChapterRetrieveResponse::Audiobook::Image::OrHash
-              ],
+            images: T::Array[Spotted::ImageObject::OrHash],
             languages: T::Array[String],
             media_type: String,
             name: String,
-            narrators:
-              T::Array[
-                Spotted::Models::ChapterRetrieveResponse::Audiobook::Narrator::OrHash
-              ],
+            narrators: T::Array[Spotted::NarratorObject::OrHash],
             publisher: String,
             total_chapters: Integer,
             type:
@@ -495,32 +424,19 @@ module Spotted
           override.returns(
             {
               id: String,
-              authors:
-                T::Array[
-                  Spotted::Models::ChapterRetrieveResponse::Audiobook::Author
-                ],
+              authors: T::Array[Spotted::AuthorObject],
               available_markets: T::Array[String],
-              copyrights:
-                T::Array[
-                  Spotted::Models::ChapterRetrieveResponse::Audiobook::Copyright
-                ],
+              copyrights: T::Array[Spotted::CopyrightObject],
               description: String,
               explicit: T::Boolean,
-              external_urls:
-                Spotted::Models::ChapterRetrieveResponse::Audiobook::ExternalURLs,
+              external_urls: Spotted::ExternalURLObject,
               href: String,
               html_description: String,
-              images:
-                T::Array[
-                  Spotted::Models::ChapterRetrieveResponse::Audiobook::Image
-                ],
+              images: T::Array[Spotted::ImageObject],
               languages: T::Array[String],
               media_type: String,
               name: String,
-              narrators:
-                T::Array[
-                  Spotted::Models::ChapterRetrieveResponse::Audiobook::Narrator
-                ],
+              narrators: T::Array[Spotted::NarratorObject],
               publisher: String,
               total_chapters: Integer,
               type:
@@ -531,183 +447,6 @@ module Spotted
           )
         end
         def to_hash
-        end
-
-        class Author < Spotted::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Spotted::Models::ChapterRetrieveResponse::Audiobook::Author,
-                Spotted::Internal::AnyHash
-              )
-            end
-
-          # The name of the author.
-          sig { returns(T.nilable(String)) }
-          attr_reader :name
-
-          sig { params(name: String).void }
-          attr_writer :name
-
-          sig { params(name: String).returns(T.attached_class) }
-          def self.new(
-            # The name of the author.
-            name: nil
-          )
-          end
-
-          sig { override.returns({ name: String }) }
-          def to_hash
-          end
-        end
-
-        class Copyright < Spotted::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Spotted::Models::ChapterRetrieveResponse::Audiobook::Copyright,
-                Spotted::Internal::AnyHash
-              )
-            end
-
-          # The copyright text for this content.
-          sig { returns(T.nilable(String)) }
-          attr_reader :text
-
-          sig { params(text: String).void }
-          attr_writer :text
-
-          # The type of copyright: `C` = the copyright, `P` = the sound recording
-          # (performance) copyright.
-          sig { returns(T.nilable(String)) }
-          attr_reader :type
-
-          sig { params(type: String).void }
-          attr_writer :type
-
-          sig { params(text: String, type: String).returns(T.attached_class) }
-          def self.new(
-            # The copyright text for this content.
-            text: nil,
-            # The type of copyright: `C` = the copyright, `P` = the sound recording
-            # (performance) copyright.
-            type: nil
-          )
-          end
-
-          sig { override.returns({ text: String, type: String }) }
-          def to_hash
-          end
-        end
-
-        class ExternalURLs < Spotted::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Spotted::Models::ChapterRetrieveResponse::Audiobook::ExternalURLs,
-                Spotted::Internal::AnyHash
-              )
-            end
-
-          # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-          # object.
-          sig { returns(T.nilable(String)) }
-          attr_reader :spotify
-
-          sig { params(spotify: String).void }
-          attr_writer :spotify
-
-          # External URLs for this audiobook.
-          sig { params(spotify: String).returns(T.attached_class) }
-          def self.new(
-            # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-            # object.
-            spotify: nil
-          )
-          end
-
-          sig { override.returns({ spotify: String }) }
-          def to_hash
-          end
-        end
-
-        class Image < Spotted::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Spotted::Models::ChapterRetrieveResponse::Audiobook::Image,
-                Spotted::Internal::AnyHash
-              )
-            end
-
-          # The image height in pixels.
-          sig { returns(T.nilable(Integer)) }
-          attr_accessor :height
-
-          # The source URL of the image.
-          sig { returns(String) }
-          attr_accessor :url
-
-          # The image width in pixels.
-          sig { returns(T.nilable(Integer)) }
-          attr_accessor :width
-
-          sig do
-            params(
-              height: T.nilable(Integer),
-              url: String,
-              width: T.nilable(Integer)
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The image height in pixels.
-            height:,
-            # The source URL of the image.
-            url:,
-            # The image width in pixels.
-            width:
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                height: T.nilable(Integer),
-                url: String,
-                width: T.nilable(Integer)
-              }
-            )
-          end
-          def to_hash
-          end
-        end
-
-        class Narrator < Spotted::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Spotted::Models::ChapterRetrieveResponse::Audiobook::Narrator,
-                Spotted::Internal::AnyHash
-              )
-            end
-
-          # The name of the Narrator.
-          sig { returns(T.nilable(String)) }
-          attr_reader :name
-
-          sig { params(name: String).void }
-          attr_writer :name
-
-          sig { params(name: String).returns(T.attached_class) }
-          def self.new(
-            # The name of the Narrator.
-            name: nil
-          )
-          end
-
-          sig { override.returns({ name: String }) }
-          def to_hash
-          end
         end
 
         # The object type.
@@ -738,88 +477,6 @@ module Spotted
           end
           def self.values
           end
-        end
-      end
-
-      class ExternalURLs < Spotted::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Spotted::Models::ChapterRetrieveResponse::ExternalURLs,
-              Spotted::Internal::AnyHash
-            )
-          end
-
-        # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-        # object.
-        sig { returns(T.nilable(String)) }
-        attr_reader :spotify
-
-        sig { params(spotify: String).void }
-        attr_writer :spotify
-
-        # External URLs for this chapter.
-        sig { params(spotify: String).returns(T.attached_class) }
-        def self.new(
-          # The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the
-          # object.
-          spotify: nil
-        )
-        end
-
-        sig { override.returns({ spotify: String }) }
-        def to_hash
-        end
-      end
-
-      class Image < Spotted::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Spotted::Models::ChapterRetrieveResponse::Image,
-              Spotted::Internal::AnyHash
-            )
-          end
-
-        # The image height in pixels.
-        sig { returns(T.nilable(Integer)) }
-        attr_accessor :height
-
-        # The source URL of the image.
-        sig { returns(String) }
-        attr_accessor :url
-
-        # The image width in pixels.
-        sig { returns(T.nilable(Integer)) }
-        attr_accessor :width
-
-        sig do
-          params(
-            height: T.nilable(Integer),
-            url: String,
-            width: T.nilable(Integer)
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # The image height in pixels.
-          height:,
-          # The source URL of the image.
-          url:,
-          # The image width in pixels.
-          width:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              height: T.nilable(Integer),
-              url: String,
-              width: T.nilable(Integer)
-            }
-          )
-        end
-        def to_hash
         end
       end
 
@@ -887,102 +544,6 @@ module Spotted
           )
         end
         def self.values
-        end
-      end
-
-      class Restrictions < Spotted::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Spotted::Models::ChapterRetrieveResponse::Restrictions,
-              Spotted::Internal::AnyHash
-            )
-          end
-
-        # The reason for the restriction. Supported values:
-        #
-        # - `market` - The content item is not available in the given market.
-        # - `product` - The content item is not available for the user's subscription
-        #   type.
-        # - `explicit` - The content item is explicit and the user's account is set to not
-        #   play explicit content.
-        # - `payment_required` - Payment is required to play the content item.
-        #
-        # Additional reasons may be added in the future. **Note**: If you use this field,
-        # make sure that your application safely handles unknown values.
-        sig { returns(T.nilable(String)) }
-        attr_reader :reason
-
-        sig { params(reason: String).void }
-        attr_writer :reason
-
-        # Included in the response when a content restriction is applied.
-        sig { params(reason: String).returns(T.attached_class) }
-        def self.new(
-          # The reason for the restriction. Supported values:
-          #
-          # - `market` - The content item is not available in the given market.
-          # - `product` - The content item is not available for the user's subscription
-          #   type.
-          # - `explicit` - The content item is explicit and the user's account is set to not
-          #   play explicit content.
-          # - `payment_required` - Payment is required to play the content item.
-          #
-          # Additional reasons may be added in the future. **Note**: If you use this field,
-          # make sure that your application safely handles unknown values.
-          reason: nil
-        )
-        end
-
-        sig { override.returns({ reason: String }) }
-        def to_hash
-        end
-      end
-
-      class ResumePoint < Spotted::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Spotted::Models::ChapterRetrieveResponse::ResumePoint,
-              Spotted::Internal::AnyHash
-            )
-          end
-
-        # Whether or not the episode has been fully played by the user.
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :fully_played
-
-        sig { params(fully_played: T::Boolean).void }
-        attr_writer :fully_played
-
-        # The user's most recent position in the episode in milliseconds.
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :resume_position_ms
-
-        sig { params(resume_position_ms: Integer).void }
-        attr_writer :resume_position_ms
-
-        # The user's most recent position in the chapter. Set if the supplied access token
-        # is a user token and has the scope 'user-read-playback-position'.
-        sig do
-          params(fully_played: T::Boolean, resume_position_ms: Integer).returns(
-            T.attached_class
-          )
-        end
-        def self.new(
-          # Whether or not the episode has been fully played by the user.
-          fully_played: nil,
-          # The user's most recent position in the episode in milliseconds.
-          resume_position_ms: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            { fully_played: T::Boolean, resume_position_ms: Integer }
-          )
-        end
-        def to_hash
         end
       end
     end

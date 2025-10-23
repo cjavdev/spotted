@@ -1,0 +1,71 @@
+module Spotted
+  module Models
+    type simplified_artist_object =
+      {
+        id: String,
+        external_urls: Spotted::ExternalURLObject,
+        href: String,
+        name: String,
+        type: Spotted::Models::SimplifiedArtistObject::type_,
+        uri: String
+      }
+
+    class SimplifiedArtistObject < Spotted::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader external_urls: Spotted::ExternalURLObject?
+
+      def external_urls=: (
+        Spotted::ExternalURLObject
+      ) -> Spotted::ExternalURLObject
+
+      attr_reader href: String?
+
+      def href=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader type: Spotted::Models::SimplifiedArtistObject::type_?
+
+      def type=: (
+        Spotted::Models::SimplifiedArtistObject::type_
+      ) -> Spotted::Models::SimplifiedArtistObject::type_
+
+      attr_reader uri: String?
+
+      def uri=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?external_urls: Spotted::ExternalURLObject,
+        ?href: String,
+        ?name: String,
+        ?type: Spotted::Models::SimplifiedArtistObject::type_,
+        ?uri: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        external_urls: Spotted::ExternalURLObject,
+        href: String,
+        name: String,
+        type: Spotted::Models::SimplifiedArtistObject::type_,
+        uri: String
+      }
+
+      type type_ = :artist
+
+      module Type
+        extend Spotted::Internal::Type::Enum
+
+        ARTIST: :artist
+
+        def self?.values: -> ::Array[Spotted::Models::SimplifiedArtistObject::type_]
+      end
+    end
+  end
+end

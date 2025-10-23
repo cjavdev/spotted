@@ -1,0 +1,15 @@
+module Spotted
+  module Models
+    type external_url_object = { spotify: String }
+
+    class ExternalURLObject < Spotted::Internal::Type::BaseModel
+      attr_reader spotify: String?
+
+      def spotify=: (String) -> String
+
+      def initialize: (?spotify: String) -> void
+
+      def to_hash: -> { spotify: String }
+    end
+  end
+end

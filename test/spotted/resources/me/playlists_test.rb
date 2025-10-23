@@ -9,13 +9,13 @@ class Spotted::Test::Resources::Me::PlaylistsTest < Spotted::Test::ResourceTest
     response = @spotted.me.playlists.retrieve
 
     assert_pattern do
-      response => Spotted::Models::Me::PlaylistRetrieveResponse
+      response => Spotted::PagingPlaylistObject
     end
 
     assert_pattern do
       response => {
         href: String,
-        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::Me::PlaylistRetrieveResponse::Item]),
+        items: ^(Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedPlaylistObject]),
         limit: Integer,
         next_: String | nil,
         offset: Integer,

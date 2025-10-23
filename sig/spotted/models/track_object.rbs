@@ -1,0 +1,293 @@
+module Spotted
+  module Models
+    type track_object =
+      {
+        id: String,
+        album: Spotted::TrackObject::Album,
+        artists: ::Array[Spotted::SimplifiedArtistObject],
+        available_markets: ::Array[String],
+        disc_number: Integer,
+        duration_ms: Integer,
+        explicit: bool,
+        external_ids: Spotted::ExternalIDObject,
+        external_urls: Spotted::ExternalURLObject,
+        href: String,
+        is_local: bool,
+        is_playable: bool,
+        linked_from: top,
+        name: String,
+        popularity: Integer,
+        preview_url: String?,
+        restrictions: Spotted::TrackRestrictionObject,
+        track_number: Integer,
+        type: Spotted::Models::TrackObject::type_,
+        uri: String
+      }
+
+    class TrackObject < Spotted::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader album: Spotted::TrackObject::Album?
+
+      def album=: (Spotted::TrackObject::Album) -> Spotted::TrackObject::Album
+
+      attr_reader artists: ::Array[Spotted::SimplifiedArtistObject]?
+
+      def artists=: (
+        ::Array[Spotted::SimplifiedArtistObject]
+      ) -> ::Array[Spotted::SimplifiedArtistObject]
+
+      attr_reader available_markets: ::Array[String]?
+
+      def available_markets=: (::Array[String]) -> ::Array[String]
+
+      attr_reader disc_number: Integer?
+
+      def disc_number=: (Integer) -> Integer
+
+      attr_reader duration_ms: Integer?
+
+      def duration_ms=: (Integer) -> Integer
+
+      attr_reader explicit: bool?
+
+      def explicit=: (bool) -> bool
+
+      attr_reader external_ids: Spotted::ExternalIDObject?
+
+      def external_ids=: (
+        Spotted::ExternalIDObject
+      ) -> Spotted::ExternalIDObject
+
+      attr_reader external_urls: Spotted::ExternalURLObject?
+
+      def external_urls=: (
+        Spotted::ExternalURLObject
+      ) -> Spotted::ExternalURLObject
+
+      attr_reader href: String?
+
+      def href=: (String) -> String
+
+      attr_reader is_local: bool?
+
+      def is_local=: (bool) -> bool
+
+      attr_reader is_playable: bool?
+
+      def is_playable=: (bool) -> bool
+
+      attr_reader linked_from: top?
+
+      def linked_from=: (top) -> top
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader popularity: Integer?
+
+      def popularity=: (Integer) -> Integer
+
+      attr_accessor preview_url: String?
+
+      attr_reader restrictions: Spotted::TrackRestrictionObject?
+
+      def restrictions=: (
+        Spotted::TrackRestrictionObject
+      ) -> Spotted::TrackRestrictionObject
+
+      attr_reader track_number: Integer?
+
+      def track_number=: (Integer) -> Integer
+
+      attr_reader type: Spotted::Models::TrackObject::type_?
+
+      def type=: (
+        Spotted::Models::TrackObject::type_
+      ) -> Spotted::Models::TrackObject::type_
+
+      attr_reader uri: String?
+
+      def uri=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?album: Spotted::TrackObject::Album,
+        ?artists: ::Array[Spotted::SimplifiedArtistObject],
+        ?available_markets: ::Array[String],
+        ?disc_number: Integer,
+        ?duration_ms: Integer,
+        ?explicit: bool,
+        ?external_ids: Spotted::ExternalIDObject,
+        ?external_urls: Spotted::ExternalURLObject,
+        ?href: String,
+        ?is_local: bool,
+        ?is_playable: bool,
+        ?linked_from: top,
+        ?name: String,
+        ?popularity: Integer,
+        ?preview_url: String?,
+        ?restrictions: Spotted::TrackRestrictionObject,
+        ?track_number: Integer,
+        ?type: Spotted::Models::TrackObject::type_,
+        ?uri: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        album: Spotted::TrackObject::Album,
+        artists: ::Array[Spotted::SimplifiedArtistObject],
+        available_markets: ::Array[String],
+        disc_number: Integer,
+        duration_ms: Integer,
+        explicit: bool,
+        external_ids: Spotted::ExternalIDObject,
+        external_urls: Spotted::ExternalURLObject,
+        href: String,
+        is_local: bool,
+        is_playable: bool,
+        linked_from: top,
+        name: String,
+        popularity: Integer,
+        preview_url: String?,
+        restrictions: Spotted::TrackRestrictionObject,
+        track_number: Integer,
+        type: Spotted::Models::TrackObject::type_,
+        uri: String
+      }
+
+      type album =
+        {
+          id: String,
+          album_type: Spotted::Models::TrackObject::Album::album_type,
+          artists: ::Array[Spotted::SimplifiedArtistObject],
+          available_markets: ::Array[String],
+          external_urls: Spotted::ExternalURLObject,
+          href: String,
+          images: ::Array[Spotted::ImageObject],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::TrackObject::Album::release_date_precision,
+          total_tracks: Integer,
+          type: Spotted::Models::TrackObject::Album::type_,
+          uri: String,
+          restrictions: Spotted::AlbumRestrictionObject
+        }
+
+      class Album < Spotted::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor album_type: Spotted::Models::TrackObject::Album::album_type
+
+        attr_accessor artists: ::Array[Spotted::SimplifiedArtistObject]
+
+        attr_accessor available_markets: ::Array[String]
+
+        attr_accessor external_urls: Spotted::ExternalURLObject
+
+        attr_accessor href: String
+
+        attr_accessor images: ::Array[Spotted::ImageObject]
+
+        attr_accessor name: String
+
+        attr_accessor release_date: String
+
+        attr_accessor release_date_precision: Spotted::Models::TrackObject::Album::release_date_precision
+
+        attr_accessor total_tracks: Integer
+
+        attr_accessor type: Spotted::Models::TrackObject::Album::type_
+
+        attr_accessor uri: String
+
+        attr_reader restrictions: Spotted::AlbumRestrictionObject?
+
+        def restrictions=: (
+          Spotted::AlbumRestrictionObject
+        ) -> Spotted::AlbumRestrictionObject
+
+        def initialize: (
+          id: String,
+          album_type: Spotted::Models::TrackObject::Album::album_type,
+          artists: ::Array[Spotted::SimplifiedArtistObject],
+          available_markets: ::Array[String],
+          external_urls: Spotted::ExternalURLObject,
+          href: String,
+          images: ::Array[Spotted::ImageObject],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::TrackObject::Album::release_date_precision,
+          total_tracks: Integer,
+          type: Spotted::Models::TrackObject::Album::type_,
+          uri: String,
+          ?restrictions: Spotted::AlbumRestrictionObject
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          album_type: Spotted::Models::TrackObject::Album::album_type,
+          artists: ::Array[Spotted::SimplifiedArtistObject],
+          available_markets: ::Array[String],
+          external_urls: Spotted::ExternalURLObject,
+          href: String,
+          images: ::Array[Spotted::ImageObject],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::TrackObject::Album::release_date_precision,
+          total_tracks: Integer,
+          type: Spotted::Models::TrackObject::Album::type_,
+          uri: String,
+          restrictions: Spotted::AlbumRestrictionObject
+        }
+
+        type album_type = :album | :single | :compilation
+
+        module AlbumType
+          extend Spotted::Internal::Type::Enum
+
+          ALBUM: :album
+          SINGLE: :single
+          COMPILATION: :compilation
+
+          def self?.values: -> ::Array[Spotted::Models::TrackObject::Album::album_type]
+        end
+
+        type release_date_precision = :year | :month | :day
+
+        module ReleaseDatePrecision
+          extend Spotted::Internal::Type::Enum
+
+          YEAR: :year
+          MONTH: :month
+          DAY: :day
+
+          def self?.values: -> ::Array[Spotted::Models::TrackObject::Album::release_date_precision]
+        end
+
+        type type_ = :album
+
+        module Type
+          extend Spotted::Internal::Type::Enum
+
+          ALBUM: :album
+
+          def self?.values: -> ::Array[Spotted::Models::TrackObject::Album::type_]
+        end
+      end
+
+      type type_ = :track
+
+      module Type
+        extend Spotted::Internal::Type::Enum
+
+        TRACK: :track
+
+        def self?.values: -> ::Array[Spotted::Models::TrackObject::type_]
+      end
+    end
+  end
+end

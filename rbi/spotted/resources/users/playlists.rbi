@@ -52,7 +52,7 @@ module Spotted
             limit: Integer,
             offset: Integer,
             request_options: Spotted::RequestOptions::OrHash
-          ).returns(Spotted::Models::Users::PlaylistListResponse)
+          ).returns(Spotted::PagingPlaylistObject)
         end
         def list(
           # The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).

@@ -17,7 +17,7 @@ module Spotted
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::TrackRetrieveResponse]
+      # @return [Spotted::Models::TrackObject]
       #
       # @see Spotted::Models::TrackRetrieveParams
       def retrieve(id, params = {})
@@ -26,7 +26,7 @@ module Spotted
           method: :get,
           path: ["tracks/%1$s", id],
           query: parsed,
-          model: Spotted::Models::TrackRetrieveResponse,
+          model: Spotted::TrackObject,
           options: options
         )
       end

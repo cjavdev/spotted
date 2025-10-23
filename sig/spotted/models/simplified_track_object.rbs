@@ -1,0 +1,140 @@
+module Spotted
+  module Models
+    type simplified_track_object =
+      {
+        id: String,
+        artists: ::Array[Spotted::SimplifiedArtistObject],
+        available_markets: ::Array[String],
+        disc_number: Integer,
+        duration_ms: Integer,
+        explicit: bool,
+        external_urls: Spotted::ExternalURLObject,
+        href: String,
+        is_local: bool,
+        is_playable: bool,
+        linked_from: Spotted::LinkedTrackObject,
+        name: String,
+        preview_url: String?,
+        restrictions: Spotted::TrackRestrictionObject,
+        track_number: Integer,
+        type: String,
+        uri: String
+      }
+
+    class SimplifiedTrackObject < Spotted::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader artists: ::Array[Spotted::SimplifiedArtistObject]?
+
+      def artists=: (
+        ::Array[Spotted::SimplifiedArtistObject]
+      ) -> ::Array[Spotted::SimplifiedArtistObject]
+
+      attr_reader available_markets: ::Array[String]?
+
+      def available_markets=: (::Array[String]) -> ::Array[String]
+
+      attr_reader disc_number: Integer?
+
+      def disc_number=: (Integer) -> Integer
+
+      attr_reader duration_ms: Integer?
+
+      def duration_ms=: (Integer) -> Integer
+
+      attr_reader explicit: bool?
+
+      def explicit=: (bool) -> bool
+
+      attr_reader external_urls: Spotted::ExternalURLObject?
+
+      def external_urls=: (
+        Spotted::ExternalURLObject
+      ) -> Spotted::ExternalURLObject
+
+      attr_reader href: String?
+
+      def href=: (String) -> String
+
+      attr_reader is_local: bool?
+
+      def is_local=: (bool) -> bool
+
+      attr_reader is_playable: bool?
+
+      def is_playable=: (bool) -> bool
+
+      attr_reader linked_from: Spotted::LinkedTrackObject?
+
+      def linked_from=: (
+        Spotted::LinkedTrackObject
+      ) -> Spotted::LinkedTrackObject
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_accessor preview_url: String?
+
+      attr_reader restrictions: Spotted::TrackRestrictionObject?
+
+      def restrictions=: (
+        Spotted::TrackRestrictionObject
+      ) -> Spotted::TrackRestrictionObject
+
+      attr_reader track_number: Integer?
+
+      def track_number=: (Integer) -> Integer
+
+      attr_reader type: String?
+
+      def type=: (String) -> String
+
+      attr_reader uri: String?
+
+      def uri=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?artists: ::Array[Spotted::SimplifiedArtistObject],
+        ?available_markets: ::Array[String],
+        ?disc_number: Integer,
+        ?duration_ms: Integer,
+        ?explicit: bool,
+        ?external_urls: Spotted::ExternalURLObject,
+        ?href: String,
+        ?is_local: bool,
+        ?is_playable: bool,
+        ?linked_from: Spotted::LinkedTrackObject,
+        ?name: String,
+        ?preview_url: String?,
+        ?restrictions: Spotted::TrackRestrictionObject,
+        ?track_number: Integer,
+        ?type: String,
+        ?uri: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        artists: ::Array[Spotted::SimplifiedArtistObject],
+        available_markets: ::Array[String],
+        disc_number: Integer,
+        duration_ms: Integer,
+        explicit: bool,
+        external_urls: Spotted::ExternalURLObject,
+        href: String,
+        is_local: bool,
+        is_playable: bool,
+        linked_from: Spotted::LinkedTrackObject,
+        name: String,
+        preview_url: String?,
+        restrictions: Spotted::TrackRestrictionObject,
+        track_number: Integer,
+        type: String,
+        uri: String
+      }
+    end
+  end
+end
