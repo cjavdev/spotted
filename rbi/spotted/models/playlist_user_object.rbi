@@ -31,9 +31,7 @@ module Spotted
       attr_writer :href
 
       # The object type.
-      sig do
-        returns(T.nilable(Spotted::PlaylistUserObject::Type::TaggedSymbol))
-      end
+      sig { returns(T.nilable(Spotted::PlaylistUserObject::Type::OrSymbol)) }
       attr_reader :type
 
       sig { params(type: Spotted::PlaylistUserObject::Type::OrSymbol).void }
@@ -78,7 +76,7 @@ module Spotted
             id: String,
             external_urls: Spotted::ExternalURLObject,
             href: String,
-            type: Spotted::PlaylistUserObject::Type::TaggedSymbol,
+            type: Spotted::PlaylistUserObject::Type::OrSymbol,
             uri: String
           }
         )

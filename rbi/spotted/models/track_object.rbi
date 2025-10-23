@@ -152,7 +152,7 @@ module Spotted
       attr_writer :track_number
 
       # The object type: "track".
-      sig { returns(T.nilable(Spotted::TrackObject::Type::TaggedSymbol)) }
+      sig { returns(T.nilable(Spotted::TrackObject::Type::OrSymbol)) }
       attr_reader :type
 
       sig { params(type: Spotted::TrackObject::Type::OrSymbol).void }
@@ -276,7 +276,7 @@ module Spotted
             preview_url: T.nilable(String),
             restrictions: Spotted::TrackRestrictionObject,
             track_number: Integer,
-            type: Spotted::TrackObject::Type::TaggedSymbol,
+            type: Spotted::TrackObject::Type::OrSymbol,
             uri: String
           }
         )
@@ -296,7 +296,7 @@ module Spotted
         attr_accessor :id
 
         # The type of the album.
-        sig { returns(Spotted::TrackObject::Album::AlbumType::TaggedSymbol) }
+        sig { returns(Spotted::TrackObject::Album::AlbumType::OrSymbol) }
         attr_accessor :album_type
 
         # The artists of the album. Each artist object includes a link in `href` to more
@@ -337,9 +337,7 @@ module Spotted
 
         # The precision with which `release_date` value is known.
         sig do
-          returns(
-            Spotted::TrackObject::Album::ReleaseDatePrecision::TaggedSymbol
-          )
+          returns(Spotted::TrackObject::Album::ReleaseDatePrecision::OrSymbol)
         end
         attr_accessor :release_date_precision
 
@@ -348,7 +346,7 @@ module Spotted
         attr_accessor :total_tracks
 
         # The object type.
-        sig { returns(Spotted::TrackObject::Album::Type::TaggedSymbol) }
+        sig { returns(Spotted::TrackObject::Album::Type::OrSymbol) }
         attr_accessor :type
 
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -429,7 +427,7 @@ module Spotted
           override.returns(
             {
               id: String,
-              album_type: Spotted::TrackObject::Album::AlbumType::TaggedSymbol,
+              album_type: Spotted::TrackObject::Album::AlbumType::OrSymbol,
               artists: T::Array[Spotted::SimplifiedArtistObject],
               available_markets: T::Array[String],
               external_urls: Spotted::ExternalURLObject,
@@ -438,9 +436,9 @@ module Spotted
               name: String,
               release_date: String,
               release_date_precision:
-                Spotted::TrackObject::Album::ReleaseDatePrecision::TaggedSymbol,
+                Spotted::TrackObject::Album::ReleaseDatePrecision::OrSymbol,
               total_tracks: Integer,
-              type: Spotted::TrackObject::Album::Type::TaggedSymbol,
+              type: Spotted::TrackObject::Album::Type::OrSymbol,
               uri: String,
               restrictions: Spotted::AlbumRestrictionObject
             }

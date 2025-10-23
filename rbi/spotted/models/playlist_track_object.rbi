@@ -33,7 +33,9 @@ module Spotted
       attr_writer :is_local
 
       # Information about the track or episode.
-      sig { returns(T.nilable(Spotted::PlaylistTrackObject::Track::Variants)) }
+      sig do
+        returns(T.nilable(T.any(Spotted::TrackObject, Spotted::EpisodeObject)))
+      end
       attr_reader :track
 
       sig do
@@ -74,7 +76,7 @@ module Spotted
             added_at: Time,
             added_by: Spotted::PlaylistUserObject,
             is_local: T::Boolean,
-            track: Spotted::PlaylistTrackObject::Track::Variants
+            track: T.any(Spotted::TrackObject, Spotted::EpisodeObject)
           }
         )
       end

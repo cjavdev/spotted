@@ -1,59 +1,19 @@
 module Spotted
-  class AlbumListParams = Spotted::Models::AlbumListParams
-
-  class AlbumListTracksParams = Spotted::Models::AlbumListTracksParams
-
   class AlbumRestrictionObject = Spotted::Models::AlbumRestrictionObject
 
   class AlbumRetrieveParams = Spotted::Models::AlbumRetrieveParams
 
-  class ArtistListAlbumsParams = Spotted::Models::ArtistListAlbumsParams
-
-  class ArtistListParams = Spotted::Models::ArtistListParams
-
-  class ArtistListRelatedArtistsParams = Spotted::Models::ArtistListRelatedArtistsParams
-
-  class ArtistListTopTracksParams = Spotted::Models::ArtistListTopTracksParams
-
   class ArtistObject = Spotted::Models::ArtistObject
-
-  class ArtistRetrieveParams = Spotted::Models::ArtistRetrieveParams
-
-  class AudioAnalysisRetrieveParams = Spotted::Models::AudioAnalysisRetrieveParams
-
-  class AudiobookListChaptersParams = Spotted::Models::AudiobookListChaptersParams
-
-  class AudiobookListParams = Spotted::Models::AudiobookListParams
-
-  class AudiobookRetrieveParams = Spotted::Models::AudiobookRetrieveParams
-
-  class AudioFeatureListParams = Spotted::Models::AudioFeatureListParams
-
-  class AudioFeatureRetrieveParams = Spotted::Models::AudioFeatureRetrieveParams
 
   class AuthorObject = Spotted::Models::AuthorObject
 
-  module Browse = Spotted::Models::Browse
-
-  class BrowseGetFeaturedPlaylistsParams = Spotted::Models::BrowseGetFeaturedPlaylistsParams
-
-  class BrowseGetNewReleasesParams = Spotted::Models::BrowseGetNewReleasesParams
-
-  class ChapterListParams = Spotted::Models::ChapterListParams
-
   class ChapterRestrictionObject = Spotted::Models::ChapterRestrictionObject
 
-  class ChapterRetrieveParams = Spotted::Models::ChapterRetrieveParams
-
   class CopyrightObject = Spotted::Models::CopyrightObject
-
-  class EpisodeListParams = Spotted::Models::EpisodeListParams
 
   class EpisodeObject = Spotted::Models::EpisodeObject
 
   class EpisodeRestrictionObject = Spotted::Models::EpisodeRestrictionObject
-
-  class EpisodeRetrieveParams = Spotted::Models::EpisodeRetrieveParams
 
   class ExternalIDObject = Spotted::Models::ExternalIDObject
 
@@ -65,45 +25,19 @@ module Spotted
 
   class LinkedTrackObject = Spotted::Models::LinkedTrackObject
 
-  class MarketListParams = Spotted::Models::MarketListParams
-
-  module Me = Spotted::Models::Me
-
-  class MeRetrieveParams = Spotted::Models::MeRetrieveParams
-
   class NarratorObject = Spotted::Models::NarratorObject
 
   class PagingPlaylistObject = Spotted::Models::PagingPlaylistObject
-
-  class PlaylistRetrieveParams = Spotted::Models::PlaylistRetrieveParams
-
-  module Playlists = Spotted::Models::Playlists
 
   class PlaylistTrackObject = Spotted::Models::PlaylistTrackObject
 
   class PlaylistTracksRefObject = Spotted::Models::PlaylistTracksRefObject
 
-  class PlaylistUpdateParams = Spotted::Models::PlaylistUpdateParams
-
   class PlaylistUserObject = Spotted::Models::PlaylistUserObject
-
-  class RecommendationGetParams = Spotted::Models::RecommendationGetParams
-
-  class RecommendationListAvailableGenreSeedsParams = Spotted::Models::RecommendationListAvailableGenreSeedsParams
 
   class ResumePointObject = Spotted::Models::ResumePointObject
 
-  class SearchRetrieveParams = Spotted::Models::SearchRetrieveParams
-
-  class ShowListEpisodesParams = Spotted::Models::ShowListEpisodesParams
-
-  class ShowListParams = Spotted::Models::ShowListParams
-
-  class ShowRetrieveParams = Spotted::Models::ShowRetrieveParams
-
   class SimplifiedArtistObject = Spotted::Models::SimplifiedArtistObject
-
-  class SimplifiedChapterObject = Spotted::Models::SimplifiedChapterObject
 
   class SimplifiedEpisodeObject = Spotted::Models::SimplifiedEpisodeObject
 
@@ -111,17 +45,7 @@ module Spotted
 
   class SimplifiedTrackObject = Spotted::Models::SimplifiedTrackObject
 
-  class TimeIntervalObject = Spotted::Models::TimeIntervalObject
-
-  class TrackListParams = Spotted::Models::TrackListParams
-
   class TrackObject = Spotted::Models::TrackObject
 
   class TrackRestrictionObject = Spotted::Models::TrackRestrictionObject
-
-  class TrackRetrieveParams = Spotted::Models::TrackRetrieveParams
-
-  class UserRetrieveProfileParams = Spotted::Models::UserRetrieveProfileParams
-
-  module Users = Spotted::Models::Users
 end

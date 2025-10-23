@@ -10,8 +10,8 @@ module Spotted
     #   end
     #
     # @example
-    #   cursor_url_page.auto_paging_each do |album|
-    #     puts(album)
+    #   cursor_url_page.auto_paging_each do |item|
+    #     puts(item)
     #   end
     class CursorURLPage
       include Spotted::Internal::Type::BasePage

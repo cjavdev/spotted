@@ -1,9 +1,0 @@
-module Spotted
-  module Models
-    module Playlists
-      type follower_check_response = ::Array[bool]
-
-      FollowerCheckResponse: Spotted::Internal::Type::Converter
-    end
-  end
-end

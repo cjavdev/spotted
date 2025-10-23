@@ -4,27 +4,6 @@ module Spotted
   module Internal
     module Type
       # @api private
-      #
-      # @example
-      #   # `top_list_response` is a `Spotted::Models::Me::TopListResponse`
-      #   case top_list_response
-      #   when Spotted::ArtistObject
-      #     puts(top_list_response.id)
-      #   when Spotted::TrackObject
-      #     puts(top_list_response.album)
-      #   else
-      #     puts(top_list_response)
-      #   end
-      #
-      # @example
-      #   case top_list_response
-      #   in {type: :artist, id: id, external_urls: external_urls, followers: followers}
-      #     puts(id)
-      #   in {type: :track, id: id, album: album, artists: artists}
-      #     puts(album)
-      #   else
-      #     puts(top_list_response)
-      #   end
       module Union
         include Spotted::Internal::Type::Converter
         include Spotted::Internal::Util::SorbetRuntimeSupport

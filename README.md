@@ -191,25 +191,23 @@ spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy", **params)
 Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
 
 ```ruby
-# :artists
-puts(Spotted::Me::TopListParams::Type::ARTISTS)
+# :market
+puts(Spotted::AlbumRestrictionObject::Reason::MARKET)
 
-# Revealed type: `T.all(Spotted::Me::TopListParams::Type, Symbol)`
-T.reveal_type(Spotted::Me::TopListParams::Type::ARTISTS)
+# Revealed type: `T.all(Spotted::AlbumRestrictionObject::Reason, Symbol)`
+T.reveal_type(Spotted::AlbumRestrictionObject::Reason::MARKET)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
 
 ```ruby
-# Using the enum constants preserves the tagged type information:
-spotted.me.top.list(
-  type: Spotted::Me::TopListParams::Type::ARTISTS,
+Spotted::AlbumRestrictionObject.new(
+  reason: Spotted::AlbumRestrictionObject::Reason::MARKET,
   # …
 )
 
-# Literal values are also permissible:
-spotted.me.top.list(
-  type: :artists,
+Spotted::AlbumRestrictionObject.new(
+  reason: :market,
   # …
 )
 ```

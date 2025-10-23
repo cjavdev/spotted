@@ -10,66 +10,12 @@ module Spotted
 
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
-    sig { returns(T.nilable(String)) }
-    attr_reader :api_key
-
     sig { returns(Spotted::Resources::Albums) }
     attr_reader :albums
-
-    sig { returns(Spotted::Resources::Artists) }
-    attr_reader :artists
-
-    sig { returns(Spotted::Resources::Shows) }
-    attr_reader :shows
-
-    sig { returns(Spotted::Resources::Episodes) }
-    attr_reader :episodes
-
-    sig { returns(Spotted::Resources::Audiobooks) }
-    attr_reader :audiobooks
-
-    sig { returns(Spotted::Resources::Me) }
-    attr_reader :me
-
-    sig { returns(Spotted::Resources::Chapters) }
-    attr_reader :chapters
-
-    sig { returns(Spotted::Resources::Tracks) }
-    attr_reader :tracks
-
-    sig { returns(Spotted::Resources::Search) }
-    attr_reader :search
-
-    sig { returns(Spotted::Resources::Playlists) }
-    attr_reader :playlists
-
-    sig { returns(Spotted::Resources::Users) }
-    attr_reader :users
-
-    sig { returns(Spotted::Resources::Browse) }
-    attr_reader :browse
-
-    sig { returns(Spotted::Resources::AudioFeatures) }
-    attr_reader :audio_features
-
-    sig { returns(Spotted::Resources::AudioAnalysis) }
-    attr_reader :audio_analysis
-
-    sig { returns(Spotted::Resources::Recommendations) }
-    attr_reader :recommendations
-
-    sig { returns(Spotted::Resources::Markets) }
-    attr_reader :markets
-
-    # @api private
-    sig { override.returns(T::Hash[String, String]) }
-    private def auth_headers
-    end
 
     # Creates and returns a new client for interacting with the API.
     sig do
       params(
-        api_key: T.nilable(String),
         base_url: T.nilable(String),
         max_retries: Integer,
         timeout: Float,
@@ -78,8 +24,6 @@ module Spotted
       ).returns(T.attached_class)
     end
     def self.new(
-      # Defaults to `ENV["SPOTTED_API_KEY"]`
-      api_key: ENV["SPOTTED_API_KEY"],
       # Override the default base URL for the API, e.g.,
       # `"https://api.example.com/v2/"`. Defaults to `ENV["SPOTTED_BASE_URL"]`
       base_url: ENV["SPOTTED_BASE_URL"],

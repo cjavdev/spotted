@@ -1,9 +1,0 @@
-module Spotted
-  module Models
-    module Me
-      type following_check_response = ::Array[bool]
-
-      FollowingCheckResponse: Spotted::Internal::Type::Converter
-    end
-  end
-end
