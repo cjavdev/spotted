@@ -1,6 +1,8 @@
 # typed: strong
 
 module Spotted
+  AlbumListParams = Spotted::Models::AlbumListParams
+
   AlbumRestrictionObject = Spotted::Models::AlbumRestrictionObject
 
   AlbumRetrieveParams = Spotted::Models::AlbumRetrieveParams

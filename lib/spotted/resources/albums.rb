@@ -30,6 +30,34 @@ module Spotted
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Spotted::Models::AlbumListParams} for more details.
+      #
+      # Get Spotify catalog information for multiple albums identified by their Spotify
+      # IDs.
+      #
+      # @overload list(ids:, market: nil, request_options: {})
+      #
+      # @param ids [String] A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spot
+      #
+      # @param market [String] An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_al
+      #
+      # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Spotted::Models::AlbumListResponse]
+      #
+      # @see Spotted::Models::AlbumListParams
+      def list(params)
+        parsed, options = Spotted::AlbumListParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: "albums",
+          query: parsed,
+          model: Spotted::Models::AlbumListResponse,
+          options: options
+        )
+      end
+
       # @api private
       #
       # @param client [Spotted::Client]
