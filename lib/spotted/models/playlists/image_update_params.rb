@@ -11,10 +11,10 @@ module Spotted
         # @!attribute body
         #   Base64 encoded JPEG image data, maximum payload size is 256 KB.
         #
-        #   @return [String, nil]
-        optional :body, String
+        #   @return [String]
+        required :body, String
 
-        # @!method initialize(body: nil, request_options: {})
+        # @!method initialize(body:, request_options: {})
         #   @param body [String] Base64 encoded JPEG image data, maximum payload size is 256 KB.
         #
         #   @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}]

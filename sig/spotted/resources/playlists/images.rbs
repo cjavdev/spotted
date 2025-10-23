@@ -9,7 +9,7 @@ module Spotted
 
         def update: (
           String playlist_id,
-          ?body: String,
+          body: String,
           ?request_options: Spotted::request_opts
         ) -> nil
 

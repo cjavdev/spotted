@@ -8,12 +8,10 @@ module Spotted
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
-        attr_reader body: String?
-
-        def body=: (String) -> String
+        attr_accessor body: String
 
         def initialize: (
-          ?body: String,
+          body: String,
           ?request_options: Spotted::request_opts
         ) -> void
 
