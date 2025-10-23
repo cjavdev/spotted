@@ -1,0 +1,9 @@
+module Spotted
+  module Internal
+    extend Spotted::Internal::Util::SorbetRuntimeSupport
+
+    type file_input = Pathname | StringIO | IO | String | Spotted::FilePart
+
+    OMIT: Object
+  end
+end

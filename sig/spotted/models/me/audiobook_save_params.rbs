@@ -1,0 +1,25 @@
+module Spotted
+  module Models
+    module Me
+      type audiobook_save_params =
+        { ids: String } & Spotted::Internal::Type::request_parameters
+
+      class AudiobookSaveParams < Spotted::Internal::Type::BaseModel
+        extend Spotted::Internal::Type::RequestParameters::Converter
+        include Spotted::Internal::Type::RequestParameters
+
+        attr_accessor ids: String
+
+        def initialize: (
+          ids: String,
+          ?request_options: Spotted::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          ids: String,
+          request_options: Spotted::RequestOptions
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,3 @@
+module Spotted
+  VERSION: String
+end

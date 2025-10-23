@@ -1,0 +1,44 @@
+module Spotted
+  module Models
+    module Me
+      type following_follow_params =
+        {
+          body_ids: ::Array[String],
+          type: Spotted::Models::Me::FollowingFollowParams::type_
+        }
+        & Spotted::Internal::Type::request_parameters
+
+      class FollowingFollowParams < Spotted::Internal::Type::BaseModel
+        extend Spotted::Internal::Type::RequestParameters::Converter
+        include Spotted::Internal::Type::RequestParameters
+
+        attr_accessor body_ids: ::Array[String]
+
+        attr_accessor type: Spotted::Models::Me::FollowingFollowParams::type_
+
+        def initialize: (
+          body_ids: ::Array[String],
+          type: Spotted::Models::Me::FollowingFollowParams::type_,
+          ?request_options: Spotted::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          body_ids: ::Array[String],
+          type: Spotted::Models::Me::FollowingFollowParams::type_,
+          request_options: Spotted::RequestOptions
+        }
+
+        type type_ = :artist | :user
+
+        module Type
+          extend Spotted::Internal::Type::Enum
+
+          ARTIST: :artist
+          USER: :user
+
+          def self?.values: -> ::Array[Spotted::Models::Me::FollowingFollowParams::type_]
+        end
+      end
+    end
+  end
+end

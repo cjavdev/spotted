@@ -1,0 +1,41 @@
+module Spotted
+  module Models
+    module Me
+      type following_check_params =
+        { ids: String, type: Spotted::Models::Me::FollowingCheckParams::type_ }
+        & Spotted::Internal::Type::request_parameters
+
+      class FollowingCheckParams < Spotted::Internal::Type::BaseModel
+        extend Spotted::Internal::Type::RequestParameters::Converter
+        include Spotted::Internal::Type::RequestParameters
+
+        attr_accessor ids: String
+
+        attr_accessor type: Spotted::Models::Me::FollowingCheckParams::type_
+
+        def initialize: (
+          ids: String,
+          type: Spotted::Models::Me::FollowingCheckParams::type_,
+          ?request_options: Spotted::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          ids: String,
+          type: Spotted::Models::Me::FollowingCheckParams::type_,
+          request_options: Spotted::RequestOptions
+        }
+
+        type type_ = :artist | :user
+
+        module Type
+          extend Spotted::Internal::Type::Enum
+
+          ARTIST: :artist
+          USER: :user
+
+          def self?.values: -> ::Array[Spotted::Models::Me::FollowingCheckParams::type_]
+        end
+      end
+    end
+  end
+end

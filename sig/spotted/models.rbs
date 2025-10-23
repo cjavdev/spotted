@@ -1,0 +1,75 @@
+module Spotted
+  class AlbumGetTracksParams = Spotted::Models::AlbumGetTracksParams
+
+  class AlbumListParams = Spotted::Models::AlbumListParams
+
+  class AlbumRetrieveParams = Spotted::Models::AlbumRetrieveParams
+
+  class ArtistListAlbumsParams = Spotted::Models::ArtistListAlbumsParams
+
+  class ArtistListParams = Spotted::Models::ArtistListParams
+
+  class ArtistListRelatedArtistsParams = Spotted::Models::ArtistListRelatedArtistsParams
+
+  class ArtistListTopTracksParams = Spotted::Models::ArtistListTopTracksParams
+
+  class ArtistRetrieveParams = Spotted::Models::ArtistRetrieveParams
+
+  class AudioAnalysisRetrieveParams = Spotted::Models::AudioAnalysisRetrieveParams
+
+  class AudiobookListParams = Spotted::Models::AudiobookListParams
+
+  class AudiobookRetrieveChaptersParams = Spotted::Models::AudiobookRetrieveChaptersParams
+
+  class AudiobookRetrieveParams = Spotted::Models::AudiobookRetrieveParams
+
+  class AudioFeatureListParams = Spotted::Models::AudioFeatureListParams
+
+  class AudioFeatureRetrieveParams = Spotted::Models::AudioFeatureRetrieveParams
+
+  module Browse = Spotted::Models::Browse
+
+  class BrowseGetFeaturedPlaylistsParams = Spotted::Models::BrowseGetFeaturedPlaylistsParams
+
+  class BrowseGetNewReleasesParams = Spotted::Models::BrowseGetNewReleasesParams
+
+  class ChapterListParams = Spotted::Models::ChapterListParams
+
+  class ChapterRetrieveParams = Spotted::Models::ChapterRetrieveParams
+
+  class EpisodeListParams = Spotted::Models::EpisodeListParams
+
+  class EpisodeRetrieveParams = Spotted::Models::EpisodeRetrieveParams
+
+  class MarketListParams = Spotted::Models::MarketListParams
+
+  module Me = Spotted::Models::Me
+
+  class MeRetrieveParams = Spotted::Models::MeRetrieveParams
+
+  class PlaylistRetrieveParams = Spotted::Models::PlaylistRetrieveParams
+
+  module Playlists = Spotted::Models::Playlists
+
+  class PlaylistUpdateParams = Spotted::Models::PlaylistUpdateParams
+
+  class RecommendationGetAvailableGenreSeedsParams = Spotted::Models::RecommendationGetAvailableGenreSeedsParams
+
+  class RecommendationGetParams = Spotted::Models::RecommendationGetParams
+
+  class SearchQueryParams = Spotted::Models::SearchQueryParams
+
+  class ShowGetEpisodesParams = Spotted::Models::ShowGetEpisodesParams
+
+  class ShowListParams = Spotted::Models::ShowListParams
+
+  class ShowRetrieveParams = Spotted::Models::ShowRetrieveParams
+
+  class TrackListParams = Spotted::Models::TrackListParams
+
+  class TrackRetrieveParams = Spotted::Models::TrackRetrieveParams
+
+  class UserRetrieveProfileParams = Spotted::Models::UserRetrieveProfileParams
+
+  module Users = Spotted::Models::Users
+end

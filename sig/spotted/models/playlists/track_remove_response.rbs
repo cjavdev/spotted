@@ -1,0 +1,17 @@
+module Spotted
+  module Models
+    module Playlists
+      type track_remove_response = { snapshot_id: String }
+
+      class TrackRemoveResponse < Spotted::Internal::Type::BaseModel
+        attr_reader snapshot_id: String?
+
+        def snapshot_id=: (String) -> String
+
+        def initialize: (?snapshot_id: String) -> void
+
+        def to_hash: -> { snapshot_id: String }
+      end
+    end
+  end
+end

@@ -1,0 +1,381 @@
+module Spotted
+  module Models
+    type episode_list_response =
+      { episodes: ::Array[Spotted::Models::EpisodeListResponse::Episode] }
+
+    class EpisodeListResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor episodes: ::Array[Spotted::Models::EpisodeListResponse::Episode]
+
+      def initialize: (
+        episodes: ::Array[Spotted::Models::EpisodeListResponse::Episode]
+      ) -> void
+
+      def to_hash: -> {
+        episodes: ::Array[Spotted::Models::EpisodeListResponse::Episode]
+      }
+
+      type episode =
+        {
+          id: String,
+          audio_preview_url: String?,
+          description: String,
+          duration_ms: Integer,
+          explicit: bool,
+          external_urls: Spotted::Models::EpisodeListResponse::Episode::ExternalURLs,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::Models::EpisodeListResponse::Episode::Image],
+          is_externally_hosted: bool,
+          is_playable: bool,
+          languages: ::Array[String],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::EpisodeListResponse::Episode::release_date_precision,
+          show: Spotted::Models::EpisodeListResponse::Episode::Show,
+          type: Spotted::Models::EpisodeListResponse::Episode::type_,
+          uri: String,
+          language: String,
+          restrictions: Spotted::Models::EpisodeListResponse::Episode::Restrictions,
+          resume_point: Spotted::Models::EpisodeListResponse::Episode::ResumePoint
+        }
+
+      class Episode < Spotted::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor audio_preview_url: String?
+
+        attr_accessor description: String
+
+        attr_accessor duration_ms: Integer
+
+        attr_accessor explicit: bool
+
+        attr_accessor external_urls: Spotted::Models::EpisodeListResponse::Episode::ExternalURLs
+
+        attr_accessor href: String
+
+        attr_accessor html_description: String
+
+        attr_accessor images: ::Array[Spotted::Models::EpisodeListResponse::Episode::Image]
+
+        attr_accessor is_externally_hosted: bool
+
+        attr_accessor is_playable: bool
+
+        attr_accessor languages: ::Array[String]
+
+        attr_accessor name: String
+
+        attr_accessor release_date: String
+
+        attr_accessor release_date_precision: Spotted::Models::EpisodeListResponse::Episode::release_date_precision
+
+        attr_accessor show: Spotted::Models::EpisodeListResponse::Episode::Show
+
+        attr_accessor type: Spotted::Models::EpisodeListResponse::Episode::type_
+
+        attr_accessor uri: String
+
+        attr_reader language: String?
+
+        def language=: (String) -> String
+
+        attr_reader restrictions: Spotted::Models::EpisodeListResponse::Episode::Restrictions?
+
+        def restrictions=: (
+          Spotted::Models::EpisodeListResponse::Episode::Restrictions
+        ) -> Spotted::Models::EpisodeListResponse::Episode::Restrictions
+
+        attr_reader resume_point: Spotted::Models::EpisodeListResponse::Episode::ResumePoint?
+
+        def resume_point=: (
+          Spotted::Models::EpisodeListResponse::Episode::ResumePoint
+        ) -> Spotted::Models::EpisodeListResponse::Episode::ResumePoint
+
+        def initialize: (
+          id: String,
+          audio_preview_url: String?,
+          description: String,
+          duration_ms: Integer,
+          explicit: bool,
+          external_urls: Spotted::Models::EpisodeListResponse::Episode::ExternalURLs,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::Models::EpisodeListResponse::Episode::Image],
+          is_externally_hosted: bool,
+          is_playable: bool,
+          languages: ::Array[String],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::EpisodeListResponse::Episode::release_date_precision,
+          show: Spotted::Models::EpisodeListResponse::Episode::Show,
+          type: Spotted::Models::EpisodeListResponse::Episode::type_,
+          uri: String,
+          ?language: String,
+          ?restrictions: Spotted::Models::EpisodeListResponse::Episode::Restrictions,
+          ?resume_point: Spotted::Models::EpisodeListResponse::Episode::ResumePoint
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          audio_preview_url: String?,
+          description: String,
+          duration_ms: Integer,
+          explicit: bool,
+          external_urls: Spotted::Models::EpisodeListResponse::Episode::ExternalURLs,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::Models::EpisodeListResponse::Episode::Image],
+          is_externally_hosted: bool,
+          is_playable: bool,
+          languages: ::Array[String],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::EpisodeListResponse::Episode::release_date_precision,
+          show: Spotted::Models::EpisodeListResponse::Episode::Show,
+          type: Spotted::Models::EpisodeListResponse::Episode::type_,
+          uri: String,
+          language: String,
+          restrictions: Spotted::Models::EpisodeListResponse::Episode::Restrictions,
+          resume_point: Spotted::Models::EpisodeListResponse::Episode::ResumePoint
+        }
+
+        type external_urls = { spotify: String }
+
+        class ExternalURLs < Spotted::Internal::Type::BaseModel
+          attr_reader spotify: String?
+
+          def spotify=: (String) -> String
+
+          def initialize: (?spotify: String) -> void
+
+          def to_hash: -> { spotify: String }
+        end
+
+        type image = { height: Integer?, url: String, width: Integer? }
+
+        class Image < Spotted::Internal::Type::BaseModel
+          attr_accessor height: Integer?
+
+          attr_accessor url: String
+
+          attr_accessor width: Integer?
+
+          def initialize: (
+            height: Integer?,
+            url: String,
+            width: Integer?
+          ) -> void
+
+          def to_hash: -> { height: Integer?, url: String, width: Integer? }
+        end
+
+        type release_date_precision = :year | :month | :day
+
+        module ReleaseDatePrecision
+          extend Spotted::Internal::Type::Enum
+
+          YEAR: :year
+          MONTH: :month
+          DAY: :day
+
+          def self?.values: -> ::Array[Spotted::Models::EpisodeListResponse::Episode::release_date_precision]
+        end
+
+        type show =
+          {
+            id: String,
+            available_markets: ::Array[String],
+            copyrights: ::Array[Spotted::Models::EpisodeListResponse::Episode::Show::Copyright],
+            description: String,
+            explicit: bool,
+            external_urls: Spotted::Models::EpisodeListResponse::Episode::Show::ExternalURLs,
+            href: String,
+            html_description: String,
+            images: ::Array[Spotted::Models::EpisodeListResponse::Episode::Show::Image],
+            is_externally_hosted: bool,
+            languages: ::Array[String],
+            media_type: String,
+            name: String,
+            publisher: String,
+            total_episodes: Integer,
+            type: Spotted::Models::EpisodeListResponse::Episode::Show::type_,
+            uri: String
+          }
+
+        class Show < Spotted::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor available_markets: ::Array[String]
+
+          attr_accessor copyrights: ::Array[Spotted::Models::EpisodeListResponse::Episode::Show::Copyright]
+
+          attr_accessor description: String
+
+          attr_accessor explicit: bool
+
+          attr_accessor external_urls: Spotted::Models::EpisodeListResponse::Episode::Show::ExternalURLs
+
+          attr_accessor href: String
+
+          attr_accessor html_description: String
+
+          attr_accessor images: ::Array[Spotted::Models::EpisodeListResponse::Episode::Show::Image]
+
+          attr_accessor is_externally_hosted: bool
+
+          attr_accessor languages: ::Array[String]
+
+          attr_accessor media_type: String
+
+          attr_accessor name: String
+
+          attr_accessor publisher: String
+
+          attr_accessor total_episodes: Integer
+
+          attr_accessor type: Spotted::Models::EpisodeListResponse::Episode::Show::type_
+
+          attr_accessor uri: String
+
+          def initialize: (
+            id: String,
+            available_markets: ::Array[String],
+            copyrights: ::Array[Spotted::Models::EpisodeListResponse::Episode::Show::Copyright],
+            description: String,
+            explicit: bool,
+            external_urls: Spotted::Models::EpisodeListResponse::Episode::Show::ExternalURLs,
+            href: String,
+            html_description: String,
+            images: ::Array[Spotted::Models::EpisodeListResponse::Episode::Show::Image],
+            is_externally_hosted: bool,
+            languages: ::Array[String],
+            media_type: String,
+            name: String,
+            publisher: String,
+            total_episodes: Integer,
+            type: Spotted::Models::EpisodeListResponse::Episode::Show::type_,
+            uri: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            available_markets: ::Array[String],
+            copyrights: ::Array[Spotted::Models::EpisodeListResponse::Episode::Show::Copyright],
+            description: String,
+            explicit: bool,
+            external_urls: Spotted::Models::EpisodeListResponse::Episode::Show::ExternalURLs,
+            href: String,
+            html_description: String,
+            images: ::Array[Spotted::Models::EpisodeListResponse::Episode::Show::Image],
+            is_externally_hosted: bool,
+            languages: ::Array[String],
+            media_type: String,
+            name: String,
+            publisher: String,
+            total_episodes: Integer,
+            type: Spotted::Models::EpisodeListResponse::Episode::Show::type_,
+            uri: String
+          }
+
+          type copyright = { text: String, type: String }
+
+          class Copyright < Spotted::Internal::Type::BaseModel
+            attr_reader text: String?
+
+            def text=: (String) -> String
+
+            attr_reader type: String?
+
+            def type=: (String) -> String
+
+            def initialize: (?text: String, ?type: String) -> void
+
+            def to_hash: -> { text: String, type: String }
+          end
+
+          type external_urls = { spotify: String }
+
+          class ExternalURLs < Spotted::Internal::Type::BaseModel
+            attr_reader spotify: String?
+
+            def spotify=: (String) -> String
+
+            def initialize: (?spotify: String) -> void
+
+            def to_hash: -> { spotify: String }
+          end
+
+          type image = { height: Integer?, url: String, width: Integer? }
+
+          class Image < Spotted::Internal::Type::BaseModel
+            attr_accessor height: Integer?
+
+            attr_accessor url: String
+
+            attr_accessor width: Integer?
+
+            def initialize: (
+              height: Integer?,
+              url: String,
+              width: Integer?
+            ) -> void
+
+            def to_hash: -> { height: Integer?, url: String, width: Integer? }
+          end
+
+          type type_ = :show
+
+          module Type
+            extend Spotted::Internal::Type::Enum
+
+            SHOW: :show
+
+            def self?.values: -> ::Array[Spotted::Models::EpisodeListResponse::Episode::Show::type_]
+          end
+        end
+
+        type type_ = :episode
+
+        module Type
+          extend Spotted::Internal::Type::Enum
+
+          EPISODE: :episode
+
+          def self?.values: -> ::Array[Spotted::Models::EpisodeListResponse::Episode::type_]
+        end
+
+        type restrictions = { reason: String }
+
+        class Restrictions < Spotted::Internal::Type::BaseModel
+          attr_reader reason: String?
+
+          def reason=: (String) -> String
+
+          def initialize: (?reason: String) -> void
+
+          def to_hash: -> { reason: String }
+        end
+
+        type resume_point = { fully_played: bool, resume_position_ms: Integer }
+
+        class ResumePoint < Spotted::Internal::Type::BaseModel
+          attr_reader fully_played: bool?
+
+          def fully_played=: (bool) -> bool
+
+          attr_reader resume_position_ms: Integer?
+
+          def resume_position_ms=: (Integer) -> Integer
+
+          def initialize: (
+            ?fully_played: bool,
+            ?resume_position_ms: Integer
+          ) -> void
+
+          def to_hash: -> { fully_played: bool, resume_position_ms: Integer }
+        end
+      end
+    end
+  end
+end

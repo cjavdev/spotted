@@ -1,0 +1,25 @@
+module Spotted
+  module Resources
+    class Users
+      class Playlists
+        def create: (
+          String user_id,
+          name: String,
+          ?collaborative: bool,
+          ?description: String,
+          ?public: bool,
+          ?request_options: Spotted::request_opts
+        ) -> Spotted::Models::Users::PlaylistCreateResponse
+
+        def list: (
+          String user_id,
+          ?limit: Integer,
+          ?offset: Integer,
+          ?request_options: Spotted::request_opts
+        ) -> Spotted::Models::Users::PlaylistListResponse
+
+        def initialize: (client: Spotted::Client) -> void
+      end
+    end
+  end
+end

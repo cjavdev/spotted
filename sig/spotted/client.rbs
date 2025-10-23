@@ -1,0 +1,56 @@
+module Spotted
+  class Client < Spotted::Internal::Transport::BaseClient
+    DEFAULT_MAX_RETRIES: 2
+
+    DEFAULT_TIMEOUT_IN_SECONDS: Float
+
+    DEFAULT_INITIAL_RETRY_DELAY: Float
+
+    DEFAULT_MAX_RETRY_DELAY: Float
+
+    attr_reader api_key: String?
+
+    attr_reader albums: Spotted::Resources::Albums
+
+    attr_reader artists: Spotted::Resources::Artists
+
+    attr_reader shows: Spotted::Resources::Shows
+
+    attr_reader episodes: Spotted::Resources::Episodes
+
+    attr_reader audiobooks: Spotted::Resources::Audiobooks
+
+    attr_reader me: Spotted::Resources::Me
+
+    attr_reader chapters: Spotted::Resources::Chapters
+
+    attr_reader tracks: Spotted::Resources::Tracks
+
+    attr_reader search: Spotted::Resources::Search
+
+    attr_reader playlists: Spotted::Resources::Playlists
+
+    attr_reader users: Spotted::Resources::Users
+
+    attr_reader browse: Spotted::Resources::Browse
+
+    attr_reader audio_features: Spotted::Resources::AudioFeatures
+
+    attr_reader audio_analysis: Spotted::Resources::AudioAnalysis
+
+    attr_reader recommendations: Spotted::Resources::Recommendations
+
+    attr_reader markets: Spotted::Resources::Markets
+
+    private def auth_headers: -> ::Hash[String, String]
+
+    def initialize: (
+      ?api_key: String?,
+      ?base_url: String?,
+      ?max_retries: Integer,
+      ?timeout: Float,
+      ?initial_retry_delay: Float,
+      ?max_retry_delay: Float
+    ) -> void
+  end
+end

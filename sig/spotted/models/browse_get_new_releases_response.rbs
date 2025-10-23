@@ -1,0 +1,328 @@
+module Spotted
+  module Models
+    type browse_get_new_releases_response =
+      { albums: Spotted::Models::BrowseGetNewReleasesResponse::Albums }
+
+    class BrowseGetNewReleasesResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor albums: Spotted::Models::BrowseGetNewReleasesResponse::Albums
+
+      def initialize: (
+        albums: Spotted::Models::BrowseGetNewReleasesResponse::Albums
+      ) -> void
+
+      def to_hash: -> {
+        albums: Spotted::Models::BrowseGetNewReleasesResponse::Albums
+      }
+
+      type albums =
+        {
+          href: String,
+          items: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item],
+          limit: Integer,
+          next_: String?,
+          offset: Integer,
+          previous: String?,
+          total: Integer
+        }
+
+      class Albums < Spotted::Internal::Type::BaseModel
+        attr_accessor href: String
+
+        attr_accessor items: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item]
+
+        attr_accessor limit: Integer
+
+        attr_accessor next_: String?
+
+        attr_accessor offset: Integer
+
+        attr_accessor previous: String?
+
+        attr_accessor total: Integer
+
+        def initialize: (
+          href: String,
+          items: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item],
+          limit: Integer,
+          next_: String?,
+          offset: Integer,
+          previous: String?,
+          total: Integer
+        ) -> void
+
+        def to_hash: -> {
+          href: String,
+          items: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item],
+          limit: Integer,
+          next_: String?,
+          offset: Integer,
+          previous: String?,
+          total: Integer
+        }
+
+        type item =
+          {
+            id: String,
+            album_type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::album_type,
+            artists: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist],
+            available_markets: ::Array[String],
+            external_urls: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::ExternalURLs,
+            href: String,
+            images: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Image],
+            name: String,
+            release_date: String,
+            release_date_precision: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::release_date_precision,
+            total_tracks: Integer,
+            type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::type_,
+            uri: String,
+            restrictions: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions
+          }
+
+        class Item < Spotted::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor album_type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::album_type
+
+          attr_accessor artists: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist]
+
+          attr_accessor available_markets: ::Array[String]
+
+          attr_accessor external_urls: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::ExternalURLs
+
+          attr_accessor href: String
+
+          attr_accessor images: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Image]
+
+          attr_accessor name: String
+
+          attr_accessor release_date: String
+
+          attr_accessor release_date_precision: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::release_date_precision
+
+          attr_accessor total_tracks: Integer
+
+          attr_accessor type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::type_
+
+          attr_accessor uri: String
+
+          attr_reader restrictions: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions?
+
+          def restrictions=: (
+            Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions
+          ) -> Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions
+
+          def initialize: (
+            id: String,
+            album_type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::album_type,
+            artists: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist],
+            available_markets: ::Array[String],
+            external_urls: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::ExternalURLs,
+            href: String,
+            images: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Image],
+            name: String,
+            release_date: String,
+            release_date_precision: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::release_date_precision,
+            total_tracks: Integer,
+            type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::type_,
+            uri: String,
+            ?restrictions: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            album_type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::album_type,
+            artists: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist],
+            available_markets: ::Array[String],
+            external_urls: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::ExternalURLs,
+            href: String,
+            images: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Image],
+            name: String,
+            release_date: String,
+            release_date_precision: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::release_date_precision,
+            total_tracks: Integer,
+            type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::type_,
+            uri: String,
+            restrictions: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions
+          }
+
+          type album_type = :album | :single | :compilation
+
+          module AlbumType
+            extend Spotted::Internal::Type::Enum
+
+            ALBUM: :album
+            SINGLE: :single
+            COMPILATION: :compilation
+
+            def self?.values: -> ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::album_type]
+          end
+
+          type artist =
+            {
+              id: String,
+              external_urls: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::ExternalURLs,
+              href: String,
+              name: String,
+              type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::type_,
+              uri: String
+            }
+
+          class Artist < Spotted::Internal::Type::BaseModel
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader external_urls: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::ExternalURLs?
+
+            def external_urls=: (
+              Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::ExternalURLs
+            ) -> Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::ExternalURLs
+
+            attr_reader href: String?
+
+            def href=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::type_?
+
+            def type=: (
+              Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::type_
+            ) -> Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::type_
+
+            attr_reader uri: String?
+
+            def uri=: (String) -> String
+
+            def initialize: (
+              ?id: String,
+              ?external_urls: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::ExternalURLs,
+              ?href: String,
+              ?name: String,
+              ?type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::type_,
+              ?uri: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              external_urls: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::ExternalURLs,
+              href: String,
+              name: String,
+              type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::type_,
+              uri: String
+            }
+
+            type external_urls = { spotify: String }
+
+            class ExternalURLs < Spotted::Internal::Type::BaseModel
+              attr_reader spotify: String?
+
+              def spotify=: (String) -> String
+
+              def initialize: (?spotify: String) -> void
+
+              def to_hash: -> { spotify: String }
+            end
+
+            type type_ = :artist
+
+            module Type
+              extend Spotted::Internal::Type::Enum
+
+              ARTIST: :artist
+
+              def self?.values: -> ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Artist::type_]
+            end
+          end
+
+          type external_urls = { spotify: String }
+
+          class ExternalURLs < Spotted::Internal::Type::BaseModel
+            attr_reader spotify: String?
+
+            def spotify=: (String) -> String
+
+            def initialize: (?spotify: String) -> void
+
+            def to_hash: -> { spotify: String }
+          end
+
+          type image = { height: Integer?, url: String, width: Integer? }
+
+          class Image < Spotted::Internal::Type::BaseModel
+            attr_accessor height: Integer?
+
+            attr_accessor url: String
+
+            attr_accessor width: Integer?
+
+            def initialize: (
+              height: Integer?,
+              url: String,
+              width: Integer?
+            ) -> void
+
+            def to_hash: -> { height: Integer?, url: String, width: Integer? }
+          end
+
+          type release_date_precision = :year | :month | :day
+
+          module ReleaseDatePrecision
+            extend Spotted::Internal::Type::Enum
+
+            YEAR: :year
+            MONTH: :month
+            DAY: :day
+
+            def self?.values: -> ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::release_date_precision]
+          end
+
+          type type_ = :album
+
+          module Type
+            extend Spotted::Internal::Type::Enum
+
+            ALBUM: :album
+
+            def self?.values: -> ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::type_]
+          end
+
+          type restrictions =
+            {
+              reason: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions::reason
+            }
+
+          class Restrictions < Spotted::Internal::Type::BaseModel
+            attr_reader reason: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions::reason?
+
+            def reason=: (
+              Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions::reason
+            ) -> Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions::reason
+
+            def initialize: (
+              ?reason: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions::reason
+            ) -> void
+
+            def to_hash: -> {
+              reason: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions::reason
+            }
+
+            type reason = :market | :product | :explicit
+
+            module Reason
+              extend Spotted::Internal::Type::Enum
+
+              MARKET: :market
+              PRODUCT: :product
+              EXPLICIT: :explicit
+
+              def self?.values: -> ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::Restrictions::reason]
+            end
+          end
+        end
+      end
+    end
+  end
+end

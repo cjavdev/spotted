@@ -1,0 +1,17 @@
+module Spotted
+  module Models
+    module Me
+      type player_get_devices_params =
+        {  } & Spotted::Internal::Type::request_parameters
+
+      class PlayerGetDevicesParams < Spotted::Internal::Type::BaseModel
+        extend Spotted::Internal::Type::RequestParameters::Converter
+        include Spotted::Internal::Type::RequestParameters
+
+        def initialize: (?request_options: Spotted::request_opts) -> void
+
+        def to_hash: -> { request_options: Spotted::RequestOptions }
+      end
+    end
+  end
+end
