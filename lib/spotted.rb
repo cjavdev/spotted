@@ -3,6 +3,7 @@
 # Standard libraries.
 # rubocop:disable Lint/RedundantRequireStatement
 require "English"
+require "base64"
 require "cgi"
 require "date"
 require "erb"
@@ -14,6 +15,7 @@ require "rbconfig"
 require "securerandom"
 require "set"
 require "stringio"
+require "thread"
 require "time"
 require "uri"
 # rubocop:enable Lint/RedundantRequireStatement
@@ -50,6 +52,7 @@ require_relative "spotted/errors"
 require_relative "spotted/internal/transport/base_client"
 require_relative "spotted/internal/transport/pooled_net_requester"
 require_relative "spotted/client"
+require_relative "spotted/internal/oauth2"
 require_relative "spotted/internal/cursor_url_page"
 require_relative "spotted/models/playlist_user_object"
 require_relative "spotted/models/album_restriction_object"

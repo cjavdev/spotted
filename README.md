@@ -24,7 +24,10 @@ gem "spotted", "~> 0.0.1"
 require "bundler/setup"
 require "spotted"
 
-spotted = Spotted::Client.new
+spotted = Spotted::Client.new(
+  client_id: ENV["SPOTIFY_CLIENT_ID"], # This is the default and can be omitted
+  client_secret: ENV["SPOTIFY_CLIENT_SECRET"] # This is the default and can be omitted
+)
 
 album = spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
 
