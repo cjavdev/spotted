@@ -36,7 +36,7 @@ module Spotted
 
       return {} unless @client_id && @client_secret
 
-      path = Spotted::Internal::Util.interpolate_path("https://accounts.spotify.com/api/token?grant_type=client_credentials")
+      path = Spotted::Internal::Util.interpolate_path("https://accounts.spotify.com/api/token")
       token_url = Spotted::Internal::Util.join_parsed_uri(
         @base_url_components,
         {
