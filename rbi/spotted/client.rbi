@@ -21,7 +21,7 @@ module Spotted
 
     # @api private
     sig { returns(Spotted::Internal::OAuth2ClientCredentials) }
-    attr_reader :o_auth2_state
+    attr_reader :oauth_2_0_state
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }
