@@ -15,7 +15,7 @@ module Spotted
     attr_reader albums: Spotted::Resources::Albums
 
     # @api private
-    attr_reader o_auth2_state: Spotted::Internal::OAuth2ClientCredentials
+    attr_reader oauth_2_0_state: Spotted::Internal::OAuth2ClientCredentials
 
     private def auth_headers: -> ::Hash[String, String]
 

@@ -26,13 +26,13 @@ module Spotted
 
     # @api private
     # @return [Spotted::Internal::OAuth2ClientCredentials]
-    attr_reader :o_auth2_state
+    attr_reader :oauth_2_0_state
 
     # @api private
     #
     # @return [Hash{String=>String}]
     private def auth_headers
-      return @o_auth2_state.auth_headers if @o_auth2_state
+      return @oauth_2_0_state.auth_headers if @oauth_2_0_state
 
       return {} unless @client_id && @client_secret
 
@@ -45,14 +45,14 @@ module Spotted
         }
       )
 
-      @o_auth2_state = Spotted::Internal::OAuth2ClientCredentials.new(
+      @oauth_2_0_state = Spotted::Internal::OAuth2ClientCredentials.new(
         token_url: token_url.to_s,
         client_id: @client_id,
         client_secret: @client_secret,
         timeout: @timeout,
         client: self
       )
-      @o_auth2_state.auth_headers
+      @oauth_2_0_state.auth_headers
     end
 
     # Creates and returns a new client for interacting with the API.
