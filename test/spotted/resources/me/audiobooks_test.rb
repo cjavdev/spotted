@@ -52,9 +52,9 @@ class Spotted::Test::Resources::Me::AudiobooksTest < Spotted::Test::ResourceTest
   def test_save_required_params
     skip("Prism tests are disabled")
 
+    # Ignore Layout/LineLength
     response =
       @spotted.me.audiobooks.save(ids: "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe")
-
     assert_pattern do
       response => nil
     end
