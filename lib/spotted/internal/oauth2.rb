@@ -57,11 +57,13 @@ module Spotted
       #
       # @return [Object]
       private def fetch_token
-        body = URI.encode_www_form({
-          grant_type: "client_credentials",
-          client_id: @client_id,
-          client_secret: @client_secret
-        })
+        body = URI.encode_www_form(
+          {
+            grant_type: "client_credentials",
+            client_id: @client_id,
+            client_secret: @client_secret
+          }
+        )
         request = {
           method: :post,
           url: URI(@token_url),
