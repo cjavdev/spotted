@@ -22,7 +22,7 @@ class Spotted::Test::Resources::Me::ShowsTest < Spotted::Test::ResourceTest
     assert_pattern do
       row => {
         added_at: Time | nil,
-        show: Spotted::Models::Me::ShowListResponse::Show | nil
+        show: Spotted::ShowBase | nil
       }
     end
   end

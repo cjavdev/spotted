@@ -21,6 +21,8 @@ module Spotted
 
   class AudioAnalysisRetrieveParams = Spotted::Models::AudioAnalysisRetrieveParams
 
+  class AudiobookBase = Spotted::Models::AudiobookBase
+
   class AudiobookListChaptersParams = Spotted::Models::AudiobookListChaptersParams
 
   class AudiobookListParams = Spotted::Models::AudiobookListParams
@@ -94,6 +96,8 @@ module Spotted
   class ResumePointObject = Spotted::Models::ResumePointObject
 
   class SearchRetrieveParams = Spotted::Models::SearchRetrieveParams
+
+  class ShowBase = Spotted::Models::ShowBase
 
   class ShowListEpisodesParams = Spotted::Models::ShowListEpisodesParams
 

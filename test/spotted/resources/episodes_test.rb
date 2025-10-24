@@ -29,7 +29,7 @@ class Spotted::Test::Resources::EpisodesTest < Spotted::Test::ResourceTest
         name: String,
         release_date: String,
         release_date_precision: Spotted::EpisodeObject::ReleaseDatePrecision,
-        show: Spotted::EpisodeObject::Show,
+        show: Spotted::ShowBase,
         type: Spotted::EpisodeObject::Type,
         uri: String,
         language: String | nil,
