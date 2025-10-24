@@ -1,0 +1,11 @@
+module Spotted
+  module Resources
+    class Markets
+      def list: (
+        ?request_options: Spotted::request_opts
+      ) -> Spotted::Models::MarketListResponse
+
+      def initialize: (client: Spotted::Client) -> void
+    end
+  end
+end

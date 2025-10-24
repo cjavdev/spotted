@@ -1,0 +1,79 @@
+module Spotted
+  module Models
+    type recommendation_get_response =
+      {
+        seeds: ::Array[Spotted::Models::RecommendationGetResponse::Seed],
+        tracks: ::Array[Spotted::TrackObject]
+      }
+
+    class RecommendationGetResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor seeds: ::Array[Spotted::Models::RecommendationGetResponse::Seed]
+
+      attr_accessor tracks: ::Array[Spotted::TrackObject]
+
+      def initialize: (
+        seeds: ::Array[Spotted::Models::RecommendationGetResponse::Seed],
+        tracks: ::Array[Spotted::TrackObject]
+      ) -> void
+
+      def to_hash: -> {
+        seeds: ::Array[Spotted::Models::RecommendationGetResponse::Seed],
+        tracks: ::Array[Spotted::TrackObject]
+      }
+
+      type seed =
+        {
+          id: String,
+          after_filtering_size: Integer,
+          after_relinking_size: Integer,
+          href: String,
+          initial_pool_size: Integer,
+          type: String
+        }
+
+      class Seed < Spotted::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader after_filtering_size: Integer?
+
+        def after_filtering_size=: (Integer) -> Integer
+
+        attr_reader after_relinking_size: Integer?
+
+        def after_relinking_size=: (Integer) -> Integer
+
+        attr_reader href: String?
+
+        def href=: (String) -> String
+
+        attr_reader initial_pool_size: Integer?
+
+        def initial_pool_size=: (Integer) -> Integer
+
+        attr_reader type: String?
+
+        def type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?after_filtering_size: Integer,
+          ?after_relinking_size: Integer,
+          ?href: String,
+          ?initial_pool_size: Integer,
+          ?type: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          after_filtering_size: Integer,
+          after_relinking_size: Integer,
+          href: String,
+          initial_pool_size: Integer,
+          type: String
+        }
+      end
+    end
+  end
+end

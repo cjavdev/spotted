@@ -14,7 +14,7 @@ module Spotted
         href: String,
         is_local: bool,
         is_playable: bool,
-        linked_from: top,
+        linked_from: Spotted::LinkedTrackObject,
         name: String,
         popularity: Integer,
         preview_url: String?,
@@ -79,9 +79,11 @@ module Spotted
 
       def is_playable=: (bool) -> bool
 
-      attr_reader linked_from: top?
+      attr_reader linked_from: Spotted::LinkedTrackObject?
 
-      def linked_from=: (top) -> top
+      def linked_from=: (
+        Spotted::LinkedTrackObject
+      ) -> Spotted::LinkedTrackObject
 
       attr_reader name: String?
 
@@ -126,7 +128,7 @@ module Spotted
         ?href: String,
         ?is_local: bool,
         ?is_playable: bool,
-        ?linked_from: top,
+        ?linked_from: Spotted::LinkedTrackObject,
         ?name: String,
         ?popularity: Integer,
         ?preview_url: String?,
@@ -149,7 +151,7 @@ module Spotted
         href: String,
         is_local: bool,
         is_playable: bool,
-        linked_from: top,
+        linked_from: Spotted::LinkedTrackObject,
         name: String,
         popularity: Integer,
         preview_url: String?,

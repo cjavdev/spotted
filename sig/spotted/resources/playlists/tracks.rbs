@@ -1,0 +1,43 @@
+module Spotted
+  module Resources
+    class Playlists
+      class Tracks
+        def update: (
+          String playlist_id,
+          ?body_uris: ::Array[String],
+          ?insert_before: Integer,
+          ?range_length: Integer,
+          ?range_start: Integer,
+          ?snapshot_id: String,
+          ?request_options: Spotted::request_opts
+        ) -> Spotted::Models::Playlists::TrackUpdateResponse
+
+        def list: (
+          String playlist_id,
+          ?additional_types: String,
+          ?fields: String,
+          ?limit: Integer,
+          ?market: String,
+          ?offset: Integer,
+          ?request_options: Spotted::request_opts
+        ) -> Spotted::Internal::CursorURLPage[Spotted::PlaylistTrackObject]
+
+        def add: (
+          String playlist_id,
+          ?body_position: Integer,
+          ?body_uris: ::Array[String],
+          ?request_options: Spotted::request_opts
+        ) -> Spotted::Models::Playlists::TrackAddResponse
+
+        def remove: (
+          String playlist_id,
+          tracks: ::Array[Spotted::Playlists::TrackRemoveParams::Track],
+          ?snapshot_id: String,
+          ?request_options: Spotted::request_opts
+        ) -> Spotted::Models::Playlists::TrackRemoveResponse
+
+        def initialize: (client: Spotted::Client) -> void
+      end
+    end
+  end
+end

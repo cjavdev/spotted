@@ -1,0 +1,153 @@
+module Spotted
+  module Models
+    type audio_feature_retrieve_response =
+      {
+        id: String,
+        acousticness: Float,
+        analysis_url: String,
+        danceability: Float,
+        duration_ms: Integer,
+        energy: Float,
+        instrumentalness: Float,
+        key: Integer,
+        liveness: Float,
+        loudness: Float,
+        mode: Integer,
+        speechiness: Float,
+        tempo: Float,
+        time_signature: Integer,
+        track_href: String,
+        type: Spotted::Models::AudioFeatureRetrieveResponse::type_,
+        uri: String,
+        valence: Float
+      }
+
+    class AudioFeatureRetrieveResponse < Spotted::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader acousticness: Float?
+
+      def acousticness=: (Float) -> Float
+
+      attr_reader analysis_url: String?
+
+      def analysis_url=: (String) -> String
+
+      attr_reader danceability: Float?
+
+      def danceability=: (Float) -> Float
+
+      attr_reader duration_ms: Integer?
+
+      def duration_ms=: (Integer) -> Integer
+
+      attr_reader energy: Float?
+
+      def energy=: (Float) -> Float
+
+      attr_reader instrumentalness: Float?
+
+      def instrumentalness=: (Float) -> Float
+
+      attr_reader key: Integer?
+
+      def key=: (Integer) -> Integer
+
+      attr_reader liveness: Float?
+
+      def liveness=: (Float) -> Float
+
+      attr_reader loudness: Float?
+
+      def loudness=: (Float) -> Float
+
+      attr_reader mode: Integer?
+
+      def mode=: (Integer) -> Integer
+
+      attr_reader speechiness: Float?
+
+      def speechiness=: (Float) -> Float
+
+      attr_reader tempo: Float?
+
+      def tempo=: (Float) -> Float
+
+      attr_reader time_signature: Integer?
+
+      def time_signature=: (Integer) -> Integer
+
+      attr_reader track_href: String?
+
+      def track_href=: (String) -> String
+
+      attr_reader type: Spotted::Models::AudioFeatureRetrieveResponse::type_?
+
+      def type=: (
+        Spotted::Models::AudioFeatureRetrieveResponse::type_
+      ) -> Spotted::Models::AudioFeatureRetrieveResponse::type_
+
+      attr_reader uri: String?
+
+      def uri=: (String) -> String
+
+      attr_reader valence: Float?
+
+      def valence=: (Float) -> Float
+
+      def initialize: (
+        ?id: String,
+        ?acousticness: Float,
+        ?analysis_url: String,
+        ?danceability: Float,
+        ?duration_ms: Integer,
+        ?energy: Float,
+        ?instrumentalness: Float,
+        ?key: Integer,
+        ?liveness: Float,
+        ?loudness: Float,
+        ?mode: Integer,
+        ?speechiness: Float,
+        ?tempo: Float,
+        ?time_signature: Integer,
+        ?track_href: String,
+        ?type: Spotted::Models::AudioFeatureRetrieveResponse::type_,
+        ?uri: String,
+        ?valence: Float
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        acousticness: Float,
+        analysis_url: String,
+        danceability: Float,
+        duration_ms: Integer,
+        energy: Float,
+        instrumentalness: Float,
+        key: Integer,
+        liveness: Float,
+        loudness: Float,
+        mode: Integer,
+        speechiness: Float,
+        tempo: Float,
+        time_signature: Integer,
+        track_href: String,
+        type: Spotted::Models::AudioFeatureRetrieveResponse::type_,
+        uri: String,
+        valence: Float
+      }
+
+      type type_ = :audio_features
+
+      module Type
+        extend Spotted::Internal::Type::Enum
+
+        AUDIO_FEATURES: :audio_features
+
+        def self?.values: -> ::Array[Spotted::Models::AudioFeatureRetrieveResponse::type_]
+      end
+    end
+  end
+end

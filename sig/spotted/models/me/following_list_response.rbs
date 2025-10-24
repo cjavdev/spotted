@@ -1,0 +1,94 @@
+module Spotted
+  module Models
+    module Me
+      type following_list_response =
+        { artists: Spotted::Models::Me::FollowingListResponse::Artists }
+
+      class FollowingListResponse < Spotted::Internal::Type::BaseModel
+        attr_accessor artists: Spotted::Models::Me::FollowingListResponse::Artists
+
+        def initialize: (
+          artists: Spotted::Models::Me::FollowingListResponse::Artists
+        ) -> void
+
+        def to_hash: -> {
+          artists: Spotted::Models::Me::FollowingListResponse::Artists
+        }
+
+        type artists =
+          {
+            cursors: Spotted::Models::Me::FollowingListResponse::Artists::Cursors,
+            href: String,
+            items: ::Array[Spotted::ArtistObject],
+            limit: Integer,
+            next_: String,
+            total: Integer
+          }
+
+        class Artists < Spotted::Internal::Type::BaseModel
+          attr_reader cursors: Spotted::Models::Me::FollowingListResponse::Artists::Cursors?
+
+          def cursors=: (
+            Spotted::Models::Me::FollowingListResponse::Artists::Cursors
+          ) -> Spotted::Models::Me::FollowingListResponse::Artists::Cursors
+
+          attr_reader href: String?
+
+          def href=: (String) -> String
+
+          attr_reader items: ::Array[Spotted::ArtistObject]?
+
+          def items=: (
+            ::Array[Spotted::ArtistObject]
+          ) -> ::Array[Spotted::ArtistObject]
+
+          attr_reader limit: Integer?
+
+          def limit=: (Integer) -> Integer
+
+          attr_reader next_: String?
+
+          def next_=: (String) -> String
+
+          attr_reader total: Integer?
+
+          def total=: (Integer) -> Integer
+
+          def initialize: (
+            ?cursors: Spotted::Models::Me::FollowingListResponse::Artists::Cursors,
+            ?href: String,
+            ?items: ::Array[Spotted::ArtistObject],
+            ?limit: Integer,
+            ?next_: String,
+            ?total: Integer
+          ) -> void
+
+          def to_hash: -> {
+            cursors: Spotted::Models::Me::FollowingListResponse::Artists::Cursors,
+            href: String,
+            items: ::Array[Spotted::ArtistObject],
+            limit: Integer,
+            next_: String,
+            total: Integer
+          }
+
+          type cursors = { after: String, before: String }
+
+          class Cursors < Spotted::Internal::Type::BaseModel
+            attr_reader after: String?
+
+            def after=: (String) -> String
+
+            attr_reader before: String?
+
+            def before=: (String) -> String
+
+            def initialize: (?after: String, ?before: String) -> void
+
+            def to_hash: -> { after: String, before: String }
+          end
+        end
+      end
+    end
+  end
+end

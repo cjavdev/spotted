@@ -24,6 +24,51 @@ module Spotted
     # @return [Spotted::Resources::Albums]
     attr_reader :albums
 
+    # @return [Spotted::Resources::Artists]
+    attr_reader :artists
+
+    # @return [Spotted::Resources::Shows]
+    attr_reader :shows
+
+    # @return [Spotted::Resources::Episodes]
+    attr_reader :episodes
+
+    # @return [Spotted::Resources::Audiobooks]
+    attr_reader :audiobooks
+
+    # @return [Spotted::Resources::Me]
+    attr_reader :me
+
+    # @return [Spotted::Resources::Chapters]
+    attr_reader :chapters
+
+    # @return [Spotted::Resources::Tracks]
+    attr_reader :tracks
+
+    # @return [Spotted::Resources::Search]
+    attr_reader :search
+
+    # @return [Spotted::Resources::Playlists]
+    attr_reader :playlists
+
+    # @return [Spotted::Resources::Users]
+    attr_reader :users
+
+    # @return [Spotted::Resources::Browse]
+    attr_reader :browse
+
+    # @return [Spotted::Resources::AudioFeatures]
+    attr_reader :audio_features
+
+    # @return [Spotted::Resources::AudioAnalysis]
+    attr_reader :audio_analysis
+
+    # @return [Spotted::Resources::Recommendations]
+    attr_reader :recommendations
+
+    # @return [Spotted::Resources::Markets]
+    attr_reader :markets
+
     # @api private
     # @return [Spotted::Internal::OAuth2ClientCredentials]
     attr_reader :oauth_2_0_state
@@ -101,6 +146,21 @@ module Spotted
       )
 
       @albums = Spotted::Resources::Albums.new(client: self)
+      @artists = Spotted::Resources::Artists.new(client: self)
+      @shows = Spotted::Resources::Shows.new(client: self)
+      @episodes = Spotted::Resources::Episodes.new(client: self)
+      @audiobooks = Spotted::Resources::Audiobooks.new(client: self)
+      @me = Spotted::Resources::Me.new(client: self)
+      @chapters = Spotted::Resources::Chapters.new(client: self)
+      @tracks = Spotted::Resources::Tracks.new(client: self)
+      @search = Spotted::Resources::Search.new(client: self)
+      @playlists = Spotted::Resources::Playlists.new(client: self)
+      @users = Spotted::Resources::Users.new(client: self)
+      @browse = Spotted::Resources::Browse.new(client: self)
+      @audio_features = Spotted::Resources::AudioFeatures.new(client: self)
+      @audio_analysis = Spotted::Resources::AudioAnalysis.new(client: self)
+      @recommendations = Spotted::Resources::Recommendations.new(client: self)
+      @markets = Spotted::Resources::Markets.new(client: self)
     end
   end
 end

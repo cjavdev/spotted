@@ -1,0 +1,29 @@
+module Spotted
+  module Resources
+    class Me
+      attr_reader audiobooks: Spotted::Resources::Me::Audiobooks
+
+      attr_reader playlists: Spotted::Resources::Me::Playlists
+
+      attr_reader top: Spotted::Resources::Me::Top
+
+      attr_reader albums: Spotted::Resources::Me::Albums
+
+      attr_reader tracks: Spotted::Resources::Me::Tracks
+
+      attr_reader episodes: Spotted::Resources::Me::Episodes
+
+      attr_reader shows: Spotted::Resources::Me::Shows
+
+      attr_reader following: Spotted::Resources::Me::Following
+
+      attr_reader player: Spotted::Resources::Me::Player
+
+      def retrieve: (
+        ?request_options: Spotted::request_opts
+      ) -> Spotted::Models::MeRetrieveResponse
+
+      def initialize: (client: Spotted::Client) -> void
+    end
+  end
+end

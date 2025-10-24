@@ -1,0 +1,14 @@
+module Spotted
+  module Models
+    type artist_list_related_artists_response =
+      { artists: ::Array[Spotted::ArtistObject] }
+
+    class ArtistListRelatedArtistsResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor artists: ::Array[Spotted::ArtistObject]
+
+      def initialize: (artists: ::Array[Spotted::ArtistObject]) -> void
+
+      def to_hash: -> { artists: ::Array[Spotted::ArtistObject] }
+    end
+  end
+end

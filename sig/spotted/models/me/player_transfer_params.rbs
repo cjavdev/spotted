@@ -1,0 +1,32 @@
+module Spotted
+  module Models
+    module Me
+      type player_transfer_params =
+        { device_ids: ::Array[String], play: bool }
+        & Spotted::Internal::Type::request_parameters
+
+      class PlayerTransferParams < Spotted::Internal::Type::BaseModel
+        extend Spotted::Internal::Type::RequestParameters::Converter
+        include Spotted::Internal::Type::RequestParameters
+
+        attr_accessor device_ids: ::Array[String]
+
+        attr_reader play: bool?
+
+        def play=: (bool) -> bool
+
+        def initialize: (
+          device_ids: ::Array[String],
+          ?play: bool,
+          ?request_options: Spotted::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          device_ids: ::Array[String],
+          play: bool,
+          request_options: Spotted::RequestOptions
+        }
+      end
+    end
+  end
+end

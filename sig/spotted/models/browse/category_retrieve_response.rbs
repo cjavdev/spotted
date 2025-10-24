@@ -1,0 +1,37 @@
+module Spotted
+  module Models
+    module Browse
+      type category_retrieve_response =
+        {
+          id: String,
+          href: String,
+          icons: ::Array[Spotted::ImageObject],
+          name: String
+        }
+
+      class CategoryRetrieveResponse < Spotted::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor href: String
+
+        attr_accessor icons: ::Array[Spotted::ImageObject]
+
+        attr_accessor name: String
+
+        def initialize: (
+          id: String,
+          href: String,
+          icons: ::Array[Spotted::ImageObject],
+          name: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          href: String,
+          icons: ::Array[Spotted::ImageObject],
+          name: String
+        }
+      end
+    end
+  end
+end

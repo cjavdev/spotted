@@ -1,0 +1,25 @@
+module Spotted
+  module Models
+    type track_retrieve_params =
+      { market: String } & Spotted::Internal::Type::request_parameters
+
+    class TrackRetrieveParams < Spotted::Internal::Type::BaseModel
+      extend Spotted::Internal::Type::RequestParameters::Converter
+      include Spotted::Internal::Type::RequestParameters
+
+      attr_reader market: String?
+
+      def market=: (String) -> String
+
+      def initialize: (
+        ?market: String,
+        ?request_options: Spotted::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        market: String,
+        request_options: Spotted::RequestOptions
+      }
+    end
+  end
+end

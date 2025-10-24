@@ -76,13 +76,13 @@ module Spotted
       # The precision with which `release_date` value is known.
       sig do
         returns(
-          Spotted::SimplifiedEpisodeObject::ReleaseDatePrecision::OrSymbol
+          Spotted::SimplifiedEpisodeObject::ReleaseDatePrecision::TaggedSymbol
         )
       end
       attr_accessor :release_date_precision
 
       # The object type.
-      sig { returns(Spotted::SimplifiedEpisodeObject::Type::OrSymbol) }
+      sig { returns(Spotted::SimplifiedEpisodeObject::Type::TaggedSymbol) }
       attr_accessor :type
 
       # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -213,8 +213,8 @@ module Spotted
             name: String,
             release_date: String,
             release_date_precision:
-              Spotted::SimplifiedEpisodeObject::ReleaseDatePrecision::OrSymbol,
-            type: Spotted::SimplifiedEpisodeObject::Type::OrSymbol,
+              Spotted::SimplifiedEpisodeObject::ReleaseDatePrecision::TaggedSymbol,
+            type: Spotted::SimplifiedEpisodeObject::Type::TaggedSymbol,
             uri: String,
             language: String,
             restrictions: Spotted::EpisodeRestrictionObject,

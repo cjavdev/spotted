@@ -1,0 +1,22 @@
+module Spotted
+  module Resources
+    class Browse
+      attr_reader categories: Spotted::Resources::Browse::Categories
+
+      def get_featured_playlists: (
+        ?limit: Integer,
+        ?locale: String,
+        ?offset: Integer,
+        ?request_options: Spotted::request_opts
+      ) -> Spotted::Models::BrowseGetFeaturedPlaylistsResponse
+
+      def get_new_releases: (
+        ?limit: Integer,
+        ?offset: Integer,
+        ?request_options: Spotted::request_opts
+      ) -> Spotted::Models::BrowseGetNewReleasesResponse
+
+      def initialize: (client: Spotted::Client) -> void
+    end
+  end
+end

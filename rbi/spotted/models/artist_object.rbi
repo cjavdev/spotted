@@ -69,7 +69,7 @@ module Spotted
       attr_writer :popularity
 
       # The object type.
-      sig { returns(T.nilable(Spotted::ArtistObject::Type::OrSymbol)) }
+      sig { returns(T.nilable(Spotted::ArtistObject::Type::TaggedSymbol)) }
       attr_reader :type
 
       sig { params(type: Spotted::ArtistObject::Type::OrSymbol).void }
@@ -137,7 +137,7 @@ module Spotted
             images: T::Array[Spotted::ImageObject],
             name: String,
             popularity: Integer,
-            type: Spotted::ArtistObject::Type::OrSymbol,
+            type: Spotted::ArtistObject::Type::TaggedSymbol,
             uri: String
           }
         )

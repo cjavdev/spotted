@@ -1,0 +1,27 @@
+module Spotted
+  module Resources
+    class Me
+      class Audiobooks
+        def list: (
+          ?limit: Integer,
+          ?offset: Integer,
+          ?request_options: Spotted::request_opts
+        ) -> Spotted::Internal::CursorURLPage[Spotted::Models::Me::AudiobookListResponse]
+
+        def check: (
+          ids: String,
+          ?request_options: Spotted::request_opts
+        ) -> Spotted::Models::Me::audiobook_check_response
+
+        def remove: (
+          ids: String,
+          ?request_options: Spotted::request_opts
+        ) -> nil
+
+        def save: (ids: String, ?request_options: Spotted::request_opts) -> nil
+
+        def initialize: (client: Spotted::Client) -> void
+      end
+    end
+  end
+end

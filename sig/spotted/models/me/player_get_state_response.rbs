@@ -1,0 +1,181 @@
+module Spotted
+  module Models
+    module Me
+      type player_get_state_response =
+        {
+          actions: Spotted::Models::Me::PlayerGetStateResponse::Actions,
+          context: Spotted::Me::ContextObject,
+          currently_playing_type: String,
+          device: Spotted::Me::DeviceObject,
+          is_playing: bool,
+          item: Spotted::Models::Me::PlayerGetStateResponse::item,
+          progress_ms: Integer,
+          repeat_state: String,
+          shuffle_state: bool,
+          timestamp: Integer
+        }
+
+      class PlayerGetStateResponse < Spotted::Internal::Type::BaseModel
+        attr_reader actions: Spotted::Models::Me::PlayerGetStateResponse::Actions?
+
+        def actions=: (
+          Spotted::Models::Me::PlayerGetStateResponse::Actions
+        ) -> Spotted::Models::Me::PlayerGetStateResponse::Actions
+
+        attr_reader context: Spotted::Me::ContextObject?
+
+        def context=: (Spotted::Me::ContextObject) -> Spotted::Me::ContextObject
+
+        attr_reader currently_playing_type: String?
+
+        def currently_playing_type=: (String) -> String
+
+        attr_reader device: Spotted::Me::DeviceObject?
+
+        def device=: (Spotted::Me::DeviceObject) -> Spotted::Me::DeviceObject
+
+        attr_reader is_playing: bool?
+
+        def is_playing=: (bool) -> bool
+
+        attr_reader item: Spotted::Models::Me::PlayerGetStateResponse::item?
+
+        def item=: (
+          Spotted::Models::Me::PlayerGetStateResponse::item
+        ) -> Spotted::Models::Me::PlayerGetStateResponse::item
+
+        attr_reader progress_ms: Integer?
+
+        def progress_ms=: (Integer) -> Integer
+
+        attr_reader repeat_state: String?
+
+        def repeat_state=: (String) -> String
+
+        attr_reader shuffle_state: bool?
+
+        def shuffle_state=: (bool) -> bool
+
+        attr_reader timestamp: Integer?
+
+        def timestamp=: (Integer) -> Integer
+
+        def initialize: (
+          ?actions: Spotted::Models::Me::PlayerGetStateResponse::Actions,
+          ?context: Spotted::Me::ContextObject,
+          ?currently_playing_type: String,
+          ?device: Spotted::Me::DeviceObject,
+          ?is_playing: bool,
+          ?item: Spotted::Models::Me::PlayerGetStateResponse::item,
+          ?progress_ms: Integer,
+          ?repeat_state: String,
+          ?shuffle_state: bool,
+          ?timestamp: Integer
+        ) -> void
+
+        def to_hash: -> {
+          actions: Spotted::Models::Me::PlayerGetStateResponse::Actions,
+          context: Spotted::Me::ContextObject,
+          currently_playing_type: String,
+          device: Spotted::Me::DeviceObject,
+          is_playing: bool,
+          item: Spotted::Models::Me::PlayerGetStateResponse::item,
+          progress_ms: Integer,
+          repeat_state: String,
+          shuffle_state: bool,
+          timestamp: Integer
+        }
+
+        type actions =
+          {
+            interrupting_playback: bool,
+            pausing: bool,
+            resuming: bool,
+            seeking: bool,
+            skipping_next: bool,
+            skipping_prev: bool,
+            toggling_repeat_context: bool,
+            toggling_repeat_track: bool,
+            toggling_shuffle: bool,
+            transferring_playback: bool
+          }
+
+        class Actions < Spotted::Internal::Type::BaseModel
+          attr_reader interrupting_playback: bool?
+
+          def interrupting_playback=: (bool) -> bool
+
+          attr_reader pausing: bool?
+
+          def pausing=: (bool) -> bool
+
+          attr_reader resuming: bool?
+
+          def resuming=: (bool) -> bool
+
+          attr_reader seeking: bool?
+
+          def seeking=: (bool) -> bool
+
+          attr_reader skipping_next: bool?
+
+          def skipping_next=: (bool) -> bool
+
+          attr_reader skipping_prev: bool?
+
+          def skipping_prev=: (bool) -> bool
+
+          attr_reader toggling_repeat_context: bool?
+
+          def toggling_repeat_context=: (bool) -> bool
+
+          attr_reader toggling_repeat_track: bool?
+
+          def toggling_repeat_track=: (bool) -> bool
+
+          attr_reader toggling_shuffle: bool?
+
+          def toggling_shuffle=: (bool) -> bool
+
+          attr_reader transferring_playback: bool?
+
+          def transferring_playback=: (bool) -> bool
+
+          def initialize: (
+            ?interrupting_playback: bool,
+            ?pausing: bool,
+            ?resuming: bool,
+            ?seeking: bool,
+            ?skipping_next: bool,
+            ?skipping_prev: bool,
+            ?toggling_repeat_context: bool,
+            ?toggling_repeat_track: bool,
+            ?toggling_shuffle: bool,
+            ?transferring_playback: bool
+          ) -> void
+
+          def to_hash: -> {
+            interrupting_playback: bool,
+            pausing: bool,
+            resuming: bool,
+            seeking: bool,
+            skipping_next: bool,
+            skipping_prev: bool,
+            toggling_repeat_context: bool,
+            toggling_repeat_track: bool,
+            toggling_shuffle: bool,
+            transferring_playback: bool
+          }
+        end
+
+        type item = Spotted::TrackObject | Spotted::EpisodeObject
+
+        module Item
+          extend Spotted::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Spotted::Models::Me::PlayerGetStateResponse::item]
+        end
+      end
+    end
+  end
+end

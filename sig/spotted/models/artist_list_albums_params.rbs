@@ -1,0 +1,49 @@
+module Spotted
+  module Models
+    type artist_list_albums_params =
+      {
+        include_groups: String,
+        limit: Integer,
+        market: String,
+        offset: Integer
+      }
+      & Spotted::Internal::Type::request_parameters
+
+    class ArtistListAlbumsParams < Spotted::Internal::Type::BaseModel
+      extend Spotted::Internal::Type::RequestParameters::Converter
+      include Spotted::Internal::Type::RequestParameters
+
+      attr_reader include_groups: String?
+
+      def include_groups=: (String) -> String
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> Integer
+
+      attr_reader market: String?
+
+      def market=: (String) -> String
+
+      attr_reader offset: Integer?
+
+      def offset=: (Integer) -> Integer
+
+      def initialize: (
+        ?include_groups: String,
+        ?limit: Integer,
+        ?market: String,
+        ?offset: Integer,
+        ?request_options: Spotted::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        include_groups: String,
+        limit: Integer,
+        market: String,
+        offset: Integer,
+        request_options: Spotted::RequestOptions
+      }
+    end
+  end
+end
