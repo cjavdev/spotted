@@ -1,0 +1,62 @@
+module Spotted
+  module Resources
+    class Recommendations
+      def get: (
+        ?limit: Integer,
+        ?market: String,
+        ?max_acousticness: Float,
+        ?max_danceability: Float,
+        ?max_duration_ms: Integer,
+        ?max_energy: Float,
+        ?max_instrumentalness: Float,
+        ?max_key: Integer,
+        ?max_liveness: Float,
+        ?max_loudness: Float,
+        ?max_mode: Integer,
+        ?max_popularity: Integer,
+        ?max_speechiness: Float,
+        ?max_tempo: Float,
+        ?max_time_signature: Integer,
+        ?max_valence: Float,
+        ?min_acousticness: Float,
+        ?min_danceability: Float,
+        ?min_duration_ms: Integer,
+        ?min_energy: Float,
+        ?min_instrumentalness: Float,
+        ?min_key: Integer,
+        ?min_liveness: Float,
+        ?min_loudness: Float,
+        ?min_mode: Integer,
+        ?min_popularity: Integer,
+        ?min_speechiness: Float,
+        ?min_tempo: Float,
+        ?min_time_signature: Integer,
+        ?min_valence: Float,
+        ?seed_artists: String,
+        ?seed_genres: String,
+        ?seed_tracks: String,
+        ?target_acousticness: Float,
+        ?target_danceability: Float,
+        ?target_duration_ms: Integer,
+        ?target_energy: Float,
+        ?target_instrumentalness: Float,
+        ?target_key: Integer,
+        ?target_liveness: Float,
+        ?target_loudness: Float,
+        ?target_mode: Integer,
+        ?target_popularity: Integer,
+        ?target_speechiness: Float,
+        ?target_tempo: Float,
+        ?target_time_signature: Integer,
+        ?target_valence: Float,
+        ?request_options: Spotted::request_opts
+      ) -> Spotted::Models::RecommendationGetResponse
+
+      def list_available_genre_seeds: (
+        ?request_options: Spotted::request_opts
+      ) -> Spotted::Models::RecommendationListAvailableGenreSeedsResponse
+
+      def initialize: (client: Spotted::Client) -> void
+    end
+  end
+end

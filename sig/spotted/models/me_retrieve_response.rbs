@@ -1,0 +1,121 @@
+module Spotted
+  module Models
+    type me_retrieve_response =
+      {
+        id: String,
+        country: String,
+        display_name: String,
+        email: String,
+        explicit_content: Spotted::Models::MeRetrieveResponse::ExplicitContent,
+        external_urls: Spotted::ExternalURLObject,
+        followers: Spotted::FollowersObject,
+        href: String,
+        images: ::Array[Spotted::ImageObject],
+        product: String,
+        type: String,
+        uri: String
+      }
+
+    class MeRetrieveResponse < Spotted::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader country: String?
+
+      def country=: (String) -> String
+
+      attr_reader display_name: String?
+
+      def display_name=: (String) -> String
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader explicit_content: Spotted::Models::MeRetrieveResponse::ExplicitContent?
+
+      def explicit_content=: (
+        Spotted::Models::MeRetrieveResponse::ExplicitContent
+      ) -> Spotted::Models::MeRetrieveResponse::ExplicitContent
+
+      attr_reader external_urls: Spotted::ExternalURLObject?
+
+      def external_urls=: (
+        Spotted::ExternalURLObject
+      ) -> Spotted::ExternalURLObject
+
+      attr_reader followers: Spotted::FollowersObject?
+
+      def followers=: (Spotted::FollowersObject) -> Spotted::FollowersObject
+
+      attr_reader href: String?
+
+      def href=: (String) -> String
+
+      attr_reader images: ::Array[Spotted::ImageObject]?
+
+      def images=: (
+        ::Array[Spotted::ImageObject]
+      ) -> ::Array[Spotted::ImageObject]
+
+      attr_reader product: String?
+
+      def product=: (String) -> String
+
+      attr_reader type: String?
+
+      def type=: (String) -> String
+
+      attr_reader uri: String?
+
+      def uri=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?country: String,
+        ?display_name: String,
+        ?email: String,
+        ?explicit_content: Spotted::Models::MeRetrieveResponse::ExplicitContent,
+        ?external_urls: Spotted::ExternalURLObject,
+        ?followers: Spotted::FollowersObject,
+        ?href: String,
+        ?images: ::Array[Spotted::ImageObject],
+        ?product: String,
+        ?type: String,
+        ?uri: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        country: String,
+        display_name: String,
+        email: String,
+        explicit_content: Spotted::Models::MeRetrieveResponse::ExplicitContent,
+        external_urls: Spotted::ExternalURLObject,
+        followers: Spotted::FollowersObject,
+        href: String,
+        images: ::Array[Spotted::ImageObject],
+        product: String,
+        type: String,
+        uri: String
+      }
+
+      type explicit_content = { filter_enabled: bool, filter_locked: bool }
+
+      class ExplicitContent < Spotted::Internal::Type::BaseModel
+        attr_reader filter_enabled: bool?
+
+        def filter_enabled=: (bool) -> bool
+
+        attr_reader filter_locked: bool?
+
+        def filter_locked=: (bool) -> bool
+
+        def initialize: (?filter_enabled: bool, ?filter_locked: bool) -> void
+
+        def to_hash: -> { filter_enabled: bool, filter_locked: bool }
+      end
+    end
+  end
+end

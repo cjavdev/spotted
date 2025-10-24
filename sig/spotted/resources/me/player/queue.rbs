@@ -1,0 +1,21 @@
+module Spotted
+  module Resources
+    class Me
+      class Player
+        class Queue
+          def add: (
+            uri: String,
+            ?device_id: String,
+            ?request_options: Spotted::request_opts
+          ) -> nil
+
+          def get: (
+            ?request_options: Spotted::request_opts
+          ) -> Spotted::Models::Me::Player::QueueGetResponse
+
+          def initialize: (client: Spotted::Client) -> void
+        end
+      end
+    end
+  end
+end

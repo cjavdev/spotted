@@ -1,0 +1,38 @@
+module Spotted
+  module Models
+    module Me
+      type player_list_recently_played_response =
+        {
+          context: Spotted::Me::ContextObject,
+          played_at: Time,
+          track: Spotted::TrackObject
+        }
+
+      class PlayerListRecentlyPlayedResponse < Spotted::Internal::Type::BaseModel
+        attr_reader context: Spotted::Me::ContextObject?
+
+        def context=: (Spotted::Me::ContextObject) -> Spotted::Me::ContextObject
+
+        attr_reader played_at: Time?
+
+        def played_at=: (Time) -> Time
+
+        attr_reader track: Spotted::TrackObject?
+
+        def track=: (Spotted::TrackObject) -> Spotted::TrackObject
+
+        def initialize: (
+          ?context: Spotted::Me::ContextObject,
+          ?played_at: Time,
+          ?track: Spotted::TrackObject
+        ) -> void
+
+        def to_hash: -> {
+          context: Spotted::Me::ContextObject,
+          played_at: Time,
+          track: Spotted::TrackObject
+        }
+      end
+    end
+  end
+end

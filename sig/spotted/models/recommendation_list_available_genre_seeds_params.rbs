@@ -1,0 +1,15 @@
+module Spotted
+  module Models
+    type recommendation_list_available_genre_seeds_params =
+      {  } & Spotted::Internal::Type::request_parameters
+
+    class RecommendationListAvailableGenreSeedsParams < Spotted::Internal::Type::BaseModel
+      extend Spotted::Internal::Type::RequestParameters::Converter
+      include Spotted::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: Spotted::request_opts) -> void
+
+      def to_hash: -> { request_options: Spotted::RequestOptions }
+    end
+  end
+end

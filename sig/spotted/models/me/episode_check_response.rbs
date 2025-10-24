@@ -1,0 +1,9 @@
+module Spotted
+  module Models
+    module Me
+      type episode_check_response = ::Array[bool]
+
+      EpisodeCheckResponse: Spotted::Internal::Type::Converter
+    end
+  end
+end

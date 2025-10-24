@@ -1,0 +1,125 @@
+module Spotted
+  module Models
+    type show_list_response =
+      { shows: ::Array[Spotted::Models::ShowListResponse::Show] }
+
+    class ShowListResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor shows: ::Array[Spotted::Models::ShowListResponse::Show]
+
+      def initialize: (
+        shows: ::Array[Spotted::Models::ShowListResponse::Show]
+      ) -> void
+
+      def to_hash: -> {
+        shows: ::Array[Spotted::Models::ShowListResponse::Show]
+      }
+
+      type show =
+        {
+          id: String,
+          available_markets: ::Array[String],
+          copyrights: ::Array[Spotted::CopyrightObject],
+          description: String,
+          explicit: bool,
+          external_urls: Spotted::ExternalURLObject,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::ImageObject],
+          is_externally_hosted: bool,
+          languages: ::Array[String],
+          media_type: String,
+          name: String,
+          publisher: String,
+          total_episodes: Integer,
+          type: Spotted::Models::ShowListResponse::Show::type_,
+          uri: String
+        }
+
+      class Show < Spotted::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor available_markets: ::Array[String]
+
+        attr_accessor copyrights: ::Array[Spotted::CopyrightObject]
+
+        attr_accessor description: String
+
+        attr_accessor explicit: bool
+
+        attr_accessor external_urls: Spotted::ExternalURLObject
+
+        attr_accessor href: String
+
+        attr_accessor html_description: String
+
+        attr_accessor images: ::Array[Spotted::ImageObject]
+
+        attr_accessor is_externally_hosted: bool
+
+        attr_accessor languages: ::Array[String]
+
+        attr_accessor media_type: String
+
+        attr_accessor name: String
+
+        attr_accessor publisher: String
+
+        attr_accessor total_episodes: Integer
+
+        attr_accessor type: Spotted::Models::ShowListResponse::Show::type_
+
+        attr_accessor uri: String
+
+        def initialize: (
+          id: String,
+          available_markets: ::Array[String],
+          copyrights: ::Array[Spotted::CopyrightObject],
+          description: String,
+          explicit: bool,
+          external_urls: Spotted::ExternalURLObject,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::ImageObject],
+          is_externally_hosted: bool,
+          languages: ::Array[String],
+          media_type: String,
+          name: String,
+          publisher: String,
+          total_episodes: Integer,
+          type: Spotted::Models::ShowListResponse::Show::type_,
+          uri: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          available_markets: ::Array[String],
+          copyrights: ::Array[Spotted::CopyrightObject],
+          description: String,
+          explicit: bool,
+          external_urls: Spotted::ExternalURLObject,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::ImageObject],
+          is_externally_hosted: bool,
+          languages: ::Array[String],
+          media_type: String,
+          name: String,
+          publisher: String,
+          total_episodes: Integer,
+          type: Spotted::Models::ShowListResponse::Show::type_,
+          uri: String
+        }
+
+        type type_ = :show
+
+        module Type
+          extend Spotted::Internal::Type::Enum
+
+          SHOW: :show
+
+          def self?.values: -> ::Array[Spotted::Models::ShowListResponse::Show::type_]
+        end
+      end
+    end
+  end
+end

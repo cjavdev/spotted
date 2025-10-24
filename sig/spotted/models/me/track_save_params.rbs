@@ -1,0 +1,49 @@
+module Spotted
+  module Models
+    module Me
+      type track_save_params =
+        {
+          ids: ::Array[String],
+          timestamped_ids: ::Array[Spotted::Me::TrackSaveParams::TimestampedID]
+        }
+        & Spotted::Internal::Type::request_parameters
+
+      class TrackSaveParams < Spotted::Internal::Type::BaseModel
+        extend Spotted::Internal::Type::RequestParameters::Converter
+        include Spotted::Internal::Type::RequestParameters
+
+        attr_accessor ids: ::Array[String]
+
+        attr_reader timestamped_ids: ::Array[Spotted::Me::TrackSaveParams::TimestampedID]?
+
+        def timestamped_ids=: (
+          ::Array[Spotted::Me::TrackSaveParams::TimestampedID]
+        ) -> ::Array[Spotted::Me::TrackSaveParams::TimestampedID]
+
+        def initialize: (
+          ids: ::Array[String],
+          ?timestamped_ids: ::Array[Spotted::Me::TrackSaveParams::TimestampedID],
+          ?request_options: Spotted::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          ids: ::Array[String],
+          timestamped_ids: ::Array[Spotted::Me::TrackSaveParams::TimestampedID],
+          request_options: Spotted::RequestOptions
+        }
+
+        type timestamped_id = { id: String, added_at: Time }
+
+        class TimestampedID < Spotted::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor added_at: Time
+
+          def initialize: (id: String, added_at: Time) -> void
+
+          def to_hash: -> { id: String, added_at: Time }
+        end
+      end
+    end
+  end
+end

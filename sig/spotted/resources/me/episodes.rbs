@@ -1,0 +1,31 @@
+module Spotted
+  module Resources
+    class Me
+      class Episodes
+        def list: (
+          ?limit: Integer,
+          ?market: String,
+          ?offset: Integer,
+          ?request_options: Spotted::request_opts
+        ) -> Spotted::Internal::CursorURLPage[Spotted::Models::Me::EpisodeListResponse]
+
+        def check: (
+          ids: String,
+          ?request_options: Spotted::request_opts
+        ) -> Spotted::Models::Me::episode_check_response
+
+        def remove: (
+          ?body_ids: ::Array[String],
+          ?request_options: Spotted::request_opts
+        ) -> nil
+
+        def save: (
+          body_ids: ::Array[String],
+          ?request_options: Spotted::request_opts
+        ) -> nil
+
+        def initialize: (client: Spotted::Client) -> void
+      end
+    end
+  end
+end

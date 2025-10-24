@@ -74,7 +74,9 @@ module Spotted
       attr_accessor :release_date
 
       # The precision with which `release_date` value is known.
-      sig { returns(Spotted::EpisodeObject::ReleaseDatePrecision::OrSymbol) }
+      sig do
+        returns(Spotted::EpisodeObject::ReleaseDatePrecision::TaggedSymbol)
+      end
       attr_accessor :release_date_precision
 
       # The show on which the episode belongs.
@@ -85,7 +87,7 @@ module Spotted
       attr_writer :show
 
       # The object type.
-      sig { returns(Spotted::EpisodeObject::Type::OrSymbol) }
+      sig { returns(Spotted::EpisodeObject::Type::TaggedSymbol) }
       attr_accessor :type
 
       # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -219,9 +221,9 @@ module Spotted
             name: String,
             release_date: String,
             release_date_precision:
-              Spotted::EpisodeObject::ReleaseDatePrecision::OrSymbol,
+              Spotted::EpisodeObject::ReleaseDatePrecision::TaggedSymbol,
             show: Spotted::EpisodeObject::Show,
-            type: Spotted::EpisodeObject::Type::OrSymbol,
+            type: Spotted::EpisodeObject::Type::TaggedSymbol,
             uri: String,
             language: String,
             restrictions: Spotted::EpisodeRestrictionObject,
@@ -342,7 +344,7 @@ module Spotted
         attr_accessor :total_episodes
 
         # The object type.
-        sig { returns(Spotted::EpisodeObject::Show::Type::OrSymbol) }
+        sig { returns(Spotted::EpisodeObject::Show::Type::TaggedSymbol) }
         attr_accessor :type
 
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -434,7 +436,7 @@ module Spotted
               name: String,
               publisher: String,
               total_episodes: Integer,
-              type: Spotted::EpisodeObject::Show::Type::OrSymbol,
+              type: Spotted::EpisodeObject::Show::Type::TaggedSymbol,
               uri: String
             }
           )

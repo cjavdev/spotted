@@ -88,8 +88,8 @@ module Spotted
       #   and the requested track has been replaced with different track. The track in the
       #   `linked_from` object contains information about the originally requested track.
       #
-      #   @return [Object, nil]
-      optional :linked_from, Spotted::Internal::Type::Unknown
+      #   @return [Spotted::Models::LinkedTrackObject, nil]
+      optional :linked_from, -> { Spotted::LinkedTrackObject }
 
       # @!attribute name
       #   The name of the track.
@@ -174,7 +174,7 @@ module Spotted
       #
       #   @param is_playable [Boolean] Part of the response when [Track Relinking](/documentation/web-api/concepts/trac
       #
-      #   @param linked_from [Object] Part of the response when [Track Relinking](/documentation/web-api/concepts/trac
+      #   @param linked_from [Spotted::Models::LinkedTrackObject] Part of the response when [Track Relinking](/documentation/web-api/concepts/trac
       #
       #   @param name [String] The name of the track.
       #

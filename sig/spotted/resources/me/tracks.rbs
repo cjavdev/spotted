@@ -1,0 +1,32 @@
+module Spotted
+  module Resources
+    class Me
+      class Tracks
+        def list: (
+          ?limit: Integer,
+          ?market: String,
+          ?offset: Integer,
+          ?request_options: Spotted::request_opts
+        ) -> Spotted::Internal::CursorURLPage[Spotted::Models::Me::TrackListResponse]
+
+        def check: (
+          ids: String,
+          ?request_options: Spotted::request_opts
+        ) -> Spotted::Models::Me::track_check_response
+
+        def remove: (
+          ?body_ids: ::Array[String],
+          ?request_options: Spotted::request_opts
+        ) -> nil
+
+        def save: (
+          ids: ::Array[String],
+          ?timestamped_ids: ::Array[Spotted::Me::TrackSaveParams::TimestampedID],
+          ?request_options: Spotted::request_opts
+        ) -> nil
+
+        def initialize: (client: Spotted::Client) -> void
+      end
+    end
+  end
+end

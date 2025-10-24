@@ -1,0 +1,15 @@
+module Spotted
+  module Resources
+    class Me
+      class Playlists
+        def list: (
+          ?limit: Integer,
+          ?offset: Integer,
+          ?request_options: Spotted::request_opts
+        ) -> Spotted::Internal::CursorURLPage[Spotted::SimplifiedPlaylistObject]
+
+        def initialize: (client: Spotted::Client) -> void
+      end
+    end
+  end
+end

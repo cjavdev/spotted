@@ -19,6 +19,51 @@ module Spotted
     sig { returns(Spotted::Resources::Albums) }
     attr_reader :albums
 
+    sig { returns(Spotted::Resources::Artists) }
+    attr_reader :artists
+
+    sig { returns(Spotted::Resources::Shows) }
+    attr_reader :shows
+
+    sig { returns(Spotted::Resources::Episodes) }
+    attr_reader :episodes
+
+    sig { returns(Spotted::Resources::Audiobooks) }
+    attr_reader :audiobooks
+
+    sig { returns(Spotted::Resources::Me) }
+    attr_reader :me
+
+    sig { returns(Spotted::Resources::Chapters) }
+    attr_reader :chapters
+
+    sig { returns(Spotted::Resources::Tracks) }
+    attr_reader :tracks
+
+    sig { returns(Spotted::Resources::Search) }
+    attr_reader :search
+
+    sig { returns(Spotted::Resources::Playlists) }
+    attr_reader :playlists
+
+    sig { returns(Spotted::Resources::Users) }
+    attr_reader :users
+
+    sig { returns(Spotted::Resources::Browse) }
+    attr_reader :browse
+
+    sig { returns(Spotted::Resources::AudioFeatures) }
+    attr_reader :audio_features
+
+    sig { returns(Spotted::Resources::AudioAnalysis) }
+    attr_reader :audio_analysis
+
+    sig { returns(Spotted::Resources::Recommendations) }
+    attr_reader :recommendations
+
+    sig { returns(Spotted::Resources::Markets) }
+    attr_reader :markets
+
     # @api private
     sig { returns(Spotted::Internal::OAuth2ClientCredentials) }
     attr_reader :oauth_2_0_state

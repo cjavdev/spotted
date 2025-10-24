@@ -1,0 +1,27 @@
+module Spotted
+  module Models
+    module Me
+      type player_skip_previous_params =
+        { device_id: String } & Spotted::Internal::Type::request_parameters
+
+      class PlayerSkipPreviousParams < Spotted::Internal::Type::BaseModel
+        extend Spotted::Internal::Type::RequestParameters::Converter
+        include Spotted::Internal::Type::RequestParameters
+
+        attr_reader device_id: String?
+
+        def device_id=: (String) -> String
+
+        def initialize: (
+          ?device_id: String,
+          ?request_options: Spotted::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          device_id: String,
+          request_options: Spotted::RequestOptions
+        }
+      end
+    end
+  end
+end

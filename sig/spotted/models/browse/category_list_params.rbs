@@ -1,0 +1,40 @@
+module Spotted
+  module Models
+    module Browse
+      type category_list_params =
+        { limit: Integer, locale: String, offset: Integer }
+        & Spotted::Internal::Type::request_parameters
+
+      class CategoryListParams < Spotted::Internal::Type::BaseModel
+        extend Spotted::Internal::Type::RequestParameters::Converter
+        include Spotted::Internal::Type::RequestParameters
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_reader locale: String?
+
+        def locale=: (String) -> String
+
+        attr_reader offset: Integer?
+
+        def offset=: (Integer) -> Integer
+
+        def initialize: (
+          ?limit: Integer,
+          ?locale: String,
+          ?offset: Integer,
+          ?request_options: Spotted::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          limit: Integer,
+          locale: String,
+          offset: Integer,
+          request_options: Spotted::RequestOptions
+        }
+      end
+    end
+  end
+end

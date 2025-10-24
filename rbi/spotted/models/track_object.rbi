@@ -103,10 +103,10 @@ module Spotted
       # [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied,
       # and the requested track has been replaced with different track. The track in the
       # `linked_from` object contains information about the originally requested track.
-      sig { returns(T.nilable(T.anything)) }
+      sig { returns(T.nilable(Spotted::LinkedTrackObject)) }
       attr_reader :linked_from
 
-      sig { params(linked_from: T.anything).void }
+      sig { params(linked_from: Spotted::LinkedTrackObject::OrHash).void }
       attr_writer :linked_from
 
       # The name of the track.
@@ -152,7 +152,7 @@ module Spotted
       attr_writer :track_number
 
       # The object type: "track".
-      sig { returns(T.nilable(Spotted::TrackObject::Type::OrSymbol)) }
+      sig { returns(T.nilable(Spotted::TrackObject::Type::TaggedSymbol)) }
       attr_reader :type
 
       sig { params(type: Spotted::TrackObject::Type::OrSymbol).void }
@@ -180,7 +180,7 @@ module Spotted
           href: String,
           is_local: T::Boolean,
           is_playable: T::Boolean,
-          linked_from: T.anything,
+          linked_from: Spotted::LinkedTrackObject::OrHash,
           name: String,
           popularity: Integer,
           preview_url: T.nilable(String),
@@ -270,13 +270,13 @@ module Spotted
             href: String,
             is_local: T::Boolean,
             is_playable: T::Boolean,
-            linked_from: T.anything,
+            linked_from: Spotted::LinkedTrackObject,
             name: String,
             popularity: Integer,
             preview_url: T.nilable(String),
             restrictions: Spotted::TrackRestrictionObject,
             track_number: Integer,
-            type: Spotted::TrackObject::Type::OrSymbol,
+            type: Spotted::TrackObject::Type::TaggedSymbol,
             uri: String
           }
         )
@@ -296,7 +296,7 @@ module Spotted
         attr_accessor :id
 
         # The type of the album.
-        sig { returns(Spotted::TrackObject::Album::AlbumType::OrSymbol) }
+        sig { returns(Spotted::TrackObject::Album::AlbumType::TaggedSymbol) }
         attr_accessor :album_type
 
         # The artists of the album. Each artist object includes a link in `href` to more
@@ -337,7 +337,9 @@ module Spotted
 
         # The precision with which `release_date` value is known.
         sig do
-          returns(Spotted::TrackObject::Album::ReleaseDatePrecision::OrSymbol)
+          returns(
+            Spotted::TrackObject::Album::ReleaseDatePrecision::TaggedSymbol
+          )
         end
         attr_accessor :release_date_precision
 
@@ -346,7 +348,7 @@ module Spotted
         attr_accessor :total_tracks
 
         # The object type.
-        sig { returns(Spotted::TrackObject::Album::Type::OrSymbol) }
+        sig { returns(Spotted::TrackObject::Album::Type::TaggedSymbol) }
         attr_accessor :type
 
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -427,7 +429,7 @@ module Spotted
           override.returns(
             {
               id: String,
-              album_type: Spotted::TrackObject::Album::AlbumType::OrSymbol,
+              album_type: Spotted::TrackObject::Album::AlbumType::TaggedSymbol,
               artists: T::Array[Spotted::SimplifiedArtistObject],
               available_markets: T::Array[String],
               external_urls: Spotted::ExternalURLObject,
@@ -436,9 +438,9 @@ module Spotted
               name: String,
               release_date: String,
               release_date_precision:
-                Spotted::TrackObject::Album::ReleaseDatePrecision::OrSymbol,
+                Spotted::TrackObject::Album::ReleaseDatePrecision::TaggedSymbol,
               total_tracks: Integer,
-              type: Spotted::TrackObject::Album::Type::OrSymbol,
+              type: Spotted::TrackObject::Album::Type::TaggedSymbol,
               uri: String,
               restrictions: Spotted::AlbumRestrictionObject
             }

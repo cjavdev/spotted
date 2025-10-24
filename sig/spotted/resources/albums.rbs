@@ -13,6 +13,14 @@ module Spotted
         ?request_options: Spotted::request_opts
       ) -> Spotted::Models::AlbumListResponse
 
+      def list_tracks: (
+        String id,
+        ?limit: Integer,
+        ?market: String,
+        ?offset: Integer,
+        ?request_options: Spotted::request_opts
+      ) -> Spotted::Internal::CursorURLPage[Spotted::SimplifiedTrackObject]
+
       def initialize: (client: Spotted::Client) -> void
     end
   end
