@@ -62,7 +62,7 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
     end
 
-    assert_requested(:any, /./,times: 4)
+    assert_requested(:any, /./, times: 4)
   end
 
   def test_client_given_request_default_retry_attempts
@@ -84,7 +84,7 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
     end
 
-    assert_requested(:any, /./,times: 5)
+    assert_requested(:any, /./, times: 5)
   end
 
   def test_client_default_request_given_retry_attempts
@@ -105,7 +105,7 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy", request_options: {max_retries: 3})
     end
 
-    assert_requested(:any, /./,times: 5)
+    assert_requested(:any, /./, times: 5)
   end
 
   def test_client_given_request_given_retry_attempts
@@ -127,7 +127,7 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy", request_options: {max_retries: 4})
     end
 
-    assert_requested(:any, /./,times: 6)
+    assert_requested(:any, /./, times: 6)
   end
 
   def test_client_retry_after_seconds
@@ -150,7 +150,7 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
     end
 
-    assert_requested(:any, /./,times: 3)
+    assert_requested(:any, /./, times: 3)
     assert_equal(1.3, Thread.current.thread_variable_get(:mock_sleep).last)
   end
 
@@ -176,7 +176,7 @@ class SpottedTest < Minitest::Test
       Thread.current.thread_variable_set(:time_now, nil)
     end
 
-    assert_requested(:any, /./,times: 3)
+    assert_requested(:any, /./, times: 3)
     assert_in_delta(10, Thread.current.thread_variable_get(:mock_sleep).last, 1.0)
   end
 
@@ -200,7 +200,7 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
     end
 
-    assert_requested(:any, /./,times: 3)
+    assert_requested(:any, /./, times: 3)
     assert_equal(1.3, Thread.current.thread_variable_get(:mock_sleep).last)
   end
 
@@ -222,9 +222,21 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
     end
 
-    assert_requested(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy", headers: {"x-stainless-retry-count" => "0"})
-    assert_requested(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy", headers: {"x-stainless-retry-count" => "1"})
-    assert_requested(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy", headers: {"x-stainless-retry-count" => "2"})
+    assert_requested(
+      :get,
+      "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy",
+      headers: {"x-stainless-retry-count" => "0"}
+    )
+    assert_requested(
+      :get,
+      "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy",
+      headers: {"x-stainless-retry-count" => "1"}
+    )
+    assert_requested(
+      :get,
+      "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy",
+      headers: {"x-stainless-retry-count" => "2"}
+    )
   end
 
   def test_omit_retry_count_header

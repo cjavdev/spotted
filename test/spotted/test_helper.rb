@@ -119,7 +119,12 @@ module Spotted
       )
     end
 
-    def create_client(base_url: "http://localhost", client_id: "My Client ID", client_secret: "My Client Secret", **options)
+    def create_client(
+      base_url: "http://localhost",
+      client_id: "My Client ID",
+      client_secret: "My Client Secret",
+      **options
+    )
       stub_token_endpoint
       Spotted::Client.new(
         base_url: base_url,
