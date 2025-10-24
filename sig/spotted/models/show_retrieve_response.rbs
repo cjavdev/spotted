@@ -1,104 +1,21 @@
 module Spotted
   module Models
     type show_retrieve_response =
-      {
-        id: String,
-        available_markets: ::Array[String],
-        copyrights: ::Array[Spotted::CopyrightObject],
-        description: String,
-        episodes: Spotted::Models::ShowRetrieveResponse::Episodes,
-        explicit: bool,
-        external_urls: Spotted::ExternalURLObject,
-        href: String,
-        html_description: String,
-        images: ::Array[Spotted::ImageObject],
-        is_externally_hosted: bool,
-        languages: ::Array[String],
-        media_type: String,
-        name: String,
-        publisher: String,
-        total_episodes: Integer,
-        type: Spotted::Models::ShowRetrieveResponse::type_,
-        uri: String
-      }
+      { episodes: Spotted::Models::ShowRetrieveResponse::Episodes }
 
-    class ShowRetrieveResponse < Spotted::Internal::Type::BaseModel
-      attr_accessor id: String
+    class ShowRetrieveResponse < Spotted::Models::ShowBase
+      def episodes: -> Spotted::Models::ShowRetrieveResponse::Episodes
 
-      attr_accessor available_markets: ::Array[String]
-
-      attr_accessor copyrights: ::Array[Spotted::CopyrightObject]
-
-      attr_accessor description: String
-
-      attr_accessor episodes: Spotted::Models::ShowRetrieveResponse::Episodes
-
-      attr_accessor explicit: bool
-
-      attr_accessor external_urls: Spotted::ExternalURLObject
-
-      attr_accessor href: String
-
-      attr_accessor html_description: String
-
-      attr_accessor images: ::Array[Spotted::ImageObject]
-
-      attr_accessor is_externally_hosted: bool
-
-      attr_accessor languages: ::Array[String]
-
-      attr_accessor media_type: String
-
-      attr_accessor name: String
-
-      attr_accessor publisher: String
-
-      attr_accessor total_episodes: Integer
-
-      attr_accessor type: Spotted::Models::ShowRetrieveResponse::type_
-
-      attr_accessor uri: String
+      def episodes=: (
+        Spotted::Models::ShowRetrieveResponse::Episodes _
+      ) -> Spotted::Models::ShowRetrieveResponse::Episodes
 
       def initialize: (
-        id: String,
-        available_markets: ::Array[String],
-        copyrights: ::Array[Spotted::CopyrightObject],
-        description: String,
-        episodes: Spotted::Models::ShowRetrieveResponse::Episodes,
-        explicit: bool,
-        external_urls: Spotted::ExternalURLObject,
-        href: String,
-        html_description: String,
-        images: ::Array[Spotted::ImageObject],
-        is_externally_hosted: bool,
-        languages: ::Array[String],
-        media_type: String,
-        name: String,
-        publisher: String,
-        total_episodes: Integer,
-        type: Spotted::Models::ShowRetrieveResponse::type_,
-        uri: String
+        episodes: Spotted::Models::ShowRetrieveResponse::Episodes
       ) -> void
 
       def to_hash: -> {
-        id: String,
-        available_markets: ::Array[String],
-        copyrights: ::Array[Spotted::CopyrightObject],
-        description: String,
-        episodes: Spotted::Models::ShowRetrieveResponse::Episodes,
-        explicit: bool,
-        external_urls: Spotted::ExternalURLObject,
-        href: String,
-        html_description: String,
-        images: ::Array[Spotted::ImageObject],
-        is_externally_hosted: bool,
-        languages: ::Array[String],
-        media_type: String,
-        name: String,
-        publisher: String,
-        total_episodes: Integer,
-        type: Spotted::Models::ShowRetrieveResponse::type_,
-        uri: String
+        episodes: Spotted::Models::ShowRetrieveResponse::Episodes
       }
 
       type episodes =
@@ -146,16 +63,6 @@ module Spotted
           previous: String?,
           total: Integer
         }
-      end
-
-      type type_ = :show
-
-      module Type
-        extend Spotted::Internal::Type::Enum
-
-        SHOW: :show
-
-        def self?.values: -> ::Array[Spotted::Models::ShowRetrieveResponse::type_]
       end
     end
   end

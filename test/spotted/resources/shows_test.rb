@@ -11,29 +11,6 @@ class Spotted::Test::Resources::ShowsTest < Spotted::Test::ResourceTest
     assert_pattern do
       response => Spotted::Models::ShowRetrieveResponse
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        available_markets: ^(Spotted::Internal::Type::ArrayOf[String]),
-        copyrights: ^(Spotted::Internal::Type::ArrayOf[Spotted::CopyrightObject]),
-        description: String,
-        episodes: Spotted::Models::ShowRetrieveResponse::Episodes,
-        explicit: Spotted::Internal::Type::Boolean,
-        external_urls: Spotted::ExternalURLObject,
-        href: String,
-        html_description: String,
-        images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]),
-        is_externally_hosted: Spotted::Internal::Type::Boolean,
-        languages: ^(Spotted::Internal::Type::ArrayOf[String]),
-        media_type: String,
-        name: String,
-        publisher: String,
-        total_episodes: Integer,
-        type: Spotted::Models::ShowRetrieveResponse::Type,
-        uri: String
-      }
-    end
   end
 
   def test_list_required_params
@@ -47,7 +24,7 @@ class Spotted::Test::Resources::ShowsTest < Spotted::Test::ResourceTest
 
     assert_pattern do
       response => {
-        shows: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::ShowListResponse::Show])
+        shows: ^(Spotted::Internal::Type::ArrayOf[Spotted::ShowBase])
       }
     end
   end

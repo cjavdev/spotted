@@ -291,7 +291,7 @@ module Spotted
       type audiobooks =
         {
           href: String,
-          items: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item],
+          items: ::Array[Spotted::AudiobookBase],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -302,7 +302,7 @@ module Spotted
       class Audiobooks < Spotted::Internal::Type::BaseModel
         attr_accessor href: String
 
-        attr_accessor items: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item]
+        attr_accessor items: ::Array[Spotted::AudiobookBase]
 
         attr_accessor limit: Integer
 
@@ -316,7 +316,7 @@ module Spotted
 
         def initialize: (
           href: String,
-          items: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item],
+          items: ::Array[Spotted::AudiobookBase],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -326,132 +326,13 @@ module Spotted
 
         def to_hash: -> {
           href: String,
-          items: ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item],
+          items: ::Array[Spotted::AudiobookBase],
           limit: Integer,
           next_: String?,
           offset: Integer,
           previous: String?,
           total: Integer
         }
-
-        type item =
-          {
-            id: String,
-            authors: ::Array[Spotted::AuthorObject],
-            available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::CopyrightObject],
-            description: String,
-            explicit: bool,
-            external_urls: Spotted::ExternalURLObject,
-            href: String,
-            html_description: String,
-            images: ::Array[Spotted::ImageObject],
-            languages: ::Array[String],
-            media_type: String,
-            name: String,
-            narrators: ::Array[Spotted::NarratorObject],
-            publisher: String,
-            total_chapters: Integer,
-            type: Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::type_,
-            uri: String,
-            edition: String
-          }
-
-        class Item < Spotted::Internal::Type::BaseModel
-          attr_accessor id: String
-
-          attr_accessor authors: ::Array[Spotted::AuthorObject]
-
-          attr_accessor available_markets: ::Array[String]
-
-          attr_accessor copyrights: ::Array[Spotted::CopyrightObject]
-
-          attr_accessor description: String
-
-          attr_accessor explicit: bool
-
-          attr_accessor external_urls: Spotted::ExternalURLObject
-
-          attr_accessor href: String
-
-          attr_accessor html_description: String
-
-          attr_accessor images: ::Array[Spotted::ImageObject]
-
-          attr_accessor languages: ::Array[String]
-
-          attr_accessor media_type: String
-
-          attr_accessor name: String
-
-          attr_accessor narrators: ::Array[Spotted::NarratorObject]
-
-          attr_accessor publisher: String
-
-          attr_accessor total_chapters: Integer
-
-          attr_accessor type: Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::type_
-
-          attr_accessor uri: String
-
-          attr_reader edition: String?
-
-          def edition=: (String) -> String
-
-          def initialize: (
-            id: String,
-            authors: ::Array[Spotted::AuthorObject],
-            available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::CopyrightObject],
-            description: String,
-            explicit: bool,
-            external_urls: Spotted::ExternalURLObject,
-            href: String,
-            html_description: String,
-            images: ::Array[Spotted::ImageObject],
-            languages: ::Array[String],
-            media_type: String,
-            name: String,
-            narrators: ::Array[Spotted::NarratorObject],
-            publisher: String,
-            total_chapters: Integer,
-            type: Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::type_,
-            uri: String,
-            ?edition: String
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            authors: ::Array[Spotted::AuthorObject],
-            available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::CopyrightObject],
-            description: String,
-            explicit: bool,
-            external_urls: Spotted::ExternalURLObject,
-            href: String,
-            html_description: String,
-            images: ::Array[Spotted::ImageObject],
-            languages: ::Array[String],
-            media_type: String,
-            name: String,
-            narrators: ::Array[Spotted::NarratorObject],
-            publisher: String,
-            total_chapters: Integer,
-            type: Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::type_,
-            uri: String,
-            edition: String
-          }
-
-          type type_ = :audiobook
-
-          module Type
-            extend Spotted::Internal::Type::Enum
-
-            AUDIOBOOK: :audiobook
-
-            def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Audiobooks::Item::type_]
-          end
-        end
       end
 
       type episodes =
@@ -504,7 +385,7 @@ module Spotted
       type shows =
         {
           href: String,
-          items: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item],
+          items: ::Array[Spotted::ShowBase],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -515,7 +396,7 @@ module Spotted
       class Shows < Spotted::Internal::Type::BaseModel
         attr_accessor href: String
 
-        attr_accessor items: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item]
+        attr_accessor items: ::Array[Spotted::ShowBase]
 
         attr_accessor limit: Integer
 
@@ -529,7 +410,7 @@ module Spotted
 
         def initialize: (
           href: String,
-          items: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item],
+          items: ::Array[Spotted::ShowBase],
           limit: Integer,
           next_: String?,
           offset: Integer,
@@ -539,120 +420,13 @@ module Spotted
 
         def to_hash: -> {
           href: String,
-          items: ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item],
+          items: ::Array[Spotted::ShowBase],
           limit: Integer,
           next_: String?,
           offset: Integer,
           previous: String?,
           total: Integer
         }
-
-        type item =
-          {
-            id: String,
-            available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::CopyrightObject],
-            description: String,
-            explicit: bool,
-            external_urls: Spotted::ExternalURLObject,
-            href: String,
-            html_description: String,
-            images: ::Array[Spotted::ImageObject],
-            is_externally_hosted: bool,
-            languages: ::Array[String],
-            media_type: String,
-            name: String,
-            publisher: String,
-            total_episodes: Integer,
-            type: Spotted::Models::SearchRetrieveResponse::Shows::Item::type_,
-            uri: String
-          }
-
-        class Item < Spotted::Internal::Type::BaseModel
-          attr_accessor id: String
-
-          attr_accessor available_markets: ::Array[String]
-
-          attr_accessor copyrights: ::Array[Spotted::CopyrightObject]
-
-          attr_accessor description: String
-
-          attr_accessor explicit: bool
-
-          attr_accessor external_urls: Spotted::ExternalURLObject
-
-          attr_accessor href: String
-
-          attr_accessor html_description: String
-
-          attr_accessor images: ::Array[Spotted::ImageObject]
-
-          attr_accessor is_externally_hosted: bool
-
-          attr_accessor languages: ::Array[String]
-
-          attr_accessor media_type: String
-
-          attr_accessor name: String
-
-          attr_accessor publisher: String
-
-          attr_accessor total_episodes: Integer
-
-          attr_accessor type: Spotted::Models::SearchRetrieveResponse::Shows::Item::type_
-
-          attr_accessor uri: String
-
-          def initialize: (
-            id: String,
-            available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::CopyrightObject],
-            description: String,
-            explicit: bool,
-            external_urls: Spotted::ExternalURLObject,
-            href: String,
-            html_description: String,
-            images: ::Array[Spotted::ImageObject],
-            is_externally_hosted: bool,
-            languages: ::Array[String],
-            media_type: String,
-            name: String,
-            publisher: String,
-            total_episodes: Integer,
-            type: Spotted::Models::SearchRetrieveResponse::Shows::Item::type_,
-            uri: String
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            available_markets: ::Array[String],
-            copyrights: ::Array[Spotted::CopyrightObject],
-            description: String,
-            explicit: bool,
-            external_urls: Spotted::ExternalURLObject,
-            href: String,
-            html_description: String,
-            images: ::Array[Spotted::ImageObject],
-            is_externally_hosted: bool,
-            languages: ::Array[String],
-            media_type: String,
-            name: String,
-            publisher: String,
-            total_episodes: Integer,
-            type: Spotted::Models::SearchRetrieveResponse::Shows::Item::type_,
-            uri: String
-          }
-
-          type type_ = :show
-
-          module Type
-            extend Spotted::Internal::Type::Enum
-
-            SHOW: :show
-
-            def self?.values: -> ::Array[Spotted::Models::SearchRetrieveResponse::Shows::Item::type_]
-          end
-        end
       end
 
       type tracks =
