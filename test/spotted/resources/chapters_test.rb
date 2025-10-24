@@ -16,7 +16,7 @@ class Spotted::Test::Resources::ChaptersTest < Spotted::Test::ResourceTest
       response => {
         id: String,
         audio_preview_url: String | nil,
-        audiobook: Spotted::Models::ChapterRetrieveResponse::Audiobook,
+        audiobook: Spotted::AudiobookBase,
         chapter_number: Integer,
         description: String,
         duration_ms: Integer,
