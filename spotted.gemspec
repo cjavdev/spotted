@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email = "wave@cjav.dev"
   s.homepage = "https://gemdocs.org/gems/spotted"
   s.metadata["homepage_uri"] = s.homepage
-  s.metadata["source_code_uri"] = "https://github.com/stainless-sdks/spotted-ruby"
+  s.metadata["source_code_uri"] = "https://github.com/cjavdev/spotted"
   s.metadata["rubygems_mfa_required"] = false.to_s
   s.required_ruby_version = ">= 3.2.0"
 
