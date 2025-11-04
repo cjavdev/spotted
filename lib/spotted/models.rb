@@ -166,7 +166,12 @@ module Spotted
 
   TrackRetrieveParams = Spotted::Models::TrackRetrieveParams
 
+  # @type [Spotted::Internal::Type::Converter]
+  UnwrapWebhookEvent = Spotted::Models::UnwrapWebhookEvent
+
   UserRetrieveProfileParams = Spotted::Models::UserRetrieveProfileParams
 
   Users = Spotted::Models::Users
+
+  WebhookUnwrapParams = Spotted::Models::WebhookUnwrapParams
 end

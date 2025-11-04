@@ -1,0 +1,9 @@
+module Spotted
+  module Resources
+    class Webhooks
+      def unwrap: (String payload) -> top
+
+      def initialize: (client: Spotted::Client) -> void
+    end
+  end
+end
