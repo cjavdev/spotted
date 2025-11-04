@@ -61,6 +61,9 @@ module Spotted
     sig { returns(Spotted::Resources::Recommendations) }
     attr_reader :recommendations
 
+    sig { returns(Spotted::Resources::Webhooks) }
+    attr_reader :webhooks
+
     sig { returns(Spotted::Resources::Markets) }
     attr_reader :markets
 
