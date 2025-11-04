@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 (2025-11-04)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/cjavdev/spotted/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** Adds custom helper for datetime conversion ([0ccda3c](https://github.com/cjavdev/spotted/commit/0ccda3c28aff1f0443d804ff902e261aaae903b9))
+
 ## 0.3.0 (2025-11-04)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/cjavdev/spotted/compare/v0.2.0...v0.3.0)
