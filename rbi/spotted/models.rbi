@@ -130,7 +130,15 @@ module Spotted
 
   TrackRetrieveParams = Spotted::Models::TrackRetrieveParams
 
+  UnwrapWebhookEvent =
+    T.let(
+      Spotted::Models::UnwrapWebhookEvent,
+      Spotted::Internal::Type::Converter
+    )
+
   UserRetrieveProfileParams = Spotted::Models::UserRetrieveProfileParams
 
   Users = Spotted::Models::Users
+
+  WebhookUnwrapParams = Spotted::Models::WebhookUnwrapParams
 end
