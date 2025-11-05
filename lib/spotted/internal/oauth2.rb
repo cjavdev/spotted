@@ -57,13 +57,20 @@ module Spotted
       #
       # @return [Object]
       private def fetch_token
+        body = URI.encode_www_form(
+          {
+            grant_type: "client_credentials",
+            client_id: @client_id,
+            client_secret: @client_secret
+          }
+        )
         request = {
           method: :post,
           url: URI(@token_url),
           headers: {
-            "Authorization" => "Basic #{Base64.strict_encode64("#{@client_id}:#{@client_secret}")}"
+            "Content-Type" => "application/x-www-form-urlencoded"
           },
-          body: nil,
+          body: body,
           max_retries: @client.max_retries,
           timeout: @timeout
         }

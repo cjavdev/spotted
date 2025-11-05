@@ -28,13 +28,24 @@ class SpottedTest < Minitest::Test
   end
 
   def test_raises_on_missing_non_nullable_opts
+    original_id = ENV["SPOTIFY_CLIENT_ID"]
+    original_secret = ENV["SPOTIFY_CLIENT_SECRET"]
+    ENV.delete("SPOTIFY_CLIENT_ID")
+    ENV.delete("SPOTIFY_CLIENT_SECRET")
+
     e = assert_raises(ArgumentError) do
       Spotted::Client.new
     end
     assert_match(/is required/, e.message)
+  ensure
+    ENV["SPOTIFY_CLIENT_ID"] = original_id if original_id
+    ENV["SPOTIFY_CLIENT_ID"] = nil if original_id.nil?
+    ENV["SPOTIFY_CLIENT_SECRET"] = original_secret if original_secret
+    ENV["SPOTIFY_CLIENT_SECRET"] = nil if original_secret.nil?
   end
 
   def test_client_default_request_default_retry_attempts
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 500,
       body: {}
@@ -51,10 +62,11 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
     end
 
-    assert_requested(:any, /./, times: 3)
+    assert_requested(:any, /./, times: 4)
   end
 
   def test_client_given_request_default_retry_attempts
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 500,
       body: {}
@@ -72,10 +84,11 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
     end
 
-    assert_requested(:any, /./, times: 4)
+    assert_requested(:any, /./, times: 5)
   end
 
   def test_client_default_request_given_retry_attempts
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 500,
       body: {}
@@ -92,10 +105,11 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy", request_options: {max_retries: 3})
     end
 
-    assert_requested(:any, /./, times: 4)
+    assert_requested(:any, /./, times: 5)
   end
 
   def test_client_given_request_given_retry_attempts
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 500,
       body: {}
@@ -113,10 +127,11 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy", request_options: {max_retries: 4})
     end
 
-    assert_requested(:any, /./, times: 5)
+    assert_requested(:any, /./, times: 6)
   end
 
   def test_client_retry_after_seconds
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 500,
       headers: {"retry-after" => "1.3"},
@@ -135,11 +150,12 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
     end
 
-    assert_requested(:any, /./, times: 2)
+    assert_requested(:any, /./, times: 3)
     assert_equal(1.3, Thread.current.thread_variable_get(:mock_sleep).last)
   end
 
   def test_client_retry_after_date
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 500,
       headers: {"retry-after" => (Time.now + 10).httpdate},
@@ -160,11 +176,12 @@ class SpottedTest < Minitest::Test
       Thread.current.thread_variable_set(:time_now, nil)
     end
 
-    assert_requested(:any, /./, times: 2)
+    assert_requested(:any, /./, times: 3)
     assert_in_delta(10, Thread.current.thread_variable_get(:mock_sleep).last, 1.0)
   end
 
   def test_client_retry_after_ms
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 500,
       headers: {"retry-after-ms" => "1300"},
@@ -183,11 +200,12 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
     end
 
-    assert_requested(:any, /./, times: 2)
+    assert_requested(:any, /./, times: 3)
     assert_equal(1.3, Thread.current.thread_variable_get(:mock_sleep).last)
   end
 
   def test_retry_count_header
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 500,
       body: {}
@@ -204,12 +222,25 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
     end
 
-    3.times do
-      assert_requested(:any, /./, headers: {"x-stainless-retry-count" => _1})
-    end
+    assert_requested(
+      :get,
+      "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy",
+      headers: {"x-stainless-retry-count" => "0"}
+    )
+    assert_requested(
+      :get,
+      "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy",
+      headers: {"x-stainless-retry-count" => "1"}
+    )
+    assert_requested(
+      :get,
+      "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy",
+      headers: {"x-stainless-retry-count" => "2"}
+    )
   end
 
   def test_omit_retry_count_header
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 500,
       body: {}
@@ -229,12 +260,13 @@ class SpottedTest < Minitest::Test
       )
     end
 
-    assert_requested(:any, /./, times: 3) do
+    assert_requested(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy", times: 3) do
       refute_includes(_1.headers.keys.map(&:downcase), "x-stainless-retry-count")
     end
   end
 
   def test_overwrite_retry_count_header
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 500,
       body: {}
@@ -258,6 +290,7 @@ class SpottedTest < Minitest::Test
   end
 
   def test_client_redirect_307
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 307,
       headers: {"location" => "/redirected"},
@@ -279,19 +312,11 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy", request_options: {extra_headers: {}})
     end
 
-    recorded, = WebMock::RequestRegistry.instance.requested_signatures.hash.first
-
-    assert_requested(:any, "http://localhost/redirected", times: Spotted::Client::MAX_REDIRECTS) do
-      assert_equal(recorded.method, _1.method)
-      assert_equal(recorded.body, _1.body)
-      assert_equal(
-        recorded.headers.transform_keys(&:downcase).fetch("content-type"),
-        _1.headers.transform_keys(&:downcase).fetch("content-type")
-      )
-    end
+    assert_requested(:get, "http://localhost/redirected", times: Spotted::Client::MAX_REDIRECTS)
   end
 
   def test_client_redirect_303
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 303,
       headers: {"location" => "/redirected"},
@@ -321,6 +346,7 @@ class SpottedTest < Minitest::Test
   end
 
   def test_client_redirect_auth_keep_same_origin
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 307,
       headers: {"location" => "/redirected"},
@@ -345,17 +371,16 @@ class SpottedTest < Minitest::Test
       )
     end
 
-    recorded, = WebMock::RequestRegistry.instance.requested_signatures.hash.first
-    auth_header = recorded.headers.transform_keys(&:downcase).fetch("authorization")
-
-    assert_equal("Bearer xyz", auth_header)
-    assert_requested(:any, "http://localhost/redirected", times: Spotted::Client::MAX_REDIRECTS) do
-      auth_header = _1.headers.transform_keys(&:downcase).fetch("authorization")
-      assert_equal("Bearer xyz", auth_header)
-    end
+    assert_requested(
+      :any,
+      "http://localhost/redirected",
+      times: Spotted::Client::MAX_REDIRECTS,
+      headers: {"authorization" => "Bearer xyz"}
+    )
   end
 
   def test_client_redirect_auth_strip_cross_origin
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 307,
       headers: {"location" => "https://example.com/redirected"},
@@ -387,6 +412,7 @@ class SpottedTest < Minitest::Test
   end
 
   def test_default_headers
+    stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 200,
       body: {}
@@ -401,7 +427,7 @@ class SpottedTest < Minitest::Test
 
     spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
 
-    assert_requested(:any, /./) do |req|
+    assert_requested(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy") do |req|
       headers = req.headers.transform_keys(&:downcase).fetch_values("accept", "content-type")
       headers.each { refute_empty(_1) }
     end

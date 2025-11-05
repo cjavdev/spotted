@@ -134,7 +134,10 @@ module Spotted
         raise ArgumentError.new("client_id is required, and can be set via environ: \"SPOTIFY_CLIENT_ID\"")
       end
       if client_secret.nil?
+        # Ignore Layout/LineLength
+        # rubocop:disable Layout/LineLength
         raise ArgumentError.new("client_secret is required, and can be set via environ: \"SPOTIFY_CLIENT_SECRET\"")
+        # rubocop:enable Layout/LineLength
       end
 
       @client_id = client_id.to_s
