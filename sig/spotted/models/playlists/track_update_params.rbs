@@ -3,21 +3,17 @@ module Spotted
     module Playlists
       type track_update_params =
         {
-          body_uris: ::Array[String],
           insert_before: Integer,
           range_length: Integer,
           range_start: Integer,
-          snapshot_id: String
+          snapshot_id: String,
+          uris: ::Array[String]
         }
         & Spotted::Internal::Type::request_parameters
 
       class TrackUpdateParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
-
-        attr_reader body_uris: ::Array[String]?
-
-        def body_uris=: (::Array[String]) -> ::Array[String]
 
         attr_reader insert_before: Integer?
 
@@ -35,21 +31,25 @@ module Spotted
 
         def snapshot_id=: (String) -> String
 
+        attr_reader uris: ::Array[String]?
+
+        def uris=: (::Array[String]) -> ::Array[String]
+
         def initialize: (
-          ?body_uris: ::Array[String],
           ?insert_before: Integer,
           ?range_length: Integer,
           ?range_start: Integer,
           ?snapshot_id: String,
+          ?uris: ::Array[String],
           ?request_options: Spotted::request_opts
         ) -> void
 
         def to_hash: -> {
-          body_uris: ::Array[String],
           insert_before: Integer,
           range_length: Integer,
           range_start: Integer,
           snapshot_id: String,
+          uris: ::Array[String],
           request_options: Spotted::RequestOptions
         }
       end

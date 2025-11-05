@@ -64,11 +64,9 @@ module Spotted
         #
         # Delete one or more shows from current Spotify user's library.
         #
-        # @overload remove(body_ids: nil, market: nil, request_options: {})
+        # @overload remove(ids: nil, request_options: {})
         #
-        # @param body_ids [Array<String>] Body param: A JSON array of the [Spotify IDs](https://developer.spotify.com/docu
-        #
-        # @param market [String] Query param: An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/
+        # @param ids [Array<String>] A JSON array of the [Spotify IDs](https://developer.spotify.com/documentation/we
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -77,15 +75,7 @@ module Spotted
         # @see Spotted::Models::Me::ShowRemoveParams
         def remove(params = {})
           parsed, options = Spotted::Me::ShowRemoveParams.dump_request(params)
-          query_params = [:query_ids, :market]
-          @client.request(
-            method: :delete,
-            path: "me/shows",
-            query: parsed.slice(*query_params).transform_keys(query_ids: "ids"),
-            body: parsed.except(*query_params),
-            model: NilClass,
-            options: options
-          )
+          @client.request(method: :delete, path: "me/shows", body: parsed, model: NilClass, options: options)
         end
 
         # Some parameter documentations has been truncated, see
@@ -93,9 +83,9 @@ module Spotted
         #
         # Save one or more shows to current Spotify user's library.
         #
-        # @overload save(body_ids: nil, request_options: {})
+        # @overload save(ids: nil, request_options: {})
         #
-        # @param body_ids [Array<String>] Body param: A JSON array of the [Spotify IDs](https://developer.spotify.com/docu
+        # @param ids [Array<String>] A JSON array of the [Spotify IDs](https://developer.spotify.com/documentation/we
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -104,15 +94,7 @@ module Spotted
         # @see Spotted::Models::Me::ShowSaveParams
         def save(params = {})
           parsed, options = Spotted::Me::ShowSaveParams.dump_request(params)
-          query_params = [:query_ids]
-          @client.request(
-            method: :put,
-            path: "me/shows",
-            query: parsed.slice(*query_params).transform_keys(query_ids: "ids"),
-            body: parsed.except(*query_params),
-            model: NilClass,
-            options: options
-          )
+          @client.request(method: :put, path: "me/shows", body: parsed, model: NilClass, options: options)
         end
 
         # @api private

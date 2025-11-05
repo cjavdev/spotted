@@ -17,19 +17,19 @@ module Spotted
         # have different parameters. These operations can't be applied together in a
         # single request.
         #
-        # @overload update(playlist_id, body_uris: nil, insert_before: nil, range_length: nil, range_start: nil, snapshot_id: nil, request_options: {})
+        # @overload update(playlist_id, insert_before: nil, range_length: nil, range_start: nil, snapshot_id: nil, uris: nil, request_options: {})
         #
-        # @param playlist_id [String] Path param: The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) o
+        # @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
         #
-        # @param body_uris [Array<String>] Body param:
+        # @param insert_before [Integer] The position where the items should be inserted.<br/>To reorder the items to the
         #
-        # @param insert_before [Integer] Body param: The position where the items should be inserted.<br/>To reorder the
+        # @param range_length [Integer] The amount of items to be reordered. Defaults to 1 if not set.<br/>The range of
         #
-        # @param range_length [Integer] Body param: The amount of items to be reordered. Defaults to 1 if not set.<br/>T
+        # @param range_start [Integer] The position of the first item to be reordered.
         #
-        # @param range_start [Integer] Body param: The position of the first item to be reordered.
+        # @param snapshot_id [String] The playlist's snapshot ID against which you want to make the changes.
         #
-        # @param snapshot_id [String] Body param: The playlist's snapshot ID against which you want to make the change
+        # @param uris [Array<String>]
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -38,12 +38,10 @@ module Spotted
         # @see Spotted::Models::Playlists::TrackUpdateParams
         def update(playlist_id, params = {})
           parsed, options = Spotted::Playlists::TrackUpdateParams.dump_request(params)
-          query_params = [:query_uris]
           @client.request(
             method: :put,
             path: ["playlists/%1$s/tracks", playlist_id],
-            query: parsed.slice(*query_params).transform_keys(query_uris: "uris"),
-            body: parsed.except(*query_params),
+            body: parsed,
             model: Spotted::Models::Playlists::TrackUpdateResponse,
             options: options
           )
@@ -90,13 +88,13 @@ module Spotted
         #
         # Add one or more items to a user's playlist.
         #
-        # @overload add(playlist_id, body_position: nil, body_uris: nil, request_options: {})
+        # @overload add(playlist_id, position: nil, uris: nil, request_options: {})
         #
-        # @param playlist_id [String] Path param: The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) o
+        # @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
         #
-        # @param body_position [Integer] Body param: The position to insert the items, a zero-based index. For example, t
+        # @param position [Integer] The position to insert the items, a zero-based index. For example, to insert the
         #
-        # @param body_uris [Array<String>] Body param: A JSON array of the [Spotify URIs](/documentation/web-api/concepts/s
+        # @param uris [Array<String>] A JSON array of the [Spotify URIs](/documentation/web-api/concepts/spotify-uris-
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -105,12 +103,10 @@ module Spotted
         # @see Spotted::Models::Playlists::TrackAddParams
         def add(playlist_id, params = {})
           parsed, options = Spotted::Playlists::TrackAddParams.dump_request(params)
-          query_params = [:query_position, :query_uris]
           @client.request(
             method: :post,
             path: ["playlists/%1$s/tracks", playlist_id],
-            query: parsed.slice(*query_params).transform_keys(query_position: "position", query_uris: "uris"),
-            body: parsed.except(*query_params),
+            body: parsed,
             model: Spotted::Models::Playlists::TrackAddResponse,
             options: options
           )

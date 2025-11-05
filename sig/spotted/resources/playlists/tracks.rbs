@@ -4,11 +4,11 @@ module Spotted
       class Tracks
         def update: (
           String playlist_id,
-          ?body_uris: ::Array[String],
           ?insert_before: Integer,
           ?range_length: Integer,
           ?range_start: Integer,
           ?snapshot_id: String,
+          ?uris: ::Array[String],
           ?request_options: Spotted::request_opts
         ) -> Spotted::Models::Playlists::TrackUpdateResponse
 
@@ -24,8 +24,8 @@ module Spotted
 
         def add: (
           String playlist_id,
-          ?body_position: Integer,
-          ?body_uris: ::Array[String],
+          ?position: Integer,
+          ?uris: ::Array[String],
           ?request_options: Spotted::request_opts
         ) -> Spotted::Models::Playlists::TrackAddResponse
 

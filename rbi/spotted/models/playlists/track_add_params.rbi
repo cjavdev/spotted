@@ -21,10 +21,10 @@ module Spotted
         # Items are added in the order they appear in the uris array. For example:
         # `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M"], "position": 3}`
         sig { returns(T.nilable(Integer)) }
-        attr_reader :body_position
+        attr_reader :position
 
-        sig { params(body_position: Integer).void }
-        attr_writer :body_position
+        sig { params(position: Integer).void }
+        attr_writer :position
 
         # A JSON array of the
         # [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For
@@ -34,15 +34,15 @@ module Spotted
         # parameter is present in the query string, any URIs listed here in the body will
         # be ignored._
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :body_uris
+        attr_reader :uris
 
-        sig { params(body_uris: T::Array[String]).void }
-        attr_writer :body_uris
+        sig { params(uris: T::Array[String]).void }
+        attr_writer :uris
 
         sig do
           params(
-            body_position: Integer,
-            body_uris: T::Array[String],
+            position: Integer,
+            uris: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -52,7 +52,7 @@ module Spotted
           # position: `position=2`. If omitted, the items will be appended to the playlist.
           # Items are added in the order they appear in the uris array. For example:
           # `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M"], "position": 3}`
-          body_position: nil,
+          position: nil,
           # A JSON array of the
           # [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For
           # example:
@@ -60,7 +60,7 @@ module Spotted
           # maximum of 100 items can be added in one request. _**Note**: if the `uris`
           # parameter is present in the query string, any URIs listed here in the body will
           # be ignored._
-          body_uris: nil,
+          uris: nil,
           request_options: {}
         )
         end
@@ -68,8 +68,8 @@ module Spotted
         sig do
           override.returns(
             {
-              body_position: Integer,
-              body_uris: T::Array[String],
+              position: Integer,
+              uris: T::Array[String],
               request_options: Spotted::RequestOptions
             }
           )

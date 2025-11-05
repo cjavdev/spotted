@@ -66,17 +66,17 @@ module Spotted
         # [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         sig do
           params(
-            body_ids: T::Array[String],
+            ids: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).void
         end
         def remove(
-          # Body param: A JSON array of the
+          # A JSON array of the
           # [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). <br/>A maximum
           # of 50 items can be specified in one request. _**Note**: if the `ids` parameter
           # is present in the query string, any IDs listed here in the body will be
           # ignored._
-          body_ids: nil,
+          ids: nil,
           request_options: {}
         )
         end
@@ -87,17 +87,17 @@ module Spotted
         # [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         sig do
           params(
-            body_ids: T::Array[String],
+            ids: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).void
         end
         def save(
-          # Body param: A JSON array of the
+          # A JSON array of the
           # [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). <br/>A maximum
           # of 50 items can be specified in one request. _**Note**: if the `ids` parameter
           # is present in the query string, any IDs listed here in the body will be
           # ignored._
-          body_ids:,
+          ids:,
           request_options: {}
         )
         end

@@ -18,11 +18,11 @@ module Spotted
         # is present in the query string, any IDs listed here in the body will be
         # ignored._
         sig { returns(T::Array[String]) }
-        attr_accessor :body_ids
+        attr_accessor :ids
 
         sig do
           params(
-            body_ids: T::Array[String],
+            ids: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -32,17 +32,14 @@ module Spotted
           # of 50 items can be specified in one request. _**Note**: if the `ids` parameter
           # is present in the query string, any IDs listed here in the body will be
           # ignored._
-          body_ids:,
+          ids:,
           request_options: {}
         )
         end
 
         sig do
           override.returns(
-            {
-              body_ids: T::Array[String],
-              request_options: Spotted::RequestOptions
-            }
+            { ids: T::Array[String], request_options: Spotted::RequestOptions }
           )
         end
         def to_hash
