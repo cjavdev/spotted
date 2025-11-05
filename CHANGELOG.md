@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.5.0 (2025-11-05)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/cjavdev/spotted/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **api:** manual updates ([5eb8f35](https://github.com/cjavdev/spotted/commit/5eb8f353b335e9f2e862a919b51b9a45b84dfa0a))
+
+
+### Chores
+
+* **internal:** version bump ([81d42c8](https://github.com/cjavdev/spotted/commit/81d42c8c6636dcc91d52a10a94647252b79959a7))
+
 ## 0.4.0 (2025-11-04)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/cjavdev/spotted/compare/v0.3.0...v0.4.0)
