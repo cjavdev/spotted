@@ -18,30 +18,14 @@ module Spotted
         # parameter is present in the query string, any IDs listed here in the body will
         # be ignored._
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :body_ids
+        attr_reader :ids
 
-        sig { params(body_ids: T::Array[String]).void }
-        attr_writer :body_ids
-
-        # An
-        # [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-        # If a country code is specified, only content that is available in that market
-        # will be returned.<br/> If a valid user access token is specified in the request
-        # header, the country associated with the user account will take priority over
-        # this parameter.<br/> _**Note**: If neither market or user country are provided,
-        # the content is considered unavailable for the client._<br/> Users can view the
-        # country that is associated with their account in the
-        # [account settings](https://www.spotify.com/account/overview/).
-        sig { returns(T.nilable(String)) }
-        attr_reader :market
-
-        sig { params(market: String).void }
-        attr_writer :market
+        sig { params(ids: T::Array[String]).void }
+        attr_writer :ids
 
         sig do
           params(
-            body_ids: T::Array[String],
-            market: String,
+            ids: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -51,28 +35,14 @@ module Spotted
           # A maximum of 50 items can be specified in one request. _Note: if the `ids`
           # parameter is present in the query string, any IDs listed here in the body will
           # be ignored._
-          body_ids: nil,
-          # An
-          # [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-          # If a country code is specified, only content that is available in that market
-          # will be returned.<br/> If a valid user access token is specified in the request
-          # header, the country associated with the user account will take priority over
-          # this parameter.<br/> _**Note**: If neither market or user country are provided,
-          # the content is considered unavailable for the client._<br/> Users can view the
-          # country that is associated with their account in the
-          # [account settings](https://www.spotify.com/account/overview/).
-          market: nil,
+          ids: nil,
           request_options: {}
         )
         end
 
         sig do
           override.returns(
-            {
-              body_ids: T::Array[String],
-              market: String,
-              request_options: Spotted::RequestOptions
-            }
+            { ids: T::Array[String], request_options: Spotted::RequestOptions }
           )
         end
         def to_hash

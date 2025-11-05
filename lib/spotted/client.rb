@@ -66,9 +66,6 @@ module Spotted
     # @return [Spotted::Resources::Recommendations]
     attr_reader :recommendations
 
-    # @return [Spotted::Resources::Webhooks]
-    attr_reader :webhooks
-
     # @return [Spotted::Resources::Markets]
     attr_reader :markets
 
@@ -166,7 +163,6 @@ module Spotted
       @audio_features = Spotted::Resources::AudioFeatures.new(client: self)
       @audio_analysis = Spotted::Resources::AudioAnalysis.new(client: self)
       @recommendations = Spotted::Resources::Recommendations.new(client: self)
-      @webhooks = Spotted::Resources::Webhooks.new(client: self)
       @markets = Spotted::Resources::Markets.new(client: self)
     end
   end

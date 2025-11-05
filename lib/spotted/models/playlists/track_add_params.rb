@@ -8,7 +8,7 @@ module Spotted
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
-        # @!attribute body_position
+        # @!attribute position
         #   The position to insert the items, a zero-based index. For example, to insert the
         #   items in the first position: `position=0` ; to insert the items in the third
         #   position: `position=2`. If omitted, the items will be appended to the playlist.
@@ -16,9 +16,9 @@ module Spotted
         #   `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M"], "position": 3}`
         #
         #   @return [Integer, nil]
-        optional :body_position, Integer, api_name: :position
+        optional :position, Integer
 
-        # @!attribute body_uris
+        # @!attribute uris
         #   A JSON array of the
         #   [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For
         #   example:
@@ -28,15 +28,15 @@ module Spotted
         #   be ignored._
         #
         #   @return [Array<String>, nil]
-        optional :body_uris, Spotted::Internal::Type::ArrayOf[String], api_name: :uris
+        optional :uris, Spotted::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(body_position: nil, body_uris: nil, request_options: {})
+        # @!method initialize(position: nil, uris: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Playlists::TrackAddParams} for more details.
         #
-        #   @param body_position [Integer] The position to insert the items, a zero-based index. For example, to insert the
+        #   @param position [Integer] The position to insert the items, a zero-based index. For example, to insert the
         #
-        #   @param body_uris [Array<String>] A JSON array of the [Spotify URIs](/documentation/web-api/concepts/spotify-uris-
+        #   @param uris [Array<String>] A JSON array of the [Spotify URIs](/documentation/web-api/concepts/spotify-uris-
         #
         #   @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}]
       end

@@ -37,20 +37,20 @@ class Spotted::Test::Resources::Me::ShowsTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_remove_required_params
+  def test_remove
     skip("Prism tests are disabled")
 
-    response = @spotted.me.shows.remove(query_ids: "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ")
+    response = @spotted.me.shows.remove
 
     assert_pattern do
       response => nil
     end
   end
 
-  def test_save_required_params
+  def test_save
     skip("Prism tests are disabled")
 
-    response = @spotted.me.shows.save(query_ids: "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ")
+    response = @spotted.me.shows.save
 
     assert_pattern do
       response => nil

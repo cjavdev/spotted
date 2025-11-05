@@ -2,24 +2,23 @@ module Spotted
   module Models
     module Me
       type episode_remove_params =
-        { body_ids: ::Array[String] }
-        & Spotted::Internal::Type::request_parameters
+        { ids: ::Array[String] } & Spotted::Internal::Type::request_parameters
 
       class EpisodeRemoveParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
-        attr_reader body_ids: ::Array[String]?
+        attr_reader ids: ::Array[String]?
 
-        def body_ids=: (::Array[String]) -> ::Array[String]
+        def ids=: (::Array[String]) -> ::Array[String]
 
         def initialize: (
-          ?body_ids: ::Array[String],
+          ?ids: ::Array[String],
           ?request_options: Spotted::request_opts
         ) -> void
 
         def to_hash: -> {
-          body_ids: ::Array[String],
+          ids: ::Array[String],
           request_options: Spotted::RequestOptions
         }
       end

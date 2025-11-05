@@ -15,12 +15,6 @@ module Spotted
             )
           end
 
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :body_uris
-
-        sig { params(body_uris: T::Array[String]).void }
-        attr_writer :body_uris
-
         # The position where the items should be inserted.<br/>To reorder the items to the
         # end of the playlist, simply set _insert_before_ to the position after the last
         # item.<br/>Examples:<br/>To reorder the first item to the last position in a
@@ -58,18 +52,23 @@ module Spotted
         sig { params(snapshot_id: String).void }
         attr_writer :snapshot_id
 
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :uris
+
+        sig { params(uris: T::Array[String]).void }
+        attr_writer :uris
+
         sig do
           params(
-            body_uris: T::Array[String],
             insert_before: Integer,
             range_length: Integer,
             range_start: Integer,
             snapshot_id: String,
+            uris: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
-          body_uris: nil,
           # The position where the items should be inserted.<br/>To reorder the items to the
           # end of the playlist, simply set _insert_before_ to the position after the last
           # item.<br/>Examples:<br/>To reorder the first item to the last position in a
@@ -87,6 +86,7 @@ module Spotted
           range_start: nil,
           # The playlist's snapshot ID against which you want to make the changes.
           snapshot_id: nil,
+          uris: nil,
           request_options: {}
         )
         end
@@ -94,11 +94,11 @@ module Spotted
         sig do
           override.returns(
             {
-              body_uris: T::Array[String],
               insert_before: Integer,
               range_length: Integer,
               range_start: Integer,
               snapshot_id: String,
+              uris: T::Array[String],
               request_options: Spotted::RequestOptions
             }
           )

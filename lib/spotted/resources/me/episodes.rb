@@ -74,9 +74,9 @@ module Spotted
         # feedback that you have, or issues that you discover, in our
         # [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         #
-        # @overload remove(body_ids: nil, request_options: {})
+        # @overload remove(ids: nil, request_options: {})
         #
-        # @param body_ids [Array<String>] Body param: A JSON array of the [Spotify IDs](/documentation/web-api/concepts/sp
+        # @param ids [Array<String>] A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-i
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -85,12 +85,10 @@ module Spotted
         # @see Spotted::Models::Me::EpisodeRemoveParams
         def remove(params = {})
           parsed, options = Spotted::Me::EpisodeRemoveParams.dump_request(params)
-          query_params = [:query_ids]
           @client.request(
             method: :delete,
             path: "me/episodes",
-            query: parsed.slice(*query_params).transform_keys(query_ids: "ids"),
-            body: parsed.except(*query_params),
+            body: parsed,
             model: NilClass,
             options: options
           )
@@ -104,9 +102,9 @@ module Spotted
         # you have, or issues that you discover, in our
         # [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         #
-        # @overload save(body_ids:, request_options: {})
+        # @overload save(ids:, request_options: {})
         #
-        # @param body_ids [Array<String>] Body param: A JSON array of the [Spotify IDs](/documentation/web-api/concepts/sp
+        # @param ids [Array<String>] A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-i
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -115,15 +113,7 @@ module Spotted
         # @see Spotted::Models::Me::EpisodeSaveParams
         def save(params)
           parsed, options = Spotted::Me::EpisodeSaveParams.dump_request(params)
-          query_params = [:query_ids]
-          @client.request(
-            method: :put,
-            path: "me/episodes",
-            query: parsed.slice(*query_params).transform_keys(query_ids: "ids"),
-            body: parsed.except(*query_params),
-            model: NilClass,
-            options: options
-          )
+          @client.request(method: :put, path: "me/episodes", body: parsed, model: NilClass, options: options)
         end
 
         # @api private

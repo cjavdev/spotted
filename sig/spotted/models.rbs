@@ -125,11 +125,7 @@ module Spotted
 
   class TrackRetrieveParams = Spotted::Models::TrackRetrieveParams
 
-  UnwrapWebhookEvent: Spotted::Internal::Type::Converter
-
   class UserRetrieveProfileParams = Spotted::Models::UserRetrieveProfileParams
 
   module Users = Spotted::Models::Users
-
-  class WebhookUnwrapParams = Spotted::Models::WebhookUnwrapParams
 end

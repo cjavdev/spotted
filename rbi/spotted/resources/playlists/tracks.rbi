@@ -16,38 +16,36 @@ module Spotted
         sig do
           params(
             playlist_id: String,
-            body_uris: T::Array[String],
             insert_before: Integer,
             range_length: Integer,
             range_start: Integer,
             snapshot_id: String,
+            uris: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).returns(Spotted::Models::Playlists::TrackUpdateResponse)
         end
         def update(
-          # Path param: The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
-          # of the playlist.
+          # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+          # playlist.
           playlist_id,
-          # Body param:
-          body_uris: nil,
-          # Body param: The position where the items should be inserted.<br/>To reorder the
-          # items to the end of the playlist, simply set _insert_before_ to the position
-          # after the last item.<br/>Examples:<br/>To reorder the first item to the last
-          # position in a playlist with 10 items, set _range_start_ to 0, and
-          # _insert_before_ to 10.<br/>To reorder the last item in a playlist with 10 items
-          # to the start of the playlist, set _range_start_ to 9, and _insert_before_ to 0.
+          # The position where the items should be inserted.<br/>To reorder the items to the
+          # end of the playlist, simply set _insert_before_ to the position after the last
+          # item.<br/>Examples:<br/>To reorder the first item to the last position in a
+          # playlist with 10 items, set _range_start_ to 0, and _insert_before_
+          # to 10.<br/>To reorder the last item in a playlist with 10 items to the start of
+          # the playlist, set _range_start_ to 9, and _insert_before_ to 0.
           insert_before: nil,
-          # Body param: The amount of items to be reordered. Defaults to 1 if not
-          # set.<br/>The range of items to be reordered begins from the _range_start_
-          # position, and includes the _range_length_ subsequent items.<br/>Example:<br/>To
-          # move the items at index 9-10 to the start of the playlist, _range_start_ is set
-          # to 9, and _range_length_ is set to 2.
+          # The amount of items to be reordered. Defaults to 1 if not set.<br/>The range of
+          # items to be reordered begins from the _range_start_ position, and includes the
+          # _range_length_ subsequent items.<br/>Example:<br/>To move the items at index
+          # 9-10 to the start of the playlist, _range_start_ is set to 9, and _range_length_
+          # is set to 2.
           range_length: nil,
-          # Body param: The position of the first item to be reordered.
+          # The position of the first item to be reordered.
           range_start: nil,
-          # Body param: The playlist's snapshot ID against which you want to make the
-          # changes.
+          # The playlist's snapshot ID against which you want to make the changes.
           snapshot_id: nil,
+          uris: nil,
           request_options: {}
         )
         end
@@ -111,30 +109,29 @@ module Spotted
         sig do
           params(
             playlist_id: String,
-            body_position: Integer,
-            body_uris: T::Array[String],
+            position: Integer,
+            uris: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).returns(Spotted::Models::Playlists::TrackAddResponse)
         end
         def add(
-          # Path param: The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
-          # of the playlist.
+          # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+          # playlist.
           playlist_id,
-          # Body param: The position to insert the items, a zero-based index. For example,
-          # to insert the items in the first position: `position=0` ; to insert the items in
-          # the third position: `position=2`. If omitted, the items will be appended to the
-          # playlist. Items are added in the order they appear in the uris array. For
-          # example:
+          # The position to insert the items, a zero-based index. For example, to insert the
+          # items in the first position: `position=0` ; to insert the items in the third
+          # position: `position=2`. If omitted, the items will be appended to the playlist.
+          # Items are added in the order they appear in the uris array. For example:
           # `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M"], "position": 3}`
-          body_position: nil,
-          # Body param: A JSON array of the
+          position: nil,
+          # A JSON array of the
           # [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For
           # example:
           # `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M", "spotify:episode:512ojhOuo1ktJprKbVcKyQ"]}`<br/>A
           # maximum of 100 items can be added in one request. _**Note**: if the `uris`
           # parameter is present in the query string, any URIs listed here in the body will
           # be ignored._
-          body_uris: nil,
+          uris: nil,
           request_options: {}
         )
         end

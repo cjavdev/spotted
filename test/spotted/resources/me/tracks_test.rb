@@ -38,13 +38,10 @@ class Spotted::Test::Resources::Me::TracksTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_remove_required_params
+  def test_remove
     skip("Prism tests are disabled")
 
-    response =
-      @spotted.me.tracks.remove(
-        query_ids: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
-      )
+    response = @spotted.me.tracks.remove
 
     assert_pattern do
       response => nil

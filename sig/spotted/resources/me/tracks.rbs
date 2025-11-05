@@ -15,7 +15,7 @@ module Spotted
         ) -> Spotted::Models::Me::track_check_response
 
         def remove: (
-          ?body_ids: ::Array[String],
+          ?ids: ::Array[String],
           ?request_options: Spotted::request_opts
         ) -> nil
 

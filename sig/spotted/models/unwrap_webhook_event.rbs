@@ -1,5 +1,0 @@
-module Spotted
-  module Models
-    UnwrapWebhookEvent: Spotted::Internal::Type::Converter
-  end
-end

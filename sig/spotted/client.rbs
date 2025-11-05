@@ -42,8 +42,6 @@ module Spotted
 
     attr_reader recommendations: Spotted::Resources::Recommendations
 
-    attr_reader webhooks: Spotted::Resources::Webhooks
-
     attr_reader markets: Spotted::Resources::Markets
 
     # @api private
