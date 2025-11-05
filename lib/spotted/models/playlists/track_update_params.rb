@@ -8,11 +8,6 @@ module Spotted
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
-        # @!attribute body_uris
-        #
-        #   @return [Array<String>, nil]
-        optional :body_uris, Spotted::Internal::Type::ArrayOf[String], api_name: :uris
-
         # @!attribute insert_before
         #   The position where the items should be inserted.<br/>To reorder the items to the
         #   end of the playlist, simply set _insert_before_ to the position after the last
@@ -46,11 +41,14 @@ module Spotted
         #   @return [String, nil]
         optional :snapshot_id, String
 
-        # @!method initialize(body_uris: nil, insert_before: nil, range_length: nil, range_start: nil, snapshot_id: nil, request_options: {})
+        # @!attribute uris
+        #
+        #   @return [Array<String>, nil]
+        optional :uris, Spotted::Internal::Type::ArrayOf[String]
+
+        # @!method initialize(insert_before: nil, range_length: nil, range_start: nil, snapshot_id: nil, uris: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Playlists::TrackUpdateParams} for more details.
-        #
-        #   @param body_uris [Array<String>]
         #
         #   @param insert_before [Integer] The position where the items should be inserted.<br/>To reorder the items to the
         #
@@ -59,6 +57,8 @@ module Spotted
         #   @param range_start [Integer] The position of the first item to be reordered.
         #
         #   @param snapshot_id [String] The playlist's snapshot ID against which you want to make the changes.
+        #
+        #   @param uris [Array<String>]
         #
         #   @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}]
       end

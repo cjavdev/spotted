@@ -58,17 +58,17 @@ module Spotted
         # Remove one or more albums from the current user's 'Your Music' library.
         sig do
           params(
-            body_ids: T::Array[String],
+            ids: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).void
         end
         def remove(
-          # Body param: A JSON array of the
+          # A JSON array of the
           # [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
           # `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items
           # can be specified in one request. _**Note**: if the `ids` parameter is present in
           # the query string, any IDs listed here in the body will be ignored._
-          body_ids: nil,
+          ids: nil,
           request_options: {}
         )
         end
@@ -76,17 +76,17 @@ module Spotted
         # Save one or more albums to the current user's 'Your Music' library.
         sig do
           params(
-            body_ids: T::Array[String],
+            ids: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).void
         end
         def save(
-          # Body param: A JSON array of the
+          # A JSON array of the
           # [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example:
           # `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items
           # can be specified in one request. _**Note**: if the `ids` parameter is present in
           # the query string, any IDs listed here in the body will be ignored._
-          body_ids: nil,
+          ids: nil,
           request_options: {}
         )
         end

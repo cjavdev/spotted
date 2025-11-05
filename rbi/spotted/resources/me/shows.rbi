@@ -47,28 +47,17 @@ module Spotted
         # Delete one or more shows from current Spotify user's library.
         sig do
           params(
-            body_ids: T::Array[String],
-            market: String,
+            ids: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).void
         end
         def remove(
-          # Body param: A JSON array of the
+          # A JSON array of the
           # [Spotify IDs](https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids).
           # A maximum of 50 items can be specified in one request. _Note: if the `ids`
           # parameter is present in the query string, any IDs listed here in the body will
           # be ignored._
-          body_ids: nil,
-          # Query param: An
-          # [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-          # If a country code is specified, only content that is available in that market
-          # will be returned.<br/> If a valid user access token is specified in the request
-          # header, the country associated with the user account will take priority over
-          # this parameter.<br/> _**Note**: If neither market or user country are provided,
-          # the content is considered unavailable for the client._<br/> Users can view the
-          # country that is associated with their account in the
-          # [account settings](https://www.spotify.com/account/overview/).
-          market: nil,
+          ids: nil,
           request_options: {}
         )
         end
@@ -76,17 +65,17 @@ module Spotted
         # Save one or more shows to current Spotify user's library.
         sig do
           params(
-            body_ids: T::Array[String],
+            ids: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).void
         end
         def save(
-          # Body param: A JSON array of the
+          # A JSON array of the
           # [Spotify IDs](https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids).
           # A maximum of 50 items can be specified in one request. _Note: if the `ids`
           # parameter is present in the query string, any IDs listed here in the body will
           # be ignored._
-          body_ids: nil,
+          ids: nil,
           request_options: {}
         )
         end

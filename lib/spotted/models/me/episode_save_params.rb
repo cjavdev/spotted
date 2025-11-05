@@ -8,7 +8,7 @@ module Spotted
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
-        # @!attribute body_ids
+        # @!attribute ids
         #   A JSON array of the
         #   [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). <br/>A maximum
         #   of 50 items can be specified in one request. _**Note**: if the `ids` parameter
@@ -16,13 +16,13 @@ module Spotted
         #   ignored._
         #
         #   @return [Array<String>]
-        required :body_ids, Spotted::Internal::Type::ArrayOf[String], api_name: :ids
+        required :ids, Spotted::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(body_ids:, request_options: {})
+        # @!method initialize(ids:, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Me::EpisodeSaveParams} for more details.
         #
-        #   @param body_ids [Array<String>] A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-i
+        #   @param ids [Array<String>] A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-i
         #
         #   @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}]
       end

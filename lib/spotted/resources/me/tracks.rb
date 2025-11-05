@@ -66,9 +66,9 @@ module Spotted
         #
         # Remove one or more tracks from the current user's 'Your Music' library.
         #
-        # @overload remove(body_ids: nil, request_options: {})
+        # @overload remove(ids: nil, request_options: {})
         #
-        # @param body_ids [Array<String>] Body param: A JSON array of the [Spotify IDs](/documentation/web-api/concepts/sp
+        # @param ids [Array<String>] A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-i
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -77,15 +77,7 @@ module Spotted
         # @see Spotted::Models::Me::TrackRemoveParams
         def remove(params = {})
           parsed, options = Spotted::Me::TrackRemoveParams.dump_request(params)
-          query_params = [:query_ids]
-          @client.request(
-            method: :delete,
-            path: "me/tracks",
-            query: parsed.slice(*query_params).transform_keys(query_ids: "ids"),
-            body: parsed.except(*query_params),
-            model: NilClass,
-            options: options
-          )
+          @client.request(method: :delete, path: "me/tracks", body: parsed, model: NilClass, options: options)
         end
 
         # Some parameter documentations has been truncated, see

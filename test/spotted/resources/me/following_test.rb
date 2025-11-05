@@ -36,26 +36,17 @@ class Spotted::Test::Resources::Me::FollowingTest < Spotted::Test::ResourceTest
   def test_follow_required_params
     skip("Prism tests are disabled")
 
-    response =
-      @spotted.me.following.follow(
-        query_ids: "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
-        type: :artist,
-        body_ids: ["string"]
-      )
+    response = @spotted.me.following.follow(ids: ["string"])
 
     assert_pattern do
       response => nil
     end
   end
 
-  def test_unfollow_required_params
+  def test_unfollow
     skip("Prism tests are disabled")
 
-    response =
-      @spotted.me.following.unfollow(
-        query_ids: "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
-        type: :artist
-      )
+    response = @spotted.me.following.unfollow
 
     assert_pattern do
       response => nil

@@ -14,13 +14,12 @@ module Spotted
         ) -> Spotted::Models::Me::show_check_response
 
         def remove: (
-          ?body_ids: ::Array[String],
-          ?market: String,
+          ?ids: ::Array[String],
           ?request_options: Spotted::request_opts
         ) -> nil
 
         def save: (
-          ?body_ids: ::Array[String],
+          ?ids: ::Array[String],
           ?request_options: Spotted::request_opts
         ) -> nil
 

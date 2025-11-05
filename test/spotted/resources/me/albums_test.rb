@@ -38,24 +38,20 @@ class Spotted::Test::Resources::Me::AlbumsTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_remove_required_params
+  def test_remove
     skip("Prism tests are disabled")
 
-    response =
-      @spotted.me.albums.remove(
-        query_ids: "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc"
-      )
+    response = @spotted.me.albums.remove
 
     assert_pattern do
       response => nil
     end
   end
 
-  def test_save_required_params
+  def test_save
     skip("Prism tests are disabled")
 
-    response =
-      @spotted.me.albums.save(query_ids: "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc")
+    response = @spotted.me.albums.save
 
     assert_pattern do
       response => nil

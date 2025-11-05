@@ -37,13 +37,10 @@ class Spotted::Test::Resources::Me::EpisodesTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_remove_required_params
+  def test_remove
     skip("Prism tests are disabled")
 
-    response =
-      @spotted.me.episodes.remove(
-        query_ids: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
-      )
+    response = @spotted.me.episodes.remove
 
     assert_pattern do
       response => nil
@@ -53,11 +50,7 @@ class Spotted::Test::Resources::Me::EpisodesTest < Spotted::Test::ResourceTest
   def test_save_required_params
     skip("Prism tests are disabled")
 
-    response =
-      @spotted.me.episodes.save(
-        query_ids: "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
-        body_ids: ["string"]
-      )
+    response = @spotted.me.episodes.save(ids: ["string"])
 
     assert_pattern do
       response => nil

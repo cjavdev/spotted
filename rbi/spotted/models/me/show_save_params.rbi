@@ -18,14 +18,14 @@ module Spotted
         # parameter is present in the query string, any IDs listed here in the body will
         # be ignored._
         sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :body_ids
+        attr_reader :ids
 
-        sig { params(body_ids: T::Array[String]).void }
-        attr_writer :body_ids
+        sig { params(ids: T::Array[String]).void }
+        attr_writer :ids
 
         sig do
           params(
-            body_ids: T::Array[String],
+            ids: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -35,17 +35,14 @@ module Spotted
           # A maximum of 50 items can be specified in one request. _Note: if the `ids`
           # parameter is present in the query string, any IDs listed here in the body will
           # be ignored._
-          body_ids: nil,
+          ids: nil,
           request_options: {}
         )
         end
 
         sig do
           override.returns(
-            {
-              body_ids: T::Array[String],
-              request_options: Spotted::RequestOptions
-            }
+            { ids: T::Array[String], request_options: Spotted::RequestOptions }
           )
         end
         def to_hash

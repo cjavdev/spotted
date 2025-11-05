@@ -67,11 +67,9 @@ module Spotted
         # Add the current user as a follower of one or more artists or other Spotify
         # users.
         #
-        # @overload follow(body_ids:, type:, request_options: {})
+        # @overload follow(ids:, request_options: {})
         #
-        # @param body_ids [Array<String>] Body param: A JSON array of the artist or user [Spotify IDs](/documentation/web-
-        #
-        # @param type [Symbol, Spotted::Models::Me::FollowingFollowParams::Type] Query param: The ID type.
+        # @param ids [Array<String>] A JSON array of the artist or user [Spotify IDs](/documentation/web-api/concepts
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -80,15 +78,7 @@ module Spotted
         # @see Spotted::Models::Me::FollowingFollowParams
         def follow(params)
           parsed, options = Spotted::Me::FollowingFollowParams.dump_request(params)
-          query_params = [:query_ids, :type]
-          @client.request(
-            method: :put,
-            path: "me/following",
-            query: parsed.slice(*query_params).transform_keys(query_ids: "ids"),
-            body: parsed.except(*query_params),
-            model: NilClass,
-            options: options
-          )
+          @client.request(method: :put, path: "me/following", body: parsed, model: NilClass, options: options)
         end
 
         # Some parameter documentations has been truncated, see
@@ -97,25 +87,21 @@ module Spotted
         # Remove the current user as a follower of one or more artists or other Spotify
         # users.
         #
-        # @overload unfollow(type:, body_ids: nil, request_options: {})
+        # @overload unfollow(ids: nil, request_options: {})
         #
-        # @param type [Symbol, Spotted::Models::Me::FollowingUnfollowParams::Type] Query param: The ID type: either `artist` or `user`.
-        #
-        # @param body_ids [Array<String>] Body param: A JSON array of the artist or user [Spotify IDs](/documentation/web-
+        # @param ids [Array<String>] A JSON array of the artist or user [Spotify IDs](/documentation/web-api/concepts
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
         #
         # @see Spotted::Models::Me::FollowingUnfollowParams
-        def unfollow(params)
+        def unfollow(params = {})
           parsed, options = Spotted::Me::FollowingUnfollowParams.dump_request(params)
-          query_params = [:query_ids, :type]
           @client.request(
             method: :delete,
             path: "me/following",
-            query: parsed.slice(*query_params).transform_keys(query_ids: "ids"),
-            body: parsed.except(*query_params),
+            body: parsed,
             model: NilClass,
             options: options
           )
