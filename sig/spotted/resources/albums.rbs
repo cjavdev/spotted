@@ -7,11 +7,11 @@ module Spotted
         ?request_options: Spotted::request_opts
       ) -> Spotted::Models::AlbumRetrieveResponse
 
-      def list: (
+      def bulk_retrieve: (
         ids: String,
         ?market: String,
         ?request_options: Spotted::request_opts
-      ) -> Spotted::Models::AlbumListResponse
+      ) -> Spotted::Models::AlbumBulkRetrieveResponse
 
       def list_tracks: (
         String id,

@@ -2,13 +2,13 @@
 
 module Spotted
   module Models
-    class AlbumListParams < Spotted::Internal::Type::BaseModel
+    class AlbumBulkRetrieveParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
       OrHash =
         T.type_alias do
-          T.any(Spotted::AlbumListParams, Spotted::Internal::AnyHash)
+          T.any(Spotted::AlbumBulkRetrieveParams, Spotted::Internal::AnyHash)
         end
 
       # A comma-separated list of the

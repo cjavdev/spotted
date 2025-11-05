@@ -2,18 +2,24 @@
 
 module Spotted
   module Models
-    class AlbumListResponse < Spotted::Internal::Type::BaseModel
+    class AlbumBulkRetrieveResponse < Spotted::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
-          T.any(Spotted::Models::AlbumListResponse, Spotted::Internal::AnyHash)
+          T.any(
+            Spotted::Models::AlbumBulkRetrieveResponse,
+            Spotted::Internal::AnyHash
+          )
         end
 
-      sig { returns(T::Array[Spotted::Models::AlbumListResponse::Album]) }
+      sig do
+        returns(T::Array[Spotted::Models::AlbumBulkRetrieveResponse::Album])
+      end
       attr_accessor :albums
 
       sig do
         params(
-          albums: T::Array[Spotted::Models::AlbumListResponse::Album::OrHash]
+          albums:
+            T::Array[Spotted::Models::AlbumBulkRetrieveResponse::Album::OrHash]
         ).returns(T.attached_class)
       end
       def self.new(albums:)
@@ -21,7 +27,9 @@ module Spotted
 
       sig do
         override.returns(
-          { albums: T::Array[Spotted::Models::AlbumListResponse::Album] }
+          {
+            albums: T::Array[Spotted::Models::AlbumBulkRetrieveResponse::Album]
+          }
         )
       end
       def to_hash
@@ -31,7 +39,7 @@ module Spotted
         OrHash =
           T.type_alias do
             T.any(
-              Spotted::Models::AlbumListResponse::Album,
+              Spotted::Models::AlbumBulkRetrieveResponse::Album,
               Spotted::Internal::AnyHash
             )
           end
@@ -44,7 +52,7 @@ module Spotted
         # The type of the album.
         sig do
           returns(
-            Spotted::Models::AlbumListResponse::Album::AlbumType::TaggedSymbol
+            Spotted::Models::AlbumBulkRetrieveResponse::Album::AlbumType::TaggedSymbol
           )
         end
         attr_accessor :album_type
@@ -83,7 +91,7 @@ module Spotted
         # The precision with which `release_date` value is known.
         sig do
           returns(
-            Spotted::Models::AlbumListResponse::Album::ReleaseDatePrecision::TaggedSymbol
+            Spotted::Models::AlbumBulkRetrieveResponse::Album::ReleaseDatePrecision::TaggedSymbol
           )
         end
         attr_accessor :release_date_precision
@@ -94,7 +102,9 @@ module Spotted
 
         # The object type.
         sig do
-          returns(Spotted::Models::AlbumListResponse::Album::Type::TaggedSymbol)
+          returns(
+            Spotted::Models::AlbumBulkRetrieveResponse::Album::Type::TaggedSymbol
+          )
         end
         attr_accessor :type
 
@@ -164,13 +174,16 @@ module Spotted
 
         # The tracks of the album.
         sig do
-          returns(T.nilable(Spotted::Models::AlbumListResponse::Album::Tracks))
+          returns(
+            T.nilable(Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks)
+          )
         end
         attr_reader :tracks
 
         sig do
           params(
-            tracks: Spotted::Models::AlbumListResponse::Album::Tracks::OrHash
+            tracks:
+              Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks::OrHash
           ).void
         end
         attr_writer :tracks
@@ -179,7 +192,7 @@ module Spotted
           params(
             id: String,
             album_type:
-              Spotted::Models::AlbumListResponse::Album::AlbumType::OrSymbol,
+              Spotted::Models::AlbumBulkRetrieveResponse::Album::AlbumType::OrSymbol,
             available_markets: T::Array[String],
             external_urls: Spotted::ExternalURLObject::OrHash,
             href: String,
@@ -187,9 +200,10 @@ module Spotted
             name: String,
             release_date: String,
             release_date_precision:
-              Spotted::Models::AlbumListResponse::Album::ReleaseDatePrecision::OrSymbol,
+              Spotted::Models::AlbumBulkRetrieveResponse::Album::ReleaseDatePrecision::OrSymbol,
             total_tracks: Integer,
-            type: Spotted::Models::AlbumListResponse::Album::Type::OrSymbol,
+            type:
+              Spotted::Models::AlbumBulkRetrieveResponse::Album::Type::OrSymbol,
             uri: String,
             artists: T::Array[Spotted::SimplifiedArtistObject::OrHash],
             copyrights: T::Array[Spotted::CopyrightObject::OrHash],
@@ -198,7 +212,8 @@ module Spotted
             label: String,
             popularity: Integer,
             restrictions: Spotted::AlbumRestrictionObject::OrHash,
-            tracks: Spotted::Models::AlbumListResponse::Album::Tracks::OrHash
+            tracks:
+              Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -258,7 +273,7 @@ module Spotted
             {
               id: String,
               album_type:
-                Spotted::Models::AlbumListResponse::Album::AlbumType::TaggedSymbol,
+                Spotted::Models::AlbumBulkRetrieveResponse::Album::AlbumType::TaggedSymbol,
               available_markets: T::Array[String],
               external_urls: Spotted::ExternalURLObject,
               href: String,
@@ -266,10 +281,10 @@ module Spotted
               name: String,
               release_date: String,
               release_date_precision:
-                Spotted::Models::AlbumListResponse::Album::ReleaseDatePrecision::TaggedSymbol,
+                Spotted::Models::AlbumBulkRetrieveResponse::Album::ReleaseDatePrecision::TaggedSymbol,
               total_tracks: Integer,
               type:
-                Spotted::Models::AlbumListResponse::Album::Type::TaggedSymbol,
+                Spotted::Models::AlbumBulkRetrieveResponse::Album::Type::TaggedSymbol,
               uri: String,
               artists: T::Array[Spotted::SimplifiedArtistObject],
               copyrights: T::Array[Spotted::CopyrightObject],
@@ -278,7 +293,7 @@ module Spotted
               label: String,
               popularity: Integer,
               restrictions: Spotted::AlbumRestrictionObject,
-              tracks: Spotted::Models::AlbumListResponse::Album::Tracks
+              tracks: Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks
             }
           )
         end
@@ -293,7 +308,7 @@ module Spotted
             T.type_alias do
               T.all(
                 Symbol,
-                Spotted::Models::AlbumListResponse::Album::AlbumType
+                Spotted::Models::AlbumBulkRetrieveResponse::Album::AlbumType
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -301,23 +316,23 @@ module Spotted
           ALBUM =
             T.let(
               :album,
-              Spotted::Models::AlbumListResponse::Album::AlbumType::TaggedSymbol
+              Spotted::Models::AlbumBulkRetrieveResponse::Album::AlbumType::TaggedSymbol
             )
           SINGLE =
             T.let(
               :single,
-              Spotted::Models::AlbumListResponse::Album::AlbumType::TaggedSymbol
+              Spotted::Models::AlbumBulkRetrieveResponse::Album::AlbumType::TaggedSymbol
             )
           COMPILATION =
             T.let(
               :compilation,
-              Spotted::Models::AlbumListResponse::Album::AlbumType::TaggedSymbol
+              Spotted::Models::AlbumBulkRetrieveResponse::Album::AlbumType::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Spotted::Models::AlbumListResponse::Album::AlbumType::TaggedSymbol
+                Spotted::Models::AlbumBulkRetrieveResponse::Album::AlbumType::TaggedSymbol
               ]
             )
           end
@@ -333,7 +348,7 @@ module Spotted
             T.type_alias do
               T.all(
                 Symbol,
-                Spotted::Models::AlbumListResponse::Album::ReleaseDatePrecision
+                Spotted::Models::AlbumBulkRetrieveResponse::Album::ReleaseDatePrecision
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -341,23 +356,23 @@ module Spotted
           YEAR =
             T.let(
               :year,
-              Spotted::Models::AlbumListResponse::Album::ReleaseDatePrecision::TaggedSymbol
+              Spotted::Models::AlbumBulkRetrieveResponse::Album::ReleaseDatePrecision::TaggedSymbol
             )
           MONTH =
             T.let(
               :month,
-              Spotted::Models::AlbumListResponse::Album::ReleaseDatePrecision::TaggedSymbol
+              Spotted::Models::AlbumBulkRetrieveResponse::Album::ReleaseDatePrecision::TaggedSymbol
             )
           DAY =
             T.let(
               :day,
-              Spotted::Models::AlbumListResponse::Album::ReleaseDatePrecision::TaggedSymbol
+              Spotted::Models::AlbumBulkRetrieveResponse::Album::ReleaseDatePrecision::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Spotted::Models::AlbumListResponse::Album::ReleaseDatePrecision::TaggedSymbol
+                Spotted::Models::AlbumBulkRetrieveResponse::Album::ReleaseDatePrecision::TaggedSymbol
               ]
             )
           end
@@ -371,20 +386,23 @@ module Spotted
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Spotted::Models::AlbumListResponse::Album::Type)
+              T.all(
+                Symbol,
+                Spotted::Models::AlbumBulkRetrieveResponse::Album::Type
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ALBUM =
             T.let(
               :album,
-              Spotted::Models::AlbumListResponse::Album::Type::TaggedSymbol
+              Spotted::Models::AlbumBulkRetrieveResponse::Album::Type::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Spotted::Models::AlbumListResponse::Album::Type::TaggedSymbol
+                Spotted::Models::AlbumBulkRetrieveResponse::Album::Type::TaggedSymbol
               ]
             )
           end
@@ -396,7 +414,7 @@ module Spotted
           OrHash =
             T.type_alias do
               T.any(
-                Spotted::Models::AlbumListResponse::Album::Tracks,
+                Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks,
                 Spotted::Internal::AnyHash
               )
             end

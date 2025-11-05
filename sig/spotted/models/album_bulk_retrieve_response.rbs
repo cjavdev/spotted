@@ -1,32 +1,32 @@
 module Spotted
   module Models
-    type album_list_response =
-      { albums: ::Array[Spotted::Models::AlbumListResponse::Album] }
+    type album_bulk_retrieve_response =
+      { albums: ::Array[Spotted::Models::AlbumBulkRetrieveResponse::Album] }
 
-    class AlbumListResponse < Spotted::Internal::Type::BaseModel
-      attr_accessor albums: ::Array[Spotted::Models::AlbumListResponse::Album]
+    class AlbumBulkRetrieveResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor albums: ::Array[Spotted::Models::AlbumBulkRetrieveResponse::Album]
 
       def initialize: (
-        albums: ::Array[Spotted::Models::AlbumListResponse::Album]
+        albums: ::Array[Spotted::Models::AlbumBulkRetrieveResponse::Album]
       ) -> void
 
       def to_hash: -> {
-        albums: ::Array[Spotted::Models::AlbumListResponse::Album]
+        albums: ::Array[Spotted::Models::AlbumBulkRetrieveResponse::Album]
       }
 
       type album =
         {
           id: String,
-          album_type: Spotted::Models::AlbumListResponse::Album::album_type,
+          album_type: Spotted::Models::AlbumBulkRetrieveResponse::Album::album_type,
           available_markets: ::Array[String],
           external_urls: Spotted::ExternalURLObject,
           href: String,
           images: ::Array[Spotted::ImageObject],
           name: String,
           release_date: String,
-          release_date_precision: Spotted::Models::AlbumListResponse::Album::release_date_precision,
+          release_date_precision: Spotted::Models::AlbumBulkRetrieveResponse::Album::release_date_precision,
           total_tracks: Integer,
-          type: Spotted::Models::AlbumListResponse::Album::type_,
+          type: Spotted::Models::AlbumBulkRetrieveResponse::Album::type_,
           uri: String,
           artists: ::Array[Spotted::SimplifiedArtistObject],
           copyrights: ::Array[Spotted::CopyrightObject],
@@ -35,13 +35,13 @@ module Spotted
           label: String,
           popularity: Integer,
           restrictions: Spotted::AlbumRestrictionObject,
-          tracks: Spotted::Models::AlbumListResponse::Album::Tracks
+          tracks: Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks
         }
 
       class Album < Spotted::Internal::Type::BaseModel
         attr_accessor id: String
 
-        attr_accessor album_type: Spotted::Models::AlbumListResponse::Album::album_type
+        attr_accessor album_type: Spotted::Models::AlbumBulkRetrieveResponse::Album::album_type
 
         attr_accessor available_markets: ::Array[String]
 
@@ -55,11 +55,11 @@ module Spotted
 
         attr_accessor release_date: String
 
-        attr_accessor release_date_precision: Spotted::Models::AlbumListResponse::Album::release_date_precision
+        attr_accessor release_date_precision: Spotted::Models::AlbumBulkRetrieveResponse::Album::release_date_precision
 
         attr_accessor total_tracks: Integer
 
-        attr_accessor type: Spotted::Models::AlbumListResponse::Album::type_
+        attr_accessor type: Spotted::Models::AlbumBulkRetrieveResponse::Album::type_
 
         attr_accessor uri: String
 
@@ -99,24 +99,24 @@ module Spotted
           Spotted::AlbumRestrictionObject
         ) -> Spotted::AlbumRestrictionObject
 
-        attr_reader tracks: Spotted::Models::AlbumListResponse::Album::Tracks?
+        attr_reader tracks: Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks?
 
         def tracks=: (
-          Spotted::Models::AlbumListResponse::Album::Tracks
-        ) -> Spotted::Models::AlbumListResponse::Album::Tracks
+          Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks
+        ) -> Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks
 
         def initialize: (
           id: String,
-          album_type: Spotted::Models::AlbumListResponse::Album::album_type,
+          album_type: Spotted::Models::AlbumBulkRetrieveResponse::Album::album_type,
           available_markets: ::Array[String],
           external_urls: Spotted::ExternalURLObject,
           href: String,
           images: ::Array[Spotted::ImageObject],
           name: String,
           release_date: String,
-          release_date_precision: Spotted::Models::AlbumListResponse::Album::release_date_precision,
+          release_date_precision: Spotted::Models::AlbumBulkRetrieveResponse::Album::release_date_precision,
           total_tracks: Integer,
-          type: Spotted::Models::AlbumListResponse::Album::type_,
+          type: Spotted::Models::AlbumBulkRetrieveResponse::Album::type_,
           uri: String,
           ?artists: ::Array[Spotted::SimplifiedArtistObject],
           ?copyrights: ::Array[Spotted::CopyrightObject],
@@ -125,21 +125,21 @@ module Spotted
           ?label: String,
           ?popularity: Integer,
           ?restrictions: Spotted::AlbumRestrictionObject,
-          ?tracks: Spotted::Models::AlbumListResponse::Album::Tracks
+          ?tracks: Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks
         ) -> void
 
         def to_hash: -> {
           id: String,
-          album_type: Spotted::Models::AlbumListResponse::Album::album_type,
+          album_type: Spotted::Models::AlbumBulkRetrieveResponse::Album::album_type,
           available_markets: ::Array[String],
           external_urls: Spotted::ExternalURLObject,
           href: String,
           images: ::Array[Spotted::ImageObject],
           name: String,
           release_date: String,
-          release_date_precision: Spotted::Models::AlbumListResponse::Album::release_date_precision,
+          release_date_precision: Spotted::Models::AlbumBulkRetrieveResponse::Album::release_date_precision,
           total_tracks: Integer,
-          type: Spotted::Models::AlbumListResponse::Album::type_,
+          type: Spotted::Models::AlbumBulkRetrieveResponse::Album::type_,
           uri: String,
           artists: ::Array[Spotted::SimplifiedArtistObject],
           copyrights: ::Array[Spotted::CopyrightObject],
@@ -148,7 +148,7 @@ module Spotted
           label: String,
           popularity: Integer,
           restrictions: Spotted::AlbumRestrictionObject,
-          tracks: Spotted::Models::AlbumListResponse::Album::Tracks
+          tracks: Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks
         }
 
         type album_type = :album | :single | :compilation
@@ -160,7 +160,7 @@ module Spotted
           SINGLE: :single
           COMPILATION: :compilation
 
-          def self?.values: -> ::Array[Spotted::Models::AlbumListResponse::Album::album_type]
+          def self?.values: -> ::Array[Spotted::Models::AlbumBulkRetrieveResponse::Album::album_type]
         end
 
         type release_date_precision = :year | :month | :day
@@ -172,7 +172,7 @@ module Spotted
           MONTH: :month
           DAY: :day
 
-          def self?.values: -> ::Array[Spotted::Models::AlbumListResponse::Album::release_date_precision]
+          def self?.values: -> ::Array[Spotted::Models::AlbumBulkRetrieveResponse::Album::release_date_precision]
         end
 
         type type_ = :album
@@ -182,7 +182,7 @@ module Spotted
 
           ALBUM: :album
 
-          def self?.values: -> ::Array[Spotted::Models::AlbumListResponse::Album::type_]
+          def self?.values: -> ::Array[Spotted::Models::AlbumBulkRetrieveResponse::Album::type_]
         end
 
         type tracks =

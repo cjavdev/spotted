@@ -2,15 +2,16 @@
 
 module Spotted
   module Models
-    # @see Spotted::Resources::Albums#list
-    class AlbumListResponse < Spotted::Internal::Type::BaseModel
+    # @see Spotted::Resources::Albums#bulk_retrieve
+    class AlbumBulkRetrieveResponse < Spotted::Internal::Type::BaseModel
       # @!attribute albums
       #
-      #   @return [Array<Spotted::Models::AlbumListResponse::Album>]
-      required :albums, -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::AlbumListResponse::Album] }
+      #   @return [Array<Spotted::Models::AlbumBulkRetrieveResponse::Album>]
+      required :albums,
+               -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::AlbumBulkRetrieveResponse::Album] }
 
       # @!method initialize(albums:)
-      #   @param albums [Array<Spotted::Models::AlbumListResponse::Album>]
+      #   @param albums [Array<Spotted::Models::AlbumBulkRetrieveResponse::Album>]
 
       class Album < Spotted::Internal::Type::BaseModel
         # @!attribute id
@@ -23,8 +24,8 @@ module Spotted
         # @!attribute album_type
         #   The type of the album.
         #
-        #   @return [Symbol, Spotted::Models::AlbumListResponse::Album::AlbumType]
-        required :album_type, enum: -> { Spotted::Models::AlbumListResponse::Album::AlbumType }
+        #   @return [Symbol, Spotted::Models::AlbumBulkRetrieveResponse::Album::AlbumType]
+        required :album_type, enum: -> { Spotted::Models::AlbumBulkRetrieveResponse::Album::AlbumType }
 
         # @!attribute available_markets
         #   The markets in which the album is available:
@@ -69,9 +70,9 @@ module Spotted
         # @!attribute release_date_precision
         #   The precision with which `release_date` value is known.
         #
-        #   @return [Symbol, Spotted::Models::AlbumListResponse::Album::ReleaseDatePrecision]
+        #   @return [Symbol, Spotted::Models::AlbumBulkRetrieveResponse::Album::ReleaseDatePrecision]
         required :release_date_precision,
-                 enum: -> { Spotted::Models::AlbumListResponse::Album::ReleaseDatePrecision }
+                 enum: -> { Spotted::Models::AlbumBulkRetrieveResponse::Album::ReleaseDatePrecision }
 
         # @!attribute total_tracks
         #   The number of tracks in the album.
@@ -82,8 +83,8 @@ module Spotted
         # @!attribute type
         #   The object type.
         #
-        #   @return [Symbol, Spotted::Models::AlbumListResponse::Album::Type]
-        required :type, enum: -> { Spotted::Models::AlbumListResponse::Album::Type }
+        #   @return [Symbol, Spotted::Models::AlbumBulkRetrieveResponse::Album::Type]
+        required :type, enum: -> { Spotted::Models::AlbumBulkRetrieveResponse::Album::Type }
 
         # @!attribute uri
         #   The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -141,16 +142,16 @@ module Spotted
         # @!attribute tracks
         #   The tracks of the album.
         #
-        #   @return [Spotted::Models::AlbumListResponse::Album::Tracks, nil]
-        optional :tracks, -> { Spotted::Models::AlbumListResponse::Album::Tracks }
+        #   @return [Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks, nil]
+        optional :tracks, -> { Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks }
 
         # @!method initialize(id:, album_type:, available_markets:, external_urls:, href:, images:, name:, release_date:, release_date_precision:, total_tracks:, type:, uri:, artists: nil, copyrights: nil, external_ids: nil, genres: nil, label: nil, popularity: nil, restrictions: nil, tracks: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::AlbumListResponse::Album} for more details.
+        #   {Spotted::Models::AlbumBulkRetrieveResponse::Album} for more details.
         #
         #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the album
         #
-        #   @param album_type [Symbol, Spotted::Models::AlbumListResponse::Album::AlbumType] The type of the album.
+        #   @param album_type [Symbol, Spotted::Models::AlbumBulkRetrieveResponse::Album::AlbumType] The type of the album.
         #
         #   @param available_markets [Array<String>] The markets in which the album is available: [ISO 3166-1 alpha-2 country codes](
         #
@@ -164,11 +165,11 @@ module Spotted
         #
         #   @param release_date [String] The date the album was first released.
         #
-        #   @param release_date_precision [Symbol, Spotted::Models::AlbumListResponse::Album::ReleaseDatePrecision] The precision with which `release_date` value is known.
+        #   @param release_date_precision [Symbol, Spotted::Models::AlbumBulkRetrieveResponse::Album::ReleaseDatePrecision] The precision with which `release_date` value is known.
         #
         #   @param total_tracks [Integer] The number of tracks in the album.
         #
-        #   @param type [Symbol, Spotted::Models::AlbumListResponse::Album::Type] The object type.
+        #   @param type [Symbol, Spotted::Models::AlbumBulkRetrieveResponse::Album::Type] The object type.
         #
         #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the albu
         #
@@ -186,11 +187,11 @@ module Spotted
         #
         #   @param restrictions [Spotted::Models::AlbumRestrictionObject] Included in the response when a content restriction is applied.
         #
-        #   @param tracks [Spotted::Models::AlbumListResponse::Album::Tracks] The tracks of the album.
+        #   @param tracks [Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks] The tracks of the album.
 
         # The type of the album.
         #
-        # @see Spotted::Models::AlbumListResponse::Album#album_type
+        # @see Spotted::Models::AlbumBulkRetrieveResponse::Album#album_type
         module AlbumType
           extend Spotted::Internal::Type::Enum
 
@@ -204,7 +205,7 @@ module Spotted
 
         # The precision with which `release_date` value is known.
         #
-        # @see Spotted::Models::AlbumListResponse::Album#release_date_precision
+        # @see Spotted::Models::AlbumBulkRetrieveResponse::Album#release_date_precision
         module ReleaseDatePrecision
           extend Spotted::Internal::Type::Enum
 
@@ -218,7 +219,7 @@ module Spotted
 
         # The object type.
         #
-        # @see Spotted::Models::AlbumListResponse::Album#type
+        # @see Spotted::Models::AlbumBulkRetrieveResponse::Album#type
         module Type
           extend Spotted::Internal::Type::Enum
 
@@ -228,7 +229,7 @@ module Spotted
           #   @return [Array<Symbol>]
         end
 
-        # @see Spotted::Models::AlbumListResponse::Album#tracks
+        # @see Spotted::Models::AlbumBulkRetrieveResponse::Album#tracks
         class Tracks < Spotted::Internal::Type::BaseModel
           # @!attribute href
           #   A link to the Web API endpoint returning the full result of the request
@@ -273,7 +274,7 @@ module Spotted
 
           # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
           #   Some parameter documentations has been truncated, see
-          #   {Spotted::Models::AlbumListResponse::Album::Tracks} for more details.
+          #   {Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks} for more details.
           #
           #   The tracks of the album.
           #
