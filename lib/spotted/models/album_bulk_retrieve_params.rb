@@ -2,8 +2,8 @@
 
 module Spotted
   module Models
-    # @see Spotted::Resources::Albums#list
-    class AlbumListParams < Spotted::Internal::Type::BaseModel
+    # @see Spotted::Resources::Albums#bulk_retrieve
+    class AlbumBulkRetrieveParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
@@ -31,7 +31,7 @@ module Spotted
 
       # @!method initialize(ids:, market: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
-      #   {Spotted::Models::AlbumListParams} for more details.
+      #   {Spotted::Models::AlbumBulkRetrieveParams} for more details.
       #
       #   @param ids [String] A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spot
       #

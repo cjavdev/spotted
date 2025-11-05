@@ -1,10 +1,10 @@
 module Spotted
   module Models
-    type album_list_params =
+    type album_bulk_retrieve_params =
       { ids: String, market: String }
       & Spotted::Internal::Type::request_parameters
 
-    class AlbumListParams < Spotted::Internal::Type::BaseModel
+    class AlbumBulkRetrieveParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 

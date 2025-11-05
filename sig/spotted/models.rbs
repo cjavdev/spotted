@@ -1,5 +1,5 @@
 module Spotted
-  class AlbumListParams = Spotted::Models::AlbumListParams
+  class AlbumBulkRetrieveParams = Spotted::Models::AlbumBulkRetrieveParams
 
   class AlbumListTracksParams = Spotted::Models::AlbumListTracksParams
 
