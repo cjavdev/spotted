@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.6.0 (2025-11-07)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/cjavdev/spotted/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **api:** manual updates ([3d95bc3](https://github.com/cjavdev/spotted/commit/3d95bc327b7762e7926e39bf6949ddc0de4b0908))
+
+
+### Bug Fixes
+
+* better thread safety via early initializing SSL store during HTTP client creation ([eb7a596](https://github.com/cjavdev/spotted/commit/eb7a596117993c2466b45a9c0ce20e70ba9f994a))
+
 ## 0.5.0 (2025-11-05)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/cjavdev/spotted/compare/v0.4.0...v0.5.0)
