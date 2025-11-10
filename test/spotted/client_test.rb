@@ -27,23 +27,6 @@ class SpottedTest < Minitest::Test
     super
   end
 
-  def test_raises_on_missing_non_nullable_opts
-    original_id = ENV["SPOTIFY_CLIENT_ID"]
-    original_secret = ENV["SPOTIFY_CLIENT_SECRET"]
-    ENV.delete("SPOTIFY_CLIENT_ID")
-    ENV.delete("SPOTIFY_CLIENT_SECRET")
-
-    e = assert_raises(ArgumentError) do
-      Spotted::Client.new
-    end
-    assert_match(/is required/, e.message)
-  ensure
-    ENV["SPOTIFY_CLIENT_ID"] = original_id if original_id
-    ENV["SPOTIFY_CLIENT_ID"] = nil if original_id.nil?
-    ENV["SPOTIFY_CLIENT_SECRET"] = original_secret if original_secret
-    ENV["SPOTIFY_CLIENT_SECRET"] = nil if original_secret.nil?
-  end
-
   def test_client_default_request_default_retry_attempts
     stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(

@@ -8,9 +8,11 @@ module Spotted
 
     DEFAULT_MAX_RETRY_DELAY: Float
 
-    attr_reader client_id: String
+    attr_reader client_id: String?
 
-    attr_reader client_secret: String
+    attr_reader client_secret: String?
+
+    attr_reader access_token: String?
 
     attr_reader albums: Spotted::Resources::Albums
 
@@ -44,14 +46,19 @@ module Spotted
 
     attr_reader markets: Spotted::Resources::Markets
 
+    private def auth_headers: -> ::Hash[String, String]
+
+    private def bearer_auth: -> ::Hash[String, String]
+
     # @api private
     attr_reader oauth_2_0_state: Spotted::Internal::OAuth2ClientCredentials
 
-    private def auth_headers: -> ::Hash[String, String]
+    private def oauth_2_0: -> ::Hash[String, String]
 
     def initialize: (
       ?client_id: String?,
       ?client_secret: String?,
+      ?access_token: String?,
       ?base_url: String?,
       ?max_retries: Integer,
       ?timeout: Float,
