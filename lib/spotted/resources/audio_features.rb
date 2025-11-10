@@ -32,26 +32,26 @@ module Spotted
       # @deprecated
       #
       # Some parameter documentations has been truncated, see
-      # {Spotted::Models::AudioFeatureListParams} for more details.
+      # {Spotted::Models::AudioFeatureBulkRetrieveParams} for more details.
       #
       # Get audio features for multiple tracks based on their Spotify IDs.
       #
-      # @overload list(ids:, request_options: {})
+      # @overload bulk_retrieve(ids:, request_options: {})
       #
       # @param ids [String] A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spot
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::AudioFeatureListResponse]
+      # @return [Spotted::Models::AudioFeatureBulkRetrieveResponse]
       #
-      # @see Spotted::Models::AudioFeatureListParams
-      def list(params)
-        parsed, options = Spotted::AudioFeatureListParams.dump_request(params)
+      # @see Spotted::Models::AudioFeatureBulkRetrieveParams
+      def bulk_retrieve(params)
+        parsed, options = Spotted::AudioFeatureBulkRetrieveParams.dump_request(params)
         @client.request(
           method: :get,
           path: "audio-features",
           query: parsed,
-          model: Spotted::Models::AudioFeatureListResponse,
+          model: Spotted::Models::AudioFeatureBulkRetrieveResponse,
           options: options
         )
       end

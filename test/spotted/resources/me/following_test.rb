@@ -3,18 +3,18 @@
 require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Me::FollowingTest < Spotted::Test::ResourceTest
-  def test_list_required_params
+  def test_bulk_retrieve_required_params
     skip("Prism tests are disabled")
 
-    response = @spotted.me.following.list(type: :artist)
+    response = @spotted.me.following.bulk_retrieve(type: :artist)
 
     assert_pattern do
-      response => Spotted::Models::Me::FollowingListResponse
+      response => Spotted::Models::Me::FollowingBulkRetrieveResponse
     end
 
     assert_pattern do
       response => {
-        artists: Spotted::Models::Me::FollowingListResponse::Artists
+        artists: Spotted::Models::Me::FollowingBulkRetrieveResponse::Artists
       }
     end
   end

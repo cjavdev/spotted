@@ -1,0 +1,13 @@
+module Spotted
+  module Models
+    type show_bulk_retrieve_response = { shows: ::Array[Spotted::ShowBase] }
+
+    class ShowBulkRetrieveResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor shows: ::Array[Spotted::ShowBase]
+
+      def initialize: (shows: ::Array[Spotted::ShowBase]) -> void
+
+      def to_hash: -> { shows: ::Array[Spotted::ShowBase] }
+    end
+  end
+end

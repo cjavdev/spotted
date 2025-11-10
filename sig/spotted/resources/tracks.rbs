@@ -7,11 +7,11 @@ module Spotted
         ?request_options: Spotted::request_opts
       ) -> Spotted::TrackObject
 
-      def list: (
+      def bulk_retrieve: (
         ids: String,
         ?market: String,
         ?request_options: Spotted::request_opts
-      ) -> Spotted::Models::TrackListResponse
+      ) -> Spotted::Models::TrackBulkRetrieveResponse
 
       def initialize: (client: Spotted::Client) -> void
     end

@@ -1,0 +1,88 @@
+module Spotted
+  module Models
+    type audiobook_bulk_retrieve_response =
+      {
+        audiobooks: ::Array[Spotted::Models::AudiobookBulkRetrieveResponse::Audiobook]
+      }
+
+    class AudiobookBulkRetrieveResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor audiobooks: ::Array[Spotted::Models::AudiobookBulkRetrieveResponse::Audiobook]
+
+      def initialize: (
+        audiobooks: ::Array[Spotted::Models::AudiobookBulkRetrieveResponse::Audiobook]
+      ) -> void
+
+      def to_hash: -> {
+        audiobooks: ::Array[Spotted::Models::AudiobookBulkRetrieveResponse::Audiobook]
+      }
+
+      type audiobook =
+        {
+          chapters: Spotted::Models::AudiobookBulkRetrieveResponse::Audiobook::Chapters
+        }
+
+      class Audiobook < Spotted::Models::AudiobookBase
+        def chapters: -> Spotted::Models::AudiobookBulkRetrieveResponse::Audiobook::Chapters
+
+        def chapters=: (
+          Spotted::Models::AudiobookBulkRetrieveResponse::Audiobook::Chapters _
+        ) -> Spotted::Models::AudiobookBulkRetrieveResponse::Audiobook::Chapters
+
+        def initialize: (
+          chapters: Spotted::Models::AudiobookBulkRetrieveResponse::Audiobook::Chapters
+        ) -> void
+
+        def to_hash: -> {
+          chapters: Spotted::Models::AudiobookBulkRetrieveResponse::Audiobook::Chapters
+        }
+
+        type chapters =
+          {
+            href: String,
+            items: ::Array[Spotted::SimplifiedChapterObject],
+            limit: Integer,
+            next_: String?,
+            offset: Integer,
+            previous: String?,
+            total: Integer
+          }
+
+        class Chapters < Spotted::Internal::Type::BaseModel
+          attr_accessor href: String
+
+          attr_accessor items: ::Array[Spotted::SimplifiedChapterObject]
+
+          attr_accessor limit: Integer
+
+          attr_accessor next_: String?
+
+          attr_accessor offset: Integer
+
+          attr_accessor previous: String?
+
+          attr_accessor total: Integer
+
+          def initialize: (
+            href: String,
+            items: ::Array[Spotted::SimplifiedChapterObject],
+            limit: Integer,
+            next_: String?,
+            offset: Integer,
+            previous: String?,
+            total: Integer
+          ) -> void
+
+          def to_hash: -> {
+            href: String,
+            items: ::Array[Spotted::SimplifiedChapterObject],
+            limit: Integer,
+            next_: String?,
+            offset: Integer,
+            previous: String?,
+            total: Integer
+          }
+        end
+      end
+    end
+  end
+end

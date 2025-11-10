@@ -39,13 +39,13 @@ class Spotted::Test::Resources::EpisodesTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_list_required_params
+  def test_bulk_retrieve_required_params
     skip("Prism tests are disabled")
 
-    response = @spotted.episodes.list(ids: "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf")
+    response = @spotted.episodes.bulk_retrieve(ids: "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf")
 
     assert_pattern do
-      response => Spotted::Models::EpisodeListResponse
+      response => Spotted::Models::EpisodeBulkRetrieveResponse
     end
 
     assert_pattern do
