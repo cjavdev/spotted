@@ -1,29 +1,29 @@
 module Spotted
   module Models
-    type search_search_params =
+    type search_query_params =
       {
         q: String,
-        type: ::Array[Spotted::Models::SearchSearchParams::type_],
-        include_external: Spotted::Models::SearchSearchParams::include_external,
+        type: ::Array[Spotted::Models::SearchQueryParams::type_],
+        include_external: Spotted::Models::SearchQueryParams::include_external,
         limit: Integer,
         market: String,
         offset: Integer
       }
       & Spotted::Internal::Type::request_parameters
 
-    class SearchSearchParams < Spotted::Internal::Type::BaseModel
+    class SearchQueryParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
       attr_accessor q: String
 
-      attr_accessor type: ::Array[Spotted::Models::SearchSearchParams::type_]
+      attr_accessor type: ::Array[Spotted::Models::SearchQueryParams::type_]
 
-      attr_reader include_external: Spotted::Models::SearchSearchParams::include_external?
+      attr_reader include_external: Spotted::Models::SearchQueryParams::include_external?
 
       def include_external=: (
-        Spotted::Models::SearchSearchParams::include_external
-      ) -> Spotted::Models::SearchSearchParams::include_external
+        Spotted::Models::SearchQueryParams::include_external
+      ) -> Spotted::Models::SearchQueryParams::include_external
 
       attr_reader limit: Integer?
 
@@ -39,8 +39,8 @@ module Spotted
 
       def initialize: (
         q: String,
-        type: ::Array[Spotted::Models::SearchSearchParams::type_],
-        ?include_external: Spotted::Models::SearchSearchParams::include_external,
+        type: ::Array[Spotted::Models::SearchQueryParams::type_],
+        ?include_external: Spotted::Models::SearchQueryParams::include_external,
         ?limit: Integer,
         ?market: String,
         ?offset: Integer,
@@ -49,8 +49,8 @@ module Spotted
 
       def to_hash: -> {
         q: String,
-        type: ::Array[Spotted::Models::SearchSearchParams::type_],
-        include_external: Spotted::Models::SearchSearchParams::include_external,
+        type: ::Array[Spotted::Models::SearchQueryParams::type_],
+        include_external: Spotted::Models::SearchQueryParams::include_external,
         limit: Integer,
         market: String,
         offset: Integer,
@@ -71,7 +71,7 @@ module Spotted
         EPISODE: :episode
         AUDIOBOOK: :audiobook
 
-        def self?.values: -> ::Array[Spotted::Models::SearchSearchParams::type_]
+        def self?.values: -> ::Array[Spotted::Models::SearchQueryParams::type_]
       end
 
       type include_external = :audio
@@ -81,7 +81,7 @@ module Spotted
 
         AUDIO: :audio
 
-        def self?.values: -> ::Array[Spotted::Models::SearchSearchParams::include_external]
+        def self?.values: -> ::Array[Spotted::Models::SearchQueryParams::include_external]
       end
     end
   end

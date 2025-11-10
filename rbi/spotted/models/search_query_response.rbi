@@ -2,55 +2,53 @@
 
 module Spotted
   module Models
-    class SearchSearchResponse < Spotted::Internal::Type::BaseModel
+    class SearchQueryResponse < Spotted::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
           T.any(
-            Spotted::Models::SearchSearchResponse,
+            Spotted::Models::SearchQueryResponse,
             Spotted::Internal::AnyHash
           )
         end
 
-      sig { returns(T.nilable(Spotted::Models::SearchSearchResponse::Albums)) }
+      sig { returns(T.nilable(Spotted::Models::SearchQueryResponse::Albums)) }
       attr_reader :albums
 
       sig do
         params(
-          albums: Spotted::Models::SearchSearchResponse::Albums::OrHash
+          albums: Spotted::Models::SearchQueryResponse::Albums::OrHash
         ).void
       end
       attr_writer :albums
 
-      sig { returns(T.nilable(Spotted::Models::SearchSearchResponse::Artists)) }
+      sig { returns(T.nilable(Spotted::Models::SearchQueryResponse::Artists)) }
       attr_reader :artists
 
       sig do
         params(
-          artists: Spotted::Models::SearchSearchResponse::Artists::OrHash
+          artists: Spotted::Models::SearchQueryResponse::Artists::OrHash
         ).void
       end
       attr_writer :artists
 
       sig do
-        returns(T.nilable(Spotted::Models::SearchSearchResponse::Audiobooks))
+        returns(T.nilable(Spotted::Models::SearchQueryResponse::Audiobooks))
       end
       attr_reader :audiobooks
 
       sig do
         params(
-          audiobooks: Spotted::Models::SearchSearchResponse::Audiobooks::OrHash
+          audiobooks: Spotted::Models::SearchQueryResponse::Audiobooks::OrHash
         ).void
       end
       attr_writer :audiobooks
 
-      sig do
-        returns(T.nilable(Spotted::Models::SearchSearchResponse::Episodes))
-      end
+      sig { returns(T.nilable(Spotted::Models::SearchQueryResponse::Episodes)) }
       attr_reader :episodes
 
       sig do
         params(
-          episodes: Spotted::Models::SearchSearchResponse::Episodes::OrHash
+          episodes: Spotted::Models::SearchQueryResponse::Episodes::OrHash
         ).void
       end
       attr_writer :episodes
@@ -61,33 +59,33 @@ module Spotted
       sig { params(playlists: Spotted::PagingPlaylistObject::OrHash).void }
       attr_writer :playlists
 
-      sig { returns(T.nilable(Spotted::Models::SearchSearchResponse::Shows)) }
+      sig { returns(T.nilable(Spotted::Models::SearchQueryResponse::Shows)) }
       attr_reader :shows
 
       sig do
-        params(shows: Spotted::Models::SearchSearchResponse::Shows::OrHash).void
+        params(shows: Spotted::Models::SearchQueryResponse::Shows::OrHash).void
       end
       attr_writer :shows
 
-      sig { returns(T.nilable(Spotted::Models::SearchSearchResponse::Tracks)) }
+      sig { returns(T.nilable(Spotted::Models::SearchQueryResponse::Tracks)) }
       attr_reader :tracks
 
       sig do
         params(
-          tracks: Spotted::Models::SearchSearchResponse::Tracks::OrHash
+          tracks: Spotted::Models::SearchQueryResponse::Tracks::OrHash
         ).void
       end
       attr_writer :tracks
 
       sig do
         params(
-          albums: Spotted::Models::SearchSearchResponse::Albums::OrHash,
-          artists: Spotted::Models::SearchSearchResponse::Artists::OrHash,
-          audiobooks: Spotted::Models::SearchSearchResponse::Audiobooks::OrHash,
-          episodes: Spotted::Models::SearchSearchResponse::Episodes::OrHash,
+          albums: Spotted::Models::SearchQueryResponse::Albums::OrHash,
+          artists: Spotted::Models::SearchQueryResponse::Artists::OrHash,
+          audiobooks: Spotted::Models::SearchQueryResponse::Audiobooks::OrHash,
+          episodes: Spotted::Models::SearchQueryResponse::Episodes::OrHash,
           playlists: Spotted::PagingPlaylistObject::OrHash,
-          shows: Spotted::Models::SearchSearchResponse::Shows::OrHash,
-          tracks: Spotted::Models::SearchSearchResponse::Tracks::OrHash
+          shows: Spotted::Models::SearchQueryResponse::Shows::OrHash,
+          tracks: Spotted::Models::SearchQueryResponse::Tracks::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
@@ -104,13 +102,13 @@ module Spotted
       sig do
         override.returns(
           {
-            albums: Spotted::Models::SearchSearchResponse::Albums,
-            artists: Spotted::Models::SearchSearchResponse::Artists,
-            audiobooks: Spotted::Models::SearchSearchResponse::Audiobooks,
-            episodes: Spotted::Models::SearchSearchResponse::Episodes,
+            albums: Spotted::Models::SearchQueryResponse::Albums,
+            artists: Spotted::Models::SearchQueryResponse::Artists,
+            audiobooks: Spotted::Models::SearchQueryResponse::Audiobooks,
+            episodes: Spotted::Models::SearchQueryResponse::Episodes,
             playlists: Spotted::PagingPlaylistObject,
-            shows: Spotted::Models::SearchSearchResponse::Shows,
-            tracks: Spotted::Models::SearchSearchResponse::Tracks
+            shows: Spotted::Models::SearchQueryResponse::Shows,
+            tracks: Spotted::Models::SearchQueryResponse::Tracks
           }
         )
       end
@@ -121,7 +119,7 @@ module Spotted
         OrHash =
           T.type_alias do
             T.any(
-              Spotted::Models::SearchSearchResponse::Albums,
+              Spotted::Models::SearchQueryResponse::Albums,
               Spotted::Internal::AnyHash
             )
           end
@@ -131,7 +129,7 @@ module Spotted
         attr_accessor :href
 
         sig do
-          returns(T::Array[Spotted::Models::SearchSearchResponse::Albums::Item])
+          returns(T::Array[Spotted::Models::SearchQueryResponse::Albums::Item])
         end
         attr_accessor :items
 
@@ -160,7 +158,7 @@ module Spotted
             href: String,
             items:
               T::Array[
-                Spotted::Models::SearchSearchResponse::Albums::Item::OrHash
+                Spotted::Models::SearchQueryResponse::Albums::Item::OrHash
               ],
             limit: Integer,
             next_: T.nilable(String),
@@ -191,7 +189,7 @@ module Spotted
             {
               href: String,
               items:
-                T::Array[Spotted::Models::SearchSearchResponse::Albums::Item],
+                T::Array[Spotted::Models::SearchQueryResponse::Albums::Item],
               limit: Integer,
               next_: T.nilable(String),
               offset: Integer,
@@ -207,7 +205,7 @@ module Spotted
           OrHash =
             T.type_alias do
               T.any(
-                Spotted::Models::SearchSearchResponse::Albums::Item,
+                Spotted::Models::SearchQueryResponse::Albums::Item,
                 Spotted::Internal::AnyHash
               )
             end
@@ -220,7 +218,7 @@ module Spotted
           # The type of the album.
           sig do
             returns(
-              Spotted::Models::SearchSearchResponse::Albums::Item::AlbumType::TaggedSymbol
+              Spotted::Models::SearchQueryResponse::Albums::Item::AlbumType::TaggedSymbol
             )
           end
           attr_accessor :album_type
@@ -264,7 +262,7 @@ module Spotted
           # The precision with which `release_date` value is known.
           sig do
             returns(
-              Spotted::Models::SearchSearchResponse::Albums::Item::ReleaseDatePrecision::TaggedSymbol
+              Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision::TaggedSymbol
             )
           end
           attr_accessor :release_date_precision
@@ -276,7 +274,7 @@ module Spotted
           # The object type.
           sig do
             returns(
-              Spotted::Models::SearchSearchResponse::Albums::Item::Type::TaggedSymbol
+              Spotted::Models::SearchQueryResponse::Albums::Item::Type::TaggedSymbol
             )
           end
           attr_accessor :type
@@ -299,7 +297,7 @@ module Spotted
             params(
               id: String,
               album_type:
-                Spotted::Models::SearchSearchResponse::Albums::Item::AlbumType::OrSymbol,
+                Spotted::Models::SearchQueryResponse::Albums::Item::AlbumType::OrSymbol,
               artists: T::Array[Spotted::SimplifiedArtistObject::OrHash],
               available_markets: T::Array[String],
               external_urls: Spotted::ExternalURLObject::OrHash,
@@ -308,10 +306,10 @@ module Spotted
               name: String,
               release_date: String,
               release_date_precision:
-                Spotted::Models::SearchSearchResponse::Albums::Item::ReleaseDatePrecision::OrSymbol,
+                Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision::OrSymbol,
               total_tracks: Integer,
               type:
-                Spotted::Models::SearchSearchResponse::Albums::Item::Type::OrSymbol,
+                Spotted::Models::SearchQueryResponse::Albums::Item::Type::OrSymbol,
               uri: String,
               restrictions: Spotted::AlbumRestrictionObject::OrHash
             ).returns(T.attached_class)
@@ -360,7 +358,7 @@ module Spotted
               {
                 id: String,
                 album_type:
-                  Spotted::Models::SearchSearchResponse::Albums::Item::AlbumType::TaggedSymbol,
+                  Spotted::Models::SearchQueryResponse::Albums::Item::AlbumType::TaggedSymbol,
                 artists: T::Array[Spotted::SimplifiedArtistObject],
                 available_markets: T::Array[String],
                 external_urls: Spotted::ExternalURLObject,
@@ -369,10 +367,10 @@ module Spotted
                 name: String,
                 release_date: String,
                 release_date_precision:
-                  Spotted::Models::SearchSearchResponse::Albums::Item::ReleaseDatePrecision::TaggedSymbol,
+                  Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision::TaggedSymbol,
                 total_tracks: Integer,
                 type:
-                  Spotted::Models::SearchSearchResponse::Albums::Item::Type::TaggedSymbol,
+                  Spotted::Models::SearchQueryResponse::Albums::Item::Type::TaggedSymbol,
                 uri: String,
                 restrictions: Spotted::AlbumRestrictionObject
               }
@@ -389,7 +387,7 @@ module Spotted
               T.type_alias do
                 T.all(
                   Symbol,
-                  Spotted::Models::SearchSearchResponse::Albums::Item::AlbumType
+                  Spotted::Models::SearchQueryResponse::Albums::Item::AlbumType
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -397,23 +395,23 @@ module Spotted
             ALBUM =
               T.let(
                 :album,
-                Spotted::Models::SearchSearchResponse::Albums::Item::AlbumType::TaggedSymbol
+                Spotted::Models::SearchQueryResponse::Albums::Item::AlbumType::TaggedSymbol
               )
             SINGLE =
               T.let(
                 :single,
-                Spotted::Models::SearchSearchResponse::Albums::Item::AlbumType::TaggedSymbol
+                Spotted::Models::SearchQueryResponse::Albums::Item::AlbumType::TaggedSymbol
               )
             COMPILATION =
               T.let(
                 :compilation,
-                Spotted::Models::SearchSearchResponse::Albums::Item::AlbumType::TaggedSymbol
+                Spotted::Models::SearchQueryResponse::Albums::Item::AlbumType::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Spotted::Models::SearchSearchResponse::Albums::Item::AlbumType::TaggedSymbol
+                  Spotted::Models::SearchQueryResponse::Albums::Item::AlbumType::TaggedSymbol
                 ]
               )
             end
@@ -429,7 +427,7 @@ module Spotted
               T.type_alias do
                 T.all(
                   Symbol,
-                  Spotted::Models::SearchSearchResponse::Albums::Item::ReleaseDatePrecision
+                  Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -437,23 +435,23 @@ module Spotted
             YEAR =
               T.let(
                 :year,
-                Spotted::Models::SearchSearchResponse::Albums::Item::ReleaseDatePrecision::TaggedSymbol
+                Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision::TaggedSymbol
               )
             MONTH =
               T.let(
                 :month,
-                Spotted::Models::SearchSearchResponse::Albums::Item::ReleaseDatePrecision::TaggedSymbol
+                Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision::TaggedSymbol
               )
             DAY =
               T.let(
                 :day,
-                Spotted::Models::SearchSearchResponse::Albums::Item::ReleaseDatePrecision::TaggedSymbol
+                Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Spotted::Models::SearchSearchResponse::Albums::Item::ReleaseDatePrecision::TaggedSymbol
+                  Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision::TaggedSymbol
                 ]
               )
             end
@@ -469,7 +467,7 @@ module Spotted
               T.type_alias do
                 T.all(
                   Symbol,
-                  Spotted::Models::SearchSearchResponse::Albums::Item::Type
+                  Spotted::Models::SearchQueryResponse::Albums::Item::Type
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -477,13 +475,13 @@ module Spotted
             ALBUM =
               T.let(
                 :album,
-                Spotted::Models::SearchSearchResponse::Albums::Item::Type::TaggedSymbol
+                Spotted::Models::SearchQueryResponse::Albums::Item::Type::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Spotted::Models::SearchSearchResponse::Albums::Item::Type::TaggedSymbol
+                  Spotted::Models::SearchQueryResponse::Albums::Item::Type::TaggedSymbol
                 ]
               )
             end
@@ -497,7 +495,7 @@ module Spotted
         OrHash =
           T.type_alias do
             T.any(
-              Spotted::Models::SearchSearchResponse::Artists,
+              Spotted::Models::SearchQueryResponse::Artists,
               Spotted::Internal::AnyHash
             )
           end
@@ -578,7 +576,7 @@ module Spotted
         OrHash =
           T.type_alias do
             T.any(
-              Spotted::Models::SearchSearchResponse::Audiobooks,
+              Spotted::Models::SearchQueryResponse::Audiobooks,
               Spotted::Internal::AnyHash
             )
           end
@@ -659,7 +657,7 @@ module Spotted
         OrHash =
           T.type_alias do
             T.any(
-              Spotted::Models::SearchSearchResponse::Episodes,
+              Spotted::Models::SearchQueryResponse::Episodes,
               Spotted::Internal::AnyHash
             )
           end
@@ -740,7 +738,7 @@ module Spotted
         OrHash =
           T.type_alias do
             T.any(
-              Spotted::Models::SearchSearchResponse::Shows,
+              Spotted::Models::SearchQueryResponse::Shows,
               Spotted::Internal::AnyHash
             )
           end
@@ -821,7 +819,7 @@ module Spotted
         OrHash =
           T.type_alias do
             T.any(
-              Spotted::Models::SearchSearchResponse::Tracks,
+              Spotted::Models::SearchQueryResponse::Tracks,
               Spotted::Internal::AnyHash
             )
           end

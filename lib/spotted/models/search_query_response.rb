@@ -2,27 +2,27 @@
 
 module Spotted
   module Models
-    # @see Spotted::Resources::Search#search
-    class SearchSearchResponse < Spotted::Internal::Type::BaseModel
+    # @see Spotted::Resources::Search#query
+    class SearchQueryResponse < Spotted::Internal::Type::BaseModel
       # @!attribute albums
       #
-      #   @return [Spotted::Models::SearchSearchResponse::Albums, nil]
-      optional :albums, -> { Spotted::Models::SearchSearchResponse::Albums }
+      #   @return [Spotted::Models::SearchQueryResponse::Albums, nil]
+      optional :albums, -> { Spotted::Models::SearchQueryResponse::Albums }
 
       # @!attribute artists
       #
-      #   @return [Spotted::Models::SearchSearchResponse::Artists, nil]
-      optional :artists, -> { Spotted::Models::SearchSearchResponse::Artists }
+      #   @return [Spotted::Models::SearchQueryResponse::Artists, nil]
+      optional :artists, -> { Spotted::Models::SearchQueryResponse::Artists }
 
       # @!attribute audiobooks
       #
-      #   @return [Spotted::Models::SearchSearchResponse::Audiobooks, nil]
-      optional :audiobooks, -> { Spotted::Models::SearchSearchResponse::Audiobooks }
+      #   @return [Spotted::Models::SearchQueryResponse::Audiobooks, nil]
+      optional :audiobooks, -> { Spotted::Models::SearchQueryResponse::Audiobooks }
 
       # @!attribute episodes
       #
-      #   @return [Spotted::Models::SearchSearchResponse::Episodes, nil]
-      optional :episodes, -> { Spotted::Models::SearchSearchResponse::Episodes }
+      #   @return [Spotted::Models::SearchQueryResponse::Episodes, nil]
+      optional :episodes, -> { Spotted::Models::SearchQueryResponse::Episodes }
 
       # @!attribute playlists
       #
@@ -31,24 +31,24 @@ module Spotted
 
       # @!attribute shows
       #
-      #   @return [Spotted::Models::SearchSearchResponse::Shows, nil]
-      optional :shows, -> { Spotted::Models::SearchSearchResponse::Shows }
+      #   @return [Spotted::Models::SearchQueryResponse::Shows, nil]
+      optional :shows, -> { Spotted::Models::SearchQueryResponse::Shows }
 
       # @!attribute tracks
       #
-      #   @return [Spotted::Models::SearchSearchResponse::Tracks, nil]
-      optional :tracks, -> { Spotted::Models::SearchSearchResponse::Tracks }
+      #   @return [Spotted::Models::SearchQueryResponse::Tracks, nil]
+      optional :tracks, -> { Spotted::Models::SearchQueryResponse::Tracks }
 
       # @!method initialize(albums: nil, artists: nil, audiobooks: nil, episodes: nil, playlists: nil, shows: nil, tracks: nil)
-      #   @param albums [Spotted::Models::SearchSearchResponse::Albums]
-      #   @param artists [Spotted::Models::SearchSearchResponse::Artists]
-      #   @param audiobooks [Spotted::Models::SearchSearchResponse::Audiobooks]
-      #   @param episodes [Spotted::Models::SearchSearchResponse::Episodes]
+      #   @param albums [Spotted::Models::SearchQueryResponse::Albums]
+      #   @param artists [Spotted::Models::SearchQueryResponse::Artists]
+      #   @param audiobooks [Spotted::Models::SearchQueryResponse::Audiobooks]
+      #   @param episodes [Spotted::Models::SearchQueryResponse::Episodes]
       #   @param playlists [Spotted::Models::PagingPlaylistObject]
-      #   @param shows [Spotted::Models::SearchSearchResponse::Shows]
-      #   @param tracks [Spotted::Models::SearchSearchResponse::Tracks]
+      #   @param shows [Spotted::Models::SearchQueryResponse::Shows]
+      #   @param tracks [Spotted::Models::SearchQueryResponse::Tracks]
 
-      # @see Spotted::Models::SearchSearchResponse#albums
+      # @see Spotted::Models::SearchQueryResponse#albums
       class Albums < Spotted::Internal::Type::BaseModel
         # @!attribute href
         #   A link to the Web API endpoint returning the full result of the request
@@ -58,9 +58,9 @@ module Spotted
 
         # @!attribute items
         #
-        #   @return [Array<Spotted::Models::SearchSearchResponse::Albums::Item>]
+        #   @return [Array<Spotted::Models::SearchQueryResponse::Albums::Item>]
         required :items,
-                 -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::SearchSearchResponse::Albums::Item] }
+                 -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::SearchQueryResponse::Albums::Item] }
 
         # @!attribute limit
         #   The maximum number of items in the response (as set in the query or by default).
@@ -94,11 +94,11 @@ module Spotted
 
         # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
         #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::SearchSearchResponse::Albums} for more details.
+        #   {Spotted::Models::SearchQueryResponse::Albums} for more details.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
         #
-        #   @param items [Array<Spotted::Models::SearchSearchResponse::Albums::Item>]
+        #   @param items [Array<Spotted::Models::SearchQueryResponse::Albums::Item>]
         #
         #   @param limit [Integer] The maximum number of items in the response (as set in the query or by default).
         #
@@ -121,8 +121,8 @@ module Spotted
           # @!attribute album_type
           #   The type of the album.
           #
-          #   @return [Symbol, Spotted::Models::SearchSearchResponse::Albums::Item::AlbumType]
-          required :album_type, enum: -> { Spotted::Models::SearchSearchResponse::Albums::Item::AlbumType }
+          #   @return [Symbol, Spotted::Models::SearchQueryResponse::Albums::Item::AlbumType]
+          required :album_type, enum: -> { Spotted::Models::SearchQueryResponse::Albums::Item::AlbumType }
 
           # @!attribute artists
           #   The artists of the album. Each artist object includes a link in `href` to more
@@ -174,9 +174,9 @@ module Spotted
           # @!attribute release_date_precision
           #   The precision with which `release_date` value is known.
           #
-          #   @return [Symbol, Spotted::Models::SearchSearchResponse::Albums::Item::ReleaseDatePrecision]
+          #   @return [Symbol, Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision]
           required :release_date_precision,
-                   enum: -> { Spotted::Models::SearchSearchResponse::Albums::Item::ReleaseDatePrecision }
+                   enum: -> { Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision }
 
           # @!attribute total_tracks
           #   The number of tracks in the album.
@@ -187,8 +187,8 @@ module Spotted
           # @!attribute type
           #   The object type.
           #
-          #   @return [Symbol, Spotted::Models::SearchSearchResponse::Albums::Item::Type]
-          required :type, enum: -> { Spotted::Models::SearchSearchResponse::Albums::Item::Type }
+          #   @return [Symbol, Spotted::Models::SearchQueryResponse::Albums::Item::Type]
+          required :type, enum: -> { Spotted::Models::SearchQueryResponse::Albums::Item::Type }
 
           # @!attribute uri
           #   The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -205,11 +205,11 @@ module Spotted
 
           # @!method initialize(id:, album_type:, artists:, available_markets:, external_urls:, href:, images:, name:, release_date:, release_date_precision:, total_tracks:, type:, uri:, restrictions: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Spotted::Models::SearchSearchResponse::Albums::Item} for more details.
+          #   {Spotted::Models::SearchQueryResponse::Albums::Item} for more details.
           #
           #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the album
           #
-          #   @param album_type [Symbol, Spotted::Models::SearchSearchResponse::Albums::Item::AlbumType] The type of the album.
+          #   @param album_type [Symbol, Spotted::Models::SearchQueryResponse::Albums::Item::AlbumType] The type of the album.
           #
           #   @param artists [Array<Spotted::Models::SimplifiedArtistObject>] The artists of the album. Each artist object includes a link in `href` to more d
           #
@@ -225,11 +225,11 @@ module Spotted
           #
           #   @param release_date [String] The date the album was first released.
           #
-          #   @param release_date_precision [Symbol, Spotted::Models::SearchSearchResponse::Albums::Item::ReleaseDatePrecision] The precision with which `release_date` value is known.
+          #   @param release_date_precision [Symbol, Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision] The precision with which `release_date` value is known.
           #
           #   @param total_tracks [Integer] The number of tracks in the album.
           #
-          #   @param type [Symbol, Spotted::Models::SearchSearchResponse::Albums::Item::Type] The object type.
+          #   @param type [Symbol, Spotted::Models::SearchQueryResponse::Albums::Item::Type] The object type.
           #
           #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the albu
           #
@@ -237,7 +237,7 @@ module Spotted
 
           # The type of the album.
           #
-          # @see Spotted::Models::SearchSearchResponse::Albums::Item#album_type
+          # @see Spotted::Models::SearchQueryResponse::Albums::Item#album_type
           module AlbumType
             extend Spotted::Internal::Type::Enum
 
@@ -251,7 +251,7 @@ module Spotted
 
           # The precision with which `release_date` value is known.
           #
-          # @see Spotted::Models::SearchSearchResponse::Albums::Item#release_date_precision
+          # @see Spotted::Models::SearchQueryResponse::Albums::Item#release_date_precision
           module ReleaseDatePrecision
             extend Spotted::Internal::Type::Enum
 
@@ -265,7 +265,7 @@ module Spotted
 
           # The object type.
           #
-          # @see Spotted::Models::SearchSearchResponse::Albums::Item#type
+          # @see Spotted::Models::SearchQueryResponse::Albums::Item#type
           module Type
             extend Spotted::Internal::Type::Enum
 
@@ -277,7 +277,7 @@ module Spotted
         end
       end
 
-      # @see Spotted::Models::SearchSearchResponse#artists
+      # @see Spotted::Models::SearchQueryResponse#artists
       class Artists < Spotted::Internal::Type::BaseModel
         # @!attribute href
         #   A link to the Web API endpoint returning the full result of the request
@@ -322,7 +322,7 @@ module Spotted
 
         # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
         #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::SearchSearchResponse::Artists} for more details.
+        #   {Spotted::Models::SearchQueryResponse::Artists} for more details.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
         #
@@ -339,7 +339,7 @@ module Spotted
         #   @param total [Integer] The total number of items available to return.
       end
 
-      # @see Spotted::Models::SearchSearchResponse#audiobooks
+      # @see Spotted::Models::SearchQueryResponse#audiobooks
       class Audiobooks < Spotted::Internal::Type::BaseModel
         # @!attribute href
         #   A link to the Web API endpoint returning the full result of the request
@@ -384,7 +384,7 @@ module Spotted
 
         # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
         #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::SearchSearchResponse::Audiobooks} for more details.
+        #   {Spotted::Models::SearchQueryResponse::Audiobooks} for more details.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
         #
@@ -401,7 +401,7 @@ module Spotted
         #   @param total [Integer] The total number of items available to return.
       end
 
-      # @see Spotted::Models::SearchSearchResponse#episodes
+      # @see Spotted::Models::SearchQueryResponse#episodes
       class Episodes < Spotted::Internal::Type::BaseModel
         # @!attribute href
         #   A link to the Web API endpoint returning the full result of the request
@@ -446,7 +446,7 @@ module Spotted
 
         # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
         #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::SearchSearchResponse::Episodes} for more details.
+        #   {Spotted::Models::SearchQueryResponse::Episodes} for more details.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
         #
@@ -463,7 +463,7 @@ module Spotted
         #   @param total [Integer] The total number of items available to return.
       end
 
-      # @see Spotted::Models::SearchSearchResponse#shows
+      # @see Spotted::Models::SearchQueryResponse#shows
       class Shows < Spotted::Internal::Type::BaseModel
         # @!attribute href
         #   A link to the Web API endpoint returning the full result of the request
@@ -508,7 +508,7 @@ module Spotted
 
         # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
         #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::SearchSearchResponse::Shows} for more details.
+        #   {Spotted::Models::SearchQueryResponse::Shows} for more details.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
         #
@@ -525,7 +525,7 @@ module Spotted
         #   @param total [Integer] The total number of items available to return.
       end
 
-      # @see Spotted::Models::SearchSearchResponse#tracks
+      # @see Spotted::Models::SearchQueryResponse#tracks
       class Tracks < Spotted::Internal::Type::BaseModel
         # @!attribute href
         #   A link to the Web API endpoint returning the full result of the request
@@ -570,7 +570,7 @@ module Spotted
 
         # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
         #   Some parameter documentations has been truncated, see
-        #   {Spotted::Models::SearchSearchResponse::Tracks} for more details.
+        #   {Spotted::Models::SearchQueryResponse::Tracks} for more details.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
         #

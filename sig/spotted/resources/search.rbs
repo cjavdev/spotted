@@ -1,15 +1,15 @@
 module Spotted
   module Resources
     class Search
-      def search: (
+      def query: (
         q: String,
-        type: ::Array[Spotted::Models::SearchSearchParams::type_],
-        ?include_external: Spotted::Models::SearchSearchParams::include_external,
+        type: ::Array[Spotted::Models::SearchQueryParams::type_],
+        ?include_external: Spotted::Models::SearchQueryParams::include_external,
         ?limit: Integer,
         ?market: String,
         ?offset: Integer,
         ?request_options: Spotted::request_opts
-      ) -> Spotted::Models::SearchSearchResponse
+      ) -> Spotted::Models::SearchQueryResponse
 
       def initialize: (client: Spotted::Client) -> void
     end
