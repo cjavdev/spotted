@@ -220,5 +220,36 @@ module Spotted
       query_string = URI.encode_www_form(params)
       "https://accounts.spotify.com/authorize?#{query_string}"
     end
+
+    # Exchanges an authorization code for an access token.
+    #
+    # @param code [String] The authorization code to exchange
+    # @param redirect_uri [String] The redirect URI used to obtain the authorization code
+    #
+    # @return [Object] The access token and refresh token
+    def exchange_authorization_code(code:, redirect_uri:)
+      if @client_id.nil? || @client_secret.nil?
+        raise ArgumentError, "Both client_id and client_secret must be set to exchange an authorization code."
+      end
+      body = URI.encode_www_form(
+        grant_type: "authorization_code",
+        code: code,
+        redirect_uri: redirect_uri
+      )
+      client = Spotted::Client.new(
+        client_id: @client_id,
+        client_secret: @client_secret,
+        base_url: "https://accounts.spotify.com"
+      )
+      client.request(
+        method: :post,
+        headers: {
+          "Content-Type" => "application/x-www-form-urlencoded",
+          "Authorization" => "Basic #{Base64.strict_encode64("#{@client_id}:#{@client_secret}")}"
+        },
+        path: "/api/token",
+        body: body
+      )
+    end
   end
 end
