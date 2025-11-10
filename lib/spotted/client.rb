@@ -76,7 +76,15 @@ module Spotted
     #
     # @return [Hash{String=>String}]
     private def auth_headers
-      {**bearer_auth, **oauth_2_0}
+      if !@access_token.nil?
+        return {**bearer_auth}
+      end
+
+      if @client_id && @client_secret
+        return {**oauth_2_0}
+      end
+
+      {}
     end
 
     # @api private
