@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.10.0 (2025-11-10)
+
+Full Changelog: [v0.9.0...v0.10.0](https://github.com/cjavdev/spotted/compare/v0.9.0...v0.10.0)
+
+### Features
+
+* **api:** add mode constants ([d4e1a41](https://github.com/cjavdev/spotted/commit/d4e1a411d13a43dfcd553f86a3a9e25f3f2e308e))
+
 ## 0.9.0 (2025-11-10)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/cjavdev/spotted/compare/v0.8.0...v0.9.0)
