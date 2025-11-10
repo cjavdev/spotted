@@ -464,7 +464,7 @@ class SpottedTest < Minitest::Test
 
     url = spotted.authorization_url(
       redirect_uri: "http://localhost:3000/callback",
-      scope: ["user-read-private", "user-read-email", "playlist-modify-public"]
+      scope: "user-read-private user-read-email playlist-modify-public"
     )
     uri = URI.parse(url)
     params = URI.decode_www_form(uri.query).to_h
@@ -549,7 +549,7 @@ class SpottedTest < Minitest::Test
 
     url = spotted.authorization_url(
       redirect_uri: "http://localhost:3000/callback",
-      scope: ["user-read-private", "user-read-email"],
+      scope: "user-read-private user-read-email",
       state: "csrf_protection_token",
       show_dialog: true
     )
