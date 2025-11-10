@@ -1,9 +1,9 @@
 module Spotted
   module Models
-    type artist_list_top_tracks_params =
+    type artist_top_tracks_params =
       { market: String } & Spotted::Internal::Type::request_parameters
 
-    class ArtistListTopTracksParams < Spotted::Internal::Type::BaseModel
+    class ArtistTopTracksParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 

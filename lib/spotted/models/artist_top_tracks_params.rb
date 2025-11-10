@@ -2,8 +2,8 @@
 
 module Spotted
   module Models
-    # @see Spotted::Resources::Artists#list_top_tracks
-    class ArtistListTopTracksParams < Spotted::Internal::Type::BaseModel
+    # @see Spotted::Resources::Artists#top_tracks
+    class ArtistTopTracksParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
@@ -23,7 +23,7 @@ module Spotted
 
       # @!method initialize(market: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
-      #   {Spotted::Models::ArtistListTopTracksParams} for more details.
+      #   {Spotted::Models::ArtistTopTracksParams} for more details.
       #
       #   @param market [String] An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_al
       #
