@@ -100,7 +100,7 @@ module Spotted
 
   ResumePointObject = Spotted::Models::ResumePointObject
 
-  SearchRetrieveParams = Spotted::Models::SearchRetrieveParams
+  SearchSearchParams = Spotted::Models::SearchSearchParams
 
   ShowBase = Spotted::Models::ShowBase
 

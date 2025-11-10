@@ -4,19 +4,19 @@ module Spotted
   module Resources
     class Search
       # Some parameter documentations has been truncated, see
-      # {Spotted::Models::SearchRetrieveParams} for more details.
+      # {Spotted::Models::SearchSearchParams} for more details.
       #
       # Get Spotify catalog information about albums, artists, playlists, tracks, shows,
       # episodes or audiobooks that match a keyword string. Audiobooks are only
       # available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
       #
-      # @overload retrieve(q:, type:, include_external: nil, limit: nil, market: nil, offset: nil, request_options: {})
+      # @overload search(q:, type:, include_external: nil, limit: nil, market: nil, offset: nil, request_options: {})
       #
       # @param q [String] Your search query.
       #
-      # @param type [Array<Symbol, Spotted::Models::SearchRetrieveParams::Type>] A comma-separated list of item types to search across. Search results include hi
+      # @param type [Array<Symbol, Spotted::Models::SearchSearchParams::Type>] A comma-separated list of item types to search across. Search results include hi
       #
-      # @param include_external [Symbol, Spotted::Models::SearchRetrieveParams::IncludeExternal] If `include_external=audio` is specified it signals that the client can play ext
+      # @param include_external [Symbol, Spotted::Models::SearchSearchParams::IncludeExternal] If `include_external=audio` is specified it signals that the client can play ext
       #
       # @param limit [Integer] The maximum number of results to return in each item type.
       #
@@ -26,16 +26,16 @@ module Spotted
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::SearchRetrieveResponse]
+      # @return [Spotted::Models::SearchSearchResponse]
       #
-      # @see Spotted::Models::SearchRetrieveParams
-      def retrieve(params)
-        parsed, options = Spotted::SearchRetrieveParams.dump_request(params)
+      # @see Spotted::Models::SearchSearchParams
+      def search(params)
+        parsed, options = Spotted::SearchSearchParams.dump_request(params)
         @client.request(
           method: :get,
           path: "search",
           query: parsed,
-          model: Spotted::Models::SearchRetrieveResponse,
+          model: Spotted::Models::SearchSearchResponse,
           options: options
         )
       end
