@@ -24,9 +24,9 @@ module Spotted
         params(
           ids: String,
           request_options: Spotted::RequestOptions::OrHash
-        ).returns(Spotted::Models::ArtistListResponse)
+        ).returns(Spotted::Models::ArtistBulkRetrieveResponse)
       end
-      def list(
+      def bulk_retrieve(
         # A comma-separated list of the
         # [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the artists.
         # Maximum: 50 IDs.
@@ -100,9 +100,9 @@ module Spotted
           id: String,
           market: String,
           request_options: Spotted::RequestOptions::OrHash
-        ).returns(Spotted::Models::ArtistListTopTracksResponse)
+        ).returns(Spotted::Models::ArtistTopTracksResponse)
       end
-      def list_top_tracks(
+      def top_tracks(
         # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
         # artist.
         id,

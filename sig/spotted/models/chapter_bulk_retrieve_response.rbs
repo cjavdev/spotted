@@ -1,0 +1,169 @@
+module Spotted
+  module Models
+    type chapter_bulk_retrieve_response =
+      {
+        chapters: ::Array[Spotted::Models::ChapterBulkRetrieveResponse::Chapter]
+      }
+
+    class ChapterBulkRetrieveResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor chapters: ::Array[Spotted::Models::ChapterBulkRetrieveResponse::Chapter]
+
+      def initialize: (
+        chapters: ::Array[Spotted::Models::ChapterBulkRetrieveResponse::Chapter]
+      ) -> void
+
+      def to_hash: -> {
+        chapters: ::Array[Spotted::Models::ChapterBulkRetrieveResponse::Chapter]
+      }
+
+      type chapter =
+        {
+          id: String,
+          audio_preview_url: String?,
+          audiobook: Spotted::AudiobookBase,
+          chapter_number: Integer,
+          description: String,
+          duration_ms: Integer,
+          explicit: bool,
+          external_urls: Spotted::ExternalURLObject,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::ImageObject],
+          is_playable: bool,
+          languages: ::Array[String],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::ChapterBulkRetrieveResponse::Chapter::release_date_precision,
+          type: Spotted::Models::ChapterBulkRetrieveResponse::Chapter::type_,
+          uri: String,
+          available_markets: ::Array[String],
+          restrictions: Spotted::ChapterRestrictionObject,
+          resume_point: Spotted::ResumePointObject
+        }
+
+      class Chapter < Spotted::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor audio_preview_url: String?
+
+        attr_accessor audiobook: Spotted::AudiobookBase
+
+        attr_accessor chapter_number: Integer
+
+        attr_accessor description: String
+
+        attr_accessor duration_ms: Integer
+
+        attr_accessor explicit: bool
+
+        attr_accessor external_urls: Spotted::ExternalURLObject
+
+        attr_accessor href: String
+
+        attr_accessor html_description: String
+
+        attr_accessor images: ::Array[Spotted::ImageObject]
+
+        attr_accessor is_playable: bool
+
+        attr_accessor languages: ::Array[String]
+
+        attr_accessor name: String
+
+        attr_accessor release_date: String
+
+        attr_accessor release_date_precision: Spotted::Models::ChapterBulkRetrieveResponse::Chapter::release_date_precision
+
+        attr_accessor type: Spotted::Models::ChapterBulkRetrieveResponse::Chapter::type_
+
+        attr_accessor uri: String
+
+        attr_reader available_markets: ::Array[String]?
+
+        def available_markets=: (::Array[String]) -> ::Array[String]
+
+        attr_reader restrictions: Spotted::ChapterRestrictionObject?
+
+        def restrictions=: (
+          Spotted::ChapterRestrictionObject
+        ) -> Spotted::ChapterRestrictionObject
+
+        attr_reader resume_point: Spotted::ResumePointObject?
+
+        def resume_point=: (
+          Spotted::ResumePointObject
+        ) -> Spotted::ResumePointObject
+
+        def initialize: (
+          id: String,
+          audio_preview_url: String?,
+          audiobook: Spotted::AudiobookBase,
+          chapter_number: Integer,
+          description: String,
+          duration_ms: Integer,
+          explicit: bool,
+          external_urls: Spotted::ExternalURLObject,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::ImageObject],
+          is_playable: bool,
+          languages: ::Array[String],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::ChapterBulkRetrieveResponse::Chapter::release_date_precision,
+          type: Spotted::Models::ChapterBulkRetrieveResponse::Chapter::type_,
+          uri: String,
+          ?available_markets: ::Array[String],
+          ?restrictions: Spotted::ChapterRestrictionObject,
+          ?resume_point: Spotted::ResumePointObject
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          audio_preview_url: String?,
+          audiobook: Spotted::AudiobookBase,
+          chapter_number: Integer,
+          description: String,
+          duration_ms: Integer,
+          explicit: bool,
+          external_urls: Spotted::ExternalURLObject,
+          href: String,
+          html_description: String,
+          images: ::Array[Spotted::ImageObject],
+          is_playable: bool,
+          languages: ::Array[String],
+          name: String,
+          release_date: String,
+          release_date_precision: Spotted::Models::ChapterBulkRetrieveResponse::Chapter::release_date_precision,
+          type: Spotted::Models::ChapterBulkRetrieveResponse::Chapter::type_,
+          uri: String,
+          available_markets: ::Array[String],
+          restrictions: Spotted::ChapterRestrictionObject,
+          resume_point: Spotted::ResumePointObject
+        }
+
+        type release_date_precision = :year | :month | :day
+
+        module ReleaseDatePrecision
+          extend Spotted::Internal::Type::Enum
+
+          YEAR: :year
+          MONTH: :month
+          DAY: :day
+
+          def self?.values: -> ::Array[Spotted::Models::ChapterBulkRetrieveResponse::Chapter::release_date_precision]
+        end
+
+        type type_ = :episode
+
+        module Type
+          extend Spotted::Internal::Type::Enum
+
+          EPISODE: :episode
+
+          def self?.values: -> ::Array[Spotted::Models::ChapterBulkRetrieveResponse::Chapter::type_]
+        end
+      end
+    end
+  end
+end

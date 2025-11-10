@@ -1,0 +1,14 @@
+module Spotted
+  module Models
+    type track_bulk_retrieve_response =
+      { tracks: ::Array[Spotted::TrackObject] }
+
+    class TrackBulkRetrieveResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor tracks: ::Array[Spotted::TrackObject]
+
+      def initialize: (tracks: ::Array[Spotted::TrackObject]) -> void
+
+      def to_hash: -> { tracks: ::Array[Spotted::TrackObject] }
+    end
+  end
+end

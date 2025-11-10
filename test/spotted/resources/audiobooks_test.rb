@@ -13,19 +13,21 @@ class Spotted::Test::Resources::AudiobooksTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_list_required_params
+  def test_bulk_retrieve_required_params
     skip("Prism tests are disabled")
 
     response =
-      @spotted.audiobooks.list(ids: "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe")
+      @spotted.audiobooks.bulk_retrieve(
+        ids: "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe"
+      )
 
     assert_pattern do
-      response => Spotted::Models::AudiobookListResponse
+      response => Spotted::Models::AudiobookBulkRetrieveResponse
     end
 
     assert_pattern do
       response => {
-        audiobooks: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AudiobookListResponse::Audiobook])
+        audiobooks: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AudiobookBulkRetrieveResponse::Audiobook])
       }
     end
   end

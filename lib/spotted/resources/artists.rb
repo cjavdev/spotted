@@ -28,26 +28,26 @@ module Spotted
       end
 
       # Some parameter documentations has been truncated, see
-      # {Spotted::Models::ArtistListParams} for more details.
+      # {Spotted::Models::ArtistBulkRetrieveParams} for more details.
       #
       # Get Spotify catalog information for several artists based on their Spotify IDs.
       #
-      # @overload list(ids:, request_options: {})
+      # @overload bulk_retrieve(ids:, request_options: {})
       #
       # @param ids [String] A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spot
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::ArtistListResponse]
+      # @return [Spotted::Models::ArtistBulkRetrieveResponse]
       #
-      # @see Spotted::Models::ArtistListParams
-      def list(params)
-        parsed, options = Spotted::ArtistListParams.dump_request(params)
+      # @see Spotted::Models::ArtistBulkRetrieveParams
+      def bulk_retrieve(params)
+        parsed, options = Spotted::ArtistBulkRetrieveParams.dump_request(params)
         @client.request(
           method: :get,
           path: "artists",
           query: parsed,
-          model: Spotted::Models::ArtistListResponse,
+          model: Spotted::Models::ArtistBulkRetrieveResponse,
           options: options
         )
       end
@@ -113,11 +113,11 @@ module Spotted
       end
 
       # Some parameter documentations has been truncated, see
-      # {Spotted::Models::ArtistListTopTracksParams} for more details.
+      # {Spotted::Models::ArtistTopTracksParams} for more details.
       #
       # Get Spotify catalog information about an artist's top tracks by country.
       #
-      # @overload list_top_tracks(id, market: nil, request_options: {})
+      # @overload top_tracks(id, market: nil, request_options: {})
       #
       # @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the artist
       #
@@ -125,16 +125,16 @@ module Spotted
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::ArtistListTopTracksResponse]
+      # @return [Spotted::Models::ArtistTopTracksResponse]
       #
-      # @see Spotted::Models::ArtistListTopTracksParams
-      def list_top_tracks(id, params = {})
-        parsed, options = Spotted::ArtistListTopTracksParams.dump_request(params)
+      # @see Spotted::Models::ArtistTopTracksParams
+      def top_tracks(id, params = {})
+        parsed, options = Spotted::ArtistTopTracksParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["artists/%1$s/top-tracks", id],
           query: parsed,
-          model: Spotted::Models::ArtistListTopTracksResponse,
+          model: Spotted::Models::ArtistTopTracksResponse,
           options: options
         )
       end

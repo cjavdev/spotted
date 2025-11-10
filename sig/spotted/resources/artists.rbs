@@ -6,10 +6,10 @@ module Spotted
         ?request_options: Spotted::request_opts
       ) -> Spotted::ArtistObject
 
-      def list: (
+      def bulk_retrieve: (
         ids: String,
         ?request_options: Spotted::request_opts
-      ) -> Spotted::Models::ArtistListResponse
+      ) -> Spotted::Models::ArtistBulkRetrieveResponse
 
       def list_albums: (
         String id,
@@ -25,11 +25,11 @@ module Spotted
         ?request_options: Spotted::request_opts
       ) -> Spotted::Models::ArtistListRelatedArtistsResponse
 
-      def list_top_tracks: (
+      def top_tracks: (
         String id,
         ?market: String,
         ?request_options: Spotted::request_opts
-      ) -> Spotted::Models::ArtistListTopTracksResponse
+      ) -> Spotted::Models::ArtistTopTracksResponse
 
       def initialize: (client: Spotted::Client) -> void
     end

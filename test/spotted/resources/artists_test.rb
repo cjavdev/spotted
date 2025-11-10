@@ -28,14 +28,16 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_list_required_params
+  def test_bulk_retrieve_required_params
     skip("Prism tests are disabled")
 
     response =
-      @spotted.artists.list(ids: "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6")
+      @spotted.artists.bulk_retrieve(
+        ids: "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
+      )
 
     assert_pattern do
-      response => Spotted::Models::ArtistListResponse
+      response => Spotted::Models::ArtistBulkRetrieveResponse
     end
 
     assert_pattern do
@@ -98,13 +100,13 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_list_top_tracks
+  def test_top_tracks
     skip("Prism tests are disabled")
 
-    response = @spotted.artists.list_top_tracks("0TnOYISbd1XYRBk9myaseg")
+    response = @spotted.artists.top_tracks("0TnOYISbd1XYRBk9myaseg")
 
     assert_pattern do
-      response => Spotted::Models::ArtistListTopTracksResponse
+      response => Spotted::Models::ArtistTopTracksResponse
     end
 
     assert_pattern do

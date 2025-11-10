@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "spotted", "~> 0.8.0"
+gem "spotted", "~> 0.9.0"
 ```
 
 <!-- x-release-please-end -->
@@ -36,6 +36,34 @@ spotted = Spotted::Client.new(
 album = spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
 
 puts(album.id)
+```
+
+### Pagination
+
+List methods in the Spotted API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```ruby
+page = spotted.shows.list_episodes("showid", limit: 5, offset: 10)
+
+# Fetch single item from page.
+show = page.items[0]
+puts(show.id)
+
+# Automatically fetches more pages as needed.
+page.auto_paging_each do |show|
+  puts(show.id)
+end
+```
+
+Alternatively, you can use the `#next_page?` and `#next_page` methods for more granular control working with pages.
+
+```ruby
+if page.next_page?
+  new_page = page.next_page
+  puts(new_page.items[0].id)
+end
 ```
 
 ### Handling errors

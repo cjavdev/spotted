@@ -1,0 +1,14 @@
+module Spotted
+  module Models
+    type episode_bulk_retrieve_response =
+      { episodes: ::Array[Spotted::EpisodeObject] }
+
+    class EpisodeBulkRetrieveResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor episodes: ::Array[Spotted::EpisodeObject]
+
+      def initialize: (episodes: ::Array[Spotted::EpisodeObject]) -> void
+
+      def to_hash: -> { episodes: ::Array[Spotted::EpisodeObject] }
+    end
+  end
+end

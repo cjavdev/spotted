@@ -1,0 +1,13 @@
+module Spotted
+  module Models
+    type artist_top_tracks_response = { tracks: ::Array[Spotted::TrackObject] }
+
+    class ArtistTopTracksResponse < Spotted::Internal::Type::BaseModel
+      attr_accessor tracks: ::Array[Spotted::TrackObject]
+
+      def initialize: (tracks: ::Array[Spotted::TrackObject]) -> void
+
+      def to_hash: -> { tracks: ::Array[Spotted::TrackObject] }
+    end
+  end
+end

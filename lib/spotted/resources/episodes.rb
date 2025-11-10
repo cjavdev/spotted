@@ -32,11 +32,11 @@ module Spotted
       end
 
       # Some parameter documentations has been truncated, see
-      # {Spotted::Models::EpisodeListParams} for more details.
+      # {Spotted::Models::EpisodeBulkRetrieveParams} for more details.
       #
       # Get Spotify catalog information for several episodes based on their Spotify IDs.
       #
-      # @overload list(ids:, market: nil, request_options: {})
+      # @overload bulk_retrieve(ids:, market: nil, request_options: {})
       #
       # @param ids [String] A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spot
       #
@@ -44,16 +44,16 @@ module Spotted
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::EpisodeListResponse]
+      # @return [Spotted::Models::EpisodeBulkRetrieveResponse]
       #
-      # @see Spotted::Models::EpisodeListParams
-      def list(params)
-        parsed, options = Spotted::EpisodeListParams.dump_request(params)
+      # @see Spotted::Models::EpisodeBulkRetrieveParams
+      def bulk_retrieve(params)
+        parsed, options = Spotted::EpisodeBulkRetrieveParams.dump_request(params)
         @client.request(
           method: :get,
           path: "episodes",
           query: parsed,
-          model: Spotted::Models::EpisodeListResponse,
+          model: Spotted::Models::EpisodeBulkRetrieveResponse,
           options: options
         )
       end

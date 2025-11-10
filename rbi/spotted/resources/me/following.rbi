@@ -7,13 +7,13 @@ module Spotted
         # Get the current user's followed artists.
         sig do
           params(
-            type: Spotted::Me::FollowingListParams::Type::OrSymbol,
+            type: Spotted::Me::FollowingBulkRetrieveParams::Type::OrSymbol,
             after: String,
             limit: Integer,
             request_options: Spotted::RequestOptions::OrHash
-          ).returns(Spotted::Models::Me::FollowingListResponse)
+          ).returns(Spotted::Models::Me::FollowingBulkRetrieveResponse)
         end
-        def list(
+        def bulk_retrieve(
           # The ID type: currently only `artist` is supported.
           type:,
           # The last artist ID retrieved from the previous request.

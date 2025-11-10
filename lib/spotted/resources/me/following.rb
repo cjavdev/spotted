@@ -5,13 +5,13 @@ module Spotted
     class Me
       class Following
         # Some parameter documentations has been truncated, see
-        # {Spotted::Models::Me::FollowingListParams} for more details.
+        # {Spotted::Models::Me::FollowingBulkRetrieveParams} for more details.
         #
         # Get the current user's followed artists.
         #
-        # @overload list(type:, after: nil, limit: nil, request_options: {})
+        # @overload bulk_retrieve(type:, after: nil, limit: nil, request_options: {})
         #
-        # @param type [Symbol, Spotted::Models::Me::FollowingListParams::Type] The ID type: currently only `artist` is supported.
+        # @param type [Symbol, Spotted::Models::Me::FollowingBulkRetrieveParams::Type] The ID type: currently only `artist` is supported.
         #
         # @param after [String] The last artist ID retrieved from the previous request.
         #
@@ -19,16 +19,16 @@ module Spotted
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Spotted::Models::Me::FollowingListResponse]
+        # @return [Spotted::Models::Me::FollowingBulkRetrieveResponse]
         #
-        # @see Spotted::Models::Me::FollowingListParams
-        def list(params)
-          parsed, options = Spotted::Me::FollowingListParams.dump_request(params)
+        # @see Spotted::Models::Me::FollowingBulkRetrieveParams
+        def bulk_retrieve(params)
+          parsed, options = Spotted::Me::FollowingBulkRetrieveParams.dump_request(params)
           @client.request(
             method: :get,
             path: "me/following",
             query: parsed,
-            model: Spotted::Models::Me::FollowingListResponse,
+            model: Spotted::Models::Me::FollowingBulkRetrieveResponse,
             options: options
           )
         end

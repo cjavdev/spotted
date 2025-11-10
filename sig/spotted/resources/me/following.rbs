@@ -2,12 +2,12 @@ module Spotted
   module Resources
     class Me
       class Following
-        def list: (
-          type: Spotted::Models::Me::FollowingListParams::type_,
+        def bulk_retrieve: (
+          type: Spotted::Models::Me::FollowingBulkRetrieveParams::type_,
           ?after: String,
           ?limit: Integer,
           ?request_options: Spotted::request_opts
-        ) -> Spotted::Models::Me::FollowingListResponse
+        ) -> Spotted::Models::Me::FollowingBulkRetrieveResponse
 
         def check: (
           ids: String,

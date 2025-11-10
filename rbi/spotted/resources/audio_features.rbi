@@ -24,9 +24,9 @@ module Spotted
         params(
           ids: String,
           request_options: Spotted::RequestOptions::OrHash
-        ).returns(Spotted::Models::AudioFeatureListResponse)
+        ).returns(Spotted::Models::AudioFeatureBulkRetrieveResponse)
       end
-      def list(
+      def bulk_retrieve(
         # A comma-separated list of the
         # [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the tracks.
         # Maximum: 100 IDs.

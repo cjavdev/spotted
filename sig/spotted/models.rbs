@@ -7,29 +7,29 @@ module Spotted
 
   class AlbumRetrieveParams = Spotted::Models::AlbumRetrieveParams
 
+  class ArtistBulkRetrieveParams = Spotted::Models::ArtistBulkRetrieveParams
+
   class ArtistListAlbumsParams = Spotted::Models::ArtistListAlbumsParams
 
-  class ArtistListParams = Spotted::Models::ArtistListParams
-
   class ArtistListRelatedArtistsParams = Spotted::Models::ArtistListRelatedArtistsParams
-
-  class ArtistListTopTracksParams = Spotted::Models::ArtistListTopTracksParams
 
   class ArtistObject = Spotted::Models::ArtistObject
 
   class ArtistRetrieveParams = Spotted::Models::ArtistRetrieveParams
 
+  class ArtistTopTracksParams = Spotted::Models::ArtistTopTracksParams
+
   class AudioAnalysisRetrieveParams = Spotted::Models::AudioAnalysisRetrieveParams
 
   class AudiobookBase = Spotted::Models::AudiobookBase
 
-  class AudiobookListChaptersParams = Spotted::Models::AudiobookListChaptersParams
+  class AudiobookBulkRetrieveParams = Spotted::Models::AudiobookBulkRetrieveParams
 
-  class AudiobookListParams = Spotted::Models::AudiobookListParams
+  class AudiobookListChaptersParams = Spotted::Models::AudiobookListChaptersParams
 
   class AudiobookRetrieveParams = Spotted::Models::AudiobookRetrieveParams
 
-  class AudioFeatureListParams = Spotted::Models::AudioFeatureListParams
+  class AudioFeatureBulkRetrieveParams = Spotted::Models::AudioFeatureBulkRetrieveParams
 
   class AudioFeatureRetrieveParams = Spotted::Models::AudioFeatureRetrieveParams
 
@@ -41,7 +41,7 @@ module Spotted
 
   class BrowseGetNewReleasesParams = Spotted::Models::BrowseGetNewReleasesParams
 
-  class ChapterListParams = Spotted::Models::ChapterListParams
+  class ChapterBulkRetrieveParams = Spotted::Models::ChapterBulkRetrieveParams
 
   class ChapterRestrictionObject = Spotted::Models::ChapterRestrictionObject
 
@@ -49,7 +49,7 @@ module Spotted
 
   class CopyrightObject = Spotted::Models::CopyrightObject
 
-  class EpisodeListParams = Spotted::Models::EpisodeListParams
+  class EpisodeBulkRetrieveParams = Spotted::Models::EpisodeBulkRetrieveParams
 
   class EpisodeObject = Spotted::Models::EpisodeObject
 
@@ -95,13 +95,13 @@ module Spotted
 
   class ResumePointObject = Spotted::Models::ResumePointObject
 
-  class SearchSearchParams = Spotted::Models::SearchSearchParams
+  class SearchQueryParams = Spotted::Models::SearchQueryParams
 
   class ShowBase = Spotted::Models::ShowBase
 
-  class ShowListEpisodesParams = Spotted::Models::ShowListEpisodesParams
+  class ShowBulkRetrieveParams = Spotted::Models::ShowBulkRetrieveParams
 
-  class ShowListParams = Spotted::Models::ShowListParams
+  class ShowListEpisodesParams = Spotted::Models::ShowListEpisodesParams
 
   class ShowRetrieveParams = Spotted::Models::ShowRetrieveParams
 
@@ -117,7 +117,7 @@ module Spotted
 
   class TimeIntervalObject = Spotted::Models::TimeIntervalObject
 
-  class TrackListParams = Spotted::Models::TrackListParams
+  class TrackBulkRetrieveParams = Spotted::Models::TrackBulkRetrieveParams
 
   class TrackObject = Spotted::Models::TrackObject
 

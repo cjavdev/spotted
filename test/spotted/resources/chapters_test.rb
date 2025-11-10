@@ -39,19 +39,21 @@ class Spotted::Test::Resources::ChaptersTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_list_required_params
+  def test_bulk_retrieve_required_params
     skip("Prism tests are disabled")
 
     response =
-      @spotted.chapters.list(ids: "0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29")
+      @spotted.chapters.bulk_retrieve(
+        ids: "0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29"
+      )
 
     assert_pattern do
-      response => Spotted::Models::ChapterListResponse
+      response => Spotted::Models::ChapterBulkRetrieveResponse
     end
 
     assert_pattern do
       response => {
-        chapters: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::ChapterListResponse::Chapter])
+        chapters: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::ChapterBulkRetrieveResponse::Chapter])
       }
     end
   end
