@@ -2,8 +2,8 @@
 
 module Spotted
   module Models
-    # @see Spotted::Resources::Search#search
-    class SearchSearchParams < Spotted::Internal::Type::BaseModel
+    # @see Spotted::Resources::Search#query
+    class SearchQueryParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
@@ -31,8 +31,8 @@ module Spotted
       #   hits from all the specified item types. For example: `q=abacab&type=album,track`
       #   returns both albums and tracks matching "abacab".
       #
-      #   @return [Array<Symbol, Spotted::Models::SearchSearchParams::Type>]
-      required :type, -> { Spotted::Internal::Type::ArrayOf[enum: Spotted::SearchSearchParams::Type] }
+      #   @return [Array<Symbol, Spotted::Models::SearchQueryParams::Type>]
+      required :type, -> { Spotted::Internal::Type::ArrayOf[enum: Spotted::SearchQueryParams::Type] }
 
       # @!attribute include_external
       #   If `include_external=audio` is specified it signals that the client can play
@@ -40,8 +40,8 @@ module Spotted
       #   response. By default externally hosted audio content is marked as unplayable in
       #   the response.
       #
-      #   @return [Symbol, Spotted::Models::SearchSearchParams::IncludeExternal, nil]
-      optional :include_external, enum: -> { Spotted::SearchSearchParams::IncludeExternal }
+      #   @return [Symbol, Spotted::Models::SearchQueryParams::IncludeExternal, nil]
+      optional :include_external, enum: -> { Spotted::SearchQueryParams::IncludeExternal }
 
       # @!attribute limit
       #   The maximum number of results to return in each item type.
@@ -72,13 +72,13 @@ module Spotted
 
       # @!method initialize(q:, type:, include_external: nil, limit: nil, market: nil, offset: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
-      #   {Spotted::Models::SearchSearchParams} for more details.
+      #   {Spotted::Models::SearchQueryParams} for more details.
       #
       #   @param q [String] Your search query.
       #
-      #   @param type [Array<Symbol, Spotted::Models::SearchSearchParams::Type>] A comma-separated list of item types to search across. Search results include hi
+      #   @param type [Array<Symbol, Spotted::Models::SearchQueryParams::Type>] A comma-separated list of item types to search across. Search results include hi
       #
-      #   @param include_external [Symbol, Spotted::Models::SearchSearchParams::IncludeExternal] If `include_external=audio` is specified it signals that the client can play ext
+      #   @param include_external [Symbol, Spotted::Models::SearchQueryParams::IncludeExternal] If `include_external=audio` is specified it signals that the client can play ext
       #
       #   @param limit [Integer] The maximum number of results to return in each item type.
       #
