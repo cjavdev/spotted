@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0 (2025-11-10)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/cjavdev/spotted/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **api:** manual updates ([690bf2a](https://github.com/cjavdev/spotted/commit/690bf2a31ea2eeec80a5aa1c486be05c6accdbdb))
+
 ## 0.7.0 (2025-11-10)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/cjavdev/spotted/compare/v0.6.0...v0.7.0)
