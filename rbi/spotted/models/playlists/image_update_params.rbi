@@ -16,12 +16,12 @@ module Spotted
           end
 
         # Base64 encoded JPEG image data, maximum payload size is 256 KB.
-        sig { returns(String) }
+        sig { returns(Spotted::Internal::FileInput) }
         attr_accessor :body
 
         sig do
           params(
-            body: String,
+            body: Spotted::Internal::FileInput,
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -34,7 +34,10 @@ module Spotted
 
         sig do
           override.returns(
-            { body: String, request_options: Spotted::RequestOptions }
+            {
+              body: Spotted::Internal::FileInput,
+              request_options: Spotted::RequestOptions
+            }
           )
         end
         def to_hash

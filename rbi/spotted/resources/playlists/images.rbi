@@ -8,7 +8,7 @@ module Spotted
         sig do
           params(
             playlist_id: String,
-            body: String,
+            body: Spotted::Internal::FileInput,
             request_options: Spotted::RequestOptions::OrHash
           ).void
         end
