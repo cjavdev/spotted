@@ -1,0 +1,52 @@
+module Spotted
+  module Models
+    module Me
+      type following_bulk_retrieve_params =
+        {
+          type: Spotted::Models::Me::FollowingBulkRetrieveParams::type_,
+          after: String,
+          limit: Integer
+        }
+        & Spotted::Internal::Type::request_parameters
+
+      class FollowingBulkRetrieveParams < Spotted::Internal::Type::BaseModel
+        extend Spotted::Internal::Type::RequestParameters::Converter
+        include Spotted::Internal::Type::RequestParameters
+
+        attr_accessor type: Spotted::Models::Me::FollowingBulkRetrieveParams::type_
+
+        attr_reader after: String?
+
+        def after=: (String) -> String
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        def initialize: (
+          type: Spotted::Models::Me::FollowingBulkRetrieveParams::type_,
+          ?after: String,
+          ?limit: Integer,
+          ?request_options: Spotted::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          type: Spotted::Models::Me::FollowingBulkRetrieveParams::type_,
+          after: String,
+          limit: Integer,
+          request_options: Spotted::RequestOptions
+        }
+
+        type type_ = :artist
+
+        module Type
+          extend Spotted::Internal::Type::Enum
+
+          ARTIST: :artist
+
+          def self?.values: -> ::Array[Spotted::Models::Me::FollowingBulkRetrieveParams::type_]
+        end
+      end
+    end
+  end
+end

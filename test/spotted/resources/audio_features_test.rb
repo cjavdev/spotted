@@ -36,19 +36,21 @@ class Spotted::Test::Resources::AudioFeaturesTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_list_required_params
+  def test_bulk_retrieve_required_params
     skip("Prism tests are disabled")
 
     response =
-      @spotted.audio_features.list(ids: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B")
+      @spotted.audio_features.bulk_retrieve(
+        ids: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
+      )
 
     assert_pattern do
-      response => Spotted::Models::AudioFeatureListResponse
+      response => Spotted::Models::AudioFeatureBulkRetrieveResponse
     end
 
     assert_pattern do
       response => {
-        audio_features: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AudioFeatureListResponse::AudioFeature])
+        audio_features: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::AudioFeatureBulkRetrieveResponse::AudioFeature])
       }
     end
   end

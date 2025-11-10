@@ -33,13 +33,13 @@ module Spotted
       end
 
       # Some parameter documentations has been truncated, see
-      # {Spotted::Models::ChapterListParams} for more details.
+      # {Spotted::Models::ChapterBulkRetrieveParams} for more details.
       #
       # Get Spotify catalog information for several audiobook chapters identified by
       # their Spotify IDs. Chapters are only available within the US, UK, Canada,
       # Ireland, New Zealand and Australia markets.
       #
-      # @overload list(ids:, market: nil, request_options: {})
+      # @overload bulk_retrieve(ids:, market: nil, request_options: {})
       #
       # @param ids [String] A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spot
       #
@@ -47,16 +47,16 @@ module Spotted
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Spotted::Models::ChapterListResponse]
+      # @return [Spotted::Models::ChapterBulkRetrieveResponse]
       #
-      # @see Spotted::Models::ChapterListParams
-      def list(params)
-        parsed, options = Spotted::ChapterListParams.dump_request(params)
+      # @see Spotted::Models::ChapterBulkRetrieveParams
+      def bulk_retrieve(params)
+        parsed, options = Spotted::ChapterBulkRetrieveParams.dump_request(params)
         @client.request(
           method: :get,
           path: "chapters",
           query: parsed,
-          model: Spotted::Models::ChapterListResponse,
+          model: Spotted::Models::ChapterBulkRetrieveResponse,
           options: options
         )
       end
