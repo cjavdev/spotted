@@ -38,3 +38,12 @@ p spotted.authorization_url(
     "streaming"                     # Play content and control playback on your other devices.
   ].join(" ")
 )
+
+# access_token = spotted.exchange_authorization_code(
+#   code: "",
+#   redirect_uri: "https://b81d20319dcb.ngrok-free.app/spotify_connections/callback"
+# )
+# p access_token[:access_token]
+
+# refresh_response = spotted.refresh_access_token(refresh_token: access_token[:refresh_token])
+# p refresh_response

@@ -251,5 +251,25 @@ module Spotted
         body: body
       )
     end
+
+    def refresh_access_token(refresh_token:)
+      if @client_id.nil? || @client_secret.nil?
+        raise ArgumentError, "Both client_id and client_secret must be set to refresh an access token."
+      end
+      body = URI.encode_www_form(
+        grant_type: "refresh_token",
+        refresh_token: refresh_token
+      )
+      client = Spotted::Client.new(client_id: @client_id, client_secret: @client_secret, base_url: "https://accounts.spotify.com")
+      client.request(
+        method: :post,
+        headers: {
+          "Content-Type" => "application/x-www-form-urlencoded",
+          "Authorization" => "Basic #{Base64.strict_encode64("#{@client_id}:#{@client_secret}")}"
+        },
+        path: "/api/token",
+        body: body
+      )
+    end
   end
 end
