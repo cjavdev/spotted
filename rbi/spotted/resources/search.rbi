@@ -9,16 +9,16 @@ module Spotted
       sig do
         params(
           q: String,
-          type: T::Array[Spotted::SearchRetrieveParams::Type::OrSymbol],
+          type: T::Array[Spotted::SearchSearchParams::Type::OrSymbol],
           include_external:
-            Spotted::SearchRetrieveParams::IncludeExternal::OrSymbol,
+            Spotted::SearchSearchParams::IncludeExternal::OrSymbol,
           limit: Integer,
           market: String,
           offset: Integer,
           request_options: Spotted::RequestOptions::OrHash
-        ).returns(Spotted::Models::SearchRetrieveResponse)
+        ).returns(Spotted::Models::SearchSearchResponse)
       end
-      def retrieve(
+      def search(
         # Your search query.
         #
         # You can narrow down your search using field filters. The available filters are
