@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    spotted (0.9.0)
+    spotted (0.10.0)
       connection_pool
 
 GEM
