@@ -27,13 +27,6 @@ class SpottedTest < Minitest::Test
     super
   end
 
-  def test_raises_on_missing_non_nullable_opts
-    e = assert_raises(ArgumentError) do
-      Spotted::Client.new
-    end
-    assert_match(/is required/, e.message)
-  end
-
   def test_client_default_request_default_retry_attempts
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
       status: 500,

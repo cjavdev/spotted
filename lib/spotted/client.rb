@@ -15,11 +15,14 @@ module Spotted
     # Default max retry delay in seconds.
     DEFAULT_MAX_RETRY_DELAY = 8.0
 
-    # @return [String]
+    # @return [String, nil]
     attr_reader :client_id
 
-    # @return [String]
+    # @return [String, nil]
     attr_reader :client_secret
+
+    # @return [String, nil]
+    attr_reader :access_token
 
     # @return [Spotted::Resources::Albums]
     attr_reader :albums
@@ -70,13 +73,29 @@ module Spotted
     attr_reader :markets
 
     # @api private
+    #
+    # @return [Hash{String=>String}]
+    private def auth_headers
+      {**bearer_auth, **oauth_2_0}
+    end
+
+    # @api private
+    #
+    # @return [Hash{String=>String}]
+    private def bearer_auth
+      return {} if @access_token.nil?
+
+      {"authorization" => "Bearer #{@access_token}"}
+    end
+
+    # @api private
     # @return [Spotted::Internal::OAuth2ClientCredentials]
     attr_reader :oauth_2_0_state
 
     # @api private
     #
     # @return [Hash{String=>String}]
-    private def auth_headers
+    private def oauth_2_0
       return @oauth_2_0_state.auth_headers if @oauth_2_0_state
 
       return {} unless @client_id && @client_secret
@@ -106,6 +125,8 @@ module Spotted
     #
     # @param client_secret [String, nil] Defaults to `ENV["SPOTIFY_CLIENT_SECRET"]`
     #
+    # @param access_token [String, nil] Defaults to `ENV["SPOTIFY_ACCESS_TOKEN"]`
+    #
     # @param base_url [String, nil] Override the default base URL for the API, e.g.,
     # `"https://api.example.com/v2/"`. Defaults to `ENV["SPOTTED_BASE_URL"]`
     #
@@ -119,6 +140,7 @@ module Spotted
     def initialize(
       client_id: ENV["SPOTIFY_CLIENT_ID"],
       client_secret: ENV["SPOTIFY_CLIENT_SECRET"],
+      access_token: ENV["SPOTIFY_ACCESS_TOKEN"],
       base_url: ENV["SPOTTED_BASE_URL"],
       max_retries: self.class::DEFAULT_MAX_RETRIES,
       timeout: self.class::DEFAULT_TIMEOUT_IN_SECONDS,
@@ -127,15 +149,9 @@ module Spotted
     )
       base_url ||= "https://api.spotify.com/v1"
 
-      if client_id.nil?
-        raise ArgumentError.new("client_id is required, and can be set via environ: \"SPOTIFY_CLIENT_ID\"")
-      end
-      if client_secret.nil?
-        raise ArgumentError.new("client_secret is required, and can be set via environ: \"SPOTIFY_CLIENT_SECRET\"")
-      end
-
-      @client_id = client_id.to_s
-      @client_secret = client_secret.to_s
+      @client_id = client_id&.to_s
+      @client_secret = client_secret&.to_s
+      @access_token = access_token&.to_s
 
       super(
         base_url: base_url,
