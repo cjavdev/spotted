@@ -262,8 +262,13 @@ module Spotted
         module Mode
           extend Spotted::Internal::Type::Enum
 
+          # No result
           MINUS_1 = -1
+
+          # Minor
           MODE_0 = 0
+
+          # Major
           MODE_1 = 1
 
           # @!method self.values
