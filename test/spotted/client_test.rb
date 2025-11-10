@@ -432,4 +432,154 @@ class SpottedTest < Minitest::Test
       headers.each { refute_empty(_1) }
     end
   end
+
+  def test_authorization_url_with_only_redirect_uri
+    spotted =
+      Spotted::Client.new(
+        client_id: "test_client_id",
+        client_secret: "test_client_secret"
+      )
+
+    url = spotted.authorization_url(redirect_uri: "http://localhost:3000/callback")
+    uri = URI.parse(url)
+    params = URI.decode_www_form(uri.query).to_h
+
+    assert_equal("https", uri.scheme)
+    assert_equal("accounts.spotify.com", uri.host)
+    assert_equal("/authorize", uri.path)
+    assert_equal("test_client_id", params["client_id"])
+    assert_equal("code", params["response_type"])
+    assert_equal("http://localhost:3000/callback", params["redirect_uri"])
+    assert_nil(params["scope"])
+    assert_nil(params["state"])
+    assert_nil(params["show_dialog"])
+  end
+
+  def test_authorization_url_with_scope_as_array
+    spotted =
+      Spotted::Client.new(
+        client_id: "test_client_id",
+        client_secret: "test_client_secret"
+      )
+
+    url = spotted.authorization_url(
+      redirect_uri: "http://localhost:3000/callback",
+      scope: ["user-read-private", "user-read-email", "playlist-modify-public"]
+    )
+    uri = URI.parse(url)
+    params = URI.decode_www_form(uri.query).to_h
+
+    assert_equal("user-read-private user-read-email playlist-modify-public", params["scope"])
+  end
+
+  def test_authorization_url_with_scope_as_string
+    spotted =
+      Spotted::Client.new(
+        client_id: "test_client_id",
+        client_secret: "test_client_secret"
+      )
+
+    url = spotted.authorization_url(
+      redirect_uri: "http://localhost:3000/callback",
+      scope: "user-read-private user-read-email"
+    )
+    uri = URI.parse(url)
+    params = URI.decode_www_form(uri.query).to_h
+
+    assert_equal("user-read-private user-read-email", params["scope"])
+  end
+
+  def test_authorization_url_with_state
+    spotted =
+      Spotted::Client.new(
+        client_id: "test_client_id",
+        client_secret: "test_client_secret"
+      )
+
+    url = spotted.authorization_url(
+      redirect_uri: "http://localhost:3000/callback",
+      state: "random_state_string_123"
+    )
+    uri = URI.parse(url)
+    params = URI.decode_www_form(uri.query).to_h
+
+    assert_equal("random_state_string_123", params["state"])
+  end
+
+  def test_authorization_url_with_show_dialog_true
+    spotted =
+      Spotted::Client.new(
+        client_id: "test_client_id",
+        client_secret: "test_client_secret"
+      )
+
+    url = spotted.authorization_url(
+      redirect_uri: "http://localhost:3000/callback",
+      show_dialog: true
+    )
+    uri = URI.parse(url)
+    params = URI.decode_www_form(uri.query).to_h
+
+    assert_equal("true", params["show_dialog"])
+  end
+
+  def test_authorization_url_with_show_dialog_false
+    spotted =
+      Spotted::Client.new(
+        client_id: "test_client_id",
+        client_secret: "test_client_secret"
+      )
+
+    url = spotted.authorization_url(
+      redirect_uri: "http://localhost:3000/callback",
+      show_dialog: false
+    )
+    uri = URI.parse(url)
+    params = URI.decode_www_form(uri.query).to_h
+
+    assert_nil(params["show_dialog"])
+  end
+
+  def test_authorization_url_with_all_parameters
+    spotted =
+      Spotted::Client.new(
+        client_id: "test_client_id",
+        client_secret: "test_client_secret"
+      )
+
+    url = spotted.authorization_url(
+      redirect_uri: "http://localhost:3000/callback",
+      scope: ["user-read-private", "user-read-email"],
+      state: "csrf_protection_token",
+      show_dialog: true
+    )
+    uri = URI.parse(url)
+    params = URI.decode_www_form(uri.query).to_h
+
+    assert_equal("https", uri.scheme)
+    assert_equal("accounts.spotify.com", uri.host)
+    assert_equal("/authorize", uri.path)
+    assert_equal("test_client_id", params["client_id"])
+    assert_equal("code", params["response_type"])
+    assert_equal("http://localhost:3000/callback", params["redirect_uri"])
+    assert_equal("user-read-private user-read-email", params["scope"])
+    assert_equal("csrf_protection_token", params["state"])
+    assert_equal("true", params["show_dialog"])
+  end
+
+  def test_authorization_url_url_encodes_redirect_uri
+    spotted =
+      Spotted::Client.new(
+        client_id: "test_client_id",
+        client_secret: "test_client_secret"
+      )
+
+    url = spotted.authorization_url(
+      redirect_uri: "http://localhost:3000/callback?foo=bar&baz=qux"
+    )
+    uri = URI.parse(url)
+    params = URI.decode_www_form(uri.query).to_h
+
+    assert_equal("http://localhost:3000/callback?foo=bar&baz=qux", params["redirect_uri"])
+  end
 end

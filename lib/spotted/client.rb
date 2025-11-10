@@ -165,5 +165,39 @@ module Spotted
       @recommendations = Spotted::Resources::Recommendations.new(client: self)
       @markets = Spotted::Resources::Markets.new(client: self)
     end
+
+    # Generates the Spotify authorization URL for OAuth2 authorization code flow.
+    #
+    # @param redirect_uri [String] The URI to redirect to after authorization
+    # @param scope [String, Array<String>, nil] Space-delimited string or array of authorization scopes
+    # @param state [String, nil] Optional state parameter for CSRF protection
+    # @param show_dialog [Boolean] Whether to force the user to approve the app again
+    #
+    # @return [String] The authorization URL to redirect the user to
+    #
+    # @example Basic usage
+    #   client = Spotted::Client.new(client_id: "...", client_secret: "...")
+    #   url = client.authorization_url(redirect_uri: "http://localhost:3000/callback")
+    #
+    # @example With scopes and state
+    #   url = client.authorization_url(
+    #     redirect_uri: "http://localhost:3000/callback",
+    #     scope: ["user-read-private", "user-read-email"],
+    #     state: "random_state_string"
+    #   )
+    def authorization_url(redirect_uri:, scope: nil, state: nil, show_dialog: false)
+      params = {
+        client_id: @client_id,
+        response_type: "code",
+        redirect_uri: redirect_uri
+      }
+
+      params[:scope] = scope.is_a?(Array) ? scope.join(" ") : scope if scope
+      params[:state] = state if state
+      params[:show_dialog] = "true" if show_dialog
+
+      query_string = URI.encode_www_form(params)
+      "https://accounts.spotify.com/authorize?#{query_string}"
+    end
   end
 end
