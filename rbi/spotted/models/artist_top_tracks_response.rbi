@@ -2,11 +2,11 @@
 
 module Spotted
   module Models
-    class ArtistListTopTracksResponse < Spotted::Internal::Type::BaseModel
+    class ArtistTopTracksResponse < Spotted::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
           T.any(
-            Spotted::Models::ArtistListTopTracksResponse,
+            Spotted::Models::ArtistTopTracksResponse,
             Spotted::Internal::AnyHash
           )
         end

@@ -2,8 +2,8 @@
 
 module Spotted
   module Models
-    # @see Spotted::Resources::Artists#list_top_tracks
-    class ArtistListTopTracksResponse < Spotted::Internal::Type::BaseModel
+    # @see Spotted::Resources::Artists#top_tracks
+    class ArtistTopTracksResponse < Spotted::Internal::Type::BaseModel
       # @!attribute tracks
       #
       #   @return [Array<Spotted::Models::TrackObject>]

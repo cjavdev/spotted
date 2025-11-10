@@ -2,13 +2,13 @@
 
 module Spotted
   module Models
-    class ArtistListTopTracksParams < Spotted::Internal::Type::BaseModel
+    class ArtistTopTracksParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
       OrHash =
         T.type_alias do
-          T.any(Spotted::ArtistListTopTracksParams, Spotted::Internal::AnyHash)
+          T.any(Spotted::ArtistTopTracksParams, Spotted::Internal::AnyHash)
         end
 
       # An

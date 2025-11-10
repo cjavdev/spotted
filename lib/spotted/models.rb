@@ -53,11 +53,11 @@ module Spotted
 
   ArtistListRelatedArtistsParams = Spotted::Models::ArtistListRelatedArtistsParams
 
-  ArtistListTopTracksParams = Spotted::Models::ArtistListTopTracksParams
-
   ArtistObject = Spotted::Models::ArtistObject
 
   ArtistRetrieveParams = Spotted::Models::ArtistRetrieveParams
+
+  ArtistTopTracksParams = Spotted::Models::ArtistTopTracksParams
 
   AudioAnalysisRetrieveParams = Spotted::Models::AudioAnalysisRetrieveParams
 

@@ -100,13 +100,13 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
     end
   end
 
-  def test_list_top_tracks
+  def test_top_tracks
     skip("Prism tests are disabled")
 
-    response = @spotted.artists.list_top_tracks("0TnOYISbd1XYRBk9myaseg")
+    response = @spotted.artists.top_tracks("0TnOYISbd1XYRBk9myaseg")
 
     assert_pattern do
-      response => Spotted::Models::ArtistListTopTracksResponse
+      response => Spotted::Models::ArtistTopTracksResponse
     end
 
     assert_pattern do
