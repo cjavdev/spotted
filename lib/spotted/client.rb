@@ -76,7 +76,7 @@ module Spotted
     #
     # @return [Hash{String=>String}]
     private def auth_headers
-      if !@access_token.nil?
+      unless @access_token.nil?
         return {**bearer_auth}
       end
 
