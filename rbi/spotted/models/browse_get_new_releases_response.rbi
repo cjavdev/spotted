@@ -50,15 +50,6 @@ module Spotted
         sig { returns(String) }
         attr_accessor :href
 
-        sig do
-          returns(
-            T::Array[
-              Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item
-            ]
-          )
-        end
-        attr_accessor :items
-
         # The maximum number of items in the response (as set in the query or by default).
         sig { returns(Integer) }
         attr_accessor :limit
@@ -80,23 +71,43 @@ module Spotted
         attr_accessor :total
 
         sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item
+              ]
+            )
+          )
+        end
+        attr_reader :items
+
+        sig do
           params(
-            href: String,
             items:
               T::Array[
                 Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::OrHash
-              ],
+              ]
+          ).void
+        end
+        attr_writer :items
+
+        sig do
+          params(
+            href: String,
             limit: Integer,
             next_: T.nilable(String),
             offset: Integer,
             previous: T.nilable(String),
-            total: Integer
+            total: Integer,
+            items:
+              T::Array[
+                Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::OrHash
+              ]
           ).returns(T.attached_class)
         end
         def self.new(
           # A link to the Web API endpoint returning the full result of the request
           href:,
-          items:,
           # The maximum number of items in the response (as set in the query or by default).
           limit:,
           # URL to the next page of items. ( `null` if none)
@@ -106,7 +117,8 @@ module Spotted
           # URL to the previous page of items. ( `null` if none)
           previous:,
           # The total number of items available to return.
-          total:
+          total:,
+          items: nil
         )
         end
 
@@ -114,15 +126,15 @@ module Spotted
           override.returns(
             {
               href: String,
-              items:
-                T::Array[
-                  Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item
-                ],
               limit: Integer,
               next_: T.nilable(String),
               offset: Integer,
               previous: T.nilable(String),
-              total: Integer
+              total: Integer,
+              items:
+                T::Array[
+                  Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item
+                ]
             }
           )
         end

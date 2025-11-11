@@ -23,11 +23,6 @@ module Spotted
         #   @return [String]
         required :href, String
 
-        # @!attribute items
-        #
-        #   @return [Array<Spotted::Models::SimplifiedChapterObject>]
-        required :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedChapterObject] }
-
         # @!attribute limit
         #   The maximum number of items in the response (as set in the query or by default).
         #
@@ -58,15 +53,18 @@ module Spotted
         #   @return [Integer]
         required :total, Integer
 
-        # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
+        # @!attribute items
+        #
+        #   @return [Array<Spotted::Models::SimplifiedChapterObject>, nil]
+        optional :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedChapterObject] }
+
+        # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::AudiobookRetrieveResponse::Chapters} for more details.
         #
         #   The chapters of the audiobook.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
-        #
-        #   @param items [Array<Spotted::Models::SimplifiedChapterObject>]
         #
         #   @param limit [Integer] The maximum number of items in the response (as set in the query or by default).
         #
@@ -77,6 +75,8 @@ module Spotted
         #   @param previous [String, nil] URL to the previous page of items. ( `null` if none)
         #
         #   @param total [Integer] The total number of items available to return.
+        #
+        #   @param items [Array<Spotted::Models::SimplifiedChapterObject>]
       end
     end
   end
