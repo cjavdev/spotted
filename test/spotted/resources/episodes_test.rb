@@ -30,7 +30,7 @@ class Spotted::Test::Resources::EpisodesTest < Spotted::Test::ResourceTest
         release_date: String,
         release_date_precision: Spotted::EpisodeObject::ReleaseDatePrecision,
         show: Spotted::ShowBase,
-        type: Spotted::EpisodeObject::Type,
+        type: Symbol,
         uri: String,
         language: String | nil,
         restrictions: Spotted::EpisodeRestrictionObject | nil,

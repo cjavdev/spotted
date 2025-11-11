@@ -3,9 +3,9 @@ module Spotted
     class Me
       class Following
         def bulk_retrieve: (
-          type: Spotted::Models::Me::FollowingBulkRetrieveParams::type_,
           ?after: String,
           ?limit: Integer,
+          ?type: :artist,
           ?request_options: Spotted::request_opts
         ) -> Spotted::Models::Me::FollowingBulkRetrieveResponse
 

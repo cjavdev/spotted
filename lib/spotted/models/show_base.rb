@@ -101,8 +101,8 @@ module Spotted
       # @!attribute type
       #   The object type.
       #
-      #   @return [Symbol, Spotted::Models::ShowBase::Type]
-      required :type, enum: -> { Spotted::ShowBase::Type }
+      #   @return [Symbol, :show]
+      required :type, const: :show
 
       # @!attribute uri
       #   The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -111,7 +111,7 @@ module Spotted
       #   @return [String]
       required :uri, String
 
-      # @!method initialize(id:, available_markets:, copyrights:, description:, explicit:, external_urls:, href:, html_description:, images:, is_externally_hosted:, languages:, media_type:, name:, publisher:, total_episodes:, type:, uri:)
+      # @!method initialize(id:, available_markets:, copyrights:, description:, explicit:, external_urls:, href:, html_description:, images:, is_externally_hosted:, languages:, media_type:, name:, publisher:, total_episodes:, uri:, type: :show)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::ShowBase} for more details.
       #
@@ -145,21 +145,9 @@ module Spotted
       #
       #   @param total_episodes [Integer] The total number of episodes in the show.
       #
-      #   @param type [Symbol, Spotted::Models::ShowBase::Type] The object type.
-      #
       #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the show
-
-      # The object type.
       #
-      # @see Spotted::Models::ShowBase#type
-      module Type
-        extend Spotted::Internal::Type::Enum
-
-        SHOW = :show
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
+      #   @param type [Symbol, :show] The object type.
     end
   end
 end

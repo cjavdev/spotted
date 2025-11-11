@@ -24,7 +24,7 @@ class Spotted::Test::Resources::AlbumsTest < Spotted::Test::ResourceTest
         release_date: String,
         release_date_precision: Spotted::Models::AlbumRetrieveResponse::ReleaseDatePrecision,
         total_tracks: Integer,
-        type: Spotted::Models::AlbumRetrieveResponse::Type,
+        type: Symbol,
         uri: String,
         artists: ^(Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedArtistObject]) | nil,
         copyrights: ^(Spotted::Internal::Type::ArrayOf[Spotted::CopyrightObject]) | nil,

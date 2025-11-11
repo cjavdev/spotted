@@ -108,8 +108,8 @@ module Spotted
       # @!attribute type
       #   The object type.
       #
-      #   @return [Symbol, Spotted::Models::AudiobookBase::Type]
-      required :type, enum: -> { Spotted::AudiobookBase::Type }
+      #   @return [Symbol, :audiobook]
+      required :type, const: :audiobook
 
       # @!attribute uri
       #   The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -124,7 +124,7 @@ module Spotted
       #   @return [String, nil]
       optional :edition, String
 
-      # @!method initialize(id:, authors:, available_markets:, copyrights:, description:, explicit:, external_urls:, href:, html_description:, images:, languages:, media_type:, name:, narrators:, publisher:, total_chapters:, type:, uri:, edition: nil)
+      # @!method initialize(id:, authors:, available_markets:, copyrights:, description:, explicit:, external_urls:, href:, html_description:, images:, languages:, media_type:, name:, narrators:, publisher:, total_chapters:, uri:, edition: nil, type: :audiobook)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::AudiobookBase} for more details.
       #
@@ -160,23 +160,11 @@ module Spotted
       #
       #   @param total_chapters [Integer] The number of chapters in this audiobook.
       #
-      #   @param type [Symbol, Spotted::Models::AudiobookBase::Type] The object type.
-      #
       #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audi
       #
       #   @param edition [String] The edition of the audiobook.
-
-      # The object type.
       #
-      # @see Spotted::Models::AudiobookBase#type
-      module Type
-        extend Spotted::Internal::Type::Enum
-
-        AUDIOBOOK = :audiobook
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
+      #   @param type [Symbol, :audiobook] The object type.
     end
   end
 end

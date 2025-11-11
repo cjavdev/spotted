@@ -9,13 +9,13 @@ module Spotted
         #
         # Get the current user's followed artists.
         #
-        # @overload bulk_retrieve(type:, after: nil, limit: nil, request_options: {})
-        #
-        # @param type [Symbol, Spotted::Models::Me::FollowingBulkRetrieveParams::Type] The ID type: currently only `artist` is supported.
+        # @overload bulk_retrieve(after: nil, limit: nil, type: :artist, request_options: {})
         #
         # @param after [String] The last artist ID retrieved from the previous request.
         #
         # @param limit [Integer] The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+        #
+        # @param type [Symbol, :artist] The ID type: currently only `artist` is supported.
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
