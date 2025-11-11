@@ -2,22 +2,21 @@ module Spotted
   module Models
     module Playlists
       type image_update_params =
-        { body: Spotted::Internal::file_input }
-        & Spotted::Internal::Type::request_parameters
+        { body: String } & Spotted::Internal::Type::request_parameters
 
       class ImageUpdateParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
-        attr_accessor body: Spotted::Internal::file_input
+        attr_accessor body: String
 
         def initialize: (
-          body: Spotted::Internal::file_input,
+          body: String,
           ?request_options: Spotted::request_opts
         ) -> void
 
         def to_hash: -> {
-          body: Spotted::Internal::file_input,
+          body: String,
           request_options: Spotted::RequestOptions
         }
       end
