@@ -4,9 +4,9 @@ module Spotted
       class Images
         def update: (
           String playlist_id,
-          body: Spotted::Internal::file_input,
+          body: String,
           ?request_options: Spotted::request_opts
-        ) -> nil
+        ) -> StringIO
 
         def list: (
           String playlist_id,
