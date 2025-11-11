@@ -16,9 +16,7 @@ module Spotted
           end
 
         # The ID type: currently only `artist` is supported.
-        sig do
-          returns(Spotted::Me::FollowingBulkRetrieveParams::Type::OrSymbol)
-        end
+        sig { returns(Symbol) }
         attr_accessor :type
 
         # The last artist ID retrieved from the previous request.
@@ -37,19 +35,19 @@ module Spotted
 
         sig do
           params(
-            type: Spotted::Me::FollowingBulkRetrieveParams::Type::OrSymbol,
             after: String,
             limit: Integer,
+            type: Symbol,
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
-          # The ID type: currently only `artist` is supported.
-          type:,
           # The last artist ID retrieved from the previous request.
           after: nil,
           # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
           limit: nil,
+          # The ID type: currently only `artist` is supported.
+          type: :artist,
           request_options: {}
         )
         end
@@ -57,7 +55,7 @@ module Spotted
         sig do
           override.returns(
             {
-              type: Spotted::Me::FollowingBulkRetrieveParams::Type::OrSymbol,
+              type: Symbol,
               after: String,
               limit: Integer,
               request_options: Spotted::RequestOptions
@@ -65,33 +63,6 @@ module Spotted
           )
         end
         def to_hash
-        end
-
-        # The ID type: currently only `artist` is supported.
-        module Type
-          extend Spotted::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Spotted::Me::FollowingBulkRetrieveParams::Type)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          ARTIST =
-            T.let(
-              :artist,
-              Spotted::Me::FollowingBulkRetrieveParams::Type::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Spotted::Me::FollowingBulkRetrieveParams::Type::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
       end
     end

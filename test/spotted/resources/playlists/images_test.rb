@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Playlists::ImagesTest < Spotted::Test::ResourceTest
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Prism doesn't support application/binary responses")
 
     # Ignore Layout/LineLength
     # rubocop:disable Layout/LineLength
@@ -12,7 +12,7 @@ class Spotted::Test::Resources::Playlists::ImagesTest < Spotted::Test::ResourceT
     # rubocop:enable Layout/LineLength
 
     assert_pattern do
-      response => nil
+      response => StringIO
     end
   end
 

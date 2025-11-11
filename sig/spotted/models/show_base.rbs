@@ -17,7 +17,7 @@ module Spotted
         name: String,
         publisher: String,
         total_episodes: Integer,
-        type: Spotted::Models::ShowBase::type_,
+        type: :show,
         uri: String
       }
 
@@ -52,7 +52,7 @@ module Spotted
 
       attr_accessor total_episodes: Integer
 
-      attr_accessor type: Spotted::Models::ShowBase::type_
+      attr_accessor type: :show
 
       attr_accessor uri: String
 
@@ -72,8 +72,8 @@ module Spotted
         name: String,
         publisher: String,
         total_episodes: Integer,
-        type: Spotted::Models::ShowBase::type_,
-        uri: String
+        uri: String,
+        ?type: :show
       ) -> void
 
       def to_hash: -> {
@@ -92,19 +92,9 @@ module Spotted
         name: String,
         publisher: String,
         total_episodes: Integer,
-        type: Spotted::Models::ShowBase::type_,
+        type: :show,
         uri: String
       }
-
-      type type_ = :show
-
-      module Type
-        extend Spotted::Internal::Type::Enum
-
-        SHOW: :show
-
-        def self?.values: -> ::Array[Spotted::Models::ShowBase::type_]
-      end
     end
   end
 end

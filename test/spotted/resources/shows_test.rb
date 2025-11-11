@@ -62,7 +62,7 @@ class Spotted::Test::Resources::ShowsTest < Spotted::Test::ResourceTest
         name: String,
         release_date: String,
         release_date_precision: Spotted::SimplifiedEpisodeObject::ReleaseDatePrecision,
-        type: Spotted::SimplifiedEpisodeObject::Type,
+        type: Symbol,
         uri: String,
         language: String | nil,
         restrictions: Spotted::EpisodeRestrictionObject | nil,

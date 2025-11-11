@@ -17,7 +17,7 @@ module Spotted
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [nil]
+        # @return [StringIO]
         #
         # @see Spotted::Models::Playlists::ImageUpdateParams
         def update(playlist_id, params)
@@ -25,9 +25,9 @@ module Spotted
           @client.request(
             method: :put,
             path: ["playlists/%1$s/images", playlist_id],
-            headers: {"content-type" => "image/jpeg"},
+            headers: {"content-type" => "image/jpeg", "accept" => "application/binary"},
             body: parsed[:body],
-            model: NilClass,
+            model: StringIO,
             options: options
           )
         end

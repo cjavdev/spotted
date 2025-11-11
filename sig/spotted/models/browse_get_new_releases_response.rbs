@@ -17,18 +17,16 @@ module Spotted
       type albums =
         {
           href: String,
-          items: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
           previous: String?,
-          total: Integer
+          total: Integer,
+          items: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item]
         }
 
       class Albums < Spotted::Internal::Type::BaseModel
         attr_accessor href: String
-
-        attr_accessor items: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item]
 
         attr_accessor limit: Integer
 
@@ -40,24 +38,30 @@ module Spotted
 
         attr_accessor total: Integer
 
+        attr_reader items: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item]?
+
+        def items=: (
+          ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item]
+        ) -> ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item]
+
         def initialize: (
           href: String,
-          items: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
           previous: String?,
-          total: Integer
+          total: Integer,
+          ?items: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item]
         ) -> void
 
         def to_hash: -> {
           href: String,
-          items: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item],
           limit: Integer,
           next_: String?,
           offset: Integer,
           previous: String?,
-          total: Integer
+          total: Integer,
+          items: ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item]
         }
 
         type item =
@@ -73,7 +77,7 @@ module Spotted
             release_date: String,
             release_date_precision: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::release_date_precision,
             total_tracks: Integer,
-            type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::type_,
+            type: :album,
             uri: String,
             restrictions: Spotted::AlbumRestrictionObject
           }
@@ -101,7 +105,7 @@ module Spotted
 
           attr_accessor total_tracks: Integer
 
-          attr_accessor type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::type_
+          attr_accessor type: :album
 
           attr_accessor uri: String
 
@@ -123,9 +127,9 @@ module Spotted
             release_date: String,
             release_date_precision: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::release_date_precision,
             total_tracks: Integer,
-            type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::type_,
             uri: String,
-            ?restrictions: Spotted::AlbumRestrictionObject
+            ?restrictions: Spotted::AlbumRestrictionObject,
+            ?type: :album
           ) -> void
 
           def to_hash: -> {
@@ -140,7 +144,7 @@ module Spotted
             release_date: String,
             release_date_precision: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::release_date_precision,
             total_tracks: Integer,
-            type: Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::type_,
+            type: :album,
             uri: String,
             restrictions: Spotted::AlbumRestrictionObject
           }
@@ -167,16 +171,6 @@ module Spotted
             DAY: :day
 
             def self?.values: -> ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::release_date_precision]
-          end
-
-          type type_ = :album
-
-          module Type
-            extend Spotted::Internal::Type::Enum
-
-            ALBUM: :album
-
-            def self?.values: -> ::Array[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item::type_]
           end
         end
       end

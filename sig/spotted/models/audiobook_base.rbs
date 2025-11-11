@@ -18,7 +18,7 @@ module Spotted
         narrators: ::Array[Spotted::NarratorObject],
         publisher: String,
         total_chapters: Integer,
-        type: Spotted::Models::AudiobookBase::type_,
+        type: :audiobook,
         uri: String,
         edition: String
       }
@@ -56,7 +56,7 @@ module Spotted
 
       attr_accessor total_chapters: Integer
 
-      attr_accessor type: Spotted::Models::AudiobookBase::type_
+      attr_accessor type: :audiobook
 
       attr_accessor uri: String
 
@@ -81,9 +81,9 @@ module Spotted
         narrators: ::Array[Spotted::NarratorObject],
         publisher: String,
         total_chapters: Integer,
-        type: Spotted::Models::AudiobookBase::type_,
         uri: String,
-        ?edition: String
+        ?edition: String,
+        ?type: :audiobook
       ) -> void
 
       def to_hash: -> {
@@ -103,20 +103,10 @@ module Spotted
         narrators: ::Array[Spotted::NarratorObject],
         publisher: String,
         total_chapters: Integer,
-        type: Spotted::Models::AudiobookBase::type_,
+        type: :audiobook,
         uri: String,
         edition: String
       }
-
-      type type_ = :audiobook
-
-      module Type
-        extend Spotted::Internal::Type::Enum
-
-        AUDIOBOOK: :audiobook
-
-        def self?.values: -> ::Array[Spotted::Models::AudiobookBase::type_]
-      end
     end
   end
 end

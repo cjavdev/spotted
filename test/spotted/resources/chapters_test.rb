@@ -30,7 +30,7 @@ class Spotted::Test::Resources::ChaptersTest < Spotted::Test::ResourceTest
         name: String,
         release_date: String,
         release_date_precision: Spotted::Models::ChapterRetrieveResponse::ReleaseDatePrecision,
-        type: Spotted::Models::ChapterRetrieveResponse::Type,
+        type: Symbol,
         uri: String,
         available_markets: ^(Spotted::Internal::Type::ArrayOf[String]) | nil,
         restrictions: Spotted::ChapterRestrictionObject | nil,

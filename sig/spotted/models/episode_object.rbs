@@ -18,7 +18,7 @@ module Spotted
         release_date: String,
         release_date_precision: Spotted::Models::EpisodeObject::release_date_precision,
         show: Spotted::ShowBase,
-        type: Spotted::Models::EpisodeObject::type_,
+        type: :episode,
         uri: String,
         language: String,
         restrictions: Spotted::EpisodeRestrictionObject,
@@ -58,7 +58,7 @@ module Spotted
 
       attr_accessor show: Spotted::ShowBase
 
-      attr_accessor type: Spotted::Models::EpisodeObject::type_
+      attr_accessor type: :episode
 
       attr_accessor uri: String
 
@@ -95,11 +95,11 @@ module Spotted
         release_date: String,
         release_date_precision: Spotted::Models::EpisodeObject::release_date_precision,
         show: Spotted::ShowBase,
-        type: Spotted::Models::EpisodeObject::type_,
         uri: String,
         ?language: String,
         ?restrictions: Spotted::EpisodeRestrictionObject,
-        ?resume_point: Spotted::ResumePointObject
+        ?resume_point: Spotted::ResumePointObject,
+        ?type: :episode
       ) -> void
 
       def to_hash: -> {
@@ -119,7 +119,7 @@ module Spotted
         release_date: String,
         release_date_precision: Spotted::Models::EpisodeObject::release_date_precision,
         show: Spotted::ShowBase,
-        type: Spotted::Models::EpisodeObject::type_,
+        type: :episode,
         uri: String,
         language: String,
         restrictions: Spotted::EpisodeRestrictionObject,
@@ -136,16 +136,6 @@ module Spotted
         DAY: :day
 
         def self?.values: -> ::Array[Spotted::Models::EpisodeObject::release_date_precision]
-      end
-
-      type type_ = :episode
-
-      module Type
-        extend Spotted::Internal::Type::Enum
-
-        EPISODE: :episode
-
-        def self?.values: -> ::Array[Spotted::Models::EpisodeObject::type_]
       end
     end
   end

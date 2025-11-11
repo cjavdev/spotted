@@ -489,22 +489,17 @@ module Spotted
             end
           OrFloat = T.type_alias { Float }
 
-          # No result
-          MINUS_1 =
+          MODE_NO_RESULT =
             T.let(
               -1,
               Spotted::Models::AudioAnalysisRetrieveResponse::Section::Mode::TaggedFloat
             )
-
-          # Minor
-          MODE_0 =
+          MODE_MINOR =
             T.let(
               0,
               Spotted::Models::AudioAnalysisRetrieveResponse::Section::Mode::TaggedFloat
             )
-
-          # Major
-          MODE_1 =
+          MODE_MAJOR =
             T.let(
               1,
               Spotted::Models::AudioAnalysisRetrieveResponse::Section::Mode::TaggedFloat

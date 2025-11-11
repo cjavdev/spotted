@@ -82,7 +82,7 @@ module Spotted
       attr_accessor :release_date_precision
 
       # The object type.
-      sig { returns(Spotted::SimplifiedChapterObject::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       attr_accessor :type
 
       # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -133,11 +133,11 @@ module Spotted
           release_date: String,
           release_date_precision:
             Spotted::SimplifiedChapterObject::ReleaseDatePrecision::OrSymbol,
-          type: Spotted::SimplifiedChapterObject::Type::OrSymbol,
           uri: String,
           available_markets: T::Array[String],
           restrictions: Spotted::ChapterRestrictionObject::OrHash,
-          resume_point: Spotted::ResumePointObject::OrHash
+          resume_point: Spotted::ResumePointObject::OrHash,
+          type: Symbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -177,8 +177,6 @@ module Spotted
         release_date:,
         # The precision with which `release_date` value is known.
         release_date_precision:,
-        # The object type.
-        type:,
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
         # chapter.
         uri:,
@@ -189,7 +187,9 @@ module Spotted
         restrictions: nil,
         # The user's most recent position in the chapter. Set if the supplied access token
         # is a user token and has the scope 'user-read-playback-position'.
-        resume_point: nil
+        resume_point: nil,
+        # The object type.
+        type: :episode
       )
       end
 
@@ -212,7 +212,7 @@ module Spotted
             release_date: String,
             release_date_precision:
               Spotted::SimplifiedChapterObject::ReleaseDatePrecision::TaggedSymbol,
-            type: Spotted::SimplifiedChapterObject::Type::TaggedSymbol,
+            type: Symbol,
             uri: String,
             available_markets: T::Array[String],
             restrictions: Spotted::ChapterRestrictionObject,
@@ -257,26 +257,6 @@ module Spotted
             T::Array[
               Spotted::SimplifiedChapterObject::ReleaseDatePrecision::TaggedSymbol
             ]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # The object type.
-      module Type
-        extend Spotted::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Spotted::SimplifiedChapterObject::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        EPISODE =
-          T.let(:episode, Spotted::SimplifiedChapterObject::Type::TaggedSymbol)
-
-        sig do
-          override.returns(
-            T::Array[Spotted::SimplifiedChapterObject::Type::TaggedSymbol]
           )
         end
         def self.values

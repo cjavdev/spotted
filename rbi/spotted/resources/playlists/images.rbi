@@ -10,7 +10,7 @@ module Spotted
             playlist_id: String,
             body: Spotted::Internal::FileInput,
             request_options: Spotted::RequestOptions::OrHash
-          ).void
+          ).returns(StringIO)
         end
         def update(
           # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the

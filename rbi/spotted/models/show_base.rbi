@@ -75,7 +75,7 @@ module Spotted
       attr_accessor :total_episodes
 
       # The object type.
-      sig { returns(Spotted::ShowBase::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       attr_accessor :type
 
       # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -100,8 +100,8 @@ module Spotted
           name: String,
           publisher: String,
           total_episodes: Integer,
-          type: Spotted::ShowBase::Type::OrSymbol,
-          uri: String
+          uri: String,
+          type: Symbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -140,11 +140,11 @@ module Spotted
         publisher:,
         # The total number of episodes in the show.
         total_episodes:,
-        # The object type.
-        type:,
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
         # show.
-        uri:
+        uri:,
+        # The object type.
+        type: :show
       )
       end
 
@@ -166,28 +166,12 @@ module Spotted
             name: String,
             publisher: String,
             total_episodes: Integer,
-            type: Spotted::ShowBase::Type::TaggedSymbol,
+            type: Symbol,
             uri: String
           }
         )
       end
       def to_hash
-      end
-
-      # The object type.
-      module Type
-        extend Spotted::Internal::Type::Enum
-
-        TaggedSymbol = T.type_alias { T.all(Symbol, Spotted::ShowBase::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        SHOW = T.let(:show, Spotted::ShowBase::Type::TaggedSymbol)
-
-        sig do
-          override.returns(T::Array[Spotted::ShowBase::Type::TaggedSymbol])
-        end
-        def self.values
-        end
       end
     end
   end

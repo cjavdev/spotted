@@ -18,7 +18,7 @@ module Spotted
         name: String,
         release_date: String,
         release_date_precision: Spotted::Models::ChapterRetrieveResponse::release_date_precision,
-        type: Spotted::Models::ChapterRetrieveResponse::type_,
+        type: :episode,
         uri: String,
         available_markets: ::Array[String],
         restrictions: Spotted::ChapterRestrictionObject,
@@ -58,7 +58,7 @@ module Spotted
 
       attr_accessor release_date_precision: Spotted::Models::ChapterRetrieveResponse::release_date_precision
 
-      attr_accessor type: Spotted::Models::ChapterRetrieveResponse::type_
+      attr_accessor type: :episode
 
       attr_accessor uri: String
 
@@ -95,11 +95,11 @@ module Spotted
         name: String,
         release_date: String,
         release_date_precision: Spotted::Models::ChapterRetrieveResponse::release_date_precision,
-        type: Spotted::Models::ChapterRetrieveResponse::type_,
         uri: String,
         ?available_markets: ::Array[String],
         ?restrictions: Spotted::ChapterRestrictionObject,
-        ?resume_point: Spotted::ResumePointObject
+        ?resume_point: Spotted::ResumePointObject,
+        ?type: :episode
       ) -> void
 
       def to_hash: -> {
@@ -119,7 +119,7 @@ module Spotted
         name: String,
         release_date: String,
         release_date_precision: Spotted::Models::ChapterRetrieveResponse::release_date_precision,
-        type: Spotted::Models::ChapterRetrieveResponse::type_,
+        type: :episode,
         uri: String,
         available_markets: ::Array[String],
         restrictions: Spotted::ChapterRestrictionObject,
@@ -136,16 +136,6 @@ module Spotted
         DAY: :day
 
         def self?.values: -> ::Array[Spotted::Models::ChapterRetrieveResponse::release_date_precision]
-      end
-
-      type type_ = :episode
-
-      module Type
-        extend Spotted::Internal::Type::Enum
-
-        EPISODE: :episode
-
-        def self?.values: -> ::Array[Spotted::Models::ChapterRetrieveResponse::type_]
       end
     end
   end

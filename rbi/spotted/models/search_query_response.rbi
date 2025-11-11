@@ -128,11 +128,6 @@ module Spotted
         sig { returns(String) }
         attr_accessor :href
 
-        sig do
-          returns(T::Array[Spotted::Models::SearchQueryResponse::Albums::Item])
-        end
-        attr_accessor :items
-
         # The maximum number of items in the response (as set in the query or by default).
         sig { returns(Integer) }
         attr_accessor :limit
@@ -154,23 +149,41 @@ module Spotted
         attr_accessor :total
 
         sig do
+          returns(
+            T.nilable(
+              T::Array[Spotted::Models::SearchQueryResponse::Albums::Item]
+            )
+          )
+        end
+        attr_reader :items
+
+        sig do
           params(
-            href: String,
             items:
               T::Array[
                 Spotted::Models::SearchQueryResponse::Albums::Item::OrHash
-              ],
+              ]
+          ).void
+        end
+        attr_writer :items
+
+        sig do
+          params(
+            href: String,
             limit: Integer,
             next_: T.nilable(String),
             offset: Integer,
             previous: T.nilable(String),
-            total: Integer
+            total: Integer,
+            items:
+              T::Array[
+                Spotted::Models::SearchQueryResponse::Albums::Item::OrHash
+              ]
           ).returns(T.attached_class)
         end
         def self.new(
           # A link to the Web API endpoint returning the full result of the request
           href:,
-          items:,
           # The maximum number of items in the response (as set in the query or by default).
           limit:,
           # URL to the next page of items. ( `null` if none)
@@ -180,7 +193,8 @@ module Spotted
           # URL to the previous page of items. ( `null` if none)
           previous:,
           # The total number of items available to return.
-          total:
+          total:,
+          items: nil
         )
         end
 
@@ -188,13 +202,13 @@ module Spotted
           override.returns(
             {
               href: String,
-              items:
-                T::Array[Spotted::Models::SearchQueryResponse::Albums::Item],
               limit: Integer,
               next_: T.nilable(String),
               offset: Integer,
               previous: T.nilable(String),
-              total: Integer
+              total: Integer,
+              items:
+                T::Array[Spotted::Models::SearchQueryResponse::Albums::Item]
             }
           )
         end
@@ -272,11 +286,7 @@ module Spotted
           attr_accessor :total_tracks
 
           # The object type.
-          sig do
-            returns(
-              Spotted::Models::SearchQueryResponse::Albums::Item::Type::TaggedSymbol
-            )
-          end
+          sig { returns(Symbol) }
           attr_accessor :type
 
           # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -308,10 +318,9 @@ module Spotted
               release_date_precision:
                 Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision::OrSymbol,
               total_tracks: Integer,
-              type:
-                Spotted::Models::SearchQueryResponse::Albums::Item::Type::OrSymbol,
               uri: String,
-              restrictions: Spotted::AlbumRestrictionObject::OrHash
+              restrictions: Spotted::AlbumRestrictionObject::OrHash,
+              type: Symbol
             ).returns(T.attached_class)
           end
           def self.new(
@@ -343,13 +352,13 @@ module Spotted
             release_date_precision:,
             # The number of tracks in the album.
             total_tracks:,
-            # The object type.
-            type:,
             # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
             # album.
             uri:,
             # Included in the response when a content restriction is applied.
-            restrictions: nil
+            restrictions: nil,
+            # The object type.
+            type: :album
           )
           end
 
@@ -369,8 +378,7 @@ module Spotted
                 release_date_precision:
                   Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision::TaggedSymbol,
                 total_tracks: Integer,
-                type:
-                  Spotted::Models::SearchQueryResponse::Albums::Item::Type::TaggedSymbol,
+                type: Symbol,
                 uri: String,
                 restrictions: Spotted::AlbumRestrictionObject
               }
@@ -458,36 +466,6 @@ module Spotted
             def self.values
             end
           end
-
-          # The object type.
-          module Type
-            extend Spotted::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Spotted::Models::SearchQueryResponse::Albums::Item::Type
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            ALBUM =
-              T.let(
-                :album,
-                Spotted::Models::SearchQueryResponse::Albums::Item::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Spotted::Models::SearchQueryResponse::Albums::Item::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
         end
       end
 
@@ -503,9 +481,6 @@ module Spotted
         # A link to the Web API endpoint returning the full result of the request
         sig { returns(String) }
         attr_accessor :href
-
-        sig { returns(T::Array[Spotted::ArtistObject]) }
-        attr_accessor :items
 
         # The maximum number of items in the response (as set in the query or by default).
         sig { returns(Integer) }
@@ -527,21 +502,26 @@ module Spotted
         sig { returns(Integer) }
         attr_accessor :total
 
+        sig { returns(T.nilable(T::Array[Spotted::ArtistObject])) }
+        attr_reader :items
+
+        sig { params(items: T::Array[Spotted::ArtistObject::OrHash]).void }
+        attr_writer :items
+
         sig do
           params(
             href: String,
-            items: T::Array[Spotted::ArtistObject::OrHash],
             limit: Integer,
             next_: T.nilable(String),
             offset: Integer,
             previous: T.nilable(String),
-            total: Integer
+            total: Integer,
+            items: T::Array[Spotted::ArtistObject::OrHash]
           ).returns(T.attached_class)
         end
         def self.new(
           # A link to the Web API endpoint returning the full result of the request
           href:,
-          items:,
           # The maximum number of items in the response (as set in the query or by default).
           limit:,
           # URL to the next page of items. ( `null` if none)
@@ -551,7 +531,8 @@ module Spotted
           # URL to the previous page of items. ( `null` if none)
           previous:,
           # The total number of items available to return.
-          total:
+          total:,
+          items: nil
         )
         end
 
@@ -559,12 +540,12 @@ module Spotted
           override.returns(
             {
               href: String,
-              items: T::Array[Spotted::ArtistObject],
               limit: Integer,
               next_: T.nilable(String),
               offset: Integer,
               previous: T.nilable(String),
-              total: Integer
+              total: Integer,
+              items: T::Array[Spotted::ArtistObject]
             }
           )
         end
@@ -585,9 +566,6 @@ module Spotted
         sig { returns(String) }
         attr_accessor :href
 
-        sig { returns(T::Array[Spotted::AudiobookBase]) }
-        attr_accessor :items
-
         # The maximum number of items in the response (as set in the query or by default).
         sig { returns(Integer) }
         attr_accessor :limit
@@ -608,21 +586,26 @@ module Spotted
         sig { returns(Integer) }
         attr_accessor :total
 
+        sig { returns(T.nilable(T::Array[Spotted::AudiobookBase])) }
+        attr_reader :items
+
+        sig { params(items: T::Array[Spotted::AudiobookBase::OrHash]).void }
+        attr_writer :items
+
         sig do
           params(
             href: String,
-            items: T::Array[Spotted::AudiobookBase::OrHash],
             limit: Integer,
             next_: T.nilable(String),
             offset: Integer,
             previous: T.nilable(String),
-            total: Integer
+            total: Integer,
+            items: T::Array[Spotted::AudiobookBase::OrHash]
           ).returns(T.attached_class)
         end
         def self.new(
           # A link to the Web API endpoint returning the full result of the request
           href:,
-          items:,
           # The maximum number of items in the response (as set in the query or by default).
           limit:,
           # URL to the next page of items. ( `null` if none)
@@ -632,7 +615,8 @@ module Spotted
           # URL to the previous page of items. ( `null` if none)
           previous:,
           # The total number of items available to return.
-          total:
+          total:,
+          items: nil
         )
         end
 
@@ -640,12 +624,12 @@ module Spotted
           override.returns(
             {
               href: String,
-              items: T::Array[Spotted::AudiobookBase],
               limit: Integer,
               next_: T.nilable(String),
               offset: Integer,
               previous: T.nilable(String),
-              total: Integer
+              total: Integer,
+              items: T::Array[Spotted::AudiobookBase]
             }
           )
         end
@@ -666,9 +650,6 @@ module Spotted
         sig { returns(String) }
         attr_accessor :href
 
-        sig { returns(T::Array[Spotted::SimplifiedEpisodeObject]) }
-        attr_accessor :items
-
         # The maximum number of items in the response (as set in the query or by default).
         sig { returns(Integer) }
         attr_accessor :limit
@@ -689,21 +670,28 @@ module Spotted
         sig { returns(Integer) }
         attr_accessor :total
 
+        sig { returns(T.nilable(T::Array[Spotted::SimplifiedEpisodeObject])) }
+        attr_reader :items
+
+        sig do
+          params(items: T::Array[Spotted::SimplifiedEpisodeObject::OrHash]).void
+        end
+        attr_writer :items
+
         sig do
           params(
             href: String,
-            items: T::Array[Spotted::SimplifiedEpisodeObject::OrHash],
             limit: Integer,
             next_: T.nilable(String),
             offset: Integer,
             previous: T.nilable(String),
-            total: Integer
+            total: Integer,
+            items: T::Array[Spotted::SimplifiedEpisodeObject::OrHash]
           ).returns(T.attached_class)
         end
         def self.new(
           # A link to the Web API endpoint returning the full result of the request
           href:,
-          items:,
           # The maximum number of items in the response (as set in the query or by default).
           limit:,
           # URL to the next page of items. ( `null` if none)
@@ -713,7 +701,8 @@ module Spotted
           # URL to the previous page of items. ( `null` if none)
           previous:,
           # The total number of items available to return.
-          total:
+          total:,
+          items: nil
         )
         end
 
@@ -721,12 +710,12 @@ module Spotted
           override.returns(
             {
               href: String,
-              items: T::Array[Spotted::SimplifiedEpisodeObject],
               limit: Integer,
               next_: T.nilable(String),
               offset: Integer,
               previous: T.nilable(String),
-              total: Integer
+              total: Integer,
+              items: T::Array[Spotted::SimplifiedEpisodeObject]
             }
           )
         end
@@ -747,9 +736,6 @@ module Spotted
         sig { returns(String) }
         attr_accessor :href
 
-        sig { returns(T::Array[Spotted::ShowBase]) }
-        attr_accessor :items
-
         # The maximum number of items in the response (as set in the query or by default).
         sig { returns(Integer) }
         attr_accessor :limit
@@ -770,21 +756,26 @@ module Spotted
         sig { returns(Integer) }
         attr_accessor :total
 
+        sig { returns(T.nilable(T::Array[Spotted::ShowBase])) }
+        attr_reader :items
+
+        sig { params(items: T::Array[Spotted::ShowBase::OrHash]).void }
+        attr_writer :items
+
         sig do
           params(
             href: String,
-            items: T::Array[Spotted::ShowBase::OrHash],
             limit: Integer,
             next_: T.nilable(String),
             offset: Integer,
             previous: T.nilable(String),
-            total: Integer
+            total: Integer,
+            items: T::Array[Spotted::ShowBase::OrHash]
           ).returns(T.attached_class)
         end
         def self.new(
           # A link to the Web API endpoint returning the full result of the request
           href:,
-          items:,
           # The maximum number of items in the response (as set in the query or by default).
           limit:,
           # URL to the next page of items. ( `null` if none)
@@ -794,7 +785,8 @@ module Spotted
           # URL to the previous page of items. ( `null` if none)
           previous:,
           # The total number of items available to return.
-          total:
+          total:,
+          items: nil
         )
         end
 
@@ -802,12 +794,12 @@ module Spotted
           override.returns(
             {
               href: String,
-              items: T::Array[Spotted::ShowBase],
               limit: Integer,
               next_: T.nilable(String),
               offset: Integer,
               previous: T.nilable(String),
-              total: Integer
+              total: Integer,
+              items: T::Array[Spotted::ShowBase]
             }
           )
         end
@@ -828,9 +820,6 @@ module Spotted
         sig { returns(String) }
         attr_accessor :href
 
-        sig { returns(T::Array[Spotted::TrackObject]) }
-        attr_accessor :items
-
         # The maximum number of items in the response (as set in the query or by default).
         sig { returns(Integer) }
         attr_accessor :limit
@@ -851,21 +840,26 @@ module Spotted
         sig { returns(Integer) }
         attr_accessor :total
 
+        sig { returns(T.nilable(T::Array[Spotted::TrackObject])) }
+        attr_reader :items
+
+        sig { params(items: T::Array[Spotted::TrackObject::OrHash]).void }
+        attr_writer :items
+
         sig do
           params(
             href: String,
-            items: T::Array[Spotted::TrackObject::OrHash],
             limit: Integer,
             next_: T.nilable(String),
             offset: Integer,
             previous: T.nilable(String),
-            total: Integer
+            total: Integer,
+            items: T::Array[Spotted::TrackObject::OrHash]
           ).returns(T.attached_class)
         end
         def self.new(
           # A link to the Web API endpoint returning the full result of the request
           href:,
-          items:,
           # The maximum number of items in the response (as set in the query or by default).
           limit:,
           # URL to the next page of items. ( `null` if none)
@@ -875,7 +869,8 @@ module Spotted
           # URL to the previous page of items. ( `null` if none)
           previous:,
           # The total number of items available to return.
-          total:
+          total:,
+          items: nil
         )
         end
 
@@ -883,12 +878,12 @@ module Spotted
           override.returns(
             {
               href: String,
-              items: T::Array[Spotted::TrackObject],
               limit: Integer,
               next_: T.nilable(String),
               offset: Integer,
               previous: T.nilable(String),
-              total: Integer
+              total: Integer,
+              items: T::Array[Spotted::TrackObject]
             }
           )
         end

@@ -131,11 +131,7 @@ module Spotted
           attr_accessor :total_tracks
 
           # The object type.
-          sig do
-            returns(
-              Spotted::Models::Me::AlbumListResponse::Album::Type::TaggedSymbol
-            )
-          end
+          sig { returns(Symbol) }
           attr_accessor :type
 
           # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -233,8 +229,6 @@ module Spotted
               release_date_precision:
                 Spotted::Models::Me::AlbumListResponse::Album::ReleaseDatePrecision::OrSymbol,
               total_tracks: Integer,
-              type:
-                Spotted::Models::Me::AlbumListResponse::Album::Type::OrSymbol,
               uri: String,
               artists: T::Array[Spotted::SimplifiedArtistObject::OrHash],
               copyrights: T::Array[Spotted::CopyrightObject::OrHash],
@@ -244,7 +238,8 @@ module Spotted
               popularity: Integer,
               restrictions: Spotted::AlbumRestrictionObject::OrHash,
               tracks:
-                Spotted::Models::Me::AlbumListResponse::Album::Tracks::OrHash
+                Spotted::Models::Me::AlbumListResponse::Album::Tracks::OrHash,
+              type: Symbol
             ).returns(T.attached_class)
           end
           def self.new(
@@ -273,8 +268,6 @@ module Spotted
             release_date_precision:,
             # The number of tracks in the album.
             total_tracks:,
-            # The object type.
-            type:,
             # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
             # album.
             uri:,
@@ -295,7 +288,9 @@ module Spotted
             # Included in the response when a content restriction is applied.
             restrictions: nil,
             # The tracks of the album.
-            tracks: nil
+            tracks: nil,
+            # The object type.
+            type: :album
           )
           end
 
@@ -314,8 +309,7 @@ module Spotted
                 release_date_precision:
                   Spotted::Models::Me::AlbumListResponse::Album::ReleaseDatePrecision::TaggedSymbol,
                 total_tracks: Integer,
-                type:
-                  Spotted::Models::Me::AlbumListResponse::Album::Type::TaggedSymbol,
+                type: Symbol,
                 uri: String,
                 artists: T::Array[Spotted::SimplifiedArtistObject],
                 copyrights: T::Array[Spotted::CopyrightObject],
@@ -411,36 +405,6 @@ module Spotted
             end
           end
 
-          # The object type.
-          module Type
-            extend Spotted::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Spotted::Models::Me::AlbumListResponse::Album::Type
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            ALBUM =
-              T.let(
-                :album,
-                Spotted::Models::Me::AlbumListResponse::Album::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Spotted::Models::Me::AlbumListResponse::Album::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
-
           class Tracks < Spotted::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
@@ -453,9 +417,6 @@ module Spotted
             # A link to the Web API endpoint returning the full result of the request
             sig { returns(String) }
             attr_accessor :href
-
-            sig { returns(T::Array[Spotted::SimplifiedTrackObject]) }
-            attr_accessor :items
 
             # The maximum number of items in the response (as set in the query or by default).
             sig { returns(Integer) }
@@ -477,22 +438,31 @@ module Spotted
             sig { returns(Integer) }
             attr_accessor :total
 
+            sig { returns(T.nilable(T::Array[Spotted::SimplifiedTrackObject])) }
+            attr_reader :items
+
+            sig do
+              params(
+                items: T::Array[Spotted::SimplifiedTrackObject::OrHash]
+              ).void
+            end
+            attr_writer :items
+
             # The tracks of the album.
             sig do
               params(
                 href: String,
-                items: T::Array[Spotted::SimplifiedTrackObject::OrHash],
                 limit: Integer,
                 next_: T.nilable(String),
                 offset: Integer,
                 previous: T.nilable(String),
-                total: Integer
+                total: Integer,
+                items: T::Array[Spotted::SimplifiedTrackObject::OrHash]
               ).returns(T.attached_class)
             end
             def self.new(
               # A link to the Web API endpoint returning the full result of the request
               href:,
-              items:,
               # The maximum number of items in the response (as set in the query or by default).
               limit:,
               # URL to the next page of items. ( `null` if none)
@@ -502,7 +472,8 @@ module Spotted
               # URL to the previous page of items. ( `null` if none)
               previous:,
               # The total number of items available to return.
-              total:
+              total:,
+              items: nil
             )
             end
 
@@ -510,12 +481,12 @@ module Spotted
               override.returns(
                 {
                   href: String,
-                  items: T::Array[Spotted::SimplifiedTrackObject],
                   limit: Integer,
                   next_: T.nilable(String),
                   offset: Integer,
                   previous: T.nilable(String),
-                  total: Integer
+                  total: Integer,
+                  items: T::Array[Spotted::SimplifiedTrackObject]
                 }
               )
             end
