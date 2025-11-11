@@ -1,0 +1,13 @@
+module Spotted
+  module Internal
+    class AlbumsCursorURLPage[Elem]
+      include Spotted::Internal::Type::BasePage[Elem]
+
+      attr_accessor next_: String
+
+      attr_accessor items: ::Array[Elem]?
+
+      def inspect: -> String
+    end
+  end
+end
