@@ -37,7 +37,7 @@ module Spotted
             release_date: String,
             release_date_precision: Spotted::Models::Me::AlbumListResponse::Album::release_date_precision,
             total_tracks: Integer,
-            type: Spotted::Models::Me::AlbumListResponse::Album::type_,
+            type: :album,
             uri: String,
             artists: ::Array[Spotted::SimplifiedArtistObject],
             copyrights: ::Array[Spotted::CopyrightObject],
@@ -70,7 +70,7 @@ module Spotted
 
           attr_accessor total_tracks: Integer
 
-          attr_accessor type: Spotted::Models::Me::AlbumListResponse::Album::type_
+          attr_accessor type: :album
 
           attr_accessor uri: String
 
@@ -127,7 +127,6 @@ module Spotted
             release_date: String,
             release_date_precision: Spotted::Models::Me::AlbumListResponse::Album::release_date_precision,
             total_tracks: Integer,
-            type: Spotted::Models::Me::AlbumListResponse::Album::type_,
             uri: String,
             ?artists: ::Array[Spotted::SimplifiedArtistObject],
             ?copyrights: ::Array[Spotted::CopyrightObject],
@@ -136,7 +135,8 @@ module Spotted
             ?label: String,
             ?popularity: Integer,
             ?restrictions: Spotted::AlbumRestrictionObject,
-            ?tracks: Spotted::Models::Me::AlbumListResponse::Album::Tracks
+            ?tracks: Spotted::Models::Me::AlbumListResponse::Album::Tracks,
+            ?type: :album
           ) -> void
 
           def to_hash: -> {
@@ -150,7 +150,7 @@ module Spotted
             release_date: String,
             release_date_precision: Spotted::Models::Me::AlbumListResponse::Album::release_date_precision,
             total_tracks: Integer,
-            type: Spotted::Models::Me::AlbumListResponse::Album::type_,
+            type: :album,
             uri: String,
             artists: ::Array[Spotted::SimplifiedArtistObject],
             copyrights: ::Array[Spotted::CopyrightObject],
@@ -184,16 +184,6 @@ module Spotted
             DAY: :day
 
             def self?.values: -> ::Array[Spotted::Models::Me::AlbumListResponse::Album::release_date_precision]
-          end
-
-          type type_ = :album
-
-          module Type
-            extend Spotted::Internal::Type::Enum
-
-            ALBUM: :album
-
-            def self?.values: -> ::Array[Spotted::Models::Me::AlbumListResponse::Album::type_]
           end
 
           type tracks =

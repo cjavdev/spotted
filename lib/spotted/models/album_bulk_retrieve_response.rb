@@ -83,8 +83,8 @@ module Spotted
         # @!attribute type
         #   The object type.
         #
-        #   @return [Symbol, Spotted::Models::AlbumBulkRetrieveResponse::Album::Type]
-        required :type, enum: -> { Spotted::Models::AlbumBulkRetrieveResponse::Album::Type }
+        #   @return [Symbol, :album]
+        required :type, const: :album
 
         # @!attribute uri
         #   The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -145,7 +145,7 @@ module Spotted
         #   @return [Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks, nil]
         optional :tracks, -> { Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks }
 
-        # @!method initialize(id:, album_type:, available_markets:, external_urls:, href:, images:, name:, release_date:, release_date_precision:, total_tracks:, type:, uri:, artists: nil, copyrights: nil, external_ids: nil, genres: nil, label: nil, popularity: nil, restrictions: nil, tracks: nil)
+        # @!method initialize(id:, album_type:, available_markets:, external_urls:, href:, images:, name:, release_date:, release_date_precision:, total_tracks:, uri:, artists: nil, copyrights: nil, external_ids: nil, genres: nil, label: nil, popularity: nil, restrictions: nil, tracks: nil, type: :album)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::AlbumBulkRetrieveResponse::Album} for more details.
         #
@@ -169,8 +169,6 @@ module Spotted
         #
         #   @param total_tracks [Integer] The number of tracks in the album.
         #
-        #   @param type [Symbol, Spotted::Models::AlbumBulkRetrieveResponse::Album::Type] The object type.
-        #
         #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the albu
         #
         #   @param artists [Array<Spotted::Models::SimplifiedArtistObject>] The artists of the album. Each artist object includes a link in `href` to more d
@@ -188,6 +186,8 @@ module Spotted
         #   @param restrictions [Spotted::Models::AlbumRestrictionObject] Included in the response when a content restriction is applied.
         #
         #   @param tracks [Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks] The tracks of the album.
+        #
+        #   @param type [Symbol, :album] The object type.
 
         # The type of the album.
         #
@@ -212,18 +212,6 @@ module Spotted
           YEAR = :year
           MONTH = :month
           DAY = :day
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # The object type.
-        #
-        # @see Spotted::Models::AlbumBulkRetrieveResponse::Album#type
-        module Type
-          extend Spotted::Internal::Type::Enum
-
-          ALBUM = :album
 
           # @!method self.values
           #   @return [Array<Symbol>]

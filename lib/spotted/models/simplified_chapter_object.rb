@@ -105,8 +105,8 @@ module Spotted
       # @!attribute type
       #   The object type.
       #
-      #   @return [Symbol, Spotted::Models::SimplifiedChapterObject::Type]
-      required :type, enum: -> { Spotted::SimplifiedChapterObject::Type }
+      #   @return [Symbol, :episode]
+      required :type, const: :episode
 
       # @!attribute uri
       #   The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -135,7 +135,7 @@ module Spotted
       #   @return [Spotted::Models::ResumePointObject, nil]
       optional :resume_point, -> { Spotted::ResumePointObject }
 
-      # @!method initialize(id:, audio_preview_url:, chapter_number:, description:, duration_ms:, explicit:, external_urls:, href:, html_description:, images:, is_playable:, languages:, name:, release_date:, release_date_precision:, type:, uri:, available_markets: nil, restrictions: nil, resume_point: nil)
+      # @!method initialize(id:, audio_preview_url:, chapter_number:, description:, duration_ms:, explicit:, external_urls:, href:, html_description:, images:, is_playable:, languages:, name:, release_date:, release_date_precision:, uri:, available_markets: nil, restrictions: nil, resume_point: nil, type: :episode)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::SimplifiedChapterObject} for more details.
       #
@@ -169,8 +169,6 @@ module Spotted
       #
       #   @param release_date_precision [Symbol, Spotted::Models::SimplifiedChapterObject::ReleaseDatePrecision] The precision with which `release_date` value is known.
       #
-      #   @param type [Symbol, Spotted::Models::SimplifiedChapterObject::Type] The object type.
-      #
       #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the chap
       #
       #   @param available_markets [Array<String>] A list of the countries in which the chapter can be played, identified by their
@@ -178,6 +176,8 @@ module Spotted
       #   @param restrictions [Spotted::Models::ChapterRestrictionObject] Included in the response when a content restriction is applied.
       #
       #   @param resume_point [Spotted::Models::ResumePointObject] The user's most recent position in the chapter. Set if the supplied access token
+      #
+      #   @param type [Symbol, :episode] The object type.
 
       # The precision with which `release_date` value is known.
       #
@@ -188,18 +188,6 @@ module Spotted
         YEAR = :year
         MONTH = :month
         DAY = :day
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      # The object type.
-      #
-      # @see Spotted::Models::SimplifiedChapterObject#type
-      module Type
-        extend Spotted::Internal::Type::Enum
-
-        EPISODE = :episode
 
         # @!method self.values
         #   @return [Array<Symbol>]

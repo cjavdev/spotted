@@ -348,7 +348,7 @@ module Spotted
         attr_accessor :total_tracks
 
         # The object type.
-        sig { returns(Spotted::TrackObject::Album::Type::TaggedSymbol) }
+        sig { returns(Symbol) }
         attr_accessor :type
 
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -381,9 +381,9 @@ module Spotted
             release_date_precision:
               Spotted::TrackObject::Album::ReleaseDatePrecision::OrSymbol,
             total_tracks: Integer,
-            type: Spotted::TrackObject::Album::Type::OrSymbol,
             uri: String,
-            restrictions: Spotted::AlbumRestrictionObject::OrHash
+            restrictions: Spotted::AlbumRestrictionObject::OrHash,
+            type: Symbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -415,13 +415,13 @@ module Spotted
           release_date_precision:,
           # The number of tracks in the album.
           total_tracks:,
-          # The object type.
-          type:,
           # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
           # album.
           uri:,
           # Included in the response when a content restriction is applied.
-          restrictions: nil
+          restrictions: nil,
+          # The object type.
+          type: :album
         )
         end
 
@@ -440,7 +440,7 @@ module Spotted
               release_date_precision:
                 Spotted::TrackObject::Album::ReleaseDatePrecision::TaggedSymbol,
               total_tracks: Integer,
-              type: Spotted::TrackObject::Album::Type::TaggedSymbol,
+              type: Symbol,
               uri: String,
               restrictions: Spotted::AlbumRestrictionObject
             }
@@ -509,25 +509,6 @@ module Spotted
               T::Array[
                 Spotted::TrackObject::Album::ReleaseDatePrecision::TaggedSymbol
               ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # The object type.
-        module Type
-          extend Spotted::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Spotted::TrackObject::Album::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          ALBUM = T.let(:album, Spotted::TrackObject::Album::Type::TaggedSymbol)
-
-          sig do
-            override.returns(
-              T::Array[Spotted::TrackObject::Album::Type::TaggedSymbol]
             )
           end
           def self.values

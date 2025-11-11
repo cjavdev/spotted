@@ -137,7 +137,7 @@ module Spotted
             release_date: String,
             release_date_precision: Spotted::Models::SearchQueryResponse::Albums::Item::release_date_precision,
             total_tracks: Integer,
-            type: Spotted::Models::SearchQueryResponse::Albums::Item::type_,
+            type: :album,
             uri: String,
             restrictions: Spotted::AlbumRestrictionObject
           }
@@ -165,7 +165,7 @@ module Spotted
 
           attr_accessor total_tracks: Integer
 
-          attr_accessor type: Spotted::Models::SearchQueryResponse::Albums::Item::type_
+          attr_accessor type: :album
 
           attr_accessor uri: String
 
@@ -187,9 +187,9 @@ module Spotted
             release_date: String,
             release_date_precision: Spotted::Models::SearchQueryResponse::Albums::Item::release_date_precision,
             total_tracks: Integer,
-            type: Spotted::Models::SearchQueryResponse::Albums::Item::type_,
             uri: String,
-            ?restrictions: Spotted::AlbumRestrictionObject
+            ?restrictions: Spotted::AlbumRestrictionObject,
+            ?type: :album
           ) -> void
 
           def to_hash: -> {
@@ -204,7 +204,7 @@ module Spotted
             release_date: String,
             release_date_precision: Spotted::Models::SearchQueryResponse::Albums::Item::release_date_precision,
             total_tracks: Integer,
-            type: Spotted::Models::SearchQueryResponse::Albums::Item::type_,
+            type: :album,
             uri: String,
             restrictions: Spotted::AlbumRestrictionObject
           }
@@ -231,16 +231,6 @@ module Spotted
             DAY: :day
 
             def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::release_date_precision]
-          end
-
-          type type_ = :album
-
-          module Type
-            extend Spotted::Internal::Type::Enum
-
-            ALBUM: :album
-
-            def self?.values: -> ::Array[Spotted::Models::SearchQueryResponse::Albums::Item::type_]
           end
         end
       end
