@@ -87,7 +87,7 @@ module Spotted
       attr_writer :show
 
       # The object type.
-      sig { returns(Spotted::EpisodeObject::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       attr_accessor :type
 
       # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -140,11 +140,11 @@ module Spotted
           release_date_precision:
             Spotted::EpisodeObject::ReleaseDatePrecision::OrSymbol,
           show: Spotted::ShowBase::OrHash,
-          type: Spotted::EpisodeObject::Type::OrSymbol,
           uri: String,
           language: String,
           restrictions: Spotted::EpisodeRestrictionObject::OrHash,
-          resume_point: Spotted::ResumePointObject::OrHash
+          resume_point: Spotted::ResumePointObject::OrHash,
+          type: Symbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -186,8 +186,6 @@ module Spotted
         release_date_precision:,
         # The show on which the episode belongs.
         show:,
-        # The object type.
-        type:,
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
         # episode.
         uri:,
@@ -199,7 +197,9 @@ module Spotted
         restrictions: nil,
         # The user's most recent position in the episode. Set if the supplied access token
         # is a user token and has the scope 'user-read-playback-position'.
-        resume_point: nil
+        resume_point: nil,
+        # The object type.
+        type: :episode
       )
       end
 
@@ -223,7 +223,7 @@ module Spotted
             release_date_precision:
               Spotted::EpisodeObject::ReleaseDatePrecision::TaggedSymbol,
             show: Spotted::ShowBase,
-            type: Spotted::EpisodeObject::Type::TaggedSymbol,
+            type: Symbol,
             uri: String,
             language: String,
             restrictions: Spotted::EpisodeRestrictionObject,
@@ -264,23 +264,6 @@ module Spotted
           override.returns(
             T::Array[Spotted::EpisodeObject::ReleaseDatePrecision::TaggedSymbol]
           )
-        end
-        def self.values
-        end
-      end
-
-      # The object type.
-      module Type
-        extend Spotted::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Spotted::EpisodeObject::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        EPISODE = T.let(:episode, Spotted::EpisodeObject::Type::TaggedSymbol)
-
-        sig do
-          override.returns(T::Array[Spotted::EpisodeObject::Type::TaggedSymbol])
         end
         def self.values
         end

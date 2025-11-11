@@ -77,7 +77,7 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
         release_date: String,
         release_date_precision: Spotted::Models::ArtistListAlbumsResponse::ReleaseDatePrecision,
         total_tracks: Integer,
-        type: Spotted::Models::ArtistListAlbumsResponse::Type,
+        type: Symbol,
         uri: String,
         restrictions: Spotted::AlbumRestrictionObject | nil
       }

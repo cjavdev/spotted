@@ -82,7 +82,7 @@ module Spotted
       attr_accessor :total_chapters
 
       # The object type.
-      sig { returns(Spotted::AudiobookBase::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       attr_accessor :type
 
       # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -115,9 +115,9 @@ module Spotted
           narrators: T::Array[Spotted::NarratorObject::OrHash],
           publisher: String,
           total_chapters: Integer,
-          type: Spotted::AudiobookBase::Type::OrSymbol,
           uri: String,
-          edition: String
+          edition: String,
+          type: Symbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -159,13 +159,13 @@ module Spotted
         publisher:,
         # The number of chapters in this audiobook.
         total_chapters:,
-        # The object type.
-        type:,
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
         # audiobook.
         uri:,
         # The edition of the audiobook.
-        edition: nil
+        edition: nil,
+        # The object type.
+        type: :audiobook
       )
       end
 
@@ -188,31 +188,13 @@ module Spotted
             narrators: T::Array[Spotted::NarratorObject],
             publisher: String,
             total_chapters: Integer,
-            type: Spotted::AudiobookBase::Type::TaggedSymbol,
+            type: Symbol,
             uri: String,
             edition: String
           }
         )
       end
       def to_hash
-      end
-
-      # The object type.
-      module Type
-        extend Spotted::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Spotted::AudiobookBase::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        AUDIOBOOK =
-          T.let(:audiobook, Spotted::AudiobookBase::Type::TaggedSymbol)
-
-        sig do
-          override.returns(T::Array[Spotted::AudiobookBase::Type::TaggedSymbol])
-        end
-        def self.values
-        end
       end
     end
   end

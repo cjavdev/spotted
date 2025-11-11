@@ -66,9 +66,7 @@ module Spotted
       attr_accessor :total_tracks
 
       # The object type.
-      sig do
-        returns(Spotted::Models::AlbumRetrieveResponse::Type::TaggedSymbol)
-      end
+      sig { returns(Symbol) }
       attr_accessor :type
 
       # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -156,7 +154,6 @@ module Spotted
           release_date_precision:
             Spotted::Models::AlbumRetrieveResponse::ReleaseDatePrecision::OrSymbol,
           total_tracks: Integer,
-          type: Spotted::Models::AlbumRetrieveResponse::Type::OrSymbol,
           uri: String,
           artists: T::Array[Spotted::SimplifiedArtistObject::OrHash],
           copyrights: T::Array[Spotted::CopyrightObject::OrHash],
@@ -165,7 +162,8 @@ module Spotted
           label: String,
           popularity: Integer,
           restrictions: Spotted::AlbumRestrictionObject::OrHash,
-          tracks: Spotted::Models::AlbumRetrieveResponse::Tracks::OrHash
+          tracks: Spotted::Models::AlbumRetrieveResponse::Tracks::OrHash,
+          type: Symbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -194,8 +192,6 @@ module Spotted
         release_date_precision:,
         # The number of tracks in the album.
         total_tracks:,
-        # The object type.
-        type:,
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
         # album.
         uri:,
@@ -216,7 +212,9 @@ module Spotted
         # Included in the response when a content restriction is applied.
         restrictions: nil,
         # The tracks of the album.
-        tracks: nil
+        tracks: nil,
+        # The object type.
+        type: :album
       )
       end
 
@@ -235,7 +233,7 @@ module Spotted
             release_date_precision:
               Spotted::Models::AlbumRetrieveResponse::ReleaseDatePrecision::TaggedSymbol,
             total_tracks: Integer,
-            type: Spotted::Models::AlbumRetrieveResponse::Type::TaggedSymbol,
+            type: Symbol,
             uri: String,
             artists: T::Array[Spotted::SimplifiedArtistObject],
             copyrights: T::Array[Spotted::CopyrightObject],
@@ -322,31 +320,6 @@ module Spotted
             T::Array[
               Spotted::Models::AlbumRetrieveResponse::ReleaseDatePrecision::TaggedSymbol
             ]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # The object type.
-      module Type
-        extend Spotted::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Spotted::Models::AlbumRetrieveResponse::Type)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        ALBUM =
-          T.let(
-            :album,
-            Spotted::Models::AlbumRetrieveResponse::Type::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[Spotted::Models::AlbumRetrieveResponse::Type::TaggedSymbol]
           )
         end
         def self.values

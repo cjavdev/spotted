@@ -11,8 +11,8 @@ module Spotted
         # @!attribute type
         #   The ID type: currently only `artist` is supported.
         #
-        #   @return [Symbol, Spotted::Models::Me::FollowingBulkRetrieveParams::Type]
-        required :type, enum: -> { Spotted::Me::FollowingBulkRetrieveParams::Type }
+        #   @return [Symbol, :artist]
+        required :type, const: :artist
 
         # @!attribute after
         #   The last artist ID retrieved from the previous request.
@@ -26,27 +26,17 @@ module Spotted
         #   @return [Integer, nil]
         optional :limit, Integer
 
-        # @!method initialize(type:, after: nil, limit: nil, request_options: {})
+        # @!method initialize(after: nil, limit: nil, type: :artist, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Me::FollowingBulkRetrieveParams} for more details.
-        #
-        #   @param type [Symbol, Spotted::Models::Me::FollowingBulkRetrieveParams::Type] The ID type: currently only `artist` is supported.
         #
         #   @param after [String] The last artist ID retrieved from the previous request.
         #
         #   @param limit [Integer] The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
         #
+        #   @param type [Symbol, :artist] The ID type: currently only `artist` is supported.
+        #
         #   @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}]
-
-        # The ID type: currently only `artist` is supported.
-        module Type
-          extend Spotted::Internal::Type::Enum
-
-          ARTIST = :artist
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
     end
   end
