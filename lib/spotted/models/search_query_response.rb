@@ -56,12 +56,6 @@ module Spotted
         #   @return [String]
         required :href, String
 
-        # @!attribute items
-        #
-        #   @return [Array<Spotted::Models::SearchQueryResponse::Albums::Item>]
-        required :items,
-                 -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::SearchQueryResponse::Albums::Item] }
-
         # @!attribute limit
         #   The maximum number of items in the response (as set in the query or by default).
         #
@@ -92,13 +86,17 @@ module Spotted
         #   @return [Integer]
         required :total, Integer
 
-        # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
+        # @!attribute items
+        #
+        #   @return [Array<Spotted::Models::SearchQueryResponse::Albums::Item>, nil]
+        optional :items,
+                 -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::SearchQueryResponse::Albums::Item] }
+
+        # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::SearchQueryResponse::Albums} for more details.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
-        #
-        #   @param items [Array<Spotted::Models::SearchQueryResponse::Albums::Item>]
         #
         #   @param limit [Integer] The maximum number of items in the response (as set in the query or by default).
         #
@@ -109,6 +107,8 @@ module Spotted
         #   @param previous [String, nil] URL to the previous page of items. ( `null` if none)
         #
         #   @param total [Integer] The total number of items available to return.
+        #
+        #   @param items [Array<Spotted::Models::SearchQueryResponse::Albums::Item>]
 
         class Item < Spotted::Internal::Type::BaseModel
           # @!attribute id
@@ -285,11 +285,6 @@ module Spotted
         #   @return [String]
         required :href, String
 
-        # @!attribute items
-        #
-        #   @return [Array<Spotted::Models::ArtistObject>]
-        required :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::ArtistObject] }
-
         # @!attribute limit
         #   The maximum number of items in the response (as set in the query or by default).
         #
@@ -320,13 +315,16 @@ module Spotted
         #   @return [Integer]
         required :total, Integer
 
-        # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
+        # @!attribute items
+        #
+        #   @return [Array<Spotted::Models::ArtistObject>, nil]
+        optional :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::ArtistObject] }
+
+        # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::SearchQueryResponse::Artists} for more details.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
-        #
-        #   @param items [Array<Spotted::Models::ArtistObject>]
         #
         #   @param limit [Integer] The maximum number of items in the response (as set in the query or by default).
         #
@@ -337,6 +335,8 @@ module Spotted
         #   @param previous [String, nil] URL to the previous page of items. ( `null` if none)
         #
         #   @param total [Integer] The total number of items available to return.
+        #
+        #   @param items [Array<Spotted::Models::ArtistObject>]
       end
 
       # @see Spotted::Models::SearchQueryResponse#audiobooks
@@ -347,11 +347,6 @@ module Spotted
         #   @return [String]
         required :href, String
 
-        # @!attribute items
-        #
-        #   @return [Array<Spotted::Models::AudiobookBase>]
-        required :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::AudiobookBase] }
-
         # @!attribute limit
         #   The maximum number of items in the response (as set in the query or by default).
         #
@@ -382,13 +377,16 @@ module Spotted
         #   @return [Integer]
         required :total, Integer
 
-        # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
+        # @!attribute items
+        #
+        #   @return [Array<Spotted::Models::AudiobookBase>, nil]
+        optional :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::AudiobookBase] }
+
+        # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::SearchQueryResponse::Audiobooks} for more details.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
-        #
-        #   @param items [Array<Spotted::Models::AudiobookBase>]
         #
         #   @param limit [Integer] The maximum number of items in the response (as set in the query or by default).
         #
@@ -399,6 +397,8 @@ module Spotted
         #   @param previous [String, nil] URL to the previous page of items. ( `null` if none)
         #
         #   @param total [Integer] The total number of items available to return.
+        #
+        #   @param items [Array<Spotted::Models::AudiobookBase>]
       end
 
       # @see Spotted::Models::SearchQueryResponse#episodes
@@ -409,11 +409,6 @@ module Spotted
         #   @return [String]
         required :href, String
 
-        # @!attribute items
-        #
-        #   @return [Array<Spotted::Models::SimplifiedEpisodeObject>]
-        required :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedEpisodeObject] }
-
         # @!attribute limit
         #   The maximum number of items in the response (as set in the query or by default).
         #
@@ -444,13 +439,16 @@ module Spotted
         #   @return [Integer]
         required :total, Integer
 
-        # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
+        # @!attribute items
+        #
+        #   @return [Array<Spotted::Models::SimplifiedEpisodeObject>, nil]
+        optional :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedEpisodeObject] }
+
+        # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::SearchQueryResponse::Episodes} for more details.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
-        #
-        #   @param items [Array<Spotted::Models::SimplifiedEpisodeObject>]
         #
         #   @param limit [Integer] The maximum number of items in the response (as set in the query or by default).
         #
@@ -461,6 +459,8 @@ module Spotted
         #   @param previous [String, nil] URL to the previous page of items. ( `null` if none)
         #
         #   @param total [Integer] The total number of items available to return.
+        #
+        #   @param items [Array<Spotted::Models::SimplifiedEpisodeObject>]
       end
 
       # @see Spotted::Models::SearchQueryResponse#shows
@@ -471,11 +471,6 @@ module Spotted
         #   @return [String]
         required :href, String
 
-        # @!attribute items
-        #
-        #   @return [Array<Spotted::Models::ShowBase>]
-        required :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::ShowBase] }
-
         # @!attribute limit
         #   The maximum number of items in the response (as set in the query or by default).
         #
@@ -506,13 +501,16 @@ module Spotted
         #   @return [Integer]
         required :total, Integer
 
-        # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
+        # @!attribute items
+        #
+        #   @return [Array<Spotted::Models::ShowBase>, nil]
+        optional :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::ShowBase] }
+
+        # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::SearchQueryResponse::Shows} for more details.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
-        #
-        #   @param items [Array<Spotted::Models::ShowBase>]
         #
         #   @param limit [Integer] The maximum number of items in the response (as set in the query or by default).
         #
@@ -523,6 +521,8 @@ module Spotted
         #   @param previous [String, nil] URL to the previous page of items. ( `null` if none)
         #
         #   @param total [Integer] The total number of items available to return.
+        #
+        #   @param items [Array<Spotted::Models::ShowBase>]
       end
 
       # @see Spotted::Models::SearchQueryResponse#tracks
@@ -533,11 +533,6 @@ module Spotted
         #   @return [String]
         required :href, String
 
-        # @!attribute items
-        #
-        #   @return [Array<Spotted::Models::TrackObject>]
-        required :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::TrackObject] }
-
         # @!attribute limit
         #   The maximum number of items in the response (as set in the query or by default).
         #
@@ -568,13 +563,16 @@ module Spotted
         #   @return [Integer]
         required :total, Integer
 
-        # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
+        # @!attribute items
+        #
+        #   @return [Array<Spotted::Models::TrackObject>, nil]
+        optional :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::TrackObject] }
+
+        # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::SearchQueryResponse::Tracks} for more details.
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
-        #
-        #   @param items [Array<Spotted::Models::TrackObject>]
         #
         #   @param limit [Integer] The maximum number of items in the response (as set in the query or by default).
         #
@@ -585,6 +583,8 @@ module Spotted
         #   @param previous [String, nil] URL to the previous page of items. ( `null` if none)
         #
         #   @param total [Integer] The total number of items available to return.
+        #
+        #   @param items [Array<Spotted::Models::TrackObject>]
       end
     end
   end

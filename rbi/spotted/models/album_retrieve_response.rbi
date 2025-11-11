@@ -366,9 +366,6 @@ module Spotted
         sig { returns(String) }
         attr_accessor :href
 
-        sig { returns(T::Array[Spotted::SimplifiedTrackObject]) }
-        attr_accessor :items
-
         # The maximum number of items in the response (as set in the query or by default).
         sig { returns(Integer) }
         attr_accessor :limit
@@ -389,22 +386,29 @@ module Spotted
         sig { returns(Integer) }
         attr_accessor :total
 
+        sig { returns(T.nilable(T::Array[Spotted::SimplifiedTrackObject])) }
+        attr_reader :items
+
+        sig do
+          params(items: T::Array[Spotted::SimplifiedTrackObject::OrHash]).void
+        end
+        attr_writer :items
+
         # The tracks of the album.
         sig do
           params(
             href: String,
-            items: T::Array[Spotted::SimplifiedTrackObject::OrHash],
             limit: Integer,
             next_: T.nilable(String),
             offset: Integer,
             previous: T.nilable(String),
-            total: Integer
+            total: Integer,
+            items: T::Array[Spotted::SimplifiedTrackObject::OrHash]
           ).returns(T.attached_class)
         end
         def self.new(
           # A link to the Web API endpoint returning the full result of the request
           href:,
-          items:,
           # The maximum number of items in the response (as set in the query or by default).
           limit:,
           # URL to the next page of items. ( `null` if none)
@@ -414,7 +418,8 @@ module Spotted
           # URL to the previous page of items. ( `null` if none)
           previous:,
           # The total number of items available to return.
-          total:
+          total:,
+          items: nil
         )
         end
 
@@ -422,12 +427,12 @@ module Spotted
           override.returns(
             {
               href: String,
-              items: T::Array[Spotted::SimplifiedTrackObject],
               limit: Integer,
               next_: T.nilable(String),
               offset: Integer,
               previous: T.nilable(String),
-              total: Integer
+              total: Integer,
+              items: T::Array[Spotted::SimplifiedTrackObject]
             }
           )
         end

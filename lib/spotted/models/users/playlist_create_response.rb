@@ -158,11 +158,6 @@ module Spotted
           #   @return [String]
           required :href, String
 
-          # @!attribute items
-          #
-          #   @return [Array<Spotted::Models::PlaylistTrackObject>]
-          required :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::PlaylistTrackObject] }
-
           # @!attribute limit
           #   The maximum number of items in the response (as set in the query or by default).
           #
@@ -193,15 +188,18 @@ module Spotted
           #   @return [Integer]
           required :total, Integer
 
-          # @!method initialize(href:, items:, limit:, next_:, offset:, previous:, total:)
+          # @!attribute items
+          #
+          #   @return [Array<Spotted::Models::PlaylistTrackObject>, nil]
+          optional :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::PlaylistTrackObject] }
+
+          # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil)
           #   Some parameter documentations has been truncated, see
           #   {Spotted::Models::Users::PlaylistCreateResponse::Tracks} for more details.
           #
           #   The tracks of the playlist.
           #
           #   @param href [String] A link to the Web API endpoint returning the full result of the request
-          #
-          #   @param items [Array<Spotted::Models::PlaylistTrackObject>]
           #
           #   @param limit [Integer] The maximum number of items in the response (as set in the query or by default).
           #
@@ -212,6 +210,8 @@ module Spotted
           #   @param previous [String, nil] URL to the previous page of items. ( `null` if none)
           #
           #   @param total [Integer] The total number of items available to return.
+          #
+          #   @param items [Array<Spotted::Models::PlaylistTrackObject>]
         end
       end
     end
