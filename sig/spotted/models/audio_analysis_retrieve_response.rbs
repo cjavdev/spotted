@@ -237,14 +237,9 @@ module Spotted
         module Mode
           extend Spotted::Internal::Type::Enum
 
-          # No result
-          MINUS_1: -1
-
-          # Minor
-          MODE_0: 0
-
-          # Major
-          MODE_1: 1
+          MODE_NO_RESULT: -1
+          MODE_MINOR: 0
+          MODE_MAJOR: 1
 
           def self?.values: -> ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Section::mode]
         end
