@@ -13,11 +13,11 @@ module Spotted
         #
         # @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
         #
-        # @param body [Pathname, StringIO, IO, String, Spotted::FilePart] Base64 encoded JPEG image data, maximum payload size is 256 KB.
+        # @param body [String] Base64 encoded JPEG image data, maximum payload size is 256 KB.
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [nil]
+        # @return [StringIO]
         #
         # @see Spotted::Models::Playlists::ImageUpdateParams
         def update(playlist_id, params)
@@ -25,9 +25,9 @@ module Spotted
           @client.request(
             method: :put,
             path: ["playlists/%1$s/images", playlist_id],
-            headers: {"content-type" => "image/jpeg"},
+            headers: {"content-type" => "image/jpeg", "accept" => "application/binary"},
             body: parsed[:body],
-            model: NilClass,
+            model: StringIO,
             options: options
           )
         end
