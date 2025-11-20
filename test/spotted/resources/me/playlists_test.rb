@@ -22,7 +22,6 @@ class Spotted::Test::Resources::Me::PlaylistsTest < Spotted::Test::ResourceTest
     assert_pattern do
       row => {
         id: String | nil,
-        components_schemas_properties_published: Spotted::Internal::Type::Boolean | nil,
         collaborative: Spotted::Internal::Type::Boolean | nil,
         description: String | nil,
         external_urls: Spotted::ExternalURLObject | nil,
@@ -30,6 +29,7 @@ class Spotted::Test::Resources::Me::PlaylistsTest < Spotted::Test::ResourceTest
         images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
         name: String | nil,
         owner: Spotted::SimplifiedPlaylistObject::Owner | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         snapshot_id: String | nil,
         tracks: Spotted::PlaylistTracksRefObject | nil,
         type: String | nil,
