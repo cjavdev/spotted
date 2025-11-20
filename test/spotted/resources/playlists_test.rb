@@ -15,6 +15,7 @@ class Spotted::Test::Resources::PlaylistsTest < Spotted::Test::ResourceTest
     assert_pattern do
       response => {
         id: String | nil,
+        components_schemas_properties_is_public: Spotted::Internal::Type::Boolean | nil,
         collaborative: Spotted::Internal::Type::Boolean | nil,
         description: String | nil,
         external_urls: Spotted::ExternalURLObject | nil,
@@ -23,7 +24,6 @@ class Spotted::Test::Resources::PlaylistsTest < Spotted::Test::ResourceTest
         images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
         name: String | nil,
         owner: Spotted::Models::PlaylistRetrieveResponse::Owner | nil,
-        public: Spotted::Internal::Type::Boolean | nil,
         snapshot_id: String | nil,
         tracks: Spotted::Models::PlaylistRetrieveResponse::Tracks | nil,
         type: String | nil,
