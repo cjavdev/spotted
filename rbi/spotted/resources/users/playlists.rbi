@@ -11,7 +11,8 @@ module Spotted
           params(
             user_id: String,
             name: String,
-            components_schemas_properties_published: T::Boolean,
+            paths_request_body_content_application_json_schema_properties_published:
+              T::Boolean,
             collaborative: T::Boolean,
             description: String,
             request_options: Spotted::RequestOptions::OrHash
@@ -31,7 +32,7 @@ module Spotted
           # [scope](/documentation/web-api/concepts/scopes/#list-of-scopes). For more about
           # public/private status, see
           # [Working with Playlists](/documentation/web-api/concepts/playlists)
-          components_schemas_properties_published: nil,
+          paths_request_body_content_application_json_schema_properties_published: nil,
           # Defaults to `false`. If `true` the playlist will be collaborative. _**Note**: to
           # create a collaborative playlist you must also set `public` to `false`. To create
           # collaborative playlists you must have granted `playlist-modify-private` and

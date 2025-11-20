@@ -29,10 +29,15 @@ module Spotted
         # public/private status, see
         # [Working with Playlists](/documentation/web-api/concepts/playlists)
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :components_schemas_properties_published
+        attr_reader :paths_request_body_content_application_json_schema_properties_published
 
-        sig { params(components_schemas_properties_published: T::Boolean).void }
-        attr_writer :components_schemas_properties_published
+        sig do
+          params(
+            paths_request_body_content_application_json_schema_properties_published:
+              T::Boolean
+          ).void
+        end
+        attr_writer :paths_request_body_content_application_json_schema_properties_published
 
         # Defaults to `false`. If `true` the playlist will be collaborative. _**Note**: to
         # create a collaborative playlist you must also set `public` to `false`. To create
@@ -56,7 +61,8 @@ module Spotted
         sig do
           params(
             name: String,
-            components_schemas_properties_published: T::Boolean,
+            paths_request_body_content_application_json_schema_properties_published:
+              T::Boolean,
             collaborative: T::Boolean,
             description: String,
             request_options: Spotted::RequestOptions::OrHash
@@ -74,7 +80,7 @@ module Spotted
           # [scope](/documentation/web-api/concepts/scopes/#list-of-scopes). For more about
           # public/private status, see
           # [Working with Playlists](/documentation/web-api/concepts/playlists)
-          components_schemas_properties_published: nil,
+          paths_request_body_content_application_json_schema_properties_published: nil,
           # Defaults to `false`. If `true` the playlist will be collaborative. _**Note**: to
           # create a collaborative playlist you must also set `public` to `false`. To create
           # collaborative playlists you must have granted `playlist-modify-private` and
@@ -92,7 +98,8 @@ module Spotted
           override.returns(
             {
               name: String,
-              components_schemas_properties_published: T::Boolean,
+              paths_request_body_content_application_json_schema_properties_published:
+                T::Boolean,
               collaborative: T::Boolean,
               description: String,
               request_options: Spotted::RequestOptions
