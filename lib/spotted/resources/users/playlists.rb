@@ -11,13 +11,13 @@ module Spotted
         # [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).) Each
         # user is generally limited to a maximum of 11000 playlists.
         #
-        # @overload create(user_id, name:, components_schemas_properties_published: nil, collaborative: nil, description: nil, request_options: {})
+        # @overload create(user_id, name:, paths_request_body_content_application_json_schema_properties_published: nil, collaborative: nil, description: nil, request_options: {})
         #
         # @param user_id [String] The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
         #
         # @param name [String] The name for the new playlist, for example `"Your Coolest Playlist"`. This name
         #
-        # @param components_schemas_properties_published [Boolean] Defaults to `true`. The playlist's public/private status (if it should be added
+        # @param paths_request_body_content_application_json_schema_properties_published [Boolean] Defaults to `true`. The playlist's public/private status (if it should be added
         #
         # @param collaborative [Boolean] Defaults to `false`. If `true` the playlist will be collaborative. \_**Note**:
         # to

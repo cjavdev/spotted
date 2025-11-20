@@ -63,7 +63,8 @@ module Spotted
       sig do
         params(
           playlist_id: String,
-          components_schemas_properties_published: T::Boolean,
+          paths_request_body_content_application_json_schema_properties_published:
+            T::Boolean,
           collaborative: T::Boolean,
           description: String,
           name: String,
@@ -79,7 +80,7 @@ module Spotted
         # be private, `null` the playlist status is not relevant. For more about
         # public/private status, see
         # [Working with Playlists](/documentation/web-api/concepts/playlists)
-        components_schemas_properties_published: nil,
+        paths_request_body_content_application_json_schema_properties_published: nil,
         # If `true`, the playlist will become collaborative and other users will be able
         # to modify the playlist in their Spotify client. <br/> _**Note**: You can only
         # set `collaborative` to `true` on non-public playlists._

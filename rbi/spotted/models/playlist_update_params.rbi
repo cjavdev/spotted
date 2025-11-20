@@ -17,10 +17,15 @@ module Spotted
       # public/private status, see
       # [Working with Playlists](/documentation/web-api/concepts/playlists)
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :components_schemas_properties_published
+      attr_reader :paths_request_body_content_application_json_schema_properties_published
 
-      sig { params(components_schemas_properties_published: T::Boolean).void }
-      attr_writer :components_schemas_properties_published
+      sig do
+        params(
+          paths_request_body_content_application_json_schema_properties_published:
+            T::Boolean
+        ).void
+      end
+      attr_writer :paths_request_body_content_application_json_schema_properties_published
 
       # If `true`, the playlist will become collaborative and other users will be able
       # to modify the playlist in their Spotify client. <br/> _**Note**: You can only
@@ -48,7 +53,8 @@ module Spotted
 
       sig do
         params(
-          components_schemas_properties_published: T::Boolean,
+          paths_request_body_content_application_json_schema_properties_published:
+            T::Boolean,
           collaborative: T::Boolean,
           description: String,
           name: String,
@@ -61,7 +67,7 @@ module Spotted
         # be private, `null` the playlist status is not relevant. For more about
         # public/private status, see
         # [Working with Playlists](/documentation/web-api/concepts/playlists)
-        components_schemas_properties_published: nil,
+        paths_request_body_content_application_json_schema_properties_published: nil,
         # If `true`, the playlist will become collaborative and other users will be able
         # to modify the playlist in their Spotify client. <br/> _**Note**: You can only
         # set `collaborative` to `true` on non-public playlists._
@@ -78,7 +84,8 @@ module Spotted
       sig do
         override.returns(
           {
-            components_schemas_properties_published: T::Boolean,
+            paths_request_body_content_application_json_schema_properties_published:
+              T::Boolean,
             collaborative: T::Boolean,
             description: String,
             name: String,
