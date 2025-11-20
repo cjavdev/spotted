@@ -2,28 +2,23 @@ module Spotted
   module Models
     module Playlists
       type follower_follow_params =
-        {
-          paths_request_body_content_application_json_schema_properties_published: bool
-        }
-        & Spotted::Internal::Type::request_parameters
+        { public: bool } & Spotted::Internal::Type::request_parameters
 
       class FollowerFollowParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
-        attr_reader paths_request_body_content_application_json_schema_properties_published: bool?
+        attr_reader public: bool?
 
-        def paths_request_body_content_application_json_schema_properties_published=: (
-          bool
-        ) -> bool
+        def public=: (bool) -> bool
 
         def initialize: (
-          ?paths_request_body_content_application_json_schema_properties_published: bool,
+          ?public: bool,
           ?request_options: Spotted::request_opts
         ) -> void
 
         def to_hash: -> {
-          paths_request_body_content_application_json_schema_properties_published: bool,
+          public: bool,
           request_options: Spotted::RequestOptions
         }
       end
