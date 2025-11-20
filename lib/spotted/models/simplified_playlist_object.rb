@@ -10,16 +10,16 @@ module Spotted
       #   @return [String, nil]
       optional :id, String
 
-      # @!attribute components_schemas_properties_is_public
+      # @!attribute components_schemas_properties_published
       #   The playlist's public/private status (if it is added to the user's profile):
       #   `true` the playlist is public, `false` the playlist is private, `null` the
       #   playlist status is not relevant. For more about public/private status, see
       #   [Working with Playlists](/documentation/web-api/concepts/playlists)
       #
       #   @return [Boolean, nil]
-      optional :components_schemas_properties_is_public,
+      optional :components_schemas_properties_published,
                Spotted::Internal::Type::Boolean,
-               api_name: :"$.components.schemas.*.properties.is_public"
+               api_name: :"$.components.schemas.*.properties.published"
 
       # @!attribute collaborative
       #   `true` if the owner allows other users to modify the playlist.
@@ -97,13 +97,13 @@ module Spotted
       #   @return [String, nil]
       optional :uri, String
 
-      # @!method initialize(id: nil, components_schemas_properties_is_public: nil, collaborative: nil, description: nil, external_urls: nil, href: nil, images: nil, name: nil, owner: nil, snapshot_id: nil, tracks: nil, type: nil, uri: nil)
+      # @!method initialize(id: nil, components_schemas_properties_published: nil, collaborative: nil, description: nil, external_urls: nil, href: nil, images: nil, name: nil, owner: nil, snapshot_id: nil, tracks: nil, type: nil, uri: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::SimplifiedPlaylistObject} for more details.
       #
       #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the playl
       #
-      #   @param components_schemas_properties_is_public [Boolean] The playlist's public/private status (if it is added to the user's profile): `tr
+      #   @param components_schemas_properties_published [Boolean] The playlist's public/private status (if it is added to the user's profile): `tr
       #
       #   @param collaborative [Boolean] `true` if the owner allows other users to modify the playlist.
       #

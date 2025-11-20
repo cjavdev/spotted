@@ -28,7 +28,7 @@ module Spotted
         sig do
           params(
             playlist_id: String,
-            public: T::Boolean,
+            components_schemas_properties_published: T::Boolean,
             request_options: Spotted::RequestOptions::OrHash
           ).void
         end
@@ -40,7 +40,7 @@ module Spotted
           # playlists (added to profile), if `false` it will remain private. For more about
           # public/private status, see
           # [Working with Playlists](/documentation/web-api/concepts/playlists)
-          public: nil,
+          components_schemas_properties_published: nil,
           request_options: {}
         )
         end

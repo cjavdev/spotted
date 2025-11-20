@@ -20,14 +20,14 @@ module Spotted
         # public/private status, see
         # [Working with Playlists](/documentation/web-api/concepts/playlists)
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :public
+        attr_reader :components_schemas_properties_published
 
-        sig { params(public: T::Boolean).void }
-        attr_writer :public
+        sig { params(components_schemas_properties_published: T::Boolean).void }
+        attr_writer :components_schemas_properties_published
 
         sig do
           params(
-            public: T::Boolean,
+            components_schemas_properties_published: T::Boolean,
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -36,14 +36,17 @@ module Spotted
           # playlists (added to profile), if `false` it will remain private. For more about
           # public/private status, see
           # [Working with Playlists](/documentation/web-api/concepts/playlists)
-          public: nil,
+          components_schemas_properties_published: nil,
           request_options: {}
         )
         end
 
         sig do
           override.returns(
-            { public: T::Boolean, request_options: Spotted::RequestOptions }
+            {
+              components_schemas_properties_published: T::Boolean,
+              request_options: Spotted::RequestOptions
+            }
           )
         end
         def to_hash

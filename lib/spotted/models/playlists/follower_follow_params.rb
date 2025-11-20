@@ -8,20 +8,22 @@ module Spotted
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
-        # @!attribute public
+        # @!attribute components_schemas_properties_published
         #   Defaults to `true`. If `true` the playlist will be included in user's public
         #   playlists (added to profile), if `false` it will remain private. For more about
         #   public/private status, see
         #   [Working with Playlists](/documentation/web-api/concepts/playlists)
         #
         #   @return [Boolean, nil]
-        optional :public, Spotted::Internal::Type::Boolean
+        optional :components_schemas_properties_published,
+                 Spotted::Internal::Type::Boolean,
+                 api_name: :"$.components.schemas.*.properties.published"
 
-        # @!method initialize(public: nil, request_options: {})
+        # @!method initialize(components_schemas_properties_published: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Playlists::FollowerFollowParams} for more details.
         #
-        #   @param public [Boolean] Defaults to `true`. If `true` the playlist will be included in user's public pla
+        #   @param components_schemas_properties_published [Boolean] Defaults to `true`. If `true` the playlist will be included in user's public pla
         #
         #   @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}]
       end
