@@ -5,9 +5,9 @@ module Spotted
         def create: (
           String user_id,
           name: String,
-          ?paths_request_body_content_application_json_schema_properties_published: bool,
           ?collaborative: bool,
           ?description: String,
+          ?public: bool,
           ?request_options: Spotted::request_opts
         ) -> Spotted::Models::Users::PlaylistCreateResponse
 

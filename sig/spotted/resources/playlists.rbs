@@ -17,10 +17,10 @@ module Spotted
 
       def update: (
         String playlist_id,
-        ?paths_request_body_content_application_json_schema_properties_published: bool,
         ?collaborative: bool,
         ?description: String,
         ?name: String,
+        ?public: bool,
         ?request_options: Spotted::request_opts
       ) -> nil
 
