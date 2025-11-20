@@ -15,7 +15,7 @@ class Spotted::Test::Resources::Users::PlaylistsTest < Spotted::Test::ResourceTe
     assert_pattern do
       response => {
         id: String | nil,
-        components_schemas_properties_is_public: Spotted::Internal::Type::Boolean | nil,
+        components_schemas_properties_published: Spotted::Internal::Type::Boolean | nil,
         collaborative: Spotted::Internal::Type::Boolean | nil,
         description: String | nil,
         external_urls: Spotted::ExternalURLObject | nil,
@@ -51,7 +51,7 @@ class Spotted::Test::Resources::Users::PlaylistsTest < Spotted::Test::ResourceTe
     assert_pattern do
       row => {
         id: String | nil,
-        components_schemas_properties_is_public: Spotted::Internal::Type::Boolean | nil,
+        components_schemas_properties_published: Spotted::Internal::Type::Boolean | nil,
         collaborative: Spotted::Internal::Type::Boolean | nil,
         description: String | nil,
         external_urls: Spotted::ExternalURLObject | nil,

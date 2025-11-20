@@ -25,10 +25,10 @@ module Spotted
         # playlist status is not relevant. For more about public/private status, see
         # [Working with Playlists](/documentation/web-api/concepts/playlists)
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :components_schemas_properties_is_public
+        attr_reader :components_schemas_properties_published
 
-        sig { params(components_schemas_properties_is_public: T::Boolean).void }
-        attr_writer :components_schemas_properties_is_public
+        sig { params(components_schemas_properties_published: T::Boolean).void }
+        attr_writer :components_schemas_properties_published
 
         # `true` if the owner allows other users to modify the playlist.
         sig { returns(T.nilable(T::Boolean)) }
@@ -138,7 +138,7 @@ module Spotted
         sig do
           params(
             id: String,
-            components_schemas_properties_is_public: T::Boolean,
+            components_schemas_properties_published: T::Boolean,
             collaborative: T::Boolean,
             description: T.nilable(String),
             external_urls: Spotted::ExternalURLObject::OrHash,
@@ -163,7 +163,7 @@ module Spotted
           # `true` the playlist is public, `false` the playlist is private, `null` the
           # playlist status is not relevant. For more about public/private status, see
           # [Working with Playlists](/documentation/web-api/concepts/playlists)
-          components_schemas_properties_is_public: nil,
+          components_schemas_properties_published: nil,
           # `true` if the owner allows other users to modify the playlist.
           collaborative: nil,
           # The playlist description. _Only returned for modified, verified playlists,
@@ -202,7 +202,7 @@ module Spotted
           override.returns(
             {
               id: String,
-              components_schemas_properties_is_public: T::Boolean,
+              components_schemas_properties_published: T::Boolean,
               collaborative: T::Boolean,
               description: T.nilable(String),
               external_urls: Spotted::ExternalURLObject,
