@@ -2,6 +2,12 @@ module Spotted
   module Resources
     class Playlists
       class Images
+        def update: (
+          String playlist_id,
+          body: Spotted::Internal::file_input,
+          ?request_options: Spotted::request_opts
+        ) -> StringIO
+
         def list: (
           String playlist_id,
           ?request_options: Spotted::request_opts
