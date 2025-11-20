@@ -20,6 +20,16 @@ module Spotted
         sig { params(id: String).void }
         attr_writer :id
 
+        # The playlist's public/private status (if it is added to the user's profile):
+        # `true` the playlist is public, `false` the playlist is private, `null` the
+        # playlist status is not relevant. For more about public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :components_schemas_properties_is_public
+
+        sig { params(components_schemas_properties_is_public: T::Boolean).void }
+        attr_writer :components_schemas_properties_is_public
+
         # `true` if the owner allows other users to modify the playlist.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :collaborative
@@ -86,16 +96,6 @@ module Spotted
         end
         attr_writer :owner
 
-        # The playlist's public/private status (if it is added to the user's profile):
-        # `true` the playlist is public, `false` the playlist is private, `null` the
-        # playlist status is not relevant. For more about public/private status, see
-        # [Working with Playlists](/documentation/web-api/concepts/playlists)
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :public
-
-        sig { params(public: T::Boolean).void }
-        attr_writer :public
-
         # The version identifier for the current playlist. Can be supplied in other
         # requests to target a specific playlist version
         sig { returns(T.nilable(String)) }
@@ -138,6 +138,7 @@ module Spotted
         sig do
           params(
             id: String,
+            components_schemas_properties_is_public: T::Boolean,
             collaborative: T::Boolean,
             description: T.nilable(String),
             external_urls: Spotted::ExternalURLObject::OrHash,
@@ -147,7 +148,6 @@ module Spotted
             name: String,
             owner:
               Spotted::Models::Users::PlaylistCreateResponse::Owner::OrHash,
-            public: T::Boolean,
             snapshot_id: String,
             tracks:
               Spotted::Models::Users::PlaylistCreateResponse::Tracks::OrHash,
@@ -159,6 +159,11 @@ module Spotted
           # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
           # playlist.
           id: nil,
+          # The playlist's public/private status (if it is added to the user's profile):
+          # `true` the playlist is public, `false` the playlist is private, `null` the
+          # playlist status is not relevant. For more about public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          components_schemas_properties_is_public: nil,
           # `true` if the owner allows other users to modify the playlist.
           collaborative: nil,
           # The playlist description. _Only returned for modified, verified playlists,
@@ -180,11 +185,6 @@ module Spotted
           name: nil,
           # The user who owns the playlist
           owner: nil,
-          # The playlist's public/private status (if it is added to the user's profile):
-          # `true` the playlist is public, `false` the playlist is private, `null` the
-          # playlist status is not relevant. For more about public/private status, see
-          # [Working with Playlists](/documentation/web-api/concepts/playlists)
-          public: nil,
           # The version identifier for the current playlist. Can be supplied in other
           # requests to target a specific playlist version
           snapshot_id: nil,
@@ -202,6 +202,7 @@ module Spotted
           override.returns(
             {
               id: String,
+              components_schemas_properties_is_public: T::Boolean,
               collaborative: T::Boolean,
               description: T.nilable(String),
               external_urls: Spotted::ExternalURLObject,
@@ -210,7 +211,6 @@ module Spotted
               images: T::Array[Spotted::ImageObject],
               name: String,
               owner: Spotted::Models::Users::PlaylistCreateResponse::Owner,
-              public: T::Boolean,
               snapshot_id: String,
               tracks: Spotted::Models::Users::PlaylistCreateResponse::Tracks,
               type: String,

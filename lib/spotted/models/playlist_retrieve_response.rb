@@ -11,6 +11,17 @@ module Spotted
       #   @return [String, nil]
       optional :id, String
 
+      # @!attribute components_schemas_properties_is_public
+      #   The playlist's public/private status (if it is added to the user's profile):
+      #   `true` the playlist is public, `false` the playlist is private, `null` the
+      #   playlist status is not relevant. For more about public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :components_schemas_properties_is_public,
+               Spotted::Internal::Type::Boolean,
+               api_name: :"$.components.schemas.*.properties.is_public"
+
       # @!attribute collaborative
       #   `true` if the owner allows other users to modify the playlist.
       #
@@ -64,15 +75,6 @@ module Spotted
       #   @return [Spotted::Models::PlaylistRetrieveResponse::Owner, nil]
       optional :owner, -> { Spotted::Models::PlaylistRetrieveResponse::Owner }
 
-      # @!attribute public
-      #   The playlist's public/private status (if it is added to the user's profile):
-      #   `true` the playlist is public, `false` the playlist is private, `null` the
-      #   playlist status is not relevant. For more about public/private status, see
-      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
-      #
-      #   @return [Boolean, nil]
-      optional :public, Spotted::Internal::Type::Boolean
-
       # @!attribute snapshot_id
       #   The version identifier for the current playlist. Can be supplied in other
       #   requests to target a specific playlist version
@@ -99,11 +101,13 @@ module Spotted
       #   @return [String, nil]
       optional :uri, String
 
-      # @!method initialize(id: nil, collaborative: nil, description: nil, external_urls: nil, followers: nil, href: nil, images: nil, name: nil, owner: nil, public: nil, snapshot_id: nil, tracks: nil, type: nil, uri: nil)
+      # @!method initialize(id: nil, components_schemas_properties_is_public: nil, collaborative: nil, description: nil, external_urls: nil, followers: nil, href: nil, images: nil, name: nil, owner: nil, snapshot_id: nil, tracks: nil, type: nil, uri: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::PlaylistRetrieveResponse} for more details.
       #
       #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the playl
+      #
+      #   @param components_schemas_properties_is_public [Boolean] The playlist's public/private status (if it is added to the user's profile): `tr
       #
       #   @param collaborative [Boolean] `true` if the owner allows other users to modify the playlist.
       #
@@ -121,8 +125,6 @@ module Spotted
       #   @param name [String] The name of the playlist.
       #
       #   @param owner [Spotted::Models::PlaylistRetrieveResponse::Owner] The user who owns the playlist
-      #
-      #   @param public [Boolean] The playlist's public/private status (if it is added to the user's profile): `tr
       #
       #   @param snapshot_id [String] The version identifier for the current playlist. Can be supplied in other reques
       #
