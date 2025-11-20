@@ -3,6 +3,7 @@ module Spotted
     type simplified_playlist_object =
       {
         id: String,
+        components_schemas_properties_is_public: bool,
         collaborative: bool,
         description: String,
         external_urls: Spotted::ExternalURLObject,
@@ -10,7 +11,6 @@ module Spotted
         images: ::Array[Spotted::ImageObject],
         name: String,
         owner: Spotted::SimplifiedPlaylistObject::Owner,
-        public: bool,
         snapshot_id: String,
         tracks: Spotted::PlaylistTracksRefObject,
         type: String,
@@ -21,6 +21,10 @@ module Spotted
       attr_reader id: String?
 
       def id=: (String) -> String
+
+      attr_reader components_schemas_properties_is_public: bool?
+
+      def components_schemas_properties_is_public=: (bool) -> bool
 
       attr_reader collaborative: bool?
 
@@ -56,10 +60,6 @@ module Spotted
         Spotted::SimplifiedPlaylistObject::Owner
       ) -> Spotted::SimplifiedPlaylistObject::Owner
 
-      attr_reader public: bool?
-
-      def public=: (bool) -> bool
-
       attr_reader snapshot_id: String?
 
       def snapshot_id=: (String) -> String
@@ -80,6 +80,7 @@ module Spotted
 
       def initialize: (
         ?id: String,
+        ?components_schemas_properties_is_public: bool,
         ?collaborative: bool,
         ?description: String,
         ?external_urls: Spotted::ExternalURLObject,
@@ -87,7 +88,6 @@ module Spotted
         ?images: ::Array[Spotted::ImageObject],
         ?name: String,
         ?owner: Spotted::SimplifiedPlaylistObject::Owner,
-        ?public: bool,
         ?snapshot_id: String,
         ?tracks: Spotted::PlaylistTracksRefObject,
         ?type: String,
@@ -96,6 +96,7 @@ module Spotted
 
       def to_hash: -> {
         id: String,
+        components_schemas_properties_is_public: bool,
         collaborative: bool,
         description: String,
         external_urls: Spotted::ExternalURLObject,
@@ -103,7 +104,6 @@ module Spotted
         images: ::Array[Spotted::ImageObject],
         name: String,
         owner: Spotted::SimplifiedPlaylistObject::Owner,
-        public: bool,
         snapshot_id: String,
         tracks: Spotted::PlaylistTracksRefObject,
         type: String,
