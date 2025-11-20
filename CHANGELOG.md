@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.16.0 (2025-11-20)
+
+Full Changelog: [v0.15.0...v0.16.0](https://github.com/cjavdev/spotted/compare/v0.15.0...v0.16.0)
+
+### Features
+
+* **api:** manual updates ([6ebdb60](https://github.com/cjavdev/spotted/commit/6ebdb6088ced2f5143877e29a7b464c94c5ba1cb))
+* **api:** rename public to published for java ([f2ce035](https://github.com/cjavdev/spotted/commit/f2ce0357f1546dd741f2f539a2869954722b40d1))
+
 ## 0.15.0 (2025-11-20)
 
 Full Changelog: [v0.14.0...v0.15.0](https://github.com/cjavdev/spotted/compare/v0.14.0...v0.15.0)
