@@ -11,9 +11,9 @@ module Spotted
           params(
             user_id: String,
             name: String,
+            components_schemas_properties_published: T::Boolean,
             collaborative: T::Boolean,
             description: String,
-            public: T::Boolean,
             request_options: Spotted::RequestOptions::OrHash
           ).returns(Spotted::Models::Users::PlaylistCreateResponse)
         end
@@ -24,6 +24,14 @@ module Spotted
           # does not need to be unique; a user may have several playlists with the same
           # name.
           name:,
+          # Defaults to `true`. The playlist's public/private status (if it should be added
+          # to the user's profile or not): `true` the playlist will be public, `false` the
+          # playlist will be private. To be able to create private playlists, the user must
+          # have granted the `playlist-modify-private`
+          # [scope](/documentation/web-api/concepts/scopes/#list-of-scopes). For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          components_schemas_properties_published: nil,
           # Defaults to `false`. If `true` the playlist will be collaborative. _**Note**: to
           # create a collaborative playlist you must also set `public` to `false`. To create
           # collaborative playlists you must have granted `playlist-modify-private` and
@@ -33,14 +41,6 @@ module Spotted
           # value for playlist description as displayed in Spotify Clients and in the Web
           # API.
           description: nil,
-          # Defaults to `true`. The playlist's public/private status (if it should be added
-          # to the user's profile or not): `true` the playlist will be public, `false` the
-          # playlist will be private. To be able to create private playlists, the user must
-          # have granted the `playlist-modify-private`
-          # [scope](/documentation/web-api/concepts/scopes/#list-of-scopes). For more about
-          # public/private status, see
-          # [Working with Playlists](/documentation/web-api/concepts/playlists)
-          public: nil,
           request_options: {}
         )
         end

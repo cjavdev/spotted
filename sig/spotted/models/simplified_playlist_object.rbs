@@ -3,7 +3,7 @@ module Spotted
     type simplified_playlist_object =
       {
         id: String,
-        components_schemas_properties_is_public: bool,
+        components_schemas_properties_published: bool,
         collaborative: bool,
         description: String,
         external_urls: Spotted::ExternalURLObject,
@@ -22,9 +22,9 @@ module Spotted
 
       def id=: (String) -> String
 
-      attr_reader components_schemas_properties_is_public: bool?
+      attr_reader components_schemas_properties_published: bool?
 
-      def components_schemas_properties_is_public=: (bool) -> bool
+      def components_schemas_properties_published=: (bool) -> bool
 
       attr_reader collaborative: bool?
 
@@ -80,7 +80,7 @@ module Spotted
 
       def initialize: (
         ?id: String,
-        ?components_schemas_properties_is_public: bool,
+        ?components_schemas_properties_published: bool,
         ?collaborative: bool,
         ?description: String,
         ?external_urls: Spotted::ExternalURLObject,
@@ -96,7 +96,7 @@ module Spotted
 
       def to_hash: -> {
         id: String,
-        components_schemas_properties_is_public: bool,
+        components_schemas_properties_published: bool,
         collaborative: bool,
         description: String,
         external_urls: Spotted::ExternalURLObject,
