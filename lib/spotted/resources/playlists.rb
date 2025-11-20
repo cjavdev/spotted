@@ -49,17 +49,17 @@ module Spotted
       # Change a playlist's name and public/private state. (The user must, of course,
       # own the playlist.)
       #
-      # @overload update(playlist_id, paths_request_body_content_application_json_schema_properties_published: nil, collaborative: nil, description: nil, name: nil, request_options: {})
+      # @overload update(playlist_id, collaborative: nil, description: nil, name: nil, public: nil, request_options: {})
       #
       # @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
-      #
-      # @param paths_request_body_content_application_json_schema_properties_published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       # @param collaborative [Boolean] If `true`, the playlist will become collaborative and other users will be able t
       #
       # @param description [String] Value for playlist description as displayed in Spotify Clients and in the Web AP
       #
       # @param name [String] The new name for the playlist, for example `"My New Playlist Title"`
+      #
+      # @param public [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
       #
