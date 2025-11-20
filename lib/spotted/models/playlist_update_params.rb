@@ -7,7 +7,7 @@ module Spotted
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
-      # @!attribute components_schemas_properties_published
+      # @!attribute paths_request_body_content_application_json_schema_properties_published
       #   The playlist's public/private status (if it should be added to the user's
       #   profile or not): `true` the playlist will be public, `false` the playlist will
       #   be private, `null` the playlist status is not relevant. For more about
@@ -15,9 +15,9 @@ module Spotted
       #   [Working with Playlists](/documentation/web-api/concepts/playlists)
       #
       #   @return [Boolean, nil]
-      optional :components_schemas_properties_published,
+      optional :paths_request_body_content_application_json_schema_properties_published,
                Spotted::Internal::Type::Boolean,
-               api_name: :"$.components.schemas.*.properties.published"
+               api_name: :"$.paths['*'].*.requestBody.content['application/json'].schema.properties.published"
 
       # @!attribute collaborative
       #   If `true`, the playlist will become collaborative and other users will be able
@@ -40,11 +40,11 @@ module Spotted
       #   @return [String, nil]
       optional :name, String
 
-      # @!method initialize(components_schemas_properties_published: nil, collaborative: nil, description: nil, name: nil, request_options: {})
+      # @!method initialize(paths_request_body_content_application_json_schema_properties_published: nil, collaborative: nil, description: nil, name: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::PlaylistUpdateParams} for more details.
       #
-      #   @param components_schemas_properties_published [Boolean] The playlist's public/private status (if it should be added to the user's profil
+      #   @param paths_request_body_content_application_json_schema_properties_published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       #   @param collaborative [Boolean] If `true`, the playlist will become collaborative and other users will be able t
       #

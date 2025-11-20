@@ -2,7 +2,7 @@ module Spotted
   module Models
     type playlist_update_params =
       {
-        components_schemas_properties_published: bool,
+        paths_request_body_content_application_json_schema_properties_published: bool,
         collaborative: bool,
         description: String,
         name: String
@@ -13,9 +13,11 @@ module Spotted
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
-      attr_reader components_schemas_properties_published: bool?
+      attr_reader paths_request_body_content_application_json_schema_properties_published: bool?
 
-      def components_schemas_properties_published=: (bool) -> bool
+      def paths_request_body_content_application_json_schema_properties_published=: (
+        bool
+      ) -> bool
 
       attr_reader collaborative: bool?
 
@@ -30,7 +32,7 @@ module Spotted
       def name=: (String) -> String
 
       def initialize: (
-        ?components_schemas_properties_published: bool,
+        ?paths_request_body_content_application_json_schema_properties_published: bool,
         ?collaborative: bool,
         ?description: String,
         ?name: String,
@@ -38,7 +40,7 @@ module Spotted
       ) -> void
 
       def to_hash: -> {
-        components_schemas_properties_published: bool,
+        paths_request_body_content_application_json_schema_properties_published: bool,
         collaborative: bool,
         description: String,
         name: String,

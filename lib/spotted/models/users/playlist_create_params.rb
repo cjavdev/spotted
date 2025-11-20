@@ -16,7 +16,7 @@ module Spotted
         #   @return [String]
         required :name, String
 
-        # @!attribute components_schemas_properties_published
+        # @!attribute paths_request_body_content_application_json_schema_properties_published
         #   Defaults to `true`. The playlist's public/private status (if it should be added
         #   to the user's profile or not): `true` the playlist will be public, `false` the
         #   playlist will be private. To be able to create private playlists, the user must
@@ -26,9 +26,9 @@ module Spotted
         #   [Working with Playlists](/documentation/web-api/concepts/playlists)
         #
         #   @return [Boolean, nil]
-        optional :components_schemas_properties_published,
+        optional :paths_request_body_content_application_json_schema_properties_published,
                  Spotted::Internal::Type::Boolean,
-                 api_name: :"$.components.schemas.*.properties.published"
+                 api_name: :"$.paths['*'].*.requestBody.content['application/json'].schema.properties.published"
 
         # @!attribute collaborative
         #   Defaults to `false`. If `true` the playlist will be collaborative. _**Note**: to
@@ -47,13 +47,13 @@ module Spotted
         #   @return [String, nil]
         optional :description, String
 
-        # @!method initialize(name:, components_schemas_properties_published: nil, collaborative: nil, description: nil, request_options: {})
+        # @!method initialize(name:, paths_request_body_content_application_json_schema_properties_published: nil, collaborative: nil, description: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Users::PlaylistCreateParams} for more details.
         #
         #   @param name [String] The name for the new playlist, for example `"Your Coolest Playlist"`. This name
         #
-        #   @param components_schemas_properties_published [Boolean] Defaults to `true`. The playlist's public/private status (if it should be added
+        #   @param paths_request_body_content_application_json_schema_properties_published [Boolean] Defaults to `true`. The playlist's public/private status (if it should be added
         #
         #   @param collaborative [Boolean] Defaults to `false`. If `true` the playlist will be collaborative. \_**Note**:
         #   to
