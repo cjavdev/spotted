@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.18.1 (2025-11-21)
+
+Full Changelog: [v0.18.0...v0.18.1](https://github.com/cjavdev/spotted/compare/v0.18.0...v0.18.1)
+
+### Chores
+
+* explicitly require "base64" gem ([b867dc1](https://github.com/cjavdev/spotted/commit/b867dc117634204fdf14c47d09fdda1c501e9a86))
+
 ## 0.18.0 (2025-11-20)
 
 Full Changelog: [v0.17.0...v0.18.0](https://github.com/cjavdev/spotted/compare/v0.17.0...v0.18.0)
