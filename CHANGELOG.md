@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.19.0 (2025-11-26)
+
+Full Changelog: [v0.18.0...v0.19.0](https://github.com/cjavdev/spotted/compare/v0.18.0...v0.19.0)
+
+### Features
+
+* **api:** manual updates ([9ca8edc](https://github.com/cjavdev/spotted/commit/9ca8edc3c4540b205aa44b22c24942f91db706d5))
+* **api:** manual updates ([33b3448](https://github.com/cjavdev/spotted/commit/33b3448517c4c4e35b94cf20413dd94f4fc81ba3))
+
+
+### Chores
+
+* explicitly require "base64" gem ([b867dc1](https://github.com/cjavdev/spotted/commit/b867dc117634204fdf14c47d09fdda1c501e9a86))
+
 ## 0.18.0 (2025-11-20)
 
 Full Changelog: [v0.17.0...v0.18.0](https://github.com/cjavdev/spotted/compare/v0.17.0...v0.18.0)
