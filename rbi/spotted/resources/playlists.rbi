@@ -66,7 +66,7 @@ module Spotted
           collaborative: T::Boolean,
           description: String,
           name: String,
-          published: T::Boolean,
+          public: T::Boolean,
           request_options: Spotted::RequestOptions::OrHash
         ).void
       end
@@ -88,7 +88,7 @@ module Spotted
         # be private, `null` the playlist status is not relevant. For more about
         # public/private status, see
         # [Working with Playlists](/documentation/web-api/concepts/playlists)
-        published: nil,
+        public: nil,
         request_options: {}
       )
       end
