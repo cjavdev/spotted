@@ -20,7 +20,7 @@ module Spotted
         ?collaborative: bool,
         ?description: String,
         ?name: String,
-        ?published: bool,
+        ?public: bool,
         ?request_options: Spotted::request_opts
       ) -> nil
 

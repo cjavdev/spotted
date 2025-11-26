@@ -41,17 +41,17 @@ module Spotted
       # public/private status, see
       # [Working with Playlists](/documentation/web-api/concepts/playlists)
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :published
+      attr_reader :public
 
-      sig { params(published: T::Boolean).void }
-      attr_writer :published
+      sig { params(public: T::Boolean).void }
+      attr_writer :public
 
       sig do
         params(
           collaborative: T::Boolean,
           description: String,
           name: String,
-          published: T::Boolean,
+          public: T::Boolean,
           request_options: Spotted::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -70,7 +70,7 @@ module Spotted
         # be private, `null` the playlist status is not relevant. For more about
         # public/private status, see
         # [Working with Playlists](/documentation/web-api/concepts/playlists)
-        published: nil,
+        public: nil,
         request_options: {}
       )
       end
@@ -81,7 +81,7 @@ module Spotted
             collaborative: T::Boolean,
             description: String,
             name: String,
-            published: T::Boolean,
+            public: T::Boolean,
             request_options: Spotted::RequestOptions
           }
         )
