@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.20.0 (2025-12-05)
+
+Full Changelog: [v0.19.0...v0.20.0](https://github.com/cjavdev/spotted/compare/v0.19.0...v0.20.0)
+
+### Features
+
+* **api:** Update readme titles. ([3382d87](https://github.com/cjavdev/spotted/commit/3382d87d9831a1dee4d35b19e7da9fbae1acba38))
+
 ## 0.19.0 (2025-11-26)
 
 Full Changelog: [v0.18.0...v0.19.0](https://github.com/cjavdev/spotted/compare/v0.18.0...v0.19.0)
