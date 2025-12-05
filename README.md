@@ -1,6 +1,6 @@
-# Spotted Ruby API library
+# Unofficial Spotify API library
 
-The Spotted Ruby library provides convenient access to the Spotify API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/cjavdev/spotted#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
+The Unofficial Spotify library provides convenient access to the Spotify Web API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/cjavdev/spotted#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
