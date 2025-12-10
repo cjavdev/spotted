@@ -10,7 +10,7 @@ module Spotted
         images: ::Array[Spotted::ImageObject],
         name: String,
         owner: Spotted::SimplifiedPlaylistObject::Owner,
-        public: bool,
+        published: bool,
         snapshot_id: String,
         tracks: Spotted::PlaylistTracksRefObject,
         type: String,
@@ -56,9 +56,9 @@ module Spotted
         Spotted::SimplifiedPlaylistObject::Owner
       ) -> Spotted::SimplifiedPlaylistObject::Owner
 
-      attr_reader public: bool?
+      attr_reader published: bool?
 
-      def public=: (bool) -> bool
+      def published=: (bool) -> bool
 
       attr_reader snapshot_id: String?
 
@@ -87,7 +87,7 @@ module Spotted
         ?images: ::Array[Spotted::ImageObject],
         ?name: String,
         ?owner: Spotted::SimplifiedPlaylistObject::Owner,
-        ?public: bool,
+        ?published: bool,
         ?snapshot_id: String,
         ?tracks: Spotted::PlaylistTracksRefObject,
         ?type: String,
@@ -103,7 +103,7 @@ module Spotted
         images: ::Array[Spotted::ImageObject],
         name: String,
         owner: Spotted::SimplifiedPlaylistObject::Owner,
-        public: bool,
+        published: bool,
         snapshot_id: String,
         tracks: Spotted::PlaylistTracksRefObject,
         type: String,
