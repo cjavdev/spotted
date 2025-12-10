@@ -29,7 +29,7 @@ class Spotted::Test::Resources::Me::PlaylistsTest < Spotted::Test::ResourceTest
         images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
         name: String | nil,
         owner: Spotted::SimplifiedPlaylistObject::Owner | nil,
-        public: Spotted::Internal::Type::Boolean | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         snapshot_id: String | nil,
         tracks: Spotted::PlaylistTracksRefObject | nil,
         type: String | nil,
