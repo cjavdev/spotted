@@ -11,7 +11,7 @@ module Spotted
         images: ::Array[Spotted::ImageObject],
         name: String,
         owner: Spotted::Models::PlaylistRetrieveResponse::Owner,
-        public: bool,
+        published: bool,
         snapshot_id: String,
         tracks: Spotted::Models::PlaylistRetrieveResponse::Tracks,
         type: String,
@@ -59,9 +59,9 @@ module Spotted
         Spotted::Models::PlaylistRetrieveResponse::Owner
       ) -> Spotted::Models::PlaylistRetrieveResponse::Owner
 
-      attr_reader public: bool?
+      attr_reader published: bool?
 
-      def public=: (bool) -> bool
+      def published=: (bool) -> bool
 
       attr_reader snapshot_id: String?
 
@@ -91,7 +91,7 @@ module Spotted
         ?images: ::Array[Spotted::ImageObject],
         ?name: String,
         ?owner: Spotted::Models::PlaylistRetrieveResponse::Owner,
-        ?public: bool,
+        ?published: bool,
         ?snapshot_id: String,
         ?tracks: Spotted::Models::PlaylistRetrieveResponse::Tracks,
         ?type: String,
@@ -108,7 +108,7 @@ module Spotted
         images: ::Array[Spotted::ImageObject],
         name: String,
         owner: Spotted::Models::PlaylistRetrieveResponse::Owner,
-        public: bool,
+        published: bool,
         snapshot_id: String,
         tracks: Spotted::Models::PlaylistRetrieveResponse::Tracks,
         type: String,
