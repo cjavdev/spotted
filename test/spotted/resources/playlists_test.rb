@@ -23,6 +23,7 @@ class Spotted::Test::Resources::PlaylistsTest < Spotted::Test::ResourceTest
         images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
         name: String | nil,
         owner: Spotted::Models::PlaylistRetrieveResponse::Owner | nil,
+        public: Spotted::Internal::Type::Boolean | nil,
         snapshot_id: String | nil,
         tracks: Spotted::Models::PlaylistRetrieveResponse::Tracks | nil,
         type: String | nil,
