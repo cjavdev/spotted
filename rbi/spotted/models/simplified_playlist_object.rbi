@@ -77,10 +77,10 @@ module Spotted
       # playlist status is not relevant. For more about public/private status, see
       # [Working with Playlists](/documentation/web-api/concepts/playlists)
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :published
+      attr_reader :public
 
-      sig { params(published: T::Boolean).void }
-      attr_writer :published
+      sig { params(public: T::Boolean).void }
+      attr_writer :public
 
       # The version identifier for the current playlist. Can be supplied in other
       # requests to target a specific playlist version
@@ -125,7 +125,7 @@ module Spotted
           images: T::Array[Spotted::ImageObject::OrHash],
           name: String,
           owner: Spotted::SimplifiedPlaylistObject::Owner::OrHash,
-          published: T::Boolean,
+          public: T::Boolean,
           snapshot_id: String,
           tracks: Spotted::PlaylistTracksRefObject::OrHash,
           type: String,
@@ -159,7 +159,7 @@ module Spotted
         # `true` the playlist is public, `false` the playlist is private, `null` the
         # playlist status is not relevant. For more about public/private status, see
         # [Working with Playlists](/documentation/web-api/concepts/playlists)
-        published: nil,
+        public: nil,
         # The version identifier for the current playlist. Can be supplied in other
         # requests to target a specific playlist version
         snapshot_id: nil,
@@ -187,7 +187,7 @@ module Spotted
             images: T::Array[Spotted::ImageObject],
             name: String,
             owner: Spotted::SimplifiedPlaylistObject::Owner,
-            published: T::Boolean,
+            public: T::Boolean,
             snapshot_id: String,
             tracks: Spotted::PlaylistTracksRefObject,
             type: String,
