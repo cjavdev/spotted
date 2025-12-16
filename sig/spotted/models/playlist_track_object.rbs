@@ -5,6 +5,7 @@ module Spotted
         added_at: Time,
         added_by: Spotted::PlaylistUserObject,
         is_local: bool,
+        published: bool,
         track: Spotted::Models::PlaylistTrackObject::track
       }
 
@@ -23,6 +24,10 @@ module Spotted
 
       def is_local=: (bool) -> bool
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader track: Spotted::Models::PlaylistTrackObject::track?
 
       def track=: (
@@ -33,6 +38,7 @@ module Spotted
         ?added_at: Time,
         ?added_by: Spotted::PlaylistUserObject,
         ?is_local: bool,
+        ?published: bool,
         ?track: Spotted::Models::PlaylistTrackObject::track
       ) -> void
 
@@ -40,6 +46,7 @@ module Spotted
         added_at: Time,
         added_by: Spotted::PlaylistUserObject,
         is_local: bool,
+        published: bool,
         track: Spotted::Models::PlaylistTrackObject::track
       }
 

@@ -22,6 +22,7 @@ module Spotted
             items: ::Array[Spotted::ArtistObject],
             limit: Integer,
             next_: String,
+            published: bool,
             total: Integer
           }
 
@@ -50,6 +51,10 @@ module Spotted
 
           def next_=: (String) -> String
 
+          attr_reader published: bool?
+
+          def published=: (bool) -> bool
+
           attr_reader total: Integer?
 
           def total=: (Integer) -> Integer
@@ -60,6 +65,7 @@ module Spotted
             ?items: ::Array[Spotted::ArtistObject],
             ?limit: Integer,
             ?next_: String,
+            ?published: bool,
             ?total: Integer
           ) -> void
 
@@ -69,10 +75,11 @@ module Spotted
             items: ::Array[Spotted::ArtistObject],
             limit: Integer,
             next_: String,
+            published: bool,
             total: Integer
           }
 
-          type cursors = { after: String, before: String }
+          type cursors = { after: String, before: String, published: bool }
 
           class Cursors < Spotted::Internal::Type::BaseModel
             attr_reader after: String?
@@ -83,9 +90,17 @@ module Spotted
 
             def before=: (String) -> String
 
-            def initialize: (?after: String, ?before: String) -> void
+            attr_reader published: bool?
 
-            def to_hash: -> { after: String, before: String }
+            def published=: (bool) -> bool
+
+            def initialize: (
+              ?after: String,
+              ?before: String,
+              ?published: bool
+            ) -> void
+
+            def to_hash: -> { after: String, before: String, published: bool }
           end
         end
       end

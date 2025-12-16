@@ -15,17 +15,29 @@ module Spotted
         #   @return [Time, nil]
         optional :added_at, Time
 
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
         # @!attribute track
         #   Information about the track.
         #
         #   @return [Spotted::Models::TrackObject, nil]
         optional :track, -> { Spotted::TrackObject }
 
-        # @!method initialize(added_at: nil, track: nil)
+        # @!method initialize(added_at: nil, published: nil, track: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Me::TrackListResponse} for more details.
         #
         #   @param added_at [Time] The date and time the track was saved.
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param track [Spotted::Models::TrackObject] Information about the track.
       end

@@ -81,6 +81,17 @@ module Spotted
         sig { params(progress_ms: Integer).void }
         attr_writer :progress_ms
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         # Unix Millisecond Timestamp when data was fetched
         sig { returns(T.nilable(Integer)) }
         attr_reader :timestamp
@@ -101,6 +112,7 @@ module Spotted
                 Spotted::EpisodeObject::OrHash
               ),
             progress_ms: Integer,
+            published: T::Boolean,
             timestamp: Integer
           ).returns(T.attached_class)
         end
@@ -119,6 +131,12 @@ module Spotted
           item: nil,
           # Progress into the currently playing track or episode. Can be `null`.
           progress_ms: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # Unix Millisecond Timestamp when data was fetched
           timestamp: nil
         )
@@ -135,6 +153,7 @@ module Spotted
               item:
                 Spotted::Models::Me::PlayerGetCurrentlyPlayingResponse::Item::Variants,
               progress_ms: Integer,
+              published: T::Boolean,
               timestamp: Integer
             }
           )
@@ -164,6 +183,17 @@ module Spotted
 
           sig { params(pausing: T::Boolean).void }
           attr_writer :pausing
+
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :published
+
+          sig { params(published: T::Boolean).void }
+          attr_writer :published
 
           # Resuming. Optional field.
           sig { returns(T.nilable(T::Boolean)) }
@@ -227,6 +257,7 @@ module Spotted
             params(
               interrupting_playback: T::Boolean,
               pausing: T::Boolean,
+              published: T::Boolean,
               resuming: T::Boolean,
               seeking: T::Boolean,
               skipping_next: T::Boolean,
@@ -242,6 +273,12 @@ module Spotted
             interrupting_playback: nil,
             # Pausing. Optional field.
             pausing: nil,
+            # The playlist's public/private status (if it should be added to the user's
+            # profile or not): `true` the playlist will be public, `false` the playlist will
+            # be private, `null` the playlist status is not relevant. For more about
+            # public/private status, see
+            # [Working with Playlists](/documentation/web-api/concepts/playlists)
+            published: nil,
             # Resuming. Optional field.
             resuming: nil,
             # Seeking playback location. Optional field.
@@ -266,6 +303,7 @@ module Spotted
               {
                 interrupting_playback: T::Boolean,
                 pausing: T::Boolean,
+                published: T::Boolean,
                 resuming: T::Boolean,
                 seeking: T::Boolean,
                 skipping_next: T::Boolean,

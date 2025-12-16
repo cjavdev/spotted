@@ -1,9 +1,16 @@
 module Spotted
   module Models
     type album_restriction_object =
-      { reason: Spotted::Models::AlbumRestrictionObject::reason }
+      {
+        published: bool,
+        reason: Spotted::Models::AlbumRestrictionObject::reason
+      }
 
     class AlbumRestrictionObject < Spotted::Internal::Type::BaseModel
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader reason: Spotted::Models::AlbumRestrictionObject::reason?
 
       def reason=: (
@@ -11,10 +18,12 @@ module Spotted
       ) -> Spotted::Models::AlbumRestrictionObject::reason
 
       def initialize: (
+        ?published: bool,
         ?reason: Spotted::Models::AlbumRestrictionObject::reason
       ) -> void
 
       def to_hash: -> {
+        published: bool,
         reason: Spotted::Models::AlbumRestrictionObject::reason
       }
 

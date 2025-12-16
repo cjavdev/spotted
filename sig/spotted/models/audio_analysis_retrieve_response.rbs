@@ -5,6 +5,7 @@ module Spotted
         bars: ::Array[Spotted::TimeIntervalObject],
         beats: ::Array[Spotted::TimeIntervalObject],
         meta: Spotted::Models::AudioAnalysisRetrieveResponse::Meta,
+        published: bool,
         sections: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Section],
         segments: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Segment],
         tatums: ::Array[Spotted::TimeIntervalObject],
@@ -29,6 +30,10 @@ module Spotted
       def meta=: (
         Spotted::Models::AudioAnalysisRetrieveResponse::Meta
       ) -> Spotted::Models::AudioAnalysisRetrieveResponse::Meta
+
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
 
       attr_reader sections: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Section]?
 
@@ -58,6 +63,7 @@ module Spotted
         ?bars: ::Array[Spotted::TimeIntervalObject],
         ?beats: ::Array[Spotted::TimeIntervalObject],
         ?meta: Spotted::Models::AudioAnalysisRetrieveResponse::Meta,
+        ?published: bool,
         ?sections: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Section],
         ?segments: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Segment],
         ?tatums: ::Array[Spotted::TimeIntervalObject],
@@ -68,6 +74,7 @@ module Spotted
         bars: ::Array[Spotted::TimeIntervalObject],
         beats: ::Array[Spotted::TimeIntervalObject],
         meta: Spotted::Models::AudioAnalysisRetrieveResponse::Meta,
+        published: bool,
         sections: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Section],
         segments: ::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Segment],
         tatums: ::Array[Spotted::TimeIntervalObject],
@@ -144,6 +151,7 @@ module Spotted
           loudness: Float,
           mode: Spotted::Models::AudioAnalysisRetrieveResponse::Section::mode,
           mode_confidence: Float,
+          published: bool,
           start: Float,
           tempo: Float,
           tempo_confidence: Float,
@@ -182,6 +190,10 @@ module Spotted
 
         def mode_confidence=: (Float) -> Float
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         attr_reader start: Float?
 
         def start=: (Float) -> Float
@@ -210,6 +222,7 @@ module Spotted
           ?loudness: Float,
           ?mode: Spotted::Models::AudioAnalysisRetrieveResponse::Section::mode,
           ?mode_confidence: Float,
+          ?published: bool,
           ?start: Float,
           ?tempo: Float,
           ?tempo_confidence: Float,
@@ -225,6 +238,7 @@ module Spotted
           loudness: Float,
           mode: Spotted::Models::AudioAnalysisRetrieveResponse::Section::mode,
           mode_confidence: Float,
+          published: bool,
           start: Float,
           tempo: Float,
           tempo_confidence: Float,
@@ -254,6 +268,7 @@ module Spotted
           loudness_max_time: Float,
           loudness_start: Float,
           pitches: ::Array[Float],
+          published: bool,
           start: Float,
           timbre: ::Array[Float]
         }
@@ -287,6 +302,10 @@ module Spotted
 
         def pitches=: (::Array[Float]) -> ::Array[Float]
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         attr_reader start: Float?
 
         def start=: (Float) -> Float
@@ -303,6 +322,7 @@ module Spotted
           ?loudness_max_time: Float,
           ?loudness_start: Float,
           ?pitches: ::Array[Float],
+          ?published: bool,
           ?start: Float,
           ?timbre: ::Array[Float]
         ) -> void
@@ -315,6 +335,7 @@ module Spotted
           loudness_max_time: Float,
           loudness_start: Float,
           pitches: ::Array[Float],
+          published: bool,
           start: Float,
           timbre: ::Array[Float]
         }

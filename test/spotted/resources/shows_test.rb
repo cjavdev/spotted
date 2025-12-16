@@ -65,6 +65,7 @@ class Spotted::Test::Resources::ShowsTest < Spotted::Test::ResourceTest
         type: Symbol,
         uri: String,
         language: String | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         restrictions: Spotted::EpisodeRestrictionObject | nil,
         resume_point: Spotted::ResumePointObject | nil
       }

@@ -2,7 +2,11 @@ module Spotted
   module Models
     module Browse
       type category_get_playlists_response =
-        { message: String, playlists: Spotted::PagingPlaylistObject }
+        {
+          message: String,
+          playlists: Spotted::PagingPlaylistObject,
+          published: bool
+        }
 
       class CategoryGetPlaylistsResponse < Spotted::Internal::Type::BaseModel
         attr_reader message: String?
@@ -15,14 +19,20 @@ module Spotted
           Spotted::PagingPlaylistObject
         ) -> Spotted::PagingPlaylistObject
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         def initialize: (
           ?message: String,
-          ?playlists: Spotted::PagingPlaylistObject
+          ?playlists: Spotted::PagingPlaylistObject,
+          ?published: bool
         ) -> void
 
         def to_hash: -> {
           message: String,
-          playlists: Spotted::PagingPlaylistObject
+          playlists: Spotted::PagingPlaylistObject,
+          published: bool
         }
       end
     end

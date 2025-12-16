@@ -440,6 +440,7 @@ module Spotted
         # @example
         #   # `album_restriction_object` is a `Spotted::AlbumRestrictionObject`
         #   album_restriction_object => {
+        #     published: published,
         #     reason: reason
         #   }
         def deconstruct_keys(keys)

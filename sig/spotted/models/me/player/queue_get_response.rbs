@@ -5,6 +5,7 @@ module Spotted
         type queue_get_response =
           {
             currently_playing: Spotted::Models::Me::Player::QueueGetResponse::currently_playing,
+            published: bool,
             queue: ::Array[Spotted::Models::Me::Player::QueueGetResponse::queue]
           }
 
@@ -15,6 +16,10 @@ module Spotted
             Spotted::Models::Me::Player::QueueGetResponse::currently_playing
           ) -> Spotted::Models::Me::Player::QueueGetResponse::currently_playing
 
+          attr_reader published: bool?
+
+          def published=: (bool) -> bool
+
           attr_reader queue: ::Array[Spotted::Models::Me::Player::QueueGetResponse::queue]?
 
           def queue=: (
@@ -23,11 +28,13 @@ module Spotted
 
           def initialize: (
             ?currently_playing: Spotted::Models::Me::Player::QueueGetResponse::currently_playing,
+            ?published: bool,
             ?queue: ::Array[Spotted::Models::Me::Player::QueueGetResponse::queue]
           ) -> void
 
           def to_hash: -> {
             currently_playing: Spotted::Models::Me::Player::QueueGetResponse::currently_playing,
+            published: bool,
             queue: ::Array[Spotted::Models::Me::Player::QueueGetResponse::queue]
           }
 

@@ -5,6 +5,7 @@ module Spotted
         {
           external_urls: Spotted::ExternalURLObject,
           href: String,
+          published: bool,
           type: String,
           uri: String
         }
@@ -20,6 +21,10 @@ module Spotted
 
         def href=: (String) -> String
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         attr_reader type: String?
 
         def type=: (String) -> String
@@ -31,6 +36,7 @@ module Spotted
         def initialize: (
           ?external_urls: Spotted::ExternalURLObject,
           ?href: String,
+          ?published: bool,
           ?type: String,
           ?uri: String
         ) -> void
@@ -38,6 +44,7 @@ module Spotted
         def to_hash: -> {
           external_urls: Spotted::ExternalURLObject,
           href: String,
+          published: bool,
           type: String,
           uri: String
         }

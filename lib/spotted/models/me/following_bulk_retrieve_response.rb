@@ -44,13 +44,23 @@ module Spotted
           #   @return [String, nil]
           optional :next_, String, api_name: :next
 
+          # @!attribute published
+          #   The playlist's public/private status (if it should be added to the user's
+          #   profile or not): `true` the playlist will be public, `false` the playlist will
+          #   be private, `null` the playlist status is not relevant. For more about
+          #   public/private status, see
+          #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+          #
+          #   @return [Boolean, nil]
+          optional :published, Spotted::Internal::Type::Boolean
+
           # @!attribute total
           #   The total number of items available to return.
           #
           #   @return [Integer, nil]
           optional :total, Integer
 
-          # @!method initialize(cursors: nil, href: nil, items: nil, limit: nil, next_: nil, total: nil)
+          # @!method initialize(cursors: nil, href: nil, items: nil, limit: nil, next_: nil, published: nil, total: nil)
           #   Some parameter documentations has been truncated, see
           #   {Spotted::Models::Me::FollowingBulkRetrieveResponse::Artists} for more details.
           #
@@ -63,6 +73,8 @@ module Spotted
           #   @param limit [Integer] The maximum number of items in the response (as set in the query or by default).
           #
           #   @param next_ [String] URL to the next page of items. ( `null` if none)
+          #
+          #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
           #
           #   @param total [Integer] The total number of items available to return.
 
@@ -80,12 +92,28 @@ module Spotted
             #   @return [String, nil]
             optional :before, String
 
-            # @!method initialize(after: nil, before: nil)
+            # @!attribute published
+            #   The playlist's public/private status (if it should be added to the user's
+            #   profile or not): `true` the playlist will be public, `false` the playlist will
+            #   be private, `null` the playlist status is not relevant. For more about
+            #   public/private status, see
+            #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+            #
+            #   @return [Boolean, nil]
+            optional :published, Spotted::Internal::Type::Boolean
+
+            # @!method initialize(after: nil, before: nil, published: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Spotted::Models::Me::FollowingBulkRetrieveResponse::Artists::Cursors} for more
+            #   details.
+            #
             #   The cursors used to find the next set of items.
             #
             #   @param after [String] The cursor to use as key to find the next page of items.
             #
             #   @param before [String] The cursor to use as key to find the previous page of items.
+            #
+            #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
           end
         end
       end

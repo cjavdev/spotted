@@ -120,6 +120,16 @@ module Spotted
       #   @return [String, nil]
       optional :preview_url, String, nil?: true
 
+      # @!attribute published
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :published, Spotted::Internal::Type::Boolean
+
       # @!attribute restrictions
       #   Included in the response when a content restriction is applied.
       #
@@ -146,7 +156,7 @@ module Spotted
       #   @return [String, nil]
       optional :uri, String
 
-      # @!method initialize(id: nil, album: nil, artists: nil, available_markets: nil, disc_number: nil, duration_ms: nil, explicit: nil, external_ids: nil, external_urls: nil, href: nil, is_local: nil, is_playable: nil, linked_from: nil, name: nil, popularity: nil, preview_url: nil, restrictions: nil, track_number: nil, type: nil, uri: nil)
+      # @!method initialize(id: nil, album: nil, artists: nil, available_markets: nil, disc_number: nil, duration_ms: nil, explicit: nil, external_ids: nil, external_urls: nil, href: nil, is_local: nil, is_playable: nil, linked_from: nil, name: nil, popularity: nil, preview_url: nil, published: nil, restrictions: nil, track_number: nil, type: nil, uri: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::TrackObject} for more details.
       #
@@ -181,6 +191,8 @@ module Spotted
       #   @param popularity [Integer] The popularity of the track. The value will be between 0 and 100, with 100 being
       #
       #   @param preview_url [String, nil] A link to a 30 second preview (MP3 format) of the track. Can be `null`
+      #
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       #   @param restrictions [Spotted::Models::TrackRestrictionObject] Included in the response when a content restriction is applied.
       #
@@ -277,13 +289,23 @@ module Spotted
         #   @return [String]
         required :uri, String
 
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
         # @!attribute restrictions
         #   Included in the response when a content restriction is applied.
         #
         #   @return [Spotted::Models::AlbumRestrictionObject, nil]
         optional :restrictions, -> { Spotted::AlbumRestrictionObject }
 
-        # @!method initialize(id:, album_type:, artists:, available_markets:, external_urls:, href:, images:, name:, release_date:, release_date_precision:, total_tracks:, uri:, restrictions: nil, type: :album)
+        # @!method initialize(id:, album_type:, artists:, available_markets:, external_urls:, href:, images:, name:, release_date:, release_date_precision:, total_tracks:, uri:, published: nil, restrictions: nil, type: :album)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::TrackObject::Album} for more details.
         #
@@ -313,6 +335,8 @@ module Spotted
         #   @param total_tracks [Integer] The number of tracks in the album.
         #
         #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the albu
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param restrictions [Spotted::Models::AlbumRestrictionObject] Included in the response when a content restriction is applied.
         #

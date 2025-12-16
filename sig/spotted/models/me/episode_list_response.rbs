@@ -2,7 +2,7 @@ module Spotted
   module Models
     module Me
       type episode_list_response =
-        { added_at: Time, episode: Spotted::EpisodeObject }
+        { added_at: Time, episode: Spotted::EpisodeObject, published: bool }
 
       class EpisodeListResponse < Spotted::Internal::Type::BaseModel
         attr_reader added_at: Time?
@@ -13,12 +13,21 @@ module Spotted
 
         def episode=: (Spotted::EpisodeObject) -> Spotted::EpisodeObject
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         def initialize: (
           ?added_at: Time,
-          ?episode: Spotted::EpisodeObject
+          ?episode: Spotted::EpisodeObject,
+          ?published: bool
         ) -> void
 
-        def to_hash: -> { added_at: Time, episode: Spotted::EpisodeObject }
+        def to_hash: -> {
+          added_at: Time,
+          episode: Spotted::EpisodeObject,
+          published: bool
+        }
       end
     end
   end

@@ -20,6 +20,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
         is_playing: Spotted::Internal::Type::Boolean | nil,
         item: Spotted::Models::Me::PlayerGetCurrentlyPlayingResponse::Item | nil,
         progress_ms: Integer | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         timestamp: Integer | nil
       }
     end
@@ -59,6 +60,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
         is_playing: Spotted::Internal::Type::Boolean | nil,
         item: Spotted::Models::Me::PlayerGetStateResponse::Item | nil,
         progress_ms: Integer | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         repeat_state: String | nil,
         shuffle_state: Spotted::Internal::Type::Boolean | nil,
         timestamp: Integer | nil
@@ -86,6 +88,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
       row => {
         context: Spotted::Me::ContextObject | nil,
         played_at: Time | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         track: Spotted::TrackObject | nil
       }
     end

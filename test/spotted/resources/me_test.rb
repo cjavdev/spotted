@@ -24,6 +24,7 @@ class Spotted::Test::Resources::MeTest < Spotted::Test::ResourceTest
         href: String | nil,
         images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
         product: String | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         type: String | nil,
         uri: String | nil
       }

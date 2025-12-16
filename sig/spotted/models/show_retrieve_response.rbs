@@ -26,7 +26,8 @@ module Spotted
           offset: Integer,
           previous: String?,
           total: Integer,
-          items: ::Array[Spotted::SimplifiedEpisodeObject]
+          items: ::Array[Spotted::SimplifiedEpisodeObject],
+          published: bool
         }
 
       class Episodes < Spotted::Internal::Type::BaseModel
@@ -48,6 +49,10 @@ module Spotted
           ::Array[Spotted::SimplifiedEpisodeObject]
         ) -> ::Array[Spotted::SimplifiedEpisodeObject]
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         def initialize: (
           href: String,
           limit: Integer,
@@ -55,7 +60,8 @@ module Spotted
           offset: Integer,
           previous: String?,
           total: Integer,
-          ?items: ::Array[Spotted::SimplifiedEpisodeObject]
+          ?items: ::Array[Spotted::SimplifiedEpisodeObject],
+          ?published: bool
         ) -> void
 
         def to_hash: -> {
@@ -65,7 +71,8 @@ module Spotted
           offset: Integer,
           previous: String?,
           total: Integer,
-          items: ::Array[Spotted::SimplifiedEpisodeObject]
+          items: ::Array[Spotted::SimplifiedEpisodeObject],
+          published: bool
         }
       end
     end

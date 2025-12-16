@@ -22,6 +22,7 @@ class Spotted::Test::Resources::Me::TracksTest < Spotted::Test::ResourceTest
     assert_pattern do
       row => {
         added_at: Time | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         track: Spotted::TrackObject | nil
       }
     end

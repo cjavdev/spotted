@@ -1,15 +1,19 @@
 module Spotted
   module Models
-    type external_url_object = { spotify: String }
+    type external_url_object = { published: bool, spotify: String }
 
     class ExternalURLObject < Spotted::Internal::Type::BaseModel
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader spotify: String?
 
       def spotify=: (String) -> String
 
-      def initialize: (?spotify: String) -> void
+      def initialize: (?published: bool, ?spotify: String) -> void
 
-      def to_hash: -> { spotify: String }
+      def to_hash: -> { published: bool, spotify: String }
     end
   end
 end

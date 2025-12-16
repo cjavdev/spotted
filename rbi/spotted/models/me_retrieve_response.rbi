@@ -102,6 +102,17 @@ module Spotted
       sig { params(product: String).void }
       attr_writer :product
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       # The object type: "user"
       sig { returns(T.nilable(String)) }
       attr_reader :type
@@ -130,6 +141,7 @@ module Spotted
           href: String,
           images: T::Array[Spotted::ImageObject::OrHash],
           product: String,
+          published: T::Boolean,
           type: String,
           uri: String
         ).returns(T.attached_class)
@@ -172,6 +184,12 @@ module Spotted
         # [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
         # scope._
         product: nil,
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil,
         # The object type: "user"
         type: nil,
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -194,6 +212,7 @@ module Spotted
             href: String,
             images: T::Array[Spotted::ImageObject],
             product: String,
+            published: T::Boolean,
             type: String,
             uri: String
           }
@@ -226,27 +245,50 @@ module Spotted
         sig { params(filter_locked: T::Boolean).void }
         attr_writer :filter_locked
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         # The user's explicit content settings. _This field is only available when the
         # current user has granted access to the
         # [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
         # scope._
         sig do
-          params(filter_enabled: T::Boolean, filter_locked: T::Boolean).returns(
-            T.attached_class
-          )
+          params(
+            filter_enabled: T::Boolean,
+            filter_locked: T::Boolean,
+            published: T::Boolean
+          ).returns(T.attached_class)
         end
         def self.new(
           # When `true`, indicates that explicit content should not be played.
           filter_enabled: nil,
           # When `true`, indicates that the explicit content setting is locked and can't be
           # changed by the user.
-          filter_locked: nil
+          filter_locked: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil
         )
         end
 
         sig do
           override.returns(
-            { filter_enabled: T::Boolean, filter_locked: T::Boolean }
+            {
+              filter_enabled: T::Boolean,
+              filter_locked: T::Boolean,
+              published: T::Boolean
+            }
           )
         end
         def to_hash

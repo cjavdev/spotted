@@ -22,6 +22,7 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
         images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
         name: String | nil,
         popularity: Integer | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         type: Spotted::ArtistObject::Type | nil,
         uri: String | nil
       }
@@ -79,6 +80,7 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
         total_tracks: Integer,
         type: Symbol,
         uri: String,
+        published: Spotted::Internal::Type::Boolean | nil,
         restrictions: Spotted::AlbumRestrictionObject | nil
       }
     end

@@ -18,7 +18,8 @@ module Spotted
         publisher: String,
         total_episodes: Integer,
         type: :show,
-        uri: String
+        uri: String,
+        published: bool
       }
 
     class ShowBase < Spotted::Internal::Type::BaseModel
@@ -56,6 +57,10 @@ module Spotted
 
       attr_accessor uri: String
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       def initialize: (
         id: String,
         available_markets: ::Array[String],
@@ -73,6 +78,7 @@ module Spotted
         publisher: String,
         total_episodes: Integer,
         uri: String,
+        ?published: bool,
         ?type: :show
       ) -> void
 
@@ -93,7 +99,8 @@ module Spotted
         publisher: String,
         total_episodes: Integer,
         type: :show,
-        uri: String
+        uri: String,
+        published: bool
       }
     end
   end

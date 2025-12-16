@@ -5,6 +5,7 @@ module Spotted
         {
           context: Spotted::Me::ContextObject,
           played_at: Time,
+          published: bool,
           track: Spotted::TrackObject
         }
 
@@ -17,6 +18,10 @@ module Spotted
 
         def played_at=: (Time) -> Time
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         attr_reader track: Spotted::TrackObject?
 
         def track=: (Spotted::TrackObject) -> Spotted::TrackObject
@@ -24,12 +29,14 @@ module Spotted
         def initialize: (
           ?context: Spotted::Me::ContextObject,
           ?played_at: Time,
+          ?published: bool,
           ?track: Spotted::TrackObject
         ) -> void
 
         def to_hash: -> {
           context: Spotted::Me::ContextObject,
           played_at: Time,
+          published: bool,
           track: Spotted::TrackObject
         }
       end

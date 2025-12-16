@@ -20,7 +20,8 @@ module Spotted
         total_chapters: Integer,
         type: :audiobook,
         uri: String,
-        edition: String
+        edition: String,
+        published: bool
       }
 
     class AudiobookBase < Spotted::Internal::Type::BaseModel
@@ -64,6 +65,10 @@ module Spotted
 
       def edition=: (String) -> String
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       def initialize: (
         id: String,
         authors: ::Array[Spotted::AuthorObject],
@@ -83,6 +88,7 @@ module Spotted
         total_chapters: Integer,
         uri: String,
         ?edition: String,
+        ?published: bool,
         ?type: :audiobook
       ) -> void
 
@@ -105,7 +111,8 @@ module Spotted
         total_chapters: Integer,
         type: :audiobook,
         uri: String,
-        edition: String
+        edition: String,
+        published: bool
       }
     end
   end

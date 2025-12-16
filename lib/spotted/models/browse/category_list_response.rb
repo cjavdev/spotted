@@ -57,7 +57,17 @@ module Spotted
           optional :items,
                    -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::Browse::CategoryListResponse::Categories::Item] }
 
-          # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil)
+          # @!attribute published
+          #   The playlist's public/private status (if it should be added to the user's
+          #   profile or not): `true` the playlist will be public, `false` the playlist will
+          #   be private, `null` the playlist status is not relevant. For more about
+          #   public/private status, see
+          #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+          #
+          #   @return [Boolean, nil]
+          optional :published, Spotted::Internal::Type::Boolean
+
+          # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil, published: nil)
           #   Some parameter documentations has been truncated, see
           #   {Spotted::Models::Browse::CategoryListResponse::Categories} for more details.
           #
@@ -74,6 +84,8 @@ module Spotted
           #   @param total [Integer] The total number of items available to return.
           #
           #   @param items [Array<Spotted::Models::Browse::CategoryListResponse::Categories::Item>]
+          #
+          #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
 
           class Item < Spotted::Internal::Type::BaseModel
             # @!attribute id
@@ -101,7 +113,17 @@ module Spotted
             #   @return [String]
             required :name, String
 
-            # @!method initialize(id:, href:, icons:, name:)
+            # @!attribute published
+            #   The playlist's public/private status (if it should be added to the user's
+            #   profile or not): `true` the playlist will be public, `false` the playlist will
+            #   be private, `null` the playlist status is not relevant. For more about
+            #   public/private status, see
+            #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+            #
+            #   @return [Boolean, nil]
+            optional :published, Spotted::Internal::Type::Boolean
+
+            # @!method initialize(id:, href:, icons:, name:, published: nil)
             #   Some parameter documentations has been truncated, see
             #   {Spotted::Models::Browse::CategoryListResponse::Categories::Item} for more
             #   details.
@@ -113,6 +135,8 @@ module Spotted
             #   @param icons [Array<Spotted::Models::ImageObject>] The category icon, in various sizes.
             #
             #   @param name [String] The name of the category.
+            #
+            #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
           end
         end
       end

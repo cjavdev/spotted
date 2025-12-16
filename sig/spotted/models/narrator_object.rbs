@@ -1,15 +1,19 @@
 module Spotted
   module Models
-    type narrator_object = { name: String }
+    type narrator_object = { name: String, published: bool }
 
     class NarratorObject < Spotted::Internal::Type::BaseModel
       attr_reader name: String?
 
       def name=: (String) -> String
 
-      def initialize: (?name: String) -> void
+      attr_reader published: bool?
 
-      def to_hash: -> { name: String }
+      def published=: (bool) -> bool
+
+      def initialize: (?name: String, ?published: bool) -> void
+
+      def to_hash: -> { name: String, published: bool }
     end
   end
 end

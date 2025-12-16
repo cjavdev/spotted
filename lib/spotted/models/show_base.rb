@@ -111,7 +111,17 @@ module Spotted
       #   @return [String]
       required :uri, String
 
-      # @!method initialize(id:, available_markets:, copyrights:, description:, explicit:, external_urls:, href:, html_description:, images:, is_externally_hosted:, languages:, media_type:, name:, publisher:, total_episodes:, uri:, type: :show)
+      # @!attribute published
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :published, Spotted::Internal::Type::Boolean
+
+      # @!method initialize(id:, available_markets:, copyrights:, description:, explicit:, external_urls:, href:, html_description:, images:, is_externally_hosted:, languages:, media_type:, name:, publisher:, total_episodes:, uri:, published: nil, type: :show)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::ShowBase} for more details.
       #
@@ -146,6 +156,8 @@ module Spotted
       #   @param total_episodes [Integer] The total number of episodes in the show.
       #
       #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the show
+      #
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       #   @param type [Symbol, :show] The object type.
     end

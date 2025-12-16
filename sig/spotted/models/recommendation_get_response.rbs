@@ -3,7 +3,8 @@ module Spotted
     type recommendation_get_response =
       {
         seeds: ::Array[Spotted::Models::RecommendationGetResponse::Seed],
-        tracks: ::Array[Spotted::TrackObject]
+        tracks: ::Array[Spotted::TrackObject],
+        published: bool
       }
 
     class RecommendationGetResponse < Spotted::Internal::Type::BaseModel
@@ -11,14 +12,20 @@ module Spotted
 
       attr_accessor tracks: ::Array[Spotted::TrackObject]
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       def initialize: (
         seeds: ::Array[Spotted::Models::RecommendationGetResponse::Seed],
-        tracks: ::Array[Spotted::TrackObject]
+        tracks: ::Array[Spotted::TrackObject],
+        ?published: bool
       ) -> void
 
       def to_hash: -> {
         seeds: ::Array[Spotted::Models::RecommendationGetResponse::Seed],
-        tracks: ::Array[Spotted::TrackObject]
+        tracks: ::Array[Spotted::TrackObject],
+        published: bool
       }
 
       type seed =
@@ -28,6 +35,7 @@ module Spotted
           after_relinking_size: Integer,
           href: String,
           initial_pool_size: Integer,
+          published: bool,
           type: String
         }
 
@@ -52,6 +60,10 @@ module Spotted
 
         def initial_pool_size=: (Integer) -> Integer
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         attr_reader type: String?
 
         def type=: (String) -> String
@@ -62,6 +74,7 @@ module Spotted
           ?after_relinking_size: Integer,
           ?href: String,
           ?initial_pool_size: Integer,
+          ?published: bool,
           ?type: String
         ) -> void
 
@@ -71,6 +84,7 @@ module Spotted
           after_relinking_size: Integer,
           href: String,
           initial_pool_size: Integer,
+          published: bool,
           type: String
         }
       end

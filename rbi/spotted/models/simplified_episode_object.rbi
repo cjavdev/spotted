@@ -99,6 +99,17 @@ module Spotted
       sig { params(language: String).void }
       attr_writer :language
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       # Included in the response when a content restriction is applied.
       sig { returns(T.nilable(Spotted::EpisodeRestrictionObject)) }
       attr_reader :restrictions
@@ -136,6 +147,7 @@ module Spotted
             Spotted::SimplifiedEpisodeObject::ReleaseDatePrecision::OrSymbol,
           uri: String,
           language: String,
+          published: T::Boolean,
           restrictions: Spotted::EpisodeRestrictionObject::OrHash,
           resume_point: Spotted::ResumePointObject::OrHash,
           type: Symbol
@@ -185,6 +197,12 @@ module Spotted
         # [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code. This field is deprecated
         # and might be removed in the future. Please use the `languages` field instead.
         language: nil,
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil,
         # Included in the response when a content restriction is applied.
         restrictions: nil,
         # The user's most recent position in the episode. Set if the supplied access token
@@ -217,6 +235,7 @@ module Spotted
             type: Symbol,
             uri: String,
             language: String,
+            published: T::Boolean,
             restrictions: Spotted::EpisodeRestrictionObject,
             resume_point: Spotted::ResumePointObject
           }

@@ -25,7 +25,8 @@ module Spotted
             offset: Integer,
             previous: String?,
             total: Integer,
-            items: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item]
+            items: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item],
+            published: bool
           }
 
         class Categories < Spotted::Internal::Type::BaseModel
@@ -47,6 +48,10 @@ module Spotted
             ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item]
           ) -> ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item]
 
+          attr_reader published: bool?
+
+          def published=: (bool) -> bool
+
           def initialize: (
             href: String,
             limit: Integer,
@@ -54,7 +59,8 @@ module Spotted
             offset: Integer,
             previous: String?,
             total: Integer,
-            ?items: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item]
+            ?items: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item],
+            ?published: bool
           ) -> void
 
           def to_hash: -> {
@@ -64,7 +70,8 @@ module Spotted
             offset: Integer,
             previous: String?,
             total: Integer,
-            items: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item]
+            items: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item],
+            published: bool
           }
 
           type item =
@@ -72,7 +79,8 @@ module Spotted
               id: String,
               href: String,
               icons: ::Array[Spotted::ImageObject],
-              name: String
+              name: String,
+              published: bool
             }
 
           class Item < Spotted::Internal::Type::BaseModel
@@ -84,18 +92,24 @@ module Spotted
 
             attr_accessor name: String
 
+            attr_reader published: bool?
+
+            def published=: (bool) -> bool
+
             def initialize: (
               id: String,
               href: String,
               icons: ::Array[Spotted::ImageObject],
-              name: String
+              name: String,
+              ?published: bool
             ) -> void
 
             def to_hash: -> {
               id: String,
               href: String,
               icons: ::Array[Spotted::ImageObject],
-              name: String
+              name: String,
+              published: bool
             }
           end
         end

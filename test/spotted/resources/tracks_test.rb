@@ -30,6 +30,7 @@ class Spotted::Test::Resources::TracksTest < Spotted::Test::ResourceTest
         name: String | nil,
         popularity: Integer | nil,
         preview_url: String | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         restrictions: Spotted::TrackRestrictionObject | nil,
         track_number: Integer | nil,
         type: Spotted::TrackObject::Type | nil,

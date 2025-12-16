@@ -22,7 +22,8 @@ class Spotted::Test::Resources::Me::AlbumsTest < Spotted::Test::ResourceTest
     assert_pattern do
       row => {
         added_at: Time | nil,
-        album: Spotted::Models::Me::AlbumListResponse::Album | nil
+        album: Spotted::Models::Me::AlbumListResponse::Album | nil,
+        published: Spotted::Internal::Type::Boolean | nil
       }
     end
   end

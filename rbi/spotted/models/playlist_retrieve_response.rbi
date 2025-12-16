@@ -83,9 +83,10 @@ module Spotted
       end
       attr_writer :owner
 
-      # The playlist's public/private status (if it is added to the user's profile):
-      # `true` the playlist is public, `false` the playlist is private, `null` the
-      # playlist status is not relevant. For more about public/private status, see
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
       # [Working with Playlists](/documentation/web-api/concepts/playlists)
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :published
@@ -172,9 +173,10 @@ module Spotted
         name: nil,
         # The user who owns the playlist
         owner: nil,
-        # The playlist's public/private status (if it is added to the user's profile):
-        # `true` the playlist is public, `false` the playlist is private, `null` the
-        # playlist status is not relevant. For more about public/private status, see
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
         # [Working with Playlists](/documentation/web-api/concepts/playlists)
         published: nil,
         # The version identifier for the current playlist. Can be supplied in other
@@ -282,6 +284,17 @@ module Spotted
         end
         attr_writer :items
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         # The tracks of the playlist.
         sig do
           params(
@@ -291,7 +304,8 @@ module Spotted
             offset: Integer,
             previous: T.nilable(String),
             total: Integer,
-            items: T::Array[Spotted::PlaylistTrackObject::OrHash]
+            items: T::Array[Spotted::PlaylistTrackObject::OrHash],
+            published: T::Boolean
           ).returns(T.attached_class)
         end
         def self.new(
@@ -307,7 +321,13 @@ module Spotted
           previous:,
           # The total number of items available to return.
           total:,
-          items: nil
+          items: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil
         )
         end
 
@@ -320,7 +340,8 @@ module Spotted
               offset: Integer,
               previous: T.nilable(String),
               total: Integer,
-              items: T::Array[Spotted::PlaylistTrackObject]
+              items: T::Array[Spotted::PlaylistTrackObject],
+              published: T::Boolean
             }
           )
         end

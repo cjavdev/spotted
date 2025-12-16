@@ -17,7 +17,8 @@ class Spotted::Test::Resources::Browse::CategoriesTest < Spotted::Test::Resource
         id: String,
         href: String,
         icons: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]),
-        name: String
+        name: String,
+        published: Spotted::Internal::Type::Boolean | nil
       }
     end
   end
@@ -50,7 +51,8 @@ class Spotted::Test::Resources::Browse::CategoriesTest < Spotted::Test::Resource
     assert_pattern do
       response => {
         message: String | nil,
-        playlists: Spotted::PagingPlaylistObject | nil
+        playlists: Spotted::PagingPlaylistObject | nil,
+        published: Spotted::Internal::Type::Boolean | nil
       }
     end
   end

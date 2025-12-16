@@ -25,6 +25,7 @@ class Spotted::Test::Resources::AudioFeaturesTest < Spotted::Test::ResourceTest
         liveness: Float | nil,
         loudness: Float | nil,
         mode: Integer | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         speechiness: Float | nil,
         tempo: Float | nil,
         time_signature: Integer | nil,
