@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.26.0 (2025-12-16)
+
+Full Changelog: [v0.25.0...v0.26.0](https://github.com/cjavdev/spotted/compare/v0.25.0...v0.26.0)
+
+### Features
+
+* **api:** manual updates ([7faf357](https://github.com/cjavdev/spotted/commit/7faf357bcad345d96695ef8d36077f271dce8889))
+
 ## 0.25.0 (2025-12-16)
 
 Full Changelog: [v0.24.0...v0.25.0](https://github.com/cjavdev/spotted/compare/v0.24.0...v0.25.0)
