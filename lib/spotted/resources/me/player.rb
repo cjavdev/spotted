@@ -287,7 +287,7 @@ module Spotted
         # API only works for users who have Spotify Premium. The order of execution is not
         # guaranteed when you use this API with other Player API endpoints.
         #
-        # @overload start_playback(device_id: nil, context_uri: nil, offset: nil, position_ms: nil, uris: nil, request_options: {})
+        # @overload start_playback(device_id: nil, context_uri: nil, offset: nil, position_ms: nil, published: nil, uris: nil, request_options: {})
         #
         # @param device_id [String] Query param: The id of the device this command is targeting. If not supplied, th
         #
@@ -296,6 +296,8 @@ module Spotted
         # @param offset [Hash{Symbol=>Object}] Body param: Optional. Indicates from where in the context playback should start.
         #
         # @param position_ms [Integer] Body param: Indicates from what position to start playback. Must be a positive n
+        #
+        # @param published [Boolean] Body param: The playlist's public/private status (if it should be added to the u
         #
         # @param uris [Array<String>] Body param: Optional. A JSON array of the Spotify track URIs to play.
         #
@@ -353,11 +355,13 @@ module Spotted
         # works for users who have Spotify Premium. The order of execution is not
         # guaranteed when you use this API with other Player API endpoints.
         #
-        # @overload transfer(device_ids:, play: nil, request_options: {})
+        # @overload transfer(device_ids:, play: nil, published: nil, request_options: {})
         #
         # @param device_ids [Array<String>] A JSON array containing the ID of the device on which playback should be started
         #
         # @param play [Boolean] **true**: ensure playback happens on new device.<br/>**false** or not provided:
+        #
+        # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #

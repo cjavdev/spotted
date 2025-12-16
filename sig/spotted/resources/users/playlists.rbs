@@ -8,6 +8,7 @@ module Spotted
           ?collaborative: bool,
           ?description: String,
           ?public: bool,
+          ?published: bool,
           ?request_options: Spotted::request_opts
         ) -> Spotted::Models::Users::PlaylistCreateResponse
 

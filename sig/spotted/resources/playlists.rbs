@@ -21,6 +21,7 @@ module Spotted
         ?description: String,
         ?name: String,
         ?public: bool,
+        ?published: bool,
         ?request_options: Spotted::request_opts
       ) -> nil
 

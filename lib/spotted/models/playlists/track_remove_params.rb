@@ -18,6 +18,16 @@ module Spotted
         #   @return [Array<Spotted::Models::Playlists::TrackRemoveParams::Track>]
         required :tracks, -> { Spotted::Internal::Type::ArrayOf[Spotted::Playlists::TrackRemoveParams::Track] }
 
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
         # @!attribute snapshot_id
         #   The playlist's snapshot ID against which you want to make the changes. The API
         #   will validate that the specified items exist and in the specified positions and
@@ -26,11 +36,13 @@ module Spotted
         #   @return [String, nil]
         optional :snapshot_id, String
 
-        # @!method initialize(tracks:, snapshot_id: nil, request_options: {})
+        # @!method initialize(tracks:, published: nil, snapshot_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Playlists::TrackRemoveParams} for more details.
         #
         #   @param tracks [Array<Spotted::Models::Playlists::TrackRemoveParams::Track>] An array of objects containing [Spotify URIs](/documentation/web-api/concepts/sp
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param snapshot_id [String] The playlist's snapshot ID against which you want to make the changes.
         #

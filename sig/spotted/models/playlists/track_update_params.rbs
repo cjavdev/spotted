@@ -4,6 +4,7 @@ module Spotted
       type track_update_params =
         {
           insert_before: Integer,
+          published: bool,
           range_length: Integer,
           range_start: Integer,
           snapshot_id: String,
@@ -18,6 +19,10 @@ module Spotted
         attr_reader insert_before: Integer?
 
         def insert_before=: (Integer) -> Integer
+
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
 
         attr_reader range_length: Integer?
 
@@ -37,6 +42,7 @@ module Spotted
 
         def initialize: (
           ?insert_before: Integer,
+          ?published: bool,
           ?range_length: Integer,
           ?range_start: Integer,
           ?snapshot_id: String,
@@ -46,6 +52,7 @@ module Spotted
 
         def to_hash: -> {
           insert_before: Integer,
+          published: bool,
           range_length: Integer,
           range_start: Integer,
           snapshot_id: String,

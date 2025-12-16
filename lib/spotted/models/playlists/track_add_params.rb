@@ -18,6 +18,16 @@ module Spotted
         #   @return [Integer, nil]
         optional :position, Integer
 
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
         # @!attribute uris
         #   A JSON array of the
         #   [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For
@@ -30,11 +40,13 @@ module Spotted
         #   @return [Array<String>, nil]
         optional :uris, Spotted::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(position: nil, uris: nil, request_options: {})
+        # @!method initialize(position: nil, published: nil, uris: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Playlists::TrackAddParams} for more details.
         #
         #   @param position [Integer] The position to insert the items, a zero-based index. For example, to insert the
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param uris [Array<String>] A JSON array of the [Spotify URIs](/documentation/web-api/concepts/spotify-uris-
         #

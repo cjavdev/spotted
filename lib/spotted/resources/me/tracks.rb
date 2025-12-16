@@ -66,9 +66,11 @@ module Spotted
         #
         # Remove one or more tracks from the current user's 'Your Music' library.
         #
-        # @overload remove(ids: nil, request_options: {})
+        # @overload remove(ids: nil, published: nil, request_options: {})
         #
         # @param ids [Array<String>] A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-i
+        #
+        # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -85,9 +87,11 @@ module Spotted
         #
         # Save one or more tracks to the current user's 'Your Music' library.
         #
-        # @overload save(ids:, timestamped_ids: nil, request_options: {})
+        # @overload save(ids:, published: nil, timestamped_ids: nil, request_options: {})
         #
         # @param ids [Array<String>] A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-i
+        #
+        # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         # @param timestamped_ids [Array<Spotted::Models::Me::TrackSaveParams::TimestampedID>] A JSON array of objects containing track IDs with their corresponding timestamps
         #

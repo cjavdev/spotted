@@ -17,11 +17,13 @@ module Spotted
         # have different parameters. These operations can't be applied together in a
         # single request.
         #
-        # @overload update(playlist_id, insert_before: nil, range_length: nil, range_start: nil, snapshot_id: nil, uris: nil, request_options: {})
+        # @overload update(playlist_id, insert_before: nil, published: nil, range_length: nil, range_start: nil, snapshot_id: nil, uris: nil, request_options: {})
         #
         # @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
         #
         # @param insert_before [Integer] The position where the items should be inserted.<br/>To reorder the items to the
+        #
+        # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         # @param range_length [Integer] The amount of items to be reordered. Defaults to 1 if not set.<br/>The range of
         #
@@ -88,11 +90,13 @@ module Spotted
         #
         # Add one or more items to a user's playlist.
         #
-        # @overload add(playlist_id, position: nil, uris: nil, request_options: {})
+        # @overload add(playlist_id, position: nil, published: nil, uris: nil, request_options: {})
         #
         # @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
         #
         # @param position [Integer] The position to insert the items, a zero-based index. For example, to insert the
+        #
+        # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         # @param uris [Array<String>] A JSON array of the [Spotify URIs](/documentation/web-api/concepts/spotify-uris-
         #
@@ -117,11 +121,13 @@ module Spotted
         #
         # Remove one or more items from a user's playlist.
         #
-        # @overload remove(playlist_id, tracks:, snapshot_id: nil, request_options: {})
+        # @overload remove(playlist_id, tracks:, published: nil, snapshot_id: nil, request_options: {})
         #
         # @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
         #
         # @param tracks [Array<Spotted::Models::Playlists::TrackRemoveParams::Track>] An array of objects containing [Spotify URIs](/documentation/web-api/concepts/sp
+        #
+        # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         # @param snapshot_id [String] The playlist's snapshot ID against which you want to make the changes.
         #

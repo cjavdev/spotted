@@ -17,6 +17,7 @@ module Spotted
           params(
             playlist_id: String,
             insert_before: Integer,
+            published: T::Boolean,
             range_length: Integer,
             range_start: Integer,
             snapshot_id: String,
@@ -35,6 +36,12 @@ module Spotted
           # to 10.<br/>To reorder the last item in a playlist with 10 items to the start of
           # the playlist, set _range_start_ to 9, and _insert_before_ to 0.
           insert_before: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # The amount of items to be reordered. Defaults to 1 if not set.<br/>The range of
           # items to be reordered begins from the _range_start_ position, and includes the
           # _range_length_ subsequent items.<br/>Example:<br/>To move the items at index
@@ -110,6 +117,7 @@ module Spotted
           params(
             playlist_id: String,
             position: Integer,
+            published: T::Boolean,
             uris: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).returns(Spotted::Models::Playlists::TrackAddResponse)
@@ -124,6 +132,12 @@ module Spotted
           # Items are added in the order they appear in the uris array. For example:
           # `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M"], "position": 3}`
           position: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # A JSON array of the
           # [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For
           # example:
@@ -142,6 +156,7 @@ module Spotted
             playlist_id: String,
             tracks:
               T::Array[Spotted::Playlists::TrackRemoveParams::Track::OrHash],
+            published: T::Boolean,
             snapshot_id: String,
             request_options: Spotted::RequestOptions::OrHash
           ).returns(Spotted::Models::Playlists::TrackRemoveResponse)
@@ -156,6 +171,12 @@ module Spotted
           # `{ "tracks": [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh" },{ "uri": "spotify:track:1301WleyT98MSxVHPZCA6M" }] }`.
           # A maximum of 100 objects can be sent at once.
           tracks:,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # The playlist's snapshot ID against which you want to make the changes. The API
           # will validate that the specified items exist and in the specified positions and
           # make the changes, even if more recent changes have been made to the playlist.

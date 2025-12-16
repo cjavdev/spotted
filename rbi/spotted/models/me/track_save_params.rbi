@@ -21,6 +21,17 @@ module Spotted
         sig { returns(T::Array[String]) }
         attr_accessor :ids
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         # A JSON array of objects containing track IDs with their corresponding
         # timestamps. Each object must include a track ID and an `added_at` timestamp.
         # This allows you to specify when tracks were added to maintain a specific
@@ -46,6 +57,7 @@ module Spotted
         sig do
           params(
             ids: T::Array[String],
+            published: T::Boolean,
             timestamped_ids:
               T::Array[Spotted::Me::TrackSaveParams::TimestampedID::OrHash],
             request_options: Spotted::RequestOptions::OrHash
@@ -59,6 +71,12 @@ module Spotted
           # in the body, any IDs listed in the query parameters (deprecated) or the `ids`
           # field in the body will be ignored._
           ids:,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # A JSON array of objects containing track IDs with their corresponding
           # timestamps. Each object must include a track ID and an `added_at` timestamp.
           # This allows you to specify when tracks were added to maintain a specific
@@ -75,6 +93,7 @@ module Spotted
           override.returns(
             {
               ids: T::Array[String],
+              published: T::Boolean,
               timestamped_ids:
                 T::Array[Spotted::Me::TrackSaveParams::TimestampedID],
               request_options: Spotted::RequestOptions
