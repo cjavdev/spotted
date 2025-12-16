@@ -64,9 +64,11 @@ module Spotted
         #
         # Delete one or more shows from current Spotify user's library.
         #
-        # @overload remove(ids: nil, request_options: {})
+        # @overload remove(ids: nil, published: nil, request_options: {})
         #
         # @param ids [Array<String>] A JSON array of the [Spotify IDs](https://developer.spotify.com/documentation/we
+        #
+        # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -83,9 +85,11 @@ module Spotted
         #
         # Save one or more shows to current Spotify user's library.
         #
-        # @overload save(ids: nil, request_options: {})
+        # @overload save(ids: nil, published: nil, request_options: {})
         #
         # @param ids [Array<String>] A JSON array of the [Spotify IDs](https://developer.spotify.com/documentation/we
+        #
+        # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #

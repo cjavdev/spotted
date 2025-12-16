@@ -26,6 +26,17 @@ module Spotted
         sig { params(position: Integer).void }
         attr_writer :position
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         # A JSON array of the
         # [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For
         # example:
@@ -42,6 +53,7 @@ module Spotted
         sig do
           params(
             position: Integer,
+            published: T::Boolean,
             uris: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -53,6 +65,12 @@ module Spotted
           # Items are added in the order they appear in the uris array. For example:
           # `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M"], "position": 3}`
           position: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # A JSON array of the
           # [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For
           # example:
@@ -69,6 +87,7 @@ module Spotted
           override.returns(
             {
               position: Integer,
+              published: T::Boolean,
               uris: T::Array[String],
               request_options: Spotted::RequestOptions
             }

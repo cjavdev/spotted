@@ -19,6 +19,16 @@ module Spotted
         #   @return [Integer, nil]
         optional :insert_before, Integer
 
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
         # @!attribute range_length
         #   The amount of items to be reordered. Defaults to 1 if not set.<br/>The range of
         #   items to be reordered begins from the _range_start_ position, and includes the
@@ -46,11 +56,13 @@ module Spotted
         #   @return [Array<String>, nil]
         optional :uris, Spotted::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(insert_before: nil, range_length: nil, range_start: nil, snapshot_id: nil, uris: nil, request_options: {})
+        # @!method initialize(insert_before: nil, published: nil, range_length: nil, range_start: nil, snapshot_id: nil, uris: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Playlists::TrackUpdateParams} for more details.
         #
         #   @param insert_before [Integer] The position where the items should be inserted.<br/>To reorder the items to the
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param range_length [Integer] The amount of items to be reordered. Defaults to 1 if not set.<br/>The range of
         #

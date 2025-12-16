@@ -23,9 +23,21 @@ module Spotted
         sig { params(ids: T::Array[String]).void }
         attr_writer :ids
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         sig do
           params(
             ids: T::Array[String],
+            published: T::Boolean,
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -36,13 +48,23 @@ module Spotted
           # parameter is present in the query string, any IDs listed here in the body will
           # be ignored._
           ids: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           request_options: {}
         )
         end
 
         sig do
           override.returns(
-            { ids: T::Array[String], request_options: Spotted::RequestOptions }
+            {
+              ids: T::Array[String],
+              published: T::Boolean,
+              request_options: Spotted::RequestOptions
+            }
           )
         end
         def to_hash

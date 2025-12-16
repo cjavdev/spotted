@@ -17,11 +17,13 @@ module Spotted
 
         def follow: (
           ids: ::Array[String],
+          ?published: bool,
           ?request_options: Spotted::request_opts
         ) -> nil
 
         def unfollow: (
           ?ids: ::Array[String],
+          ?published: bool,
           ?request_options: Spotted::request_opts
         ) -> nil
 

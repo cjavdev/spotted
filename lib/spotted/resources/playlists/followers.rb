@@ -36,11 +36,13 @@ module Spotted
         #
         # Add the current user as a follower of a playlist.
         #
-        # @overload follow(playlist_id, public: nil, request_options: {})
+        # @overload follow(playlist_id, public: nil, published: nil, request_options: {})
         #
         # @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
         #
         # @param public [Boolean] Defaults to `true`. If `true` the playlist will be included in user's public pla
+        #
+        # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #

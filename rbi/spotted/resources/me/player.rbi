@@ -229,6 +229,7 @@ module Spotted
             context_uri: String,
             offset: T::Hash[Symbol, T.anything],
             position_ms: Integer,
+            published: T::Boolean,
             uris: T::Array[String],
             request_options: Spotted::RequestOptions::OrHash
           ).void
@@ -252,6 +253,12 @@ module Spotted
           # number. Passing in a position that is greater than the length of the track will
           # cause the player to start playing the next song.
           position_ms: nil,
+          # Body param: The playlist's public/private status (if it should be added to the
+          # user's profile or not): `true` the playlist will be public, `false` the playlist
+          # will be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # Body param: Optional. A JSON array of the Spotify track URIs to play. For
           # example:
           # `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"]}`
@@ -288,6 +295,7 @@ module Spotted
           params(
             device_ids: T::Array[String],
             play: T::Boolean,
+            published: T::Boolean,
             request_options: Spotted::RequestOptions::OrHash
           ).void
         end
@@ -301,6 +309,12 @@ module Spotted
           # **true**: ensure playback happens on new device.<br/>**false** or not provided:
           # keep the current playback state.
           play: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           request_options: {}
         )
         end

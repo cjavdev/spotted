@@ -18,11 +18,23 @@ module Spotted
         #   @return [Array<String>]
         required :ids, Spotted::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(ids:, request_options: {})
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
+        # @!method initialize(ids:, published: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Me::FollowingFollowParams} for more details.
         #
         #   @param ids [Array<String>] A JSON array of the artist or user [Spotify IDs](/documentation/web-api/concepts
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}]
       end

@@ -2,7 +2,7 @@ module Spotted
   module Models
     module Playlists
       type track_add_params =
-        { position: Integer, uris: ::Array[String] }
+        { position: Integer, published: bool, uris: ::Array[String] }
         & Spotted::Internal::Type::request_parameters
 
       class TrackAddParams < Spotted::Internal::Type::BaseModel
@@ -13,18 +13,24 @@ module Spotted
 
         def position=: (Integer) -> Integer
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         attr_reader uris: ::Array[String]?
 
         def uris=: (::Array[String]) -> ::Array[String]
 
         def initialize: (
           ?position: Integer,
+          ?published: bool,
           ?uris: ::Array[String],
           ?request_options: Spotted::request_opts
         ) -> void
 
         def to_hash: -> {
           position: Integer,
+          published: bool,
           uris: ::Array[String],
           request_options: Spotted::RequestOptions
         }

@@ -23,6 +23,17 @@ module Spotted
         sig { returns(T::Array[Spotted::Playlists::TrackRemoveParams::Track]) }
         attr_accessor :tracks
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         # The playlist's snapshot ID against which you want to make the changes. The API
         # will validate that the specified items exist and in the specified positions and
         # make the changes, even if more recent changes have been made to the playlist.
@@ -36,6 +47,7 @@ module Spotted
           params(
             tracks:
               T::Array[Spotted::Playlists::TrackRemoveParams::Track::OrHash],
+            published: T::Boolean,
             snapshot_id: String,
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -47,6 +59,12 @@ module Spotted
           # `{ "tracks": [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh" },{ "uri": "spotify:track:1301WleyT98MSxVHPZCA6M" }] }`.
           # A maximum of 100 objects can be sent at once.
           tracks:,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # The playlist's snapshot ID against which you want to make the changes. The API
           # will validate that the specified items exist and in the specified positions and
           # make the changes, even if more recent changes have been made to the playlist.
@@ -59,6 +77,7 @@ module Spotted
           override.returns(
             {
               tracks: T::Array[Spotted::Playlists::TrackRemoveParams::Track],
+              published: T::Boolean,
               snapshot_id: String,
               request_options: Spotted::RequestOptions
             }

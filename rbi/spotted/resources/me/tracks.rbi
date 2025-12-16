@@ -59,6 +59,7 @@ module Spotted
         sig do
           params(
             ids: T::Array[String],
+            published: T::Boolean,
             request_options: Spotted::RequestOptions::OrHash
           ).void
         end
@@ -69,6 +70,12 @@ module Spotted
           # can be specified in one request. _**Note**: if the `ids` parameter is present in
           # the query string, any IDs listed here in the body will be ignored._
           ids: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           request_options: {}
         )
         end
@@ -77,6 +84,7 @@ module Spotted
         sig do
           params(
             ids: T::Array[String],
+            published: T::Boolean,
             timestamped_ids:
               T::Array[Spotted::Me::TrackSaveParams::TimestampedID::OrHash],
             request_options: Spotted::RequestOptions::OrHash
@@ -90,6 +98,12 @@ module Spotted
           # in the body, any IDs listed in the query parameters (deprecated) or the `ids`
           # field in the body will be ignored._
           ids:,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # A JSON array of objects containing track IDs with their corresponding
           # timestamps. Each object must include a track ID and an `added_at` timestamp.
           # This allows you to specify when tracks were added to maintain a specific
