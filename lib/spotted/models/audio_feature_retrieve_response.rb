@@ -92,6 +92,16 @@ module Spotted
       #   @return [Integer, nil]
       optional :mode, Integer
 
+      # @!attribute published
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :published, Spotted::Internal::Type::Boolean
+
       # @!attribute speechiness
       #   Speechiness detects the presence of spoken words in a track. The more
       #   exclusively speech-like the recording (e.g. talk show, audio book, poetry), the
@@ -147,7 +157,7 @@ module Spotted
       #   @return [Float, nil]
       optional :valence, Float
 
-      # @!method initialize(id: nil, acousticness: nil, analysis_url: nil, danceability: nil, duration_ms: nil, energy: nil, instrumentalness: nil, key: nil, liveness: nil, loudness: nil, mode: nil, speechiness: nil, tempo: nil, time_signature: nil, track_href: nil, type: nil, uri: nil, valence: nil)
+      # @!method initialize(id: nil, acousticness: nil, analysis_url: nil, danceability: nil, duration_ms: nil, energy: nil, instrumentalness: nil, key: nil, liveness: nil, loudness: nil, mode: nil, published: nil, speechiness: nil, tempo: nil, time_signature: nil, track_href: nil, type: nil, uri: nil, valence: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::AudioFeatureRetrieveResponse} for more details.
       #
@@ -172,6 +182,8 @@ module Spotted
       #   @param loudness [Float] The overall loudness of a track in decibels (dB). Loudness values are averaged a
       #
       #   @param mode [Integer] Mode indicates the modality (major or minor) of a track, the type of scale from
+      #
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       #   @param speechiness [Float] Speechiness detects the presence of spoken words in a track. The more exclusivel
       #

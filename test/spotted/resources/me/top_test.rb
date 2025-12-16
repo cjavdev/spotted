@@ -29,6 +29,7 @@ class Spotted::Test::Resources::Me::TopTest < Spotted::Test::ResourceTest
         images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
         name: String | nil,
         popularity: Integer | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         type: Spotted::ArtistObject::Type | nil,
         uri: String | nil
       }
@@ -69,6 +70,7 @@ class Spotted::Test::Resources::Me::TopTest < Spotted::Test::ResourceTest
         name: String | nil,
         popularity: Integer | nil,
         preview_url: String | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         restrictions: Spotted::TrackRestrictionObject | nil,
         track_number: Integer | nil,
         type: Spotted::TrackObject::Type | nil,

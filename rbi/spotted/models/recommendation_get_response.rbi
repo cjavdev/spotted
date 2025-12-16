@@ -21,18 +21,36 @@ module Spotted
       sig { returns(T::Array[Spotted::TrackObject]) }
       attr_accessor :tracks
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       sig do
         params(
           seeds:
             T::Array[Spotted::Models::RecommendationGetResponse::Seed::OrHash],
-          tracks: T::Array[Spotted::TrackObject::OrHash]
+          tracks: T::Array[Spotted::TrackObject::OrHash],
+          published: T::Boolean
         ).returns(T.attached_class)
       end
       def self.new(
         # An array of recommendation seed objects.
         seeds:,
         # An array of track objects ordered according to the parameters supplied.
-        tracks:
+        tracks:,
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil
       )
       end
 
@@ -40,7 +58,8 @@ module Spotted
         override.returns(
           {
             seeds: T::Array[Spotted::Models::RecommendationGetResponse::Seed],
-            tracks: T::Array[Spotted::TrackObject]
+            tracks: T::Array[Spotted::TrackObject],
+            published: T::Boolean
           }
         )
       end
@@ -95,6 +114,17 @@ module Spotted
         sig { params(initial_pool_size: Integer).void }
         attr_writer :initial_pool_size
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         # The entity type of this seed. One of `artist`, `track` or `genre`.
         sig { returns(T.nilable(String)) }
         attr_reader :type
@@ -109,6 +139,7 @@ module Spotted
             after_relinking_size: Integer,
             href: String,
             initial_pool_size: Integer,
+            published: T::Boolean,
             type: String
           ).returns(T.attached_class)
         end
@@ -127,6 +158,12 @@ module Spotted
           href: nil,
           # The number of recommended tracks available for this seed.
           initial_pool_size: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # The entity type of this seed. One of `artist`, `track` or `genre`.
           type: nil
         )
@@ -140,6 +177,7 @@ module Spotted
               after_relinking_size: Integer,
               href: String,
               initial_pool_size: Integer,
+              published: T::Boolean,
               type: String
             }
           )

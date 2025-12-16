@@ -56,7 +56,17 @@ module Spotted
         optional :items,
                  -> { Spotted::Internal::Type::ArrayOf[Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item] }
 
-        # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil)
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
+        # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil, published: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::BrowseGetNewReleasesResponse::Albums} for more details.
         #
@@ -73,6 +83,8 @@ module Spotted
         #   @param total [Integer] The total number of items available to return.
         #
         #   @param items [Array<Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item>]
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
 
         class Item < Spotted::Internal::Type::BaseModel
           # @!attribute id
@@ -161,13 +173,23 @@ module Spotted
           #   @return [String]
           required :uri, String
 
+          # @!attribute published
+          #   The playlist's public/private status (if it should be added to the user's
+          #   profile or not): `true` the playlist will be public, `false` the playlist will
+          #   be private, `null` the playlist status is not relevant. For more about
+          #   public/private status, see
+          #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+          #
+          #   @return [Boolean, nil]
+          optional :published, Spotted::Internal::Type::Boolean
+
           # @!attribute restrictions
           #   Included in the response when a content restriction is applied.
           #
           #   @return [Spotted::Models::AlbumRestrictionObject, nil]
           optional :restrictions, -> { Spotted::AlbumRestrictionObject }
 
-          # @!method initialize(id:, album_type:, artists:, available_markets:, external_urls:, href:, images:, name:, release_date:, release_date_precision:, total_tracks:, uri:, restrictions: nil, type: :album)
+          # @!method initialize(id:, album_type:, artists:, available_markets:, external_urls:, href:, images:, name:, release_date:, release_date_precision:, total_tracks:, uri:, published: nil, restrictions: nil, type: :album)
           #   Some parameter documentations has been truncated, see
           #   {Spotted::Models::BrowseGetNewReleasesResponse::Albums::Item} for more details.
           #
@@ -194,6 +216,8 @@ module Spotted
           #   @param total_tracks [Integer] The number of tracks in the album.
           #
           #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the albu
+          #
+          #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
           #
           #   @param restrictions [Spotted::Models::AlbumRestrictionObject] Included in the response when a content restriction is applied.
           #

@@ -21,7 +21,17 @@ module Spotted
       #   @return [Integer, nil]
       required :width, Integer, nil?: true
 
-      # @!method initialize(height:, url:, width:)
+      # @!attribute published
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :published, Spotted::Internal::Type::Boolean
+
+      # @!method initialize(height:, url:, width:, published: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::ImageObject} for more details.
       #
@@ -30,6 +40,8 @@ module Spotted
       #   @param url [String] The source URL of the image.
       #
       #   @param width [Integer, nil] The image width in pixels.
+      #
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
     end
   end
 end

@@ -12,6 +12,16 @@ module Spotted
           #   @return [Spotted::Models::TrackObject, Spotted::Models::EpisodeObject, nil]
           optional :currently_playing, union: -> { Spotted::Models::Me::Player::QueueGetResponse::CurrentlyPlaying }
 
+          # @!attribute published
+          #   The playlist's public/private status (if it should be added to the user's
+          #   profile or not): `true` the playlist will be public, `false` the playlist will
+          #   be private, `null` the playlist status is not relevant. For more about
+          #   public/private status, see
+          #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+          #
+          #   @return [Boolean, nil]
+          optional :published, Spotted::Internal::Type::Boolean
+
           # @!attribute queue
           #   The tracks or episodes in the queue. Can be empty.
           #
@@ -19,8 +29,13 @@ module Spotted
           optional :queue,
                    -> { Spotted::Internal::Type::ArrayOf[union: Spotted::Models::Me::Player::QueueGetResponse::Queue] }
 
-          # @!method initialize(currently_playing: nil, queue: nil)
+          # @!method initialize(currently_playing: nil, published: nil, queue: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Spotted::Models::Me::Player::QueueGetResponse} for more details.
+          #
           #   @param currently_playing [Spotted::Models::TrackObject, Spotted::Models::EpisodeObject] The currently playing track or episode. Can be `null`.
+          #
+          #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
           #
           #   @param queue [Array<Spotted::Models::TrackObject, Spotted::Models::EpisodeObject>] The tracks or episodes in the queue. Can be empty.
 

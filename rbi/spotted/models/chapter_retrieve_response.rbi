@@ -108,6 +108,17 @@ module Spotted
       sig { params(available_markets: T::Array[String]).void }
       attr_writer :available_markets
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       # Included in the response when a content restriction is applied.
       sig { returns(T.nilable(Spotted::ChapterRestrictionObject)) }
       attr_reader :restrictions
@@ -146,6 +157,7 @@ module Spotted
             Spotted::Models::ChapterRetrieveResponse::ReleaseDatePrecision::OrSymbol,
           uri: String,
           available_markets: T::Array[String],
+          published: T::Boolean,
           restrictions: Spotted::ChapterRestrictionObject::OrHash,
           resume_point: Spotted::ResumePointObject::OrHash,
           type: Symbol
@@ -196,6 +208,12 @@ module Spotted
         # A list of the countries in which the chapter can be played, identified by their
         # [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
         available_markets: nil,
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil,
         # Included in the response when a content restriction is applied.
         restrictions: nil,
         # The user's most recent position in the chapter. Set if the supplied access token
@@ -229,6 +247,7 @@ module Spotted
             type: Symbol,
             uri: String,
             available_markets: T::Array[String],
+            published: T::Boolean,
             restrictions: Spotted::ChapterRestrictionObject,
             resume_point: Spotted::ResumePointObject
           }

@@ -41,6 +41,16 @@ module Spotted
       #   @return [Array<Spotted::Models::ImageObject>, nil]
       optional :images, -> { Spotted::Internal::Type::ArrayOf[Spotted::ImageObject] }
 
+      # @!attribute published
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :published, Spotted::Internal::Type::Boolean
+
       # @!attribute type
       #   The object type.
       #
@@ -54,7 +64,7 @@ module Spotted
       #   @return [String, nil]
       optional :uri, String
 
-      # @!method initialize(id: nil, display_name: nil, external_urls: nil, followers: nil, href: nil, images: nil, type: nil, uri: nil)
+      # @!method initialize(id: nil, display_name: nil, external_urls: nil, followers: nil, href: nil, images: nil, published: nil, type: nil, uri: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::UserRetrieveProfileResponse} for more details.
       #
@@ -69,6 +79,8 @@ module Spotted
       #   @param href [String] A link to the Web API endpoint for this user.
       #
       #   @param images [Array<Spotted::Models::ImageObject>] The user's profile image.
+      #
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       #   @param type [Symbol, Spotted::Models::UserRetrieveProfileResponse::Type] The object type.
       #

@@ -15,7 +15,8 @@ class Spotted::Test::Resources::RecommendationsTest < Spotted::Test::ResourceTes
     assert_pattern do
       response => {
         seeds: ^(Spotted::Internal::Type::ArrayOf[Spotted::Models::RecommendationGetResponse::Seed]),
-        tracks: ^(Spotted::Internal::Type::ArrayOf[Spotted::TrackObject])
+        tracks: ^(Spotted::Internal::Type::ArrayOf[Spotted::TrackObject]),
+        published: Spotted::Internal::Type::Boolean | nil
       }
     end
   end

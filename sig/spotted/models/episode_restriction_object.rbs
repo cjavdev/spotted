@@ -1,15 +1,19 @@
 module Spotted
   module Models
-    type episode_restriction_object = { reason: String }
+    type episode_restriction_object = { published: bool, reason: String }
 
     class EpisodeRestrictionObject < Spotted::Internal::Type::BaseModel
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader reason: String?
 
       def reason=: (String) -> String
 
-      def initialize: (?reason: String) -> void
+      def initialize: (?published: bool, ?reason: String) -> void
 
-      def to_hash: -> { reason: String }
+      def to_hash: -> { published: bool, reason: String }
     end
   end
 end

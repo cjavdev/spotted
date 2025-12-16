@@ -1,6 +1,7 @@
 module Spotted
   module Models
-    type image_object = { height: Integer?, url: String, width: Integer? }
+    type image_object =
+      { height: Integer?, url: String, width: Integer?, published: bool }
 
     class ImageObject < Spotted::Internal::Type::BaseModel
       attr_accessor height: Integer?
@@ -9,9 +10,23 @@ module Spotted
 
       attr_accessor width: Integer?
 
-      def initialize: (height: Integer?, url: String, width: Integer?) -> void
+      attr_reader published: bool?
 
-      def to_hash: -> { height: Integer?, url: String, width: Integer? }
+      def published=: (bool) -> bool
+
+      def initialize: (
+        height: Integer?,
+        url: String,
+        width: Integer?,
+        ?published: bool
+      ) -> void
+
+      def to_hash: -> {
+        height: Integer?,
+        url: String,
+        width: Integer?,
+        published: bool
+      }
     end
   end
 end

@@ -110,6 +110,17 @@ module Spotted
       sig { params(mode: Integer).void }
       attr_writer :mode
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       # Speechiness detects the presence of spoken words in a track. The more
       # exclusively speech-like the recording (e.g. talk show, audio book, poetry), the
       # closer to 1.0 the attribute value. Values above 0.66 describe tracks that are
@@ -195,6 +206,7 @@ module Spotted
           liveness: Float,
           loudness: Float,
           mode: Integer,
+          published: T::Boolean,
           speechiness: Float,
           tempo: Float,
           time_signature: Integer,
@@ -249,6 +261,12 @@ module Spotted
         # Mode indicates the modality (major or minor) of a track, the type of scale from
         # which its melodic content is derived. Major is represented by 1 and minor is 0.
         mode: nil,
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil,
         # Speechiness detects the presence of spoken words in a track. The more
         # exclusively speech-like the recording (e.g. talk show, audio book, poetry), the
         # closer to 1.0 the attribute value. Values above 0.66 describe tracks that are
@@ -293,6 +311,7 @@ module Spotted
             liveness: Float,
             loudness: Float,
             mode: Integer,
+            published: T::Boolean,
             speechiness: Float,
             tempo: Float,
             time_signature: Integer,

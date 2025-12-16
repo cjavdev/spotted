@@ -25,6 +25,7 @@ class Spotted::Test::Resources::Me::Player::QueueTest < Spotted::Test::ResourceT
     assert_pattern do
       response => {
         currently_playing: Spotted::Models::Me::Player::QueueGetResponse::CurrentlyPlaying | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         queue: ^(Spotted::Internal::Type::ArrayOf[union: Spotted::Models::Me::Player::QueueGetResponse::Queue]) | nil
       }
     end

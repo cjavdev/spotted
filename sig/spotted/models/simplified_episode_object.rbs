@@ -20,6 +20,7 @@ module Spotted
         type: :episode,
         uri: String,
         language: String,
+        published: bool,
         restrictions: Spotted::EpisodeRestrictionObject,
         resume_point: Spotted::ResumePointObject
       }
@@ -63,6 +64,10 @@ module Spotted
 
       def language=: (String) -> String
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader restrictions: Spotted::EpisodeRestrictionObject?
 
       def restrictions=: (
@@ -93,6 +98,7 @@ module Spotted
         release_date_precision: Spotted::Models::SimplifiedEpisodeObject::release_date_precision,
         uri: String,
         ?language: String,
+        ?published: bool,
         ?restrictions: Spotted::EpisodeRestrictionObject,
         ?resume_point: Spotted::ResumePointObject,
         ?type: :episode
@@ -117,6 +123,7 @@ module Spotted
         type: :episode,
         uri: String,
         language: String,
+        published: bool,
         restrictions: Spotted::EpisodeRestrictionObject,
         resume_point: Spotted::ResumePointObject
       }

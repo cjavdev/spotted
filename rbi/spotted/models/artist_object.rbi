@@ -68,6 +68,17 @@ module Spotted
       sig { params(popularity: Integer).void }
       attr_writer :popularity
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       # The object type.
       sig { returns(T.nilable(Spotted::ArtistObject::Type::TaggedSymbol)) }
       attr_reader :type
@@ -93,6 +104,7 @@ module Spotted
           images: T::Array[Spotted::ImageObject::OrHash],
           name: String,
           popularity: Integer,
+          published: T::Boolean,
           type: Spotted::ArtistObject::Type::OrSymbol,
           uri: String
         ).returns(T.attached_class)
@@ -118,6 +130,12 @@ module Spotted
         # being the most popular. The artist's popularity is calculated from the
         # popularity of all the artist's tracks.
         popularity: nil,
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil,
         # The object type.
         type: nil,
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -137,6 +155,7 @@ module Spotted
             images: T::Array[Spotted::ImageObject],
             name: String,
             popularity: Integer,
+            published: T::Boolean,
             type: Spotted::ArtistObject::Type::TaggedSymbol,
             uri: String
           }

@@ -6,7 +6,8 @@ module Spotted
           id: String,
           href: String,
           icons: ::Array[Spotted::ImageObject],
-          name: String
+          name: String,
+          published: bool
         }
 
       class CategoryRetrieveResponse < Spotted::Internal::Type::BaseModel
@@ -18,18 +19,24 @@ module Spotted
 
         attr_accessor name: String
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         def initialize: (
           id: String,
           href: String,
           icons: ::Array[Spotted::ImageObject],
-          name: String
+          name: String,
+          ?published: bool
         ) -> void
 
         def to_hash: -> {
           id: String,
           href: String,
           icons: ::Array[Spotted::ImageObject],
-          name: String
+          name: String,
+          published: bool
         }
       end
     end

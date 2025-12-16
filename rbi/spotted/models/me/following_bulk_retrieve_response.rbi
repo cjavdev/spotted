@@ -99,6 +99,17 @@ module Spotted
           sig { params(next_: String).void }
           attr_writer :next_
 
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :published
+
+          sig { params(published: T::Boolean).void }
+          attr_writer :published
+
           # The total number of items available to return.
           sig { returns(T.nilable(Integer)) }
           attr_reader :total
@@ -114,6 +125,7 @@ module Spotted
               items: T::Array[Spotted::ArtistObject::OrHash],
               limit: Integer,
               next_: String,
+              published: T::Boolean,
               total: Integer
             ).returns(T.attached_class)
           end
@@ -127,6 +139,12 @@ module Spotted
             limit: nil,
             # URL to the next page of items. ( `null` if none)
             next_: nil,
+            # The playlist's public/private status (if it should be added to the user's
+            # profile or not): `true` the playlist will be public, `false` the playlist will
+            # be private, `null` the playlist status is not relevant. For more about
+            # public/private status, see
+            # [Working with Playlists](/documentation/web-api/concepts/playlists)
+            published: nil,
             # The total number of items available to return.
             total: nil
           )
@@ -141,6 +159,7 @@ module Spotted
                 items: T::Array[Spotted::ArtistObject],
                 limit: Integer,
                 next_: String,
+                published: T::Boolean,
                 total: Integer
               }
             )
@@ -171,19 +190,44 @@ module Spotted
             sig { params(before: String).void }
             attr_writer :before
 
+            # The playlist's public/private status (if it should be added to the user's
+            # profile or not): `true` the playlist will be public, `false` the playlist will
+            # be private, `null` the playlist status is not relevant. For more about
+            # public/private status, see
+            # [Working with Playlists](/documentation/web-api/concepts/playlists)
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_reader :published
+
+            sig { params(published: T::Boolean).void }
+            attr_writer :published
+
             # The cursors used to find the next set of items.
             sig do
-              params(after: String, before: String).returns(T.attached_class)
+              params(
+                after: String,
+                before: String,
+                published: T::Boolean
+              ).returns(T.attached_class)
             end
             def self.new(
               # The cursor to use as key to find the next page of items.
               after: nil,
               # The cursor to use as key to find the previous page of items.
-              before: nil
+              before: nil,
+              # The playlist's public/private status (if it should be added to the user's
+              # profile or not): `true` the playlist will be public, `false` the playlist will
+              # be private, `null` the playlist status is not relevant. For more about
+              # public/private status, see
+              # [Working with Playlists](/documentation/web-api/concepts/playlists)
+              published: nil
             )
             end
 
-            sig { override.returns({ after: String, before: String }) }
+            sig do
+              override.returns(
+                { after: String, before: String, published: T::Boolean }
+              )
+            end
             def to_hash
             end
           end

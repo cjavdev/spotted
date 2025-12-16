@@ -33,6 +33,7 @@ class Spotted::Test::Resources::ChaptersTest < Spotted::Test::ResourceTest
         type: Symbol,
         uri: String,
         available_markets: ^(Spotted::Internal::Type::ArrayOf[String]) | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         restrictions: Spotted::ChapterRestrictionObject | nil,
         resume_point: Spotted::ResumePointObject | nil
       }

@@ -18,6 +18,7 @@ module Spotted
         name: String,
         popularity: Integer,
         preview_url: String?,
+        published: bool,
         restrictions: Spotted::TrackRestrictionObject,
         track_number: Integer,
         type: Spotted::Models::TrackObject::type_,
@@ -95,6 +96,10 @@ module Spotted
 
       attr_accessor preview_url: String?
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader restrictions: Spotted::TrackRestrictionObject?
 
       def restrictions=: (
@@ -132,6 +137,7 @@ module Spotted
         ?name: String,
         ?popularity: Integer,
         ?preview_url: String?,
+        ?published: bool,
         ?restrictions: Spotted::TrackRestrictionObject,
         ?track_number: Integer,
         ?type: Spotted::Models::TrackObject::type_,
@@ -155,6 +161,7 @@ module Spotted
         name: String,
         popularity: Integer,
         preview_url: String?,
+        published: bool,
         restrictions: Spotted::TrackRestrictionObject,
         track_number: Integer,
         type: Spotted::Models::TrackObject::type_,
@@ -176,6 +183,7 @@ module Spotted
           total_tracks: Integer,
           type: :album,
           uri: String,
+          published: bool,
           restrictions: Spotted::AlbumRestrictionObject
         }
 
@@ -206,6 +214,10 @@ module Spotted
 
         attr_accessor uri: String
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         attr_reader restrictions: Spotted::AlbumRestrictionObject?
 
         def restrictions=: (
@@ -225,6 +237,7 @@ module Spotted
           release_date_precision: Spotted::Models::TrackObject::Album::release_date_precision,
           total_tracks: Integer,
           uri: String,
+          ?published: bool,
           ?restrictions: Spotted::AlbumRestrictionObject,
           ?type: :album
         ) -> void
@@ -243,6 +256,7 @@ module Spotted
           total_tracks: Integer,
           type: :album,
           uri: String,
+          published: bool,
           restrictions: Spotted::AlbumRestrictionObject
         }
 

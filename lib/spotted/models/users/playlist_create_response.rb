@@ -66,9 +66,10 @@ module Spotted
         optional :owner, -> { Spotted::Models::Users::PlaylistCreateResponse::Owner }
 
         # @!attribute published
-        #   The playlist's public/private status (if it is added to the user's profile):
-        #   `true` the playlist is public, `false` the playlist is private, `null` the
-        #   playlist status is not relevant. For more about public/private status, see
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
         #   [Working with Playlists](/documentation/web-api/concepts/playlists)
         #
         #   @return [Boolean, nil]
@@ -123,7 +124,7 @@ module Spotted
         #
         #   @param owner [Spotted::Models::Users::PlaylistCreateResponse::Owner] The user who owns the playlist
         #
-        #   @param published [Boolean] The playlist's public/private status (if it is added to the user's profile): `tr
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param snapshot_id [String] The version identifier for the current playlist. Can be supplied in other reques
         #
@@ -193,7 +194,17 @@ module Spotted
           #   @return [Array<Spotted::Models::PlaylistTrackObject>, nil]
           optional :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::PlaylistTrackObject] }
 
-          # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil)
+          # @!attribute published
+          #   The playlist's public/private status (if it should be added to the user's
+          #   profile or not): `true` the playlist will be public, `false` the playlist will
+          #   be private, `null` the playlist status is not relevant. For more about
+          #   public/private status, see
+          #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+          #
+          #   @return [Boolean, nil]
+          optional :published, Spotted::Internal::Type::Boolean
+
+          # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil, published: nil)
           #   Some parameter documentations has been truncated, see
           #   {Spotted::Models::Users::PlaylistCreateResponse::Tracks} for more details.
           #
@@ -212,6 +223,8 @@ module Spotted
           #   @param total [Integer] The total number of items available to return.
           #
           #   @param items [Array<Spotted::Models::PlaylistTrackObject>]
+          #
+          #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         end
       end
     end

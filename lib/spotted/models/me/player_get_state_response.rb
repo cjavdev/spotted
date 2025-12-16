@@ -49,6 +49,16 @@ module Spotted
         #   @return [Integer, nil]
         optional :progress_ms, Integer
 
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
         # @!attribute repeat_state
         #   off, track, context
         #
@@ -68,7 +78,7 @@ module Spotted
         #   @return [Integer, nil]
         optional :timestamp, Integer
 
-        # @!method initialize(actions: nil, context: nil, currently_playing_type: nil, device: nil, is_playing: nil, item: nil, progress_ms: nil, repeat_state: nil, shuffle_state: nil, timestamp: nil)
+        # @!method initialize(actions: nil, context: nil, currently_playing_type: nil, device: nil, is_playing: nil, item: nil, progress_ms: nil, published: nil, repeat_state: nil, shuffle_state: nil, timestamp: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Me::PlayerGetStateResponse} for more details.
         #
@@ -85,6 +95,8 @@ module Spotted
         #   @param item [Spotted::Models::TrackObject, Spotted::Models::EpisodeObject] The currently playing track or episode. Can be `null`.
         #
         #   @param progress_ms [Integer] Progress into the currently playing track or episode. Can be `null`.
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param repeat_state [String] off, track, context
         #
@@ -105,6 +117,16 @@ module Spotted
           #
           #   @return [Boolean, nil]
           optional :pausing, Spotted::Internal::Type::Boolean
+
+          # @!attribute published
+          #   The playlist's public/private status (if it should be added to the user's
+          #   profile or not): `true` the playlist will be public, `false` the playlist will
+          #   be private, `null` the playlist status is not relevant. For more about
+          #   public/private status, see
+          #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+          #
+          #   @return [Boolean, nil]
+          optional :published, Spotted::Internal::Type::Boolean
 
           # @!attribute resuming
           #   Resuming. Optional field.
@@ -154,13 +176,18 @@ module Spotted
           #   @return [Boolean, nil]
           optional :transferring_playback, Spotted::Internal::Type::Boolean
 
-          # @!method initialize(interrupting_playback: nil, pausing: nil, resuming: nil, seeking: nil, skipping_next: nil, skipping_prev: nil, toggling_repeat_context: nil, toggling_repeat_track: nil, toggling_shuffle: nil, transferring_playback: nil)
+          # @!method initialize(interrupting_playback: nil, pausing: nil, published: nil, resuming: nil, seeking: nil, skipping_next: nil, skipping_prev: nil, toggling_repeat_context: nil, toggling_repeat_track: nil, toggling_shuffle: nil, transferring_playback: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Spotted::Models::Me::PlayerGetStateResponse::Actions} for more details.
+          #
           #   Allows to update the user interface based on which playback actions are
           #   available within the current context.
           #
           #   @param interrupting_playback [Boolean] Interrupting playback. Optional field.
           #
           #   @param pausing [Boolean] Pausing. Optional field.
+          #
+          #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
           #
           #   @param resuming [Boolean] Resuming. Optional field.
           #

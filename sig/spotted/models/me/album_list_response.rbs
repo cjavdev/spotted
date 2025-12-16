@@ -2,7 +2,11 @@ module Spotted
   module Models
     module Me
       type album_list_response =
-        { added_at: Time, album: Spotted::Models::Me::AlbumListResponse::Album }
+        {
+          added_at: Time,
+          album: Spotted::Models::Me::AlbumListResponse::Album,
+          published: bool
+        }
 
       class AlbumListResponse < Spotted::Internal::Type::BaseModel
         attr_reader added_at: Time?
@@ -15,14 +19,20 @@ module Spotted
           Spotted::Models::Me::AlbumListResponse::Album
         ) -> Spotted::Models::Me::AlbumListResponse::Album
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         def initialize: (
           ?added_at: Time,
-          ?album: Spotted::Models::Me::AlbumListResponse::Album
+          ?album: Spotted::Models::Me::AlbumListResponse::Album,
+          ?published: bool
         ) -> void
 
         def to_hash: -> {
           added_at: Time,
-          album: Spotted::Models::Me::AlbumListResponse::Album
+          album: Spotted::Models::Me::AlbumListResponse::Album,
+          published: bool
         }
 
         type album =
@@ -45,6 +55,7 @@ module Spotted
             genres: ::Array[String],
             label: String,
             popularity: Integer,
+            published: bool,
             restrictions: Spotted::AlbumRestrictionObject,
             tracks: Spotted::Models::Me::AlbumListResponse::Album::Tracks
           }
@@ -104,6 +115,10 @@ module Spotted
 
           def popularity=: (Integer) -> Integer
 
+          attr_reader published: bool?
+
+          def published=: (bool) -> bool
+
           attr_reader restrictions: Spotted::AlbumRestrictionObject?
 
           def restrictions=: (
@@ -134,6 +149,7 @@ module Spotted
             ?genres: ::Array[String],
             ?label: String,
             ?popularity: Integer,
+            ?published: bool,
             ?restrictions: Spotted::AlbumRestrictionObject,
             ?tracks: Spotted::Models::Me::AlbumListResponse::Album::Tracks,
             ?type: :album
@@ -158,6 +174,7 @@ module Spotted
             genres: ::Array[String],
             label: String,
             popularity: Integer,
+            published: bool,
             restrictions: Spotted::AlbumRestrictionObject,
             tracks: Spotted::Models::Me::AlbumListResponse::Album::Tracks
           }
@@ -194,7 +211,8 @@ module Spotted
               offset: Integer,
               previous: String?,
               total: Integer,
-              items: ::Array[Spotted::SimplifiedTrackObject]
+              items: ::Array[Spotted::SimplifiedTrackObject],
+              published: bool
             }
 
           class Tracks < Spotted::Internal::Type::BaseModel
@@ -216,6 +234,10 @@ module Spotted
               ::Array[Spotted::SimplifiedTrackObject]
             ) -> ::Array[Spotted::SimplifiedTrackObject]
 
+            attr_reader published: bool?
+
+            def published=: (bool) -> bool
+
             def initialize: (
               href: String,
               limit: Integer,
@@ -223,7 +245,8 @@ module Spotted
               offset: Integer,
               previous: String?,
               total: Integer,
-              ?items: ::Array[Spotted::SimplifiedTrackObject]
+              ?items: ::Array[Spotted::SimplifiedTrackObject],
+              ?published: bool
             ) -> void
 
             def to_hash: -> {
@@ -233,7 +256,8 @@ module Spotted
               offset: Integer,
               previous: String?,
               total: Integer,
-              items: ::Array[Spotted::SimplifiedTrackObject]
+              items: ::Array[Spotted::SimplifiedTrackObject],
+              published: bool
             }
           end
         end

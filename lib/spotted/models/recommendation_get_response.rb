@@ -16,13 +16,25 @@ module Spotted
       #   @return [Array<Spotted::Models::TrackObject>]
       required :tracks, -> { Spotted::Internal::Type::ArrayOf[Spotted::TrackObject] }
 
-      # @!method initialize(seeds:, tracks:)
+      # @!attribute published
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :published, Spotted::Internal::Type::Boolean
+
+      # @!method initialize(seeds:, tracks:, published: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::RecommendationGetResponse} for more details.
       #
       #   @param seeds [Array<Spotted::Models::RecommendationGetResponse::Seed>] An array of recommendation seed objects.
       #
       #   @param tracks [Array<Spotted::Models::TrackObject>] An array of track objects ordered according to the parameters supplied.
+      #
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
 
       class Seed < Spotted::Internal::Type::BaseModel
         # @!attribute id
@@ -59,13 +71,23 @@ module Spotted
         #   @return [Integer, nil]
         optional :initial_pool_size, Integer, api_name: :initialPoolSize
 
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
         # @!attribute type
         #   The entity type of this seed. One of `artist`, `track` or `genre`.
         #
         #   @return [String, nil]
         optional :type, String
 
-        # @!method initialize(id: nil, after_filtering_size: nil, after_relinking_size: nil, href: nil, initial_pool_size: nil, type: nil)
+        # @!method initialize(id: nil, after_filtering_size: nil, after_relinking_size: nil, href: nil, initial_pool_size: nil, published: nil, type: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::RecommendationGetResponse::Seed} for more details.
         #
@@ -78,6 +100,8 @@ module Spotted
         #   @param href [String] A link to the full track or artist data for this seed. For tracks this will be a
         #
         #   @param initial_pool_size [Integer] The number of recommended tracks available for this seed.
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param type [String] The entity type of this seed. One of `artist`, `track` or `genre`.
       end

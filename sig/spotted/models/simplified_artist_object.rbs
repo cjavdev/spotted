@@ -6,6 +6,7 @@ module Spotted
         external_urls: Spotted::ExternalURLObject,
         href: String,
         name: String,
+        published: bool,
         type: Spotted::Models::SimplifiedArtistObject::type_,
         uri: String
       }
@@ -29,6 +30,10 @@ module Spotted
 
       def name=: (String) -> String
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader type: Spotted::Models::SimplifiedArtistObject::type_?
 
       def type=: (
@@ -44,6 +49,7 @@ module Spotted
         ?external_urls: Spotted::ExternalURLObject,
         ?href: String,
         ?name: String,
+        ?published: bool,
         ?type: Spotted::Models::SimplifiedArtistObject::type_,
         ?uri: String
       ) -> void
@@ -53,6 +59,7 @@ module Spotted
         external_urls: Spotted::ExternalURLObject,
         href: String,
         name: String,
+        published: bool,
         type: Spotted::Models::SimplifiedArtistObject::type_,
         uri: String
       }

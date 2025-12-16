@@ -136,6 +136,17 @@ module Spotted
       sig { returns(T.nilable(String)) }
       attr_accessor :preview_url
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       # Included in the response when a content restriction is applied.
       sig { returns(T.nilable(Spotted::TrackRestrictionObject)) }
       attr_reader :restrictions
@@ -184,6 +195,7 @@ module Spotted
           name: String,
           popularity: Integer,
           preview_url: T.nilable(String),
+          published: T::Boolean,
           restrictions: Spotted::TrackRestrictionObject::OrHash,
           track_number: Integer,
           type: Spotted::TrackObject::Type::OrSymbol,
@@ -242,6 +254,12 @@ module Spotted
         popularity: nil,
         # A link to a 30 second preview (MP3 format) of the track. Can be `null`
         preview_url: nil,
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil,
         # Included in the response when a content restriction is applied.
         restrictions: nil,
         # The number of the track. If an album has several discs, the track number is the
@@ -274,6 +292,7 @@ module Spotted
             name: String,
             popularity: Integer,
             preview_url: T.nilable(String),
+            published: T::Boolean,
             restrictions: Spotted::TrackRestrictionObject,
             track_number: Integer,
             type: Spotted::TrackObject::Type::TaggedSymbol,
@@ -356,6 +375,17 @@ module Spotted
         sig { returns(String) }
         attr_accessor :uri
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         # Included in the response when a content restriction is applied.
         sig { returns(T.nilable(Spotted::AlbumRestrictionObject)) }
         attr_reader :restrictions
@@ -382,6 +412,7 @@ module Spotted
               Spotted::TrackObject::Album::ReleaseDatePrecision::OrSymbol,
             total_tracks: Integer,
             uri: String,
+            published: T::Boolean,
             restrictions: Spotted::AlbumRestrictionObject::OrHash,
             type: Symbol
           ).returns(T.attached_class)
@@ -418,6 +449,12 @@ module Spotted
           # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
           # album.
           uri:,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # Included in the response when a content restriction is applied.
           restrictions: nil,
           # The object type.
@@ -442,6 +479,7 @@ module Spotted
               total_tracks: Integer,
               type: Symbol,
               uri: String,
+              published: T::Boolean,
               restrictions: Spotted::AlbumRestrictionObject
             }
           )

@@ -58,9 +58,10 @@ module Spotted
       optional :owner, -> { Spotted::SimplifiedPlaylistObject::Owner }
 
       # @!attribute published
-      #   The playlist's public/private status (if it is added to the user's profile):
-      #   `true` the playlist is public, `false` the playlist is private, `null` the
-      #   playlist status is not relevant. For more about public/private status, see
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
       #   [Working with Playlists](/documentation/web-api/concepts/playlists)
       #
       #   @return [Boolean, nil]
@@ -116,7 +117,7 @@ module Spotted
       #
       #   @param owner [Spotted::Models::SimplifiedPlaylistObject::Owner] The user who owns the playlist
       #
-      #   @param published [Boolean] The playlist's public/private status (if it is added to the user's profile): `tr
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       #   @param snapshot_id [String] The version identifier for the current playlist. Can be supplied in other reques
       #

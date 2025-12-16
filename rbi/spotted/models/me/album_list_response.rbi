@@ -36,10 +36,22 @@ module Spotted
         end
         attr_writer :album
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         sig do
           params(
             added_at: Time,
-            album: Spotted::Models::Me::AlbumListResponse::Album::OrHash
+            album: Spotted::Models::Me::AlbumListResponse::Album::OrHash,
+            published: T::Boolean
           ).returns(T.attached_class)
         end
         def self.new(
@@ -50,7 +62,13 @@ module Spotted
           # album object.
           added_at: nil,
           # Information about the album.
-          album: nil
+          album: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil
         )
         end
 
@@ -58,7 +76,8 @@ module Spotted
           override.returns(
             {
               added_at: Time,
-              album: Spotted::Models::Me::AlbumListResponse::Album
+              album: Spotted::Models::Me::AlbumListResponse::Album,
+              published: T::Boolean
             }
           )
         end
@@ -189,6 +208,17 @@ module Spotted
           sig { params(popularity: Integer).void }
           attr_writer :popularity
 
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :published
+
+          sig { params(published: T::Boolean).void }
+          attr_writer :published
+
           # Included in the response when a content restriction is applied.
           sig { returns(T.nilable(Spotted::AlbumRestrictionObject)) }
           attr_reader :restrictions
@@ -236,6 +266,7 @@ module Spotted
               genres: T::Array[String],
               label: String,
               popularity: Integer,
+              published: T::Boolean,
               restrictions: Spotted::AlbumRestrictionObject::OrHash,
               tracks:
                 Spotted::Models::Me::AlbumListResponse::Album::Tracks::OrHash,
@@ -285,6 +316,12 @@ module Spotted
             # The popularity of the album. The value will be between 0 and 100, with 100 being
             # the most popular.
             popularity: nil,
+            # The playlist's public/private status (if it should be added to the user's
+            # profile or not): `true` the playlist will be public, `false` the playlist will
+            # be private, `null` the playlist status is not relevant. For more about
+            # public/private status, see
+            # [Working with Playlists](/documentation/web-api/concepts/playlists)
+            published: nil,
             # Included in the response when a content restriction is applied.
             restrictions: nil,
             # The tracks of the album.
@@ -317,6 +354,7 @@ module Spotted
                 genres: T::Array[String],
                 label: String,
                 popularity: Integer,
+                published: T::Boolean,
                 restrictions: Spotted::AlbumRestrictionObject,
                 tracks: Spotted::Models::Me::AlbumListResponse::Album::Tracks
               }
@@ -448,6 +486,17 @@ module Spotted
             end
             attr_writer :items
 
+            # The playlist's public/private status (if it should be added to the user's
+            # profile or not): `true` the playlist will be public, `false` the playlist will
+            # be private, `null` the playlist status is not relevant. For more about
+            # public/private status, see
+            # [Working with Playlists](/documentation/web-api/concepts/playlists)
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_reader :published
+
+            sig { params(published: T::Boolean).void }
+            attr_writer :published
+
             # The tracks of the album.
             sig do
               params(
@@ -457,7 +506,8 @@ module Spotted
                 offset: Integer,
                 previous: T.nilable(String),
                 total: Integer,
-                items: T::Array[Spotted::SimplifiedTrackObject::OrHash]
+                items: T::Array[Spotted::SimplifiedTrackObject::OrHash],
+                published: T::Boolean
               ).returns(T.attached_class)
             end
             def self.new(
@@ -473,7 +523,13 @@ module Spotted
               previous:,
               # The total number of items available to return.
               total:,
-              items: nil
+              items: nil,
+              # The playlist's public/private status (if it should be added to the user's
+              # profile or not): `true` the playlist will be public, `false` the playlist will
+              # be private, `null` the playlist status is not relevant. For more about
+              # public/private status, see
+              # [Working with Playlists](/documentation/web-api/concepts/playlists)
+              published: nil
             )
             end
 
@@ -486,7 +542,8 @@ module Spotted
                   offset: Integer,
                   previous: T.nilable(String),
                   total: Integer,
-                  items: T::Array[Spotted::SimplifiedTrackObject]
+                  items: T::Array[Spotted::SimplifiedTrackObject],
+                  published: T::Boolean
                 }
               )
             end

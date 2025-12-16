@@ -4,7 +4,8 @@ module Spotted
       type audiobook_list_response =
         {
           added_at: Time,
-          audiobook: Spotted::Models::Me::AudiobookListResponse::Audiobook
+          audiobook: Spotted::Models::Me::AudiobookListResponse::Audiobook,
+          published: bool
         }
 
       class AudiobookListResponse < Spotted::Internal::Type::BaseModel
@@ -18,14 +19,20 @@ module Spotted
           Spotted::Models::Me::AudiobookListResponse::Audiobook
         ) -> Spotted::Models::Me::AudiobookListResponse::Audiobook
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         def initialize: (
           ?added_at: Time,
-          ?audiobook: Spotted::Models::Me::AudiobookListResponse::Audiobook
+          ?audiobook: Spotted::Models::Me::AudiobookListResponse::Audiobook,
+          ?published: bool
         ) -> void
 
         def to_hash: -> {
           added_at: Time,
-          audiobook: Spotted::Models::Me::AudiobookListResponse::Audiobook
+          audiobook: Spotted::Models::Me::AudiobookListResponse::Audiobook,
+          published: bool
         }
 
         type audiobook =
@@ -56,7 +63,8 @@ module Spotted
               offset: Integer,
               previous: String?,
               total: Integer,
-              items: ::Array[Spotted::SimplifiedChapterObject]
+              items: ::Array[Spotted::SimplifiedChapterObject],
+              published: bool
             }
 
           class Chapters < Spotted::Internal::Type::BaseModel
@@ -78,6 +86,10 @@ module Spotted
               ::Array[Spotted::SimplifiedChapterObject]
             ) -> ::Array[Spotted::SimplifiedChapterObject]
 
+            attr_reader published: bool?
+
+            def published=: (bool) -> bool
+
             def initialize: (
               href: String,
               limit: Integer,
@@ -85,7 +97,8 @@ module Spotted
               offset: Integer,
               previous: String?,
               total: Integer,
-              ?items: ::Array[Spotted::SimplifiedChapterObject]
+              ?items: ::Array[Spotted::SimplifiedChapterObject],
+              ?published: bool
             ) -> void
 
             def to_hash: -> {
@@ -95,7 +108,8 @@ module Spotted
               offset: Integer,
               previous: String?,
               total: Integer,
-              items: ::Array[Spotted::SimplifiedChapterObject]
+              items: ::Array[Spotted::SimplifiedChapterObject],
+              published: bool
             }
           end
         end

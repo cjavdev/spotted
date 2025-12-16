@@ -135,7 +135,8 @@ module Spotted
           offset: Integer,
           previous: String?,
           total: Integer,
-          items: ::Array[Spotted::PlaylistTrackObject]
+          items: ::Array[Spotted::PlaylistTrackObject],
+          published: bool
         }
 
       class Tracks < Spotted::Internal::Type::BaseModel
@@ -157,6 +158,10 @@ module Spotted
           ::Array[Spotted::PlaylistTrackObject]
         ) -> ::Array[Spotted::PlaylistTrackObject]
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         def initialize: (
           href: String,
           limit: Integer,
@@ -164,7 +169,8 @@ module Spotted
           offset: Integer,
           previous: String?,
           total: Integer,
-          ?items: ::Array[Spotted::PlaylistTrackObject]
+          ?items: ::Array[Spotted::PlaylistTrackObject],
+          ?published: bool
         ) -> void
 
         def to_hash: -> {
@@ -174,7 +180,8 @@ module Spotted
           offset: Integer,
           previous: String?,
           total: Integer,
-          items: ::Array[Spotted::PlaylistTrackObject]
+          items: ::Array[Spotted::PlaylistTrackObject],
+          published: bool
         }
       end
     end

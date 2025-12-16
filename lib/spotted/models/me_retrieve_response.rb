@@ -81,6 +81,16 @@ module Spotted
       #   @return [String, nil]
       optional :product, String
 
+      # @!attribute published
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :published, Spotted::Internal::Type::Boolean
+
       # @!attribute type
       #   The object type: "user"
       #
@@ -94,7 +104,7 @@ module Spotted
       #   @return [String, nil]
       optional :uri, String
 
-      # @!method initialize(id: nil, country: nil, display_name: nil, email: nil, explicit_content: nil, external_urls: nil, followers: nil, href: nil, images: nil, product: nil, type: nil, uri: nil)
+      # @!method initialize(id: nil, country: nil, display_name: nil, email: nil, explicit_content: nil, external_urls: nil, followers: nil, href: nil, images: nil, product: nil, published: nil, type: nil, uri: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::MeRetrieveResponse} for more details.
       #
@@ -120,6 +130,8 @@ module Spotted
       #
       #   @param product [String] The user's Spotify subscription level: "premium", "free", etc. (The subscription
       #
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
+      #
       #   @param type [String] The object type: "user"
       #
       #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the user
@@ -139,7 +151,17 @@ module Spotted
         #   @return [Boolean, nil]
         optional :filter_locked, Spotted::Internal::Type::Boolean
 
-        # @!method initialize(filter_enabled: nil, filter_locked: nil)
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
+        # @!method initialize(filter_enabled: nil, filter_locked: nil, published: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::MeRetrieveResponse::ExplicitContent} for more details.
         #
@@ -151,6 +173,8 @@ module Spotted
         #   @param filter_enabled [Boolean] When `true`, indicates that explicit content should not be played.
         #
         #   @param filter_locked [Boolean] When `true`, indicates that the explicit content setting is locked and can't be
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       end
     end
   end

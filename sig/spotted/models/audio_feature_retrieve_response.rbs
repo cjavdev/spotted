@@ -13,6 +13,7 @@ module Spotted
         liveness: Float,
         loudness: Float,
         mode: Integer,
+        published: bool,
         speechiness: Float,
         tempo: Float,
         time_signature: Integer,
@@ -67,6 +68,10 @@ module Spotted
 
       def mode=: (Integer) -> Integer
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader speechiness: Float?
 
       def speechiness=: (Float) -> Float
@@ -109,6 +114,7 @@ module Spotted
         ?liveness: Float,
         ?loudness: Float,
         ?mode: Integer,
+        ?published: bool,
         ?speechiness: Float,
         ?tempo: Float,
         ?time_signature: Integer,
@@ -130,6 +136,7 @@ module Spotted
         liveness: Float,
         loudness: Float,
         mode: Integer,
+        published: bool,
         speechiness: Float,
         tempo: Float,
         time_signature: Integer,

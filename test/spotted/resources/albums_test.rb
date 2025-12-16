@@ -32,6 +32,7 @@ class Spotted::Test::Resources::AlbumsTest < Spotted::Test::ResourceTest
         genres: ^(Spotted::Internal::Type::ArrayOf[String]) | nil,
         label: String | nil,
         popularity: Integer | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         restrictions: Spotted::AlbumRestrictionObject | nil,
         tracks: Spotted::Models::AlbumRetrieveResponse::Tracks | nil
       }
@@ -86,6 +87,7 @@ class Spotted::Test::Resources::AlbumsTest < Spotted::Test::ResourceTest
         linked_from: Spotted::LinkedTrackObject | nil,
         name: String | nil,
         preview_url: String | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         restrictions: Spotted::TrackRestrictionObject | nil,
         track_number: Integer | nil,
         type: String | nil,

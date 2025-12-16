@@ -22,7 +22,8 @@ class Spotted::Test::Resources::Me::EpisodesTest < Spotted::Test::ResourceTest
     assert_pattern do
       row => {
         added_at: Time | nil,
-        episode: Spotted::EpisodeObject | nil
+        episode: Spotted::EpisodeObject | nil,
+        published: Spotted::Internal::Type::Boolean | nil
       }
     end
   end

@@ -10,6 +10,7 @@ module Spotted
         images: ::Array[Spotted::ImageObject],
         name: String,
         popularity: Integer,
+        published: bool,
         type: Spotted::Models::ArtistObject::type_,
         uri: String
       }
@@ -51,6 +52,10 @@ module Spotted
 
       def popularity=: (Integer) -> Integer
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader type: Spotted::Models::ArtistObject::type_?
 
       def type=: (
@@ -70,6 +75,7 @@ module Spotted
         ?images: ::Array[Spotted::ImageObject],
         ?name: String,
         ?popularity: Integer,
+        ?published: bool,
         ?type: Spotted::Models::ArtistObject::type_,
         ?uri: String
       ) -> void
@@ -83,6 +89,7 @@ module Spotted
         images: ::Array[Spotted::ImageObject],
         name: String,
         popularity: Integer,
+        published: bool,
         type: Spotted::Models::ArtistObject::type_,
         uri: String
       }
