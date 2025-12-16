@@ -6,7 +6,6 @@ module Spotted
           name: String,
           collaborative: bool,
           description: String,
-          public: bool,
           published: bool
         }
         & Spotted::Internal::Type::request_parameters
@@ -25,10 +24,6 @@ module Spotted
 
         def description=: (String) -> String
 
-        attr_reader public: bool?
-
-        def public=: (bool) -> bool
-
         attr_reader published: bool?
 
         def published=: (bool) -> bool
@@ -37,7 +32,6 @@ module Spotted
           name: String,
           ?collaborative: bool,
           ?description: String,
-          ?public: bool,
           ?published: bool,
           ?request_options: Spotted::request_opts
         ) -> void
@@ -46,7 +40,6 @@ module Spotted
           name: String,
           collaborative: bool,
           description: String,
-          public: bool,
           published: bool,
           request_options: Spotted::RequestOptions
         }
