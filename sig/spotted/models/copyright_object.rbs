@@ -1,8 +1,12 @@
 module Spotted
   module Models
-    type copyright_object = { text: String, type: String }
+    type copyright_object = { published: bool, text: String, type: String }
 
     class CopyrightObject < Spotted::Internal::Type::BaseModel
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader text: String?
 
       def text=: (String) -> String
@@ -11,9 +15,9 @@ module Spotted
 
       def type=: (String) -> String
 
-      def initialize: (?text: String, ?type: String) -> void
+      def initialize: (?published: bool, ?text: String, ?type: String) -> void
 
-      def to_hash: -> { text: String, type: String }
+      def to_hash: -> { published: bool, text: String, type: String }
     end
   end
 end

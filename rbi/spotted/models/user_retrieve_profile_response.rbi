@@ -51,6 +51,17 @@ module Spotted
       sig { params(images: T::Array[Spotted::ImageObject::OrHash]).void }
       attr_writer :images
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       # The object type.
       sig do
         returns(
@@ -84,6 +95,7 @@ module Spotted
           followers: Spotted::FollowersObject::OrHash,
           href: String,
           images: T::Array[Spotted::ImageObject::OrHash],
+          published: T::Boolean,
           type: Spotted::Models::UserRetrieveProfileResponse::Type::OrSymbol,
           uri: String
         ).returns(T.attached_class)
@@ -102,6 +114,12 @@ module Spotted
         href: nil,
         # The user's profile image.
         images: nil,
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil,
         # The object type.
         type: nil,
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for this
@@ -119,6 +137,7 @@ module Spotted
             followers: Spotted::FollowersObject,
             href: String,
             images: T::Array[Spotted::ImageObject],
+            published: T::Boolean,
             type:
               Spotted::Models::UserRetrieveProfileResponse::Type::TaggedSymbol,
             uri: String

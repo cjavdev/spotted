@@ -1,7 +1,7 @@
 module Spotted
   module Models
     type time_interval_object =
-      { confidence: Float, duration: Float, start: Float }
+      { confidence: Float, duration: Float, published: bool, start: Float }
 
     class TimeIntervalObject < Spotted::Internal::Type::BaseModel
       attr_reader confidence: Float?
@@ -12,6 +12,10 @@ module Spotted
 
       def duration=: (Float) -> Float
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader start: Float?
 
       def start=: (Float) -> Float
@@ -19,10 +23,16 @@ module Spotted
       def initialize: (
         ?confidence: Float,
         ?duration: Float,
+        ?published: bool,
         ?start: Float
       ) -> void
 
-      def to_hash: -> { confidence: Float, duration: Float, start: Float }
+      def to_hash: -> {
+        confidence: Float,
+        duration: Float,
+        published: bool,
+        start: Float
+      }
     end
   end
 end

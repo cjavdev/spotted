@@ -1,20 +1,33 @@
 module Spotted
   module Models
     module Me
-      type show_list_response = { added_at: Time, show: Spotted::ShowBase }
+      type show_list_response =
+        { added_at: Time, published: bool, show: Spotted::ShowBase }
 
       class ShowListResponse < Spotted::Internal::Type::BaseModel
         attr_reader added_at: Time?
 
         def added_at=: (Time) -> Time
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         attr_reader show: Spotted::ShowBase?
 
         def show=: (Spotted::ShowBase) -> Spotted::ShowBase
 
-        def initialize: (?added_at: Time, ?show: Spotted::ShowBase) -> void
+        def initialize: (
+          ?added_at: Time,
+          ?published: bool,
+          ?show: Spotted::ShowBase
+        ) -> void
 
-        def to_hash: -> { added_at: Time, show: Spotted::ShowBase }
+        def to_hash: -> {
+          added_at: Time,
+          published: bool,
+          show: Spotted::ShowBase
+        }
       end
     end
   end

@@ -34,6 +34,7 @@ module Spotted
           genres: ::Array[String],
           label: String,
           popularity: Integer,
+          published: bool,
           restrictions: Spotted::AlbumRestrictionObject,
           tracks: Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks
         }
@@ -93,6 +94,10 @@ module Spotted
 
         def popularity=: (Integer) -> Integer
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         attr_reader restrictions: Spotted::AlbumRestrictionObject?
 
         def restrictions=: (
@@ -123,6 +128,7 @@ module Spotted
           ?genres: ::Array[String],
           ?label: String,
           ?popularity: Integer,
+          ?published: bool,
           ?restrictions: Spotted::AlbumRestrictionObject,
           ?tracks: Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks,
           ?type: :album
@@ -147,6 +153,7 @@ module Spotted
           genres: ::Array[String],
           label: String,
           popularity: Integer,
+          published: bool,
           restrictions: Spotted::AlbumRestrictionObject,
           tracks: Spotted::Models::AlbumBulkRetrieveResponse::Album::Tracks
         }
@@ -183,7 +190,8 @@ module Spotted
             offset: Integer,
             previous: String?,
             total: Integer,
-            items: ::Array[Spotted::SimplifiedTrackObject]
+            items: ::Array[Spotted::SimplifiedTrackObject],
+            published: bool
           }
 
         class Tracks < Spotted::Internal::Type::BaseModel
@@ -205,6 +213,10 @@ module Spotted
             ::Array[Spotted::SimplifiedTrackObject]
           ) -> ::Array[Spotted::SimplifiedTrackObject]
 
+          attr_reader published: bool?
+
+          def published=: (bool) -> bool
+
           def initialize: (
             href: String,
             limit: Integer,
@@ -212,7 +224,8 @@ module Spotted
             offset: Integer,
             previous: String?,
             total: Integer,
-            ?items: ::Array[Spotted::SimplifiedTrackObject]
+            ?items: ::Array[Spotted::SimplifiedTrackObject],
+            ?published: bool
           ) -> void
 
           def to_hash: -> {
@@ -222,7 +235,8 @@ module Spotted
             offset: Integer,
             previous: String?,
             total: Integer,
-            items: ::Array[Spotted::SimplifiedTrackObject]
+            items: ::Array[Spotted::SimplifiedTrackObject],
+            published: bool
           }
         end
       end

@@ -72,9 +72,10 @@ module Spotted
       end
       attr_writer :owner
 
-      # The playlist's public/private status (if it is added to the user's profile):
-      # `true` the playlist is public, `false` the playlist is private, `null` the
-      # playlist status is not relevant. For more about public/private status, see
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
       # [Working with Playlists](/documentation/web-api/concepts/playlists)
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :published
@@ -155,9 +156,10 @@ module Spotted
         name: nil,
         # The user who owns the playlist
         owner: nil,
-        # The playlist's public/private status (if it is added to the user's profile):
-        # `true` the playlist is public, `false` the playlist is private, `null` the
-        # playlist status is not relevant. For more about public/private status, see
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
         # [Working with Playlists](/documentation/web-api/concepts/playlists)
         published: nil,
         # The version identifier for the current playlist. Can be supplied in other

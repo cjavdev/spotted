@@ -34,6 +34,17 @@ module Spotted
           end
           attr_writer :currently_playing
 
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :published
+
+          sig { params(published: T::Boolean).void }
+          attr_writer :published
+
           # The tracks or episodes in the queue. Can be empty.
           sig do
             returns(
@@ -66,6 +77,7 @@ module Spotted
                   Spotted::TrackObject::OrHash,
                   Spotted::EpisodeObject::OrHash
                 ),
+              published: T::Boolean,
               queue:
                 T::Array[
                   T.any(
@@ -78,6 +90,12 @@ module Spotted
           def self.new(
             # The currently playing track or episode. Can be `null`.
             currently_playing: nil,
+            # The playlist's public/private status (if it should be added to the user's
+            # profile or not): `true` the playlist will be public, `false` the playlist will
+            # be private, `null` the playlist status is not relevant. For more about
+            # public/private status, see
+            # [Working with Playlists](/documentation/web-api/concepts/playlists)
+            published: nil,
             # The tracks or episodes in the queue. Can be empty.
             queue: nil
           )
@@ -88,6 +106,7 @@ module Spotted
               {
                 currently_playing:
                   Spotted::Models::Me::Player::QueueGetResponse::CurrentlyPlaying::Variants,
+                published: T::Boolean,
                 queue:
                   T::Array[
                     Spotted::Models::Me::Player::QueueGetResponse::Queue::Variants

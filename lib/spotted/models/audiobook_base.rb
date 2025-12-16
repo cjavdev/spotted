@@ -124,7 +124,17 @@ module Spotted
       #   @return [String, nil]
       optional :edition, String
 
-      # @!method initialize(id:, authors:, available_markets:, copyrights:, description:, explicit:, external_urls:, href:, html_description:, images:, languages:, media_type:, name:, narrators:, publisher:, total_chapters:, uri:, edition: nil, type: :audiobook)
+      # @!attribute published
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :published, Spotted::Internal::Type::Boolean
+
+      # @!method initialize(id:, authors:, available_markets:, copyrights:, description:, explicit:, external_urls:, href:, html_description:, images:, languages:, media_type:, name:, narrators:, publisher:, total_chapters:, uri:, edition: nil, published: nil, type: :audiobook)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::AudiobookBase} for more details.
       #
@@ -163,6 +173,8 @@ module Spotted
       #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audi
       #
       #   @param edition [String] The edition of the audiobook.
+      #
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       #   @param type [Symbol, :audiobook] The object type.
     end

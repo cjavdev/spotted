@@ -20,6 +20,7 @@ module Spotted
         type: :episode,
         uri: String,
         available_markets: ::Array[String],
+        published: bool,
         restrictions: Spotted::ChapterRestrictionObject,
         resume_point: Spotted::ResumePointObject
       }
@@ -63,6 +64,10 @@ module Spotted
 
       def available_markets=: (::Array[String]) -> ::Array[String]
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader restrictions: Spotted::ChapterRestrictionObject?
 
       def restrictions=: (
@@ -93,6 +98,7 @@ module Spotted
         release_date_precision: Spotted::Models::SimplifiedChapterObject::release_date_precision,
         uri: String,
         ?available_markets: ::Array[String],
+        ?published: bool,
         ?restrictions: Spotted::ChapterRestrictionObject,
         ?resume_point: Spotted::ResumePointObject,
         ?type: :episode
@@ -117,6 +123,7 @@ module Spotted
         type: :episode,
         uri: String,
         available_markets: ::Array[String],
+        published: bool,
         restrictions: Spotted::ChapterRestrictionObject,
         resume_point: Spotted::ResumePointObject
       }

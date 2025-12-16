@@ -21,13 +21,25 @@ module Spotted
         #   @return [Spotted::Models::Me::AudiobookListResponse::Audiobook, nil]
         optional :audiobook, -> { Spotted::Models::Me::AudiobookListResponse::Audiobook }
 
-        # @!method initialize(added_at: nil, audiobook: nil)
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
+        # @!method initialize(added_at: nil, audiobook: nil, published: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Me::AudiobookListResponse} for more details.
         #
         #   @param added_at [Time] The date and time the audiobook was saved
         #
         #   @param audiobook [Spotted::Models::Me::AudiobookListResponse::Audiobook] Information about the audiobook.
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
 
         # @see Spotted::Models::Me::AudiobookListResponse#audiobook
         class Audiobook < Spotted::Models::AudiobookBase
@@ -87,7 +99,17 @@ module Spotted
             #   @return [Array<Spotted::Models::SimplifiedChapterObject>, nil]
             optional :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedChapterObject] }
 
-            # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil)
+            # @!attribute published
+            #   The playlist's public/private status (if it should be added to the user's
+            #   profile or not): `true` the playlist will be public, `false` the playlist will
+            #   be private, `null` the playlist status is not relevant. For more about
+            #   public/private status, see
+            #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+            #
+            #   @return [Boolean, nil]
+            optional :published, Spotted::Internal::Type::Boolean
+
+            # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil, published: nil)
             #   Some parameter documentations has been truncated, see
             #   {Spotted::Models::Me::AudiobookListResponse::Audiobook::Chapters} for more
             #   details.
@@ -107,6 +129,8 @@ module Spotted
             #   @param total [Integer] The total number of items available to return.
             #
             #   @param items [Array<Spotted::Models::SimplifiedChapterObject>]
+            #
+            #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
           end
         end
       end

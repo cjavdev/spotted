@@ -167,6 +167,17 @@ module Spotted
         end
         attr_writer :items
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         sig do
           params(
             href: String,
@@ -178,7 +189,8 @@ module Spotted
             items:
               T::Array[
                 Spotted::Models::SearchQueryResponse::Albums::Item::OrHash
-              ]
+              ],
+            published: T::Boolean
           ).returns(T.attached_class)
         end
         def self.new(
@@ -194,7 +206,13 @@ module Spotted
           previous:,
           # The total number of items available to return.
           total:,
-          items: nil
+          items: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil
         )
         end
 
@@ -208,7 +226,8 @@ module Spotted
               previous: T.nilable(String),
               total: Integer,
               items:
-                T::Array[Spotted::Models::SearchQueryResponse::Albums::Item]
+                T::Array[Spotted::Models::SearchQueryResponse::Albums::Item],
+              published: T::Boolean
             }
           )
         end
@@ -294,6 +313,17 @@ module Spotted
           sig { returns(String) }
           attr_accessor :uri
 
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :published
+
+          sig { params(published: T::Boolean).void }
+          attr_writer :published
+
           # Included in the response when a content restriction is applied.
           sig { returns(T.nilable(Spotted::AlbumRestrictionObject)) }
           attr_reader :restrictions
@@ -319,6 +349,7 @@ module Spotted
                 Spotted::Models::SearchQueryResponse::Albums::Item::ReleaseDatePrecision::OrSymbol,
               total_tracks: Integer,
               uri: String,
+              published: T::Boolean,
               restrictions: Spotted::AlbumRestrictionObject::OrHash,
               type: Symbol
             ).returns(T.attached_class)
@@ -355,6 +386,12 @@ module Spotted
             # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
             # album.
             uri:,
+            # The playlist's public/private status (if it should be added to the user's
+            # profile or not): `true` the playlist will be public, `false` the playlist will
+            # be private, `null` the playlist status is not relevant. For more about
+            # public/private status, see
+            # [Working with Playlists](/documentation/web-api/concepts/playlists)
+            published: nil,
             # Included in the response when a content restriction is applied.
             restrictions: nil,
             # The object type.
@@ -380,6 +417,7 @@ module Spotted
                 total_tracks: Integer,
                 type: Symbol,
                 uri: String,
+                published: T::Boolean,
                 restrictions: Spotted::AlbumRestrictionObject
               }
             )
@@ -508,6 +546,17 @@ module Spotted
         sig { params(items: T::Array[Spotted::ArtistObject::OrHash]).void }
         attr_writer :items
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         sig do
           params(
             href: String,
@@ -516,7 +565,8 @@ module Spotted
             offset: Integer,
             previous: T.nilable(String),
             total: Integer,
-            items: T::Array[Spotted::ArtistObject::OrHash]
+            items: T::Array[Spotted::ArtistObject::OrHash],
+            published: T::Boolean
           ).returns(T.attached_class)
         end
         def self.new(
@@ -532,7 +582,13 @@ module Spotted
           previous:,
           # The total number of items available to return.
           total:,
-          items: nil
+          items: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil
         )
         end
 
@@ -545,7 +601,8 @@ module Spotted
               offset: Integer,
               previous: T.nilable(String),
               total: Integer,
-              items: T::Array[Spotted::ArtistObject]
+              items: T::Array[Spotted::ArtistObject],
+              published: T::Boolean
             }
           )
         end
@@ -592,6 +649,17 @@ module Spotted
         sig { params(items: T::Array[Spotted::AudiobookBase::OrHash]).void }
         attr_writer :items
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         sig do
           params(
             href: String,
@@ -600,7 +668,8 @@ module Spotted
             offset: Integer,
             previous: T.nilable(String),
             total: Integer,
-            items: T::Array[Spotted::AudiobookBase::OrHash]
+            items: T::Array[Spotted::AudiobookBase::OrHash],
+            published: T::Boolean
           ).returns(T.attached_class)
         end
         def self.new(
@@ -616,7 +685,13 @@ module Spotted
           previous:,
           # The total number of items available to return.
           total:,
-          items: nil
+          items: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil
         )
         end
 
@@ -629,7 +704,8 @@ module Spotted
               offset: Integer,
               previous: T.nilable(String),
               total: Integer,
-              items: T::Array[Spotted::AudiobookBase]
+              items: T::Array[Spotted::AudiobookBase],
+              published: T::Boolean
             }
           )
         end
@@ -678,6 +754,17 @@ module Spotted
         end
         attr_writer :items
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         sig do
           params(
             href: String,
@@ -686,7 +773,8 @@ module Spotted
             offset: Integer,
             previous: T.nilable(String),
             total: Integer,
-            items: T::Array[Spotted::SimplifiedEpisodeObject::OrHash]
+            items: T::Array[Spotted::SimplifiedEpisodeObject::OrHash],
+            published: T::Boolean
           ).returns(T.attached_class)
         end
         def self.new(
@@ -702,7 +790,13 @@ module Spotted
           previous:,
           # The total number of items available to return.
           total:,
-          items: nil
+          items: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil
         )
         end
 
@@ -715,7 +809,8 @@ module Spotted
               offset: Integer,
               previous: T.nilable(String),
               total: Integer,
-              items: T::Array[Spotted::SimplifiedEpisodeObject]
+              items: T::Array[Spotted::SimplifiedEpisodeObject],
+              published: T::Boolean
             }
           )
         end
@@ -762,6 +857,17 @@ module Spotted
         sig { params(items: T::Array[Spotted::ShowBase::OrHash]).void }
         attr_writer :items
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         sig do
           params(
             href: String,
@@ -770,7 +876,8 @@ module Spotted
             offset: Integer,
             previous: T.nilable(String),
             total: Integer,
-            items: T::Array[Spotted::ShowBase::OrHash]
+            items: T::Array[Spotted::ShowBase::OrHash],
+            published: T::Boolean
           ).returns(T.attached_class)
         end
         def self.new(
@@ -786,7 +893,13 @@ module Spotted
           previous:,
           # The total number of items available to return.
           total:,
-          items: nil
+          items: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil
         )
         end
 
@@ -799,7 +912,8 @@ module Spotted
               offset: Integer,
               previous: T.nilable(String),
               total: Integer,
-              items: T::Array[Spotted::ShowBase]
+              items: T::Array[Spotted::ShowBase],
+              published: T::Boolean
             }
           )
         end
@@ -846,6 +960,17 @@ module Spotted
         sig { params(items: T::Array[Spotted::TrackObject::OrHash]).void }
         attr_writer :items
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         sig do
           params(
             href: String,
@@ -854,7 +979,8 @@ module Spotted
             offset: Integer,
             previous: T.nilable(String),
             total: Integer,
-            items: T::Array[Spotted::TrackObject::OrHash]
+            items: T::Array[Spotted::TrackObject::OrHash],
+            published: T::Boolean
           ).returns(T.attached_class)
         end
         def self.new(
@@ -870,7 +996,13 @@ module Spotted
           previous:,
           # The total number of items available to return.
           total:,
-          items: nil
+          items: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil
         )
         end
 
@@ -883,7 +1015,8 @@ module Spotted
               offset: Integer,
               previous: T.nilable(String),
               total: Integer,
-              items: T::Array[Spotted::TrackObject]
+              items: T::Array[Spotted::TrackObject],
+              published: T::Boolean
             }
           )
         end

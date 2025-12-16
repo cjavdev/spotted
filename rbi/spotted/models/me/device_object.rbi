@@ -46,6 +46,17 @@ module Spotted
         sig { params(name: String).void }
         attr_writer :name
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         # If this device can be used to set the volume.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :supports_volume
@@ -71,6 +82,7 @@ module Spotted
             is_private_session: T::Boolean,
             is_restricted: T::Boolean,
             name: String,
+            published: T::Boolean,
             supports_volume: T::Boolean,
             type: String,
             volume_percent: T.nilable(Integer)
@@ -92,6 +104,12 @@ module Spotted
           # configure (e.g. \"Loudest speaker\") and some devices have a generic name
           # associated with the manufacturer or device model.
           name: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # If this device can be used to set the volume.
           supports_volume: nil,
           # Device type, such as "computer", "smartphone" or "speaker".
@@ -109,6 +127,7 @@ module Spotted
               is_private_session: T::Boolean,
               is_restricted: T::Boolean,
               name: String,
+              published: T::Boolean,
               supports_volume: T::Boolean,
               type: String,
               volume_percent: T.nilable(Integer)

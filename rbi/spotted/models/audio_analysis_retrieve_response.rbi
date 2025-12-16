@@ -40,6 +40,17 @@ module Spotted
       end
       attr_writer :meta
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       # Sections are defined by large variations in rhythm or timbre, e.g. chorus,
       # verse, bridge, guitar solo, etc. Each section contains its own descriptions of
       # tempo, key, mode, time_signature, and loudness.
@@ -109,6 +120,7 @@ module Spotted
           bars: T::Array[Spotted::TimeIntervalObject::OrHash],
           beats: T::Array[Spotted::TimeIntervalObject::OrHash],
           meta: Spotted::Models::AudioAnalysisRetrieveResponse::Meta::OrHash,
+          published: T::Boolean,
           sections:
             T::Array[
               Spotted::Models::AudioAnalysisRetrieveResponse::Section::OrHash
@@ -130,6 +142,12 @@ module Spotted
         # multiples of tatums.
         beats: nil,
         meta: nil,
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil,
         # Sections are defined by large variations in rhythm or timbre, e.g. chorus,
         # verse, bridge, guitar solo, etc. Each section contains its own descriptions of
         # tempo, key, mode, time_signature, and loudness.
@@ -149,6 +167,7 @@ module Spotted
             bars: T::Array[Spotted::TimeIntervalObject],
             beats: T::Array[Spotted::TimeIntervalObject],
             meta: Spotted::Models::AudioAnalysisRetrieveResponse::Meta,
+            published: T::Boolean,
             sections:
               T::Array[Spotted::Models::AudioAnalysisRetrieveResponse::Section],
             segments:
@@ -347,6 +366,17 @@ module Spotted
         sig { params(mode_confidence: Float).void }
         attr_writer :mode_confidence
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         # The starting point (in seconds) of the section.
         sig { returns(T.nilable(Float)) }
         attr_reader :start
@@ -399,6 +429,7 @@ module Spotted
             mode:
               Spotted::Models::AudioAnalysisRetrieveResponse::Section::Mode::OrFloat,
             mode_confidence: Float,
+            published: T::Boolean,
             start: Float,
             tempo: Float,
             tempo_confidence: Float,
@@ -430,6 +461,12 @@ module Spotted
           mode: nil,
           # The confidence, from 0.0 to 1.0, of the reliability of the `mode`.
           mode_confidence: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # The starting point (in seconds) of the section.
           start: nil,
           # The overall estimated tempo of the section in beats per minute (BPM). In musical
@@ -461,6 +498,7 @@ module Spotted
               mode:
                 Spotted::Models::AudioAnalysisRetrieveResponse::Section::Mode::TaggedFloat,
               mode_confidence: Float,
+              published: T::Boolean,
               start: Float,
               tempo: Float,
               tempo_confidence: Float,
@@ -594,6 +632,17 @@ module Spotted
         sig { params(pitches: T::Array[Float]).void }
         attr_writer :pitches
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         # The starting point (in seconds) of the segment.
         sig { returns(T.nilable(Float)) }
         attr_reader :start
@@ -635,6 +684,7 @@ module Spotted
             loudness_max_time: Float,
             loudness_start: Float,
             pitches: T::Array[Float],
+            published: T::Boolean,
             start: Float,
             timbre: T::Array[Float]
           ).returns(T.attached_class)
@@ -673,6 +723,12 @@ module Spotted
           # the 12 vector indices are a combination of low-power spectrum values at their
           # respective pitch frequencies. ![pitch vector](/assets/audio/Pitch_vector.png)
           pitches: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # The starting point (in seconds) of the segment.
           start: nil,
           # Timbre is the quality of a musical note or sound that distinguishes different
@@ -708,6 +764,7 @@ module Spotted
               loudness_max_time: Float,
               loudness_start: Float,
               pitches: T::Array[Float],
+              published: T::Boolean,
               start: Float,
               timbre: T::Array[Float]
             }

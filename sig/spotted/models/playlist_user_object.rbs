@@ -5,6 +5,7 @@ module Spotted
         id: String,
         external_urls: Spotted::ExternalURLObject,
         href: String,
+        published: bool,
         type: Spotted::Models::PlaylistUserObject::type_,
         uri: String
       }
@@ -24,6 +25,10 @@ module Spotted
 
       def href=: (String) -> String
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader type: Spotted::Models::PlaylistUserObject::type_?
 
       def type=: (
@@ -38,6 +43,7 @@ module Spotted
         ?id: String,
         ?external_urls: Spotted::ExternalURLObject,
         ?href: String,
+        ?published: bool,
         ?type: Spotted::Models::PlaylistUserObject::type_,
         ?uri: String
       ) -> void
@@ -46,6 +52,7 @@ module Spotted
         id: String,
         external_urls: Spotted::ExternalURLObject,
         href: String,
+        published: bool,
         type: Spotted::Models::PlaylistUserObject::type_,
         uri: String
       }

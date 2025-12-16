@@ -8,7 +8,8 @@ module Spotted
         offset: Integer,
         previous: String?,
         total: Integer,
-        items: ::Array[Spotted::SimplifiedPlaylistObject]
+        items: ::Array[Spotted::SimplifiedPlaylistObject],
+        published: bool
       }
 
     class PagingPlaylistObject < Spotted::Internal::Type::BaseModel
@@ -30,6 +31,10 @@ module Spotted
         ::Array[Spotted::SimplifiedPlaylistObject]
       ) -> ::Array[Spotted::SimplifiedPlaylistObject]
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       def initialize: (
         href: String,
         limit: Integer,
@@ -37,7 +42,8 @@ module Spotted
         offset: Integer,
         previous: String?,
         total: Integer,
-        ?items: ::Array[Spotted::SimplifiedPlaylistObject]
+        ?items: ::Array[Spotted::SimplifiedPlaylistObject],
+        ?published: bool
       ) -> void
 
       def to_hash: -> {
@@ -47,7 +53,8 @@ module Spotted
         offset: Integer,
         previous: String?,
         total: Integer,
-        items: ::Array[Spotted::SimplifiedPlaylistObject]
+        items: ::Array[Spotted::SimplifiedPlaylistObject],
+        published: bool
       }
     end
   end

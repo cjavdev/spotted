@@ -24,6 +24,16 @@ module Spotted
       #   @return [Spotted::Models::AudioAnalysisRetrieveResponse::Meta, nil]
       optional :meta, -> { Spotted::Models::AudioAnalysisRetrieveResponse::Meta }
 
+      # @!attribute published
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :published, Spotted::Internal::Type::Boolean
+
       # @!attribute sections
       #   Sections are defined by large variations in rhythm or timbre, e.g. chorus,
       #   verse, bridge, guitar solo, etc. Each section contains its own descriptions of
@@ -52,7 +62,7 @@ module Spotted
       #   @return [Spotted::Models::AudioAnalysisRetrieveResponse::Track, nil]
       optional :track, -> { Spotted::Models::AudioAnalysisRetrieveResponse::Track }
 
-      # @!method initialize(bars: nil, beats: nil, meta: nil, sections: nil, segments: nil, tatums: nil, track: nil)
+      # @!method initialize(bars: nil, beats: nil, meta: nil, published: nil, sections: nil, segments: nil, tatums: nil, track: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::AudioAnalysisRetrieveResponse} for more details.
       #
@@ -61,6 +71,8 @@ module Spotted
       #   @param beats [Array<Spotted::Models::TimeIntervalObject>] The time intervals of beats throughout the track. A beat is the basic time unit
       #
       #   @param meta [Spotted::Models::AudioAnalysisRetrieveResponse::Meta]
+      #
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       #   @param sections [Array<Spotted::Models::AudioAnalysisRetrieveResponse::Section>] Sections are defined by large variations in rhythm or timbre, e.g. chorus, verse
       #
@@ -187,6 +199,16 @@ module Spotted
         #   @return [Float, nil]
         optional :mode_confidence, Float
 
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
         # @!attribute start
         #   The starting point (in seconds) of the section.
         #
@@ -224,7 +246,7 @@ module Spotted
         #   @return [Float, nil]
         optional :time_signature_confidence, Float
 
-        # @!method initialize(confidence: nil, duration: nil, key: nil, key_confidence: nil, loudness: nil, mode: nil, mode_confidence: nil, start: nil, tempo: nil, tempo_confidence: nil, time_signature: nil, time_signature_confidence: nil)
+        # @!method initialize(confidence: nil, duration: nil, key: nil, key_confidence: nil, loudness: nil, mode: nil, mode_confidence: nil, published: nil, start: nil, tempo: nil, tempo_confidence: nil, time_signature: nil, time_signature_confidence: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::AudioAnalysisRetrieveResponse::Section} for more details.
         #
@@ -241,6 +263,8 @@ module Spotted
         #   @param mode [Float, Spotted::Models::AudioAnalysisRetrieveResponse::Section::Mode] Indicates the modality (major or minor) of a section, the type of scale from whi
         #
         #   @param mode_confidence [Float] The confidence, from 0.0 to 1.0, of the reliability of the `mode`.
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param start [Float] The starting point (in seconds) of the section.
         #
@@ -333,6 +357,16 @@ module Spotted
         #   @return [Array<Float>, nil]
         optional :pitches, Spotted::Internal::Type::ArrayOf[Float]
 
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
         # @!attribute start
         #   The starting point (in seconds) of the segment.
         #
@@ -363,7 +397,7 @@ module Spotted
         #   @return [Array<Float>, nil]
         optional :timbre, Spotted::Internal::Type::ArrayOf[Float]
 
-        # @!method initialize(confidence: nil, duration: nil, loudness_end: nil, loudness_max: nil, loudness_max_time: nil, loudness_start: nil, pitches: nil, start: nil, timbre: nil)
+        # @!method initialize(confidence: nil, duration: nil, loudness_end: nil, loudness_max: nil, loudness_max_time: nil, loudness_start: nil, pitches: nil, published: nil, start: nil, timbre: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::AudioAnalysisRetrieveResponse::Segment} for more details.
         #
@@ -380,6 +414,8 @@ module Spotted
         #   @param loudness_start [Float] The onset loudness of the segment in decibels (dB). Combined with `loudness_max`
         #
         #   @param pitches [Array<Float>] Pitch content is given by a “chroma” vector, corresponding to the 12 pitch class
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param start [Float] The starting point (in seconds) of the segment.
         #

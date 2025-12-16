@@ -24,13 +24,23 @@ module Spotted
       #   @return [Boolean, nil]
       optional :is_local, Spotted::Internal::Type::Boolean
 
+      # @!attribute published
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :published, Spotted::Internal::Type::Boolean
+
       # @!attribute track
       #   Information about the track or episode.
       #
       #   @return [Spotted::Models::TrackObject, Spotted::Models::EpisodeObject, nil]
       optional :track, union: -> { Spotted::PlaylistTrackObject::Track }
 
-      # @!method initialize(added_at: nil, added_by: nil, is_local: nil, track: nil)
+      # @!method initialize(added_at: nil, added_by: nil, is_local: nil, published: nil, track: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::PlaylistTrackObject} for more details.
       #
@@ -41,6 +51,8 @@ module Spotted
       #   playli
       #
       #   @param is_local [Boolean] Whether this track or episode is a [local file](/documentation/web-api/concepts/
+      #
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       #   @param track [Spotted::Models::TrackObject, Spotted::Models::EpisodeObject] Information about the track or episode.
 

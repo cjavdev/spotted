@@ -15,6 +15,7 @@ module Spotted
         linked_from: Spotted::LinkedTrackObject,
         name: String,
         preview_url: String?,
+        published: bool,
         restrictions: Spotted::TrackRestrictionObject,
         track_number: Integer,
         type: String,
@@ -78,6 +79,10 @@ module Spotted
 
       attr_accessor preview_url: String?
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader restrictions: Spotted::TrackRestrictionObject?
 
       def restrictions=: (
@@ -110,6 +115,7 @@ module Spotted
         ?linked_from: Spotted::LinkedTrackObject,
         ?name: String,
         ?preview_url: String?,
+        ?published: bool,
         ?restrictions: Spotted::TrackRestrictionObject,
         ?track_number: Integer,
         ?type: String,
@@ -130,6 +136,7 @@ module Spotted
         linked_from: Spotted::LinkedTrackObject,
         name: String,
         preview_url: String?,
+        published: bool,
         restrictions: Spotted::TrackRestrictionObject,
         track_number: Integer,
         type: String,

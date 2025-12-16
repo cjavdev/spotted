@@ -37,6 +37,17 @@ module Spotted
       sig { params(name: String).void }
       attr_writer :name
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       # The object type.
       sig do
         returns(T.nilable(Spotted::SimplifiedArtistObject::Type::TaggedSymbol))
@@ -60,6 +71,7 @@ module Spotted
           external_urls: Spotted::ExternalURLObject::OrHash,
           href: String,
           name: String,
+          published: T::Boolean,
           type: Spotted::SimplifiedArtistObject::Type::OrSymbol,
           uri: String
         ).returns(T.attached_class)
@@ -74,6 +86,12 @@ module Spotted
         href: nil,
         # The name of the artist.
         name: nil,
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil,
         # The object type.
         type: nil,
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -89,6 +107,7 @@ module Spotted
             external_urls: Spotted::ExternalURLObject,
             href: String,
             name: String,
+            published: T::Boolean,
             type: Spotted::SimplifiedArtistObject::Type::TaggedSymbol,
             uri: String
           }

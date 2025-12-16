@@ -1,6 +1,7 @@
 module Spotted
   module Models
-    type external_id_object = { ean: String, isrc: String, upc: String }
+    type external_id_object =
+      { ean: String, isrc: String, published: bool, upc: String }
 
     class ExternalIDObject < Spotted::Internal::Type::BaseModel
       attr_reader ean: String?
@@ -11,13 +12,27 @@ module Spotted
 
       def isrc=: (String) -> String
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader upc: String?
 
       def upc=: (String) -> String
 
-      def initialize: (?ean: String, ?isrc: String, ?upc: String) -> void
+      def initialize: (
+        ?ean: String,
+        ?isrc: String,
+        ?published: bool,
+        ?upc: String
+      ) -> void
 
-      def to_hash: -> { ean: String, isrc: String, upc: String }
+      def to_hash: -> {
+        ean: String,
+        isrc: String,
+        published: bool,
+        upc: String
+      }
     end
   end
 end

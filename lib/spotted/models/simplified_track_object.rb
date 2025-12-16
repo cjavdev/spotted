@@ -93,6 +93,16 @@ module Spotted
       #   @return [String, nil]
       optional :preview_url, String, nil?: true
 
+      # @!attribute published
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :published, Spotted::Internal::Type::Boolean
+
       # @!attribute restrictions
       #   Included in the response when a content restriction is applied.
       #
@@ -119,7 +129,7 @@ module Spotted
       #   @return [String, nil]
       optional :uri, String
 
-      # @!method initialize(id: nil, artists: nil, available_markets: nil, disc_number: nil, duration_ms: nil, explicit: nil, external_urls: nil, href: nil, is_local: nil, is_playable: nil, linked_from: nil, name: nil, preview_url: nil, restrictions: nil, track_number: nil, type: nil, uri: nil)
+      # @!method initialize(id: nil, artists: nil, available_markets: nil, disc_number: nil, duration_ms: nil, explicit: nil, external_urls: nil, href: nil, is_local: nil, is_playable: nil, linked_from: nil, name: nil, preview_url: nil, published: nil, restrictions: nil, track_number: nil, type: nil, uri: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::SimplifiedTrackObject} for more details.
       #
@@ -148,6 +158,8 @@ module Spotted
       #   @param name [String] The name of the track.
       #
       #   @param preview_url [String, nil] A URL to a 30 second preview (MP3 format) of the track.
+      #
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       #   @param restrictions [Spotted::Models::TrackRestrictionObject] Included in the response when a content restriction is applied.
       #

@@ -83,6 +83,17 @@ module Spotted
       sig { returns(String) }
       attr_accessor :uri
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       sig do
         params(
           id: String,
@@ -101,6 +112,7 @@ module Spotted
           publisher: String,
           total_episodes: Integer,
           uri: String,
+          published: T::Boolean,
           type: Symbol
         ).returns(T.attached_class)
       end
@@ -143,6 +155,12 @@ module Spotted
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
         # show.
         uri:,
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil,
         # The object type.
         type: :show
       )
@@ -167,7 +185,8 @@ module Spotted
             publisher: String,
             total_episodes: Integer,
             type: Symbol,
-            uri: String
+            uri: String,
+            published: T::Boolean
           }
         )
       end

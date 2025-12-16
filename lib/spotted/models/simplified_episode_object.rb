@@ -124,6 +124,16 @@ module Spotted
       #   @return [String, nil]
       optional :language, String
 
+      # @!attribute published
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :published, Spotted::Internal::Type::Boolean
+
       # @!attribute restrictions
       #   Included in the response when a content restriction is applied.
       #
@@ -137,7 +147,7 @@ module Spotted
       #   @return [Spotted::Models::ResumePointObject, nil]
       optional :resume_point, -> { Spotted::ResumePointObject }
 
-      # @!method initialize(id:, audio_preview_url:, description:, duration_ms:, explicit:, external_urls:, href:, html_description:, images:, is_externally_hosted:, is_playable:, languages:, name:, release_date:, release_date_precision:, uri:, language: nil, restrictions: nil, resume_point: nil, type: :episode)
+      # @!method initialize(id:, audio_preview_url:, description:, duration_ms:, explicit:, external_urls:, href:, html_description:, images:, is_externally_hosted:, is_playable:, languages:, name:, release_date:, release_date_precision:, uri:, language: nil, published: nil, restrictions: nil, resume_point: nil, type: :episode)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::SimplifiedEpisodeObject} for more details.
       #
@@ -174,6 +184,8 @@ module Spotted
       #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the epis
       #
       #   @param language [String] The language used in the episode, identified by a [ISO 639](https://en.wikipedia
+      #
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       #   @param restrictions [Spotted::Models::EpisodeRestrictionObject] Included in the response when a content restriction is applied.
       #

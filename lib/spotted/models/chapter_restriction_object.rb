@@ -3,6 +3,16 @@
 module Spotted
   module Models
     class ChapterRestrictionObject < Spotted::Internal::Type::BaseModel
+      # @!attribute published
+      #   The playlist's public/private status (if it should be added to the user's
+      #   profile or not): `true` the playlist will be public, `false` the playlist will
+      #   be private, `null` the playlist status is not relevant. For more about
+      #   public/private status, see
+      #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+      #
+      #   @return [Boolean, nil]
+      optional :published, Spotted::Internal::Type::Boolean
+
       # @!attribute reason
       #   The reason for the restriction. Supported values:
       #
@@ -19,9 +29,11 @@ module Spotted
       #   @return [String, nil]
       optional :reason, String
 
-      # @!method initialize(reason: nil)
+      # @!method initialize(published: nil, reason: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::ChapterRestrictionObject} for more details.
+      #
+      #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
       #   @param reason [String] The reason for the restriction. Supported values:
     end

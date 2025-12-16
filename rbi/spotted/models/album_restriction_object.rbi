@@ -8,6 +8,17 @@ module Spotted
           T.any(Spotted::AlbumRestrictionObject, Spotted::Internal::AnyHash)
         end
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       # The reason for the restriction. Albums may be restricted if the content is not
       # available in a given market, to the user's subscription type, or when the user's
       # account is set to not play explicit content. Additional reasons may be added in
@@ -26,10 +37,17 @@ module Spotted
 
       sig do
         params(
+          published: T::Boolean,
           reason: Spotted::AlbumRestrictionObject::Reason::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil,
         # The reason for the restriction. Albums may be restricted if the content is not
         # available in a given market, to the user's subscription type, or when the user's
         # account is set to not play explicit content. Additional reasons may be added in
@@ -40,7 +58,10 @@ module Spotted
 
       sig do
         override.returns(
-          { reason: Spotted::AlbumRestrictionObject::Reason::TaggedSymbol }
+          {
+            published: T::Boolean,
+            reason: Spotted::AlbumRestrictionObject::Reason::TaggedSymbol
+          }
         )
       end
       def to_hash

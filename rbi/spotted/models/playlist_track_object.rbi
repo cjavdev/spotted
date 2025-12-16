@@ -32,6 +32,17 @@ module Spotted
       sig { params(is_local: T::Boolean).void }
       attr_writer :is_local
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       # Information about the track or episode.
       sig { returns(T.nilable(Spotted::PlaylistTrackObject::Track::Variants)) }
       attr_reader :track
@@ -49,6 +60,7 @@ module Spotted
           added_at: Time,
           added_by: Spotted::PlaylistUserObject::OrHash,
           is_local: T::Boolean,
+          published: T::Boolean,
           track:
             T.any(Spotted::TrackObject::OrHash, Spotted::EpisodeObject::OrHash)
         ).returns(T.attached_class)
@@ -63,6 +75,12 @@ module Spotted
         # Whether this track or episode is a
         # [local file](/documentation/web-api/concepts/playlists/#local-files) or not.
         is_local: nil,
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil,
         # Information about the track or episode.
         track: nil
       )
@@ -74,6 +92,7 @@ module Spotted
             added_at: Time,
             added_by: Spotted::PlaylistUserObject,
             is_local: T::Boolean,
+            published: T::Boolean,
             track: Spotted::PlaylistTrackObject::Track::Variants
           }
         )

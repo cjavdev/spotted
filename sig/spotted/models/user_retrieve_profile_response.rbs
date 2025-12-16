@@ -8,6 +8,7 @@ module Spotted
         followers: Spotted::FollowersObject,
         href: String,
         images: ::Array[Spotted::ImageObject],
+        published: bool,
         type: Spotted::Models::UserRetrieveProfileResponse::type_,
         uri: String
       }
@@ -39,6 +40,10 @@ module Spotted
         ::Array[Spotted::ImageObject]
       ) -> ::Array[Spotted::ImageObject]
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader type: Spotted::Models::UserRetrieveProfileResponse::type_?
 
       def type=: (
@@ -56,6 +61,7 @@ module Spotted
         ?followers: Spotted::FollowersObject,
         ?href: String,
         ?images: ::Array[Spotted::ImageObject],
+        ?published: bool,
         ?type: Spotted::Models::UserRetrieveProfileResponse::type_,
         ?uri: String
       ) -> void
@@ -67,6 +73,7 @@ module Spotted
         followers: Spotted::FollowersObject,
         href: String,
         images: ::Array[Spotted::ImageObject],
+        published: bool,
         type: Spotted::Models::UserRetrieveProfileResponse::type_,
         uri: String
       }

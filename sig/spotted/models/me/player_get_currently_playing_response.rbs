@@ -9,6 +9,7 @@ module Spotted
           is_playing: bool,
           item: Spotted::Models::Me::PlayerGetCurrentlyPlayingResponse::item,
           progress_ms: Integer,
+          published: bool,
           timestamp: Integer
         }
 
@@ -41,6 +42,10 @@ module Spotted
 
         def progress_ms=: (Integer) -> Integer
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         attr_reader timestamp: Integer?
 
         def timestamp=: (Integer) -> Integer
@@ -52,6 +57,7 @@ module Spotted
           ?is_playing: bool,
           ?item: Spotted::Models::Me::PlayerGetCurrentlyPlayingResponse::item,
           ?progress_ms: Integer,
+          ?published: bool,
           ?timestamp: Integer
         ) -> void
 
@@ -62,6 +68,7 @@ module Spotted
           is_playing: bool,
           item: Spotted::Models::Me::PlayerGetCurrentlyPlayingResponse::item,
           progress_ms: Integer,
+          published: bool,
           timestamp: Integer
         }
 
@@ -69,6 +76,7 @@ module Spotted
           {
             interrupting_playback: bool,
             pausing: bool,
+            published: bool,
             resuming: bool,
             seeking: bool,
             skipping_next: bool,
@@ -87,6 +95,10 @@ module Spotted
           attr_reader pausing: bool?
 
           def pausing=: (bool) -> bool
+
+          attr_reader published: bool?
+
+          def published=: (bool) -> bool
 
           attr_reader resuming: bool?
 
@@ -123,6 +135,7 @@ module Spotted
           def initialize: (
             ?interrupting_playback: bool,
             ?pausing: bool,
+            ?published: bool,
             ?resuming: bool,
             ?seeking: bool,
             ?skipping_next: bool,
@@ -136,6 +149,7 @@ module Spotted
           def to_hash: -> {
             interrupting_playback: bool,
             pausing: bool,
+            published: bool,
             resuming: bool,
             seeking: bool,
             skipping_next: bool,

@@ -12,6 +12,7 @@ module Spotted
         href: String,
         images: ::Array[Spotted::ImageObject],
         product: String,
+        published: bool,
         type: String,
         uri: String
       }
@@ -63,6 +64,10 @@ module Spotted
 
       def product=: (String) -> String
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       attr_reader type: String?
 
       def type=: (String) -> String
@@ -82,6 +87,7 @@ module Spotted
         ?href: String,
         ?images: ::Array[Spotted::ImageObject],
         ?product: String,
+        ?published: bool,
         ?type: String,
         ?uri: String
       ) -> void
@@ -97,11 +103,13 @@ module Spotted
         href: String,
         images: ::Array[Spotted::ImageObject],
         product: String,
+        published: bool,
         type: String,
         uri: String
       }
 
-      type explicit_content = { filter_enabled: bool, filter_locked: bool }
+      type explicit_content =
+        { filter_enabled: bool, filter_locked: bool, published: bool }
 
       class ExplicitContent < Spotted::Internal::Type::BaseModel
         attr_reader filter_enabled: bool?
@@ -112,9 +120,21 @@ module Spotted
 
         def filter_locked=: (bool) -> bool
 
-        def initialize: (?filter_enabled: bool, ?filter_locked: bool) -> void
+        attr_reader published: bool?
 
-        def to_hash: -> { filter_enabled: bool, filter_locked: bool }
+        def published=: (bool) -> bool
+
+        def initialize: (
+          ?filter_enabled: bool,
+          ?filter_locked: bool,
+          ?published: bool
+        ) -> void
+
+        def to_hash: -> {
+          filter_enabled: bool,
+          filter_locked: bool,
+          published: bool
+        }
       end
     end
   end

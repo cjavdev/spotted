@@ -89,6 +89,17 @@ module Spotted
       sig { returns(String) }
       attr_accessor :uri
 
+      # The playlist's public/private status (if it should be added to the user's
+      # profile or not): `true` the playlist will be public, `false` the playlist will
+      # be private, `null` the playlist status is not relevant. For more about
+      # public/private status, see
+      # [Working with Playlists](/documentation/web-api/concepts/playlists)
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :published
+
+      sig { params(published: T::Boolean).void }
+      attr_writer :published
+
       # Included in the response when a content restriction is applied.
       sig { returns(T.nilable(Spotted::AlbumRestrictionObject)) }
       attr_reader :restrictions
@@ -114,6 +125,7 @@ module Spotted
             Spotted::Models::ArtistListAlbumsResponse::ReleaseDatePrecision::OrSymbol,
           total_tracks: Integer,
           uri: String,
+          published: T::Boolean,
           restrictions: Spotted::AlbumRestrictionObject::OrHash,
           type: Symbol
         ).returns(T.attached_class)
@@ -152,6 +164,12 @@ module Spotted
         # The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the
         # album.
         uri:,
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        published: nil,
         # Included in the response when a content restriction is applied.
         restrictions: nil,
         # The object type.
@@ -179,6 +197,7 @@ module Spotted
             total_tracks: Integer,
             type: Symbol,
             uri: String,
+            published: T::Boolean,
             restrictions: Spotted::AlbumRestrictionObject
           }
         )

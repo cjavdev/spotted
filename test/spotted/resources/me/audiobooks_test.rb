@@ -22,7 +22,8 @@ class Spotted::Test::Resources::Me::AudiobooksTest < Spotted::Test::ResourceTest
     assert_pattern do
       row => {
         added_at: Time | nil,
-        audiobook: Spotted::Models::Me::AudiobookListResponse::Audiobook | nil
+        audiobook: Spotted::Models::Me::AudiobookListResponse::Audiobook | nil,
+        published: Spotted::Internal::Type::Boolean | nil
       }
     end
   end

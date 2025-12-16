@@ -39,6 +39,16 @@ module Spotted
         #   @return [String, nil]
         optional :name, String
 
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
         # @!attribute supports_volume
         #   If this device can be used to set the volume.
         #
@@ -57,7 +67,7 @@ module Spotted
         #   @return [Integer, nil]
         optional :volume_percent, Integer, nil?: true
 
-        # @!method initialize(id: nil, is_active: nil, is_private_session: nil, is_restricted: nil, name: nil, supports_volume: nil, type: nil, volume_percent: nil)
+        # @!method initialize(id: nil, is_active: nil, is_private_session: nil, is_restricted: nil, name: nil, published: nil, supports_volume: nil, type: nil, volume_percent: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Me::DeviceObject} for more details.
         #
@@ -70,6 +80,8 @@ module Spotted
         #   @param is_restricted [Boolean] Whether controlling this device is restricted. At present if this is "true" then
         #
         #   @param name [String] A human-readable name for the device. Some devices have a name that the user can
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param supports_volume [Boolean] If this device can be used to set the volume.
         #

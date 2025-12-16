@@ -1,7 +1,11 @@
 module Spotted
   module Models
     type browse_get_featured_playlists_response =
-      { message: String, playlists: Spotted::PagingPlaylistObject }
+      {
+        message: String,
+        playlists: Spotted::PagingPlaylistObject,
+        published: bool
+      }
 
     class BrowseGetFeaturedPlaylistsResponse < Spotted::Internal::Type::BaseModel
       attr_reader message: String?
@@ -14,14 +18,20 @@ module Spotted
         Spotted::PagingPlaylistObject
       ) -> Spotted::PagingPlaylistObject
 
+      attr_reader published: bool?
+
+      def published=: (bool) -> bool
+
       def initialize: (
         ?message: String,
-        ?playlists: Spotted::PagingPlaylistObject
+        ?playlists: Spotted::PagingPlaylistObject,
+        ?published: bool
       ) -> void
 
       def to_hash: -> {
         message: String,
-        playlists: Spotted::PagingPlaylistObject
+        playlists: Spotted::PagingPlaylistObject,
+        published: bool
       }
     end
   end

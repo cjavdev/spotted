@@ -139,6 +139,16 @@ module Spotted
         #   @return [Array<String>, nil]
         optional :available_markets, Spotted::Internal::Type::ArrayOf[String]
 
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
         # @!attribute restrictions
         #   Included in the response when a content restriction is applied.
         #
@@ -152,7 +162,7 @@ module Spotted
         #   @return [Spotted::Models::ResumePointObject, nil]
         optional :resume_point, -> { Spotted::ResumePointObject }
 
-        # @!method initialize(id:, audio_preview_url:, audiobook:, chapter_number:, description:, duration_ms:, explicit:, external_urls:, href:, html_description:, images:, is_playable:, languages:, name:, release_date:, release_date_precision:, uri:, available_markets: nil, restrictions: nil, resume_point: nil, type: :episode)
+        # @!method initialize(id:, audio_preview_url:, audiobook:, chapter_number:, description:, duration_ms:, explicit:, external_urls:, href:, html_description:, images:, is_playable:, languages:, name:, release_date:, release_date_precision:, uri:, available_markets: nil, published: nil, restrictions: nil, resume_point: nil, type: :episode)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::ChapterBulkRetrieveResponse::Chapter} for more details.
         #
@@ -191,6 +201,8 @@ module Spotted
         #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the chap
         #
         #   @param available_markets [Array<String>] A list of the countries in which the chapter can be played, identified by their
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param restrictions [Spotted::Models::ChapterRestrictionObject] Included in the response when a content restriction is applied.
         #

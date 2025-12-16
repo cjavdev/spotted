@@ -20,6 +20,7 @@ class Spotted::Test::Resources::UsersTest < Spotted::Test::ResourceTest
         followers: Spotted::FollowersObject | nil,
         href: String | nil,
         images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
+        published: Spotted::Internal::Type::Boolean | nil,
         type: Spotted::Models::UserRetrieveProfileResponse::Type | nil,
         uri: String | nil
       }
