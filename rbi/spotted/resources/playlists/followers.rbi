@@ -28,7 +28,6 @@ module Spotted
         sig do
           params(
             playlist_id: String,
-            public: T::Boolean,
             published: T::Boolean,
             request_options: Spotted::RequestOptions::OrHash
           ).void
@@ -37,11 +36,6 @@ module Spotted
           # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
           # playlist.
           playlist_id,
-          # Defaults to `true`. If `true` the playlist will be included in user's public
-          # playlists (added to profile), if `false` it will remain private. For more about
-          # public/private status, see
-          # [Working with Playlists](/documentation/web-api/concepts/playlists)
-          public: nil,
           # The playlist's public/private status (if it should be added to the user's
           # profile or not): `true` the playlist will be public, `false` the playlist will
           # be private, `null` the playlist status is not relevant. For more about

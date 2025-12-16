@@ -11,7 +11,7 @@ module Spotted
         # [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).) Each
         # user is generally limited to a maximum of 11000 playlists.
         #
-        # @overload create(user_id, name:, collaborative: nil, description: nil, public: nil, published: nil, request_options: {})
+        # @overload create(user_id, name:, collaborative: nil, description: nil, published: nil, request_options: {})
         #
         # @param user_id [String] The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
         #
@@ -21,8 +21,6 @@ module Spotted
         # to
         #
         # @param description [String] value for playlist description as displayed in Spotify Clients and in the Web AP
-        #
-        # @param public [Boolean] Defaults to `true`. The playlist's public/private status (if it should be added
         #
         # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #

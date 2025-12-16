@@ -10,7 +10,6 @@ module Spotted
 
         def follow: (
           String playlist_id,
-          ?public: bool,
           ?published: bool,
           ?request_options: Spotted::request_opts
         ) -> nil

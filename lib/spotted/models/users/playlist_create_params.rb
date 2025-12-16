@@ -33,18 +33,6 @@ module Spotted
         #   @return [String, nil]
         optional :description, String
 
-        # @!attribute public
-        #   Defaults to `true`. The playlist's public/private status (if it should be added
-        #   to the user's profile or not): `true` the playlist will be public, `false` the
-        #   playlist will be private. To be able to create private playlists, the user must
-        #   have granted the `playlist-modify-private`
-        #   [scope](/documentation/web-api/concepts/scopes/#list-of-scopes). For more about
-        #   public/private status, see
-        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
-        #
-        #   @return [Boolean, nil]
-        optional :public, Spotted::Internal::Type::Boolean
-
         # @!attribute published
         #   The playlist's public/private status (if it should be added to the user's
         #   profile or not): `true` the playlist will be public, `false` the playlist will
@@ -55,7 +43,7 @@ module Spotted
         #   @return [Boolean, nil]
         optional :published, Spotted::Internal::Type::Boolean
 
-        # @!method initialize(name:, collaborative: nil, description: nil, public: nil, published: nil, request_options: {})
+        # @!method initialize(name:, collaborative: nil, description: nil, published: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Users::PlaylistCreateParams} for more details.
         #
@@ -65,8 +53,6 @@ module Spotted
         #   to
         #
         #   @param description [String] value for playlist description as displayed in Spotify Clients and in the Web AP
-        #
-        #   @param public [Boolean] Defaults to `true`. The playlist's public/private status (if it should be added
         #
         #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
