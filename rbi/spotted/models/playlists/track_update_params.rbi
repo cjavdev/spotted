@@ -27,6 +27,17 @@ module Spotted
         sig { params(insert_before: Integer).void }
         attr_writer :insert_before
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         # The amount of items to be reordered. Defaults to 1 if not set.<br/>The range of
         # items to be reordered begins from the _range_start_ position, and includes the
         # _range_length_ subsequent items.<br/>Example:<br/>To move the items at index
@@ -61,6 +72,7 @@ module Spotted
         sig do
           params(
             insert_before: Integer,
+            published: T::Boolean,
             range_length: Integer,
             range_start: Integer,
             snapshot_id: String,
@@ -76,6 +88,12 @@ module Spotted
           # to 10.<br/>To reorder the last item in a playlist with 10 items to the start of
           # the playlist, set _range_start_ to 9, and _insert_before_ to 0.
           insert_before: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           # The amount of items to be reordered. Defaults to 1 if not set.<br/>The range of
           # items to be reordered begins from the _range_start_ position, and includes the
           # _range_length_ subsequent items.<br/>Example:<br/>To move the items at index
@@ -95,6 +113,7 @@ module Spotted
           override.returns(
             {
               insert_before: Integer,
+              published: T::Boolean,
               range_length: Integer,
               range_start: Integer,
               snapshot_id: String,

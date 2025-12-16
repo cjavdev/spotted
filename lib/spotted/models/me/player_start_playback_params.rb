@@ -40,6 +40,16 @@ module Spotted
         #   @return [Integer, nil]
         optional :position_ms, Integer
 
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
         # @!attribute uris
         #   Optional. A JSON array of the Spotify track URIs to play. For example:
         #   `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"]}`
@@ -47,7 +57,7 @@ module Spotted
         #   @return [Array<String>, nil]
         optional :uris, Spotted::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(device_id: nil, context_uri: nil, offset: nil, position_ms: nil, uris: nil, request_options: {})
+        # @!method initialize(device_id: nil, context_uri: nil, offset: nil, position_ms: nil, published: nil, uris: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Me::PlayerStartPlaybackParams} for more details.
         #
@@ -58,6 +68,8 @@ module Spotted
         #   @param offset [Hash{Symbol=>Object}] Optional. Indicates from where in the context playback should start. Only availa
         #
         #   @param position_ms [Integer] Indicates from what position to start playback. Must be a positive number. Passi
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param uris [Array<String>] Optional. A JSON array of the Spotify track URIs to play.
         #

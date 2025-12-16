@@ -2,7 +2,13 @@ module Spotted
   module Models
     module Users
       type playlist_create_params =
-        { name: String, collaborative: bool, description: String, public: bool }
+        {
+          name: String,
+          collaborative: bool,
+          description: String,
+          public: bool,
+          published: bool
+        }
         & Spotted::Internal::Type::request_parameters
 
       class PlaylistCreateParams < Spotted::Internal::Type::BaseModel
@@ -23,11 +29,16 @@ module Spotted
 
         def public=: (bool) -> bool
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         def initialize: (
           name: String,
           ?collaborative: bool,
           ?description: String,
           ?public: bool,
+          ?published: bool,
           ?request_options: Spotted::request_opts
         ) -> void
 
@@ -36,6 +47,7 @@ module Spotted
           collaborative: bool,
           description: String,
           public: bool,
+          published: bool,
           request_options: Spotted::RequestOptions
         }
       end

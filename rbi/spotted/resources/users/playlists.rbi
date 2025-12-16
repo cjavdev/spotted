@@ -14,6 +14,7 @@ module Spotted
             collaborative: T::Boolean,
             description: String,
             public: T::Boolean,
+            published: T::Boolean,
             request_options: Spotted::RequestOptions::OrHash
           ).returns(Spotted::Models::Users::PlaylistCreateResponse)
         end
@@ -41,6 +42,12 @@ module Spotted
           # public/private status, see
           # [Working with Playlists](/documentation/web-api/concepts/playlists)
           public: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           request_options: {}
         )
         end

@@ -4,6 +4,7 @@ module Spotted
       type track_save_params =
         {
           ids: ::Array[String],
+          published: bool,
           timestamped_ids: ::Array[Spotted::Me::TrackSaveParams::TimestampedID]
         }
         & Spotted::Internal::Type::request_parameters
@@ -14,6 +15,10 @@ module Spotted
 
         attr_accessor ids: ::Array[String]
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         attr_reader timestamped_ids: ::Array[Spotted::Me::TrackSaveParams::TimestampedID]?
 
         def timestamped_ids=: (
@@ -22,12 +27,14 @@ module Spotted
 
         def initialize: (
           ids: ::Array[String],
+          ?published: bool,
           ?timestamped_ids: ::Array[Spotted::Me::TrackSaveParams::TimestampedID],
           ?request_options: Spotted::request_opts
         ) -> void
 
         def to_hash: -> {
           ids: ::Array[String],
+          published: bool,
           timestamped_ids: ::Array[Spotted::Me::TrackSaveParams::TimestampedID],
           request_options: Spotted::RequestOptions
         }

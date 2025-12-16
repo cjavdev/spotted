@@ -74,9 +74,11 @@ module Spotted
         # feedback that you have, or issues that you discover, in our
         # [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         #
-        # @overload remove(ids: nil, request_options: {})
+        # @overload remove(ids: nil, published: nil, request_options: {})
         #
         # @param ids [Array<String>] A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-i
+        #
+        # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -102,9 +104,11 @@ module Spotted
         # you have, or issues that you discover, in our
         # [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
         #
-        # @overload save(ids:, request_options: {})
+        # @overload save(ids:, published: nil, request_options: {})
         #
         # @param ids [Array<String>] A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-i
+        #
+        # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #

@@ -2,7 +2,8 @@ module Spotted
   module Models
     module Me
       type following_follow_params =
-        { ids: ::Array[String] } & Spotted::Internal::Type::request_parameters
+        { ids: ::Array[String], published: bool }
+        & Spotted::Internal::Type::request_parameters
 
       class FollowingFollowParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
@@ -10,13 +11,19 @@ module Spotted
 
         attr_accessor ids: ::Array[String]
 
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
+
         def initialize: (
           ids: ::Array[String],
+          ?published: bool,
           ?request_options: Spotted::request_opts
         ) -> void
 
         def to_hash: -> {
           ids: ::Array[String],
+          published: bool,
           request_options: Spotted::RequestOptions
         }
       end

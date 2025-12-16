@@ -16,11 +16,13 @@ module Spotted
 
         def remove: (
           ?ids: ::Array[String],
+          ?published: bool,
           ?request_options: Spotted::request_opts
         ) -> nil
 
         def save: (
           ids: ::Array[String],
+          ?published: bool,
           ?timestamped_ids: ::Array[Spotted::Me::TrackSaveParams::TimestampedID],
           ?request_options: Spotted::request_opts
         ) -> nil

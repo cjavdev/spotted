@@ -19,6 +19,16 @@ module Spotted
         #   @return [Array<String>]
         required :ids, Spotted::Internal::Type::ArrayOf[String]
 
+        # @!attribute published
+        #   The playlist's public/private status (if it should be added to the user's
+        #   profile or not): `true` the playlist will be public, `false` the playlist will
+        #   be private, `null` the playlist status is not relevant. For more about
+        #   public/private status, see
+        #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+        #
+        #   @return [Boolean, nil]
+        optional :published, Spotted::Internal::Type::Boolean
+
         # @!attribute timestamped_ids
         #   A JSON array of objects containing track IDs with their corresponding
         #   timestamps. Each object must include a track ID and an `added_at` timestamp.
@@ -32,11 +42,13 @@ module Spotted
         optional :timestamped_ids,
                  -> { Spotted::Internal::Type::ArrayOf[Spotted::Me::TrackSaveParams::TimestampedID] }
 
-        # @!method initialize(ids:, timestamped_ids: nil, request_options: {})
+        # @!method initialize(ids:, published: nil, timestamped_ids: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Me::TrackSaveParams} for more details.
         #
         #   @param ids [Array<String>] A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-i
+        #
+        #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         #   @param timestamped_ids [Array<Spotted::Models::Me::TrackSaveParams::TimestampedID>] A JSON array of objects containing track IDs with their corresponding timestamps
         #

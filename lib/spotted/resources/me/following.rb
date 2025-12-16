@@ -67,9 +67,11 @@ module Spotted
         # Add the current user as a follower of one or more artists or other Spotify
         # users.
         #
-        # @overload follow(ids:, request_options: {})
+        # @overload follow(ids:, published: nil, request_options: {})
         #
         # @param ids [Array<String>] A JSON array of the artist or user [Spotify IDs](/documentation/web-api/concepts
+        #
+        # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -87,9 +89,11 @@ module Spotted
         # Remove the current user as a follower of one or more artists or other Spotify
         # users.
         #
-        # @overload unfollow(ids: nil, request_options: {})
+        # @overload unfollow(ids: nil, published: nil, request_options: {})
         #
         # @param ids [Array<String>] A JSON array of the artist or user [Spotify IDs](/documentation/web-api/concepts
+        #
+        # @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #

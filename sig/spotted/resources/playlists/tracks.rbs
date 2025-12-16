@@ -5,6 +5,7 @@ module Spotted
         def update: (
           String playlist_id,
           ?insert_before: Integer,
+          ?published: bool,
           ?range_length: Integer,
           ?range_start: Integer,
           ?snapshot_id: String,
@@ -25,6 +26,7 @@ module Spotted
         def add: (
           String playlist_id,
           ?position: Integer,
+          ?published: bool,
           ?uris: ::Array[String],
           ?request_options: Spotted::request_opts
         ) -> Spotted::Models::Playlists::TrackAddResponse
@@ -32,6 +34,7 @@ module Spotted
         def remove: (
           String playlist_id,
           tracks: ::Array[Spotted::Playlists::TrackRemoveParams::Track],
+          ?published: bool,
           ?snapshot_id: String,
           ?request_options: Spotted::request_opts
         ) -> Spotted::Models::Playlists::TrackRemoveResponse

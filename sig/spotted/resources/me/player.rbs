@@ -65,6 +65,7 @@ module Spotted
           ?context_uri: String,
           ?offset: ::Hash[Symbol, top],
           ?position_ms: Integer,
+          ?published: bool,
           ?uris: ::Array[String],
           ?request_options: Spotted::request_opts
         ) -> nil
@@ -78,6 +79,7 @@ module Spotted
         def transfer: (
           device_ids: ::Array[String],
           ?play: bool,
+          ?published: bool,
           ?request_options: Spotted::request_opts
         ) -> nil
 

@@ -28,10 +28,22 @@ module Spotted
         sig { params(play: T::Boolean).void }
         attr_writer :play
 
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
         sig do
           params(
             device_ids: T::Array[String],
             play: T::Boolean,
+            published: T::Boolean,
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -45,6 +57,12 @@ module Spotted
           # **true**: ensure playback happens on new device.<br/>**false** or not provided:
           # keep the current playback state.
           play: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil,
           request_options: {}
         )
         end
@@ -54,6 +72,7 @@ module Spotted
             {
               device_ids: T::Array[String],
               play: T::Boolean,
+              published: T::Boolean,
               request_options: Spotted::RequestOptions
             }
           )
