@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.27.1 (2025-12-17)
+
+Full Changelog: [v0.27.0...v0.27.1](https://github.com/cjavdev/spotted/compare/v0.27.0...v0.27.1)
+
+### Bug Fixes
+
+* calling `break` out of streams should be instantaneous ([1f41762](https://github.com/cjavdev/spotted/commit/1f417629a0db47e9d46fcf13eaf367d8c2151d96))
+
 ## 0.27.0 (2025-12-16)
 
 Full Changelog: [v0.26.0...v0.27.0](https://github.com/cjavdev/spotted/compare/v0.26.0...v0.27.0)
