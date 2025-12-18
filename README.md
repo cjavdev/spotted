@@ -45,7 +45,7 @@ List methods in the Spotted API are paginated.
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
 ```ruby
-page = spotted.shows.list_episodes("showid", limit: 5, offset: 10)
+page = spotted.shows.list_episodes("showid", limit: 10, offset: 20)
 
 # Fetch single item from page.
 show = page.items[0]
