@@ -3,116 +3,41 @@ module Spotted
     module Browse
       type category_list_response =
         {
-          categories: Spotted::Models::Browse::CategoryListResponse::Categories
+          id: String,
+          href: String,
+          icons: ::Array[Spotted::ImageObject],
+          name: String,
+          published: bool
         }
 
       class CategoryListResponse < Spotted::Internal::Type::BaseModel
-        attr_accessor categories: Spotted::Models::Browse::CategoryListResponse::Categories
+        attr_accessor id: String
+
+        attr_accessor href: String
+
+        attr_accessor icons: ::Array[Spotted::ImageObject]
+
+        attr_accessor name: String
+
+        attr_reader published: bool?
+
+        def published=: (bool) -> bool
 
         def initialize: (
-          categories: Spotted::Models::Browse::CategoryListResponse::Categories
+          id: String,
+          href: String,
+          icons: ::Array[Spotted::ImageObject],
+          name: String,
+          ?published: bool
         ) -> void
 
         def to_hash: -> {
-          categories: Spotted::Models::Browse::CategoryListResponse::Categories
+          id: String,
+          href: String,
+          icons: ::Array[Spotted::ImageObject],
+          name: String,
+          published: bool
         }
-
-        type categories =
-          {
-            href: String,
-            limit: Integer,
-            next_: String?,
-            offset: Integer,
-            previous: String?,
-            total: Integer,
-            items: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item],
-            published: bool
-          }
-
-        class Categories < Spotted::Internal::Type::BaseModel
-          attr_accessor href: String
-
-          attr_accessor limit: Integer
-
-          attr_accessor next_: String?
-
-          attr_accessor offset: Integer
-
-          attr_accessor previous: String?
-
-          attr_accessor total: Integer
-
-          attr_reader items: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item]?
-
-          def items=: (
-            ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item]
-          ) -> ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item]
-
-          attr_reader published: bool?
-
-          def published=: (bool) -> bool
-
-          def initialize: (
-            href: String,
-            limit: Integer,
-            next_: String?,
-            offset: Integer,
-            previous: String?,
-            total: Integer,
-            ?items: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item],
-            ?published: bool
-          ) -> void
-
-          def to_hash: -> {
-            href: String,
-            limit: Integer,
-            next_: String?,
-            offset: Integer,
-            previous: String?,
-            total: Integer,
-            items: ::Array[Spotted::Models::Browse::CategoryListResponse::Categories::Item],
-            published: bool
-          }
-
-          type item =
-            {
-              id: String,
-              href: String,
-              icons: ::Array[Spotted::ImageObject],
-              name: String,
-              published: bool
-            }
-
-          class Item < Spotted::Internal::Type::BaseModel
-            attr_accessor id: String
-
-            attr_accessor href: String
-
-            attr_accessor icons: ::Array[Spotted::ImageObject]
-
-            attr_accessor name: String
-
-            attr_reader published: bool?
-
-            def published=: (bool) -> bool
-
-            def initialize: (
-              id: String,
-              href: String,
-              icons: ::Array[Spotted::ImageObject],
-              name: String,
-              ?published: bool
-            ) -> void
-
-            def to_hash: -> {
-              id: String,
-              href: String,
-              icons: ::Array[Spotted::ImageObject],
-              name: String,
-              published: bool
-            }
-          end
-        end
       end
     end
   end

@@ -29,12 +29,23 @@ class Spotted::Test::Resources::Browse::CategoriesTest < Spotted::Test::Resource
     response = @spotted.browse.categories.list
 
     assert_pattern do
-      response => Spotted::Models::Browse::CategoryListResponse
+      response => Spotted::Internal::CursorURLPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Spotted::Models::Browse::CategoryListResponse
     end
 
     assert_pattern do
-      response => {
-        categories: Spotted::Models::Browse::CategoryListResponse::Categories
+      row => {
+        id: String,
+        href: String,
+        icons: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]),
+        name: String,
+        published: Spotted::Internal::Type::Boolean | nil
       }
     end
   end
