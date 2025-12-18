@@ -38,7 +38,11 @@ module Spotted
             locale: String,
             offset: Integer,
             request_options: Spotted::RequestOptions::OrHash
-          ).returns(Spotted::Models::Browse::CategoryListResponse)
+          ).returns(
+            Spotted::Internal::CursorURLPage[
+              Spotted::Models::Browse::CategoryListResponse
+            ]
+          )
         end
         def list(
           # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.

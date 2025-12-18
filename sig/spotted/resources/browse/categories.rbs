@@ -13,7 +13,7 @@ module Spotted
           ?locale: String,
           ?offset: Integer,
           ?request_options: Spotted::request_opts
-        ) -> Spotted::Models::Browse::CategoryListResponse
+        ) -> Spotted::Internal::CursorURLPage[Spotted::Models::Browse::CategoryListResponse]
 
         def get_playlists: (
           String category_id,

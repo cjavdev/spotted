@@ -48,7 +48,7 @@ module Spotted
         #
         # @param request_options [Spotted::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Spotted::Models::Browse::CategoryListResponse]
+        # @return [Spotted::Internal::CursorURLPage<Spotted::Models::Browse::CategoryListResponse>]
         #
         # @see Spotted::Models::Browse::CategoryListParams
         def list(params = {})
@@ -57,6 +57,7 @@ module Spotted
             method: :get,
             path: "browse/categories",
             query: parsed,
+            page: Spotted::Internal::CursorURLPage,
             model: Spotted::Models::Browse::CategoryListResponse,
             options: options
           )
