@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.29.1 (2025-12-19)
+
+Full Changelog: [v0.29.0...v0.29.1](https://github.com/cjavdev/spotted/compare/v0.29.0...v0.29.1)
+
+### Bug Fixes
+
+* issue where json.parse errors when receiving HTTP 204 with nobody ([f4f95ce](https://github.com/cjavdev/spotted/commit/f4f95ce1f8506d393d07588c0c4d135a022aa405))
+
 ## 0.29.0 (2025-12-18)
 
 Full Changelog: [v0.28.0...v0.29.0](https://github.com/cjavdev/spotted/compare/v0.28.0...v0.29.0)
