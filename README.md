@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "spotted", "~> 0.29.1"
+gem "spotted", "~> 0.30.0"
 ```
 
 <!-- x-release-please-end -->
