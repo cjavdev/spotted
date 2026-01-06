@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.31.0 (2026-01-06)
+
+Full Changelog: [v0.30.0...v0.31.0](https://github.com/cjavdev/spotted/compare/v0.30.0...v0.31.0)
+
+### Features
+
+* **api:** manual updates ([d295b91](https://github.com/cjavdev/spotted/commit/d295b916dd9cd70952b5de5820fced0bbae69e47))
+
+
+### Documentation
+
+* prominently feature MCP server setup in root SDK readmes ([fb86bcf](https://github.com/cjavdev/spotted/commit/fb86bcf98b50b41efb138c255f61ca923b76fa02))
+
 ## 0.30.0 (2026-01-05)
 
 Full Changelog: [v0.29.1...v0.30.0](https://github.com/cjavdev/spotted/compare/v0.29.1...v0.30.0)
