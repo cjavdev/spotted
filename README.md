@@ -17,7 +17,7 @@ Use the Spotted MCP Server to enable AI assistants to interact with this API, al
 
 Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/spotted).
 
-The REST API documentation can be found on [spotted.stldocs.com](https://spotted.stldocs.com).
+The REST API documentation can be found on [spotted.stldocs.com](https://spotted.stldocs.com?docs).
 
 ## Installation
 
