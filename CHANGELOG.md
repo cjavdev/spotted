@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.31.1 (2026-01-10)
+
+Full Changelog: [v0.31.0...v0.31.1](https://github.com/cjavdev/spotted/compare/v0.31.0...v0.31.1)
+
+### Chores
+
+* move `cgi` into dependencies for ruby 4 ([f08a023](https://github.com/cjavdev/spotted/commit/f08a023142c2af33991bdd635604c41a94abd604))
+
 ## 0.31.0 (2026-01-06)
 
 Full Changelog: [v0.30.0...v0.31.0](https://github.com/cjavdev/spotted/compare/v0.30.0...v0.31.0)
