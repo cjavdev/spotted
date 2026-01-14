@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.32.0 (2026-01-14)
+
+Full Changelog: [v0.31.1...v0.32.0](https://github.com/cjavdev/spotted/compare/v0.31.1...v0.32.0)
+
+### Features
+
+* **api:** api update ([67cc65d](https://github.com/cjavdev/spotted/commit/67cc65d37c6b4478cf6723520705fcd16679f572))
+
 ## 0.31.1 (2026-01-10)
 
 Full Changelog: [v0.31.0...v0.31.1](https://github.com/cjavdev/spotted/compare/v0.31.0...v0.31.1)
