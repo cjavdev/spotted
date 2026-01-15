@@ -48,11 +48,7 @@ class Spotted::Test::SingletonClient < Spotted::Client
   TEST_API_BASE_URL = ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010")
 
   def initialize
-    super(
-      base_url: Spotted::Test::SingletonClient::TEST_API_BASE_URL,
-      client_id: "My Client ID",
-      client_secret: "My Client Secret"
-    )
+    super(base_url: Spotted::Test::SingletonClient::TEST_API_BASE_URL, access_token: "My Access Token")
   end
 end
 

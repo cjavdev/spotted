@@ -27,6 +27,13 @@ class SpottedTest < Minitest::Test
     super
   end
 
+  def test_raises_on_missing_non_nullable_opts
+    e = assert_raises(ArgumentError) do
+      Spotted::Client.new
+    end
+    assert_match(/is required/, e.message)
+  end
+
   def test_client_default_request_default_retry_attempts
     stub_token_endpoint
     stub_request(:get, "http://localhost/albums/4aawyAB9vmqN3uQ7FjRGTy").to_return_json(
@@ -34,12 +41,7 @@ class SpottedTest < Minitest::Test
       body: {}
     )
 
-    spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret"
-      )
+    spotted = Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(Spotted::Errors::InternalServerError) do
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
@@ -56,12 +58,7 @@ class SpottedTest < Minitest::Test
     )
 
     spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret",
-        max_retries: 3
-      )
+      Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 3)
 
     assert_raises(Spotted::Errors::InternalServerError) do
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
@@ -77,12 +74,7 @@ class SpottedTest < Minitest::Test
       body: {}
     )
 
-    spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret"
-      )
+    spotted = Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(Spotted::Errors::InternalServerError) do
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy", request_options: {max_retries: 3})
@@ -99,12 +91,7 @@ class SpottedTest < Minitest::Test
     )
 
     spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret",
-        max_retries: 3
-      )
+      Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 3)
 
     assert_raises(Spotted::Errors::InternalServerError) do
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy", request_options: {max_retries: 4})
@@ -122,12 +109,7 @@ class SpottedTest < Minitest::Test
     )
 
     spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret",
-        max_retries: 1
-      )
+      Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 1)
 
     assert_raises(Spotted::Errors::InternalServerError) do
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
@@ -146,12 +128,7 @@ class SpottedTest < Minitest::Test
     )
 
     spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret",
-        max_retries: 1
-      )
+      Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 1)
 
     assert_raises(Spotted::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
@@ -172,12 +149,7 @@ class SpottedTest < Minitest::Test
     )
 
     spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret",
-        max_retries: 1
-      )
+      Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 1)
 
     assert_raises(Spotted::Errors::InternalServerError) do
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
@@ -194,12 +166,7 @@ class SpottedTest < Minitest::Test
       body: {}
     )
 
-    spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret"
-      )
+    spotted = Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(Spotted::Errors::InternalServerError) do
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
@@ -229,12 +196,7 @@ class SpottedTest < Minitest::Test
       body: {}
     )
 
-    spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret"
-      )
+    spotted = Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(Spotted::Errors::InternalServerError) do
       spotted.albums.retrieve(
@@ -255,12 +217,7 @@ class SpottedTest < Minitest::Test
       body: {}
     )
 
-    spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret"
-      )
+    spotted = Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(Spotted::Errors::InternalServerError) do
       spotted.albums.retrieve(
@@ -284,12 +241,7 @@ class SpottedTest < Minitest::Test
       headers: {"location" => "/redirected"}
     )
 
-    spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret"
-      )
+    spotted = Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(Spotted::Errors::APIConnectionError) do
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy", request_options: {extra_headers: {}})
@@ -310,12 +262,7 @@ class SpottedTest < Minitest::Test
       headers: {"location" => "/redirected"}
     )
 
-    spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret"
-      )
+    spotted = Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(Spotted::Errors::APIConnectionError) do
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy", request_options: {extra_headers: {}})
@@ -340,12 +287,7 @@ class SpottedTest < Minitest::Test
       headers: {"location" => "/redirected"}
     )
 
-    spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret"
-      )
+    spotted = Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(Spotted::Errors::APIConnectionError) do
       spotted.albums.retrieve(
@@ -374,12 +316,7 @@ class SpottedTest < Minitest::Test
       headers: {"location" => "https://example.com/redirected"}
     )
 
-    spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret"
-      )
+    spotted = Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     assert_raises(Spotted::Errors::APIConnectionError) do
       spotted.albums.retrieve(
@@ -401,12 +338,7 @@ class SpottedTest < Minitest::Test
       body: {}
     )
 
-    spotted =
-      Spotted::Client.new(
-        base_url: "http://localhost",
-        client_id: "My Client ID",
-        client_secret: "My Client Secret"
-      )
+    spotted = Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token")
 
     spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
 
