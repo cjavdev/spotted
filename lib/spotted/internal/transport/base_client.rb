@@ -217,6 +217,11 @@ module Spotted
 
         # @api private
         #
+        # @return [Hash{String=>String}]
+        private def auth_headers = {}
+
+        # @api private
+        #
         # @return [String]
         private def user_agent = "#{self.class.name}/Ruby #{Spotted::VERSION}"
 
@@ -271,6 +276,7 @@ module Spotted
 
           headers = Spotted::Internal::Util.normalized_headers(
             @headers,
+            auth_headers,
             req[:headers].to_h,
             opts[:extra_headers].to_h
           )
