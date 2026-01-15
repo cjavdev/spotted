@@ -52,7 +52,10 @@ class Spotted::Test::Resources::Me::AlbumsTest < Spotted::Test::ResourceTest
   def test_save
     skip("Prism tests are disabled")
 
+    # Ignore Layout/LineLength
+    # rubocop:disable Layout/LineLength
     response = @spotted.me.albums.save
+    # rubocop:enable Layout/LineLength
 
     assert_pattern do
       response => nil
