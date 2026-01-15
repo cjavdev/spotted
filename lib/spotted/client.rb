@@ -66,6 +66,15 @@ module Spotted
     # @return [Spotted::Resources::Markets]
     attr_reader :markets
 
+    # @api private
+    #
+    # @return [Hash{String=>String}]
+    private def auth_headers
+      return {} if @access_token.nil?
+
+      {"authorization" => "Bearer #{@access_token}"}
+    end
+
     # Creates and returns a new client for interacting with the API.
     #
     # @param access_token [String, nil] Defaults to `ENV["SPOTIFY_ACCESS_TOKEN"]`

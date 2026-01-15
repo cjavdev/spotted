@@ -37,7 +37,9 @@ gem "spotted", "~> 0.32.0"
 require "bundler/setup"
 require "spotted"
 
-spotted = Spotted::Client.new(access_token: "My Access Token")
+spotted = Spotted::Client.new(
+  access_token: ENV["SPOTIFY_ACCESS_TOKEN"] # This is the default and can be omitted
+)
 
 album = spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
 
@@ -117,8 +119,7 @@ You can use the `max_retries` option to configure or disable this:
 ```ruby
 # Configure the default for all requests:
 spotted = Spotted::Client.new(
-  max_retries: 0, # default is 2
-  access_token: "My Access Token"
+  max_retries: 0 # default is 2
 )
 
 # Or, configure per-request:
@@ -132,8 +133,7 @@ By default, requests will time out after 60 seconds. You can use the timeout opt
 ```ruby
 # Configure the default for all requests:
 spotted = Spotted::Client.new(
-  timeout: nil, # default is 60
-  access_token: "My Access Token"
+  timeout: nil # default is 60
 )
 
 # Or, configure per-request:
