@@ -71,6 +71,8 @@ class Minitest::Test
 end
 
 class Spotted::Test::ResourceTest < Minitest::Test
+  include WebMock::API
+
   def async?
     return @async unless @async.nil?
     @async = Digest::SHA256.hexdigest(self.class.name).to_i(16).odd?
@@ -78,7 +80,20 @@ class Spotted::Test::ResourceTest < Minitest::Test
 
   def before_all
     super
+    WebMock.enable!
+    stub_token_endpoint
     @spotted = Spotted::Test::SingletonClient.instance
+  end
+
+  def setup
+    super
+    WebMock.reset!
+    stub_token_endpoint
+  end
+
+  def teardown
+    super
+    stub_token_endpoint
   end
 
   def around_all = async? ? Sync { super } : super
@@ -88,4 +103,39 @@ end
 
 module WebMock
   AssertionFailure.error_class = Minitest::Assertion
+end
+
+module Spotted
+  module Test
+    def stub_token_endpoint(token_url: "https://accounts.spotify.com/api/token")
+      WebMock::API.stub_request(:post, /#{Regexp.escape(token_url)}/).to_return(
+        status: 200,
+        body: {
+          access_token: "test_access_token",
+          token_type: "Bearer",
+          expires_in: 3600
+        }.to_json,
+        headers: {"Content-Type" => "application/json"}
+      )
+    end
+
+    def create_client(
+      base_url: "http://localhost",
+      client_id: "My Client ID",
+      client_secret: "My Client Secret",
+      **options
+    )
+      stub_token_endpoint
+      Spotted::Client.new(
+        base_url: base_url,
+        client_id: client_id,
+        client_secret: client_secret,
+        **options
+      )
+    end
+  end
+end
+
+class Minitest::Test
+  include Spotted::Test
 end

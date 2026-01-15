@@ -76,7 +76,15 @@ module Spotted
     #
     # @return [Hash{String=>String}]
     private def auth_headers
-      {**bearer_auth, **oauth_2_0}
+      unless @access_token.nil?
+        return {**bearer_auth}
+      end
+
+      if @client_id && @client_secret
+        return {**oauth_2_0}
+      end
+
+      {}
     end
 
     # @api private
@@ -177,6 +185,91 @@ module Spotted
       @audio_analysis = Spotted::Resources::AudioAnalysis.new(client: self)
       @recommendations = Spotted::Resources::Recommendations.new(client: self)
       @markets = Spotted::Resources::Markets.new(client: self)
+    end
+
+    # Generates the Spotify authorization URL for OAuth2 authorization code flow.
+    #
+    # @param redirect_uri [String] The URI to redirect to after authorization
+    # @param scope [String, Array<String>, nil] Space-delimited string or array of authorization scopes
+    # @param state [String, nil] Optional state parameter for CSRF protection
+    # @param show_dialog [Boolean] Whether to force the user to approve the app again
+    #
+    # @return [String] The authorization URL to redirect the user to
+    #
+    # @example Basic usage
+    #   client = Spotted::Client.new(client_id: "...", client_secret: "...")
+    #   url = client.authorization_url(redirect_uri: "http://localhost:3000/callback")
+    #
+    # @example With scopes and state
+    #   url = client.authorization_url(
+    #     redirect_uri: "http://localhost:3000/callback",
+    #     scope: ["user-read-private", "user-read-email"],
+    #     state: "random_state_string"
+    #   )
+    def authorization_url(redirect_uri:, scope: nil, state: nil, show_dialog: false)
+      params = {
+        client_id: @client_id,
+        response_type: "code",
+        redirect_uri: redirect_uri
+      }
+
+      params[:scope] = scope.is_a?(Array) ? scope.join(" ") : scope if scope
+      params[:state] = state if state
+      params[:show_dialog] = "true" if show_dialog
+
+      query_string = URI.encode_www_form(params)
+      "https://accounts.spotify.com/authorize?#{query_string}"
+    end
+
+    # Exchanges an authorization code for an access token.
+    #
+    # @param code [String] The authorization code to exchange
+    # @param redirect_uri [String] The redirect URI used to obtain the authorization code
+    #
+    # @return [Object] The access token and refresh token
+    def exchange_authorization_code(code:, redirect_uri:)
+      if @client_id.nil? || @client_secret.nil?
+        raise ArgumentError, "Both client_id and client_secret must be set to exchange an authorization code."
+      end
+      body = URI.encode_www_form(
+        grant_type: "authorization_code",
+        code: code,
+        redirect_uri: redirect_uri
+      )
+      client = Spotted::Client.new(
+        client_id: @client_id,
+        client_secret: @client_secret,
+        base_url: "https://accounts.spotify.com"
+      )
+      client.request(
+        method: :post,
+        headers: {
+          "Content-Type" => "application/x-www-form-urlencoded",
+          "Authorization" => "Basic #{Base64.strict_encode64("#{@client_id}:#{@client_secret}")}"
+        },
+        path: "/api/token",
+        body: body
+      )
+    end
+
+    def refresh_access_token(refresh_token:)
+      if @client_id.nil? || @client_secret.nil?
+        raise ArgumentError, "Both client_id and client_secret must be set to refresh an access token."
+      end
+      body = URI.encode_www_form(
+        grant_type: "refresh_token",
+        refresh_token: refresh_token
+      )
+      client = Spotted::Client.new(client_id: @client_id, client_secret: @client_secret, base_url: "https://accounts.spotify.com")
+      client.request(
+        method: :post,
+        headers: {
+          "Content-Type" => "application/x-www-form-urlencoded",
+          "Authorization" => "Basic #{Base64.strict_encode64("#{@client_id}:#{@client_secret}")}"
+        },
+        path: "/api/token",
+        body: body
+      )
     end
   end
 end
