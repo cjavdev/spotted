@@ -10,13 +10,7 @@ module Spotted
 
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
-    sig { returns(T.nilable(String)) }
-    attr_reader :client_id
-
-    sig { returns(T.nilable(String)) }
-    attr_reader :client_secret
-
-    sig { returns(T.nilable(String)) }
+    sig { returns(String) }
     attr_reader :access_token
 
     sig { returns(Spotted::Resources::Albums) }
@@ -72,25 +66,9 @@ module Spotted
     private def auth_headers
     end
 
-    # @api private
-    sig { returns(T::Hash[String, String]) }
-    private def bearer_auth
-    end
-
-    # @api private
-    sig { returns(Spotted::Internal::OAuth2ClientCredentials) }
-    attr_reader :oauth_2_0_state
-
-    # @api private
-    sig { returns(T::Hash[String, String]) }
-    private def oauth_2_0
-    end
-
     # Creates and returns a new client for interacting with the API.
     sig do
       params(
-        client_id: T.nilable(String),
-        client_secret: T.nilable(String),
         access_token: T.nilable(String),
         base_url: T.nilable(String),
         max_retries: Integer,
@@ -100,10 +78,6 @@ module Spotted
       ).returns(T.attached_class)
     end
     def self.new(
-      # Defaults to `ENV["SPOTIFY_CLIENT_ID"]`
-      client_id: ENV["SPOTIFY_CLIENT_ID"],
-      # Defaults to `ENV["SPOTIFY_CLIENT_SECRET"]`
-      client_secret: ENV["SPOTIFY_CLIENT_SECRET"],
       # Defaults to `ENV["SPOTIFY_ACCESS_TOKEN"]`
       access_token: ENV["SPOTIFY_ACCESS_TOKEN"],
       # Override the default base URL for the API, e.g.,

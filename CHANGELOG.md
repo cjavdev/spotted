@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.33.0 (2026-01-15)
+
+Full Changelog: [v0.32.0...v0.33.0](https://github.com/cjavdev/spotted/compare/v0.32.0...v0.33.0)
+
+### Features
+
+* **api:** manual updates ([4a0240e](https://github.com/cjavdev/spotted/commit/4a0240e10435cc9af7425885c72fa9e361d29613))
+* **api:** manual updates ([c937e8f](https://github.com/cjavdev/spotted/commit/c937e8f8f5ac33270ae32920640f28706df98965))
+* **api:** turn off oauth ([88abcd6](https://github.com/cjavdev/spotted/commit/88abcd62763cadfd6036026af2efd7ee0f2de678))
+
 ## 0.32.0 (2026-01-14)
 
 Full Changelog: [v0.31.1...v0.32.0](https://github.com/cjavdev/spotted/compare/v0.31.1...v0.32.0)

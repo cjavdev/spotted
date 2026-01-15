@@ -17,7 +17,7 @@ Use the Spotted MCP Server to enable AI assistants to interact with this API, al
 
 Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/spotted).
 
-The REST API documentation can be found on [spotted.stldocs.com](https://spotted.stldocs.com?docs).
+The REST API documentation can be found on [spotted.cjav.dev](https://spotted.cjav.dev).
 
 ## Installation
 
@@ -26,7 +26,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "spotted", "~> 0.32.0"
+gem "spotted", "~> 0.33.0"
 ```
 
 <!-- x-release-please-end -->
@@ -38,8 +38,7 @@ require "bundler/setup"
 require "spotted"
 
 spotted = Spotted::Client.new(
-  client_id: ENV["SPOTIFY_CLIENT_ID"], # This is the default and can be omitted
-  client_secret: ENV["SPOTIFY_CLIENT_SECRET"] # This is the default and can be omitted
+  access_token: ENV["SPOTIFY_ACCESS_TOKEN"] # This is the default and can be omitted
 )
 
 album = spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")

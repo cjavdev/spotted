@@ -15,13 +15,7 @@ module Spotted
     # Default max retry delay in seconds.
     DEFAULT_MAX_RETRY_DELAY = 8.0
 
-    # @return [String, nil]
-    attr_reader :client_id
-
-    # @return [String, nil]
-    attr_reader :client_secret
-
-    # @return [String, nil]
+    # @return [String]
     attr_reader :access_token
 
     # @return [Spotted::Resources::Albums]
@@ -76,62 +70,12 @@ module Spotted
     #
     # @return [Hash{String=>String}]
     private def auth_headers
-      unless @access_token.nil?
-        return {**bearer_auth}
-      end
-
-      if @client_id && @client_secret
-        return {**oauth_2_0}
-      end
-
-      {}
-    end
-
-    # @api private
-    #
-    # @return [Hash{String=>String}]
-    private def bearer_auth
       return {} if @access_token.nil?
 
       {"authorization" => "Bearer #{@access_token}"}
     end
 
-    # @api private
-    # @return [Spotted::Internal::OAuth2ClientCredentials]
-    attr_reader :oauth_2_0_state
-
-    # @api private
-    #
-    # @return [Hash{String=>String}]
-    private def oauth_2_0
-      return @oauth_2_0_state.auth_headers if @oauth_2_0_state
-
-      return {} unless @client_id && @client_secret
-
-      path = Spotted::Internal::Util.interpolate_path("https://accounts.spotify.com/api/token")
-      token_url = Spotted::Internal::Util.join_parsed_uri(
-        @base_url_components,
-        {
-          path: path,
-          query: {grant_type: "client_credentials"}
-        }
-      )
-
-      @oauth_2_0_state = Spotted::Internal::OAuth2ClientCredentials.new(
-        token_url: token_url.to_s,
-        client_id: @client_id,
-        client_secret: @client_secret,
-        timeout: @timeout,
-        client: self
-      )
-      @oauth_2_0_state.auth_headers
-    end
-
     # Creates and returns a new client for interacting with the API.
-    #
-    # @param client_id [String, nil] Defaults to `ENV["SPOTIFY_CLIENT_ID"]`
-    #
-    # @param client_secret [String, nil] Defaults to `ENV["SPOTIFY_CLIENT_SECRET"]`
     #
     # @param access_token [String, nil] Defaults to `ENV["SPOTIFY_ACCESS_TOKEN"]`
     #
@@ -146,8 +90,6 @@ module Spotted
     #
     # @param max_retry_delay [Float]
     def initialize(
-      client_id: ENV["SPOTIFY_CLIENT_ID"],
-      client_secret: ENV["SPOTIFY_CLIENT_SECRET"],
       access_token: ENV["SPOTIFY_ACCESS_TOKEN"],
       base_url: ENV["SPOTTED_BASE_URL"],
       max_retries: self.class::DEFAULT_MAX_RETRIES,
@@ -157,9 +99,11 @@ module Spotted
     )
       base_url ||= "https://api.spotify.com/v1"
 
-      @client_id = client_id&.to_s
-      @client_secret = client_secret&.to_s
-      @access_token = access_token&.to_s
+      if access_token.nil?
+        raise ArgumentError.new("access_token is required, and can be set via environ: \"SPOTIFY_ACCESS_TOKEN\"")
+      end
+
+      @access_token = access_token.to_s
 
       super(
         base_url: base_url,
