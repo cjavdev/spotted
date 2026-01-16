@@ -47,7 +47,7 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
     end
 
-    assert_requested(:any, /./, times: 4)
+    assert_requested(:any, /./, times: 3)
   end
 
   def test_client_given_request_default_retry_attempts
@@ -64,7 +64,7 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
     end
 
-    assert_requested(:any, /./, times: 5)
+    assert_requested(:any, /./, times: 4)
   end
 
   def test_client_default_request_given_retry_attempts
@@ -80,7 +80,7 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy", request_options: {max_retries: 3})
     end
 
-    assert_requested(:any, /./, times: 5)
+    assert_requested(:any, /./, times: 4)
   end
 
   def test_client_given_request_given_retry_attempts
@@ -97,7 +97,7 @@ class SpottedTest < Minitest::Test
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy", request_options: {max_retries: 4})
     end
 
-    assert_requested(:any, /./, times: 6)
+    assert_requested(:any, /./, times: 5)
   end
 
   def test_client_retry_after_seconds
@@ -109,7 +109,7 @@ class SpottedTest < Minitest::Test
     )
 
     spotted =
-      Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 1)
+      Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 2)
 
     assert_raises(Spotted::Errors::InternalServerError) do
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
@@ -128,7 +128,7 @@ class SpottedTest < Minitest::Test
     )
 
     spotted =
-      Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 1)
+      Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 2)
 
     assert_raises(Spotted::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
@@ -149,7 +149,7 @@ class SpottedTest < Minitest::Test
     )
 
     spotted =
-      Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 1)
+      Spotted::Client.new(base_url: "http://localhost", access_token: "My Access Token", max_retries: 2)
 
     assert_raises(Spotted::Errors::InternalServerError) do
       spotted.albums.retrieve("4aawyAB9vmqN3uQ7FjRGTy")
@@ -349,13 +349,13 @@ class SpottedTest < Minitest::Test
   end
 
   def test_authorization_url_with_only_redirect_uri
-    spotted =
-      Spotted::Client.new(
+    auth =
+      Spotted::Auth.new(
         client_id: "test_client_id",
         client_secret: "test_client_secret"
       )
 
-    url = spotted.authorization_url(redirect_uri: "http://localhost:3000/callback")
+    url = auth.authorization_url(redirect_uri: "http://localhost:3000/callback")
     uri = URI.parse(url)
     params = URI.decode_www_form(uri.query).to_h
 
@@ -371,13 +371,13 @@ class SpottedTest < Minitest::Test
   end
 
   def test_authorization_url_with_scope_as_array
-    spotted =
-      Spotted::Client.new(
+    auth =
+      Spotted::Auth.new(
         client_id: "test_client_id",
         client_secret: "test_client_secret"
       )
 
-    url = spotted.authorization_url(
+    url = auth.authorization_url(
       redirect_uri: "http://localhost:3000/callback",
       scope: "user-read-private user-read-email playlist-modify-public"
     )
@@ -388,13 +388,13 @@ class SpottedTest < Minitest::Test
   end
 
   def test_authorization_url_with_scope_as_string
-    spotted =
-      Spotted::Client.new(
+    auth =
+      Spotted::Auth.new(
         client_id: "test_client_id",
         client_secret: "test_client_secret"
       )
 
-    url = spotted.authorization_url(
+    url = auth.authorization_url(
       redirect_uri: "http://localhost:3000/callback",
       scope: "user-read-private user-read-email"
     )
@@ -405,13 +405,13 @@ class SpottedTest < Minitest::Test
   end
 
   def test_authorization_url_with_state
-    spotted =
-      Spotted::Client.new(
+    auth =
+      Spotted::Auth.new(
         client_id: "test_client_id",
         client_secret: "test_client_secret"
       )
 
-    url = spotted.authorization_url(
+    url = auth.authorization_url(
       redirect_uri: "http://localhost:3000/callback",
       state: "random_state_string_123"
     )
@@ -422,13 +422,13 @@ class SpottedTest < Minitest::Test
   end
 
   def test_authorization_url_with_show_dialog_true
-    spotted =
-      Spotted::Client.new(
+    auth =
+      Spotted::Auth.new(
         client_id: "test_client_id",
         client_secret: "test_client_secret"
       )
 
-    url = spotted.authorization_url(
+    url = auth.authorization_url(
       redirect_uri: "http://localhost:3000/callback",
       show_dialog: true
     )
@@ -439,13 +439,13 @@ class SpottedTest < Minitest::Test
   end
 
   def test_authorization_url_with_show_dialog_false
-    spotted =
-      Spotted::Client.new(
+    auth =
+      Spotted::Auth.new(
         client_id: "test_client_id",
         client_secret: "test_client_secret"
       )
 
-    url = spotted.authorization_url(
+    url = auth.authorization_url(
       redirect_uri: "http://localhost:3000/callback",
       show_dialog: false
     )
@@ -456,13 +456,13 @@ class SpottedTest < Minitest::Test
   end
 
   def test_authorization_url_with_all_parameters
-    spotted =
-      Spotted::Client.new(
+    auth =
+      Spotted::Auth.new(
         client_id: "test_client_id",
         client_secret: "test_client_secret"
       )
 
-    url = spotted.authorization_url(
+    url = auth.authorization_url(
       redirect_uri: "http://localhost:3000/callback",
       scope: "user-read-private user-read-email",
       state: "csrf_protection_token",
@@ -483,13 +483,13 @@ class SpottedTest < Minitest::Test
   end
 
   def test_authorization_url_url_encodes_redirect_uri
-    spotted =
-      Spotted::Client.new(
+    auth =
+      Spotted::Auth.new(
         client_id: "test_client_id",
         client_secret: "test_client_secret"
       )
 
-    url = spotted.authorization_url(
+    url = auth.authorization_url(
       redirect_uri: "http://localhost:3000/callback?foo=bar&baz=qux"
     )
     uri = URI.parse(url)
