@@ -74,8 +74,8 @@ begin
 
   # Create a new client with the refreshed token
   refreshed_client = Spotted::Client.new(access_token: new_credentials[:access_token])
-rescue Spotted::APIError => e
+rescue Spotted::Errors::APIError => e
   puts("\n✗ Error: #{e.message}")
-  puts("Status Code: #{e.status_code}")
+  puts("Status Code: #{e.status}")
   puts("Response Body: #{e.body}")
 end
