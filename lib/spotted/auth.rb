@@ -162,10 +162,11 @@ module Spotted
         body.transform_keys(&:to_sym)
       else
         error_message = body["error_description"] || body["error"] || "Token request failed"
-        raise Spotted::APIError.new(
-          message: error_message,
-          status_code: response.code.to_i,
-          body: body
+        raise Spotted::Errors::APIError.new(
+          url: uri,
+          status: response.code.to_i,
+          body: body,
+          message: error_message
         )
       end
     end
