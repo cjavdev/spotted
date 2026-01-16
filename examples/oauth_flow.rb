@@ -17,10 +17,10 @@ auth = Spotted::Auth.new(
 # This URL should be presented to the user for authorization
 authorization_url = auth.authorization_url(
   redirect_uri: "http://localhost:3000/callback",
-  scope: [
-    "user-read-private",
-    "user-read-email",
-    "playlist-read-private"
+  scope: %w[
+    user-read-private
+    user-read-email
+    playlist-read-private
   ],
   state: SecureRandom.hex(16) # CSRF protection
 )
@@ -46,37 +46,36 @@ begin
     redirect_uri: "http://localhost:3000/callback"
   )
 
-  puts "\n✓ Successfully obtained credentials!"
-  puts "Access Token: #{credentials[:access_token][0..20]}..."
-  puts "Token Type: #{credentials[:token_type]}"
-  puts "Expires In: #{credentials[:expires_in]} seconds"
-  puts "Refresh Token: #{credentials[:refresh_token][0..20]}..."
-  puts "Scope: #{credentials[:scope]}"
+  puts("\n✓ Successfully obtained credentials!")
+  puts("Access Token: #{credentials[:access_token][0..20]}...")
+  puts("Token Type: #{credentials[:token_type]}")
+  puts("Expires In: #{credentials[:expires_in]} seconds")
+  puts("Refresh Token: #{credentials[:refresh_token][0..20]}...")
+  puts("Scope: #{credentials[:scope]}")
 
   # Step 5: Use the access token to create a Spotted::Client
   client = Spotted::Client.new(access_token: credentials[:access_token])
 
   # Now you can make API requests
   user_info = client.me.retrieve
-  puts "\nUser Info:"
-  puts "Display Name: #{user_info.display_name}"
-  puts "Email: #{user_info.email}"
-  puts "Country: #{user_info.country}"
+  puts("\nUser Info:")
+  puts("Display Name: #{user_info.display_name}")
+  puts("Email: #{user_info.email}")
+  puts("Country: #{user_info.country}")
 
   # Step 6: Later, when the access token expires, refresh it
-  puts "\n--- Refreshing Access Token ---"
+  puts("\n--- Refreshing Access Token ---")
   new_credentials = auth.refresh_access_token(
     refresh_token: credentials[:refresh_token]
   )
 
-  puts "✓ Token refreshed!"
-  puts "New Access Token: #{new_credentials[:access_token][0..20]}..."
+  puts("✓ Token refreshed!")
+  puts("New Access Token: #{new_credentials[:access_token][0..20]}...")
 
   # Create a new client with the refreshed token
   refreshed_client = Spotted::Client.new(access_token: new_credentials[:access_token])
-
 rescue Spotted::APIError => e
-  puts "\n✗ Error: #{e.message}"
-  puts "Status Code: #{e.status_code}"
-  puts "Response Body: #{e.body}"
+  puts("\n✗ Error: #{e.message}")
+  puts("Status Code: #{e.status_code}")
+  puts("Response Body: #{e.body}")
 end
