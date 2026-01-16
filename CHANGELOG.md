@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.34.0 (2026-01-16)
+
+Full Changelog: [v0.33.0...v0.34.0](https://github.com/cjavdev/spotted/compare/v0.33.0...v0.34.0)
+
+### Features
+
+* **oauth:** Adds OAuth helpers for getting new tokens ([1e4d698](https://github.com/cjavdev/spotted/commit/1e4d69811f02209449eba6bdbcbfcfaaba9530f4))
+
+
+### Chores
+
+* lint ([43c32bd](https://github.com/cjavdev/spotted/commit/43c32bd89d548732e0c35ceefa0f13769d0781cb))
+* types for auth ([5d5c7d1](https://github.com/cjavdev/spotted/commit/5d5c7d1495ab21f0f1aeb14185935a28f77e6deb))
+
 ## 0.33.0 (2026-01-15)
 
 Full Changelog: [v0.32.0...v0.33.0](https://github.com/cjavdev/spotted/compare/v0.32.0...v0.33.0)
