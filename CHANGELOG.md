@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.34.1 (2026-01-17)
+
+Full Changelog: [v0.34.0...v0.34.1](https://github.com/cjavdev/spotted/compare/v0.34.0...v0.34.1)
+
+### Chores
+
+* **internal:** update `actions/checkout` version ([8988b04](https://github.com/cjavdev/spotted/commit/8988b0409ebed619e86de6c8476843bfb13114bd))
+
 ## 0.34.0 (2026-01-16)
 
 Full Changelog: [v0.33.0...v0.34.0](https://github.com/cjavdev/spotted/compare/v0.33.0...v0.34.0)
