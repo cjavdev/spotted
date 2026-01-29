@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.34.2 (2026-01-29)
+
+Full Changelog: [v0.34.1...v0.34.2](https://github.com/cjavdev/spotted/compare/v0.34.1...v0.34.2)
+
+### Bug Fixes
+
+* **docs:** fix mcp installation instructions for remote servers ([0d765ec](https://github.com/cjavdev/spotted/commit/0d765ec08c6a956e0de770939012d3a93c253160))
+
 ## 0.34.1 (2026-01-17)
 
 Full Changelog: [v0.34.0...v0.34.1](https://github.com/cjavdev/spotted/compare/v0.34.0...v0.34.1)
