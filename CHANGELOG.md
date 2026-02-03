@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.34.3 (2026-02-03)
+
+Full Changelog: [v0.34.2...v0.34.3](https://github.com/cjavdev/spotted/compare/v0.34.2...v0.34.3)
+
+### Bug Fixes
+
+* **client:** always add content-length to post body, even when empty ([7eb6586](https://github.com/cjavdev/spotted/commit/7eb658683374ba1a8d237735843865ce13576d45))
+
 ## 0.34.2 (2026-01-29)
 
 Full Changelog: [v0.34.1...v0.34.2](https://github.com/cjavdev/spotted/compare/v0.34.1...v0.34.2)
