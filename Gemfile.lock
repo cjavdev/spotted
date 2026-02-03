@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    spotted (0.34.2)
+    spotted (0.34.3)
       cgi
       connection_pool
 
