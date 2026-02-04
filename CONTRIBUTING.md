@@ -43,13 +43,13 @@ If you’d like to use the repository from source, you can either install from g
 To install via git in your `Gemfile`:
 
 ```ruby
-gem "spotted", git: "https://www.github.com/cjavdev/spotted"
+gem "spotted", git: "https://github.com/cjavdev/spotted"
 ```
 
 Alternatively, reference local copy of the repo:
 
 ```bash
-$ git clone -- 'https://www.github.com/cjavdev/spotted' '<path-to-repo>'
+$ git clone -- 'https://github.com/cjavdev/spotted' '<path-to-repo>'
 ```
 
 ```ruby
