@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.34.4 (2026-02-07)
+
+Full Changelog: [v0.34.3...v0.34.4](https://github.com/cjavdev/spotted/compare/v0.34.3...v0.34.4)
+
+### Bug Fixes
+
+* **client:** loosen json header parsing ([dac97c8](https://github.com/cjavdev/spotted/commit/dac97c84c542cee92dafd6a21feddf0feec5c9d1))
+
+
+### Chores
+
+* **docs:** remove www prefix ([1a5f8d0](https://github.com/cjavdev/spotted/commit/1a5f8d07056a7131f007b26fee7787a58c04208d))
+
 ## 0.34.3 (2026-02-03)
 
 Full Changelog: [v0.34.2...v0.34.3](https://github.com/cjavdev/spotted/compare/v0.34.2...v0.34.3)
