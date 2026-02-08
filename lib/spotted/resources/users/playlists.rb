@@ -4,8 +4,13 @@ module Spotted
   module Resources
     class Users
       class Playlists
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Users::PlaylistCreateParams} for more details.
+        #
+        # **Deprecated**: Use
+        # [Create Playlist](/documentation/web-api/reference/create-playlist) instead.
         #
         # Create a playlist for a Spotify user. (The playlist will be empty until you
         # [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).) Each
@@ -40,6 +45,8 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Users::PlaylistListParams} for more details.
         #

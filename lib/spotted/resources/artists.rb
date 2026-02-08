@@ -27,6 +27,8 @@ module Spotted
         )
       end
 
+      # @deprecated
+      #
       # Some parameter documentations has been truncated, see
       # {Spotted::Models::ArtistBulkRetrieveParams} for more details.
       #
@@ -52,6 +54,8 @@ module Spotted
         )
       end
 
+      # @deprecated
+      #
       # Some parameter documentations has been truncated, see
       # {Spotted::Models::ArtistListAlbumsParams} for more details.
       #
@@ -63,7 +67,7 @@ module Spotted
       #
       # @param include_groups [String] A comma-separated list of keywords that will be used to filter the response. If
       #
-      # @param limit [Integer] The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+      # @param limit [Integer] The maximum number of items to return. Default: 5. Minimum: 1. Maximum: 10.
       #
       # @param market [String] An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_al
       #
@@ -112,6 +116,8 @@ module Spotted
         )
       end
 
+      # @deprecated
+      #
       # Some parameter documentations has been truncated, see
       # {Spotted::Models::ArtistTopTracksParams} for more details.
       #

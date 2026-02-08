@@ -82,7 +82,8 @@ module Spotted
       optional :snapshot_id, String
 
       # @!attribute tracks
-      #   The tracks of the playlist.
+      #   The tracks of the playlist. _**Note**: This field is only available for
+      #   playlists owned by the current user._
       #
       #   @return [Spotted::Models::PlaylistRetrieveResponse::Tracks, nil]
       optional :tracks, -> { Spotted::Models::PlaylistRetrieveResponse::Tracks }
@@ -127,7 +128,8 @@ module Spotted
       #
       #   @param snapshot_id [String] The version identifier for the current playlist. Can be supplied in other reques
       #
-      #   @param tracks [Spotted::Models::PlaylistRetrieveResponse::Tracks] The tracks of the playlist.
+      #   @param tracks [Spotted::Models::PlaylistRetrieveResponse::Tracks] The tracks of the playlist. \_**Note**: This field is only available for
+      #   playlist
       #
       #   @param type [String] The object type: "playlist"
       #
@@ -207,7 +209,8 @@ module Spotted
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::PlaylistRetrieveResponse::Tracks} for more details.
         #
-        #   The tracks of the playlist.
+        #   The tracks of the playlist. _**Note**: This field is only available for
+        #   playlists owned by the current user._
         #
         #   @param href [String] A link to the Web API endpoint returning the full result of the request
         #

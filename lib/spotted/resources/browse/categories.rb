@@ -4,6 +4,8 @@ module Spotted
   module Resources
     class Browse
       class Categories
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Browse::CategoryRetrieveParams} for more details.
         #
@@ -32,6 +34,8 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Browse::CategoryListParams} for more details.
         #

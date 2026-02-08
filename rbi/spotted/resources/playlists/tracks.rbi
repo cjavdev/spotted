@@ -58,6 +58,9 @@ module Spotted
         end
 
         # Get full details of the items of a playlist owned by a Spotify user.
+        #
+        # **Note**: This endpoint is only accessible for playlists owned by the current
+        # user.
         sig do
           params(
             playlist_id: String,
