@@ -31,6 +31,8 @@ module Spotted
         )
       end
 
+      # @deprecated
+      #
       # Some parameter documentations has been truncated, see
       # {Spotted::Models::EpisodeBulkRetrieveParams} for more details.
       #

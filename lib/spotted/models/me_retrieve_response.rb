@@ -12,6 +12,8 @@ module Spotted
       optional :id, String
 
       # @!attribute country
+      #   @deprecated
+      #
       #   The country of the user, as set in the user's account profile. An
       #   [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
       #   _This field is only available when the current user has granted access to the
@@ -28,6 +30,8 @@ module Spotted
       optional :display_name, String
 
       # @!attribute email
+      #   @deprecated
+      #
       #   The user's email address, as entered by the user when creating their account.
       #   _**Important!** This email address is unverified; there is no proof that it
       #   actually belongs to the user._ _This field is only available when the current
@@ -39,6 +43,8 @@ module Spotted
       optional :email, String
 
       # @!attribute explicit_content
+      #   @deprecated
+      #
       #   The user's explicit content settings. _This field is only available when the
       #   current user has granted access to the
       #   [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
@@ -54,6 +60,8 @@ module Spotted
       optional :external_urls, -> { Spotted::ExternalURLObject }
 
       # @!attribute followers
+      #   @deprecated
+      #
       #   Information about the followers of the user.
       #
       #   @return [Spotted::Models::FollowersObject, nil]
@@ -72,6 +80,8 @@ module Spotted
       optional :images, -> { Spotted::Internal::Type::ArrayOf[Spotted::ImageObject] }
 
       # @!attribute product
+      #   @deprecated
+      #
       #   The user's Spotify subscription level: "premium", "free", etc. (The subscription
       #   level "open" can be considered the same as "free".) _This field is only
       #   available when the current user has granted access to the
@@ -136,6 +146,8 @@ module Spotted
       #
       #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the user
 
+      # @deprecated
+      #
       # @see Spotted::Models::MeRetrieveResponse#explicit_content
       class ExplicitContent < Spotted::Internal::Type::BaseModel
         # @!attribute filter_enabled

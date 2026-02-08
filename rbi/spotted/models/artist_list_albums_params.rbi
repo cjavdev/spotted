@@ -21,7 +21,7 @@ module Spotted
       sig { params(include_groups: String).void }
       attr_writer :include_groups
 
-      # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+      # The maximum number of items to return. Default: 5. Minimum: 1. Maximum: 10.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -66,7 +66,7 @@ module Spotted
         # `album`<br/>- `single`<br/>- `appears_on`<br/>- `compilation`<br/>For example:
         # `include_groups=album,single`.
         include_groups: nil,
-        # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+        # The maximum number of items to return. Default: 5. Minimum: 1. Maximum: 10.
         limit: nil,
         # An
         # [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).

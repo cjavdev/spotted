@@ -25,6 +25,8 @@ module Spotted
       optional :artists, -> { Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedArtistObject] }
 
       # @!attribute available_markets
+      #   @deprecated
+      #
       #   A list of the countries in which the track can be played, identified by their
       #   [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
       #
@@ -51,6 +53,8 @@ module Spotted
       optional :explicit, Spotted::Internal::Type::Boolean
 
       # @!attribute external_ids
+      #   @deprecated
+      #
       #   Known external IDs for the track.
       #
       #   @return [Spotted::Models::ExternalIDObject, nil]
@@ -83,6 +87,8 @@ module Spotted
       optional :is_playable, Spotted::Internal::Type::Boolean
 
       # @!attribute linked_from
+      #   @deprecated
+      #
       #   Part of the response when
       #   [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied,
       #   and the requested track has been replaced with different track. The track in the
@@ -98,6 +104,8 @@ module Spotted
       optional :name, String
 
       # @!attribute popularity
+      #   @deprecated
+      #
       #   The popularity of the track. The value will be between 0 and 100, with 100 being
       #   the most popular.<br/>The popularity of a track is a value between 0 and 100,
       #   with 100 being the most popular. The popularity is calculated by algorithm and
@@ -225,6 +233,8 @@ module Spotted
         required :artists, -> { Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedArtistObject] }
 
         # @!attribute available_markets
+        #   @deprecated
+        #
         #   The markets in which the album is available:
         #   [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
         #   _**NOTE**: an album is considered available in a market when at least 1 of its

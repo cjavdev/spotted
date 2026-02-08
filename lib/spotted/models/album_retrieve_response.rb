@@ -18,6 +18,8 @@ module Spotted
       required :album_type, enum: -> { Spotted::Models::AlbumRetrieveResponse::AlbumType }
 
       # @!attribute available_markets
+      #   @deprecated
+      #
       #   The markets in which the album is available:
       #   [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
       #   _**NOTE**: an album is considered available in a market when at least 1 of its
@@ -97,6 +99,8 @@ module Spotted
       optional :copyrights, -> { Spotted::Internal::Type::ArrayOf[Spotted::CopyrightObject] }
 
       # @!attribute external_ids
+      #   @deprecated
+      #
       #   Known external IDs for the album.
       #
       #   @return [Spotted::Models::ExternalIDObject, nil]
@@ -111,12 +115,16 @@ module Spotted
       optional :genres, Spotted::Internal::Type::ArrayOf[String]
 
       # @!attribute label
+      #   @deprecated
+      #
       #   The label associated with the album.
       #
       #   @return [String, nil]
       optional :label, String
 
       # @!attribute popularity
+      #   @deprecated
+      #
       #   The popularity of the album. The value will be between 0 and 100, with 100 being
       #   the most popular.
       #

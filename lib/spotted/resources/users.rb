@@ -6,6 +6,8 @@ module Spotted
       # @return [Spotted::Resources::Users::Playlists]
       attr_reader :playlists
 
+      # @deprecated
+      #
       # Some parameter documentations has been truncated, see
       # {Spotted::Models::UserRetrieveProfileParams} for more details.
       #

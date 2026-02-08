@@ -102,7 +102,8 @@ module Spotted
       sig { params(snapshot_id: String).void }
       attr_writer :snapshot_id
 
-      # The tracks of the playlist.
+      # The tracks of the playlist. _**Note**: This field is only available for
+      # playlists owned by the current user._
       sig do
         returns(T.nilable(Spotted::Models::PlaylistRetrieveResponse::Tracks))
       end
@@ -182,7 +183,8 @@ module Spotted
         # The version identifier for the current playlist. Can be supplied in other
         # requests to target a specific playlist version
         snapshot_id: nil,
-        # The tracks of the playlist.
+        # The tracks of the playlist. _**Note**: This field is only available for
+        # playlists owned by the current user._
         tracks: nil,
         # The object type: "playlist"
         type: nil,
@@ -295,7 +297,8 @@ module Spotted
         sig { params(published: T::Boolean).void }
         attr_writer :published
 
-        # The tracks of the playlist.
+        # The tracks of the playlist. _**Note**: This field is only available for
+        # playlists owned by the current user._
         sig do
           params(
             href: String,
