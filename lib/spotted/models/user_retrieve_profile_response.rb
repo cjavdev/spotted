@@ -24,6 +24,8 @@ module Spotted
       optional :external_urls, -> { Spotted::ExternalURLObject }
 
       # @!attribute followers
+      #   @deprecated
+      #
       #   Information about the followers of this user.
       #
       #   @return [Spotted::Models::FollowersObject, nil]

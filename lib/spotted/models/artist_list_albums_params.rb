@@ -17,7 +17,7 @@ module Spotted
       optional :include_groups, String
 
       # @!attribute limit
-      #   The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+      #   The maximum number of items to return. Default: 5. Minimum: 1. Maximum: 10.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -49,7 +49,7 @@ module Spotted
       #
       #   @param include_groups [String] A comma-separated list of keywords that will be used to filter the response. If
       #
-      #   @param limit [Integer] The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+      #   @param limit [Integer] The maximum number of items to return. Default: 5. Minimum: 1. Maximum: 10.
       #
       #   @param market [String] An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_al
       #

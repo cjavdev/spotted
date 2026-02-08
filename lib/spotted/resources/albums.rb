@@ -30,6 +30,8 @@ module Spotted
         )
       end
 
+      # @deprecated
+      #
       # Some parameter documentations has been truncated, see
       # {Spotted::Models::AlbumBulkRetrieveParams} for more details.
       #

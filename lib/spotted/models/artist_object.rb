@@ -17,12 +17,16 @@ module Spotted
       optional :external_urls, -> { Spotted::ExternalURLObject }
 
       # @!attribute followers
+      #   @deprecated
+      #
       #   Information about the followers of the artist.
       #
       #   @return [Spotted::Models::FollowersObject, nil]
       optional :followers, -> { Spotted::FollowersObject }
 
       # @!attribute genres
+      #   @deprecated
+      #
       #   A list of the genres the artist is associated with. If not yet classified, the
       #   array is empty.
       #
@@ -48,6 +52,8 @@ module Spotted
       optional :name, String
 
       # @!attribute popularity
+      #   @deprecated
+      #
       #   The popularity of the artist. The value will be between 0 and 100, with 100
       #   being the most popular. The artist's popularity is calculated from the
       #   popularity of all the artist's tracks.

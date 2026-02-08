@@ -32,6 +32,8 @@ module Spotted
         )
       end
 
+      # @deprecated
+      #
       # Some parameter documentations has been truncated, see
       # {Spotted::Models::ChapterBulkRetrieveParams} for more details.
       #

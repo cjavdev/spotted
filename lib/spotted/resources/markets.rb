@@ -3,6 +3,8 @@
 module Spotted
   module Resources
     class Markets
+      # @deprecated
+      #
       # Get the list of markets where Spotify is available.
       #
       # @overload list(request_options: {})

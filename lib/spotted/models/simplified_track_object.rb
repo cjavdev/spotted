@@ -18,6 +18,8 @@ module Spotted
       optional :artists, -> { Spotted::Internal::Type::ArrayOf[Spotted::SimplifiedArtistObject] }
 
       # @!attribute available_markets
+      #   @deprecated
+      #
       #   A list of the countries in which the track can be played, identified by their
       #   [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
       #
@@ -70,6 +72,8 @@ module Spotted
       optional :is_playable, Spotted::Internal::Type::Boolean
 
       # @!attribute linked_from
+      #   @deprecated
+      #
       #   Part of the response when
       #   [Track Relinking](/documentation/web-api/concepts/track-relinking/) is applied
       #   and is only part of the response if the track linking, in fact, exists. The

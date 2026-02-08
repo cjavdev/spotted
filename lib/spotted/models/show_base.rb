@@ -10,6 +10,8 @@ module Spotted
       required :id, String
 
       # @!attribute available_markets
+      #   @deprecated
+      #
       #   A list of the countries in which the show can be played, identified by their
       #   [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
       #
@@ -87,6 +89,8 @@ module Spotted
       required :name, String
 
       # @!attribute publisher
+      #   @deprecated
+      #
       #   The publisher of the show.
       #
       #   @return [String]
