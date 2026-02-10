@@ -61,6 +61,8 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Me::AlbumRemoveParams} for more details.
         #
@@ -82,6 +84,8 @@ module Spotted
           @client.request(method: :delete, path: "me/albums", body: parsed, model: NilClass, options: options)
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Me::AlbumSaveParams} for more details.
         #

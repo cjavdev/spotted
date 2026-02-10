@@ -66,6 +66,8 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Me::EpisodeRemoveParams} for more details.
         #
@@ -96,6 +98,8 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Me::EpisodeSaveParams} for more details.
         #
