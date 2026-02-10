@@ -59,6 +59,8 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Me::ShowRemoveParams} for more details.
         #
@@ -80,6 +82,8 @@ module Spotted
           @client.request(method: :delete, path: "me/shows", body: parsed, model: NilClass, options: options)
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Me::ShowSaveParams} for more details.
         #
