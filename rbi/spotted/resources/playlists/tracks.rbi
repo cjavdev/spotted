@@ -4,6 +4,10 @@ module Spotted
   module Resources
     class Playlists
       class Tracks
+        # **Deprecated:** Use
+        # [Update Playlist Items](/documentation/web-api/reference/reorder-or-replace-playlists-items)
+        # instead.
+        #
         # Either reorder or replace items in a playlist depending on the request's
         # parameters. To reorder items, include `range_start`, `insert_before`,
         # `range_length` and `snapshot_id` in the request's body. To replace items,
@@ -57,10 +61,11 @@ module Spotted
         )
         end
 
-        # Get full details of the items of a playlist owned by a Spotify user.
+        # **Deprecated:** Use
+        # [Get Playlist Items](/documentation/web-api/reference/get-playlists-items)
+        # instead.
         #
-        # **Note**: This endpoint is only accessible for playlists owned by the current
-        # user.
+        # Get full details of the items of a playlist owned by a Spotify user.
         sig do
           params(
             playlist_id: String,
@@ -115,6 +120,10 @@ module Spotted
         )
         end
 
+        # **Deprecated:** Use
+        # [Add Items to Playlist](/documentation/web-api/reference/add-items-to-playlist)
+        # instead.
+        #
         # Add one or more items to a user's playlist.
         sig do
           params(
@@ -153,6 +162,10 @@ module Spotted
         )
         end
 
+        # **Deprecated:** Use
+        # [Remove Playlist Items](/documentation/web-api/reference/remove-items-playlist)
+        # instead.
+        #
         # Remove one or more items from a user's playlist.
         sig do
           params(

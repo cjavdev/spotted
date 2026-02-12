@@ -40,6 +40,7 @@ class Spotted::Test::Resources::Playlists::TracksTest < Spotted::Test::ResourceT
         added_at: Time | nil,
         added_by: Spotted::PlaylistUserObject | nil,
         is_local: Spotted::Internal::Type::Boolean | nil,
+        item: Spotted::PlaylistTrackObject::Item | nil,
         published: Spotted::Internal::Type::Boolean | nil,
         track: Spotted::PlaylistTrackObject::Track | nil
       }

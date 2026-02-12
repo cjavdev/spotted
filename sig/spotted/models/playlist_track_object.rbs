@@ -5,6 +5,7 @@ module Spotted
         added_at: Time,
         added_by: Spotted::PlaylistUserObject,
         is_local: bool,
+        item: Spotted::Models::PlaylistTrackObject::item,
         published: bool,
         track: Spotted::Models::PlaylistTrackObject::track
       }
@@ -24,6 +25,12 @@ module Spotted
 
       def is_local=: (bool) -> bool
 
+      attr_reader item: Spotted::Models::PlaylistTrackObject::item?
+
+      def item=: (
+        Spotted::Models::PlaylistTrackObject::item
+      ) -> Spotted::Models::PlaylistTrackObject::item
+
       attr_reader published: bool?
 
       def published=: (bool) -> bool
@@ -38,6 +45,7 @@ module Spotted
         ?added_at: Time,
         ?added_by: Spotted::PlaylistUserObject,
         ?is_local: bool,
+        ?item: Spotted::Models::PlaylistTrackObject::item,
         ?published: bool,
         ?track: Spotted::Models::PlaylistTrackObject::track
       ) -> void
@@ -46,9 +54,18 @@ module Spotted
         added_at: Time,
         added_by: Spotted::PlaylistUserObject,
         is_local: bool,
+        item: Spotted::Models::PlaylistTrackObject::item,
         published: bool,
         track: Spotted::Models::PlaylistTrackObject::track
       }
+
+      type item = Spotted::TrackObject | Spotted::EpisodeObject
+
+      module Item
+        extend Spotted::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Spotted::Models::PlaylistTrackObject::item]
+      end
 
       type track = Spotted::TrackObject | Spotted::EpisodeObject
 

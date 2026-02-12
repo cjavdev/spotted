@@ -45,6 +45,15 @@ module Spotted
       #   @return [Array<Spotted::Models::ImageObject>, nil]
       optional :images, -> { Spotted::Internal::Type::ArrayOf[Spotted::ImageObject] }
 
+      # @!attribute items
+      #   A collection containing a link ( `href` ) to the Web API endpoint where full
+      #   details of the playlist's items can be retrieved, along with the `total` number
+      #   of items in the playlist. Note, a track object may be `null`. This can happen if
+      #   a track is no longer available.
+      #
+      #   @return [Spotted::Models::PlaylistTracksRefObject, nil]
+      optional :items, -> { Spotted::PlaylistTracksRefObject }
+
       # @!attribute name
       #   The name of the playlist.
       #
@@ -75,10 +84,12 @@ module Spotted
       optional :snapshot_id, String
 
       # @!attribute tracks
-      #   A collection containing a link ( `href` ) to the Web API endpoint where full
-      #   details of the playlist's tracks can be retrieved, along with the `total` number
-      #   of tracks in the playlist. Note, a track object may be `null`. This can happen
-      #   if a track is no longer available.
+      #   @deprecated
+      #
+      #   **Deprecated:** Use `items` instead. A collection containing a link ( `href` )
+      #   to the Web API endpoint where full details of the playlist's tracks can be
+      #   retrieved, along with the `total` number of tracks in the playlist. Note, a
+      #   track object may be `null`. This can happen if a track is no longer available.
       #
       #   @return [Spotted::Models::PlaylistTracksRefObject, nil]
       optional :tracks, -> { Spotted::PlaylistTracksRefObject }
@@ -96,7 +107,7 @@ module Spotted
       #   @return [String, nil]
       optional :uri, String
 
-      # @!method initialize(id: nil, collaborative: nil, description: nil, external_urls: nil, href: nil, images: nil, name: nil, owner: nil, published: nil, snapshot_id: nil, tracks: nil, type: nil, uri: nil)
+      # @!method initialize(id: nil, collaborative: nil, description: nil, external_urls: nil, href: nil, images: nil, items: nil, name: nil, owner: nil, published: nil, snapshot_id: nil, tracks: nil, type: nil, uri: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::SimplifiedPlaylistObject} for more details.
       #
@@ -113,6 +124,8 @@ module Spotted
       #
       #   @param images [Array<Spotted::Models::ImageObject>] Images for the playlist. The array may be empty or contain up to three images. T
       #
+      #   @param items [Spotted::Models::PlaylistTracksRefObject] A collection containing a link ( `href` ) to the Web API endpoint where full det
+      #
       #   @param name [String] The name of the playlist.
       #
       #   @param owner [Spotted::Models::SimplifiedPlaylistObject::Owner] The user who owns the playlist
@@ -121,7 +134,7 @@ module Spotted
       #
       #   @param snapshot_id [String] The version identifier for the current playlist. Can be supplied in other reques
       #
-      #   @param tracks [Spotted::Models::PlaylistTracksRefObject] A collection containing a link ( `href` ) to the Web API endpoint where full det
+      #   @param tracks [Spotted::Models::PlaylistTracksRefObject] **Deprecated:** Use `items` instead. A collection containing a link ( `href` ) t
       #
       #   @param type [String] The object type: "playlist"
       #

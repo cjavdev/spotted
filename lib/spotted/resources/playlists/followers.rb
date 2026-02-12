@@ -4,10 +4,16 @@ module Spotted
   module Resources
     class Playlists
       class Followers
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Playlists::FollowerCheckParams} for more details.
         #
         # Check to see if the current user is following a specified playlist.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Check User's Saved Items](/documentation/web-api/reference/check-library-contains)
+        # instead.
         #
         # @overload check(playlist_id, ids: nil, request_options: {})
         #
@@ -31,10 +37,16 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Playlists::FollowerFollowParams} for more details.
         #
         # Add the current user as a follower of a playlist.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Save Items to Library](/documentation/web-api/reference/save-library-items)
+        # instead.
         #
         # @overload follow(playlist_id, published: nil, request_options: {})
         #
@@ -58,10 +70,16 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Playlists::FollowerUnfollowParams} for more details.
         #
         # Remove the current user as a follower of a playlist.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Remove Items from Library](/documentation/web-api/reference/remove-library-items)
+        # instead.
         #
         # @overload unfollow(playlist_id, request_options: {})
         #

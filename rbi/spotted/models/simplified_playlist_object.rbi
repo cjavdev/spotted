@@ -56,6 +56,16 @@ module Spotted
       sig { params(images: T::Array[Spotted::ImageObject::OrHash]).void }
       attr_writer :images
 
+      # A collection containing a link ( `href` ) to the Web API endpoint where full
+      # details of the playlist's items can be retrieved, along with the `total` number
+      # of items in the playlist. Note, a track object may be `null`. This can happen if
+      # a track is no longer available.
+      sig { returns(T.nilable(Spotted::PlaylistTracksRefObject)) }
+      attr_reader :items
+
+      sig { params(items: Spotted::PlaylistTracksRefObject::OrHash).void }
+      attr_writer :items
+
       # The name of the playlist.
       sig { returns(T.nilable(String)) }
       attr_reader :name
@@ -91,10 +101,10 @@ module Spotted
       sig { params(snapshot_id: String).void }
       attr_writer :snapshot_id
 
-      # A collection containing a link ( `href` ) to the Web API endpoint where full
-      # details of the playlist's tracks can be retrieved, along with the `total` number
-      # of tracks in the playlist. Note, a track object may be `null`. This can happen
-      # if a track is no longer available.
+      # **Deprecated:** Use `items` instead. A collection containing a link ( `href` )
+      # to the Web API endpoint where full details of the playlist's tracks can be
+      # retrieved, along with the `total` number of tracks in the playlist. Note, a
+      # track object may be `null`. This can happen if a track is no longer available.
       sig { returns(T.nilable(Spotted::PlaylistTracksRefObject)) }
       attr_reader :tracks
 
@@ -124,6 +134,7 @@ module Spotted
           external_urls: Spotted::ExternalURLObject::OrHash,
           href: String,
           images: T::Array[Spotted::ImageObject::OrHash],
+          items: Spotted::PlaylistTracksRefObject::OrHash,
           name: String,
           owner: Spotted::SimplifiedPlaylistObject::Owner::OrHash,
           published: T::Boolean,
@@ -152,6 +163,11 @@ module Spotted
         # If returned, the source URL for the image (`url`) is temporary and will expire
         # in less than a day._
         images: nil,
+        # A collection containing a link ( `href` ) to the Web API endpoint where full
+        # details of the playlist's items can be retrieved, along with the `total` number
+        # of items in the playlist. Note, a track object may be `null`. This can happen if
+        # a track is no longer available.
+        items: nil,
         # The name of the playlist.
         name: nil,
         # The user who owns the playlist
@@ -165,10 +181,10 @@ module Spotted
         # The version identifier for the current playlist. Can be supplied in other
         # requests to target a specific playlist version
         snapshot_id: nil,
-        # A collection containing a link ( `href` ) to the Web API endpoint where full
-        # details of the playlist's tracks can be retrieved, along with the `total` number
-        # of tracks in the playlist. Note, a track object may be `null`. This can happen
-        # if a track is no longer available.
+        # **Deprecated:** Use `items` instead. A collection containing a link ( `href` )
+        # to the Web API endpoint where full details of the playlist's tracks can be
+        # retrieved, along with the `total` number of tracks in the playlist. Note, a
+        # track object may be `null`. This can happen if a track is no longer available.
         tracks: nil,
         # The object type: "playlist"
         type: nil,
@@ -187,6 +203,7 @@ module Spotted
             external_urls: Spotted::ExternalURLObject,
             href: String,
             images: T::Array[Spotted::ImageObject],
+            items: Spotted::PlaylistTracksRefObject,
             name: String,
             owner: Spotted::SimplifiedPlaylistObject::Owner,
             published: T::Boolean,
