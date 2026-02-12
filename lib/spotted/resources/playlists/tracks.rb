@@ -4,8 +4,14 @@ module Spotted
   module Resources
     class Playlists
       class Tracks
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Playlists::TrackUpdateParams} for more details.
+        #
+        # **Deprecated:** Use
+        # [Update Playlist Items](/documentation/web-api/reference/reorder-or-replace-playlists-items)
+        # instead.
         #
         # Either reorder or replace items in a playlist depending on the request's
         # parameters. To reorder items, include `range_start`, `insert_before`,
@@ -49,13 +55,16 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Playlists::TrackListParams} for more details.
         #
-        # Get full details of the items of a playlist owned by a Spotify user.
+        # **Deprecated:** Use
+        # [Get Playlist Items](/documentation/web-api/reference/get-playlists-items)
+        # instead.
         #
-        # **Note**: This endpoint is only accessible for playlists owned by the current
-        # user.
+        # Get full details of the items of a playlist owned by a Spotify user.
         #
         # @overload list(playlist_id, additional_types: nil, fields: nil, limit: nil, market: nil, offset: nil, request_options: {})
         #
@@ -88,8 +97,14 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Playlists::TrackAddParams} for more details.
+        #
+        # **Deprecated:** Use
+        # [Add Items to Playlist](/documentation/web-api/reference/add-items-to-playlist)
+        # instead.
         #
         # Add one or more items to a user's playlist.
         #
@@ -119,8 +134,14 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Playlists::TrackRemoveParams} for more details.
+        #
+        # **Deprecated:** Use
+        # [Remove Playlist Items](/documentation/web-api/reference/remove-items-playlist)
+        # instead.
         #
         # Remove one or more items from a user's playlist.
         #

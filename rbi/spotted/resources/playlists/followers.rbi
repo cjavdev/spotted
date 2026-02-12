@@ -5,6 +5,10 @@ module Spotted
     class Playlists
       class Followers
         # Check to see if the current user is following a specified playlist.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Check User's Saved Items](/documentation/web-api/reference/check-library-contains)
+        # instead.
         sig do
           params(
             playlist_id: String,
@@ -25,6 +29,10 @@ module Spotted
         end
 
         # Add the current user as a follower of a playlist.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Save Items to Library](/documentation/web-api/reference/save-library-items)
+        # instead.
         sig do
           params(
             playlist_id: String,
@@ -47,6 +55,10 @@ module Spotted
         end
 
         # Remove the current user as a follower of a playlist.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Remove Items from Library](/documentation/web-api/reference/remove-library-items)
+        # instead.
         sig do
           params(
             playlist_id: String,
