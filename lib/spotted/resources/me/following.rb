@@ -33,11 +33,17 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Me::FollowingCheckParams} for more details.
         #
         # Check to see if the current user is following one or more artists or other
         # Spotify users.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Check User's Saved Items](/documentation/web-api/reference/check-library-contains)
+        # instead.
         #
         # @overload check(ids:, type:, request_options: {})
         #
@@ -61,11 +67,17 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Me::FollowingFollowParams} for more details.
         #
         # Add the current user as a follower of one or more artists or other Spotify
         # users.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Save Items to Library](/documentation/web-api/reference/save-library-items)
+        # instead.
         #
         # @overload follow(ids:, published: nil, request_options: {})
         #
@@ -83,11 +95,17 @@ module Spotted
           @client.request(method: :put, path: "me/following", body: parsed, model: NilClass, options: options)
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Me::FollowingUnfollowParams} for more details.
         #
         # Remove the current user as a follower of one or more artists or other Spotify
         # users.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Remove Items from Library](/documentation/web-api/reference/remove-library-items)
+        # instead.
         #
         # @overload unfollow(ids: nil, published: nil, request_options: {})
         #

@@ -4,10 +4,7 @@ module Spotted
   module Resources
     class Me
       class Episodes
-        # Get a list of the episodes saved in the current Spotify user's library.<br/>
-        # This API endpoint is in **beta** and could change without warning. Please share
-        # any feedback that you have, or issues that you discover, in our
-        # [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+        # Get a list of the episodes saved in the current Spotify user's library.
         sig do
           params(
             limit: Integer,
@@ -41,10 +38,11 @@ module Spotted
         end
 
         # Check if one or more episodes is already saved in the current Spotify user's
-        # 'Your Episodes' library.<br/> This API endpoint is in **beta** and could change
-        # without warning. Please share any feedback that you have, or issues that you
-        # discover, in our
-        # [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer)..
+        # 'Your Episodes' library.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Check User's Saved Items](/documentation/web-api/reference/check-library-contains)
+        # instead.
         sig do
           params(
             ids: String,
@@ -60,10 +58,11 @@ module Spotted
         )
         end
 
-        # Remove one or more episodes from the current user's library.<br/> This API
-        # endpoint is in **beta** and could change without warning. Please share any
-        # feedback that you have, or issues that you discover, in our
-        # [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+        # Remove one or more episodes from the current user's library.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Remove Items from Library](/documentation/web-api/reference/remove-library-items)
+        # instead.
         sig do
           params(
             ids: T::Array[String],
@@ -88,10 +87,11 @@ module Spotted
         )
         end
 
-        # Save one or more episodes to the current user's library.<br/> This API endpoint
-        # is in **beta** and could change without warning. Please share any feedback that
-        # you have, or issues that you discover, in our
-        # [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+        # Save one or more episodes to the current user's library.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Save Items to Library](/documentation/web-api/reference/save-library-items)
+        # instead.
         sig do
           params(
             ids: T::Array[String],

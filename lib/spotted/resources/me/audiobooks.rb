@@ -33,11 +33,17 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Me::AudiobookCheckParams} for more details.
         #
         # Check if one or more audiobooks are already saved in the current Spotify user's
         # library.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Check User's Saved Items](/documentation/web-api/reference/check-library-contains)
+        # instead.
         #
         # @overload check(ids:, request_options: {})
         #
@@ -66,6 +72,10 @@ module Spotted
         #
         # Remove one or more audiobooks from the Spotify user's library.
         #
+        # **Note:** This endpoint is deprecated. Use
+        # [Remove Items from Library](/documentation/web-api/reference/remove-library-items)
+        # instead.
+        #
         # @overload remove(ids:, request_options: {})
         #
         # @param ids [String] A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spot
@@ -92,6 +102,10 @@ module Spotted
         # {Spotted::Models::Me::AudiobookSaveParams} for more details.
         #
         # Save one or more audiobooks to the current Spotify user's library.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Save Items to Library](/documentation/web-api/reference/save-library-items)
+        # instead.
         #
         # @overload save(ids:, request_options: {})
         #

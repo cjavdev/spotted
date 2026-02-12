@@ -21,6 +21,7 @@ class Spotted::Test::Resources::PlaylistsTest < Spotted::Test::ResourceTest
         followers: Spotted::FollowersObject | nil,
         href: String | nil,
         images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
+        items: Spotted::Models::PlaylistRetrieveResponse::Items | nil,
         name: String | nil,
         owner: Spotted::Models::PlaylistRetrieveResponse::Owner | nil,
         published: Spotted::Internal::Type::Boolean | nil,

@@ -33,11 +33,17 @@ module Spotted
           )
         end
 
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Spotted::Models::Me::ShowCheckParams} for more details.
         #
         # Check if one or more shows is already saved in the current Spotify user's
         # library.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Check User's Saved Items](/documentation/web-api/reference/check-library-contains)
+        # instead.
         #
         # @overload check(ids:, request_options: {})
         #
@@ -66,6 +72,10 @@ module Spotted
         #
         # Delete one or more shows from current Spotify user's library.
         #
+        # **Note:** This endpoint is deprecated. Use
+        # [Remove Items from Library](/documentation/web-api/reference/remove-library-items)
+        # instead.
+        #
         # @overload remove(ids: nil, published: nil, request_options: {})
         #
         # @param ids [Array<String>] A JSON array of the [Spotify IDs](https://developer.spotify.com/documentation/we
@@ -88,6 +98,10 @@ module Spotted
         # {Spotted::Models::Me::ShowSaveParams} for more details.
         #
         # Save one or more shows to current Spotify user's library.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Save Items to Library](/documentation/web-api/reference/save-library-items)
+        # instead.
         #
         # @overload save(ids: nil, published: nil, request_options: {})
         #

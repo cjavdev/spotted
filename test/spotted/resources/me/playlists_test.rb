@@ -27,6 +27,7 @@ class Spotted::Test::Resources::Me::PlaylistsTest < Spotted::Test::ResourceTest
         external_urls: Spotted::ExternalURLObject | nil,
         href: String | nil,
         images: ^(Spotted::Internal::Type::ArrayOf[Spotted::ImageObject]) | nil,
+        items: Spotted::PlaylistTracksRefObject | nil,
         name: String | nil,
         owner: Spotted::SimplifiedPlaylistObject::Owner | nil,
         published: Spotted::Internal::Type::Boolean | nil,

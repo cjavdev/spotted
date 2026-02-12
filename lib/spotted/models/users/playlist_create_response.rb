@@ -53,6 +53,13 @@ module Spotted
         #   @return [Array<Spotted::Models::ImageObject>, nil]
         optional :images, -> { Spotted::Internal::Type::ArrayOf[Spotted::ImageObject] }
 
+        # @!attribute items
+        #   The items of the playlist. _**Note**: This field is only available for playlists
+        #   owned by the current user or playlists the user is a collaborator of._
+        #
+        #   @return [Spotted::Models::Users::PlaylistCreateResponse::Items, nil]
+        optional :items, -> { Spotted::Models::Users::PlaylistCreateResponse::Items }
+
         # @!attribute name
         #   The name of the playlist.
         #
@@ -83,8 +90,9 @@ module Spotted
         optional :snapshot_id, String
 
         # @!attribute tracks
-        #   The tracks of the playlist. _**Note**: This field is only available for
-        #   playlists owned by the current user._
+        #   @deprecated
+        #
+        #   **Deprecated:** Use `items` instead. The tracks of the playlist.
         #
         #   @return [Spotted::Models::Users::PlaylistCreateResponse::Tracks, nil]
         optional :tracks, -> { Spotted::Models::Users::PlaylistCreateResponse::Tracks }
@@ -102,7 +110,7 @@ module Spotted
         #   @return [String, nil]
         optional :uri, String
 
-        # @!method initialize(id: nil, collaborative: nil, description: nil, external_urls: nil, followers: nil, href: nil, images: nil, name: nil, owner: nil, published: nil, snapshot_id: nil, tracks: nil, type: nil, uri: nil)
+        # @!method initialize(id: nil, collaborative: nil, description: nil, external_urls: nil, followers: nil, href: nil, images: nil, items: nil, name: nil, owner: nil, published: nil, snapshot_id: nil, tracks: nil, type: nil, uri: nil)
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Users::PlaylistCreateResponse} for more details.
         #
@@ -121,6 +129,9 @@ module Spotted
         #
         #   @param images [Array<Spotted::Models::ImageObject>] Images for the playlist. The array may be empty or contain up to three images. T
         #
+        #   @param items [Spotted::Models::Users::PlaylistCreateResponse::Items] The items of the playlist. \_**Note**: This field is only available for
+        #   playlists
+        #
         #   @param name [String] The name of the playlist.
         #
         #   @param owner [Spotted::Models::Users::PlaylistCreateResponse::Owner] The user who owns the playlist
@@ -129,12 +140,88 @@ module Spotted
         #
         #   @param snapshot_id [String] The version identifier for the current playlist. Can be supplied in other reques
         #
-        #   @param tracks [Spotted::Models::Users::PlaylistCreateResponse::Tracks] The tracks of the playlist. \_**Note**: This field is only available for
-        #   playlist
+        #   @param tracks [Spotted::Models::Users::PlaylistCreateResponse::Tracks] **Deprecated:** Use `items` instead. The tracks of the playlist.
         #
         #   @param type [String] The object type: "playlist"
         #
         #   @param uri [String] The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the play
+
+        # @see Spotted::Models::Users::PlaylistCreateResponse#items
+        class Items < Spotted::Internal::Type::BaseModel
+          # @!attribute href
+          #   A link to the Web API endpoint returning the full result of the request
+          #
+          #   @return [String]
+          required :href, String
+
+          # @!attribute limit
+          #   The maximum number of items in the response (as set in the query or by default).
+          #
+          #   @return [Integer]
+          required :limit, Integer
+
+          # @!attribute next_
+          #   URL to the next page of items. ( `null` if none)
+          #
+          #   @return [String, nil]
+          required :next_, String, api_name: :next, nil?: true
+
+          # @!attribute offset
+          #   The offset of the items returned (as set in the query or by default)
+          #
+          #   @return [Integer]
+          required :offset, Integer
+
+          # @!attribute previous
+          #   URL to the previous page of items. ( `null` if none)
+          #
+          #   @return [String, nil]
+          required :previous, String, nil?: true
+
+          # @!attribute total
+          #   The total number of items available to return.
+          #
+          #   @return [Integer]
+          required :total, Integer
+
+          # @!attribute items
+          #
+          #   @return [Array<Spotted::Models::PlaylistTrackObject>, nil]
+          optional :items, -> { Spotted::Internal::Type::ArrayOf[Spotted::PlaylistTrackObject] }
+
+          # @!attribute published
+          #   The playlist's public/private status (if it should be added to the user's
+          #   profile or not): `true` the playlist will be public, `false` the playlist will
+          #   be private, `null` the playlist status is not relevant. For more about
+          #   public/private status, see
+          #   [Working with Playlists](/documentation/web-api/concepts/playlists)
+          #
+          #   @return [Boolean, nil]
+          optional :published, Spotted::Internal::Type::Boolean
+
+          # @!method initialize(href:, limit:, next_:, offset:, previous:, total:, items: nil, published: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Spotted::Models::Users::PlaylistCreateResponse::Items} for more details.
+          #
+          #   The items of the playlist. _**Note**: This field is only available for playlists
+          #   owned by the current user or playlists the user is a collaborator of._
+          #
+          #   @param href [String] A link to the Web API endpoint returning the full result of the request
+          #
+          #   @param limit [Integer] The maximum number of items in the response (as set in the query or by default).
+          #
+          #   @param next_ [String, nil] URL to the next page of items. ( `null` if none)
+          #
+          #   @param offset [Integer] The offset of the items returned (as set in the query or by default)
+          #
+          #   @param previous [String, nil] URL to the previous page of items. ( `null` if none)
+          #
+          #   @param total [Integer] The total number of items available to return.
+          #
+          #   @param items [Array<Spotted::Models::PlaylistTrackObject>]
+          #
+          #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
+        end
 
         # @see Spotted::Models::Users::PlaylistCreateResponse#owner
         class Owner < Spotted::Models::PlaylistUserObject
@@ -153,6 +240,8 @@ module Spotted
           #   @param display_name [String, nil] The name displayed on the user's profile. `null` if not available.
         end
 
+        # @deprecated
+        #
         # @see Spotted::Models::Users::PlaylistCreateResponse#tracks
         class Tracks < Spotted::Internal::Type::BaseModel
           # @!attribute href
@@ -210,8 +299,7 @@ module Spotted
           #   Some parameter documentations has been truncated, see
           #   {Spotted::Models::Users::PlaylistCreateResponse::Tracks} for more details.
           #
-          #   The tracks of the playlist. _**Note**: This field is only available for
-          #   playlists owned by the current user._
+          #   **Deprecated:** Use `items` instead. The tracks of the playlist.
           #
           #   @param href [String] A link to the Web API endpoint returning the full result of the request
           #

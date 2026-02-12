@@ -24,6 +24,12 @@ module Spotted
       #   @return [Boolean, nil]
       optional :is_local, Spotted::Internal::Type::Boolean
 
+      # @!attribute item
+      #   Information about the track or episode.
+      #
+      #   @return [Spotted::Models::TrackObject, Spotted::Models::EpisodeObject, nil]
+      optional :item, union: -> { Spotted::PlaylistTrackObject::Item }
+
       # @!attribute published
       #   The playlist's public/private status (if it should be added to the user's
       #   profile or not): `true` the playlist will be public, `false` the playlist will
@@ -35,12 +41,14 @@ module Spotted
       optional :published, Spotted::Internal::Type::Boolean
 
       # @!attribute track
-      #   Information about the track or episode.
+      #   @deprecated
+      #
+      #   **Deprecated:** Use `item` instead. Information about the track or episode.
       #
       #   @return [Spotted::Models::TrackObject, Spotted::Models::EpisodeObject, nil]
       optional :track, union: -> { Spotted::PlaylistTrackObject::Track }
 
-      # @!method initialize(added_at: nil, added_by: nil, is_local: nil, published: nil, track: nil)
+      # @!method initialize(added_at: nil, added_by: nil, is_local: nil, item: nil, published: nil, track: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::PlaylistTrackObject} for more details.
       #
@@ -52,11 +60,31 @@ module Spotted
       #
       #   @param is_local [Boolean] Whether this track or episode is a [local file](/documentation/web-api/concepts/
       #
+      #   @param item [Spotted::Models::TrackObject, Spotted::Models::EpisodeObject] Information about the track or episode.
+      #
       #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
       #
-      #   @param track [Spotted::Models::TrackObject, Spotted::Models::EpisodeObject] Information about the track or episode.
+      #   @param track [Spotted::Models::TrackObject, Spotted::Models::EpisodeObject] **Deprecated:** Use `item` instead. Information about the track or episode.
 
       # Information about the track or episode.
+      #
+      # @see Spotted::Models::PlaylistTrackObject#item
+      module Item
+        extend Spotted::Internal::Type::Union
+
+        discriminator :type
+
+        variant :track, -> { Spotted::TrackObject }
+
+        variant :episode, -> { Spotted::EpisodeObject }
+
+        # @!method self.variants
+        #   @return [Array(Spotted::Models::TrackObject, Spotted::Models::EpisodeObject)]
+      end
+
+      # @deprecated
+      #
+      # **Deprecated:** Use `item` instead. Information about the track or episode.
       #
       # @see Spotted::Models::PlaylistTrackObject#track
       module Track

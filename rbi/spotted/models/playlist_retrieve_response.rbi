@@ -63,6 +63,20 @@ module Spotted
       sig { params(images: T::Array[Spotted::ImageObject::OrHash]).void }
       attr_writer :images
 
+      # The items of the playlist. _**Note**: This field is only available for playlists
+      # owned by the current user or playlists the user is a collaborator of._
+      sig do
+        returns(T.nilable(Spotted::Models::PlaylistRetrieveResponse::Items))
+      end
+      attr_reader :items
+
+      sig do
+        params(
+          items: Spotted::Models::PlaylistRetrieveResponse::Items::OrHash
+        ).void
+      end
+      attr_writer :items
+
       # The name of the playlist.
       sig { returns(T.nilable(String)) }
       attr_reader :name
@@ -102,8 +116,7 @@ module Spotted
       sig { params(snapshot_id: String).void }
       attr_writer :snapshot_id
 
-      # The tracks of the playlist. _**Note**: This field is only available for
-      # playlists owned by the current user._
+      # **Deprecated:** Use `items` instead. The tracks of the playlist.
       sig do
         returns(T.nilable(Spotted::Models::PlaylistRetrieveResponse::Tracks))
       end
@@ -140,6 +153,7 @@ module Spotted
           followers: Spotted::FollowersObject::OrHash,
           href: String,
           images: T::Array[Spotted::ImageObject::OrHash],
+          items: Spotted::Models::PlaylistRetrieveResponse::Items::OrHash,
           name: String,
           owner: Spotted::Models::PlaylistRetrieveResponse::Owner::OrHash,
           published: T::Boolean,
@@ -170,6 +184,9 @@ module Spotted
         # If returned, the source URL for the image (`url`) is temporary and will expire
         # in less than a day._
         images: nil,
+        # The items of the playlist. _**Note**: This field is only available for playlists
+        # owned by the current user or playlists the user is a collaborator of._
+        items: nil,
         # The name of the playlist.
         name: nil,
         # The user who owns the playlist
@@ -183,8 +200,7 @@ module Spotted
         # The version identifier for the current playlist. Can be supplied in other
         # requests to target a specific playlist version
         snapshot_id: nil,
-        # The tracks of the playlist. _**Note**: This field is only available for
-        # playlists owned by the current user._
+        # **Deprecated:** Use `items` instead. The tracks of the playlist.
         tracks: nil,
         # The object type: "playlist"
         type: nil,
@@ -204,6 +220,7 @@ module Spotted
             followers: Spotted::FollowersObject,
             href: String,
             images: T::Array[Spotted::ImageObject],
+            items: Spotted::Models::PlaylistRetrieveResponse::Items,
             name: String,
             owner: Spotted::Models::PlaylistRetrieveResponse::Owner,
             published: T::Boolean,
@@ -215,6 +232,113 @@ module Spotted
         )
       end
       def to_hash
+      end
+
+      class Items < Spotted::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Spotted::Models::PlaylistRetrieveResponse::Items,
+              Spotted::Internal::AnyHash
+            )
+          end
+
+        # A link to the Web API endpoint returning the full result of the request
+        sig { returns(String) }
+        attr_accessor :href
+
+        # The maximum number of items in the response (as set in the query or by default).
+        sig { returns(Integer) }
+        attr_accessor :limit
+
+        # URL to the next page of items. ( `null` if none)
+        sig { returns(T.nilable(String)) }
+        attr_accessor :next_
+
+        # The offset of the items returned (as set in the query or by default)
+        sig { returns(Integer) }
+        attr_accessor :offset
+
+        # URL to the previous page of items. ( `null` if none)
+        sig { returns(T.nilable(String)) }
+        attr_accessor :previous
+
+        # The total number of items available to return.
+        sig { returns(Integer) }
+        attr_accessor :total
+
+        sig { returns(T.nilable(T::Array[Spotted::PlaylistTrackObject])) }
+        attr_reader :items
+
+        sig do
+          params(items: T::Array[Spotted::PlaylistTrackObject::OrHash]).void
+        end
+        attr_writer :items
+
+        # The playlist's public/private status (if it should be added to the user's
+        # profile or not): `true` the playlist will be public, `false` the playlist will
+        # be private, `null` the playlist status is not relevant. For more about
+        # public/private status, see
+        # [Working with Playlists](/documentation/web-api/concepts/playlists)
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :published
+
+        sig { params(published: T::Boolean).void }
+        attr_writer :published
+
+        # The items of the playlist. _**Note**: This field is only available for playlists
+        # owned by the current user or playlists the user is a collaborator of._
+        sig do
+          params(
+            href: String,
+            limit: Integer,
+            next_: T.nilable(String),
+            offset: Integer,
+            previous: T.nilable(String),
+            total: Integer,
+            items: T::Array[Spotted::PlaylistTrackObject::OrHash],
+            published: T::Boolean
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # A link to the Web API endpoint returning the full result of the request
+          href:,
+          # The maximum number of items in the response (as set in the query or by default).
+          limit:,
+          # URL to the next page of items. ( `null` if none)
+          next_:,
+          # The offset of the items returned (as set in the query or by default)
+          offset:,
+          # URL to the previous page of items. ( `null` if none)
+          previous:,
+          # The total number of items available to return.
+          total:,
+          items: nil,
+          # The playlist's public/private status (if it should be added to the user's
+          # profile or not): `true` the playlist will be public, `false` the playlist will
+          # be private, `null` the playlist status is not relevant. For more about
+          # public/private status, see
+          # [Working with Playlists](/documentation/web-api/concepts/playlists)
+          published: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              href: String,
+              limit: Integer,
+              next_: T.nilable(String),
+              offset: Integer,
+              previous: T.nilable(String),
+              total: Integer,
+              items: T::Array[Spotted::PlaylistTrackObject],
+              published: T::Boolean
+            }
+          )
+        end
+        def to_hash
+        end
       end
 
       class Owner < Spotted::Models::PlaylistUserObject
@@ -297,8 +421,7 @@ module Spotted
         sig { params(published: T::Boolean).void }
         attr_writer :published
 
-        # The tracks of the playlist. _**Note**: This field is only available for
-        # playlists owned by the current user._
+        # **Deprecated:** Use `items` instead. The tracks of the playlist.
         sig do
           params(
             href: String,

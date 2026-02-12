@@ -29,6 +29,10 @@ module Spotted
 
         # Check if one or more shows is already saved in the current Spotify user's
         # library.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Check User's Saved Items](/documentation/web-api/reference/check-library-contains)
+        # instead.
         sig do
           params(
             ids: String,
@@ -45,6 +49,10 @@ module Spotted
         end
 
         # Delete one or more shows from current Spotify user's library.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Remove Items from Library](/documentation/web-api/reference/remove-library-items)
+        # instead.
         sig do
           params(
             ids: T::Array[String],
@@ -70,6 +78,10 @@ module Spotted
         end
 
         # Save one or more shows to current Spotify user's library.
+        #
+        # **Note:** This endpoint is deprecated. Use
+        # [Save Items to Library](/documentation/web-api/reference/save-library-items)
+        # instead.
         sig do
           params(
             ids: T::Array[String],

@@ -32,6 +32,18 @@ module Spotted
       sig { params(is_local: T::Boolean).void }
       attr_writer :is_local
 
+      # Information about the track or episode.
+      sig { returns(T.nilable(Spotted::PlaylistTrackObject::Item::Variants)) }
+      attr_reader :item
+
+      sig do
+        params(
+          item:
+            T.any(Spotted::TrackObject::OrHash, Spotted::EpisodeObject::OrHash)
+        ).void
+      end
+      attr_writer :item
+
       # The playlist's public/private status (if it should be added to the user's
       # profile or not): `true` the playlist will be public, `false` the playlist will
       # be private, `null` the playlist status is not relevant. For more about
@@ -43,7 +55,7 @@ module Spotted
       sig { params(published: T::Boolean).void }
       attr_writer :published
 
-      # Information about the track or episode.
+      # **Deprecated:** Use `item` instead. Information about the track or episode.
       sig { returns(T.nilable(Spotted::PlaylistTrackObject::Track::Variants)) }
       attr_reader :track
 
@@ -60,6 +72,8 @@ module Spotted
           added_at: Time,
           added_by: Spotted::PlaylistUserObject::OrHash,
           is_local: T::Boolean,
+          item:
+            T.any(Spotted::TrackObject::OrHash, Spotted::EpisodeObject::OrHash),
           published: T::Boolean,
           track:
             T.any(Spotted::TrackObject::OrHash, Spotted::EpisodeObject::OrHash)
@@ -75,13 +89,15 @@ module Spotted
         # Whether this track or episode is a
         # [local file](/documentation/web-api/concepts/playlists/#local-files) or not.
         is_local: nil,
+        # Information about the track or episode.
+        item: nil,
         # The playlist's public/private status (if it should be added to the user's
         # profile or not): `true` the playlist will be public, `false` the playlist will
         # be private, `null` the playlist status is not relevant. For more about
         # public/private status, see
         # [Working with Playlists](/documentation/web-api/concepts/playlists)
         published: nil,
-        # Information about the track or episode.
+        # **Deprecated:** Use `item` instead. Information about the track or episode.
         track: nil
       )
       end
@@ -92,6 +108,7 @@ module Spotted
             added_at: Time,
             added_by: Spotted::PlaylistUserObject,
             is_local: T::Boolean,
+            item: Spotted::PlaylistTrackObject::Item::Variants,
             published: T::Boolean,
             track: Spotted::PlaylistTrackObject::Track::Variants
           }
@@ -101,6 +118,22 @@ module Spotted
       end
 
       # Information about the track or episode.
+      module Item
+        extend Spotted::Internal::Type::Union
+
+        Variants =
+          T.type_alias { T.any(Spotted::TrackObject, Spotted::EpisodeObject) }
+
+        sig do
+          override.returns(
+            T::Array[Spotted::PlaylistTrackObject::Item::Variants]
+          )
+        end
+        def self.variants
+        end
+      end
+
+      # **Deprecated:** Use `item` instead. Information about the track or episode.
       module Track
         extend Spotted::Internal::Type::Union
 
