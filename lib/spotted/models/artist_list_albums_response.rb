@@ -12,6 +12,8 @@ module Spotted
       required :id, String
 
       # @!attribute album_group
+      #   @deprecated
+      #
       #   This field describes the relationship between the artist and the album.
       #
       #   @return [Symbol, Spotted::Models::ArtistListAlbumsResponse::AlbumGroup]
@@ -150,6 +152,8 @@ module Spotted
       #
       #   @param type [Symbol, :album] The object type.
 
+      # @deprecated
+      #
       # This field describes the relationship between the artist and the album.
       #
       # @see Spotted::Models::ArtistListAlbumsResponse#album_group
