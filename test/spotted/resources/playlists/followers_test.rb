@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Playlists::FollowersTest < Spotted::Test::ResourceTest
   def test_check
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.playlists.followers.check("3cEYpjA9oz9GiPac4AsH4n")
 
@@ -14,7 +14,7 @@ class Spotted::Test::Resources::Playlists::FollowersTest < Spotted::Test::Resour
   end
 
   def test_follow
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.playlists.followers.follow("3cEYpjA9oz9GiPac4AsH4n")
 
@@ -24,7 +24,7 @@ class Spotted::Test::Resources::Playlists::FollowersTest < Spotted::Test::Resour
   end
 
   def test_unfollow
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.playlists.followers.unfollow("3cEYpjA9oz9GiPac4AsH4n")
 

@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Spotted::Test::Resources::AudiobooksTest < Spotted::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.audiobooks.retrieve("7iHfbu1YPACw6oZPAFJtqe")
 
@@ -14,7 +14,7 @@ class Spotted::Test::Resources::AudiobooksTest < Spotted::Test::ResourceTest
   end
 
   def test_bulk_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @spotted.audiobooks.bulk_retrieve(
@@ -33,7 +33,7 @@ class Spotted::Test::Resources::AudiobooksTest < Spotted::Test::ResourceTest
   end
 
   def test_list_chapters
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.audiobooks.list_chapters("7iHfbu1YPACw6oZPAFJtqe")
 

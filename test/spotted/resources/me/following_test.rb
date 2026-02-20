@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Me::FollowingTest < Spotted::Test::ResourceTest
   def test_bulk_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.following.bulk_retrieve(type: :artist)
 
@@ -20,7 +20,7 @@ class Spotted::Test::Resources::Me::FollowingTest < Spotted::Test::ResourceTest
   end
 
   def test_check_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @spotted.me.following.check(
@@ -34,7 +34,7 @@ class Spotted::Test::Resources::Me::FollowingTest < Spotted::Test::ResourceTest
   end
 
   def test_follow_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.following.follow(ids: ["string"])
 
@@ -44,7 +44,7 @@ class Spotted::Test::Resources::Me::FollowingTest < Spotted::Test::ResourceTest
   end
 
   def test_unfollow
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.following.unfollow
 

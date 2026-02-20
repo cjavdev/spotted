@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Spotted::Test::Resources::AudioFeaturesTest < Spotted::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.audio_features.retrieve("11dFghVXANMlKmJXsNCbNl")
 
@@ -38,7 +38,7 @@ class Spotted::Test::Resources::AudioFeaturesTest < Spotted::Test::ResourceTest
   end
 
   def test_bulk_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @spotted.audio_features.bulk_retrieve(

@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Spotted::Test::Resources::SearchTest < Spotted::Test::ResourceTest
   def test_query_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.search.query(q: "remaster%20track:Doxy%20artist:Miles%20Davis", type: [:album])
 

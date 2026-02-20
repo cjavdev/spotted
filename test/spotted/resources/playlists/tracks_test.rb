@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Playlists::TracksTest < Spotted::Test::ResourceTest
   def test_update
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.playlists.tracks.update("3cEYpjA9oz9GiPac4AsH4n")
 
@@ -20,7 +20,7 @@ class Spotted::Test::Resources::Playlists::TracksTest < Spotted::Test::ResourceT
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.playlists.tracks.list("3cEYpjA9oz9GiPac4AsH4n")
 
@@ -48,7 +48,7 @@ class Spotted::Test::Resources::Playlists::TracksTest < Spotted::Test::ResourceT
   end
 
   def test_add
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.playlists.tracks.add("3cEYpjA9oz9GiPac4AsH4n")
 
@@ -64,7 +64,7 @@ class Spotted::Test::Resources::Playlists::TracksTest < Spotted::Test::ResourceT
   end
 
   def test_remove_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.playlists.tracks.remove("3cEYpjA9oz9GiPac4AsH4n", tracks: [{}])
 

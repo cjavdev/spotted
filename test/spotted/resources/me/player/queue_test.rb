@@ -4,7 +4,7 @@ require_relative "../../../test_helper"
 
 class Spotted::Test::Resources::Me::Player::QueueTest < Spotted::Test::ResourceTest
   def test_add_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.queue.add(uri: "spotify:track:4iV5W9uYEdYUVa79Axb7Rh")
 
@@ -14,7 +14,7 @@ class Spotted::Test::Resources::Me::Player::QueueTest < Spotted::Test::ResourceT
   end
 
   def test_get
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.queue.get
 

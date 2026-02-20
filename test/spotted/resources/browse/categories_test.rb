@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Browse::CategoriesTest < Spotted::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.browse.categories.retrieve("dinner")
 
@@ -24,7 +24,7 @@ class Spotted::Test::Resources::Browse::CategoriesTest < Spotted::Test::Resource
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.browse.categories.list
 
@@ -51,7 +51,7 @@ class Spotted::Test::Resources::Browse::CategoriesTest < Spotted::Test::Resource
   end
 
   def test_get_playlists
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.browse.categories.get_playlists("dinner")
 

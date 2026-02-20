@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Users::PlaylistsTest < Spotted::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.users.playlists.create("smedjan", name: "New Playlist")
 
@@ -34,7 +34,7 @@ class Spotted::Test::Resources::Users::PlaylistsTest < Spotted::Test::ResourceTe
   end
 
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.users.playlists.list("smedjan")
 
