@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Playlists::ImagesTest < Spotted::Test::ResourceTest
   def test_update_required_params
-    skip("Mock server doesn't support application/binary responses")
+    skip("Mock server tests are disabled")
 
     response = @spotted.playlists.images.update("3cEYpjA9oz9GiPac4AsH4n", body: Pathname(__FILE__))
 
