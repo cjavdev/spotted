@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Me::AlbumsTest < Spotted::Test::ResourceTest
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.albums.list
 
@@ -29,7 +29,7 @@ class Spotted::Test::Resources::Me::AlbumsTest < Spotted::Test::ResourceTest
   end
 
   def test_check_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @spotted.me.albums.check(ids: "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc")
@@ -40,7 +40,7 @@ class Spotted::Test::Resources::Me::AlbumsTest < Spotted::Test::ResourceTest
   end
 
   def test_remove
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.albums.remove
 
@@ -50,7 +50,7 @@ class Spotted::Test::Resources::Me::AlbumsTest < Spotted::Test::ResourceTest
   end
 
   def test_save
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     # Ignore Layout/LineLength
     # rubocop:disable Layout/LineLength

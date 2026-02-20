@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
   def test_get_currently_playing
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.get_currently_playing
 
@@ -27,7 +27,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
   end
 
   def test_get_devices
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.get_devices
 
@@ -43,7 +43,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
   end
 
   def test_get_state
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.get_state
 
@@ -69,7 +69,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
   end
 
   def test_list_recently_played
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.list_recently_played
 
@@ -95,7 +95,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
   end
 
   def test_pause_playback
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.pause_playback
 
@@ -105,7 +105,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
   end
 
   def test_seek_to_position_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.seek_to_position(position_ms: 25_000)
 
@@ -115,7 +115,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
   end
 
   def test_set_repeat_mode_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.set_repeat_mode(state: "context")
 
@@ -125,7 +125,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
   end
 
   def test_set_volume_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.set_volume(volume_percent: 50)
 
@@ -135,7 +135,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
   end
 
   def test_skip_next
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.skip_next
 
@@ -145,7 +145,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
   end
 
   def test_skip_previous
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.skip_previous
 
@@ -155,7 +155,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
   end
 
   def test_start_playback
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.start_playback
 
@@ -165,7 +165,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
   end
 
   def test_toggle_shuffle_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.toggle_shuffle(state: true)
 
@@ -175,7 +175,7 @@ class Spotted::Test::Resources::Me::PlayerTest < Spotted::Test::ResourceTest
   end
 
   def test_transfer_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.player.transfer(device_ids: ["74ASZWbe4lXaubB36ztrGX"])
 

@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Me::ShowsTest < Spotted::Test::ResourceTest
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.shows.list
 
@@ -29,7 +29,7 @@ class Spotted::Test::Resources::Me::ShowsTest < Spotted::Test::ResourceTest
   end
 
   def test_check_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.shows.check(ids: "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ")
 
@@ -39,7 +39,7 @@ class Spotted::Test::Resources::Me::ShowsTest < Spotted::Test::ResourceTest
   end
 
   def test_remove
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.shows.remove
 
@@ -49,7 +49,7 @@ class Spotted::Test::Resources::Me::ShowsTest < Spotted::Test::ResourceTest
   end
 
   def test_save
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.shows.save
 

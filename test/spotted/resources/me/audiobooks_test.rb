@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Me::AudiobooksTest < Spotted::Test::ResourceTest
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.audiobooks.list
 
@@ -29,7 +29,7 @@ class Spotted::Test::Resources::Me::AudiobooksTest < Spotted::Test::ResourceTest
   end
 
   def test_check_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @spotted.me.audiobooks.check(ids: "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe")
@@ -40,7 +40,7 @@ class Spotted::Test::Resources::Me::AudiobooksTest < Spotted::Test::ResourceTest
   end
 
   def test_remove_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @spotted.me.audiobooks.remove(ids: "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe")
@@ -51,7 +51,7 @@ class Spotted::Test::Resources::Me::AudiobooksTest < Spotted::Test::ResourceTest
   end
 
   def test_save_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     # Ignore Layout/LineLength
     response =

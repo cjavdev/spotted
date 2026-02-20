@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Spotted::Test::Resources::MarketsTest < Spotted::Test::ResourceTest
   def test_list
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.markets.list
 
