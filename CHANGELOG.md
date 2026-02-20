@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.38.1 (2026-02-20)
+
+Full Changelog: [v0.38.0...v0.38.1](https://github.com/cjavdev/spotted/compare/v0.38.0...v0.38.1)
+
+### Chores
+
+* **internal:** remove mock server code ([2963fd6](https://github.com/cjavdev/spotted/commit/2963fd6b3b2912806c0c7ff57ac52dd626dcb19b))
+* **test:** update skip reason message ([e2ff3c8](https://github.com/cjavdev/spotted/commit/e2ff3c8fd7f526b8f36760cefbdab1053e781208))
+* update mock server docs ([480c701](https://github.com/cjavdev/spotted/commit/480c70199ddaa23c34ea756ac6355ff1972badaf))
+
 ## 0.38.0 (2026-02-14)
 
 Full Changelog: [v0.37.0...v0.38.0](https://github.com/cjavdev/spotted/compare/v0.37.0...v0.38.0)
