@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Spotted::Test::Resources::ShowsTest < Spotted::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.shows.retrieve("38bS44xjbVVZ3No3ByF1dJ")
 
@@ -14,7 +14,7 @@ class Spotted::Test::Resources::ShowsTest < Spotted::Test::ResourceTest
   end
 
   def test_bulk_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.shows.bulk_retrieve(ids: "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ")
 
@@ -30,7 +30,7 @@ class Spotted::Test::Resources::ShowsTest < Spotted::Test::ResourceTest
   end
 
   def test_list_episodes
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.shows.list_episodes("38bS44xjbVVZ3No3ByF1dJ")
 

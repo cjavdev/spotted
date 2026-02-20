@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
   def test_retrieve
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.artists.retrieve("0TnOYISbd1XYRBk9myaseg")
 
@@ -30,7 +30,7 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
   end
 
   def test_bulk_retrieve_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @spotted.artists.bulk_retrieve(
@@ -49,7 +49,7 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
   end
 
   def test_list_albums
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.artists.list_albums("0TnOYISbd1XYRBk9myaseg")
 
@@ -87,7 +87,7 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
   end
 
   def test_list_related_artists
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.artists.list_related_artists("0TnOYISbd1XYRBk9myaseg")
 
@@ -103,7 +103,7 @@ class Spotted::Test::Resources::ArtistsTest < Spotted::Test::ResourceTest
   end
 
   def test_top_tracks
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.artists.top_tracks("0TnOYISbd1XYRBk9myaseg")
 

@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Spotted::Test::Resources::Me::TopTest < Spotted::Test::ResourceTest
   def test_list_top_artists
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.top.list_top_artists
 
@@ -37,7 +37,7 @@ class Spotted::Test::Resources::Me::TopTest < Spotted::Test::ResourceTest
   end
 
   def test_list_top_tracks
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @spotted.me.top.list_top_tracks
 
