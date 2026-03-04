@@ -25,10 +25,11 @@ module Spotted
         # @see Spotted::Models::Me::TrackListParams
         def list(params = {})
           parsed, options = Spotted::Me::TrackListParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/tracks",
-            query: parsed,
+            query: query,
             page: Spotted::Internal::CursorURLPage,
             model: Spotted::Models::Me::TrackListResponse,
             options: options
@@ -58,10 +59,11 @@ module Spotted
         # @see Spotted::Models::Me::TrackCheckParams
         def check(params)
           parsed, options = Spotted::Me::TrackCheckParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/tracks/contains",
-            query: parsed,
+            query: query,
             model: Spotted::Internal::Type::ArrayOf[Spotted::Internal::Type::Boolean],
             options: options
           )

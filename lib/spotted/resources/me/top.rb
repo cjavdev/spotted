@@ -24,10 +24,11 @@ module Spotted
         # @see Spotted::Models::Me::TopListTopArtistsParams
         def list_top_artists(params = {})
           parsed, options = Spotted::Me::TopListTopArtistsParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/top/artists",
-            query: parsed,
+            query: query,
             page: Spotted::Internal::CursorURLPage,
             model: Spotted::ArtistObject,
             options: options
@@ -54,10 +55,11 @@ module Spotted
         # @see Spotted::Models::Me::TopListTopTracksParams
         def list_top_tracks(params = {})
           parsed, options = Spotted::Me::TopListTopTracksParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/top/tracks",
-            query: parsed,
+            query: query,
             page: Spotted::Internal::CursorURLPage,
             model: Spotted::TrackObject,
             options: options

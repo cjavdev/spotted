@@ -22,10 +22,11 @@ module Spotted
       # @see Spotted::Models::TrackRetrieveParams
       def retrieve(id, params = {})
         parsed, options = Spotted::TrackRetrieveParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["tracks/%1$s", id],
-          query: parsed,
+          query: query,
           model: Spotted::TrackObject,
           options: options
         )
@@ -51,10 +52,11 @@ module Spotted
       # @see Spotted::Models::TrackBulkRetrieveParams
       def bulk_retrieve(params)
         parsed, options = Spotted::TrackBulkRetrieveParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "tracks",
-          query: parsed,
+          query: query,
           model: Spotted::Models::TrackBulkRetrieveResponse,
           options: options
         )

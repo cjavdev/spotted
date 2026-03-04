@@ -24,10 +24,11 @@ module Spotted
         # @see Spotted::Models::Me::EpisodeListParams
         def list(params = {})
           parsed, options = Spotted::Me::EpisodeListParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/episodes",
-            query: parsed,
+            query: query,
             page: Spotted::Internal::CursorURLPage,
             model: Spotted::Models::Me::EpisodeListResponse,
             options: options
@@ -57,10 +58,11 @@ module Spotted
         # @see Spotted::Models::Me::EpisodeCheckParams
         def check(params)
           parsed, options = Spotted::Me::EpisodeCheckParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/episodes/contains",
-            query: parsed,
+            query: query,
             model: Spotted::Internal::Type::ArrayOf[Spotted::Internal::Type::Boolean],
             options: options
           )

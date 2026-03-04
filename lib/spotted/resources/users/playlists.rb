@@ -67,10 +67,11 @@ module Spotted
         # @see Spotted::Models::Users::PlaylistListParams
         def list(user_id, params = {})
           parsed, options = Spotted::Users::PlaylistListParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["users/%1$s/playlists", user_id],
-            query: parsed,
+            query: query,
             page: Spotted::Internal::CursorURLPage,
             model: Spotted::SimplifiedPlaylistObject,
             options: options

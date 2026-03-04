@@ -31,10 +31,11 @@ module Spotted
       # @see Spotted::Models::SearchQueryParams
       def query(params)
         parsed, options = Spotted::SearchQueryParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "search",
-          query: parsed,
+          query: query,
           model: Spotted::Models::SearchQueryResponse,
           options: options
         )

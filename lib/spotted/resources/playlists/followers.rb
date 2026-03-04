@@ -28,10 +28,11 @@ module Spotted
         # @see Spotted::Models::Playlists::FollowerCheckParams
         def check(playlist_id, params = {})
           parsed, options = Spotted::Playlists::FollowerCheckParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["playlists/%1$s/followers/contains", playlist_id],
-            query: parsed,
+            query: query,
             model: Spotted::Internal::Type::ArrayOf[Spotted::Internal::Type::Boolean],
             options: options
           )

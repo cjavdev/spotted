@@ -22,10 +22,11 @@ module Spotted
       # @see Spotted::Models::ShowRetrieveParams
       def retrieve(id, params = {})
         parsed, options = Spotted::ShowRetrieveParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["shows/%1$s", id],
-          query: parsed,
+          query: query,
           model: Spotted::Models::ShowRetrieveResponse,
           options: options
         )
@@ -51,10 +52,11 @@ module Spotted
       # @see Spotted::Models::ShowBulkRetrieveParams
       def bulk_retrieve(params)
         parsed, options = Spotted::ShowBulkRetrieveParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "shows",
-          query: parsed,
+          query: query,
           model: Spotted::Models::ShowBulkRetrieveResponse,
           options: options
         )
@@ -83,10 +85,11 @@ module Spotted
       # @see Spotted::Models::ShowListEpisodesParams
       def list_episodes(id, params = {})
         parsed, options = Spotted::ShowListEpisodesParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["shows/%1$s/episodes", id],
-          query: parsed,
+          query: query,
           page: Spotted::Internal::CursorURLPage,
           model: Spotted::SimplifiedEpisodeObject,
           options: options

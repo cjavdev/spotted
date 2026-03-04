@@ -22,10 +22,11 @@ module Spotted
       # @see Spotted::Models::AudiobookRetrieveParams
       def retrieve(id, params = {})
         parsed, options = Spotted::AudiobookRetrieveParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["audiobooks/%1$s", id],
-          query: parsed,
+          query: query,
           model: Spotted::Models::AudiobookRetrieveResponse,
           options: options
         )
@@ -53,10 +54,11 @@ module Spotted
       # @see Spotted::Models::AudiobookBulkRetrieveParams
       def bulk_retrieve(params)
         parsed, options = Spotted::AudiobookBulkRetrieveParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "audiobooks",
-          query: parsed,
+          query: query,
           model: Spotted::Models::AudiobookBulkRetrieveResponse,
           options: options
         )
@@ -86,10 +88,11 @@ module Spotted
       # @see Spotted::Models::AudiobookListChaptersParams
       def list_chapters(id, params = {})
         parsed, options = Spotted::AudiobookListChaptersParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["audiobooks/%1$s/chapters", id],
-          query: parsed,
+          query: query,
           page: Spotted::Internal::CursorURLPage,
           model: Spotted::SimplifiedChapterObject,
           options: options

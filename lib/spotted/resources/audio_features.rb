@@ -47,10 +47,11 @@ module Spotted
       # @see Spotted::Models::AudioFeatureBulkRetrieveParams
       def bulk_retrieve(params)
         parsed, options = Spotted::AudioFeatureBulkRetrieveParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "audio-features",
-          query: parsed,
+          query: query,
           model: Spotted::Models::AudioFeatureBulkRetrieveResponse,
           options: options
         )

@@ -25,10 +25,11 @@ module Spotted
         # @see Spotted::Models::Me::PlayerGetCurrentlyPlayingParams
         def get_currently_playing(params = {})
           parsed, options = Spotted::Me::PlayerGetCurrentlyPlayingParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/player/currently-playing",
-            query: parsed,
+            query: query,
             model: Spotted::Models::Me::PlayerGetCurrentlyPlayingResponse,
             options: options
           )
@@ -72,10 +73,11 @@ module Spotted
         # @see Spotted::Models::Me::PlayerGetStateParams
         def get_state(params = {})
           parsed, options = Spotted::Me::PlayerGetStateParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/player",
-            query: parsed,
+            query: query,
             model: Spotted::Models::Me::PlayerGetStateResponse,
             options: options
           )
@@ -102,10 +104,11 @@ module Spotted
         # @see Spotted::Models::Me::PlayerListRecentlyPlayedParams
         def list_recently_played(params = {})
           parsed, options = Spotted::Me::PlayerListRecentlyPlayedParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/player/recently-played",
-            query: parsed,
+            query: query,
             page: Spotted::Internal::CursorURLPage,
             model: Spotted::Models::Me::PlayerListRecentlyPlayedResponse,
             options: options
@@ -130,10 +133,11 @@ module Spotted
         # @see Spotted::Models::Me::PlayerPausePlaybackParams
         def pause_playback(params = {})
           parsed, options = Spotted::Me::PlayerPausePlaybackParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :put,
             path: "me/player/pause",
-            query: parsed,
+            query: query,
             model: NilClass,
             options: options
           )
@@ -159,10 +163,11 @@ module Spotted
         # @see Spotted::Models::Me::PlayerSeekToPositionParams
         def seek_to_position(params)
           parsed, options = Spotted::Me::PlayerSeekToPositionParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :put,
             path: "me/player/seek",
-            query: parsed,
+            query: query,
             model: NilClass,
             options: options
           )
@@ -188,10 +193,11 @@ module Spotted
         # @see Spotted::Models::Me::PlayerSetRepeatModeParams
         def set_repeat_mode(params)
           parsed, options = Spotted::Me::PlayerSetRepeatModeParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :put,
             path: "me/player/repeat",
-            query: parsed,
+            query: query,
             model: NilClass,
             options: options
           )
@@ -217,10 +223,11 @@ module Spotted
         # @see Spotted::Models::Me::PlayerSetVolumeParams
         def set_volume(params)
           parsed, options = Spotted::Me::PlayerSetVolumeParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :put,
             path: "me/player/volume",
-            query: parsed,
+            query: query,
             model: NilClass,
             options: options
           )
@@ -244,10 +251,11 @@ module Spotted
         # @see Spotted::Models::Me::PlayerSkipNextParams
         def skip_next(params = {})
           parsed, options = Spotted::Me::PlayerSkipNextParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :post,
             path: "me/player/next",
-            query: parsed,
+            query: query,
             model: NilClass,
             options: options
           )
@@ -271,10 +279,11 @@ module Spotted
         # @see Spotted::Models::Me::PlayerSkipPreviousParams
         def skip_previous(params = {})
           parsed, options = Spotted::Me::PlayerSkipPreviousParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :post,
             path: "me/player/previous",
-            query: parsed,
+            query: query,
             model: NilClass,
             options: options
           )
@@ -307,12 +316,13 @@ module Spotted
         #
         # @see Spotted::Models::Me::PlayerStartPlaybackParams
         def start_playback(params = {})
-          parsed, options = Spotted::Me::PlayerStartPlaybackParams.dump_request(params)
           query_params = [:device_id]
+          parsed, options = Spotted::Me::PlayerStartPlaybackParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :put,
             path: "me/player/play",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             model: NilClass,
             options: options
@@ -339,10 +349,11 @@ module Spotted
         # @see Spotted::Models::Me::PlayerToggleShuffleParams
         def toggle_shuffle(params)
           parsed, options = Spotted::Me::PlayerToggleShuffleParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :put,
             path: "me/player/shuffle",
-            query: parsed,
+            query: query,
             model: NilClass,
             options: options
           )

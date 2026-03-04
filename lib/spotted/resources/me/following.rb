@@ -24,10 +24,11 @@ module Spotted
         # @see Spotted::Models::Me::FollowingBulkRetrieveParams
         def bulk_retrieve(params)
           parsed, options = Spotted::Me::FollowingBulkRetrieveParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/following",
-            query: parsed,
+            query: query,
             model: Spotted::Models::Me::FollowingBulkRetrieveResponse,
             options: options
           )
@@ -58,10 +59,11 @@ module Spotted
         # @see Spotted::Models::Me::FollowingCheckParams
         def check(params)
           parsed, options = Spotted::Me::FollowingCheckParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/following/contains",
-            query: parsed,
+            query: query,
             model: Spotted::Internal::Type::ArrayOf[Spotted::Internal::Type::Boolean],
             options: options
           )

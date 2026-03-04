@@ -45,10 +45,11 @@ module Spotted
       # @see Spotted::Models::ArtistBulkRetrieveParams
       def bulk_retrieve(params)
         parsed, options = Spotted::ArtistBulkRetrieveParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "artists",
-          query: parsed,
+          query: query,
           model: Spotted::Models::ArtistBulkRetrieveResponse,
           options: options
         )
@@ -78,10 +79,11 @@ module Spotted
       # @see Spotted::Models::ArtistListAlbumsParams
       def list_albums(id, params = {})
         parsed, options = Spotted::ArtistListAlbumsParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["artists/%1$s/albums", id],
-          query: parsed,
+          query: query,
           page: Spotted::Internal::CursorURLPage,
           model: Spotted::Models::ArtistListAlbumsResponse,
           options: options
@@ -134,10 +136,11 @@ module Spotted
       # @see Spotted::Models::ArtistTopTracksParams
       def top_tracks(id, params = {})
         parsed, options = Spotted::ArtistTopTracksParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["artists/%1$s/top-tracks", id],
-          query: parsed,
+          query: query,
           model: Spotted::Models::ArtistTopTracksResponse,
           options: options
         )

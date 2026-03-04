@@ -25,10 +25,11 @@ module Spotted
           # @see Spotted::Models::Me::Player::QueueAddParams
           def add(params)
             parsed, options = Spotted::Me::Player::QueueAddParams.dump_request(params)
+            query = Spotted::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :post,
               path: "me/player/queue",
-              query: parsed,
+              query: query,
               model: NilClass,
               options: options
             )

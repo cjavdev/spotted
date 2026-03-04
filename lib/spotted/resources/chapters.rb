@@ -23,10 +23,11 @@ module Spotted
       # @see Spotted::Models::ChapterRetrieveParams
       def retrieve(id, params = {})
         parsed, options = Spotted::ChapterRetrieveParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["chapters/%1$s", id],
-          query: parsed,
+          query: query,
           model: Spotted::Models::ChapterRetrieveResponse,
           options: options
         )
@@ -54,10 +55,11 @@ module Spotted
       # @see Spotted::Models::ChapterBulkRetrieveParams
       def bulk_retrieve(params)
         parsed, options = Spotted::ChapterBulkRetrieveParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "chapters",
-          query: parsed,
+          query: query,
           model: Spotted::Models::ChapterBulkRetrieveResponse,
           options: options
         )

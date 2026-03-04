@@ -23,10 +23,11 @@ module Spotted
         # @see Spotted::Models::Me::AudiobookListParams
         def list(params = {})
           parsed, options = Spotted::Me::AudiobookListParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/audiobooks",
-            query: parsed,
+            query: query,
             page: Spotted::Internal::CursorURLPage,
             model: Spotted::Models::Me::AudiobookListResponse,
             options: options
@@ -56,10 +57,11 @@ module Spotted
         # @see Spotted::Models::Me::AudiobookCheckParams
         def check(params)
           parsed, options = Spotted::Me::AudiobookCheckParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/audiobooks/contains",
-            query: parsed,
+            query: query,
             model: Spotted::Internal::Type::ArrayOf[Spotted::Internal::Type::Boolean],
             options: options
           )
@@ -87,10 +89,11 @@ module Spotted
         # @see Spotted::Models::Me::AudiobookRemoveParams
         def remove(params)
           parsed, options = Spotted::Me::AudiobookRemoveParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :delete,
             path: "me/audiobooks",
-            query: parsed,
+            query: query,
             model: NilClass,
             options: options
           )
@@ -118,10 +121,11 @@ module Spotted
         # @see Spotted::Models::Me::AudiobookSaveParams
         def save(params)
           parsed, options = Spotted::Me::AudiobookSaveParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :put,
             path: "me/audiobooks",
-            query: parsed,
+            query: query,
             model: NilClass,
             options: options
           )

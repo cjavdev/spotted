@@ -25,10 +25,11 @@ module Spotted
         # @see Spotted::Models::Browse::CategoryRetrieveParams
         def retrieve(category_id, params = {})
           parsed, options = Spotted::Browse::CategoryRetrieveParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["browse/categories/%1$s", category_id],
-            query: parsed,
+            query: query,
             model: Spotted::Models::Browse::CategoryRetrieveResponse,
             options: options
           )
@@ -57,10 +58,11 @@ module Spotted
         # @see Spotted::Models::Browse::CategoryListParams
         def list(params = {})
           parsed, options = Spotted::Browse::CategoryListParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "browse/categories",
-            query: parsed,
+            query: query,
             page: Spotted::Internal::CursorURLPage,
             model: Spotted::Models::Browse::CategoryListResponse,
             options: options
@@ -89,10 +91,11 @@ module Spotted
         # @see Spotted::Models::Browse::CategoryGetPlaylistsParams
         def get_playlists(category_id, params = {})
           parsed, options = Spotted::Browse::CategoryGetPlaylistsParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["browse/categories/%1$s/playlists", category_id],
-            query: parsed,
+            query: query,
             model: Spotted::Models::Browse::CategoryGetPlaylistsResponse,
             options: options
           )

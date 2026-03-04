@@ -25,10 +25,11 @@ module Spotted
         # @see Spotted::Models::Me::AlbumListParams
         def list(params = {})
           parsed, options = Spotted::Me::AlbumListParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/albums",
-            query: parsed,
+            query: query,
             page: Spotted::Internal::CursorURLPage,
             model: Spotted::Models::Me::AlbumListResponse,
             options: options
@@ -58,10 +59,11 @@ module Spotted
         # @see Spotted::Models::Me::AlbumCheckParams
         def check(params)
           parsed, options = Spotted::Me::AlbumCheckParams.dump_request(params)
+          query = Spotted::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "me/albums/contains",
-            query: parsed,
+            query: query,
             model: Spotted::Internal::Type::ArrayOf[Spotted::Internal::Type::Boolean],
             options: options
           )

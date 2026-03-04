@@ -34,10 +34,11 @@ module Spotted
       # @see Spotted::Models::PlaylistRetrieveParams
       def retrieve(playlist_id, params = {})
         parsed, options = Spotted::PlaylistRetrieveParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["playlists/%1$s", playlist_id],
-          query: parsed,
+          query: query,
           model: Spotted::Models::PlaylistRetrieveResponse,
           options: options
         )

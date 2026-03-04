@@ -119,10 +119,11 @@ module Spotted
       # @see Spotted::Models::RecommendationGetParams
       def get(params = {})
         parsed, options = Spotted::RecommendationGetParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "recommendations",
-          query: parsed,
+          query: query,
           model: Spotted::Models::RecommendationGetResponse,
           options: options
         )

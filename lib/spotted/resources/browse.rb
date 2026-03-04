@@ -29,10 +29,11 @@ module Spotted
       # @see Spotted::Models::BrowseGetFeaturedPlaylistsParams
       def get_featured_playlists(params = {})
         parsed, options = Spotted::BrowseGetFeaturedPlaylistsParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "browse/featured-playlists",
-          query: parsed,
+          query: query,
           model: Spotted::Models::BrowseGetFeaturedPlaylistsResponse,
           options: options
         )
@@ -59,10 +60,11 @@ module Spotted
       # @see Spotted::Models::BrowseGetNewReleasesParams
       def get_new_releases(params = {})
         parsed, options = Spotted::BrowseGetNewReleasesParams.dump_request(params)
+        query = Spotted::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "browse/new-releases",
-          query: parsed,
+          query: query,
           model: Spotted::Models::BrowseGetNewReleasesResponse,
           options: options
         )
