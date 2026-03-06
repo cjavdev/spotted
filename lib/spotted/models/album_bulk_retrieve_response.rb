@@ -109,8 +109,6 @@ module Spotted
         optional :copyrights, -> { Spotted::Internal::Type::ArrayOf[Spotted::CopyrightObject] }
 
         # @!attribute external_ids
-        #   @deprecated
-        #
         #   Known external IDs for the album.
         #
         #   @return [Spotted::Models::ExternalIDObject, nil]

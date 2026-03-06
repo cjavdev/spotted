@@ -53,8 +53,6 @@ module Spotted
       optional :explicit, Spotted::Internal::Type::Boolean
 
       # @!attribute external_ids
-      #   @deprecated
-      #
       #   Known external IDs for the track.
       #
       #   @return [Spotted::Models::ExternalIDObject, nil]
