@@ -8,6 +8,13 @@ module Spotted
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
+        # @!attribute playlist_id
+        #   The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+        #   playlist.
+        #
+        #   @return [String]
+        required :playlist_id, String
+
         # @!attribute published
         #   The playlist's public/private status (if it should be added to the user's
         #   profile or not): `true` the playlist will be public, `false` the playlist will
@@ -18,9 +25,11 @@ module Spotted
         #   @return [Boolean, nil]
         optional :published, Spotted::Internal::Type::Boolean
 
-        # @!method initialize(published: nil, request_options: {})
+        # @!method initialize(playlist_id:, published: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Playlists::FollowerFollowParams} for more details.
+        #
+        #   @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
         #
         #   @param published [Boolean] The playlist's public/private status (if it should be added to the user's profil
         #

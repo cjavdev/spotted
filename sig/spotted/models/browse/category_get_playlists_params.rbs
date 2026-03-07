@@ -2,12 +2,14 @@ module Spotted
   module Models
     module Browse
       type category_get_playlists_params =
-        { limit: Integer, offset: Integer }
+        { category_id: String, limit: Integer, offset: Integer }
         & Spotted::Internal::Type::request_parameters
 
       class CategoryGetPlaylistsParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
+
+        attr_accessor category_id: String
 
         attr_reader limit: Integer?
 
@@ -18,12 +20,14 @@ module Spotted
         def offset=: (Integer) -> Integer
 
         def initialize: (
+          category_id: String,
           ?limit: Integer,
           ?offset: Integer,
           ?request_options: Spotted::request_opts
         ) -> void
 
         def to_hash: -> {
+          category_id: String,
           limit: Integer,
           offset: Integer,
           request_options: Spotted::RequestOptions

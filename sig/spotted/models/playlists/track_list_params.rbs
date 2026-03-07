@@ -3,6 +3,7 @@ module Spotted
     module Playlists
       type track_list_params =
         {
+          playlist_id: String,
           additional_types: String,
           fields: String,
           limit: Integer,
@@ -14,6 +15,8 @@ module Spotted
       class TrackListParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
+
+        attr_accessor playlist_id: String
 
         attr_reader additional_types: String?
 
@@ -36,6 +39,7 @@ module Spotted
         def offset=: (Integer) -> Integer
 
         def initialize: (
+          playlist_id: String,
           ?additional_types: String,
           ?fields: String,
           ?limit: Integer,
@@ -45,6 +49,7 @@ module Spotted
         ) -> void
 
         def to_hash: -> {
+          playlist_id: String,
           additional_types: String,
           fields: String,
           limit: Integer,

@@ -2,6 +2,7 @@ module Spotted
   module Models
     type playlist_update_params =
       {
+        playlist_id: String,
         collaborative: bool,
         description: String,
         name: String,
@@ -12,6 +13,8 @@ module Spotted
     class PlaylistUpdateParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
+
+      attr_accessor playlist_id: String
 
       attr_reader collaborative: bool?
 
@@ -30,6 +33,7 @@ module Spotted
       def published=: (bool) -> bool
 
       def initialize: (
+        playlist_id: String,
         ?collaborative: bool,
         ?description: String,
         ?name: String,
@@ -38,6 +42,7 @@ module Spotted
       ) -> void
 
       def to_hash: -> {
+        playlist_id: String,
         collaborative: bool,
         description: String,
         name: String,

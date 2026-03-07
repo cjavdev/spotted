@@ -8,6 +8,13 @@ module Spotted
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
+        # @!attribute playlist_id
+        #   The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+        #   playlist.
+        #
+        #   @return [String]
+        required :playlist_id, String
+
         # @!attribute insert_before
         #   The position where the items should be inserted.<br/>To reorder the items to the
         #   end of the playlist, simply set _insert_before_ to the position after the last
@@ -56,9 +63,11 @@ module Spotted
         #   @return [Array<String>, nil]
         optional :uris, Spotted::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(insert_before: nil, published: nil, range_length: nil, range_start: nil, snapshot_id: nil, uris: nil, request_options: {})
+        # @!method initialize(playlist_id:, insert_before: nil, published: nil, range_length: nil, range_start: nil, snapshot_id: nil, uris: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Playlists::TrackUpdateParams} for more details.
+        #
+        #   @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
         #
         #   @param insert_before [Integer] The position where the items should be inserted.<br/>To reorder the items to the
         #

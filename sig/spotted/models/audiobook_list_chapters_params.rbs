@@ -1,12 +1,14 @@
 module Spotted
   module Models
     type audiobook_list_chapters_params =
-      { limit: Integer, market: String, offset: Integer }
+      { id: String, limit: Integer, market: String, offset: Integer }
       & Spotted::Internal::Type::request_parameters
 
     class AudiobookListChaptersParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_reader limit: Integer?
 
@@ -21,6 +23,7 @@ module Spotted
       def offset=: (Integer) -> Integer
 
       def initialize: (
+        id: String,
         ?limit: Integer,
         ?market: String,
         ?offset: Integer,
@@ -28,6 +31,7 @@ module Spotted
       ) -> void
 
       def to_hash: -> {
+        id: String,
         limit: Integer,
         market: String,
         offset: Integer,

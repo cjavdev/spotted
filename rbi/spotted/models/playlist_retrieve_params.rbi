@@ -11,6 +11,11 @@ module Spotted
           T.any(Spotted::PlaylistRetrieveParams, Spotted::Internal::AnyHash)
         end
 
+      # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+      # playlist.
+      sig { returns(String) }
+      attr_accessor :playlist_id
+
       # A comma-separated list of item types that your client supports besides the
       # default `track` type. Valid types are: `track` and `episode`.<br/> _**Note**:
       # This parameter was introduced to allow existing clients to maintain their
@@ -56,6 +61,7 @@ module Spotted
 
       sig do
         params(
+          playlist_id: String,
           additional_types: String,
           fields: String,
           market: String,
@@ -63,6 +69,9 @@ module Spotted
         ).returns(T.attached_class)
       end
       def self.new(
+        # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+        # playlist.
+        playlist_id:,
         # A comma-separated list of item types that your client supports besides the
         # default `track` type. Valid types are: `track` and `episode`.<br/> _**Note**:
         # This parameter was introduced to allow existing clients to maintain their
@@ -98,6 +107,7 @@ module Spotted
       sig do
         override.returns(
           {
+            playlist_id: String,
             additional_types: String,
             fields: String,
             market: String,

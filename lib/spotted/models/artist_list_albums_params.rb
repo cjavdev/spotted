@@ -7,6 +7,13 @@ module Spotted
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #   The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+      #   artist.
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute include_groups
       #   A comma-separated list of keywords that will be used to filter the response. If
       #   not supplied, all album types will be returned. <br/> Valid values are:<br/>-
@@ -43,9 +50,11 @@ module Spotted
       #   @return [Integer, nil]
       optional :offset, Integer
 
-      # @!method initialize(include_groups: nil, limit: nil, market: nil, offset: nil, request_options: {})
+      # @!method initialize(id:, include_groups: nil, limit: nil, market: nil, offset: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::ArtistListAlbumsParams} for more details.
+      #
+      #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the artist
       #
       #   @param include_groups [String] A comma-separated list of keywords that will be used to filter the response. If
       #

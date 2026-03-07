@@ -2,12 +2,14 @@ module Spotted
   module Models
     module Users
       type playlist_list_params =
-        { limit: Integer, offset: Integer }
+        { user_id: String, limit: Integer, offset: Integer }
         & Spotted::Internal::Type::request_parameters
 
       class PlaylistListParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
+
+        attr_accessor user_id: String
 
         attr_reader limit: Integer?
 
@@ -18,12 +20,14 @@ module Spotted
         def offset=: (Integer) -> Integer
 
         def initialize: (
+          user_id: String,
           ?limit: Integer,
           ?offset: Integer,
           ?request_options: Spotted::request_opts
         ) -> void
 
         def to_hash: -> {
+          user_id: String,
           limit: Integer,
           offset: Integer,
           request_options: Spotted::RequestOptions

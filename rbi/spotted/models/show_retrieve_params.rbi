@@ -11,6 +11,10 @@ module Spotted
           T.any(Spotted::ShowRetrieveParams, Spotted::Internal::AnyHash)
         end
 
+      # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.
+      sig { returns(String) }
+      attr_accessor :id
+
       # An
       # [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
       # If a country code is specified, only content that is available in that market
@@ -28,11 +32,14 @@ module Spotted
 
       sig do
         params(
+          id: String,
           market: String,
           request_options: Spotted::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.
+        id:,
         # An
         # [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
         # If a country code is specified, only content that is available in that market
@@ -49,7 +56,11 @@ module Spotted
 
       sig do
         override.returns(
-          { market: String, request_options: Spotted::RequestOptions }
+          {
+            id: String,
+            market: String,
+            request_options: Spotted::RequestOptions
+          }
         )
       end
       def to_hash

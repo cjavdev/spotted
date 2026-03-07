@@ -15,6 +15,11 @@ module Spotted
             )
           end
 
+        # The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) for
+        # the category.
+        sig { returns(String) }
+        attr_accessor :category_id
+
         # The desired language, consisting of an
         # [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code and an
         # [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2),
@@ -31,11 +36,15 @@ module Spotted
 
         sig do
           params(
+            category_id: String,
             locale: String,
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          # The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) for
+          # the category.
+          category_id:,
           # The desired language, consisting of an
           # [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code and an
           # [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2),
@@ -51,7 +60,11 @@ module Spotted
 
         sig do
           override.returns(
-            { locale: String, request_options: Spotted::RequestOptions }
+            {
+              category_id: String,
+              locale: String,
+              request_options: Spotted::RequestOptions
+            }
           )
         end
         def to_hash

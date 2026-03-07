@@ -15,6 +15,11 @@ module Spotted
             )
           end
 
+        # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+        # playlist.
+        sig { returns(String) }
+        attr_accessor :playlist_id
+
         # The playlist's public/private status (if it should be added to the user's
         # profile or not): `true` the playlist will be public, `false` the playlist will
         # be private, `null` the playlist status is not relevant. For more about
@@ -28,11 +33,15 @@ module Spotted
 
         sig do
           params(
+            playlist_id: String,
             published: T::Boolean,
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+          # playlist.
+          playlist_id:,
           # The playlist's public/private status (if it should be added to the user's
           # profile or not): `true` the playlist will be public, `false` the playlist will
           # be private, `null` the playlist status is not relevant. For more about
@@ -45,7 +54,11 @@ module Spotted
 
         sig do
           override.returns(
-            { published: T::Boolean, request_options: Spotted::RequestOptions }
+            {
+              playlist_id: String,
+              published: T::Boolean,
+              request_options: Spotted::RequestOptions
+            }
           )
         end
         def to_hash

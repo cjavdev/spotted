@@ -8,6 +8,12 @@ module Spotted
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
+        # @!attribute user_id
+        #   The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
+        #
+        #   @return [String]
+        required :user_id, String
+
         # @!attribute name
         #   The name for the new playlist, for example `"Your Coolest Playlist"`. This name
         #   does not need to be unique; a user may have several playlists with the same
@@ -43,9 +49,11 @@ module Spotted
         #   @return [Boolean, nil]
         optional :published, Spotted::Internal::Type::Boolean
 
-        # @!method initialize(name:, collaborative: nil, description: nil, published: nil, request_options: {})
+        # @!method initialize(user_id:, name:, collaborative: nil, description: nil, published: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Users::PlaylistCreateParams} for more details.
+        #
+        #   @param user_id [String] The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
         #
         #   @param name [String] The name for the new playlist, for example `"Your Coolest Playlist"`. This name
         #

@@ -3,6 +3,7 @@ module Spotted
     module Playlists
       type track_remove_params =
         {
+          playlist_id: String,
           tracks: ::Array[Spotted::Playlists::TrackRemoveParams::Track],
           published: bool,
           snapshot_id: String
@@ -12,6 +13,8 @@ module Spotted
       class TrackRemoveParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
+
+        attr_accessor playlist_id: String
 
         attr_accessor tracks: ::Array[Spotted::Playlists::TrackRemoveParams::Track]
 
@@ -24,6 +27,7 @@ module Spotted
         def snapshot_id=: (String) -> String
 
         def initialize: (
+          playlist_id: String,
           tracks: ::Array[Spotted::Playlists::TrackRemoveParams::Track],
           ?published: bool,
           ?snapshot_id: String,
@@ -31,6 +35,7 @@ module Spotted
         ) -> void
 
         def to_hash: -> {
+          playlist_id: String,
           tracks: ::Array[Spotted::Playlists::TrackRemoveParams::Track],
           published: bool,
           snapshot_id: String,

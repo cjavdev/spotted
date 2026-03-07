@@ -15,6 +15,10 @@ module Spotted
             )
           end
 
+        # The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
+        sig { returns(String) }
+        attr_accessor :user_id
+
         # The name for the new playlist, for example `"Your Coolest Playlist"`. This name
         # does not need to be unique; a user may have several playlists with the same
         # name.
@@ -53,6 +57,7 @@ module Spotted
 
         sig do
           params(
+            user_id: String,
             name: String,
             collaborative: T::Boolean,
             description: String,
@@ -61,6 +66,8 @@ module Spotted
           ).returns(T.attached_class)
         end
         def self.new(
+          # The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
+          user_id:,
           # The name for the new playlist, for example `"Your Coolest Playlist"`. This name
           # does not need to be unique; a user may have several playlists with the same
           # name.
@@ -87,6 +94,7 @@ module Spotted
         sig do
           override.returns(
             {
+              user_id: String,
               name: String,
               collaborative: T::Boolean,
               description: String,

@@ -11,6 +11,11 @@ module Spotted
           T.any(Spotted::ArtistListAlbumsParams, Spotted::Internal::AnyHash)
         end
 
+      # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+      # artist.
+      sig { returns(String) }
+      attr_accessor :id
+
       # A comma-separated list of keywords that will be used to filter the response. If
       # not supplied, all album types will be returned. <br/> Valid values are:<br/>-
       # `album`<br/>- `single`<br/>- `appears_on`<br/>- `compilation`<br/>For example:
@@ -53,6 +58,7 @@ module Spotted
 
       sig do
         params(
+          id: String,
           include_groups: String,
           limit: Integer,
           market: String,
@@ -61,6 +67,9 @@ module Spotted
         ).returns(T.attached_class)
       end
       def self.new(
+        # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+        # artist.
+        id:,
         # A comma-separated list of keywords that will be used to filter the response. If
         # not supplied, all album types will be returned. <br/> Valid values are:<br/>-
         # `album`<br/>- `single`<br/>- `appears_on`<br/>- `compilation`<br/>For example:
@@ -88,6 +97,7 @@ module Spotted
       sig do
         override.returns(
           {
+            id: String,
             include_groups: String,
             limit: Integer,
             market: String,

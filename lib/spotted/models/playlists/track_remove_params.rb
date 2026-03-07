@@ -8,6 +8,13 @@ module Spotted
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
+        # @!attribute playlist_id
+        #   The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+        #   playlist.
+        #
+        #   @return [String]
+        required :playlist_id, String
+
         # @!attribute tracks
         #   An array of objects containing
         #   [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) of the tracks
@@ -36,9 +43,11 @@ module Spotted
         #   @return [String, nil]
         optional :snapshot_id, String
 
-        # @!method initialize(tracks:, published: nil, snapshot_id: nil, request_options: {})
+        # @!method initialize(playlist_id:, tracks:, published: nil, snapshot_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Playlists::TrackRemoveParams} for more details.
+        #
+        #   @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
         #
         #   @param tracks [Array<Spotted::Models::Playlists::TrackRemoveParams::Track>] An array of objects containing [Spotify URIs](/documentation/web-api/concepts/sp
         #

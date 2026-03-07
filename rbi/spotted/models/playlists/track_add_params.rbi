@@ -15,6 +15,11 @@ module Spotted
             )
           end
 
+        # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+        # playlist.
+        sig { returns(String) }
+        attr_accessor :playlist_id
+
         # The position to insert the items, a zero-based index. For example, to insert the
         # items in the first position: `position=0` ; to insert the items in the third
         # position: `position=2`. If omitted, the items will be appended to the playlist.
@@ -52,6 +57,7 @@ module Spotted
 
         sig do
           params(
+            playlist_id: String,
             position: Integer,
             published: T::Boolean,
             uris: T::Array[String],
@@ -59,6 +65,9 @@ module Spotted
           ).returns(T.attached_class)
         end
         def self.new(
+          # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+          # playlist.
+          playlist_id:,
           # The position to insert the items, a zero-based index. For example, to insert the
           # items in the first position: `position=0` ; to insert the items in the third
           # position: `position=2`. If omitted, the items will be appended to the playlist.
@@ -86,6 +95,7 @@ module Spotted
         sig do
           override.returns(
             {
+              playlist_id: String,
               position: Integer,
               published: T::Boolean,
               uris: T::Array[String],

@@ -15,6 +15,11 @@ module Spotted
             )
           end
 
+        # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+        # playlist.
+        sig { returns(String) }
+        attr_accessor :playlist_id
+
         # The position where the items should be inserted.<br/>To reorder the items to the
         # end of the playlist, simply set _insert_before_ to the position after the last
         # item.<br/>Examples:<br/>To reorder the first item to the last position in a
@@ -71,6 +76,7 @@ module Spotted
 
         sig do
           params(
+            playlist_id: String,
             insert_before: Integer,
             published: T::Boolean,
             range_length: Integer,
@@ -81,6 +87,9 @@ module Spotted
           ).returns(T.attached_class)
         end
         def self.new(
+          # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+          # playlist.
+          playlist_id:,
           # The position where the items should be inserted.<br/>To reorder the items to the
           # end of the playlist, simply set _insert_before_ to the position after the last
           # item.<br/>Examples:<br/>To reorder the first item to the last position in a
@@ -112,6 +121,7 @@ module Spotted
         sig do
           override.returns(
             {
+              playlist_id: String,
               insert_before: Integer,
               published: T::Boolean,
               range_length: Integer,

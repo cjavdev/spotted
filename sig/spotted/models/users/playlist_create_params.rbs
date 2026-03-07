@@ -3,6 +3,7 @@ module Spotted
     module Users
       type playlist_create_params =
         {
+          user_id: String,
           name: String,
           collaborative: bool,
           description: String,
@@ -13,6 +14,8 @@ module Spotted
       class PlaylistCreateParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
+
+        attr_accessor user_id: String
 
         attr_accessor name: String
 
@@ -29,6 +32,7 @@ module Spotted
         def published=: (bool) -> bool
 
         def initialize: (
+          user_id: String,
           name: String,
           ?collaborative: bool,
           ?description: String,
@@ -37,6 +41,7 @@ module Spotted
         ) -> void
 
         def to_hash: -> {
+          user_id: String,
           name: String,
           collaborative: bool,
           description: String,

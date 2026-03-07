@@ -7,6 +7,12 @@ module Spotted
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #   The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute limit
       #   The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
       #
@@ -34,9 +40,11 @@ module Spotted
       #   @return [Integer, nil]
       optional :offset, Integer
 
-      # @!method initialize(limit: nil, market: nil, offset: nil, request_options: {})
+      # @!method initialize(id:, limit: nil, market: nil, offset: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::ShowListEpisodesParams} for more details.
+      #
+      #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
       #
       #   @param limit [Integer] The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
       #

@@ -2,22 +2,27 @@ module Spotted
   module Models
     module Playlists
       type follower_check_params =
-        { ids: String } & Spotted::Internal::Type::request_parameters
+        { playlist_id: String, ids: String }
+        & Spotted::Internal::Type::request_parameters
 
       class FollowerCheckParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
+
+        attr_accessor playlist_id: String
 
         attr_reader ids: String?
 
         def ids=: (String) -> String
 
         def initialize: (
+          playlist_id: String,
           ?ids: String,
           ?request_options: Spotted::request_opts
         ) -> void
 
         def to_hash: -> {
+          playlist_id: String,
           ids: String,
           request_options: Spotted::RequestOptions
         }

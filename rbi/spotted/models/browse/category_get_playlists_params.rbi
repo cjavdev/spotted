@@ -15,6 +15,11 @@ module Spotted
             )
           end
 
+        # The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) for
+        # the category.
+        sig { returns(String) }
+        attr_accessor :category_id
+
         # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
         sig { returns(T.nilable(Integer)) }
         attr_reader :limit
@@ -32,12 +37,16 @@ module Spotted
 
         sig do
           params(
+            category_id: String,
             limit: Integer,
             offset: Integer,
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          # The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) for
+          # the category.
+          category_id:,
           # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
           limit: nil,
           # The index of the first item to return. Default: 0 (the first item). Use with
@@ -50,6 +59,7 @@ module Spotted
         sig do
           override.returns(
             {
+              category_id: String,
               limit: Integer,
               offset: Integer,
               request_options: Spotted::RequestOptions

@@ -7,6 +7,13 @@ module Spotted
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #   The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
+      #   audiobook.
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute market
       #   An
       #   [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
@@ -21,9 +28,11 @@ module Spotted
       #   @return [String, nil]
       optional :market, String
 
-      # @!method initialize(market: nil, request_options: {})
+      # @!method initialize(id:, market: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::AudiobookRetrieveParams} for more details.
+      #
+      #   @param id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
       #
       #   @param market [String] An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_al
       #

@@ -11,6 +11,10 @@ module Spotted
           T.any(Spotted::ShowListEpisodesParams, Spotted::Internal::AnyHash)
         end
 
+      # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.
+      sig { returns(String) }
+      attr_accessor :id
+
       # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
@@ -43,6 +47,7 @@ module Spotted
 
       sig do
         params(
+          id: String,
           limit: Integer,
           market: String,
           offset: Integer,
@@ -50,6 +55,8 @@ module Spotted
         ).returns(T.attached_class)
       end
       def self.new(
+        # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.
+        id:,
         # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
         limit: nil,
         # An
@@ -72,6 +79,7 @@ module Spotted
       sig do
         override.returns(
           {
+            id: String,
             limit: Integer,
             market: String,
             offset: Integer,

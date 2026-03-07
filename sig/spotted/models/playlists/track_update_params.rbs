@@ -3,6 +3,7 @@ module Spotted
     module Playlists
       type track_update_params =
         {
+          playlist_id: String,
           insert_before: Integer,
           published: bool,
           range_length: Integer,
@@ -15,6 +16,8 @@ module Spotted
       class TrackUpdateParams < Spotted::Internal::Type::BaseModel
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
+
+        attr_accessor playlist_id: String
 
         attr_reader insert_before: Integer?
 
@@ -41,6 +44,7 @@ module Spotted
         def uris=: (::Array[String]) -> ::Array[String]
 
         def initialize: (
+          playlist_id: String,
           ?insert_before: Integer,
           ?published: bool,
           ?range_length: Integer,
@@ -51,6 +55,7 @@ module Spotted
         ) -> void
 
         def to_hash: -> {
+          playlist_id: String,
           insert_before: Integer,
           published: bool,
           range_length: Integer,

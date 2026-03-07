@@ -2,6 +2,7 @@ module Spotted
   module Models
     type artist_list_albums_params =
       {
+        id: String,
         include_groups: String,
         limit: Integer,
         market: String,
@@ -12,6 +13,8 @@ module Spotted
     class ArtistListAlbumsParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_reader include_groups: String?
 
@@ -30,6 +33,7 @@ module Spotted
       def offset=: (Integer) -> Integer
 
       def initialize: (
+        id: String,
         ?include_groups: String,
         ?limit: Integer,
         ?market: String,
@@ -38,6 +42,7 @@ module Spotted
       ) -> void
 
       def to_hash: -> {
+        id: String,
         include_groups: String,
         limit: Integer,
         market: String,

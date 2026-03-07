@@ -15,6 +15,10 @@ module Spotted
             )
           end
 
+        # The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
+        sig { returns(String) }
+        attr_accessor :user_id
+
         # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
         sig { returns(T.nilable(Integer)) }
         attr_reader :limit
@@ -32,12 +36,15 @@ module Spotted
 
         sig do
           params(
+            user_id: String,
             limit: Integer,
             offset: Integer,
             request_options: Spotted::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          # The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
+          user_id:,
           # The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
           limit: nil,
           # The index of the first playlist to return. Default: 0 (the first object).
@@ -50,6 +57,7 @@ module Spotted
         sig do
           override.returns(
             {
+              user_id: String,
               limit: Integer,
               offset: Integer,
               request_options: Spotted::RequestOptions

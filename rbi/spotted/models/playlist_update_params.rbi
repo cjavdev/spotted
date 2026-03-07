@@ -11,6 +11,11 @@ module Spotted
           T.any(Spotted::PlaylistUpdateParams, Spotted::Internal::AnyHash)
         end
 
+      # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+      # playlist.
+      sig { returns(String) }
+      attr_accessor :playlist_id
+
       # If `true`, the playlist will become collaborative and other users will be able
       # to modify the playlist in their Spotify client. <br/> _**Note**: You can only
       # set `collaborative` to `true` on non-public playlists._
@@ -48,6 +53,7 @@ module Spotted
 
       sig do
         params(
+          playlist_id: String,
           collaborative: T::Boolean,
           description: String,
           name: String,
@@ -56,6 +62,9 @@ module Spotted
         ).returns(T.attached_class)
       end
       def self.new(
+        # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+        # playlist.
+        playlist_id:,
         # If `true`, the playlist will become collaborative and other users will be able
         # to modify the playlist in their Spotify client. <br/> _**Note**: You can only
         # set `collaborative` to `true` on non-public playlists._
@@ -78,6 +87,7 @@ module Spotted
       sig do
         override.returns(
           {
+            playlist_id: String,
             collaborative: T::Boolean,
             description: String,
             name: String,

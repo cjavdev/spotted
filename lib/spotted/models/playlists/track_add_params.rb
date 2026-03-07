@@ -8,6 +8,13 @@ module Spotted
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
+        # @!attribute playlist_id
+        #   The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+        #   playlist.
+        #
+        #   @return [String]
+        required :playlist_id, String
+
         # @!attribute position
         #   The position to insert the items, a zero-based index. For example, to insert the
         #   items in the first position: `position=0` ; to insert the items in the third
@@ -40,9 +47,11 @@ module Spotted
         #   @return [Array<String>, nil]
         optional :uris, Spotted::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(position: nil, published: nil, uris: nil, request_options: {})
+        # @!method initialize(playlist_id:, position: nil, published: nil, uris: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Playlists::TrackAddParams} for more details.
+        #
+        #   @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
         #
         #   @param position [Integer] The position to insert the items, a zero-based index. For example, to insert the
         #

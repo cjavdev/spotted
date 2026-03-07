@@ -1,12 +1,19 @@
 module Spotted
   module Models
     type playlist_retrieve_params =
-      { additional_types: String, fields: String, market: String }
+      {
+        playlist_id: String,
+        additional_types: String,
+        fields: String,
+        market: String
+      }
       & Spotted::Internal::Type::request_parameters
 
     class PlaylistRetrieveParams < Spotted::Internal::Type::BaseModel
       extend Spotted::Internal::Type::RequestParameters::Converter
       include Spotted::Internal::Type::RequestParameters
+
+      attr_accessor playlist_id: String
 
       attr_reader additional_types: String?
 
@@ -21,6 +28,7 @@ module Spotted
       def market=: (String) -> String
 
       def initialize: (
+        playlist_id: String,
         ?additional_types: String,
         ?fields: String,
         ?market: String,
@@ -28,6 +36,7 @@ module Spotted
       ) -> void
 
       def to_hash: -> {
+        playlist_id: String,
         additional_types: String,
         fields: String,
         market: String,

@@ -15,6 +15,11 @@ module Spotted
             )
           end
 
+        # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+        # playlist.
+        sig { returns(String) }
+        attr_accessor :playlist_id
+
         # An array of objects containing
         # [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) of the tracks
         # or episodes to remove. For example:
@@ -45,6 +50,7 @@ module Spotted
 
         sig do
           params(
+            playlist_id: String,
             tracks:
               T::Array[Spotted::Playlists::TrackRemoveParams::Track::OrHash],
             published: T::Boolean,
@@ -53,6 +59,9 @@ module Spotted
           ).returns(T.attached_class)
         end
         def self.new(
+          # The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+          # playlist.
+          playlist_id:,
           # An array of objects containing
           # [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) of the tracks
           # or episodes to remove. For example:
@@ -76,6 +85,7 @@ module Spotted
         sig do
           override.returns(
             {
+              playlist_id: String,
               tracks: T::Array[Spotted::Playlists::TrackRemoveParams::Track],
               published: T::Boolean,
               snapshot_id: String,

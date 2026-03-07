@@ -8,6 +8,13 @@ module Spotted
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
+        # @!attribute playlist_id
+        #   The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the
+        #   playlist.
+        #
+        #   @return [String]
+        required :playlist_id, String
+
         # @!attribute additional_types
         #   A comma-separated list of item types that your client supports besides the
         #   default `track` type. Valid types are: `track` and `episode`.<br/> _**Note**:
@@ -61,9 +68,11 @@ module Spotted
         #   @return [Integer, nil]
         optional :offset, Integer
 
-        # @!method initialize(additional_types: nil, fields: nil, limit: nil, market: nil, offset: nil, request_options: {})
+        # @!method initialize(playlist_id:, additional_types: nil, fields: nil, limit: nil, market: nil, offset: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Playlists::TrackListParams} for more details.
+        #
+        #   @param playlist_id [String] The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playli
         #
         #   @param additional_types [String] A comma-separated list of item types that your client supports besides the defau
         #

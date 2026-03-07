@@ -11,15 +11,28 @@ module Spotted
           T.any(Spotted::UserRetrieveProfileParams, Spotted::Internal::AnyHash)
         end
 
+      # The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
+      sig { returns(String) }
+      attr_accessor :user_id
+
       sig do
-        params(request_options: Spotted::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          user_id: String,
+          request_options: Spotted::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(
+        # The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
+        user_id:,
+        request_options: {}
+      )
       end
 
-      sig { override.returns({ request_options: Spotted::RequestOptions }) }
+      sig do
+        override.returns(
+          { user_id: String, request_options: Spotted::RequestOptions }
+        )
+      end
       def to_hash
       end
     end

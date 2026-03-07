@@ -8,6 +8,13 @@ module Spotted
         extend Spotted::Internal::Type::RequestParameters::Converter
         include Spotted::Internal::Type::RequestParameters
 
+        # @!attribute category_id
+        #   The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) for
+        #   the category.
+        #
+        #   @return [String]
+        required :category_id, String
+
         # @!attribute locale
         #   The desired language, consisting of an
         #   [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code and an
@@ -21,9 +28,11 @@ module Spotted
         #   @return [String, nil]
         optional :locale, String
 
-        # @!method initialize(locale: nil, request_options: {})
+        # @!method initialize(category_id:, locale: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Spotted::Models::Browse::CategoryRetrieveParams} for more details.
+        #
+        #   @param category_id [String] The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) for
         #
         #   @param locale [String] The desired language, consisting of an [ISO 639-1](http://en.wikipedia.org/wiki/
         #
