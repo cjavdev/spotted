@@ -6,7 +6,7 @@ class Spotted::Test::Resources::Playlists::ImagesTest < Spotted::Test::ResourceT
   def test_update_required_params
     skip("Mock server tests are disabled")
 
-    response = @spotted.playlists.images.update("3cEYpjA9oz9GiPac4AsH4n", body: Pathname(__FILE__))
+    response = @spotted.playlists.images.update("3cEYpjA9oz9GiPac4AsH4n", body: StringIO.new("Example data"))
 
     assert_pattern do
       response => StringIO
