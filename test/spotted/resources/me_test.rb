@@ -15,6 +15,7 @@ class Spotted::Test::Resources::MeTest < Spotted::Test::ResourceTest
     assert_pattern do
       response => {
         id: String | nil,
+        account_id: String | nil,
         country: String | nil,
         display_name: String | nil,
         email: String | nil,

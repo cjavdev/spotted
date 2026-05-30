@@ -6,10 +6,19 @@ module Spotted
     class MeRetrieveResponse < Spotted::Internal::Type::BaseModel
       # @!attribute id
       #   The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for the
-      #   user.
+      #   user. Do not use this field for account linking — use `account_id` instead,
+      #   which is immutable.
       #
       #   @return [String, nil]
       optional :id, String
+
+      # @!attribute account_id
+      #   A public, immutable, pseudoanonymous identifier for the user's account. Use this
+      #   field for account linking rather than the `id` field, as it is stable and will
+      #   not change over the lifetime of the account.
+      #
+      #   @return [String, nil]
+      optional :account_id, String
 
       # @!attribute country
       #   @deprecated
@@ -114,11 +123,13 @@ module Spotted
       #   @return [String, nil]
       optional :uri, String
 
-      # @!method initialize(id: nil, country: nil, display_name: nil, email: nil, explicit_content: nil, external_urls: nil, followers: nil, href: nil, images: nil, product: nil, published: nil, type: nil, uri: nil)
+      # @!method initialize(id: nil, account_id: nil, country: nil, display_name: nil, email: nil, explicit_content: nil, external_urls: nil, followers: nil, href: nil, images: nil, product: nil, published: nil, type: nil, uri: nil)
       #   Some parameter documentations has been truncated, see
       #   {Spotted::Models::MeRetrieveResponse} for more details.
       #
       #   @param id [String] The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for the
+      #
+      #   @param account_id [String] A public, immutable, pseudoanonymous identifier for the user's account. Use this
       #
       #   @param country [String] The country of the user, as set in the user's account profile. An [ISO 3166-1 al
       #

@@ -3,6 +3,7 @@ module Spotted
     type me_retrieve_response =
       {
         id: String,
+        account_id: String,
         country: String,
         display_name: String,
         email: String,
@@ -21,6 +22,10 @@ module Spotted
       attr_reader id: String?
 
       def id=: (String) -> String
+
+      attr_reader account_id: String?
+
+      def account_id=: (String) -> String
 
       attr_reader country: String?
 
@@ -78,6 +83,7 @@ module Spotted
 
       def initialize: (
         ?id: String,
+        ?account_id: String,
         ?country: String,
         ?display_name: String,
         ?email: String,
@@ -94,6 +100,7 @@ module Spotted
 
       def to_hash: -> {
         id: String,
+        account_id: String,
         country: String,
         display_name: String,
         email: String,

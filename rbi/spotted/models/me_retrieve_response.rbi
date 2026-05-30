@@ -9,12 +9,22 @@ module Spotted
         end
 
       # The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for the
-      # user.
+      # user. Do not use this field for account linking — use `account_id` instead,
+      # which is immutable.
       sig { returns(T.nilable(String)) }
       attr_reader :id
 
       sig { params(id: String).void }
       attr_writer :id
+
+      # A public, immutable, pseudoanonymous identifier for the user's account. Use this
+      # field for account linking rather than the `id` field, as it is stable and will
+      # not change over the lifetime of the account.
+      sig { returns(T.nilable(String)) }
+      attr_reader :account_id
+
+      sig { params(account_id: String).void }
+      attr_writer :account_id
 
       # The country of the user, as set in the user's account profile. An
       # [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
@@ -131,6 +141,7 @@ module Spotted
       sig do
         params(
           id: String,
+          account_id: String,
           country: String,
           display_name: String,
           email: String,
@@ -148,8 +159,13 @@ module Spotted
       end
       def self.new(
         # The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for the
-        # user.
+        # user. Do not use this field for account linking — use `account_id` instead,
+        # which is immutable.
         id: nil,
+        # A public, immutable, pseudoanonymous identifier for the user's account. Use this
+        # field for account linking rather than the `id` field, as it is stable and will
+        # not change over the lifetime of the account.
+        account_id: nil,
         # The country of the user, as set in the user's account profile. An
         # [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
         # _This field is only available when the current user has granted access to the
@@ -202,6 +218,7 @@ module Spotted
         override.returns(
           {
             id: String,
+            account_id: String,
             country: String,
             display_name: String,
             email: String,
